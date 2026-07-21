@@ -161,7 +161,7 @@ export default function ProjectPage() {
                 {project.tools.map((tool) => (
                   <span
                     key={tool}
-                    className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium"
+                    className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
                   >
                     {tool}
                   </span>

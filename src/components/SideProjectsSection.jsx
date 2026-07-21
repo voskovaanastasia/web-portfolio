@@ -50,7 +50,7 @@ export default function SideProjectsSection() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-medium px-3 py-1 bg-white bg-opacity-60 text-gray-700 rounded-full"
+                      className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
                     >
                       {tag}
                     </span>

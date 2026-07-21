@@ -1,44 +1,52 @@
+import logoFarsafe from '../assets/logo-farsafe.png';
+import logoBart from '../assets/logo-bart.png';
+
 export default function ExperienceSection() {
   const experiences = [
     {
       company: 'Farsafe',
+      logo: logoFarsafe,
       location: 'Texas, USA • part-time, remote',
       dateRange: 'JAN 2025 — PRESENT',
-      description: 'Sole designer on a 0-to-1 uptime-monitoring platform, spanning the marketing website and in-app monitoring dashboard. Led discovery research (surveys and interviews) that defined the product\'s design targets — pricing clarity, alert reliability, and tool consolidation. Made pricing transparency the core conversion strategy: Signup Conversion Rate 7.4%, Dashboard Task Success 92%, Time-to-First-Probe 1 min 41 sec.',
-      skills: ['Product Design', 'User Research', 'Design Systems'],
+      description: "Sole designer on a 0-to-1 uptime-monitoring platform, owning the full experience across the marketing site and the in-app dashboard. Grounded the product's direction in discovery research with developers, agencies, and small teams, then made pricing transparency the core conversion strategy - turning the category's biggest friction into its strongest reason to trust. Designed one overview-first system reused across fleet, single-probe, and public status views to keep a data-dense product learnable everywhere. Shipped results: 7.4% signup conversion, 92% dashboard task success, and a 1 min 41 sec time-to-first-probe.",
+      skills: ['Product Design', 'User Research', 'Design Systems & Token'],
       roles: [
         {
           title: 'Product Designer',
           dateRange: 'Jan 2025 — Present',
           duration: '1 yr 7 mos',
+          location: 'Texas, USA • part-time, remote',
         },
       ],
     },
     {
       company: 'bART Solutions',
+      logo: logoBart,
       location: 'Lviv, Ukraine • full-time, remote',
       dateRange: 'MAY 2023 — DEC 2025',
-      description: 'Owned UX/UI for production web and mobile products, from research and flows through high-fidelity UI. Translated business requirements into information architecture and user flows. Partnered with developers through implementation, handoff, and QA in an agile workflow.',
+      description: 'Led UX/UI across 10+ production web and mobile products over nearly three years - building design systems both on top of existing foundations and from scratch, and keeping quality consistent across every screen and state. On a large US tax-filing product, redesigned and simplified core flows so Americans could file returns in fewer, clearer steps. Worked hand in hand with developers, marketers, and copywriters, and communicated directly with clients to align on goals, scope, and requirements.',
       skills: ['UX/UI Design', 'Product', 'Design Systems', 'Design Tokens'],
       roles: [
         {
           title: 'UX/UI Designer',
           dateRange: 'May 2023 — Dec 2025',
           duration: '2 yrs 8 mos',
+          location: 'Lviv, Ukraine • full-time, remote',
         },
       ],
     },
     {
       company: 'Fintech Mobile App (under NDA)',
-      location: 'full-time, hybrid',
+      location: 'Kyiv, Ukraine • full-time, hybrid',
       dateRange: 'MAY 2021 — APR 2023',
-      description: 'Turned wireframes and user flows into polished, device-optimised mobile UI. Applied iOS Human Interface Guidelines and Material Design while maintaining brand consistency across products.',
+      description: 'Part of a 6-designer team building a production fintech app, where I owned reusable UI components and foundational screens. Delivered device-optimised UI to iOS Human Interface Guidelines and Material Design, keeping brand consistency intact as the product scaled - and sharpened both components and screens through iterative feedback cycles.',
       skills: ['UI Design', 'Mobile Design', 'iOS HIG', 'Material Design'],
       roles: [
         {
           title: 'UI Designer',
           dateRange: 'May 2021 — Apr 2023',
           duration: '2 yrs',
+          location: 'Kyiv, Ukraine • full-time, hybrid',
         },
       ],
     },
@@ -46,13 +54,14 @@ export default function ExperienceSection() {
       company: 'Freelancer',
       location: 'Self-employed',
       dateRange: 'MAR 2020 — APR 2021',
-      description: 'Designed brand identities, logos, and visual assets across digital and print. Produced marketing collateral and digital assets for social media, websites, and email campaigns.',
+      description: "Delivered brand identities, logos, and marketing collateral for 20+ clients across a wide range of industries. Designed everything from newsletters and print pieces to digital assets for social and web — translating each client's goals into clear, effective visual solutions.",
       skills: ['Branding', 'Visual Design', 'Logo Design', 'Graphics'],
       roles: [
         {
           title: 'Graphic Designer',
           dateRange: 'Mar 2020 — Apr 2021',
           duration: '1 yr 2 mos',
+          location: 'Self-employed',
         },
       ],
     },
@@ -65,13 +74,17 @@ export default function ExperienceSection() {
           <h2 className="text-5xl font-bold text-gray-900">Work Experience</h2>
         </div>
 
-        <div className="space-y-12">
+        <div>
           {experiences.map((exp, index) => (
             <div key={index} className="flex gap-6">
               <div className="flex flex-col items-center flex-shrink-0">
-                <div className="w-3 h-3 bg-gray-400 rounded-full mt-2" />
+                <div
+                  className={`w-3 h-3 rounded-full mt-2 flex-shrink-0 ${exp.dateRange.includes('PRESENT') ? 'bg-[#288fd6]' : 'bg-gray-400'}`}
+                />
                 {index < experiences.length - 1 && (
-                  <div className="w-0.5 bg-gray-300 flex-1 mt-4" style={{ minHeight: '200px' }} />
+                  <div
+                    className={`w-0.5 flex-1 ${exp.dateRange.includes('PRESENT') ? 'bg-[#288fd6]' : 'bg-gray-300'}`}
+                  />
                 )}
               </div>
 
@@ -80,6 +93,13 @@ export default function ExperienceSection() {
                   {exp.dateRange}
                 </p>
 
+                {exp.logo && (
+                  <img
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    className={`${exp.company === 'bART Solutions' ? 'h-12' : 'h-6'} w-auto mb-2`}
+                  />
+                )}
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {exp.company}
                 </h3>
@@ -93,7 +113,8 @@ export default function ExperienceSection() {
                           {role.title}
                         </p>
                         <p className="text-sm text-gray-600">
-                          {role.dateRange} · {role.duration}
+                          {role.duration}
+                          {role.location && ` · ${role.location}`}
                         </p>
                       </div>
                     </div>

@@ -111,19 +111,13 @@ export default function SelectedWork() {
                 {/* Content half */}
                 <div className="lg:w-1/2 p-5 sm:p-6 flex flex-col items-start gap-4">
                   {/* Tags */}
-                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                    {project.tags.map((tag, i) => (
-                      <span key={tag} className="flex items-center gap-2.5">
-                        {i === 0 ? (
-                          <span className="bg-[#eff4fd] text-[#3870e2] font-mono-bold text-xs px-2.5 py-1 rounded-full">
-                            {tag}
-                          </span>
-                        ) : (
-                          <>
-                            <span className="w-0.5 h-0.5 rounded-full bg-[#191919]" />
-                            <span className="font-mono-bold text-xs text-[#191919]">{tag}</span>
-                          </>
-                        )}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
+                      >
+                        {tag}
                       </span>
                     ))}
                   </div>
@@ -172,7 +166,7 @@ export default function SelectedWork() {
                     {project.roles.map((role) => (
                       <span
                         key={role}
-                        className="border border-[#d7d6d2] text-[#757472] font-mono-bold text-xs px-2.5 py-1 rounded-full"
+                        className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
                       >
                         {role}
                       </span>

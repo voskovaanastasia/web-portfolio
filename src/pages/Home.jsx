@@ -16,10 +16,10 @@ export default function Home() {
       <HowIWorkSection />
       <SelectedWork />
       <MyToolkitSection />
-      <SideProjectsSection />
-      <AboutSection />
       <ImpactSection />
       <ExperienceSection />
+      <SideProjectsSection />
+      <AboutSection />
       <SkillsSection />
       <ContactSection />
     </main>

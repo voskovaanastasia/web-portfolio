@@ -1,72 +1,74 @@
-export default function ImpactSection() {
-  const metrics = [
-    {
-      number: '7.4%',
-      label: 'Signup Conversion Rate',
-      project: 'Farsafe',
-      description: 'Achieved through pricing transparency strategy',
-      color: 'bg-gray-50',
-      numberColor: 'text-gray-900',
-      highlight: false,
-    },
-    {
-      number: '92%',
-      label: 'Dashboard Task Success',
-      project: 'bART Solutions',
-      description: 'High usability and learnability in data-dense interface',
-      color: 'bg-gradient-to-br from-blue-100 to-blue-200',
-      numberColor: 'text-blue-700',
-      highlight: true,
-    },
-    {
-      number: '1m 41s',
-      label: 'Time-to-First-Probe',
-      project: 'Farsafe',
-      description: 'Optimized user onboarding and product discovery',
-      color: 'bg-gray-900 text-white',
-      numberColor: 'text-white',
-      highlight: false,
-    },
-    {
-      number: '6+',
-      label: 'Years of Experience',
-      project: 'Web, Mobile & SaaS',
-      description: 'Product design, UX/UI, design systems & research',
-      color: 'bg-gray-50',
-      numberColor: 'text-gray-900',
-      highlight: false,
-    },
-  ];
+const metrics = [
+  {
+    number: '1m 41s',
+    label: 'Time-to-First-Probe',
+    project: 'Farsafe',
+    description: 'Optimized user onboarding and product discovery',
+    card: 'bg-[#22292f] text-white',
+    number_color: 'text-white',
+    meta_color: 'text-[#bdbdbd]',
+  },
+  {
+    number: '−40%',
+    label: 'Bounce Rate',
+    project: 'bART Solutions',
+    description: '68% → 41% after restructured IA',
+    card: 'bg-white text-black',
+    number_color: 'text-[#288fd6]',
+    meta_color: 'text-black',
+  },
+  {
+    number: '0→1',
+    label: 'Secure Send / Swap',
+    project: 'Crypto Wallet',
+    description: 'Guided flow designed to prevent lost funds',
+    card: 'bg-[#288fd6] text-white',
+    number_color: 'text-white',
+    meta_color: 'text-[#d8efff]',
+  },
+  {
+    number: '92%',
+    label: 'Dashboard Task Success',
+    project: 'Farsafe',
+    description: 'High usability in a data-dense interface',
+    card: 'bg-white text-black',
+    number_color: 'text-[#288fd6]',
+    meta_color: 'text-black',
+  },
+  {
+    number: '5+',
+    label: 'Years of Experience',
+    project: 'Web, Mobile & SaaS',
+    description: 'Product design, UX/UI, design systems & research',
+    card: 'bg-white text-black',
+    number_color: 'text-[#288fd6]',
+    meta_color: 'text-black',
+  },
+];
 
+export default function ImpactSection() {
   return (
-    <section className="py-24">
+    <section className="bg-white py-24">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-sm font-mono text-gray-600 mb-4 tracking-wider">IMPACT</p>
-          <h2 className="text-5xl font-bold mb-6 text-blue-600">Proven Results</h2>
-          <p className="text-lg text-gray-700">
+          <p className="font-mono-bold text-sm text-black tracking-wider mb-4">Proven Results</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
             Design decisions grounded in research, measured by real outcomes.
-          </p>
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {metrics.map((metric, index) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {metrics.map((metric) => (
             <div
-              key={index}
-              className={`rounded-2xl p-8 border border-gray-200 ${metric.color}`}
+              key={metric.label}
+              className={`rounded-[15px] border border-[#d7d7d7] p-5 flex flex-col gap-2.5 ${metric.card}`}
             >
-              <p className={`text-5xl font-bold mb-3 ${metric.numberColor}`}>
+              <p className={`font-grotesk font-bold text-3xl sm:text-4xl whitespace-nowrap ${metric.number_color}`}>
                 {metric.number}
               </p>
-              <p className={`font-bold text-lg mb-2 ${metric.numberColor}`}>
-                {metric.label}
-              </p>
-              <p className={`text-sm mb-1 ${metric.highlight ? 'text-blue-600 font-semibold' : 'text-gray-600'}`}>
-                {metric.project}
-              </p>
-              <p className={`text-xs ${metric.highlight ? 'text-blue-600' : 'text-gray-500'}`}>
-                {metric.description}
-              </p>
+              <p className="font-grotesk font-bold text-base">{metric.label}</p>
+              <p className={`font-grotesk text-sm ${metric.meta_color}`}>{metric.project}</p>
+              <p className="font-grotesk text-sm">{metric.description}</p>
             </div>
           ))}
         </div>
