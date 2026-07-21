@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173/)",
+      "mcp__claude_ai_Figma__get_design_context",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(chromium-cli --headless --screenshot=/tmp/nav-screenshot.png http://localhost:5173)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(tail -20 /tmp/vite-server.log)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(curl -sL -o hero-bg.png \"https://www.figma.com/api/mcp/asset/17c495f6-ba2a-48f6-9c4b-5cee56d4632a\")",
+      "Bash(curl -sL -o avatar.png \"https://www.figma.com/api/mcp/asset/ae2dc4b8-0705-46ad-b808-400bc839daf5\")",
+      "Bash(curl -sL -o arrow.svg \"https://www.figma.com/api/mcp/asset/56eaeeed-1ee3-4798-b71a-62eb355e1beb\")",
+      "Bash(curl -sL -o icon-figma.svg \"https://www.figma.com/api/mcp/asset/1740f69a-b3f1-429d-ad36-560db0c65268\")",
+      "Bash(curl -sL -o icon-react.svg \"https://www.figma.com/api/mcp/asset/417a4385-ceed-40a8-a66c-e46205f1799f\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(curl -sL -o /Users/anastasiavoskova/portfolio-website/src/assets/logo-av.svg \"https://www.figma.com/api/mcp/asset/22d5e567-0b3b-400f-83c0-670338b33592\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(jobs -l)",
+      "Bash(kill %1)",
+      "Bash(curl -sf http://localhost:5173)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(npx --version)",
+      "Bash(npm ls *)",
+      "Read(//Users/anastasiavoskova/Library/Caches/**)"
+    ]
+  }
+}
