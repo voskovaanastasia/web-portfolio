@@ -13,7 +13,7 @@ const metrics = [
     label: 'Bounce Rate',
     project: 'bART Solutions',
     description: '68% → 41% after restructured IA',
-    card: 'bg-white text-black',
+    card: 'bg-[#f7f7f7] text-black',
     number_color: 'text-[#288fd6]',
     meta_color: 'text-black',
   },
@@ -31,18 +31,18 @@ const metrics = [
     label: 'Dashboard Task Success',
     project: 'Farsafe',
     description: 'High usability in a data-dense interface',
-    card: 'bg-white text-black',
+    card: 'bg-[#f7f7f7] text-black',
     number_color: 'text-[#288fd6]',
     meta_color: 'text-black',
   },
   {
-    number: '5+',
+    number: '6+',
     label: 'Years of Experience',
     project: 'Web, Mobile & SaaS',
     description: 'Product design, UX/UI, design systems & research',
-    card: 'bg-white text-black',
-    number_color: 'text-[#288fd6]',
-    meta_color: 'text-black',
+    card: 'bg-[#f4633a] text-white',
+    number_color: 'text-white',
+    meta_color: 'text-[#ffd9cc]',
   },
 ];
 
@@ -50,9 +50,9 @@ export default function ImpactSection() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="mb-16">
-          <p className="font-mono-bold text-sm text-black tracking-wider mb-4">Proven Results</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
+        <div className="mb-12 flex flex-col gap-2.5">
+          <p className="font-mono-bold text-base text-black">Proven Results</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight leading-snug max-w-[590px]">
             Design decisions grounded in research, measured by real outcomes.
           </h2>
         </div>
@@ -61,9 +61,9 @@ export default function ImpactSection() {
           {metrics.map((metric) => (
             <div
               key={metric.label}
-              className={`rounded-[15px] border border-[#d7d7d7] p-5 flex flex-col gap-2.5 ${metric.card}`}
+              className={`rounded-[15px] p-5 flex flex-col gap-2.5 ${metric.card}`}
             >
-              <p className={`font-grotesk font-bold text-3xl sm:text-4xl whitespace-nowrap ${metric.number_color}`}>
+              <p className={`font-grotesk font-bold text-4xl sm:text-5xl whitespace-nowrap ${metric.number_color}`}>
                 {metric.number}
               </p>
               <p className="font-grotesk font-bold text-base">{metric.label}</p>

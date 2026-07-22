@@ -86,7 +86,7 @@ const programmingTools = [
 function ToolCard({ icon, label }) {
   return (
     <div className="flex items-center gap-2.5">
-      <div className="bg-[#fbfbfb] border border-[#d7d7d7] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0 p-[7px]">
+      <div className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0 p-[7px]">
         <img src={icon} alt="" className="w-[25px] h-[25px] object-contain" />
       </div>
       <p className="font-grotesk font-bold text-sm text-black">{label}</p>
@@ -98,7 +98,7 @@ function ToolGroup({ label, tools }) {
   return (
     <div className="flex flex-col gap-[15px] w-full">
       <p className="font-mono-bold text-base text-black">{label}</p>
-      <div className="bg-white border border-[#d7d7d7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
+      <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
         {tools.map((tool) => (
           <ToolCard key={tool.label} icon={tool.icon} label={tool.label} />
         ))}
@@ -113,16 +113,16 @@ function ToolGroup({ label, tools }) {
 export default function MyToolkitSection() {
   return (
     <section className="bg-white py-24">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center gap-5 text-center">
-        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
-          I am Anastasiia Voskova,{' '}
-          <span className="font-playwrite font-normal block sm:inline">
-            a designer who thinks like an engineer.
-          </span>
-        </h2>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
         <p className="font-caveat font-bold text-xl text-[#ff7043]">
           Computer Science is my secret weapon.
         </p>
+        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
+          I am Anastasiia Voskova,
+          <span className="font-playwrite font-normal block mt-2">
+            a designer who thinks like an engineer.
+          </span>
+        </h2>
 
         <div className="flex flex-col gap-8 w-full mt-6 text-left">
           <ToolGroup label="DESIGN" tools={designTools} />

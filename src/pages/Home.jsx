@@ -6,6 +6,7 @@ import SideProjectsSection from '../components/SideProjectsSection';
 import AboutSection from '../components/AboutSection';
 import ImpactSection from '../components/ImpactSection';
 import ExperienceSection from '../components/ExperienceSection';
+import AiDesignerSection from '../components/AiDesignerSection';
 import SkillsSection from '../components/SkillsSection';
 import ContactSection from '../components/ContactSection';
 
@@ -18,6 +19,7 @@ export default function Home() {
       <MyToolkitSection />
       <ImpactSection />
       <ExperienceSection />
+      <AiDesignerSection />
       <SideProjectsSection />
       <AboutSection />
       <SkillsSection />

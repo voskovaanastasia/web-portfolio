@@ -84,16 +84,25 @@ export default function HowIWorkSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-[15px]">
-          {cards.map((card) => (
-            <div
-              key={card.title}
-              className="bg-white border border-[#d7d7d7] rounded-[10px] p-[15px] flex flex-col gap-2.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#288fd6] hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)]"
-            >
-              <img src={card.icon} alt="" className="w-6 h-6" />
-              <p className="font-grotesk font-bold text-sm text-black">{card.title}</p>
-              <p className="font-grotesk text-sm text-black">{card.description}</p>
-            </div>
-          ))}
+          {cards.map((card, index) => {
+            const accent = index === 0 || index === cards.length - 1;
+            return (
+              <div
+                key={card.title}
+                className={`rounded-[15px] p-[15px] flex flex-col gap-2.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${
+                  accent ? 'bg-[#f4633a] text-white' : 'bg-[#f7f7f7] text-black'
+                }`}
+              >
+                <img
+                  src={card.icon}
+                  alt=""
+                  className={`w-6 h-6 ${accent ? 'brightness-0 invert' : ''}`}
+                />
+                <p className="font-grotesk font-bold text-sm">{card.title}</p>
+                <p className="font-grotesk text-sm">{card.description}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
