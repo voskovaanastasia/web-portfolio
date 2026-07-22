@@ -48,8 +48,8 @@ const metrics = [
 
 export default function ImpactSection() {
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-white py-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
           <p className="font-mono-bold text-base text-black">Proven Results</p>
           <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight leading-snug max-w-[590px]">

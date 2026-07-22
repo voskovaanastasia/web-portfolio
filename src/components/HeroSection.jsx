@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import DotsBackground from './DotsBackground';
 import avatar from '../assets/avatar.png';
 import iconFigma from '../assets/icon-figma.svg';
 import iconReact from '../assets/icon-react.svg';
@@ -23,58 +23,9 @@ const stackIcons = [
 ];
 
 export default function HeroSection() {
-  const sectionRef = useRef(null);
-  const overlayRef = useRef(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const overlay = overlayRef.current;
-    if (!section || !overlay) return;
-
-    const syncGridOffset = () => {
-      const rect = section.getBoundingClientRect();
-      const docTop = rect.top + window.scrollY;
-      const offsetY = ((docTop % 24) + 24) % 24;
-      overlay.style.backgroundPosition = `0 ${-offsetY}px`;
-    };
-
-    const handleMove = (e) => {
-      const rect = section.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const mask = `radial-gradient(circle 120px at ${x}px ${y}px, black 0%, black 55%, transparent 100%)`;
-      overlay.style.maskImage = mask;
-      overlay.style.webkitMaskImage = mask;
-      overlay.style.opacity = '1';
-    };
-
-    const handleLeave = () => {
-      overlay.style.opacity = '0';
-    };
-
-    syncGridOffset();
-    window.addEventListener('resize', syncGridOffset);
-    section.addEventListener('mousemove', handleMove);
-    section.addEventListener('mouseleave', handleLeave);
-
-    return () => {
-      window.removeEventListener('resize', syncGridOffset);
-      section.removeEventListener('mousemove', handleMove);
-      section.removeEventListener('mouseleave', handleLeave);
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
-      <div
-        ref={overlayRef}
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-150 z-0"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #288FD6 2.5px, transparent 2.5px)',
-          backgroundSize: '24px 24px',
-        }}
-      />
+    <section className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
+      <DotsBackground />
       <div className="relative z-10 flex flex-col items-center gap-5 max-w-3xl px-4 py-20 text-center">
         {/* Hello line */}
         <div className="flex items-center gap-2.5">

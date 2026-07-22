@@ -72,8 +72,8 @@ function InfoCell({ label, children, highlight }) {
 
 export default function SelectedWork() {
   return (
-    <section id="work" className="relative pt-10 pb-24 bg-white">
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+    <section id="work" className="relative overflow-hidden pt-10 pb-24 bg-white">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
         <div className="mb-8 flex flex-col gap-2.5">
           <p className="font-mono-bold text-base text-black">Selected work</p>

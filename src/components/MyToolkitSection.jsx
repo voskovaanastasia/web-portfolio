@@ -18,7 +18,8 @@ import iconMaterialDesign from '../assets/toolkit/material-design.png';
 import iconApple from '../assets/toolkit/apple.svg';
 
 import iconHotjar from '../assets/toolkit/hotjar.svg';
-import iconStorybook from '../assets/toolkit/storybook.svg';
+import iconZeroheight from '../assets/how-i-work/tool-zeroheight.png';
+import iconAmplitude from '../assets/how-i-work/tool-amplitude.svg';
 import iconConfluence from '../assets/toolkit/confluence.svg';
 import iconWhimsical from '../assets/toolkit/whimsical.png';
 import iconGoogleAnalytics from '../assets/toolkit/googleanalytics.svg';
@@ -56,7 +57,7 @@ const softwareTools = [
   { icon: iconNotion, label: 'Notion' },
   { icon: iconJira, label: 'Jira' },
   { icon: iconHotjar, label: 'Hotjar' },
-  { icon: iconStorybook, label: 'Storybook' },
+  { icon: iconZeroheight, label: 'Zeroheight' },
   { icon: iconConfluence, label: 'Confluence' },
   { icon: iconWhimsical, label: 'Whimsical' },
   { icon: iconGoogleAnalytics, label: 'Google Analytics' },
@@ -66,6 +67,13 @@ const softwareTools = [
   { icon: iconOpenai, label: 'ChatGPT' },
   { icon: iconSlack, label: 'Slack' },
   { icon: iconAsana, label: 'Asana' },
+  { icon: iconAmplitude, label: 'Amplitude' },
+];
+
+const languages = [
+  { flag: '🇬🇧', label: 'English', level: 'B2 (Fluent)' },
+  { flag: '🇺🇦', label: 'Ukrainian', level: 'Native' },
+  { flag: '🇪🇸', label: 'Spanish', level: 'A2 (Basic)' },
 ];
 
 const programmingTools = [
@@ -112,8 +120,8 @@ function ToolGroup({ label, tools }) {
 
 export default function MyToolkitSection() {
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
+    <section className="relative overflow-hidden bg-white py-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
         <p className="font-caveat font-bold text-xl text-[#ff7043]">
           Computer Science is my secret weapon.
         </p>
@@ -128,6 +136,23 @@ export default function MyToolkitSection() {
           <ToolGroup label="DESIGN" tools={designTools} />
           <ToolGroup label="SOFTWARE" tools={softwareTools} />
           <ToolGroup label="PROGRAMMING" tools={programmingTools} />
+
+          <div className="flex flex-col gap-[15px] w-full">
+            <p className="font-mono-bold text-base text-black">Language</p>
+            <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
+              {languages.map((lang) => (
+                <div key={lang.label} className="flex items-center gap-2.5">
+                  <div className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0">
+                    <span className="text-2xl leading-none">{lang.flag}</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="font-grotesk font-bold text-sm text-black">{lang.label}</p>
+                    <p className="font-grotesk text-xs text-[#6b6a67]">{lang.level}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
