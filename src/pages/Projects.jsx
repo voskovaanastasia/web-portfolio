@@ -1,65 +1,131 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import caseFarsafe from '../assets/case-farsafe.png';
+import DotsBackground from '../components/DotsBackground';
+
+const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
+
+const projects = [
+  {
+    id: 'farsafe',
+    category: 'Product & UX/UI Design',
+    image: caseFarsafe,
+    tags: ['0-to-1 SaaS', 'Web App', 'Marketing Site', 'Design System'],
+    title: 'Farsafe: Uptime Monitoring Platform',
+    description:
+      'Sole designer on a 0-to-1 uptime-monitoring platform, spanning the marketing website and in-app monitoring dashboard. Led discovery research that defined the product’s design targets — pricing clarity, alert reliability, and tool consolidation.',
+  },
+  {
+    id: 'farsafe-2',
+    category: 'Product & UX/UI Design',
+    image: caseFarsafe,
+    tags: ['0-to-1 SaaS', 'Web App', 'Marketing Site', 'Design System'],
+    title: 'Farsafe: Uptime Monitoring Platform',
+    description:
+      'Sole designer on a 0-to-1 uptime-monitoring platform, spanning the marketing website and in-app monitoring dashboard. Led discovery research that defined the product’s design targets — pricing clarity, alert reliability, and tool consolidation.',
+  },
+];
 
 export default function Projects() {
-  const projects = [
-    {
-      id: 1,
-      title: 'Project One',
-      description: 'A brief description of your first project',
-      image: 'https://via.placeholder.com/400x300',
-      category: 'Web Development',
-    },
-    {
-      id: 2,
-      title: 'Project Two',
-      description: 'A brief description of your second project',
-      image: 'https://via.placeholder.com/400x300',
-      category: 'UI/UX Design',
-    },
-    {
-      id: 3,
-      title: 'Project Three',
-      description: 'A brief description of your third project',
-      image: 'https://via.placeholder.com/400x300',
-      category: 'Web Development',
-    },
-  ];
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
+
+  const visible = projects.filter((p) => p.category === activeCategory);
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">My Projects</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 mb-12">
-          A collection of my recent work and case studies
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <Link
-              key={project.id}
-              to={`/project/${project.id}`}
-              className="group cursor-pointer"
-            >
-              <div className="overflow-hidden rounded-lg mb-4 h-64">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-sm text-blue-600 dark:text-blue-400">
-                {project.category}
-              </span>
-              <h3 className="text-xl font-semibold mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">
-                {project.description}
-              </p>
-            </Link>
-          ))}
+    <main className="flex flex-col">
+      {/* Hero */}
+      <section className="relative overflow-hidden pt-24 pb-40">
+        <DotsBackground />
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center flex flex-col gap-6">
+          <h1 className="font-grotesk font-medium text-4xl sm:text-5xl text-black tracking-tight">
+            Things I&rsquo;ve Worked On
+          </h1>
+          <p className="font-grotesk text-lg sm:text-xl text-[#393939] leading-relaxed">
+            This is where ideas meet execution &mdash; a space that brings together the projects,
+            experiments, and collaborations that define how I create and what I value.
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* Cases */}
+      <section className="bg-white py-16 min-h-[60vh]">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          {/* Category filter */}
+          <div className="flex justify-center mb-14">
+            <div className="bg-[#f7f7f7] border border-[#ececec] rounded-full p-1.5 flex flex-wrap justify-center gap-1">
+              {categories.map((category) => {
+                const isEmpty = !projects.some((p) => p.category === category);
+                return (
+                  <button
+                    key={category}
+                    onClick={() => !isEmpty && setActiveCategory(category)}
+                    aria-disabled={isEmpty}
+                    className={`relative group px-6 py-3 rounded-full font-grotesk font-medium text-base transition-colors ${
+                      activeCategory === category
+                        ? 'bg-[#288fd6] text-white'
+                        : isEmpty
+                          ? 'text-[#b3b2af] cursor-not-allowed'
+                          : 'text-black hover:bg-white'
+                    }`}
+                  >
+                    {category}
+                    {isEmpty && (
+                      <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-11 whitespace-nowrap bg-black text-white font-grotesk font-medium text-sm px-3.5 py-2 rounded-[10px] opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-[6px] after:border-transparent after:border-t-black">
+                        Coming soon
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Cards */}
+          {visible.length === 0 ? (
+            <p className="text-center font-grotesk text-lg text-[#6b6a67] py-20">
+              Cases in this category are coming soon.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+              {visible.map((project) => (
+                <article key={project.id} className="flex flex-col">
+                  <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-[24px] mb-6">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                    />
+                  </Link>
+                  <div className="flex flex-wrap gap-2.5 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-1.5 bg-[#e9eef7] rounded-full font-grotesk font-medium text-sm text-black"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="font-grotesk font-bold text-xl text-black mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="font-grotesk text-base text-[#393939] leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+                  <div className="mt-auto flex justify-end">
+                    <Link
+                      to={`/project/${project.id}`}
+                      className="bg-[#288fd6] hover:bg-[#1f7ab8] text-white font-grotesk font-medium px-6 py-3 rounded-full text-base transition-colors"
+                    >
+                      Read case study
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </main>
   );
 }
