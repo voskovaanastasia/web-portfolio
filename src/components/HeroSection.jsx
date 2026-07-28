@@ -24,7 +24,7 @@ const stackIcons = [
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
+    <section id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
       <div className="relative z-10 flex flex-col items-center gap-5 max-w-3xl px-4 py-20 text-center">
         {/* Hello line */}
@@ -68,7 +68,7 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
-          <p className="font-caveat font-bold text-xl text-[#ff7043]">+ more</p>
+          <p className="font-caveat font-bold text-xl text-[#6d3fc4]">+ more</p>
         </div>
 
         {/* CTA + handwritten note, tighter pairing */}
@@ -79,7 +79,7 @@ export default function HeroSection() {
           >
             Download Resume
           </a>
-          <p className="font-caveat font-bold text-xl text-[#ff7043] max-w-[280px] sm:max-w-[300px]">
+          <p className="font-caveat font-bold text-xl text-[#6d3fc4] max-w-[280px] sm:max-w-[300px]">
             I built this portfolio entirely with Claude Code. Just saying!
           </p>
         </div>

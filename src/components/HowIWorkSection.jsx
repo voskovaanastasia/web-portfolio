@@ -128,7 +128,7 @@ function SkillTag({ label, accent }) {
   return (
     <span
       className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-grotesk font-medium ${
-        accent ? 'bg-white/20 text-white' : 'bg-white border border-[#ececec] text-black'
+        accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#e9eef7] text-black'
       }`}
     >
       {label}
@@ -140,7 +140,7 @@ function ToolPill({ icon, label, accent }) {
   return (
     <span
       className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-grotesk font-medium ${
-        accent ? 'bg-white/20 text-white' : 'bg-white border border-[#ececec] text-black'
+        accent ? 'bg-[#4c2c8a] text-white' : 'bg-white border border-[#ececec] text-black'
       }`}
     >
       <img
@@ -155,7 +155,7 @@ function ToolPill({ icon, label, accent }) {
 
 export default function HowIWorkSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-24">
+    <section id="how-i-work" className="relative overflow-hidden bg-white py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
           <p className="font-mono-bold text-base text-black">How I work</p>
@@ -168,14 +168,20 @@ export default function HowIWorkSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className={`rounded-[15px] p-[25px] flex flex-col gap-4 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${
-                card.accent ? 'bg-[#f4633a] text-white' : 'bg-[#f7f7f7] text-black'
+              className={`rounded-[24px] p-[25px] flex flex-col gap-4 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${
+                card.accent
+                  ? 'bg-[#6d3fc4] text-white'
+                  : 'bg-[#f7f7f7] border border-[#ececec] text-black'
               }`}
             >
               <img
                 src={card.icon}
                 alt=""
-                className={`w-7 h-7 ${card.accent ? 'brightness-0 invert' : ''}`}
+                className={`w-7 h-7 ${
+                  card.accent
+                    ? 'brightness-0 invert'
+                    : '[filter:invert(58%)_sepia(58%)_saturate(1740%)_hue-rotate(177deg)_brightness(97%)_contrast(90%)]'
+                }`}
               />
               <div className="flex flex-col gap-2">
                 <p className="font-grotesk font-bold text-base">{card.title}</p>

@@ -7,10 +7,12 @@ import ExperienceSection from '../components/ExperienceSection';
 import AiDesignerSection from '../components/AiDesignerSection';
 import EducationSection from '../components/EducationSection';
 import ContactSection from '../components/ContactSection';
+import SectionMenu from '../components/SectionMenu';
 
 export default function Home() {
   return (
     <main className="flex flex-col">
+      <SectionMenu />
       <HeroSection />
       <HowIWorkSection />
       <SelectedWork />

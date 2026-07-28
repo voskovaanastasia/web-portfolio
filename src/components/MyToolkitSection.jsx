@@ -111,7 +111,7 @@ function ToolGroup({ label, tools }) {
           <ToolCard key={tool.label} icon={tool.icon} label={tool.label} />
         ))}
         <div className="flex items-center">
-          <p className="font-caveat font-bold text-xl text-[#ff7043]">+ more</p>
+          <p className="font-caveat font-bold text-xl text-[#6d3fc4]">+ more</p>
         </div>
       </div>
     </div>
@@ -120,9 +120,9 @@ function ToolGroup({ label, tools }) {
 
 export default function MyToolkitSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-24">
+    <section id="toolkit" className="relative overflow-hidden bg-white py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
-        <p className="font-caveat font-bold text-xl text-[#ff7043]">
+        <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
           Computer Science is my secret weapon.
         </p>
         <h2 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">

@@ -34,13 +34,13 @@ const steps = [
 
 export default function AiDesignerSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-24">
+    <section id="ai-designer" className="relative overflow-hidden bg-white py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-4">
           <p className="font-mono-bold text-base text-black">AI + DESIGNER</p>
           <div className="max-w-[590px] flex flex-col gap-4">
             <div className="flex flex-col gap-2.5">
-              <p className="font-caveat font-bold text-xl text-[#ff7043]">
+              <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
                 Where design stops being a picture
               </p>
               <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
