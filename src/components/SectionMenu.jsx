@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const sections = [
+const homeSections = [
   { id: 'hero', label: 'Back to Top' },
   { id: 'how-i-work', label: 'How I Work' },
   { id: 'work', label: 'Selected Work' },
@@ -12,8 +12,9 @@ const sections = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function SectionMenu() {
-  const [activeId, setActiveId] = useState('hero');
+// Fixed bottom-left section navigator. Hidden while the first section is active.
+export default function SectionMenu({ sections = homeSections }) {
+  const [activeId, setActiveId] = useState(sections[0].id);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,9 +30,9 @@ export default function SectionMenu() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [sections]);
 
-  const hidden = activeId === 'hero';
+  const hidden = activeId === sections[0].id;
 
   return (
     <nav

@@ -5,7 +5,7 @@ import caseFintech from '../assets/case-fintech.png';
 
 const projects = [
   {
-    id: 1,
+    id: 'farsafe',
     title: 'Farsafe: Uptime Monitoring Platform',
     image: caseFarsafe,
     tags: ['0-to-1 SaaS', 'Web App', 'Marketing Site', 'Design System'],

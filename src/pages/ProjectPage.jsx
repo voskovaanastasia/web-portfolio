@@ -1,187 +1,203 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import SectionMenu from '../components/SectionMenu';
+import caseFarsafe from '../assets/case-farsafe.png';
+import toolFigma from '../assets/icon-figma.svg';
+import toolFramer from '../assets/toolkit/framer.png';
+import toolAmplitude from '../assets/how-i-work/tool-amplitude.svg';
+
+const caseSections = [
+  { id: 'case-hero', label: 'Back to Top' },
+  { id: 'intro', label: 'Project Intro' },
+];
+
+const cases = {
+  farsafe: {
+    heroImage: caseFarsafe,
+    name: 'Farsafe',
+    title: 'Marketing Website & Monitoring Dashboard',
+    tags: [
+      '0-to-1 SaaS',
+      'Web App',
+      'Marketing Site',
+      'Design System',
+      'End-To-End Production Design',
+      'UX Research & Strategy',
+    ],
+    meta: [
+      { label: 'Participation', value: 'Product Designer (solo designer)' },
+      { label: 'Service', value: 'UX/UI Design  Design System' },
+      { label: 'My Team', value: 'Founder (backend), Frontend Developer, Designer' },
+      { label: 'Timeline', value: '1 year 6 months' },
+    ],
+    tools: [
+      { icon: toolFigma, label: 'Figma' },
+      { icon: toolFramer, label: 'Framer' },
+      { icon: toolAmplitude, label: 'Amplitude' },
+    ],
+    summary: [
+      {
+        label: 'PROBLEM',
+        text: 'Monitoring tools hide pricing and overwhelm users with complex setup flows.',
+      },
+      {
+        label: 'MY ROLE',
+        text: 'Sole Product Designer — research, strategy, marketing site, and dashboard.',
+      },
+      {
+        label: 'KEY DECISION',
+        text: 'Made pricing transparency the centerpiece of the conversion strategy.',
+      },
+    ],
+    outcome: { value: '92%', label: 'Dashboard Task Success' },
+    intro: {
+      heading: 'From static concepts to live prototypes.',
+      body: (
+        <>
+          <strong>FarSafe</strong> is an all-included uptime-monitoring platform that{' '}
+          <strong>
+            tells developers, agencies, and small teams the moment a website, server, or
+            certificate fails.
+          </strong>{' '}
+          I designed it from scratch across both surfaces: the marketing website and the in-app
+          monitoring dashboard. <strong>The core challenge was</strong> making a technically dense
+          product feel simple enough to convert a first-time visitor, yet deep enough for an
+          engineer to trust it in production.
+        </>
+      ),
+    },
+  },
+};
+
+// The Work page currently shows the same case twice as a placeholder.
+cases['farsafe-2'] = cases.farsafe;
 
 export default function ProjectPage() {
   const { id } = useParams();
+  const project = cases[id];
 
-  const projectData = {
-    1: {
-      title: 'Farsafe: Uptime Monitoring Platform',
-      type: 'Product Design • 0-to-1 SaaS',
-      company: 'Farsafe',
-      year: '2025',
-      duration: 'Jan 2025 – Present',
-      role: 'Sole Product Designer',
-      image: 'https://via.placeholder.com/1200x600',
-      keyMetric: '7.4% Signup Conversion Rate',
-      overview: 'Farsafe is an uptime monitoring platform that helps businesses track the health and performance of their digital services. As the sole designer on this 0-to-1 SaaS product, I owned the entire product design experience from marketing website to in-app dashboard.',
-      challenge: 'The primary challenge was creating a compelling value proposition and onboarding experience for a monitoring tool in a crowded market. Users needed to understand complex monitoring concepts quickly, and pricing transparency had to be a core differentiator.',
-      solution: 'I made pricing transparency the centerpiece of the product strategy. The landing page clearly showed pricing upfront with no hidden fees, addressing a major pain point in the monitoring space. The dashboard was designed for clarity with intuitive status indicators and actionable insights.',
-      outcome: 'By leading with transparent pricing and a frictionless onboarding experience, the product achieved a 7.4% signup conversion rate—significantly above industry benchmarks.',
-      tools: ['Figma', 'FigJam', 'Miro', 'Notion'],
-      contributions: [
-        'Product strategy and positioning',
-        'Landing page design and copy strategy',
-        'In-app dashboard UX/UI',
-        'Design systems and component library',
-        'User onboarding flow',
-      ],
-    },
-    2: {
-      title: 'bART Solutions: Enterprise Web Products',
-      type: 'UX/UI Design • Product Design',
-      company: 'bART Solutions',
-      year: '2023-2024',
-      duration: 'May 2023 – Dec 2024',
-      role: 'UX/UI Designer',
-      image: 'https://via.placeholder.com/1200x600',
-      keyMetric: '92% Dashboard Task Success Rate',
-      overview: 'At bART Solutions, I owned the UX/UI for production web and mobile products serving enterprise clients. I built scalable design systems with design tokens and worked across complex, data-dense dashboards.',
-      challenge: 'The products handled sensitive data and required high accuracy in task completion. Users needed intuitive navigation through information-heavy interfaces while maintaining security and compliance standards.',
-      solution: 'I designed a comprehensive design system with design tokens for consistency across web and mobile. The dashboard featured clear information architecture, progressive disclosure of complexity, and high-affordance interactions. Extensive usability testing informed every iteration.',
-      outcome: 'The redesigned dashboard achieved a 92% task success rate in user testing, with significant improvements in user confidence and reduced error rates.',
-      tools: ['Figma', 'Design Tokens', 'Adobe XD', 'Miro'],
-      contributions: [
-        'Design system development and maintenance',
-        'Web product redesign (dashboard, reports, settings)',
-        'Mobile product design (iOS and Android)',
-        'Usability testing and research',
-        'Component documentation',
-      ],
-    },
-    3: {
-      title: 'Fintech Mobile App (NDA)',
-      type: 'UI Design • Mobile Product',
-      company: 'Fintech Startup (NDA)',
-      year: '2021-2023',
-      duration: 'May 2021 – Apr 2023',
-      role: 'UI Designer',
-      image: 'https://via.placeholder.com/1200x600',
-      keyMetric: '1m 41s Time-to-First-Probe',
-      overview: 'Designed polished, device-optimized mobile UI for a fintech application. Worked closely with product and engineering teams to turn wireframes and prototypes into production-ready interfaces.',
-      challenge: 'Fintech applications require both beauty and precision. Every interaction must feel secure and trustworthy while remaining fast and delightful. Mobile performance was critical.',
-      solution: 'I focused on clear visual hierarchy, intuitive gestures, and consistent interactions. Applied iOS Human Interface Guidelines and Material Design principles while maintaining the brand identity. Created detailed design specs for engineering handoff.',
-      outcome: 'Onboarding time was reduced significantly, with users reaching their first meaningful action (first probe) in 1 minute 41 seconds on average.',
-      tools: ['Figma', 'iOS HIG', 'Material Design', 'Prototyping'],
-      contributions: [
-        'Mobile UI design (iOS and Android)',
-        'Interaction design and micro-interactions',
-        'Responsive design specifications',
-        'Design-to-development handoff documentation',
-        'Brand identity application',
-      ],
-    },
-  };
-
-  const project = projectData[id];
+  useEffect(() => {
+    if (project) document.title = `${project.name} — Anastasiia Voskova`;
+    return () => {
+      document.title = 'Anastasiia Voskova';
+    };
+  }, [project]);
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-2xl">Case study not found</p>
-      </div>
+      <main className="min-h-[60vh] flex flex-col items-center justify-center gap-4 bg-white">
+        <p className="font-grotesk text-2xl text-black">Case study not found</p>
+        <Link to="/projects" className="font-grotesk text-[#288fd6] hover:underline">
+          Back to Works
+        </Link>
+      </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link
-          to="/#work"
-          className="text-indigo-600 hover:text-indigo-700 font-semibold mb-8 inline-block"
-        >
-          ← Back to Selected Work
-        </Link>
+    <main className="flex flex-col bg-white">
+      <SectionMenu sections={caseSections} />
 
-        <div className="mb-12">
-          <p className="text-sm font-semibold text-indigo-600 mb-2">{project.type}</p>
-          <h1 className="text-5xl sm:text-6xl font-bold mb-4">
-            {project.title}
-          </h1>
-          <p className="text-xl text-gray-600">
-            {project.company} • {project.year}
-          </p>
-        </div>
-
-        <div className="w-full h-96 sm:h-[500px] rounded-xl overflow-hidden mb-12 shadow-lg">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
+        {/* Hero image */}
+        <div id="case-hero" className="pt-4">
           <img
-            src={project.image}
+            src={project.heroImage}
             alt={project.title}
-            className="w-full h-full object-cover"
+            className="w-full max-w-[1058px] mx-auto h-auto max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover"
           />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
-          <div className="md:col-span-2 space-y-10">
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Overview</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                {project.overview}
+        {/* Back link */}
+        <Link
+          to="/projects"
+          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+            <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back to Works
+        </Link>
+
+        {/* Title */}
+        <h1 className="font-grotesk font-medium text-4xl sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+          {project.title}
+        </h1>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2.5 mt-8">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-4 py-2 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-sm text-[#22292f]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Meta bar */}
+        <div className="bg-[#f7f7f7] rounded-[24px] p-8 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          {project.meta.map((item) => (
+            <div key={item.label} className="flex flex-col gap-3">
+              <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
+              <p className="font-grotesk font-medium text-base text-black whitespace-pre-line">
+                {item.value}
               </p>
             </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Challenge</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                {project.challenge}
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Solution</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                {project.solution}
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Outcome</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                {project.outcome}
-              </p>
-            </div>
-          </div>
-
-          <div className="md:col-span-1 space-y-6">
-            <div className="bg-indigo-50 rounded-lg p-6 border border-indigo-100">
-              <p className="text-sm text-gray-600 font-semibold mb-2">KEY METRIC</p>
-              <p className="text-2xl font-bold text-indigo-600">
-                {project.keyMetric}
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <h3 className="font-bold mb-3">Role</h3>
-              <p className="text-gray-700">{project.role}</p>
-              <p className="text-sm text-gray-600 mt-2">{project.duration}</p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <h3 className="font-bold mb-4">Tools</h3>
-              <div className="flex flex-wrap gap-2">
-                {project.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <h3 className="font-bold mb-4">Key Contributions</h3>
-              <ul className="space-y-2">
-                {project.contributions.map((contribution, index) => (
-                  <li key={index} className="flex gap-3">
-                    <span className="text-indigo-600 font-bold mt-1">•</span>
-                    <span className="text-gray-700 text-sm">{contribution}</span>
-                  </li>
-                ))}
-              </ul>
+          ))}
+          <div className="flex flex-col gap-3">
+            <p className="font-grotesk text-base text-[#6b6a67]">Tools</p>
+            <div className="flex gap-2">
+              {project.tools.map((tool) => (
+                <span
+                  key={tool.label}
+                  title={tool.label}
+                  className="bg-white rounded-full w-9 h-9 flex items-center justify-center shadow-sm"
+                >
+                  <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
+                </span>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Summary cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+          {project.summary.map((card) => (
+            <div
+              key={card.label}
+              className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4"
+            >
+              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
+              <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
+            </div>
+          ))}
+          <div className="bg-[#e9f3fa] rounded-[24px] p-7 flex flex-col gap-3">
+            <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
+            <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
+            <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+          </div>
+        </div>
+
+        {/* Project intro */}
+        <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+          <div className="flex flex-col gap-6 lg:col-span-2">
+            <p className="font-mono-bold text-base text-black">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+              {project.intro.heading}
+            </h2>
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+              {project.intro.body}
+            </p>
+          </div>
+          <div className="bg-[#f7f7f7] rounded-[24px] min-h-[420px] flex items-center justify-center overflow-hidden">
+            <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
+              Add case-farsafe-intro.png to src/assets
+            </p>
+          </div>
+        </section>
       </div>
     </main>
   );

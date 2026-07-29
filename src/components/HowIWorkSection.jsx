@@ -128,7 +128,7 @@ function SkillTag({ label, accent }) {
   return (
     <span
       className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-grotesk font-medium ${
-        accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#e9eef7] text-black'
+        accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#f2f3f5] text-[#22292f]'
       }`}
     >
       {label}
@@ -140,7 +140,7 @@ function ToolPill({ icon, label, accent }) {
   return (
     <span
       className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-grotesk font-medium ${
-        accent ? 'bg-[#4c2c8a] text-white' : 'bg-white border border-[#ececec] text-black'
+        accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#f2f3f5] text-[#22292f]'
       }`}
     >
       <img
