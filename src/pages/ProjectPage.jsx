@@ -55,22 +55,89 @@ const marketingPages = [
     ],
   },
   {
-    title: 'Pricing page',
-    image: 'case-farsafe-page-pricing.png',
+    title: 'Global Network',
+    image: 'case-farsafe-page-network.png',
     blocks: [
       {
-        heading: 'Coming next',
-        text: 'Describe this page: what the visitor needs to decide here and how the layout answers it.',
+        heading: 'Hero Section',
+        text: (
+          <>
+            Pairs the reliability message with a <strong>world map,</strong> turning an abstract
+            &rdquo;we&rsquo;re everywhere&rdquo; claim into something the eye can verify. The stat
+            row does the <strong>trust work</strong> up front, and the primary action sits in the
+            first viewport so a convinced visitor can convert without scrolling.
+          </>
+        ),
+      },
+      {
+        heading: 'Server Network Table',
+        text: (
+          <>
+            Publishes a <strong>filterable list of every probe server,</strong> which is a
+            deliberate transparency play. It also doubles as a practical tool - this is exactly
+            the list a buyer needs to <strong>allowlist IPs in a firewall</strong> - and the
+            region filters let a technical user narrow to what&rsquo;s relevant instead of
+            scanning the whole table.
+          </>
+        ),
+      },
+      {
+        heading: 'Why It Matters',
+        text: (
+          <>
+            Reframes the network from a vanity metric into{' '}
+            <strong>concrete user benefits,</strong> each as a titled card with a supporting
+            checklist. The headline makes the promise and the checklist proves it, so a technical
+            buyer can <strong>scan for the exact capability they&rsquo;re verifying</strong>{' '}
+            without reading prose.
+          </>
+        ),
       },
     ],
   },
   {
-    title: 'Monitoring page',
-    image: 'case-farsafe-page-monitoring.png',
+    title: 'Pricing',
+    image: 'case-farsafe-page-pricing.png',
     blocks: [
       {
-        heading: 'Coming next',
-        text: 'Describe this page: what the visitor needs to decide here and how the layout answers it.',
+        heading: 'Hero Section',
+        text: (
+          <>
+            States the model in the headline itself:{' '}
+            <strong>pay per probe, per seat, nothing else.</strong> The billing preview and trust
+            strip remove the objections a pricing page usually triggers.
+          </>
+        ),
+      },
+      {
+        heading: 'Comparison Table',
+        text: (
+          <>
+            One feature matrix across four account types, where paid tiers{' '}
+            <strong>gate almost nothing.</strong> The table isn&rsquo;t upselling features -
+            it&rsquo;s proving nothing&rsquo;s hidden behind them.
+          </>
+        ),
+      },
+      {
+        heading: 'Cost Calculator',
+        text: (
+          <>
+            Sliders build the <strong>exact monthly cost in real time.</strong> Usage-based
+            pricing is where trust normally breaks, so letting users watch the number turns the
+            model&rsquo;s biggest risk into its proof.
+          </>
+        ),
+      },
+      {
+        heading: 'Compare Table',
+        text: (
+          <>
+            Places Farsafe beside the <strong>industry average,</strong> consistently lower. It
+            reframes the decision from &rdquo;is this cheap?&rdquo; to &rdquo;why pay more
+            elsewhere?&rdquo;
+          </>
+        ),
       },
     ],
   },
@@ -113,7 +180,9 @@ function MarketingPagesSlider() {
           {page.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
               <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">{block.text}</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#4274C1]">
+                {block.text}
+              </p>
             </div>
           ))}
         </div>
