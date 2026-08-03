@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
+import IATree from '../components/IATree';
 import caseFarsafe from '../assets/case-farsafe.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.png';
@@ -15,7 +16,195 @@ const caseSections = [
   { id: 'goals', label: 'Project Goals' },
   { id: 'research', label: 'User Research' },
   { id: 'persona', label: 'User Persona' },
+  { id: 'ia', label: 'Information Architecture' },
+  { id: 'menu', label: 'Navigation & Menu' },
+  { id: 'grid', label: 'Grid System' },
+  { id: 'style', label: 'Colors & Typography' },
+  { id: 'pages', label: 'Marketing Website' },
 ];
+
+const marketingPages = [
+  {
+    title: 'Landing page',
+    image: 'case-farsafe-page-landing.png',
+    blocks: [
+      {
+        heading: 'Hero Section',
+        text: 'Leads with the differentiator before any feature, so positioning and value land in one read. The live dashboard preview and trust strip clear the biggest objections before the user scrolls.',
+      },
+      {
+        heading: 'What We Monitor',
+        text: 'Six identical cards in a parallel content structure let the eye scan rhythmically, answering the buyer’s first question: does it monitor what I care about.',
+      },
+      {
+        heading: 'Built For',
+        text: 'Four audience cards let visitors self-identify, each pinned to a concrete hook - no single-persona commitment.',
+      },
+      {
+        heading: 'Global Network',
+        text: 'The world map makes reliability visual, and the stat row does the trust work against the category’s biggest doubt: can I rely on the alerts.',
+      },
+      {
+        heading: 'Alerts',
+        text: 'The channel logos carry the message visually - meet teams where they already work. Logos read faster than a feature list.',
+      },
+      {
+        heading: 'Pricing',
+        text: 'Three account cards, one feature set, legible at a glance. In a category of confusing tiers, transparency becomes the conversion tool.',
+      },
+    ],
+  },
+  {
+    title: 'Pricing page',
+    image: 'case-farsafe-page-pricing.png',
+    blocks: [
+      {
+        heading: 'Coming next',
+        text: 'Describe this page: what the visitor needs to decide here and how the layout answers it.',
+      },
+    ],
+  },
+  {
+    title: 'Monitoring page',
+    image: 'case-farsafe-page-monitoring.png',
+    blocks: [
+      {
+        heading: 'Coming next',
+        text: 'Describe this page: what the visitor needs to decide here and how the layout answers it.',
+      },
+    ],
+  },
+];
+
+function MarketingPagesSlider() {
+  const [index, setIndex] = useState(0);
+  const page = marketingPages[index];
+  const prev = () => setIndex((index - 1 + marketingPages.length) % marketingPages.length);
+  const next = () => setIndex((index + 1) % marketingPages.length);
+
+  const arrowClass =
+    'w-11 h-11 rounded-full border border-[#e2e2e2] flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-colors';
+
+  return (
+    <>
+      <div className="flex items-center justify-between gap-6 flex-wrap">
+        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          {page.title}
+        </h2>
+        <div className="flex items-center gap-3">
+          <span className="font-grotesk text-sm text-[#6b6a67] mr-1">
+            {index + 1} / {marketingPages.length}
+          </span>
+          <button type="button" onClick={prev} aria-label="Previous page" className={arrowClass}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+              <path d="m14 6-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button type="button" onClick={next} aria-label="Next page" className={arrowClass}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+              <path d="m10 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
+        <div className="flex flex-col gap-7">
+          {page.blocks.map((block) => (
+            <div key={block.heading} className="flex flex-col gap-2">
+              <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">{block.text}</p>
+            </div>
+          ))}
+        </div>
+        <ImagePlaceholder filename={page.image} className="min-h-[560px] lg:min-h-[720px]" />
+      </div>
+    </>
+  );
+}
+
+const brandColors = [
+  { name: 'Shiny Black', hex: '#252525', dark: true },
+  { name: 'Charleston Green', hex: '#212C2F', dark: true },
+  { name: 'Gainsboro', hex: '#DDDDDD' },
+  { name: 'Authentic White', hex: '#F8F9FA' },
+  { name: 'Tibet', hex: '#4274C1', dark: true },
+  { name: 'Pine', hex: '#77B788', dark: true },
+  { name: 'Still Red', hex: '#CD4847', dark: true },
+  { name: 'Authentic Orange', hex: '#EC8F38', dark: true },
+];
+
+const blueShades = [
+  '#111C3A', '#1A2A55', '#243A6B', '#33518C', '#4274C1',
+  '#7B9BD6', '#AEC2E6', '#CFDBF1', '#E8EDF7',
+];
+
+const fontWeights = ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'];
+
+const iaTree = {
+  label: 'Farsafe.com',
+  children: [
+    { label: 'Home' },
+    {
+      label: 'Product / Features',
+      children: [
+        {
+          label: 'Monitoring (overview)',
+          children: [
+            { label: 'Website Monitoring' },
+            { label: 'Mail Service Monitoring' },
+            { label: 'Ping Monitoring' },
+            { label: 'TCP/UDP Port Monitoring' },
+            { label: 'SSL Certificate Monitoring' },
+            { label: 'Domain Registration Monitoring' },
+          ],
+        },
+        { label: 'Advanced Monitoring' },
+        { label: 'Flexible Alerts' },
+        { label: 'Global Architecture (probe network)' },
+        { label: 'Status Pages (public status pages)' },
+        { label: 'Scheduled Reporting' },
+      ],
+    },
+    {
+      label: 'Pricing',
+      children: [
+        { label: 'Individual (Free)' },
+        { label: 'Business (usage-based)' },
+        { label: 'OSS / Non-Profit (Free)' },
+      ],
+    },
+    {
+      label: 'Solutions / Audiences',
+      children: [
+        { label: 'Developers' },
+        { label: 'Agencies' },
+        { label: 'Small Teams' },
+        { label: 'OSS & Non-Profits' },
+      ],
+    },
+    {
+      label: 'Resources',
+      children: [{ label: 'Blog' }, { label: 'FAQ' }],
+    },
+    {
+      label: 'Company',
+      children: [
+        { label: 'Contact Us' },
+        { label: 'Terms and Conditions' },
+        { label: 'Privacy Policy' },
+      ],
+    },
+    {
+      label: 'Account',
+      children: [
+        { label: 'Login' },
+        { label: 'Signup' },
+        { label: 'Dashboard (post-login)' },
+      ],
+    },
+  ],
+};
 
 function ImagePlaceholder({ filename, className = '' }) {
   return (
@@ -130,6 +319,140 @@ const cases = {
 
 // The Work page currently shows the same case twice as a placeholder.
 cases['farsafe-2'] = cases.farsafe;
+
+const iaAppTree = {
+  label: 'Farsafe App (Business)',
+  children: [
+    {
+      label: 'Account Switcher',
+      children: [{ label: 'Switch org / "The Big Four · Business"' }],
+    },
+    {
+      label: 'Dashboard (default landing)',
+      children: [
+        { label: 'Date-range filter (e.g. 7 days)' },
+        {
+          label: 'KPI cards',
+          children: [
+            { label: 'Uptime' },
+            { label: 'Total Probes (Up / Down / Paused / Unknown)' },
+            { label: 'Expiration Dates (Domain / SSL)' },
+            { label: 'Most Recent Outage' },
+          ],
+        },
+        { label: 'Timeline (uptime strip)' },
+        { label: 'Outages table (Probe · Downtime · Start · End · Notes)' },
+      ],
+    },
+    {
+      label: 'Monitoring',
+      children: [
+        {
+          label: 'Probes (tab)',
+          children: [
+            { label: '+ Create Probe' },
+            { label: 'Row actions: Edit · Delete · Pause toggle' },
+            { label: 'Probe detail (open by name)' },
+          ],
+        },
+        {
+          label: 'Probe Groups (tab)',
+          children: [
+            { label: '+ Create Probe Group' },
+            { label: 'Row actions: Edit · Delete' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Reporting',
+      children: [
+        {
+          label: 'Reports (tab)',
+          children: [
+            { label: '+ Create Report' },
+            { label: 'Row actions: Download · Edit · Delete' },
+          ],
+        },
+        {
+          label: 'Report Schedules (tab)',
+          children: [
+            { label: '+ Create Report Schedule' },
+            { label: 'Row actions: Edit · Delete' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Status Pages',
+      children: [
+        { label: '+ Create Status Page' },
+        { label: 'Row actions: View · Edit · Delete' },
+        {
+          label: 'Public Status Page (external view)',
+          children: [
+            { label: 'Overall status banner' },
+            { label: 'Probes list (per-probe uptime %, status)' },
+            {
+              label: 'Probe detail',
+              children: [
+                { label: 'Overall Uptime (24h / 48h / 7d / 14d)' },
+                { label: 'Response Time (min / avg / max)' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Settings (organization-level)',
+      children: [
+        { label: 'Organization profile (name, timezone)' },
+        { label: 'Phone Numbers (+ Add, verify)' },
+        { label: 'API Keys (+ Add, enable/disable)' },
+        { label: 'Integrations (+ Add — e.g. Slack)' },
+        { label: 'Delete Business Account (danger zone)' },
+      ],
+    },
+    {
+      label: 'Members (team management)',
+      children: [
+        {
+          label: 'Members (tab)',
+          children: [
+            { label: '+ Invite Member' },
+            { label: 'Access levels: Owner · Administrator · User' },
+            { label: 'Row actions: Edit · Delete' },
+          ],
+        },
+        {
+          label: 'Member Groups (tab)',
+          children: [
+            { label: '+ Create Member Group' },
+            { label: 'Row actions: Edit · Delete' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Billing',
+      children: [
+        {
+          label: 'Summary (tab)',
+          children: [
+            { label: 'Account Balance (+ tax rate)' },
+            { label: 'Current Billing Period (estimated charges)' },
+            { label: 'Latest Transactions' },
+            { label: 'Notification Preferences' },
+            { label: 'Payment Methods (+ Add, set default)' },
+            { label: 'Disable Billing (danger zone)' },
+          ],
+        },
+        { label: 'Transactions (tab): Type · Amount · Status · Method · Date' },
+      ],
+    },
+  ],
+};
 
 export default function ProjectPage() {
   const { id } = useParams();
@@ -589,6 +912,202 @@ export default function ProjectPage() {
             browser. Every design decision was tested against his scenario: can he understand the
             pricing, trust the alerts, and prove uptime to a client?
           </p>
+        </section>
+
+        {/* Information architecture */}
+        <section id="ia" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Information Architecture</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            Website
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+            The public site is kept <strong>deliberately shallow</strong> so a first-time visitor
+            can reach signup from anywhere. Monitoring capability sits under one parent, pricing
+            is exposed at the top level (because pricing legibility is the core value), and
+            supporting content - Blog, Company, auth - stays one level deep. The structure mirrors
+            how a visitor decides:{' '}
+            <strong>see what&rsquo;s monitored, how alerts work, what it costs, then sign up.</strong>
+          </p>
+          <div className="bg-[#f7f7f7] rounded-[24px] p-8 sm:p-10 overflow-x-auto">
+            <IATree data={iaTree} />
+            <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+              Click a node to expand or collapse its branch.
+            </p>
+          </div>
+
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight mt-10">
+            Dashboard
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+            Inside the app, the IA is organised around{' '}
+            <strong>the daily jobs of an uptime owner</strong>. A flat top level: Dashboard,
+            Monitoring, Reporting, Status Page, Settings, Members, Billing - keeps every core
+            task one click away, with operational detail nested only one level beneath. No deep
+            hierarchies to navigate while responding to an incident.
+          </p>
+          <div className="bg-[#f7f7f7] rounded-[24px] p-8 sm:p-10 overflow-x-auto">
+            <IATree data={iaAppTree} />
+            <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+              Click a node to expand or collapse its branch.
+            </p>
+          </div>
+        </section>
+
+        {/* Navigation & menu architecture */}
+        <section id="menu" className="pb-20 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Navigation &amp; Menu Architecture</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div className="flex flex-col gap-5">
+              <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+                Menu
+              </h2>
+              <div className="font-grotesk text-base text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
+                <p>
+                  A new product means no legacy clutter - so every item earns its place.{' '}
+                  <strong>All monitoring lives under one parent</strong> (Advanced Monitoring,
+                  Flexible Alerts, Global Architecture, Status Pages, Scheduled Reporting),
+                  keeping a dense feature set scannable rather than scattered.
+                </p>
+                <p>
+                  <strong>Pricing sits at the top level, not inside a menu</strong> - in a
+                  category defined by confusing tiers, exposing it is a trust move. Login and
+                  Signup stay isolated on the right, Signup as the single high-contrast CTA.
+                </p>
+                <p>
+                  Inside the app, the <strong>sidebar follows the same flat logic</strong>{' '}
+                  (Dashboard, Monitoring, Reporting, Status Pages, Settings, Members, Billing) -
+                  predictable enough to operate without hunting.
+                </p>
+                <p>
+                  The result:{' '}
+                  <strong>easy to explore for first-time visitors, fast to operate for daily users.</strong>
+                </p>
+              </div>
+            </div>
+            <ImagePlaceholder filename="case-farsafe-menu.png" className="min-h-[420px]" />
+          </div>
+          <ImagePlaceholder filename="case-farsafe-menu-mobile.png" className="min-h-[480px] mt-4" />
+        </section>
+
+        {/* Grid system */}
+        <section id="grid" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Grid System</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            One responsive grid
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+            One responsive grid keeps every layout consistent across the product — tuned per
+            surface, then reused everywhere. All grids use stretch columns.
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+              <p className="font-grotesk font-bold text-base text-black">Marketing — Desktop</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+                Two setups: a 3-column grid for standard sections, a 4-column for denser card
+                layouts.
+              </p>
+              <ImagePlaceholder
+                filename="case-farsafe-grid-marketing.png"
+                className="min-h-[380px] mt-auto bg-white"
+              />
+            </div>
+            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+              <p className="font-grotesk font-bold text-base text-black">Dashboard (App) — Desktop</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+                A 4-column content grid sitting beside a fixed side menu, with margin 40 and
+                gutter 20. The tighter margin (vs. 80 on the marketing site) hands more working
+                width to dense tables, metric cards, and timelines.
+              </p>
+              <ImagePlaceholder
+                filename="case-farsafe-grid-dashboard.png"
+                className="min-h-[380px] mt-auto bg-white"
+              />
+            </div>
+            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+              <p className="font-grotesk font-bold text-base text-black">Mobile — All pages</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+                A 2-column grid, sized for comfortable reading on compact screens.
+              </p>
+              <ImagePlaceholder
+                filename="case-farsafe-grid-mobile.png"
+                className="min-h-[480px] mt-auto bg-white"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Colors & typography */}
+        <section id="style" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Visual Language</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            Colors &amp; Typography
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Palette stack */}
+            <div className="rounded-[24px] overflow-hidden flex flex-col lg:row-span-2 min-h-[500px]">
+              {brandColors.map((c) => (
+                <div
+                  key={c.name}
+                  className="flex-1 px-6 py-4 flex flex-col justify-center gap-0.5"
+                  style={{ backgroundColor: c.hex, color: c.dark ? '#ffffff' : '#252525' }}
+                >
+                  <p className="font-grotesk font-bold text-base">{c.name}</p>
+                  <p className="font-grotesk text-sm opacity-90">{c.hex}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Open Sans */}
+            <div
+              className="rounded-[24px] p-8 flex flex-col justify-between min-h-[280px] bg-[#a3bbdf] text-[#1c1c1c]"
+              style={{ fontFamily: "'Open Sans', sans-serif" }}
+            >
+              <div className="flex flex-col gap-1.5 text-base">
+                {fontWeights.map((w, idx) => (
+                  <span key={w} style={{ fontWeight: 400 + idx * 100 }}>{w}</span>
+                ))}
+              </div>
+              <p className="font-bold text-4xl">Open Sans</p>
+            </div>
+
+            {/* Alert mockups image */}
+            <ImagePlaceholder
+              filename="case-farsafe-alerts.png"
+              className="lg:col-span-2 min-h-[280px]"
+            />
+
+            {/* Rubik */}
+            <div
+              className="rounded-[24px] p-8 flex flex-col justify-between items-end min-h-[280px] bg-[#33518C] text-white lg:col-start-2"
+              style={{ fontFamily: "'Rubik', sans-serif" }}
+            >
+              <div className="flex flex-col gap-1.5 text-base text-right">
+                {fontWeights.map((w, idx) => (
+                  <span key={w} style={{ fontWeight: 400 + idx * 100 }}>{w}</span>
+                ))}
+              </div>
+              <p className="font-bold text-4xl">Rubik</p>
+            </div>
+
+            {/* Blue shades */}
+            <div className="rounded-[24px] overflow-hidden flex flex-col min-h-[280px]">
+              {blueShades.map((hex) => (
+                <div key={hex} className="flex-1" style={{ backgroundColor: hex }} />
+              ))}
+            </div>
+
+            {/* Gradient */}
+            <div
+              className="rounded-[24px] min-h-[280px]"
+              style={{ background: 'linear-gradient(120deg, #4274C1 0%, #1A2A55 100%)' }}
+            />
+          </div>
+        </section>
+
+        {/* Marketing website pages */}
+        <section id="pages" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Marketing Website</p>
+          <MarketingPagesSlider />
         </section>
       </div>
     </main>
