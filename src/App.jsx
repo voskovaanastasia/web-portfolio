@@ -2,7 +2,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import ProjectPage from './pages/ProjectPage';
+import FarsafeCase from './pages/FarsafeCase';
+import BartCase from './pages/BartCase';
+import CryptoWalletCase from './pages/CryptoWalletCase';
+import OnlineDoctorCase from './pages/OnlineDoctorCase';
 import './styles/globals.css';
 
 // Routes whose hero uses the dotted body background; other pages sit on plain white.
@@ -18,7 +21,10 @@ function Layout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/project/:id" element={<ProjectPage />} />
+          <Route path="/project/farsafe" element={<FarsafeCase />} />
+          <Route path="/project/bart" element={<BartCase />} />
+          <Route path="/project/cryptowallet" element={<CryptoWalletCase />} />
+          <Route path="/project/online-doctor" element={<OnlineDoctorCase />} />
         </Routes>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import caseFarsafe from '../assets/case-farsafe.png';
+import caseBart from '../assets/case-bart.png';
 import DotsBackground from '../components/DotsBackground';
 
 const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
@@ -16,13 +17,13 @@ const projects = [
       'Sole designer on a 0-to-1 uptime-monitoring platform, spanning the marketing website and in-app monitoring dashboard. Led discovery research that defined the product’s design targets — pricing clarity, alert reliability, and tool consolidation.',
   },
   {
-    id: 'farsafe-2',
+    id: 'bart',
     category: 'Product & UX/UI Design',
-    image: caseFarsafe,
-    tags: ['0-to-1 SaaS', 'Web App', 'Marketing Site', 'Design System'],
-    title: 'Farsafe: Uptime Monitoring Platform',
+    image: caseBart,
+    tags: ['Enterprise', 'Web & Mobile', 'Design Tokens'],
+    title: 'bART Solutions: Enterprise Web Products',
     description:
-      'Sole designer on a 0-to-1 uptime-monitoring platform, spanning the marketing website and in-app monitoring dashboard. Led discovery research that defined the product’s design targets — pricing clarity, alert reliability, and tool consolidation.',
+      'Owned the UX/UI for production web and mobile products serving enterprise clients. Built scalable design systems with design tokens and worked across complex, data-dense dashboards.',
   },
 ];
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
@@ -21,6 +21,373 @@ const caseSections = [
   { id: 'grid', label: 'Grid System' },
   { id: 'style', label: 'Colors & Typography' },
   { id: 'pages', label: 'Marketing Website' },
+  { id: 'app-pages', label: 'Dashboard Pages' },
+  { id: 'analytics', label: 'Post-Launch Analytics' },
+];
+
+const dashboardPages = [
+  {
+    title: 'Probe Page',
+    image: 'case-farsafe-app-probe.png',
+    blocks: [
+      {
+        heading: 'Probe Header',
+        text: (
+          <>
+            Leads with <strong>identity and live state</strong> before any data, answering the
+            two questions first: what&rsquo;s watched, is it running. Scope controls sit
+            top-right where users expect them.
+          </>
+        ),
+      },
+      {
+        heading: 'Metric Cards — Top Row',
+        text: (
+          <>
+            Four cards answer &rdquo;is everything OK?&rdquo; in one scan, ordered by priority:
+            health, speed, expirations, context. <strong>Status colour carries the read</strong>{' '}
+            - the ring registers before any number.
+          </>
+        ),
+      },
+      {
+        heading: 'Timeline',
+        text: (
+          <>
+            Three response-time series show the <strong>spread, not just the average</strong>{' '}
+            where degradation hides before it becomes an outage. A hover tooltip keeps the chart
+            clean while exposing exact values on demand.
+          </>
+        ),
+      },
+      {
+        heading: 'Outages / Samples Tabs',
+        text: (
+          <>
+            Tabbed detail lets a user drop from summary into{' '}
+            <strong>row-level records without leaving the screen.</strong> Leading with outages
+            over raw samples reflects what an uptime owner reaches for first.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Dashboard',
+    image: 'case-farsafe-app-dashboard.png',
+    blocks: [
+      {
+        heading: 'Metric Cards — Top Row',
+        text: (
+          <>
+            The <strong>fleet-level mirror</strong> of the probe view: same anatomy, aggregated,
+            ordered by urgency. <strong>Status colour reads first,</strong> and each card links
+            straight to the probe behind it, so noticing and investigating collapse into one
+            click.
+          </>
+        ),
+      },
+      {
+        heading: 'Timeline',
+        text: (
+          <>
+            A <strong>condensed health band</strong> compresses the whole fleet into one strip,
+            built for pattern detection, not precision. A clean run reads as calm; any break
+            draws the eye.
+          </>
+        ),
+      },
+      {
+        heading: 'Outages Table',
+        text: (
+          <>
+            A <strong>row-level log</strong> with the probe name as a direct link, so a user
+            jumps from summary to the affected monitor in one move. Placed last, because most
+            users get their answer from the cards above.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Outage Details',
+    image: 'case-farsafe-app-outage.png',
+    blocks: [
+      {
+        heading: 'Modal Header',
+        text: (
+          <>
+            Leads with <strong>what broke and its handling state,</strong> answering a
+            responder&rsquo;s two questions on open: which service, and has anyone touched it.
+            The unresolved state sits in an <strong>alarm colour,</strong> so an unattended
+            incident can&rsquo;t be overlooked.
+          </>
+        ),
+      },
+      {
+        heading: 'Timeline / Notes Tabs',
+        text: (
+          <>
+            Splits the <strong>machine account from the human account</strong> - what the system
+            observed vs. what the team documented. Two tabs for two reading needs: forensic
+            diagnosis, and incident handoff.
+          </>
+        ),
+      },
+      {
+        heading: 'Failure Timeline & Diagnostic Drill-Down',
+        text: (
+          <>
+            A <strong>funnel of depth:</strong> each failed check is stamped with its{' '}
+            <strong>exact probe location,</strong> so a responder instantly sees whether the
+            failure is global or regional. It then decomposes into network stages with timings,
+            down to the <strong>raw error</strong> - locating the problem at a specific step, not
+            a vague &rdquo;it&rsquo;s down.&rdquo; The clearest expression of the product&rsquo;s
+            diagnostic value.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Status Page',
+    image: 'case-farsafe-app-status.png',
+    blocks: [
+      {
+        heading: 'Status Header',
+        text: (
+          <>
+            A <strong>dark, focused banner</strong> leading with the service name and operational
+            state in status colour - the one answer a visitor came for, before any scroll. The
+            live refresh timestamp signals real-time data, which is the whole credibility of a
+            status page.
+          </>
+        ),
+      },
+      {
+        heading: 'Overall Uptime',
+        text: (
+          <>
+            A <strong>health band with the same figure across widening windows</strong> (day to
+            weeks). Repeating the metric at multiple scales is a <strong>trust signal</strong> -
+            it invites scrutiny instead of cherry-picking one flattering number.
+          </>
+        ),
+      },
+      {
+        heading: 'Response Time',
+        text: (
+          <>
+            A multi-series chart shows the <strong>spread between best and worst case</strong>{' '}
+            with a tooltip for exact values. The min/average/max summary underneath gives a
+            non-technical stakeholder the headline without reading the graph.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Monitoring',
+    image: 'case-farsafe-app-monitoring.png',
+    blocks: [
+      {
+        heading: 'Tab Switcher + Toolbar',
+        text: (
+          <>
+            Two tabs split <strong>managing one monitor from organising many,</strong> matching
+            the user&rsquo;s two mental models. Search sits left, the create action far right -
+            scan, then act.
+          </>
+        ),
+      },
+      {
+        heading: 'List Table',
+        text: (
+          <>
+            A <strong>row-per-monitor table</strong> where the eye reads down a column, the
+            fastest way to compare many. <strong>Status leads with colour,</strong> a paused row
+            is tinted so exceptions surface, and the name links into the detail view - the list
+            is the launch pad.
+          </>
+        ),
+      },
+      {
+        heading: 'Inline Controls',
+        text: (
+          <>
+            Pause, edit, and delete live <strong>on each row,</strong> so common actions happen
+            in place. Delete is kept <strong>visually distinct from edit</strong> - a small
+            safety guard on a table full of live services.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Billing',
+    image: 'case-farsafe-app-billing.png',
+    blocks: [
+      {
+        heading: 'Summary Cards',
+        text: (
+          <>
+            Four cards answer a payer&rsquo;s real questions in priority order: what I owe,
+            what&rsquo;s coming, what just happened, how I&rsquo;m billed. For a{' '}
+            <strong>usage-based model, the estimated current charge is the trust move</strong> —
+            it makes a variable bill predictable, not a month-end surprise.
+          </>
+        ),
+      },
+      {
+        heading: 'Payment Methods',
+        text: (
+          <>
+            A <strong>row-per-method table</strong> in the app&rsquo;s standard pattern, with a{' '}
+            <strong>default indicator</strong> so there&rsquo;s no doubt which card is charged.
+            The card number is <strong>masked</strong> - the same secret-handling discipline, on
+            a page even more likely to be shared.
+          </>
+        ),
+      },
+      {
+        heading: 'Disable Billing',
+        text: (
+          <>
+            A <strong>destructive account-level action, placed last</strong> so it&rsquo;s never
+            brushed by accident. Pairing it with a plain-language warning is a responsible
+            choice: an irreversible, service-stopping action earns a full sentence, not just a
+            red button.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Settings',
+    image: 'case-farsafe-app-settings.png',
+    blocks: [
+      {
+        heading: 'Phone Numbers',
+        text: (
+          <>
+            The channel behind SMS alerts, as a named list for multiple on-call numbers. The{' '}
+            <strong>verification column is the point:</strong> a number that only looks added is
+            a silent failure when an incident fires, so verified state is shown in status colour.
+          </>
+        ),
+      },
+      {
+        heading: 'API Keys',
+        text: (
+          <>
+            The <strong>programmatic-access layer,</strong> with keys shown{' '}
+            <strong>masked</strong> - a security choice that confirms a credential exists without
+            exposing it. A per-key toggle cuts off access without deleting and re-issuing.
+          </>
+        ),
+      },
+      {
+        heading: 'Integrations',
+        text: (
+          <>
+            The <strong>external-destination layer,</strong> carrying the same verification
+            state, because a broken webhook fails as silently as an unverified phone. Presenting
+            it as one more row keeps a technical setup feeling routine.
+          </>
+        ),
+      },
+    ],
+  },
+];
+
+const launchMetrics = [
+  {
+    title: 'Signup Conversion Rate — 7.4%',
+    target: '(target 6%)',
+    color: '#7da7f4',
+    bars: [
+      { label: '7.4%', value: 7.4 },
+      { label: '6%', value: 6 },
+    ],
+    text: 'Outcome of clear pricing and repeated low-commitment CTAs.',
+  },
+  {
+    title: 'Dashboard Task Success — 92%',
+    target: '(target 90%)',
+    color: '#b9a0ea',
+    bars: [
+      { label: '92%', value: 92 },
+      { label: '90%', value: 90 },
+    ],
+    text: 'Reading uptime and finding an outage in usability testing validating the goal of making a dense product approachable.',
+  },
+  {
+    title: 'Pricing-to-Signup Rate — 22%',
+    target: '(target 15%)',
+    color: '#ee8585',
+    bars: [
+      { label: '22%', value: 22 },
+      { label: '15%', value: 15 },
+    ],
+    text: 'Pricing legibility converts rather than deters — the direct answer to the 27% who named pricing their top frustration.',
+  },
+  {
+    title: 'Time-to-First-Probe — 1 min 41 sec',
+    target: '(target under 2 min)',
+    color: '#e8964a',
+    bars: [
+      { label: '1m 41s', value: 101 },
+      { label: '2 m', value: 120 },
+    ],
+    text: 'Onboarding friction kept low by design.',
+  },
+  {
+    title: 'Activation Rate — 77%',
+    target: '(target 70%)',
+    color: '#7da7f4',
+    bars: [
+      { label: '77%', value: 77 },
+      { label: '70%', value: 70 },
+    ],
+    text: 'Signed up to first probe configured.',
+  },
+  {
+    title: 'Bounce Rate — 36%',
+    target: '(target under 45%)',
+    color: '#6abf69',
+    bars: [
+      { label: '36%', value: 36 },
+      { label: '45%', value: 45 },
+    ],
+    text: 'Clear entry points keep visitors exploring rather than leaving.',
+  },
+];
+
+const surveyResults = [
+  {
+    pct: 84,
+    color: '#7da7f4',
+    title: '84% - understand what Farsafe does',
+    text: 'The clear value proposition landed with first-time visitors.',
+  },
+  {
+    pct: 86,
+    color: '#b9a0ea',
+    title: '86% - know exactly what they’ll pay',
+    text: 'Pricing legibility closed the confusion gap the research opened.',
+  },
+  {
+    pct: 87,
+    color: '#ee8585',
+    title: '87% - find the dashboard clear',
+    text: 'A dense monitoring product read as simple, not overwhelming.',
+  },
+  {
+    pct: 82,
+    color: '#e8964a',
+    title: '82% - trust the alerts',
+    text: 'The payoff of multi-region checks, against the 73% once burned by false alerts.',
+  },
 ];
 
 const marketingPages = [
@@ -143,11 +510,11 @@ const marketingPages = [
   },
 ];
 
-function MarketingPagesSlider() {
+function PagesSlider({ pages }) {
   const [index, setIndex] = useState(0);
-  const page = marketingPages[index];
-  const prev = () => setIndex((index - 1 + marketingPages.length) % marketingPages.length);
-  const next = () => setIndex((index + 1) % marketingPages.length);
+  const page = pages[index];
+  const prev = () => setIndex((index - 1 + pages.length) % pages.length);
+  const next = () => setIndex((index + 1) % pages.length);
 
   const arrowClass =
     'w-11 h-11 rounded-full border border-[#e2e2e2] flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-colors';
@@ -160,7 +527,7 @@ function MarketingPagesSlider() {
         </h2>
         <div className="flex items-center gap-3">
           <span className="font-grotesk text-sm text-[#6b6a67] mr-1">
-            {index + 1} / {marketingPages.length}
+            {index + 1} / {pages.length}
           </span>
           <button type="button" onClick={prev} aria-label="Previous page" className={arrowClass}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
@@ -386,8 +753,6 @@ const cases = {
   },
 };
 
-// The Work page currently shows the same case twice as a placeholder.
-cases['farsafe-2'] = cases.farsafe;
 
 const iaAppTree = {
   label: 'Farsafe App (Business)',
@@ -523,27 +888,15 @@ const iaAppTree = {
   ],
 };
 
-export default function ProjectPage() {
-  const { id } = useParams();
-  const project = cases[id];
+export default function FarsafeCase() {
+  const project = cases.farsafe;
 
   useEffect(() => {
-    if (project) document.title = `${project.name} — Anastasiia Voskova`;
+    document.title = `${project.name} — Anastasiia Voskova`;
     return () => {
       document.title = 'Anastasiia Voskova';
     };
   }, [project]);
-
-  if (!project) {
-    return (
-      <main className="min-h-[60vh] flex flex-col items-center justify-center gap-4 bg-white">
-        <p className="font-grotesk text-2xl text-black">Case study not found</p>
-        <Link to="/projects" className="font-grotesk text-[#288fd6] hover:underline">
-          Back to Works
-        </Link>
-      </main>
-    );
-  }
 
   return (
     <main className="flex flex-col bg-white">
@@ -1176,7 +1529,87 @@ export default function ProjectPage() {
         {/* Marketing website pages */}
         <section id="pages" className="pb-24 flex flex-col gap-6">
           <p className="font-mono-bold text-base text-black">Marketing Website</p>
-          <MarketingPagesSlider />
+          <PagesSlider pages={marketingPages} />
+        </section>
+
+        {/* Dashboard pages */}
+        <section id="app-pages" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Dashboard</p>
+          <PagesSlider pages={dashboardPages} />
+        </section>
+
+        {/* Post-launch analytics */}
+        <section id="analytics" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Post-Launch</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            Post-Launch Analytics
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+            Farsafe launched as a complete, from-scratch product. With no old version to compare
+            against, success was set up front - every goal had a target metric. Performance was
+            tracked for 8 weeks after launch using Google Analytics, Hotjar, and a post-launch
+            survey. The evaluation was objective, not subjective.
+          </p>
+
+          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+            The Results
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {launchMetrics.map((metric) => {
+              const max = Math.max(...metric.bars.map((b) => b.value));
+              return (
+                <div key={metric.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+                  <p className="font-grotesk font-bold text-base text-black">{metric.title}</p>
+                  <p className="font-grotesk text-sm text-[#6b6a67]">{metric.target}</p>
+                  <div className="flex items-end gap-4 h-44">
+                    {metric.bars.map((bar, idx) => (
+                      <div
+                        key={bar.label}
+                        className="flex-1 rounded-[16px] flex items-end justify-center pb-3"
+                        style={{
+                          height: `${(bar.value / max) * 100}%`,
+                          backgroundColor: idx === 0 ? metric.color : '#e3e3e3',
+                        }}
+                      >
+                        <span className="font-grotesk font-bold text-sm text-black">{bar.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="font-grotesk text-base text-[#393939] leading-relaxed">{metric.text}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+            Post-Launch User Survey
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {surveyResults.map((item) => (
+              <div key={item.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-3">
+                <div className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${item.pct}%`, backgroundColor: item.color }}
+                  />
+                </div>
+                <p className="font-grotesk font-bold text-base text-black mt-2">{item.title}</p>
+                <p className="font-grotesk text-base text-[#393939]">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+            Key Takeaway
+          </h3>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            The research didn&rsquo;t just inform the design - it <strong>set the targets.</strong>{' '}
+            Every friction point uncovered became a measurable goal: pricing legibility, onboarding
+            speed, dashboard clarity, and alert trust. The outcome isn&rsquo;t just a polished
+            interface - it&rsquo;s a{' '}
+            <strong>0 to 1 product, validated against real user expectations,</strong> that makes a
+            technically demanding category feel simple from the first click to the daily dashboard.
+          </p>
         </section>
       </div>
     </main>
