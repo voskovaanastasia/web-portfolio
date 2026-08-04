@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import caseFarsafe from '../assets/case-farsafe.png';
 import caseBart from '../assets/case-bart.png';
+// Placeholder cover until case-cryptowallet.png and case-onlinedoctor.png are added.
+import caseFintech from '../assets/case-fintech.png';
 import DotsBackground from '../components/DotsBackground';
 
 const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
@@ -24,6 +26,24 @@ const projects = [
     title: 'bART Solutions: Enterprise Web Products',
     description:
       'Owned the UX/UI for production web and mobile products serving enterprise clients. Built scalable design systems with design tokens and worked across complex, data-dense dashboards.',
+  },
+  {
+    id: 'cryptowallet',
+    category: 'Product & UX/UI Design',
+    image: caseFintech,
+    tags: ['Fintech', 'Mobile', 'iOS & Android', 'Crypto'],
+    title: 'CryptoWallet: Mobile Crypto App',
+    description:
+      'Designed a mobile app for buying, storing, and sending crypto — turning a category that overwhelms first-time users into a flow that feels confident and clear from the first screen.',
+  },
+  {
+    id: 'online-doctor',
+    category: 'Product & UX/UI Design',
+    image: caseFintech,
+    tags: ['Healthcare', 'Web & Mobile', 'Telemedicine'],
+    title: 'Online Doctor: Telemedicine Platform',
+    description:
+      'A secure, HIPAA-compliant telehealth platform designed to enhance patient-doctor interactions. Grown from an MVP into a product with real-time consultations, appointment scheduling, and integrated billing.',
   },
 ];
 
