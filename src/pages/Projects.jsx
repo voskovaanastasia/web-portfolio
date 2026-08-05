@@ -45,6 +45,42 @@ const projects = [
     description:
       'A secure, HIPAA-compliant telehealth platform designed to enhance patient-doctor interactions. Grown from an MVP into a product with real-time consultations, appointment scheduling, and integrated billing.',
   },
+  {
+    id: 'crm-platform',
+    category: 'Product & UX/UI Design',
+    image: caseFintech,
+    tags: ['B2B SaaS', 'Web App', 'Data-Dense UI', 'Marketing Automation'],
+    title: 'Enterprise CRM: B2B Operations Platform',
+    description:
+      'A B2B operations platform that centralizes client information, streamlines sales operations, and optimizes inventory and marketing workflows at large-company scale. The UI was redesigned to support the full sales cycle from lead generation to deal closure.',
+  },
+  {
+    id: 'fitness-app',
+    category: 'Product & UX/UI Design',
+    image: caseFintech,
+    tags: ['Mobile', 'iOS & Android', 'Health & Wellness', 'AI Personalization'],
+    title: 'Fitness App: Mobile Health & Training Platform',
+    description:
+      'An advanced mobile health and fitness platform designed to support individuals in reaching their fitness goals. Personalized workout plans, AI-driven customization, and real-time health tracking that integrates with wearable devices for comprehensive wellness insights.',
+  },
+  {
+    id: 'online-payments',
+    category: 'Product & UX/UI Design',
+    image: caseFintech,
+    tags: ['Fintech', 'Web', 'Checkout', 'Compliance'],
+    title: 'Online Payment Solutions: Checkout & Merchant Console',
+    description:
+      'Both ends of a transaction: a checkout that survives real-world failure — declines, 3-D Secure, retries — and a merchant console where those same events are legible enough to act on. Error states designed as primary screens, not edge cases.',
+  },
+  {
+    id: 'shoot',
+    category: 'Logos & Branding',
+    image: caseFintech,
+    tags: ['Art Direction', 'Photography', 'Brand Visuals'],
+    title: 'Shoot: Art Direction & Brand Photography',
+    description:
+      'An art-directed photo shoot built to give the brand a reusable image library instead of one-off assets — concept and moodboard through shot list, on-set direction, selection, and retouch, with every frame planned against a real placement.',
+  },
 ];
 
 export default function Projects() {

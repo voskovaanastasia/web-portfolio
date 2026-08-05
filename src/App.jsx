@@ -6,6 +6,10 @@ import FarsafeCase from './pages/FarsafeCase';
 import BartCase from './pages/BartCase';
 import CryptoWalletCase from './pages/CryptoWalletCase';
 import OnlineDoctorCase from './pages/OnlineDoctorCase';
+import CrmPlatformCase from './pages/CrmPlatformCase';
+import FitnessAppCase from './pages/FitnessAppCase';
+import OnlinePaymentsCase from './pages/OnlinePaymentsCase';
+import ShootCase from './pages/ShootCase';
 import './styles/globals.css';
 
 // Routes whose hero uses the dotted body background; other pages sit on plain white.
@@ -25,6 +29,10 @@ function Layout() {
           <Route path="/project/bart" element={<BartCase />} />
           <Route path="/project/cryptowallet" element={<CryptoWalletCase />} />
           <Route path="/project/online-doctor" element={<OnlineDoctorCase />} />
+          <Route path="/project/crm-platform" element={<CrmPlatformCase />} />
+          <Route path="/project/fitness-app" element={<FitnessAppCase />} />
+          <Route path="/project/online-payments" element={<OnlinePaymentsCase />} />
+          <Route path="/project/shoot" element={<ShootCase />} />
         </Routes>
     </div>
   );
