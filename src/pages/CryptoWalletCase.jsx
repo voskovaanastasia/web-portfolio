@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
+import { ProblemSolution } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -637,44 +638,6 @@ function ScreensSlider({ screens }) {
   );
 }
 
-const problemPoints = [
-  {
-    title: 'Complexity',
-    text: 'Users hesitate to proceed because onboarding, verification, and security steps are unclear—especially when the app requests personal data.',
-  },
-  {
-    title: 'Trust',
-    text: 'Choosing the right network and understanding fees (ERC20/TRC20/BEP20, confirmations, minimum deposit) feels confusing and risky—one wrong choice can lead to lost funds.',
-  },
-  {
-    title: 'Clarity',
-    text: 'Portfolio performance is hard to read at a glance. Users struggle to understand what changed, why the value moved, and how each asset contributes.',
-  },
-  {
-    title: 'Friction',
-    text: 'Core actions like Send and Swap involve too many decisions and inputs. Users fear mistakes and abandon flows before confirming transactions.',
-  },
-];
-
-const solutionPoints = [
-  {
-    title: 'Guidance',
-    text: 'A guided network selection with clear rules: confirmations, minimum deposit, ETA, and fee previews—so users can choose the correct network with confidence.',
-  },
-  {
-    title: 'Security',
-    text: 'A transparent verification flow with step-by-step explanations, progress states, and secure access (PIN + biometrics) to build trust without overwhelming the user.',
-  },
-  {
-    title: 'Understanding',
-    text: 'A clean portfolio view with clear value breakdowns, asset-level charts, and quick actions—helping users instantly see performance and make decisions faster.',
-  },
-  {
-    title: 'Confidence',
-    text: 'Streamlined Send/Swap flows with a review step, error prevention (validation), and a real-time transaction timeline (received → placed → executed → success).',
-  },
-];
-
 const projectGoals = [
   {
     title: 'Keep Flows Short & Predictable',
@@ -946,23 +909,34 @@ const project = {
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'A crypto wallet designed for confidence.',
+    heading: 'Everyday crypto, made legible.',
     body: (
       <>
-        I led the UX/UI redesign of <strong>a mobile crypto wallet</strong> focused on making
-        everyday <strong>crypto actions faster, clearer,</strong> and{' '}
-        <strong>more trustworthy.</strong> The app supports core operations such as{' '}
-        <strong>buying, selling,</strong> and <strong>exchanging cryptocurrencies,</strong> along
-        with <strong>portfolio tracking</strong> and <strong>transaction management.</strong>
+        I led the UX/UI redesign of <strong>a mobile crypto wallet</strong> built to make everyday
+        crypto &mdash; <strong>buying, selling, exchanging, portfolio tracking, and transaction
+        management</strong> &mdash; faster, clearer, and more trustworthy.
         <br />
         <br />
-        The redesign aimed to simplify{' '}
-        <strong>complex financial flows, improve navigation and visual hierarchy,</strong> and{' '}
-        <strong>reduce friction in key moments</strong> like selecting assets, confirming rates,
-        and reviewing transaction details. I created a consistent UI system with reusable
-        components and states to ensure scalability as new coins and features are added.
+        The redesign simplified <strong>complex financial flows,</strong> sharpened navigation and
+        visual hierarchy, and <strong>removed friction at the riskiest moments:</strong> selecting
+        assets, confirming rates, and reviewing transaction details. I built a consistent UI system
+        of reusable components and states so the product scales as new coins and features are
+        added. <strong>The core challenge was</strong> making high-stakes financial actions feel
+        safe and simple &mdash; without dumbing down what users need to trust them.
       </>
     ),
+  },
+  problem: {
+    image: 'case-cryptowallet-problem.png',
+    heading: 'High-stakes actions with too little guidance',
+    body: 'Everyday crypto asks users to make risky decisions with little support. Onboarding, verification, and security steps are unclear — especially when the app requests personal data (complexity). Choosing the right network and understanding fees (ERC20 / TRC20 / BEP20, confirmations, minimum deposit) feels confusing and risky, where one wrong choice can lose funds (trust). Portfolio performance is hard to read at a glance (clarity). And core actions like Send and Swap involve too many decisions, so users fear mistakes and abandon flows before confirming (friction).',
+    why: 'In a wallet, a moment of confusion can mean lost money — and lost money means lost trust for good. If users don’t feel in control at the decisive step, they won’t complete it, and they won’t come back.',
+  },
+  solution: {
+    image: 'case-cryptowallet-solution.png',
+    heading: 'Guidance and confidence at every decisive step',
+    body: 'A guided network selection spells out the rules — confirmations, minimum deposit, ETA, and fee previews — so users choose correctly with confidence (guidance). A transparent verification flow with step-by-step explanations, progress states, and secure access (PIN plus biometrics) builds trust without overwhelm (security). A clean portfolio view with clear value breakdowns, asset-level charts, and quick actions makes performance instantly readable (understanding). And streamlined Send / Swap flows add a review step, validation to prevent errors, and a real-time transaction timeline — received, placed, executed, success (confidence).',
+    scenario: 'My aim was that a user could send, swap, or check their portfolio and always know exactly what would happen before they confirmed — turning the scariest moments in crypto into the most reassuring.',
   },
 };
 
@@ -1075,33 +1049,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* Problem & solution */}
-        <section id="problem" className="pb-20 grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
-          <div className="bg-[#e9f3fa] rounded-[24px] p-8 flex flex-col gap-5">
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
-              Problem
-            </h2>
-            {problemPoints.map((point) => (
-              <div key={point.title} className="flex flex-col gap-1.5">
-                <p className="font-grotesk font-bold text-base text-[#288fd6]">{point.title}</p>
-                <p className="font-grotesk text-base text-[#393939] leading-relaxed">{point.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-col gap-5">
-            <ImagePlaceholder filename="case-cryptowallet-eth.png" className="min-h-[220px]" />
-            <div className="bg-[#e9f3fa] rounded-[24px] p-8 flex flex-col gap-5">
-              <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
-                Solution
-              </h2>
-              {solutionPoints.map((point) => (
-                <div key={point.title} className="flex flex-col gap-1.5">
-                  <p className="font-grotesk font-bold text-base text-[#288fd6]">{point.title}</p>
-                  <p className="font-grotesk text-base text-[#393939] leading-relaxed">{point.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Project goals */}
         <section id="goals" className="pb-20 flex flex-col gap-6">
@@ -1161,7 +1109,7 @@ export default function CryptoWalletCase() {
                     {col.items.map((item) => (
                       <li
                         key={item}
-                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1"
+                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                       >
                         {item}
                       </li>
@@ -1320,7 +1268,7 @@ export default function CryptoWalletCase() {
                     {group.items.map((item, i) => (
                       <li
                         key={i}
-                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-[#288fd6]"
+                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words [&>strong]:font-bold [&>strong]:text-[#288fd6]"
                       >
                         {item}
                       </li>
@@ -1351,7 +1299,7 @@ export default function CryptoWalletCase() {
                   {q.items.map((item) => (
                     <li
                       key={item}
-                      className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1"
+                      className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                     >
                       {item}
                     </li>

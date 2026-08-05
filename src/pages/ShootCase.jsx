@@ -4,14 +4,14 @@ import toolPhotoshop from '../assets/toolkit/photoshop.svg';
 import toolLightroom from '../assets/toolkit/lightroom.svg';
 
 const project = {
-  name: 'Shoot',
-  title: 'Shoot: Art Direction & Brand Photography',
+  name: 'SHOOT',
+  title: 'SHOOT: Creative-Services Marketplace',
   heroImage: 'case-shoot.png',
-  tags: ['Art Direction', 'Photography', 'Brand Visuals'],
+  tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
   meta: [
-    { label: 'Participation', value: 'Art Director, Designer' },
-    { label: 'Service', value: 'Art Direction, Photo Production' },
-    { label: 'My Team', value: 'Photographer, Stylist' },
+    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Service', value: 'UX/UI Design' },
+    { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: 'TBD' },
   ],
   tools: [
@@ -22,11 +22,11 @@ const project = {
   summary: [
     {
       label: 'PROBLEM',
-      text: 'Stock imagery made the brand look like everyone else in its category.',
+      text: 'Talent, studios, and gear live on separate platforms with unclear pricing and availability.',
     },
     {
       label: 'MY ROLE',
-      text: 'Art direction — concept, moodboard, shot list, on-set direction, selection and retouch.',
+      text: 'Product Designer — portfolio feed, booking flow, studio and equipment rental, payments.',
     },
     {
       label: 'KEY DECISION',
@@ -35,17 +35,31 @@ const project = {
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'A visual language the brand actually owns.',
+    heading: 'One platform for the whole shoot.',
     image: 'case-shoot-intro.png',
     body: (
       <>
-        An <strong>art-directed photo shoot</strong> built to give the brand{' '}
-        <strong>a reusable image library</strong> instead of one-off assets. The work ran from{' '}
-        <strong>concept and moodboard through shot list, on-set direction,</strong> selection, and
-        retouch &mdash; with every frame planned against a real placement: hero, card, social, or
-        deck.
+        <strong>SHOOT</strong> is a creative-services marketplace that connects individuals and
+        businesses with <strong>professional photographers, rentable high-quality cameras, and
+        bookable studios.</strong> I designed the end-to-end experience &mdash; from a browsable
+        portfolio feed to a transparent booking flow and an equipment-and-studio rental system.{' '}
+        <strong>The core challenge was</strong> unifying three fragmented markets &mdash; talent,
+        space, and gear &mdash; into one flow simple enough to book in minutes, yet rich enough to
+        compare on.
       </>
     ),
+  },
+  problem: {
+    image: 'case-shoot-problem.png',
+    heading: 'Creative bookings are scattered across too many tools',
+    body: 'Photographers, studios, and equipment rentals live on separate sites and apps, so users hop between platforms just to discover and compare portfolios, spaces, and gear. Booking flows are confusing, with unclear steps and missing availability. Pricing isn’t transparent — hidden fees and custom quotes frustrate people. And with no unified calendar, users juggle messages, emails, and spreadsheets to pull a single shoot together.',
+    why: 'Every extra tool adds friction, cost, and doubt: users overpay through hidden fees, lose bookings to unclear availability, and abandon the process before it’s finished — while creators lose work they never even see.',
+  },
+  solution: {
+    image: 'case-shoot-solution.png',
+    heading: 'One booking journey, from portfolio to payment',
+    body: 'SHOOT unifies photographers, studios, and gear into a single searchable platform, sorted by location and availability. Verified portfolios and reviews with a “Pro-Badge” build trust, pricing is shown up front with a full fee breakdown on every profile, and a step-by-step flow — calendar picker, progress indicators, confirmation emails — keeps booking legible from the first tap. Real-time updates, reminders, and secure in-app payments keep the entire shoot in one place.',
+    scenario: 'My aim was that someone planning a shoot could find talent, a studio, and gear, compare them on real prices and availability, and confirm the booking in a single sitting — confident that what they saw is exactly what they’d pay.',
   },
 };
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
+import { ProblemSolution } from '../components/CaseLayout';
 import caseBart from '../assets/case-bart.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -10,6 +11,7 @@ import toolNotion from '../assets/icon-notion.svg';
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
   { id: 'intro', label: 'Project Intro' },
+  { id: 'problem', label: 'Problem & Solution' },
   { id: 'goals', label: 'Project Goals' },
   { id: 'research', label: 'User Research' },
   { id: 'poll', label: 'The Poll' },
@@ -628,24 +630,35 @@ const project = {
   ],
   outcome: { value: '−40%', label: 'Bounce Rate' },
   intro: {
-    heading: 'A full design cycle, from research to final UI.',
+    heading: 'A corporate site rebuilt around how people actually use it.',
     body: (
       <>
-        <strong>Website Redesign Project</strong> is a comprehensive corporate website redesign
-        executed in alignment with the visual direction defined by the client through references.
-        The project covered a <strong>full design cycle:</strong> from UX research and user
-        surveys to building a <strong>design system</strong> and delivering the final UI.
+        <strong>Website Redesign</strong> is a full corporate website rebuild delivered in line
+        with the visual direction the client defined through references. The project ran the{' '}
+        <strong>complete design cycle</strong> &mdash; from UX research and user surveys to a{' '}
+        <strong>design system</strong> and final UI &mdash; and included rethinking navigation
+        logic, restructuring the <strong>information architecture</strong> for usability and
+        scalability, and optimizing key interaction flows.
         <br />
         <br />
-        The work included rethinking the navigation logic, restructuring the{' '}
-        <strong>information architecture</strong> with a focus on usability and scalability, and
-        optimising key interaction flows.
-        <br />
-        <br />
-        The result is a cohesive, modern interface that is{' '}
-        <strong>intuitive for users</strong> and aligned with the client&rsquo;s brand vision.
+        The result is a cohesive, modern interface that feels{' '}
+        <strong>intuitive to users</strong> and true to the client&rsquo;s brand.{' '}
+        <strong>The core challenge was</strong> translating a strong brand vision into a structure
+        that&rsquo;s easy to navigate and ready to grow.
       </>
     ),
+  },
+  problem: {
+    image: 'case-bart-problem.png',
+    heading: 'A brand-strong site that’s hard to move through',
+    body: 'The existing site looked the part but didn’t work for the people using it: navigation didn’t match how visitors actually searched, the information architecture had grown tangled and hard to scale, and key flows carried unnecessary friction. Research and surveys surfaced where users got lost and what they came to do — and the current structure wasn’t set up to support either.',
+    why: 'A corporate site is often the first impression and the main path to action. When visitors can’t find what they need or trust what they see, they leave — and the brand’s strongest asset ends up working against it.',
+  },
+  solution: {
+    image: 'case-bart-solution.png',
+    heading: 'Research-led structure inside a cohesive brand',
+    body: 'I ran a full cycle grounded in research: surveys and UX findings shaped a reworked navigation and a cleaner, more scalable information architecture, and key interaction flows were streamlined around real user goals. A design system built to the client’s visual direction kept every page consistent and easy to extend, producing a modern, intuitive interface aligned with the brand.',
+    scenario: 'My aim was that a visitor could land anywhere on the site, immediately understand where they were and where to go next, and complete what they came to do — while the client gained a system they could grow without breaking.',
   },
 };
 
@@ -757,6 +770,9 @@ export default function BartCase() {
           </div>
           <ImagePlaceholder filename="case-bart-intro.png" className="min-h-[420px]" />
         </section>
+
+        {/* Problem & solution */}
+        <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Project goals */}
         <section id="goals" className="pb-20 flex flex-col gap-6">

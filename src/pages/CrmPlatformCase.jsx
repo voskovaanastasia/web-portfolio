@@ -35,21 +35,33 @@ const project = {
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'About',
+    heading: 'One source of truth for the whole sales cycle.',
     image: 'case-crm-intro.png',
     body: (
       <>
-        <strong>Enterprise CRM</strong> is a B2B operations platform designed to{' '}
-        <strong>centralize client information,</strong> streamline sales operations, and optimize
-        inventory and marketing workflows for a large-scale company. The UI was{' '}
-        <strong>redesigned</strong> to make complex processes more{' '}
-        <strong>intuitive and efficient</strong> supporting the full sales cycle from lead
-        generation to deal closure and aligning marketing automation with sales data. The system
-        provides <strong>time visibility</strong> into stock levels and order statuses, while{' '}
-        <strong>Power BI dashboards</strong> and custom reports enable better decision-making and
-        support long-term growth.
+        <strong>Enterprise CRM</strong> is a B2B operations platform that{' '}
+        <strong>centralizes client information</strong> and streamlines sales, inventory, and
+        marketing workflows for a large-scale company. I redesigned the UI to make complex
+        processes intuitive across <strong>the full sales cycle</strong> &mdash; from lead
+        generation to deal closure &mdash; while aligning marketing automation with sales data and
+        giving teams real-time visibility into stock levels and order statuses, supported by{' '}
+        <strong>Power BI dashboards</strong> and custom reports.{' '}
+        <strong>The core challenge was</strong> making an enterprise system that spans many teams
+        and huge amounts of data feel focused and usable for each person&rsquo;s daily job.
       </>
     ),
+  },
+  problem: {
+    image: 'case-crm-problem.png',
+    heading: 'Enterprise data that’s everywhere and nowhere',
+    body: 'In a large company, client information, sales activity, inventory, and marketing all live in different tools and formats, so teams work from partial, out-of-date pictures. Complex workflows are buried in dense screens, the sales cycle isn’t visible end to end, stock and order status are hard to track in real time, and reporting is disconnected from the work — making confident, timely decisions difficult.',
+    why: 'When sales, inventory, and marketing can’t see the same truth, deals slip, stock decisions lag, and leadership steers on stale data — costing revenue and slowing growth at scale.',
+  },
+  solution: {
+    image: 'case-crm-solution.png',
+    heading: 'A centralized, role-aware operations platform',
+    body: 'I redesigned the CRM around one connected source of truth. Client data, the sales pipeline, inventory, and marketing share a consistent, learnable interface; the full sales cycle is visible from lead to closed deal; real-time stock and order statuses surface where teams need them; and marketing automation is aligned with live sales data. Power BI dashboards and custom reports turn that data into decisions, and a scalable design system keeps complex workflows clear as the company grows.',
+    scenario: 'My aim was that each role — sales, operations, marketing, leadership — could open the CRM, immediately see the slice they need, act on it, and trust that everyone else is working from the same numbers.',
   },
 };
 

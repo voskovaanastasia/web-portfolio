@@ -74,12 +74,12 @@ const projects = [
   },
   {
     id: 'shoot',
-    category: 'Logos & Branding',
+    category: 'Product & UX/UI Design',
     image: caseFintech,
-    tags: ['Art Direction', 'Photography', 'Brand Visuals'],
-    title: 'Shoot: Art Direction & Brand Photography',
+    tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
+    title: 'SHOOT: Creative-Services Marketplace',
     description:
-      'An art-directed photo shoot built to give the brand a reusable image library instead of one-off assets — concept and moodboard through shot list, on-set direction, selection, and retouch, with every frame planned against a real placement.',
+      'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
   },
 ];
 

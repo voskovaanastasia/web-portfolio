@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from '../components/SectionMenu';
+import { ProblemSolution } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -8,6 +9,7 @@ import toolNotion from '../assets/icon-notion.svg';
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
   { id: 'intro', label: 'Project Intro' },
+  { id: 'problem', label: 'Problem & Solution' },
   { id: 'screens', label: 'App Screens' },
 ];
 
@@ -327,20 +329,31 @@ const project = {
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'Healthcare that meets patients where they are.',
+    heading: 'Care that reaches patients where they are.',
     body: (
       <>
-        <strong>Online Doctor Mobile Application</strong> is a secure, HIPAA-compliant{' '}
-        <strong>telehealth platform</strong> designed{' '}
-        <strong>to enhance patient-doctor interactions.</strong> Originally developed as an MVP,
-        it now includes advanced features like{' '}
-        <strong>
-          real-time consultations, appointment scheduling, and integrated billing, offering a
-          seamless
-        </strong>{' '}
-        and reliable solution for virtual healthcare.
+        <strong>Online Doctor</strong> is a secure, HIPAA-compliant{' '}
+        <strong>telehealth app</strong> that brings patients and doctors together for virtual care.
+        Originally built as an MVP, it grew to include{' '}
+        <strong>real-time consultations, appointment scheduling, and integrated billing.</strong> I
+        designed the experience to make virtual visits feel as clear and reliable as in-person ones
+        &mdash; trustworthy, well-paced, and easy for patients of any age.{' '}
+        <strong>The core challenge was</strong> making a clinically sensitive, compliance-heavy
+        product feel calm and simple at the exact moments patients feel most anxious.
       </>
     ),
+  },
+  problem: {
+    image: 'case-onlinedoctor-problem.png',
+    heading: 'Virtual care feels harder than it should',
+    body: 'Patients need to reach a doctor quickly, but telehealth often adds friction instead of removing it: finding the right doctor and an open slot is confusing, joining a consultation is unreliable, and medical, scheduling, and billing information are scattered across disconnected steps. Sensitive data and payments raise trust concerns, and unclear appointment or billing states leave patients unsure what happens next.',
+    why: 'In healthcare, confusion isn’t just friction — it delays care. When patients can’t easily book, connect, or understand what they’re paying for, they postpone visits and lose trust in the system meant to help them.',
+  },
+  solution: {
+    image: 'case-onlinedoctor-solution.png',
+    heading: 'One reliable flow from booking to bill',
+    body: 'I designed a clear path from finding a doctor to finishing a visit: searchable profiles with availability, a simple scheduling flow with reminders, and a dependable real-time consultation with an obvious way to join. Billing is integrated and transparent, HIPAA-compliant handling is communicated in plain language, and appointment and payment states are visible at every step so patients always know what’s next.',
+    scenario: 'My aim was that a patient could book, join a consultation, and settle the bill without ever feeling lost or exposed — the same reassurance of a good in-person visit, delivered remotely.',
   },
 };
 
@@ -451,6 +464,9 @@ export default function OnlineDoctorCase() {
           </div>
           <ImagePlaceholder filename="case-onlinedoctor-intro.png" className="min-h-[420px]" />
         </section>
+
+        {/* Problem & solution */}
+        <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* App screens */}
         <section id="screens" className="pb-24 flex flex-col gap-6">

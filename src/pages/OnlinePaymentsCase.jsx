@@ -35,17 +35,30 @@ const project = {
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'Two sides of one transaction, designed together.',
+    heading: 'Secure payments, without the friction.',
     image: 'case-payments-intro.png',
     body: (
       <>
-        An <strong>online payment solution</strong> covering both ends of a transaction: a{' '}
-        <strong>checkout that survives real-world failure</strong> &mdash; declines, 3-D Secure
-        steps, retries &mdash; and a <strong>merchant console</strong> where those same events are
-        legible enough to act on. The design treats{' '}
-        <strong>error states as primary screens,</strong> not edge cases.
+        <strong>Online Payment Solution</strong> is a fintech platform that gives businesses and
+        individuals a <strong>secure, compliant way to accept and send money online.</strong> I
+        designed the experience around fast, trustworthy transactions &mdash; a clear checkout,
+        transparent status, and compliance that stays out of the user&rsquo;s way.{' '}
+        <strong>The core challenge was</strong> making a heavily regulated, security-critical
+        product feel effortless without hiding the safeguards that make it trustworthy.
       </>
     ),
+  },
+  problem: {
+    image: 'case-payments-problem.png',
+    heading: 'Online payments make people choose between safe and simple',
+    body: 'Businesses and individuals need to move money online quickly, but most tools force a trade-off: checkout is long and confusing, fees and settlement times are unclear, and security steps — verification, 3-D Secure, KYC — interrupt the flow with little explanation. When a transaction sits in “pending” or fails, users can’t tell whether their money actually moved.',
+    why: 'When people can’t tell whether a payment succeeded, or the process feels unsafe, they abandon it — businesses lose revenue at the very last step, and both sides lose trust in the platform meant to protect them.',
+  },
+  solution: {
+    image: 'case-payments-solution.png',
+    heading: 'One clear, compliant flow from checkout to confirmation',
+    body: 'I designed a streamlined payment flow with transparent fees, a short and legible checkout, and real-time transaction states — initiated, processing, completed, or failed — so users always know where their money is. Security and compliance are built into the flow with plain-language explanations and progress states, and secure access (PIN plus biometrics) protects accounts without overwhelming the user.',
+    scenario: 'My aim was that a first-time user could complete a payment in seconds and trust it, while a business owner could rely on clear statuses and compliance in production — the same confidence from checkout to confirmation.',
   },
 };
 

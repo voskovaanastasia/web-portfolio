@@ -36,19 +36,32 @@ const project = {
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'About',
+    heading: 'Train on what your body’s actually telling you.',
     image: 'case-fitness-intro.png',
     body: (
       <>
-        <strong>Fitness App</strong> is an advanced{' '}
-        <strong>mobile health and fitness platform</strong> designed{' '}
-        <strong>to support individuals in reaching their fitness goals.</strong> With personalized
-        workout plans, <strong>AI-driven customization</strong>, and real-time health tracking, it
-        seamlessly integrates with wearable devices{' '}
-        <strong>to deliver comprehensive wellness insights</strong> and enhance the user&rsquo;s
-        health journey.
+        <strong>Fitness App</strong> is a <strong>mobile health-and-fitness platform</strong> that
+        helps people reach their goals with personalized workout plans,{' '}
+        <strong>AI-driven customization,</strong> and real-time health tracking. It integrates with
+        wearables to turn daily signals into clear training decisions. I designed the end-to-end
+        experience &mdash; from a metrics-first dashboard to a guided in-session player &mdash; so
+        the product adapts to the user: AI-personalized when they want it, manual when they need
+        it. <strong>The core challenge was</strong> turning dense health data into one simple,
+        daily decision about how to train.
       </>
     ),
+  },
+  problem: {
+    image: 'case-fitness-problem.png',
+    heading: 'Health data and training live in separate apps',
+    body: 'Fitness tracking and workout guidance are usually split across multiple apps and screens, forcing users to hop between them to understand their health, pick the right session, and stay consistent. It’s hard to translate daily metrics (HRV, heart rate, sleep, steps, water) into a workout decision; plans are generic and don’t adapt to readiness or recovery; choosing the right level, duration, and intensity is confusing; in-workout controls break flow; and progress is scattered across views.',
+    why: 'When effort, recovery, and results never meet in one place, people end up training against their bodies instead of with them — they lose motivation, miss real progress, and eventually stop.',
+  },
+  solution: {
+    image: 'case-fitness-solution.png',
+    heading: 'Metrics, decisions, and training in one experience',
+    body: 'The app brings wellness metrics and training into a single flow. A metrics-first dashboard (HRV, average heart rate, sleep, steps, water) gives a quick daily snapshot; AI recommends workouts based on readiness, with the option to browse and pick manually; clear discovery with filters (Yoga / Pilates / HIIT) shows level, duration, and calorie range up front; a smooth guided flow with a warm-up toggle and an in-session player (timer, progress, next-exercise preview) keeps users in rhythm; and progress analytics across day, week, month, and year reinforce consistency.',
+    scenario: 'My aim was that a user could open the app in the morning, read their readiness at a glance, and start the right workout in seconds — then see how today’s effort connects to their habits and long-term trends.',
   },
 };
 
@@ -61,6 +74,7 @@ const fourWPlusH = [
   },
   {
     title: 'Why?',
+    highlight: true,
     body: 'Most solutions are fragmented or generic: tracking apps don’t translate health data into actionable training, and workout apps offer one-size-fits-all plans that ignore daily readiness (sleep, HRV, heart rate, activity). This leads to inefficient training, higher drop-off, and lower confidence in the routine.',
   },
   {
@@ -92,135 +106,39 @@ const fourWPlusH = [
 
 function FourWPlusH() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-[#e2e2e2] rounded-[24px] overflow-hidden">
-      {fourWPlusH.map((column, i) => (
-        <div
-          key={column.title}
-          className={`p-6 flex flex-col gap-4 ${i % 2 === 0 ? 'bg-white' : 'bg-[#f2f6ff]'}`}
-        >
-          <div className="flex flex-col gap-3">
+    <>
+      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        4W+H Process
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+        {fourWPlusH.map((column) => (
+          <div
+            key={column.title}
+            className={`rounded-[24px] p-6 flex flex-col gap-4 ${
+              column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]'
+            }`}
+          >
             <p className="font-grotesk font-medium text-lg text-black">{column.title}</p>
-            <span className="h-[3px] w-full bg-[#1552d8] rounded-full" />
+            <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
+            {column.body && (
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">{column.body}</p>
+            )}
+            {column.items && (
+              <ul className="flex flex-col gap-2">
+                {column.items.map((item) => (
+                  <li
+                    key={item}
+                    className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-          {column.body && (
-            <p className="font-grotesk text-sm text-[#393939] leading-relaxed">{column.body}</p>
-          )}
-          {column.items && (
-            <ul className="flex flex-col gap-2">
-              {column.items.map((item) => (
-                <li
-                  key={item}
-                  className="font-grotesk text-sm text-[#393939] leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px]"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// ---- Problem & Solution --------------------------------------------------
-
-const problemPoints = [
-  <>
-    It&rsquo;s hard to translate daily metrics (HRV, heart rate, sleep, steps, water) into a{' '}
-    <strong>clear workout decision</strong>
-  </>,
-  <>
-    Workouts are often <strong>generic</strong> and don&rsquo;t adapt to readiness, recovery, or
-    overall health signals
-  </>,
-  <>
-    Choosing the &ldquo;right&rdquo; plan is confusing: level, duration, and intensity aren&rsquo;t
-    always <strong>clear or comparable</strong>
-  </>,
-  <>
-    In-workout guidance can be <strong>clunky</strong> breaking flow with poor controls and unclear
-    progression
-  </>,
-  <>
-    Progress is scattered: users can&rsquo;t easily connect{' '}
-    <strong>workout effort + daily habits + trends</strong> in one view
-  </>,
-];
-
-const solutionPoints = [
-  <>
-    <strong>Metrics-first dashboard</strong> (HRV, avg heart rate, sleep, steps, water) for a quick
-    daily snapshot
-  </>,
-  <>
-    <strong>AI-based workout recommendations</strong> using health metrics and overall readiness,
-    with the option to browse and pick manually
-  </>,
-  <>
-    <strong>Clear workout discovery with filters</strong> (Yoga / Pilates / HIIT) and visible level,
-    duration, and calorie range
-  </>,
-  <>
-    <strong>Smooth guided workout flow:</strong> exercise list, warm-up toggle, and a simple Start
-    Workout entry point
-  </>,
-  <>
-    <strong>In-session player</strong> with timer, progress, and next-exercise preview to keep users
-    in rhythm
-  </>,
-  <>
-    <strong>Progress analytics</strong> (day/week/month/year) with charts and highlights to reinforce
-    consistency
-  </>,
-];
-
-const bulletClass =
-  'font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-[\'\'] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px] [&_strong]:font-normal [&_strong]:text-[#1552d8]';
-
-function ProblemSolution() {
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div className="flex flex-col gap-6">
-        <div className="bg-[#f2f6ff] rounded-[24px] p-8 flex flex-col gap-6">
-          <h3 className="font-grotesk font-medium text-3xl text-black">Problem</h3>
-          <p className="font-grotesk text-base text-black leading-relaxed">
-            Fitness tracking and workout guidance are often split across multiple apps and screens,
-            forcing users to <span className="text-[#1552d8]">hop between platforms</span>, to
-            understand their health, choose the right session, and stay consistent.
-          </p>
-          <ul className="flex flex-col gap-4">
-            {problemPoints.map((point, i) => (
-              <li key={i} className={bulletClass}>
-                {point}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <ImagePlaceholder filename="case-fitness-problem.png" className="min-h-[320px]" />
+        ))}
       </div>
-
-      <div className="flex flex-col gap-6">
-        <ImagePlaceholder filename="case-fitness-solution.png" className="min-h-[320px]" />
-        <div className="bg-[#f2f6ff] rounded-[24px] p-8 flex flex-col gap-6">
-          <h3 className="font-grotesk font-medium text-3xl text-black">Solution</h3>
-          <p className="font-grotesk text-base text-black leading-relaxed">
-            Fitness tracking and workout guidance brings wellness metrics and training into a single,
-            all-in-one experience that helps users train smarter{' '}
-            <span className="text-[#1552d8]">
-              &mdash;AI-personalized when they want it, manual when they need it:
-            </span>
-          </p>
-          <ul className="flex flex-col gap-4">
-            {solutionPoints.map((point, i) => (
-              <li key={i} className={bulletClass}>
-                {point}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -278,6 +196,9 @@ const persona = {
     </>,
   ],
 };
+
+const bulletClass =
+  'font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-[\'\'] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px] [&_strong]:font-normal [&_strong]:text-[#1552d8]';
 
 function PersonaCard({ title, points }) {
   return (
@@ -597,7 +518,6 @@ const screens = [
 
 const sections = [
   { id: 'process', label: '4W+H Process', content: <FourWPlusH /> },
-  { id: 'problem-solution', label: 'Problem & Solution', content: <ProblemSolution /> },
   { id: 'persona', label: 'User Persona', content: <UserPersona /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
 ];

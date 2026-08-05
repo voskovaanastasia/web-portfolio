@@ -1074,7 +1074,7 @@ export default function FarsafeCase() {
         {/* Solution */}
         <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROBLEM</p>
+            <p className="font-mono-bold text-base text-black">SOLUTION</p>
             <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
               One all-included platform, legible from the first click
             </h2>

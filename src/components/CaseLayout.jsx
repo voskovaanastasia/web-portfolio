@@ -14,6 +14,48 @@ export function ImagePlaceholder({ filename, className = '' }) {
   );
 }
 
+/**
+ * Farsafe-style Problem / Solution pair: two alternating text+image rows.
+ * `problem` = { heading, body, why, image }, `solution` = { heading, body, scenario, image }.
+ */
+export function ProblemSolution({ problem, solution, id = 'problem' }) {
+  return (
+    <>
+      {problem && (
+        <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+          <ImagePlaceholder filename={problem.image} className="min-h-[420px]" />
+          <div className="flex flex-col gap-5 lg:col-span-2">
+            <p className="font-mono-bold text-base text-black">PROBLEM</p>
+            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+              {problem.heading}
+            </h2>
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{problem.body}</p>
+            <p className="font-mono-bold text-base text-black">WHY IS THIS IMPORTANT?</p>
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{problem.why}</p>
+          </div>
+        </section>
+      )}
+
+      {solution && (
+        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+          <div className="flex flex-col gap-5 lg:col-span-2">
+            <p className="font-mono-bold text-base text-black">SOLUTION</p>
+            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+              {solution.heading}
+            </h2>
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{solution.body}</p>
+            <p className="font-mono-bold text-base text-black">USER SCENARIO CONSIDERATION</p>
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              {solution.scenario}
+            </p>
+          </div>
+          <ImagePlaceholder filename={solution.image} className="min-h-[420px]" />
+        </section>
+      )}
+    </>
+  );
+}
+
 export function ScreensSlider({ screens }) {
   const [index, setIndex] = useState(0);
   const screen = screens[index];
@@ -83,6 +125,7 @@ export default function CaseLayout({
   const menuSections = [
     { id: 'case-hero', label: 'Back to Top' },
     { id: 'intro', label: 'Project Intro' },
+    ...(project.problem ? [{ id: 'problem', label: 'Problem & Solution' }] : []),
     ...sections.map((s) => ({ id: s.id, label: s.label })),
     ...(screens?.length ? [{ id: 'screens', label: screensLabel }] : []),
   ];
@@ -183,6 +226,9 @@ export default function CaseLayout({
           </div>
           <ImagePlaceholder filename={project.intro.image} className="min-h-[420px]" />
         </section>
+
+        {/* Problem & solution */}
+        <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Case-specific sections */}
         {sections.map((section) => (
