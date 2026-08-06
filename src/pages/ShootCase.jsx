@@ -1,4 +1,4 @@
-import CaseLayout from '../components/CaseLayout';
+import CaseLayout, { ProcessColumns } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolPhotoshop from '../assets/toolkit/photoshop.svg';
 import toolLightroom from '../assets/toolkit/lightroom.svg';
@@ -140,6 +140,51 @@ const screens = [
   },
 ];
 
+const processColumns = [
+  {
+    heading: 'What Problem?',
+    body: 'Finding, comparing, and booking photographers, studios, and gear is scattered across too many places.',
+  },
+  {
+    heading: 'Why?',
+    body: 'Users juggle portfolio sites, rental apps, chats, and calendars — wasting time and losing trust.',
+  },
+  {
+    heading: 'Who is the target?',
+    highlight: true,
+    items: [
+      'Brides & grooms',
+      'Event planners',
+      'Influencers',
+      'Small businesses',
+      'Families needing on-demand photo/video',
+    ],
+  },
+  {
+    heading: 'What’s the Goal?',
+    body: 'One platform to discover portfolios, rent gear, book studios, and reserve — all in a single flow.',
+  },
+  {
+    heading: 'How?',
+    body: 'An intuitive web app: smart search & filters, verified reviews, transparent pricing, calendar booking, secure payments.',
+  },
+];
+
+const caseSections = [
+  {
+    id: 'process',
+    label: '4W+H Process',
+    content: <ProcessColumns columns={processColumns} />,
+  },
+];
+
 export default function ShootCase() {
-  return <CaseLayout project={project} screens={screens} screensLabel="Process" />;
+  return (
+    <CaseLayout
+      project={project}
+      sections={caseSections}
+      screens={screens}
+      screensLabel="Process"
+    />
+  );
 }

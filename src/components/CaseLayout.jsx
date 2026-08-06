@@ -2,7 +2,40 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from './SectionMenu';
 
-export function ImagePlaceholder({ filename, className = '' }) {
+// Any image dropped into src/assets is picked up by filename — no import needed.
+const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+const assetByName = Object.fromEntries(
+  Object.entries(assetUrls).map(([path, url]) => [path.split('/').pop(), url]),
+);
+
+// Reserved-space utilities only matter while a slot is empty — once the real
+// image is in, the slot takes the image's own height instead of a grey box.
+const dropSizing = (cls) =>
+  cls
+    .replace(/(?:\w+:)?min-h-(?:\[[^\]]*\]|[\w./-]+)/g, '')
+    .replace(/(?:\w+:)?aspect-(?:\[[^\]]*\]|[\w./-]+)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+export function ImagePlaceholder({ filename, className = '', alt = '' }) {
+  // Cases may pass an already-imported URL instead of a bare filename.
+  const src = assetByName[filename] || (filename?.includes('/') ? filename : undefined);
+
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={alt || String(filename).replace(/\.\w+$/, '').replace(/-/g, ' ')}
+        loading="lazy"
+        className={`w-full h-auto block rounded-[24px] ${dropSizing(className)}`}
+      />
+    );
+  }
+
   return (
     <div
       className={`bg-[#f7f7f7] rounded-[24px] flex items-center justify-center overflow-hidden ${className}`}
@@ -53,6 +86,39 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
         </section>
       )}
     </>
+  );
+}
+
+/**
+ * 4W+H process grid. Each column = { heading, body } or { heading, items[], highlight }.
+ */
+export function ProcessColumns({ columns }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+      {columns.map((col) => (
+        <div
+          key={col.heading}
+          className={`rounded-[24px] p-5 flex flex-col gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
+        >
+          <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
+          <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
+          {col.body ? (
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{col.body}</p>
+          ) : (
+            <ul className="flex flex-col gap-2">
+              {col.items.map((item) => (
+                <li
+                  key={item}
+                  className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -173,7 +239,7 @@ export default function CaseLayout({
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-8 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
@@ -201,12 +267,12 @@ export default function CaseLayout({
         {/* Summary cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
           {project.summary.map((card) => (
-            <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+            <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-7 flex flex-col gap-3">
+          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
             <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
             <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
             <p className="font-grotesk text-base text-black">{project.outcome.label}</p>

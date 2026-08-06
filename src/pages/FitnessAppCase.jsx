@@ -70,37 +70,29 @@ const project = {
 const fourWPlusH = [
   {
     title: 'What Problem?',
-    body: 'Users struggle to stay consistent with fitness because they need to track health metrics, pick the right workout for their current condition and goals, and follow sessions smoothly — often switching between disconnected tracking and workout apps.',
+    body: 'Staying consistent is hard — users must track health metrics, pick the right workout for their condition, and jump between disconnected tracking and workout apps.',
   },
   {
     title: 'Why?',
-    highlight: true,
-    body: 'Most solutions are fragmented or generic: tracking apps don’t translate health data into actionable training, and workout apps offer one-size-fits-all plans that ignore daily readiness (sleep, HRV, heart rate, activity). This leads to inefficient training, higher drop-off, and lower confidence in the routine.',
+    body: 'Tracking apps don’t turn health data into action, and workout apps push one-size-fits-all plans that ignore daily readiness — leading to inefficient training and drop-off.',
   },
   {
     title: 'Who is the target?',
+    highlight: true,
     items: [
       'Beginners and people returning after a break',
-      'Users who want structured Yoga, Pilates, and HIIT sessions',
-      'Health-focused users tracking HRV, heart rate, sleep, steps, water',
-      'Busy users who need quick, guided workouts matched to their day',
-      'Users who want clear progress views (day/week/month/year)',
+      'Users wanting structured Yoga, Pilates & HIIT',
+      'Health-focused users tracking HRV, heart rate, sleep, steps',
+      'Busy users needing quick, day-matched workouts',
     ],
   },
   {
     title: 'What’s the Goal?',
-    body: 'Build an all-in-one mobile experience that turns daily wellness metrics into the right training choice — using AI to recommend workouts based on readiness and goals, while still allowing users to browse and pick workouts manually.',
+    body: 'An all-in-one mobile experience that turns daily wellness metrics into the right training choice — AI-recommended, with manual pick always available.',
   },
   {
     title: 'How?',
-    body: 'Design an intuitive web app with:',
-    items: [
-      'A metrics-first dashboard',
-      'AI-based workout recommendations from health metrics, plus manual workout selection',
-      'A filterable workout library with clear level, duration, and calories',
-      'Guided workout player',
-      'Simple progress analytics with charts and highlights',
-    ],
+    body: 'An intuitive web app: metrics-first dashboard, AI workout recommendations, filterable library (level/duration/calories), guided player, simple progress analytics.',
   },
 ];
 
@@ -114,9 +106,7 @@ function FourWPlusH() {
         {fourWPlusH.map((column) => (
           <div
             key={column.title}
-            className={`rounded-[24px] p-6 flex flex-col gap-4 ${
-              column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]'
-            }`}
+            className={`rounded-[24px] p-5 flex flex-col gap-4 ${ column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
           >
             <p className="font-grotesk font-medium text-lg text-black">{column.title}</p>
             <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
@@ -202,7 +192,7 @@ const bulletClass =
 
 function PersonaCard({ title, points }) {
   return (
-    <div className="bg-[#f2f6ff] rounded-[24px] p-7 flex flex-col gap-4">
+    <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-4">
       <h3 className="font-grotesk font-medium text-2xl text-black">{title}</h3>
       <ul className="flex flex-col gap-3">
         {points.map((point, i) => (
@@ -217,17 +207,17 @@ function PersonaCard({ title, points }) {
 
 function UserPersona() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div className="flex flex-col gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="flex flex-col gap-5">
         <ImagePlaceholder filename="case-fitness-persona.png" className="min-h-[480px]" />
-        <div className="bg-[#f2f6ff] rounded-[24px] p-7 flex flex-col gap-3">
+        <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-3">
           <h3 className="font-grotesk font-medium text-3xl text-[#1552d8]">{persona.name}</h3>
           <p className="font-grotesk font-medium text-base text-[#1552d8]">{persona.role}</p>
           <p className="font-grotesk font-medium text-base text-[#1552d8]">{persona.location}</p>
           <p className="font-grotesk text-base text-black leading-relaxed mt-1">{persona.bio}</p>
         </div>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5">
         <PersonaCard title="Motivations" points={persona.motivations} />
         <PersonaCard title="Goals" points={persona.goals} />
         <PersonaCard title="Frustrations" points={persona.frustrations} />
@@ -242,42 +232,106 @@ const iaData = {
   label: 'Fitness App',
   children: [
     {
-      label: 'Splash',
-      children: [{ label: 'Onboarding', children: [{ label: 'Authorization' }] }],
+      label: 'Onboarding & Auth',
+      children: [
+        { label: 'Onboarding' },
+        {
+          label: 'Sign In / Sign Up',
+          children: [
+            { label: 'Social Login (Apple / Google)' },
+            { label: 'Forgot / Reset Password' },
+          ],
+        },
+        { label: 'Email / OTP Verification' },
+        { label: 'Permissions (Health, Push, Motion)' },
+        { label: 'Goal Questionnaire' },
+        { label: 'Connect Wearables' },
+      ],
     },
-    { label: 'Dashboard' },
-    { label: 'Exercises', children: [{ label: 'Categories' }, { label: 'Filters' }] },
+    {
+      label: 'Dashboard',
+      children: [
+        { label: 'Steps detail' },
+        { label: 'Recommendations' },
+        { label: 'HRV detail' },
+        { label: 'Heart Rate detail' },
+        { label: 'Calories detail' },
+        { label: 'Sleep detail' },
+        { label: 'Water' },
+        { label: 'Search' },
+      ],
+    },
+    {
+      label: 'Workouts',
+      children: [
+        { label: 'Categories' },
+        { label: 'Filters' },
+        { label: 'Workout' },
+        { label: 'Exercise Detail' },
+      ],
+    },
     {
       label: 'Analytics',
       children: [
         { label: 'Overview' },
-        { label: 'Graphs and Charts' },
-        { label: 'Achievements' },
+        { label: 'Graphs & Charts' },
         { label: 'Trends' },
+        { label: 'Metric Deep-Dive' },
+        { label: 'Reports / Export' },
       ],
     },
     {
       label: 'Settings',
-      children: [{ label: 'User Profile' }, { label: 'Notifications' }, { label: 'Data & Sync' }],
+      children: [
+        { label: 'User Profile' },
+        { label: 'Notifications' },
+        { label: 'Data & Sync' },
+        { label: 'Edit Profile' },
+        {
+          label: 'Subscription',
+          children: [
+            { label: 'Paywall' },
+            { label: 'Plans / Pricing' },
+            { label: 'Manage Subscription' },
+            { label: 'Restore Purchase' },
+          ],
+        },
+        { label: 'Units & Preferences' },
+        { label: 'Connected Devices' },
+        { label: 'Appearance / Theme' },
+        { label: 'Language' },
+        { label: 'Privacy & Security' },
+        { label: 'Help / FAQ' },
+        { label: 'About' },
+        { label: 'Logout' },
+        { label: 'Delete Account' },
+      ],
     },
   ],
 };
 
 function InformationArchitecture() {
   return (
-    <div className="flex flex-col gap-8">
-      <p className="font-grotesk text-base text-black leading-relaxed max-w-4xl">
-        <span className="text-[#1552d8]">Mobile app architecture</span> is designed to provide{' '}
-        <span className="text-[#1552d8]">a seamless and engaging experience,</span> built upon user
-        behavior analysis and best practices in <span className="text-[#1552d8]">usability.</span> By
-        structuring the app into four core sections&mdash;
-        <span className="text-[#1552d8]">Dashboard, Exercises, Analytics, and Settings</span>&mdash;we
-        ensure intuitive navigation and streamlined access to key features.
+    <>
+      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        Mobile App
+      </h2>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+        Setup is separated from daily use: <strong>Onboarding &amp; Auth</strong> runs once, front
+        loading permissions, goals, and wearable pairing so the app has real data from day one.
+        After that the structure follows how the day is actually spent &mdash;{' '}
+        <strong>Dashboard</strong> to read today&rsquo;s signals, <strong>Workouts</strong> to act
+        on them, <strong>Analytics</strong> to see the trend, and <strong>Settings</strong> for
+        everything administrative. Each metric on the dashboard opens its own detail view, so depth
+        is available without crowding the daily glance.
       </p>
-      <div className="bg-[#f7f7f7] rounded-[24px] p-6 overflow-x-auto">
-        <IATree data={iaData} defaultOpenIndex={3} />
+      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+        <IATree data={iaData} defaultOpenIndex={1} />
+        <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+          Click a node to expand or collapse its branch.
+        </p>
       </div>
-    </div>
+    </>
   );
 }
 

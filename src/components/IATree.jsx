@@ -11,7 +11,14 @@ const FILLS = [
   '#FFE6E8', '#E8E3E3', '#B2EBF2', '#FFF9C4',
 ];
 
-export default function IATree({ data, nodeH = 30, depthGap = 70, sibGap = 10, defaultOpenIndex = 1 }) {
+export default function IATree({
+  data,
+  nodeH = 30,
+  depthGap = 70,
+  sibGap = 10,
+  defaultOpenIndex = 1,
+  expandAll = false,
+}) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -34,7 +41,7 @@ export default function IATree({ data, nodeH = 30, depthGap = 70, sibGap = 10, d
 
     // Default view: only the first branch (Product / Features) open one level,
     // everything else collapsed — the user expands from there.
-    (function collapseDefault(d, depth) {
+    if (!expandAll) (function collapseDefault(d, depth) {
       if (!d.children) return;
       d.children.forEach((c) => collapseDefault(c, depth + 1));
       const isOpenBranch = depth === 1 && d.data === root_data.children[defaultOpenIndex];
@@ -282,7 +289,7 @@ export default function IATree({ data, nodeH = 30, depthGap = 70, sibGap = 10, d
     return () => {
       el.innerHTML = '';
     };
-  }, [data, nodeH, depthGap, sibGap, defaultOpenIndex]);
+  }, [data, nodeH, depthGap, sibGap, defaultOpenIndex, expandAll]);
 
   return <div ref={containerRef} className="w-max" />;
 }

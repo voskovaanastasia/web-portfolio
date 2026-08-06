@@ -57,7 +57,7 @@ export default function ImpactSection() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {metrics.map((metric) => (
             <div
               key={metric.label}

@@ -104,7 +104,7 @@ function ToolCard({ icon, label }) {
 
 function ToolGroup({ label, tools }) {
   return (
-    <div className="flex flex-col gap-[15px] w-full">
+    <div className="flex flex-col gap-5 w-full">
       <p className="font-mono-bold text-base text-black">{label}</p>
       <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
         {tools.map((tool) => (
@@ -137,7 +137,7 @@ export default function MyToolkitSection() {
           <ToolGroup label="SOFTWARE" tools={softwareTools} />
           <ToolGroup label="PROGRAMMING" tools={programmingTools} />
 
-          <div className="flex flex-col gap-[15px] w-full">
+          <div className="flex flex-col gap-5 w-full">
             <p className="font-mono-bold text-base text-black">Language</p>
             <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
               {languages.map((lang) => (

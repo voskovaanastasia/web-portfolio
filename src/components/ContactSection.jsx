@@ -68,7 +68,7 @@ export default function ContactSection() {
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {/* My Projects */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-7 overflow-hidden flex flex-col">
+          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 overflow-hidden flex flex-col">
             <h3 className="font-grotesk font-bold text-lg text-black mb-4">My Projects</h3>
             <img
               src={contactProjects}
@@ -78,7 +78,7 @@ export default function ContactSection() {
           </div>
 
           {/* Resume */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-7">
+          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5">
             <h3 className="font-grotesk font-bold text-lg text-black mb-6">Checkout my Resume</h3>
             <a href="#resume" className="block group">
               <div className="bg-[#f0f0ee] rounded-[8px] px-6 py-8 flex justify-center">
@@ -108,7 +108,7 @@ export default function ContactSection() {
           </div>
 
           {/* Skills */}
-          <div className="bg-[#6d3fc4] rounded-[24px] p-7 overflow-hidden">
+          <div className="bg-[#6d3fc4] rounded-[24px] p-5 overflow-hidden">
             <h3 className="font-grotesk font-bold text-lg text-white mb-6">Skills</h3>
             <div className="flex flex-col gap-5 items-center">
               {skillRows.map((row, i) => (
@@ -127,7 +127,7 @@ export default function ContactSection() {
           </div>
 
           {/* Email card */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-7 flex flex-col">
+          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 flex flex-col">
             <div className="flex items-start justify-between mb-5">
               <div>
                 <h3 className="font-grotesk font-bold text-xl text-black">Anastasiia Voskova</h3>

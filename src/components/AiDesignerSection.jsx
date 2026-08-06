@@ -56,7 +56,7 @@ export default function AiDesignerSection() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-[15px]">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {steps.map((step, index) => {
             const isFirst = index === 0;
             const isLast = index === steps.length - 1;
@@ -69,7 +69,7 @@ export default function AiDesignerSection() {
             return (
               <div
                 key={step.number}
-                className={`rounded-[15px] p-[15px] flex flex-col gap-2.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${cardClass}`}
+                className={`rounded-[15px] p-5 flex flex-col gap-2.5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${cardClass}`}
               >
                 <p className={`font-grotesk font-bold text-4xl sm:text-5xl ${numberClass}`}>
                   {step.number}

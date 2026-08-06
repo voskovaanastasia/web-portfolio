@@ -164,11 +164,11 @@ export default function HowIWorkSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[15px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {cards.map((card) => (
             <div
               key={card.title}
-              className={`rounded-[24px] p-[25px] flex flex-col gap-4 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${
+              className={`rounded-[24px] p-5 flex flex-col gap-4 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(40,143,214,0.35)] ${
                 card.accent
                   ? 'bg-[#6d3fc4] text-white'
                   : 'bg-[#f7f7f7] border border-[#ececec] text-black'

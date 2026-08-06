@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
+import { ImagePlaceholder } from '../components/CaseLayout';
 import caseFarsafe from '../assets/case-farsafe.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.png';
@@ -642,18 +643,6 @@ const iaTree = {
   ],
 };
 
-function ImagePlaceholder({ filename, className = '' }) {
-  return (
-    <div
-      className={`bg-[#f7f7f7] rounded-[24px] flex items-center justify-center overflow-hidden ${className}`}
-    >
-      <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
-        Add {filename} to src/assets
-      </p>
-    </div>
-  );
-}
-
 function Donut({ segments, hollowSize = '32%' }) {
   const options = {
     colors: segments.map((s) => s.color),
@@ -942,7 +931,7 @@ export default function FarsafeCase() {
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-8 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
@@ -972,13 +961,13 @@ export default function FarsafeCase() {
           {project.summary.map((card) => (
             <div
               key={card.label}
-              className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4"
+              className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-7 flex flex-col gap-3">
+          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
             <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
             <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
             <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
@@ -996,11 +985,7 @@ export default function FarsafeCase() {
               {project.intro.body}
             </p>
           </div>
-          <div className="bg-[#f7f7f7] rounded-[24px] min-h-[420px] flex items-center justify-center overflow-hidden">
-            <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
-              Add case-farsafe-intro.png to src/assets
-            </p>
-          </div>
+          <ImagePlaceholder filename="case-farsafe-intro.png" className="min-h-[420px]" />
         </section>
 
         {/* Problem statement */}
@@ -1015,7 +1000,7 @@ export default function FarsafeCase() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-4">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">Insight 1</p>
               <p className="font-grotesk font-bold text-base text-black">
                 Pricing is impossible to predict
@@ -1026,7 +1011,7 @@ export default function FarsafeCase() {
                 pricing made their bill unpredictable.
               </p>
             </div>
-            <div className="bg-[#e9f3fa] rounded-[24px] p-7 flex flex-col gap-4">
+            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">Insight 2</p>
               <p className="font-grotesk font-bold text-base text-black">
                 Alerts can&rsquo;t be trusted when a single location triggers them.
@@ -1036,7 +1021,7 @@ export default function FarsafeCase() {
                 without a separate tool.
               </p>
             </div>
-            <div className="bg-[#6d3fc4] rounded-[24px] p-7 flex flex-col gap-4 text-white">
+            <div className="bg-[#6d3fc4] rounded-[24px] p-5 flex flex-col gap-4 text-white">
               <p className="font-grotesk text-sm text-white/70 uppercase tracking-wide">Insight 3</p>
               <p className="font-grotesk font-bold text-base">
                 Status and reporting mean buying yet another product.
@@ -1096,7 +1081,7 @@ export default function FarsafeCase() {
         <section id="goals" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-base text-black">Project Goals</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
                 <circle cx="12" cy="7" r="4" />
                 <path d="M12 5v4M10.5 6.2h3a1 1 0 0 1 0 2h-3a1 1 0 0 0 0 2h3" strokeLinecap="round" />
@@ -1111,7 +1096,7 @@ export default function FarsafeCase() {
                 visitor ever scrolls.
               </p>
             </div>
-            <div className="bg-[#288fd6] rounded-[24px] p-7 flex flex-col gap-4 text-white">
+            <div className="bg-[#288fd6] rounded-[24px] p-5 flex flex-col gap-4 text-white">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
               </svg>
@@ -1123,7 +1108,7 @@ export default function FarsafeCase() {
                 expirations are scannable at a glance - depth without overwhelm.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
                 <circle cx="10" cy="8" r="4" />
                 <path d="M3 21c0-3.5 3-6 7-6 1.5 0 2.8.3 4 .9" strokeLinecap="round" />
@@ -1174,7 +1159,7 @@ export default function FarsafeCase() {
                 text: 'Proving uptime meant buying a separate status or reporting tool.',
               },
             ].map((bar) => (
-              <div key={bar.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-3">
+              <div key={bar.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
                 <div className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
                   <div
                     className="h-full rounded-full"
@@ -1191,8 +1176,8 @@ export default function FarsafeCase() {
         {/* The poll */}
         <section className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-base text-black">The Poll</p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
               <p className="font-grotesk font-bold text-base text-black">
                 What frustrates you most about your current monitoring tool?
               </p>
@@ -1228,7 +1213,7 @@ export default function FarsafeCase() {
                 one became a direct design target for the product.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-6">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
               <p className="font-grotesk font-bold text-base text-black">
                 Interested in an all-in-one, pay-as-you-go tool?
               </p>
@@ -1313,7 +1298,7 @@ export default function FarsafeCase() {
                   ],
                 },
               ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-3">
+                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
                   <p className="font-grotesk font-bold text-base text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
@@ -1350,7 +1335,7 @@ export default function FarsafeCase() {
             how a visitor decides:{' '}
             <strong>see what&rsquo;s monitored, how alerts work, what it costs, then sign up.</strong>
           </p>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-8 sm:p-10 overflow-x-auto">
+          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
             <IATree data={iaTree} />
             <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
               Click a node to expand or collapse its branch.
@@ -1367,7 +1352,7 @@ export default function FarsafeCase() {
             task one click away, with operational detail nested only one level beneath. No deep
             hierarchies to navigate while responding to an incident.
           </p>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-8 sm:p-10 overflow-x-auto">
+          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
             <IATree data={iaAppTree} />
             <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
               Click a node to expand or collapse its branch.
@@ -1422,7 +1407,7 @@ export default function FarsafeCase() {
             surface, then reused everywhere. All grids use stretch columns.
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk font-bold text-base text-black">Marketing — Desktop</p>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed">
                 Two setups: a 3-column grid for standard sections, a 4-column for denser card
@@ -1433,7 +1418,7 @@ export default function FarsafeCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk font-bold text-base text-black">Dashboard (App) — Desktop</p>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed">
                 A 4-column content grid sitting beside a fixed side menu, with margin 40 and
@@ -1445,7 +1430,7 @@ export default function FarsafeCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk font-bold text-base text-black">Mobile — All pages</p>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed">
                 A 2-column grid, sized for comfortable reading on compact screens.
@@ -1481,7 +1466,7 @@ export default function FarsafeCase() {
 
             {/* Open Sans */}
             <div
-              className="rounded-[24px] p-8 flex flex-col justify-between min-h-[280px] bg-[#a3bbdf] text-[#1c1c1c]"
+              className="rounded-[24px] p-5 flex flex-col justify-between min-h-[280px] bg-[#a3bbdf] text-[#1c1c1c]"
               style={{ fontFamily: "'Open Sans', sans-serif" }}
             >
               <div className="flex flex-col gap-1.5 text-base">
@@ -1500,7 +1485,7 @@ export default function FarsafeCase() {
 
             {/* Rubik */}
             <div
-              className="rounded-[24px] p-8 flex flex-col justify-between items-end min-h-[280px] bg-[#33518C] text-white lg:col-start-2"
+              className="rounded-[24px] p-5 flex flex-col justify-between items-end min-h-[280px] bg-[#33518C] text-white lg:col-start-2"
               style={{ fontFamily: "'Rubik', sans-serif" }}
             >
               <div className="flex flex-col gap-1.5 text-base text-right">
@@ -1558,7 +1543,7 @@ export default function FarsafeCase() {
             {launchMetrics.map((metric) => {
               const max = Math.max(...metric.bars.map((b) => b.value));
               return (
-                <div key={metric.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+                <div key={metric.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
                   <p className="font-grotesk font-bold text-base text-black">{metric.title}</p>
                   <p className="font-grotesk text-sm text-[#6b6a67]">{metric.target}</p>
                   <div className="flex items-end gap-4 h-44">
@@ -1586,7 +1571,7 @@ export default function FarsafeCase() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {surveyResults.map((item) => (
-              <div key={item.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-3">
+              <div key={item.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
                 <div className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
                   <div
                     className="h-full rounded-full"

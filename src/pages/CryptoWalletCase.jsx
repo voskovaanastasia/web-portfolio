@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -19,6 +19,7 @@ const caseSections = [
   { id: 'persona', label: 'User Persona' },
   { id: 'empathy', label: 'Empathy Map' },
   { id: 'flow', label: 'User Flow' },
+  { id: 'ia', label: 'Information Architecture' },
   { id: 'screens', label: 'App Screens' },
 ];
 
@@ -632,7 +633,11 @@ function ScreensSlider({ screens }) {
             </div>
           ))}
         </div>
-        <ImagePlaceholder filename={screen.image} className="min-h-[560px] lg:min-h-[680px]" />
+        <ImagePlaceholder
+          filename={screen.image}
+          alt={`${screen.title} screen`}
+          className="w-full aspect-square"
+        />
       </div>
     </>
   );
@@ -691,29 +696,24 @@ const projectGoals = [
 const processColumns = [
   {
     heading: 'What Problem?',
-    body: 'Users struggle to manage crypto confidently because core actions (send/buy/swap) can feel risky and unclear. Navigation is often overloaded, fees and timing aren’t transparent, and verification steps can reduce trust—making users hesitate to complete transactions.',
+    body: 'Core actions (send/buy/swap) feel risky and unclear; cluttered navigation and hidden fees make users hesitate.',
   },
   {
     heading: 'Why?',
-    body: 'Most wallets are designed for experienced users and assume crypto knowledge. This leads to confusion around networks, fees, and transaction status, increases fear of irreversible mistakes, and creates friction in onboarding/KYC—resulting in drop-offs and lower confidence.',
+    body: 'Most wallets assume expert knowledge — causing confusion over networks, fees, and status, plus fear of costly mistakes.',
   },
   {
     heading: 'Who is the target?',
     highlight: true,
-    items: [
-      'New and intermediate crypto users who need guided, safe-by-default flows',
-      'Mobile-first investors checking balances and price moves daily',
-      'Users who often send / receive / buy / swap and want predictable steps',
-      'Security-conscious users who value clear verification and status transparency',
-    ],
+    body: 'New-to-intermediate users who want guided, safe-by-default flows; mobile-first investors; security-conscious users.',
   },
   {
     heading: 'What’s the Goal?',
-    body: 'Build a clear, trustworthy mobile wallet experience that simplifies navigation, reduces errors, and makes transactions easy to understand—from onboarding and verification to portfolio tracking, token details, and action flows.',
+    body: 'A clear, trustworthy mobile wallet that simplifies navigation, cuts errors, and makes every transaction easy to understand.',
   },
   {
     heading: 'How?',
-    body: 'Design a consistent flow system (input → review → confirm → status), add guided network selection, make fees/ETA visible before confirmation, provide clear transaction timelines, and improve portfolio/token screens with readable charts, quick actions, and supportive microcopy for verification and security.',
+    body: 'A consistent flow (input → review → confirm → status) with visible fees/ETA, guided network choice, and reassuring microcopy.',
   },
 ];
 
@@ -793,16 +793,169 @@ const empathyQuadrants = [
   },
 ];
 
-const userFlowTree = {
-  label: 'Onboarding',
+// Builds a linear chain of nodes, optionally ending in a branching tail.
+const chain = (labels, tail) =>
+  labels.reduceRight(
+    (children, label) => [{ label, children }],
+    tail,
+  )[0];
+
+const userFlows = [
+  {
+    number: '01',
+    title: 'Buy',
+    description:
+      'A single, uninterrupted path from browsing a token to a confirmed purchase — with a review step before any money moves.',
+    tree: chain(
+      [
+        'Home',
+        'My Wallet',
+        'Portfolio',
+        'Token List',
+        'Token Details',
+        'Buy',
+        'Select payment method',
+        'Enter amount',
+        'Review',
+        'Confirm & Pay',
+        'Transaction Details (success)',
+      ],
+      undefined,
+    ),
+  },
+  {
+    number: '02',
+    title: 'Trade',
+    description:
+      'Trading splits into placing an order and monitoring it. Both live on one screen, so users never lose track of what is still open.',
+    tree: chain(
+      ['Home', 'My Wallet', 'Portfolio', 'Token List', 'Token Details', 'Trade'],
+      [
+        chain(['Place order', 'Order type (Market / Limit)', 'Order form', 'Review', 'Confirm', 'Order placed (success)']),
+        {
+          label: 'Views',
+          children: [
+            { label: 'Open orders (active / pending, cancelable)' },
+            chain(['Order history (filled / cancelled)', 'Order', 'Review / details']),
+          ],
+        },
+      ],
+    ),
+  },
+];
+
+const iaTree = {
+  label: 'CryptoWallet',
   children: [
     {
-      label: 'Sign Up',
-      children: [{ label: 'Account Verification' }],
+      label: 'Onboarding',
+      children: [
+        { label: 'Sign Up', children: [{ label: 'Account Verification' }, { label: 'Home' }] },
+        { label: 'Login', children: [{ label: 'Home' }] },
+      ],
     },
-    { label: 'Login' },
+    {
+      label: 'Insight',
+      children: [
+        {
+          label: 'Markets Overview',
+          children: [
+            { label: 'Search' },
+            { label: 'Filters' },
+            { label: 'Coin List', children: [{ label: 'Coin Details' }] },
+            { label: 'Top Gainers' },
+            { label: 'Top Losers' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Analytics',
+      children: [
+        { label: 'Top Gainers / Losers', children: [{ label: 'Coin Details' }] },
+        { label: 'Alerts', children: [{ label: 'Create alert' }] },
+      ],
+    },
+    {
+      label: 'My Wallet',
+      children: [
+        {
+          label: 'Portfolio',
+          children: [
+            {
+              label: 'Token List',
+              children: [
+                {
+                  label: 'Token Details',
+                  children: [
+                    { label: 'Receive' },
+                    { label: 'Buy' },
+                    { label: 'Trade' },
+                    { label: 'Send' },
+                    { label: 'Swap' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Transaction',
+          children: [
+            { label: 'Transaction List', children: [{ label: 'Transaction Details' }] },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Account',
+      children: [
+        { label: 'Profile', children: [{ label: 'Personal Info' }] },
+        {
+          label: 'Security',
+          children: [
+            { label: 'Change password' },
+            { label: 'Change PIN' },
+            { label: 'Biometrics' },
+            { label: '2FA' },
+          ],
+        },
+        { label: 'Verification status', children: [{ label: 'KYC status' }] },
+        { label: 'Payment methods', children: [{ label: 'Cards' }] },
+        { label: 'Privacy' },
+        { label: 'Support' },
+        {
+          label: 'App settings',
+          children: [{ label: 'Language' }, { label: 'Currency' }, { label: 'Theme' }],
+        },
+        { label: 'About' },
+        { label: 'Logout' },
+      ],
+    },
   ],
 };
+
+function FlowCard({ flow }) {
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="flex items-baseline gap-4">
+        <span className="font-mono-bold text-base text-[#288fd6]">{flow.number}</span>
+        <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight">
+          {flow.title}
+        </h3>
+      </div>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+        {flow.description}
+      </p>
+      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+        <IATree data={flow.tree} expandAll depthGap={36} />
+        <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+          Scroll sideways to follow the full path. Click a node to collapse or expand its branch.
+        </p>
+      </div>
+    </div>
+  );
+}
 
 function Donut({ segments, hollowSize = '32%' }) {
   const options = {
@@ -863,18 +1016,6 @@ function DonutStat({ pct, color }) {
         {pct}%
       </text>
     </svg>
-  );
-}
-
-function ImagePlaceholder({ filename, className = '' }) {
-  return (
-    <div
-      className={`bg-[#f7f7f7] rounded-[24px] flex items-center justify-center overflow-hidden ${className}`}
-    >
-      <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
-        Add {filename} to src/assets
-      </p>
-    </div>
   );
 }
 
@@ -991,7 +1132,7 @@ export default function CryptoWalletCase() {
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-8 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
@@ -1021,13 +1162,13 @@ export default function CryptoWalletCase() {
           {project.summary.map((card) => (
             <div
               key={card.label}
-              className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4"
+              className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-7 flex flex-col gap-3">
+          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
             <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
             <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
             <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
@@ -1058,9 +1199,7 @@ export default function CryptoWalletCase() {
             {projectGoals.map((goal, i) => (
               <div
                 key={goal.title}
-                className={`rounded-[24px] p-7 flex flex-col gap-4 ${
-                  i === 1 ? 'bg-[#288fd6] text-white' : 'bg-[#f7f7f7]'
-                }`}
+                className={`rounded-[24px] p-5 flex flex-col gap-4 ${ i === 1 ? 'bg-[#288fd6] text-white' : 'bg-[#f7f7f7]' }`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -1096,9 +1235,7 @@ export default function CryptoWalletCase() {
             {processColumns.map((col) => (
               <div
                 key={col.heading}
-                className={`rounded-[24px] p-6 flex flex-col gap-4 ${
-                  col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]'
-                }`}
+                className={`rounded-[24px] p-5 flex flex-col gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
               >
                 <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
                 <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
@@ -1133,7 +1270,7 @@ export default function CryptoWalletCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col items-center gap-5">
+              <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-base text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
@@ -1146,8 +1283,8 @@ export default function CryptoWalletCase() {
         {/* The poll */}
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-base text-black">The Poll</p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk font-bold text-base text-black">
                 Most Important Crypto Wallet Feature
               </p>
@@ -1181,7 +1318,7 @@ export default function CryptoWalletCase() {
                 ))}
               </ul>
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-8 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk font-bold text-base text-black">
                 Interest in All-in-One Crypto Wallet
               </p>
@@ -1262,7 +1399,7 @@ export default function CryptoWalletCase() {
                   ],
                 },
               ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-3">
+                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
                   <p className="font-grotesk font-bold text-base text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
@@ -1288,7 +1425,7 @@ export default function CryptoWalletCase() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {empathyQuadrants.map((q) => (
-              <div key={q.label} className="bg-[#f7f7f7] rounded-[24px] p-7 flex flex-col gap-4">
+              <div key={q.label} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
                 <span
                   className="self-start px-5 py-2 rounded-full font-grotesk font-bold text-lg text-white"
                   style={{ backgroundColor: q.color }}
@@ -1316,10 +1453,38 @@ export default function CryptoWalletCase() {
           <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
             Intuitive Navigation, Streamlined Flow
           </h2>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-8 sm:p-10 overflow-x-auto">
-            <IATree data={userFlowTree} defaultOpenIndex={0} />
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+            The two highest-stakes journeys follow the same spine &mdash;{' '}
+            <strong>input &rarr; review &rarr; confirm &rarr; status</strong> &mdash; so the moment
+            before money moves always looks and behaves the same, no matter which action the user
+            started.
+          </p>
+          <div className="flex flex-col gap-12">
+            {userFlows.map((flow) => (
+              <FlowCard key={flow.title} flow={flow} />
+            ))}
+          </div>
+        </section>
+
+        {/* Information architecture */}
+        <section id="ia" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Information Architecture</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            One Tab Bar, Four Clear Jobs
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+            Both entry points &mdash; <strong>Sign Up and Login</strong> &mdash; land on the same
+            Home, so the app has a single mental starting point. From there the tab bar splits into
+            four jobs: <strong>Insight</strong> to see the market,{' '}
+            <strong>Analytics</strong> to track movement and set alerts,{' '}
+            <strong>My Wallet</strong> to hold and move assets, and <strong>Account</strong> for
+            identity, security, and settings. Transactional depth stays inside My Wallet; everything
+            administrative stays inside Account.
+          </p>
+          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+            <IATree data={iaTree} defaultOpenIndex={3} />
             <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
-              Click a node to expand or collapse its branch. Full flow structure coming soon.
+              Click a node to expand or collapse its branch.
             </p>
           </div>
         </section>
