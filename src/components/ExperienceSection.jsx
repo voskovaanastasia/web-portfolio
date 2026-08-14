@@ -3,14 +3,39 @@ import logoBart from '../assets/logo-bart.png';
 import iconFintech from '../assets/exp-fintech.svg';
 import iconFreelance from '../assets/exp-freelance.svg';
 
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+// [year, month] with month 1-12; `end: null` means the role is ongoing.
+const formatMonth = ([year, month]) => `${MONTHS[month - 1]} ${year}`;
+
+const formatDateRange = (start, end) =>
+  `${formatMonth(start)} — ${end ? formatMonth(end) : 'PRESENT'}`;
+
+// Inclusive month count, the way LinkedIn reports tenure: a role running
+// MAY 2021 — APR 2023 reads as "2 yrs", not "1 yr 11 mos".
+const formatDuration = ([startYear, startMonth], end, now) => {
+  const [endYear, endMonth] = end ?? [now.getFullYear(), now.getMonth() + 1];
+  const total = Math.max(1, (endYear - startYear) * 12 + (endMonth - startMonth) + 1);
+  const years = Math.floor(total / 12);
+  const months = total % 12;
+
+  const parts = [];
+  if (years > 0) parts.push(`${years} ${years === 1 ? 'yr' : 'yrs'}`);
+  if (months > 0) parts.push(`${months} ${months === 1 ? 'mo' : 'mos'}`);
+  return parts.join(' ');
+};
+
 export default function ExperienceSection() {
+  const now = new Date();
+
   const experiences = [
     {
-      dateRange: 'JAN 2025 — PRESENT',
+      start: [2025, 1],
+      end: null,
       current: true,
       title: 'Product Designer',
       logo: logoFarsafe,
-      meta: ['Farsafe', '1 yr 7 mos', '🇺🇸 Texas, USA', 'Part-time', 'Remote'],
+      meta: ['Farsafe', '🇺🇸 Texas, USA', 'Part-time', 'Remote'],
       subtitle: ['0-to-1 SaaS Uptime-Monitoring Platform', 'Pricing-Led Conversion'],
       challenge:
         "Uptime monitoring is a crowded, commoditized category where buyers assume every tool is the same and pricing is deliberately opaque. As the sole designer on a 0-to-1 product, the challenge wasn't polishing screens - it was defining what the product should stand for before a single flow existed.",
@@ -31,10 +56,11 @@ export default function ExperienceSection() {
       ],
     },
     {
-      dateRange: 'MAY 2023 — DEC 2025',
+      start: [2023, 5],
+      end: [2025, 12],
       title: 'UX/UI Designer',
       logo: logoBart,
-      meta: ['bART Solutions', '2 yrs 8 mos', '🇺🇦 Lviv, Ukraine', 'Full-time', 'Remote'],
+      meta: ['bART Solutions', '🇺🇦 Lviv, Ukraine', 'Full-time', 'Remote'],
       subtitle: null,
       challenge:
         'Agencies live or die on consistency across many products at once, but scope creep and thin documentation quietly erode it. The challenge was to keep quality identical across every screen and state while the product mix kept growing — and to catch UX problems before anyone had to flag them.',
@@ -58,10 +84,11 @@ export default function ExperienceSection() {
       ],
     },
     {
-      dateRange: 'MAY 2021 — APR 2023',
+      start: [2021, 5],
+      end: [2023, 4],
       title: 'UI Designer',
       logo: iconFintech,
-      meta: ['Fintech Mobile App (under NDA)', '2 yrs', '🇺🇦 Kyiv, Ukraine', 'Full-time', 'Hybrid'],
+      meta: ['Fintech Mobile App (under NDA)', '🇺🇦 Kyiv, Ukraine', 'Full-time', 'Hybrid'],
       subtitle: ['Production Fintech App', 'iOS HIG & Material Design'],
       challenge:
         'In fintech, users decide whether to trust an app in the first few seconds, and one inconsistent screen reads as a red flag. Inside a 6-designer team, the challenge was to keep brand and interaction consistent as the product scaled — without slowing the roadmap.',
@@ -83,10 +110,11 @@ export default function ExperienceSection() {
       ],
     },
     {
-      dateRange: 'MAR 2020 — APR 2021',
+      start: [2020, 3],
+      end: [2021, 4],
       title: 'Graphic Designer',
       logo: iconFreelance,
-      meta: ['Freelancer', '1 yr 2 mos', '🇺🇦 Lviv, Ukraine', 'Self-employed'],
+      meta: ['Freelancer', '🇺🇦 Lviv, Ukraine', 'Self-employed'],
       subtitle: ['20+ Clients Across Industries', 'Brand Identity & Marketing Collateral'],
       challenge:
         'For a small business, a brand is the first — and often only — signal of credibility it has. With no in-house team to lean on, the challenge was translating vague goals from 20+ clients into visual systems clear enough to sell on their own.',
@@ -137,7 +165,7 @@ export default function ExperienceSection() {
 
               <div className="pb-12 flex-1">
                 <p className="font-mono-bold text-sm text-[#4a4a48] tracking-wide mb-5">
-                  {exp.dateRange}
+                  {formatDateRange(exp.start, exp.end)}
                 </p>
 
                 <div className="flex items-start gap-4 mb-5">
@@ -153,7 +181,11 @@ export default function ExperienceSection() {
                       {exp.title}
                     </h3>
                     <p className="font-grotesk text-sm text-[#6b6a67]">
-                      {exp.meta.map((part, i) => (
+                      {[
+                        exp.meta[0],
+                        formatDuration(exp.start, exp.end, now),
+                        ...exp.meta.slice(1),
+                      ].map((part, i) => (
                         <span key={i}>
                           {i > 0 && <span className="mx-1.5 text-[#c4c4c4]">•</span>}
                           {part}

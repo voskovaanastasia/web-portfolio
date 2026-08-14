@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -20,8 +20,49 @@ const caseSections = [
   { id: 'empathy', label: 'Empathy Map' },
   { id: 'flow', label: 'User Flow' },
   { id: 'ia', label: 'Information Architecture' },
+  { id: 'style', label: 'Colors & Typography' },
   { id: 'screens', label: 'App Screens' },
 ];
+
+const styleGuide = {
+  heading: 'A restrained palette that keeps money legible',
+  body: (
+    <>
+      Lochmara anchors the brand and every primary action, with Pattens Blue carrying the calm
+      surfaces a portfolio screen needs when the market is not calm.{' '}
+      <strong>Basic Green and Sporty Red are reserved exclusively for gains and losses</strong>{' '}
+      &mdash; never for decoration &mdash; so a price movement is readable before a single number
+      is parsed, and Metal Grey holds secondary data back from competing with it. Nunito Sans keeps
+      long balances, tickers, and wallet addresses legible at small sizes.
+    </>
+  ),
+  colors: [
+    { name: 'Lochmara', hex: '#0083BF', text: '#ffffff' },
+    { name: 'Pattens Blue', hex: '#E0F3FE', text: '#22292f' },
+    { name: 'White', hex: '#FFFFFF', text: '#22292f' },
+    { name: 'Basic Green', hex: '#2AA716', text: '#ffffff' },
+    { name: 'Sporty Red', hex: '#FF1436', text: '#ffffff' },
+    { name: 'Metal Grey', hex: '#737077', text: '#ffffff' },
+  ],
+  // Tint ramp built from Lochmara — surfaces, states, and chart fills.
+  scale: [
+    '#123B54',
+    '#1B5478',
+    '#236E9C',
+    '#2E87BC',
+    '#4C9ECC',
+    '#74B6DA',
+    '#9BCDE7',
+    '#C2E1F2',
+    '#E4F2FB',
+  ],
+  typeface: {
+    name: 'Nunito Sans',
+    hex: '#3D8DC4',
+    weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
+  },
+  image: 'case-cryptowallet-style.png',
+};
 
 const appScreens = [
   {
@@ -1487,6 +1528,12 @@ export default function CryptoWalletCase() {
               Click a node to expand or collapse its branch.
             </p>
           </div>
+        </section>
+
+        {/* Colors & typography */}
+        <section id="style" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Colors & Typography</p>
+          <StyleGuide {...styleGuide} />
         </section>
 
         {/* App screens */}

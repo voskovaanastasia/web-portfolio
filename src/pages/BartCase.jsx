@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import caseBart from '../assets/case-bart.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -20,8 +20,49 @@ const caseSections = [
   { id: 'ia', label: 'Information Architecture' },
   { id: 'menu', label: 'Navigation & Menu' },
   { id: 'pages', label: 'Website Pages' },
+  { id: 'style', label: 'Colors & Typography' },
   { id: 'analytics', label: 'Post-Launch Analytics' },
 ];
+
+const styleGuide = {
+  heading: 'One confident yellow against near-black',
+  body: (
+    <>
+      Selective Yellow carries the brand and every call to action, and it is the only warm colour
+      on the page &mdash; against near-black and generous white space it marks exactly where to
+      look next without a second competing accent.{' '}
+      <strong>Congo Pink and Malachite are reserved for form validation</strong>, errors and
+      confirmations, so feedback never borrows the brand colour and stays unambiguous. Poppins
+      gives headings the geometric weight an agency site needs while staying readable in body copy.
+    </>
+  ),
+  colors: [
+    { name: 'Selective Yellow', hex: '#FABA02', text: '#22292f' },
+    { name: 'White', hex: '#FFFFFF', text: '#22292f' },
+    { name: 'Congo Pink', hex: '#FF7F7E', text: '#ffffff' },
+    { name: 'Malachite', hex: '#20BF55', text: '#22292f' },
+    { name: 'Nero', hex: '#212121', text: '#ffffff' },
+  ],
+  // Tint ramp built from Selective Yellow — surfaces, states, and chart fills.
+  scale: [
+    '#4A3B0A',
+    '#6B5610',
+    '#8D7217',
+    '#C09B1C',
+    '#FABA02',
+    '#FBC93A',
+    '#FBDA7E',
+    '#FCE9B4',
+    '#FDF5E0',
+  ],
+  typeface: {
+    name: 'Poppins',
+    hex: '#FABA02',
+    text: '#22292f',
+    weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
+  },
+  image: 'case-bart-style.png',
+};
 
 const websitePages = [
   {
@@ -1135,6 +1176,12 @@ export default function BartCase() {
           <ImagePlaceholder filename="bart case content (in progress)" className="w-full min-h-[320px]" />
           <p className="font-grotesk text-base text-[#6b6a67]">More sections coming soon.</p>
         </div>
+
+        {/* Colors & typography */}
+        <section id="style" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Colors & Typography</p>
+          <StyleGuide {...styleGuide} />
+        </section>
 
         {/* Post-launch analytics */}
         <section id="analytics" className="pb-24 flex flex-col gap-6">

@@ -1,4 +1,4 @@
-import CaseLayout from '../components/CaseLayout';
+import CaseLayout, { StyleGuide } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -155,6 +155,56 @@ const screens = [
   },
 ];
 
+const styleGuide = {
+  heading: 'A dark base that lets one blue mean “act”',
+  body: (
+    <>
+      Dark Jungle Green and Gunmetal form the base, layering panels and cards by depth rather than
+      by borders, so a dense payments interface stays quiet.{' '}
+      <strong>French Sky Blue is the only saturated colour in the system</strong> and it is spent
+      exclusively on the primary action &mdash; against near-black, the button a user must press is
+      never in question. Jordy Blue carries the softer supporting states, and Inter keeps amounts,
+      card numbers, and transaction rows legible at small sizes.
+    </>
+  ),
+  colors: [
+    { name: 'Dark Jungle Green', hex: '#1C1C25', text: '#ffffff' },
+    { name: 'Gunmetal', hex: '#2D2D39', text: '#ffffff' },
+    { name: 'White', hex: '#FFFFFF', text: '#22292f' },
+    { name: 'Jordy Blue', hex: '#9DA9FF', text: '#22292f' },
+    { name: 'French Sky Blue', hex: '#2D47FF', text: '#ffffff' },
+  ],
+  // Neutral ramp from the dark base up to near-white — panel depth and table rows.
+  scale: [
+    '#2B2A45',
+    '#3A3A5C',
+    '#4B4B72',
+    '#5F5F8C',
+    '#7C7CA3',
+    '#9C9CBB',
+    '#BEBECF',
+    '#DCDCE2',
+    '#EDEDED',
+  ],
+  typeface: {
+    name: 'Inter',
+    hex: '#252529',
+    weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
+  },
+  image: 'case-onlinepayments-style.png',
+};
+
+const sections = [
+  { id: 'style', label: 'Colors & Typography', content: <StyleGuide {...styleGuide} /> },
+];
+
 export default function OnlinePaymentsCase() {
-  return <CaseLayout project={project} screens={screens} screensLabel="Product Screens" />;
+  return (
+    <CaseLayout
+      project={project}
+      sections={sections}
+      screens={screens}
+      screensLabel="Product Screens"
+    />
+  );
 }

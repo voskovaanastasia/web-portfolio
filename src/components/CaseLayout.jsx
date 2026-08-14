@@ -122,6 +122,59 @@ export function ProcessColumns({ columns }) {
   );
 }
 
+// Style tile for a case: named palette, tint ramp, typeface card, and a mood image.
+// `colors` entries are { name, hex, text }; `text` is the label colour laid over the swatch.
+export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
+  return (
+    <>
+      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        {heading}
+      </h2>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&_strong]:font-bold [&_strong]:text-black">
+        {body}
+      </p>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-4">
+        <div className="flex flex-col rounded-[24px] overflow-hidden">
+          {colors.map((color) => (
+            <div
+              key={color.name}
+              className="flex flex-col gap-1 px-6 py-5 flex-1"
+              style={{ backgroundColor: color.hex, color: color.text }}
+            >
+              <p className="font-grotesk font-bold text-base">{color.name}</p>
+              <p className="font-grotesk text-base opacity-80">{color.hex}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col rounded-[24px] overflow-hidden flex-1 min-h-[280px]">
+            {scale.map((hex) => (
+              <div key={hex} className="flex-1" style={{ backgroundColor: hex }} />
+            ))}
+          </div>
+          <div
+            className="rounded-[24px] p-6 flex flex-col justify-between min-h-[280px]"
+            style={{ backgroundColor: typeface.hex, color: typeface.text ?? '#ffffff' }}
+          >
+            <div className="flex flex-col items-end gap-1">
+              {typeface.weights.map((weight) => (
+                <p key={weight} className="font-grotesk text-base opacity-85">
+                  {weight}
+                </p>
+              ))}
+            </div>
+            <p className="font-grotesk font-bold text-3xl text-right">{typeface.name}</p>
+          </div>
+        </div>
+
+        <ImagePlaceholder filename={image} className="min-h-[420px] lg:min-h-full" />
+      </div>
+    </>
+  );
+}
+
 export function ScreensSlider({ screens }) {
   const [index, setIndex] = useState(0);
   const screen = screens[index];

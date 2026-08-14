@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from '../components/SectionMenu';
-import { ProblemSolution } from '../components/CaseLayout';
+import { ProblemSolution, StyleGuide } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -10,8 +10,47 @@ const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
   { id: 'intro', label: 'Project Intro' },
   { id: 'problem', label: 'Problem & Solution' },
+  { id: 'style', label: 'Colors & Typography' },
   { id: 'screens', label: 'App Screens' },
 ];
+
+const styleGuide = {
+  heading: 'A calm, clinical palette built on one trusted blue',
+  body: (
+    <>
+      Ukraine Blue carries the brand and every primary action, softened by Seashell Blue for
+      surfaces so a compliance-heavy product still reads as calm.{' '}
+      <strong>Vermillion and Orange are reserved strictly for alerts and pending states</strong>{' '}
+      &mdash; scarce by design, so urgency is never ambiguous. Roboto keeps dense medical and
+      billing information legible at small sizes across web and mobile.
+    </>
+  ),
+  colors: [
+    { name: 'Ukraine Blue', hex: '#2455C4', text: '#ffffff' },
+    { name: 'Seashell Blue', hex: '#DDE4F8', text: '#22292f' },
+    { name: 'White', hex: '#F8F9FA', text: '#22292f' },
+    { name: 'Vermillion', hex: '#CD4847', text: '#ffffff' },
+    { name: 'Orange', hex: '#EC8F38', text: '#22292f' },
+  ],
+  // Tint ramp built from Ukraine Blue — surfaces, states, and chart fills.
+  scale: [
+    '#12275C',
+    '#1C3A7F',
+    '#2450B5',
+    '#2E62CD',
+    '#4A79D6',
+    '#7396E0',
+    '#93AFE8',
+    '#B5C8F0',
+    '#D7E1F8',
+  ],
+  typeface: {
+    name: 'Roboto',
+    hex: '#2455C4',
+    weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
+  },
+  image: 'case-onlinedoctor-style.png',
+};
 
 const appScreens = [
   {
@@ -467,6 +506,12 @@ export default function OnlineDoctorCase() {
 
         {/* Problem & solution */}
         <ProblemSolution problem={project.problem} solution={project.solution} />
+
+        {/* Colors & typography */}
+        <section id="style" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Colors & Typography</p>
+          <StyleGuide {...styleGuide} />
+        </section>
 
         {/* App screens */}
         <section id="screens" className="pb-24 flex flex-col gap-6">

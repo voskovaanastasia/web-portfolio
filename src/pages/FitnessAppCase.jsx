@@ -1,4 +1,4 @@
-import CaseLayout, { ImagePlaceholder } from '../components/CaseLayout';
+import CaseLayout, { ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -570,10 +570,53 @@ const screens = [
   },
 ];
 
+const styleGuide = {
+  heading: 'A high-energy palette anchored by one dependable blue',
+  body: (
+    <>
+      Ultramarine Blue drives every primary action and the active state of a running set, with
+      French Sky Blue and Lavender carrying secondary surfaces so a screen mid-workout never
+      competes for attention. The accents are strictly semantic &mdash;{' '}
+      <strong>Mughal Green for completed sets, Maximum Yellow Red for rest, Carmine Pink for
+      missed or stopped</strong> &mdash; so a glance from arm&rsquo;s length is enough to read
+      progress. Inter keeps timers and rep counts legible at a distance and mid-movement.
+    </>
+  ),
+  colors: [
+    { name: 'Ultramarine Blue', hex: '#387CFF', text: '#ffffff' },
+    { name: 'French Sky Blue', hex: '#74A3FF', text: '#22292f' },
+    { name: 'Lavender (Web)', hex: '#E2ECFF', text: '#22292f' },
+    { name: 'White', hex: '#FFFFFF', text: '#22292f' },
+    { name: 'Carmine Pink', hex: '#EC474B', text: '#ffffff' },
+    { name: 'Mughal Green', hex: '#375F31', text: '#ffffff' },
+    { name: 'Maximum Yellow Red', hex: '#F5B840', text: '#22292f' },
+    { name: 'Medium Slate Blue', hex: '#777FED', text: '#ffffff' },
+  ],
+  // Tint ramp built from Ultramarine Blue — surfaces, states, and progress fills.
+  scale: [
+    '#0F2050',
+    '#17307A',
+    '#1F44A8',
+    '#2A5CD8',
+    '#387CFF',
+    '#6597FF',
+    '#8FB3FF',
+    '#B5CEFF',
+    '#D9E6FF',
+  ],
+  typeface: {
+    name: 'Inter',
+    hex: '#387CFF',
+    weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
+  },
+  image: 'case-fitness-style.png',
+};
+
 const sections = [
   { id: 'process', label: '4W+H Process', content: <FourWPlusH /> },
   { id: 'persona', label: 'User Persona', content: <UserPersona /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
+  { id: 'style', label: 'Colors & Typography', content: <StyleGuide {...styleGuide} /> },
 ];
 
 export default function FitnessAppCase() {

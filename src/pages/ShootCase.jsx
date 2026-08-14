@@ -1,4 +1,5 @@
-import CaseLayout, { ProcessColumns } from '../components/CaseLayout';
+import CaseLayout, { ProcessColumns, StyleGuide } from '../components/CaseLayout';
+import IATree from '../components/IATree';
 import toolFigma from '../assets/icon-figma.svg';
 import toolPhotoshop from '../assets/toolkit/photoshop.svg';
 import toolLightroom from '../assets/toolkit/lightroom.svg';
@@ -170,11 +171,109 @@ const processColumns = [
   },
 ];
 
+const iaTree = {
+  label: 'SHOOT',
+  children: [
+    { label: 'Home' },
+    {
+      label: 'Portfolio',
+      children: [{ label: 'Photo' }, { label: 'Video' }, { label: 'Reviews' }],
+    },
+    {
+      label: 'Rent',
+      children: [
+        { label: 'Cameras & Lenses' },
+        { label: 'Studios' },
+        { label: 'Accessories' },
+      ],
+    },
+    {
+      label: 'Book',
+      children: [{ label: 'Photographers' }],
+    },
+    { label: 'About Us' },
+    {
+      label: 'Profile',
+      children: [{ label: 'Order History' }, { label: 'Settings' }],
+    },
+  ],
+};
+
+const InformationArchitecture = () => (
+  <>
+    <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      Six Top-Level Jobs, No Overlap
+    </h2>
+    <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+      The architecture is designed to deliver a{' '}
+      <strong>seamless, user-centric experience</strong> with intuitive navigation and functional
+      depth. Each page is built to meet a key user need &mdash;{' '}
+      <strong>showcasing creative portfolios, booking studios, and managing equipment rentals</strong>{' '}
+      effortlessly &mdash; so browsing work, hiring a photographer, and renting gear never compete
+      for the same entry point.
+    </p>
+    <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+      <IATree data={iaTree} defaultOpenIndex={1} />
+      <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+        Click a node to expand or collapse its branch.
+      </p>
+    </div>
+  </>
+);
+
+const styleGuide = {
+  heading: 'A dark frame that lets the photography speak',
+  body: (
+    <>
+      Dark Jungle Green and Gunmetal do almost all the work here, and that is the point &mdash;{' '}
+      <strong>in a product built around browsing photographers&rsquo; portfolios, the interface
+      has to recede so the work itself carries the colour</strong>. Neutral surfaces keep every
+      shot looking the way its author graded it, rather than tinted by the page around it. Sweet
+      Blue is the single accent, spent on booking and primary actions so it stays unmistakable
+      against the dark. Poppins gives listings and pricing a clean, confident read.
+    </>
+  ),
+  colors: [
+    { name: 'Dark Jungle Green', hex: '#1A1C1E', text: '#ffffff' },
+    { name: 'Gunmetal', hex: '#535557', text: '#ffffff' },
+    { name: 'White', hex: '#FFFFFF', text: '#22292f' },
+    { name: 'Sweet Blue', hex: '#74ABFF', text: '#22292f' },
+  ],
+  // Neutral ramp from the dark base up to near-white — panel depth and gallery chrome.
+  scale: [
+    '#2B2A45',
+    '#3A3A5C',
+    '#4B4B72',
+    '#5F5F8C',
+    '#7C7CA3',
+    '#9C9CBB',
+    '#BEBECF',
+    '#DCDCE2',
+    '#EDEDED',
+  ],
+  typeface: {
+    name: 'Poppins',
+    hex: '#242628',
+    weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
+  },
+  image: 'case-shoot-style.png',
+};
+
 const caseSections = [
   {
     id: 'process',
     label: '4W+H Process',
     content: <ProcessColumns columns={processColumns} />,
+  },
+  {
+    id: 'ia',
+    label: 'Information Architecture',
+    content: <InformationArchitecture />,
+  },
+  {
+    id: 'style',
+    label: 'Colors & Typography',
+    content: <StyleGuide {...styleGuide} />,
   },
 ];
 
