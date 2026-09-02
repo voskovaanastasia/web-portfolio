@@ -9,10 +9,10 @@ const project = {
   heroImage: 'case-payments.png',
   tags: ['Fintech', 'Web', 'Checkout', 'Compliance'],
   meta: [
-    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Role', value: 'Product Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
-    { label: 'Timeline', value: 'TBD' },
+    { label: 'Timeline', value: '8 months' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
@@ -30,7 +30,7 @@ const project = {
     },
     {
       label: 'KEY DECISION',
-      text: 'To be written — the core design decision of the case.',
+      text: 'Every transaction state is named out loud — initiated, processing, completed, failed — so no one has to guess whether the money moved.',
     },
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
@@ -64,90 +64,209 @@ const project = {
 
 const screens = [
   {
-    title: 'Checkout',
-    image: 'case-payments-checkout.png',
+    title: 'Main Screen',
+    image: 'case-payments-main.png',
     blocks: [
       {
-        heading: 'Single-screen payment',
+        heading: 'Balance first, always',
         text: (
           <>
-            Amount, method, and confirmation live on one screen.{' '}
-            <strong>Fewer steps means fewer places to abandon.</strong>
+            The card sits at the top with a large, legible amount and a masked PAN, so{' '}
+            <strong>the first thing the user sees is the number they came for</strong> &mdash; with
+            tap-to-reveal held back until privacy allows it.
           </>
         ),
       },
       {
-        heading: 'Method the buyer already trusts',
+        heading: 'One account switcher, many currencies',
         text: (
           <>
-            <strong>Wallets appear first when the device supports them,</strong> with card entry as
-            the reliable fallback rather than the default.
+            &ldquo;Main Account&rdquo; collapses cards and currencies into a single control, which{' '}
+            <strong>keeps a multi-currency wallet unified instead of fragmented</strong> across
+            separate tabs.
           </>
         ),
       },
       {
-        heading: 'Inline validation, no surprises',
+        heading: 'Money moves in one tap',
         text: (
           <>
-            Card errors surface at field level before submit, so{' '}
-            <strong>the buyer never loses a full form to a typo.</strong>
+            Transfer to a card, IBAN payment, and QR payment sit directly under the balance, so{' '}
+            <strong>the three things people actually open the app to do are never more than one tap
+            away.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'A feed you can read at a glance',
+        text: (
+          <>
+            Merchant logos, dates, and amounts are grouped by day, which{' '}
+            <strong>lets the user recognise spend by shape rather than by reading</strong> &mdash;
+            and makes an unfamiliar charge stand out immediately.
           </>
         ),
       },
     ],
   },
   {
-    title: 'Authentication & Declines',
-    image: 'case-payments-3ds.png',
+    title: 'Cards',
+    image: 'case-payments-cards.png',
     blocks: [
       {
-        heading: '3-D Secure without the dead end',
+        heading: 'The wallet as a shelf',
         text: (
           <>
-            The step-up is framed as part of the flow, with{' '}
-            <strong>a persistent way back to the order</strong> if the bank window fails.
+            Cards are laid out horizontally with the active one forward, so{' '}
+            <strong>switching cards is a gesture, not a menu,</strong> and the next card is always
+            visible at the edge as an invitation to swipe.
           </>
         ),
       },
       {
-        heading: 'Declines that say what to do next',
+        heading: 'Issuing a card is a primary action',
         text: (
           <>
-            <strong>Each decline maps to a concrete recovery action</strong> &mdash; try another
-            card, contact the bank, retry later &mdash; instead of a generic failure message.
+            <strong>&ldquo;New Card&rdquo; is promoted to the header rather than buried in
+            settings,</strong> because a virtual card issued in seconds is the feature that makes
+            the wallet worth keeping.
+          </>
+        ),
+      },
+      {
+        heading: 'Maintenance without a submenu',
+        text: (
+          <>
+            Details, Apple Wallet, PIN, block, conversion, and statement are one flat list, so{' '}
+            <strong>every card action is a single tap</strong> &mdash; including the urgent one,
+            blocking a card, which no one should have to search for.
           </>
         ),
       },
     ],
   },
   {
-    title: 'Merchant Console',
-    image: 'case-payments-console.png',
+    title: 'Send Money — Recipient',
+    image: 'case-payments-send-recipient.png',
     blocks: [
       {
-        heading: 'Transactions with reasons attached',
+        heading: 'One field, three identifiers',
         text: (
           <>
-            <strong>Every row carries its status and decline reason,</strong> so support answers a
-            customer without opening a second tool.
+            Email, card number, or phone all go into the same input, so{' '}
+            <strong>the user never has to decide which kind of transfer they are making</strong>{' '}
+            before they can start typing.
           </>
         ),
       },
       {
-        heading: 'Refunds and disputes in one place',
+        heading: 'Repeat transfers as a row of faces',
         text: (
           <>
-            Partial refunds, evidence upload, and deadlines are grouped by case, which{' '}
-            <strong>keeps time-limited actions from being missed.</strong>
+            Recent recipients sit above the full list with avatars and first names, because{' '}
+            <strong>most payments go to someone you have already paid</strong> &mdash; and those
+            should cost one tap, not a search.
           </>
         ),
       },
       {
-        heading: 'Payouts reconciled',
+        heading: 'A contact list, not a form',
         text: (
           <>
-            <strong>Each payout expands into the transactions and fees behind it,</strong> making
-            accounting reconciliation a read rather than an export.
+            Alphabetised names with avatars or fallback initials pre-fill the field on tap, which{' '}
+            <strong>removes the most common source of a failed transfer: a mistyped
+            number.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'QR as a shortcut, not a detour',
+        text: (
+          <>
+            The scanner stays in the header throughout, so{' '}
+            <strong>a code can populate the recipient at any point in the flow</strong> rather than
+            only at the start.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Send Money — Amount',
+    image: 'case-payments-send-amount.png',
+    blocks: [
+      {
+        heading: 'Destination and funds in one capsule',
+        text: (
+          <>
+            The recipient and the available balance are pinned together above the input, so{' '}
+            <strong>the user confirms who and how much before a single digit is entered</strong>{' '}
+            &mdash; the two facts a wrong transfer usually gets wrong.
+          </>
+        ),
+      },
+      {
+        heading: 'The amount owns the screen',
+        text: (
+          <>
+            A large centred field with a live currency mask means{' '}
+            <strong>the figure stays readable at arm&rsquo;s length,</strong> formatted as it is
+            typed rather than validated after the fact.
+          </>
+        ),
+      },
+      {
+        heading: 'A keypad built for money',
+        text: (
+          <>
+            The custom pad drops every key that cannot appear in an amount, so{' '}
+            <strong>invalid input is impossible rather than merely rejected,</strong> and the keys
+            sit in comfortable reach for one hand.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Transaction Details',
+    image: 'case-payments-transaction.png',
+    blocks: [
+      {
+        heading: 'Merchant before amount',
+        text: (
+          <>
+            A category badge and the merchant name open the screen, because{' '}
+            <strong>the user is here to answer &ldquo;what was this?&rdquo;</strong> before anything
+            else.
+          </>
+        ),
+      },
+      {
+        heading: 'One number, unmistakable',
+        text: (
+          <>
+            The total is the largest and highest-contrast element on the screen, so{' '}
+            <strong>a charge can be verified in a glance</strong> without reading a table.
+          </>
+        ),
+      },
+      {
+        heading: 'Enough context to settle a doubt',
+        text: (
+          <>
+            Time, date, full address, and the last four of the card sit directly beneath, which{' '}
+            <strong>lets the user recognise a transaction they had forgotten</strong> instead of
+            reporting it as fraud.
+          </>
+        ),
+      },
+      {
+        heading: 'A single next step',
+        text: (
+          <>
+            The action list holds one entry &mdash; transaction report &mdash; so{' '}
+            <strong>the route to a dispute is obvious and uncrowded</strong> at the moment the user
+            needs it.
           </>
         ),
       },

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from './SectionMenu';
 
@@ -21,9 +21,36 @@ const dropSizing = (cls) =>
     .replace(/\s+/g, ' ')
     .trim();
 
+// Measures the empty slot so the placeholder can name the image size that
+// fits it best: the slot's own CSS pixels, doubled for retina.
+function useSlotSize(enabled) {
+  const ref = useRef(null);
+  const [size, setSize] = useState(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!enabled || !el || typeof ResizeObserver === 'undefined') return undefined;
+
+    const measure = () => {
+      const { width, height } = el.getBoundingClientRect();
+      if (width > 0 && height > 0) {
+        setSize({ w: Math.round(width), h: Math.round(height) });
+      }
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  return [ref, size];
+}
+
 export function ImagePlaceholder({ filename, className = '', alt = '' }) {
   // Cases may pass an already-imported URL instead of a bare filename.
   const src = assetByName[filename] || (filename?.includes('/') ? filename : undefined);
+  const [slotRef, slotSize] = useSlotSize(!src);
 
   if (src) {
     return (
@@ -38,11 +65,18 @@ export function ImagePlaceholder({ filename, className = '', alt = '' }) {
 
   return (
     <div
-      className={`bg-[#f7f7f7] rounded-[24px] flex items-center justify-center overflow-hidden ${className}`}
+      ref={slotRef}
+      className={`bg-[#f7f7f7] rounded-[24px] flex flex-col gap-2 items-center justify-center overflow-hidden ${className}`}
     >
       <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
         Add {filename} to src/assets
       </p>
+      {slotSize && (
+        <p className="font-grotesk text-xs text-[#c9c8c5] px-8 text-center tabular-nums">
+          Best size {slotSize.w * 2} × {slotSize.h * 2} px
+          <span className="block">(slot is {slotSize.w} × {slotSize.h} @2x)</span>
+        </p>
+      )}
     </div>
   );
 }

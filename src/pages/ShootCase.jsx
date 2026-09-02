@@ -10,10 +10,10 @@ const project = {
   heroImage: 'case-shoot.png',
   tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
   meta: [
-    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Role', value: 'Product Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
-    { label: 'Timeline', value: 'TBD' },
+    { label: 'Timeline', value: '4 months' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
@@ -31,7 +31,7 @@ const project = {
     },
     {
       label: 'KEY DECISION',
-      text: 'To be written — the core creative decision of the case.',
+      text: 'Talent, space, and gear share one booking flow and one calendar, instead of three services that never talk to each other.',
     },
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
@@ -64,162 +64,405 @@ const project = {
   },
 };
 
-const screens = [
-  {
-    title: 'Concept & Moodboard',
-    image: 'case-shoot-moodboard.png',
-    blocks: [
-      {
-        heading: 'Direction before logistics',
-        text: (
-          <>
-            <strong>Palette, light, and framing were agreed on a moodboard first,</strong> so
-            production decisions had a reference to answer to rather than taste debates on set.
-          </>
-        ),
-      },
-      {
-        heading: 'Shot list tied to placements',
-        text: (
-          <>
-            <strong>Every planned frame mapped to a real slot</strong> &mdash; site hero, card
-            crop, vertical social &mdash; which set aspect ratios and safe areas before the shoot
-            day.
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    title: 'On Set',
-    image: 'case-shoot-onset.png',
-    blocks: [
-      {
-        heading: 'Consistent light setup',
-        text: (
-          <>
-            <strong>One lighting scheme across the day</strong> keeps the library coherent when
-            images later sit side by side in a grid.
-          </>
-        ),
-      },
-      {
-        heading: 'Shooting for the crop',
-        text: (
-          <>
-            Frames were composed with{' '}
-            <strong>headroom for overlaid type and multiple crop ratios,</strong> so one capture
-            serves several placements.
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    title: 'Selection & Retouch',
-    image: 'case-shoot-retouch.png',
-    blocks: [
-      {
-        heading: 'Selects against the shot list',
-        text: (
-          <>
-            <strong>Selection was scored against the original placements,</strong> not favourites
-            &mdash; the set ships complete rather than pretty but partial.
-          </>
-        ),
-      },
-      {
-        heading: 'One grade across the set',
-        text: (
-          <>
-            <strong>A single colour grade applied to every image</strong> makes the library read as
-            one brand voice wherever the photos appear.
-          </>
-        ),
-      },
-    ],
-  },
-];
-
 const processColumns = [
   {
-    heading: 'What Problem?',
-    body: 'Finding, comparing, and booking photographers, studios, and gear is scattered across too many places.',
-  },
-  {
-    heading: 'Why?',
-    body: 'Users juggle portfolio sites, rental apps, chats, and calendars — wasting time and losing trust.',
-  },
-  {
-    heading: 'Who is the target?',
-    highlight: true,
+    heading: 'Who',
     items: [
-      'Brides & grooms',
-      'Event planners',
-      'Influencers',
-      'Small businesses',
-      'Families needing on-demand photo/video',
+      'Renters booking a shoot: photographers, small brands, agencies',
+      'Photographers listing a portfolio and availability',
+      'Studio and gear owners renting out space and equipment',
     ],
   },
   {
-    heading: 'What’s the Goal?',
-    body: 'One platform to discover portfolios, rent gear, book studios, and reserve — all in a single flow.',
+    heading: 'What',
+    items: [
+      'One marketplace for talent, studios, and camera gear',
+      'A single booking flow and calendar across all three',
+      'Transparent, all-in pricing shown before checkout',
+    ],
   },
   {
-    heading: 'How?',
-    body: 'An intuitive web app: smart search & filters, verified reviews, transparent pricing, calendar booking, secure payments.',
+    heading: 'When',
+    items: [
+      '4-month build, from research to a booking-ready flow',
+      'Discovery and IA first, then catalog, portfolio, and checkout',
+      'Style guide and screens finalised last, against real flows',
+    ],
+  },
+  {
+    heading: 'Where',
+    highlight: true,
+    items: [
+      'Web and mobile, same flow across breakpoints',
+      'Landing and catalog optimised for fast browsing',
+      'Checkout and payment built mobile-first for on-location use',
+    ],
+  },
+  {
+    heading: 'How',
+    body: 'By treating talent, space, and gear as one bookable inventory instead of three separate products — verified profiles and up-front pricing build trust, while one calendar and one checkout carry the booking from discovery to payment without switching tools.',
   },
 ];
 
 const iaTree = {
   label: 'SHOOT',
   children: [
-    { label: 'Home' },
+    {
+      label: 'Auth',
+      children: [
+        { label: 'Sign In' },
+        {
+          label: 'Sign Up',
+          children: [
+            { label: 'Social (Google / Facebook)' },
+            { label: 'Email & Password' },
+          ],
+        },
+        { label: 'Forgot / Reset Password' },
+      ],
+    },
+    {
+      label: 'Home',
+      children: [
+        { label: 'Rental Categories' },
+        { label: 'Top Camera Rentals' },
+        { label: 'Top Studio Rentals' },
+        { label: 'Workshop / Events' },
+        { label: 'Client Reviews' },
+      ],
+    },
     {
       label: 'Portfolio',
-      children: [{ label: 'Photo' }, { label: 'Video' }, { label: 'Reviews' }],
+      children: [
+        { label: 'Photo Gallery' },
+        { label: 'Video Gallery' },
+        { label: 'Project Detail' },
+        { label: 'Ratings & Reviews' },
+      ],
     },
     {
       label: 'Rent',
       children: [
-        { label: 'Cameras & Lenses' },
-        { label: 'Studios' },
-        { label: 'Accessories' },
+        {
+          label: 'Catalog',
+          children: [
+            { label: 'Brand Filter' },
+            { label: 'Type Filter' },
+            { label: 'Date Range' },
+          ],
+        },
+        { label: 'Gear Detail' },
+        { label: 'Studio Detail' },
       ],
     },
     {
       label: 'Book',
-      children: [{ label: 'Photographers' }],
+      children: [
+        { label: 'Photographer Selection' },
+        { label: 'Schedule (Date & Hours)' },
+        { label: 'Checkout' },
+        { label: 'Payment Confirmation' },
+      ],
     },
-    { label: 'About Us' },
     {
-      label: 'Profile',
-      children: [{ label: 'Order History' }, { label: 'Settings' }],
+      label: 'Account',
+      children: [
+        { label: 'Profile' },
+        { label: 'My Bookings' },
+        { label: 'Saved Gear' },
+        { label: 'Notifications' },
+      ],
     },
   ],
 };
 
-const InformationArchitecture = () => (
-  <>
-    <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
-      Six Top-Level Jobs, No Overlap
-    </h2>
-    <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
-      The architecture is designed to deliver a{' '}
-      <strong>seamless, user-centric experience</strong> with intuitive navigation and functional
-      depth. Each page is built to meet a key user need &mdash;{' '}
-      <strong>showcasing creative portfolios, booking studios, and managing equipment rentals</strong>{' '}
-      effortlessly &mdash; so browsing work, hiring a photographer, and renting gear never compete
-      for the same entry point.
-    </p>
-    <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
-      <IATree data={iaTree} defaultOpenIndex={1} />
-      <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
-        Click a node to expand or collapse its branch.
+function InformationArchitecture() {
+  return (
+    <>
+      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        Six Sections, One Booking Path
+      </h2>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+        <strong>Portfolio and Rent sit side by side</strong> rather than nested under one another,
+        because a visitor arrives wanting to judge either talent or gear first &mdash; not to dig
+        for it. Both funnel into the same <strong>Book</strong> branch, so whether the trigger was
+        a photographer&rsquo;s work or a camera&rsquo;s spec sheet, checkout is identical from that
+        point on. <strong>Account</strong> stays flat and administrative, kept out of the browsing
+        tree entirely.
       </p>
-    </div>
-  </>
-);
+      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+        <IATree data={iaTree} defaultOpenIndex={3} />
+        <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+          Click a node to expand or collapse its branch.
+        </p>
+      </div>
+    </>
+  );
+}
+
+const screens = [
+  {
+    title: 'Sign In',
+    image: 'case-shoot-signin.png',
+    blocks: [
+      {
+        heading: 'A door, not a gate',
+        text: (
+          <>
+            Email and password sit beside social sign-in with equal weight, so{' '}
+            <strong>the returning renter reaches saved gear and bookings without choosing a
+            method first.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'Recovery in the same breath',
+        text: (
+          <>
+            &ldquo;Remember me&rdquo; and &ldquo;Forgot password?&rdquo; share a line under the
+            fields, because{' '}
+            <strong>the two things a stuck user needs belong where they got stuck</strong> &mdash;
+            not on a later screen.
+          </>
+        ),
+      },
+      {
+        heading: 'The craft is the background',
+        text: (
+          <>
+            A full-bleed image of someone working a rig fills half the frame, so{' '}
+            <strong>the login already says what the platform is for</strong> before a single field
+            is filled.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Sign Up',
+    image: 'case-shoot-signup.png',
+    blocks: [
+      {
+        heading: 'Fastest path on top',
+        text: (
+          <>
+            <strong>Google and Facebook lead, with the manual form below an &ldquo;or&rdquo;
+            divider</strong> &mdash; new renters can be browsing in two taps, and the long form
+            stays available for those who prefer it.
+          </>
+        ),
+      },
+      {
+        heading: 'Four fields, no more',
+        text: (
+          <>
+            Name, email, password, confirm. <strong>Nothing is asked at signup that the booking
+            flow can ask later,</strong> when the user has a reason to answer it.
+          </>
+        ),
+      },
+      {
+        heading: 'Rules stated, then checked',
+        text: (
+          <>
+            The character minimum is shown under the field and the match is confirmed with an
+            inline tick, so{' '}
+            <strong>the user knows the password is valid before pressing anything.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'Consent tied to the action',
+        text: (
+          <>
+            Terms and privacy sit directly above the button that accepts them, which{' '}
+            <strong>puts the agreement where the decision actually happens.</strong>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Landing',
+    image: 'case-shoot-landing.png',
+    blocks: [
+      {
+        heading: 'Three doors, one decision',
+        text: (
+          <>
+            Cameras &amp; Lenses, Studios, Accessories are the first thing under the hero, because{' '}
+            <strong>renters arrive knowing which of the three they need</strong> and the page should
+            not make them scroll to say so.
+          </>
+        ),
+      },
+      {
+        heading: 'Top rentals as a shortcut',
+        text: (
+          <>
+            Curated camera and studio picks carry specs and day rates on the card, so{' '}
+            <strong>the most common bookings can be compared without entering the catalog.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'A reason to return between shoots',
+        text: (
+          <>
+            Workshops and events give the platform a pulse beyond transactions &mdash;{' '}
+            <strong>a countdown and a notify field turn a browse into a reason to come back.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'Proof where the doubt is',
+        text: (
+          <>
+            Testimonials and real client work sit near the end of the scroll, answering{' '}
+            <strong>the first-time renter&rsquo;s question of whether the gear and the people can be
+            trusted.</strong>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Catalog',
+    image: 'case-shoot-catalog.png',
+    blocks: [
+      {
+        heading: 'Filters shaped like the decision',
+        text: (
+          <>
+            Brand, then type, then dates &mdash;{' '}
+            <strong>the order renters actually think in,</strong> starting from the ecosystem their
+            lenses already fit.
+          </>
+        ),
+      },
+      {
+        heading: 'Brands as marks, not text',
+        text: (
+          <>
+            Canon, Sony, Fujifilm, Leica, Nikon, Lumix, GoPro appear as logo chips, so{' '}
+            <strong>the row is scanned rather than read</strong> by an audience that recognises
+            these marks instantly.
+          </>
+        ),
+      },
+      {
+        heading: 'Dates change the answer',
+        text: (
+          <>
+            Start and end dates drive live availability and price, which{' '}
+            <strong>keeps the catalog from showing gear that cannot be booked</strong> for the
+            user&rsquo;s shoot.
+          </>
+        ),
+      },
+      {
+        heading: 'Enough spec to decide',
+        text: (
+          <>
+            Each card carries sensor, resolution, video, and stabilisation beside the day rate, so{' '}
+            <strong>a body can be ruled in or out from the grid</strong> without opening it.
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Portfolio',
+    image: 'case-shoot-portfolio.png',
+    blocks: [
+      {
+        heading: 'Two entrances: photo and video',
+        text: (
+          <>
+            The split lets the visitor{' '}
+            <strong>self-select by the medium they are hiring for</strong> rather than scroll a
+            mixed feed hoping to find their genre.
+          </>
+        ),
+      },
+      {
+        heading: 'A masonry grid built for scanning',
+        text: (
+          <>
+            Varied crops keep the eye moving and{' '}
+            <strong>let each image keep its native ratio</strong> instead of being squared into a
+            uniform tile.
+          </>
+        ),
+      },
+      {
+        heading: 'Credit on every frame',
+        text: (
+          <>
+            The photographer&rsquo;s name and avatar sit under each work, so{' '}
+            <strong>browsing the portfolio doubles as browsing the talent</strong> a client can
+            book.
+          </>
+        ),
+      },
+      {
+        heading: 'Ratings and a way back',
+        text: (
+          <>
+            An aggregate score with a review form builds trust, while a breadcrumb{' '}
+            <strong>returns the user to the grid at the point they left it.</strong>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'Checkout',
+    image: 'case-shoot-checkout.png',
+    blocks: [
+      {
+        heading: 'The booking as a receipt',
+        text: (
+          <>
+            Studio and photographer are listed as separate line items with date, hours, and price,
+            so{' '}
+            <strong>the user verifies a multi-part booking the way they would read an
+            invoice.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'Editable to the last moment',
+        text: (
+          <>
+            Edit and remove stay on every row up to payment, which{' '}
+            <strong>removes the fear that reaching checkout locks the plan in.</strong>
+          </>
+        ),
+      },
+      {
+        heading: 'Address and total together',
+        text: (
+          <>
+            Where to turn up and what it costs share the final band, because{' '}
+            <strong>those are the two facts a renter checks before paying</strong> &mdash; and the
+            two they screenshot afterwards.
+          </>
+        ),
+      },
+      {
+        heading: 'One way forward, one way back',
+        text: (
+          <>
+            Pay is the only filled button on the page and &ldquo;Continue booking&rdquo; is the only
+            alternative, so{' '}
+            <strong>the last screen has no ambiguity about what happens next.</strong>
+          </>
+        ),
+      },
+    ],
+  },
+];
 
 const styleGuide = {
   heading: 'A dark frame that lets the photography speak',

@@ -1065,10 +1065,10 @@ const project = {
   title: 'CryptoWallet: Mobile Crypto App',
   tags: ['Fintech', 'Mobile', 'iOS & Android', 'Crypto'],
   meta: [
-    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Role', value: 'Product Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
-    { label: 'Timeline', value: 'TBD' },
+    { label: 'Timeline', value: '9 months' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
@@ -1086,7 +1086,7 @@ const project = {
     },
     {
       label: 'KEY DECISION',
-      text: 'To be written — the core design decision of the case.',
+      text: 'One transaction spine — input → review → confirm → status — reused for every action that moves money.',
     },
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },

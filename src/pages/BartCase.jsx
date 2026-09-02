@@ -706,19 +706,19 @@ const iaTree = {
 const project = {
   heroImage: caseBart,
   name: 'bART Solutions',
-  title: 'Enterprise Web Products & Design System',
+  title: 'Corporate Website Redesign & Design System',
   tags: [
-    'Enterprise',
-    'Web & Mobile',
-    'Design Tokens',
+    'Corporate Website',
+    'Web',
+    'UX Research',
+    'Information Architecture',
     'Design System',
-    'Data-Dense Dashboards',
   ],
   meta: [
-    { label: 'Participation', value: 'UX/UI Designer' },
-    { label: 'Service', value: 'UX/UI Design  Design System' },
-    { label: 'My Team', value: 'Product Managers, Developers, Designers' },
-    { label: 'Timeline', value: '2 years 8 months' },
+    { label: 'Role', value: 'UX/UI Designer' },
+    { label: 'Service', value: 'UX/UI Design · Design System' },
+    { label: 'My Team', value: 'Product Managers, Developers, Marketing Department, Copywriter' },
+    { label: 'Timeline', value: '10 months, 2024' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
@@ -728,48 +728,40 @@ const project = {
   summary: [
     {
       label: 'PROBLEM',
-      text: 'Information-heavy interfaces made task completion slow and error-prone.',
+      text: 'A brand-strong site that people could not navigate — services were unreadable at a glance and the structure had outgrown itself.',
     },
     {
       label: 'MY ROLE',
-      text: 'UX/UI Designer — design system, dashboards, and mobile products.',
+      text: 'UX/UI Designer - research, information architecture, UI, and the design system.',
     },
     {
       label: 'KEY DECISION',
-      text: 'Progressive disclosure of complexity backed by extensive usability testing.',
+      text: 'Split navigation along two mental models: visitors hunting for a service, and visitors validating industry fit first.',
     },
   ],
-  outcome: { value: '−40%', label: 'Bounce Rate' },
+  outcome: { value: '68% → 41%', label: 'Bounce Rate' },
   intro: {
     heading: 'A corporate site rebuilt around how people actually use it.',
     body: (
       <>
-        <strong>Website Redesign</strong> is a full corporate website rebuild delivered in line
-        with the visual direction the client defined through references. The project ran the{' '}
-        <strong>complete design cycle</strong> &mdash; from UX research and user surveys to a{' '}
-        <strong>design system</strong> and final UI &mdash; and included rethinking navigation
-        logic, restructuring the <strong>information architecture</strong> for usability and
-        scalability, and optimizing key interaction flows.
-        <br />
-        <br />
-        The result is a cohesive, modern interface that feels{' '}
-        <strong>intuitive to users</strong> and true to the client&rsquo;s brand.{' '}
-        <strong>The core challenge was</strong> translating a strong brand vision into a structure
-        that&rsquo;s easy to navigate and ready to grow.
+        <strong>bART Solutions</strong> is a software development agency with a strong brand and a website that had stopped keeping up with it. I rebuilt it end to end — UX research and user surveys, a reworked information architecture, a scalable design system, and the final UI.
+        The visual direction came from the client's references. Everything underneath it — navigation logic, content structure, key interaction flows — was rebuilt around what research showed people actually came to do.
+        The core challenge:{' '}
+        <strong>translating a strong brand vision into a structure that is easy to navigate and ready to grow.</strong> 
       </>
     ),
   },
   problem: {
     image: 'case-bart-problem.png',
-    heading: 'A brand-strong site that’s hard to move through',
-    body: 'The existing site looked the part but didn’t work for the people using it: navigation didn’t match how visitors actually searched, the information architecture had grown tangled and hard to scale, and key flows carried unnecessary friction. Research and surveys surfaced where users got lost and what they came to do — and the current structure wasn’t set up to support either.',
-    why: 'A corporate site is often the first impression and the main path to action. When visitors can’t find what they need or trust what they see, they leave — and the brand’s strongest asset ends up working against it.',
+    heading: 'A brand-strong site that is hard to move through',
+    body: 'The site looked the part but did not work for the people using it. Navigation did not match how visitors actually searched. The information architecture had grown tangled and could no longer absorb new services without breaking. Key flows carried friction that had no reason to be there. Surveys and interviews surfaced two things at once: where users got lost, and what they had come to do. The existing structure supported neither.',
+    why: 'A corporate site is usually the first impression and the main path to action. When visitors cannot find what they need or cannot read the company`s credibility off the page, they leave — and the brands strongest asset quietly works against it.',
   },
   solution: {
     image: 'case-bart-solution.png',
     heading: 'Research-led structure inside a cohesive brand',
-    body: 'I ran a full cycle grounded in research: surveys and UX findings shaped a reworked navigation and a cleaner, more scalable information architecture, and key interaction flows were streamlined around real user goals. A design system built to the client’s visual direction kept every page consistent and easy to extend, producing a modern, intuitive interface aligned with the brand.',
-    scenario: 'My aim was that a visitor could land anywhere on the site, immediately understand where they were and where to go next, and complete what they came to do — while the client gained a system they could grow without breaking.',
+    body: 'I ran a full cycle grounded in research. Surveys and interview findings shaped a reworked navigation and a cleaner, scalable information architecture, and key interaction flows were streamlined around real user goals. A design system built to the client`s visual direction kept every page consistent and easy to extend.',
+    scenario: 'The target: a visitor lands anywhere on the site, immediately understands where they are and where to go next, and completes what they came to do — while the client gains a system they can grow without breaking.',
   },
 };
 
@@ -935,12 +927,11 @@ export default function BartCase() {
         <section id="research" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-base text-black">User Research</p>
           <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight max-w-3xl leading-snug [&>strong]:font-medium">
-            To validate the redesign direction, research was conducted through surveys and
-            interviews with both existing clients and external users.
+            To validate the redesign direction
           </h2>
           <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
-            Insights revealed recurring friction around{' '}
-            <strong>site clarity, navigation logic, and brand perception.</strong>
+            To validate the redesign direction, research ran in two rounds: a screening survey distributed to existing clients and external B2B users, followed by six semi-structured interviews.
+            Findings clustered around three recurring frictions — site clarity, navigation logic, and brand perception.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
@@ -956,11 +947,11 @@ export default function BartCase() {
 
         {/* The poll */}
         <section id="poll" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">The Poll</p>
+          <p className="font-mono-bold text-base text-black">What Users Told Us</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
               <p className="font-grotesk font-bold text-base text-black">
-                What Frustrates You Most on Corporate Websites?
+                What frustrates you most on corporate websites?
               </p>
               <div className="flex justify-center">
                 <Donut
@@ -989,9 +980,9 @@ export default function BartCase() {
                 ))}
               </ul>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed">
-                Together, these three account for{' '}
-                <strong className="font-bold text-black">over 80% of user frustration</strong> —
-                all of which became direct design targets in this project.
+                Multiple answers were allowed, so totals exceed 100%. Three answers dominated every other option —{' '}
+                <strong className="font-bold text-black">structure, findability, and navigation</strong> —
+                and each became a named design target in this project.
               </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
@@ -1020,9 +1011,7 @@ export default function BartCase() {
                 ))}
               </ul>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
-                <strong className="font-bold text-black">68% said yes</strong> — confirming that a
-                well-executed redesign has a measurable impact on user return intent and overall
-                brand perception.
+                <strong className="font-bold text-black">68% said yes</strong> Stated intent is not behaviour — but it told us the audience was not lost, only stalled by the current site.
               </p>
             </div>
           </div>

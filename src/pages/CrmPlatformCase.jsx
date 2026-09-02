@@ -10,10 +10,10 @@ const project = {
   heroImage: 'case-crm.png',
   tags: ['B2B SaaS', 'Web App', 'Data-Dense UI', 'Marketing Automation'],
   meta: [
-    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Role', value: 'Product Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
-    { label: 'Timeline', value: 'TBD' },
+    { label: 'Timeline', value: '7 months' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
@@ -31,7 +31,7 @@ const project = {
     },
     {
       label: 'KEY DECISION',
-      text: 'To be written — the core design decision of the case.',
+      text: 'Search, quick create, notifications, and calendar were lifted out of the module tree entirely — one action away from any screen.',
     },
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },

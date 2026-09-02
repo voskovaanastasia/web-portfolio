@@ -10,10 +10,10 @@ const project = {
   heroImage: 'case-fitness.png',
   tags: ['Mobile', 'iOS & Android', 'Health & Wellness', 'AI Personalization'],
   meta: [
-    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Role', value: 'Product Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
-    { label: 'Timeline', value: 'TBD' },
+    { label: 'Timeline', value: '6 months' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },

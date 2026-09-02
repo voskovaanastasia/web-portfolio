@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from '../components/SectionMenu';
-import { ProblemSolution, StyleGuide } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -325,27 +325,15 @@ function ScreensSlider({ screens }) {
   );
 }
 
-function ImagePlaceholder({ filename, className = '' }) {
-  return (
-    <div
-      className={`bg-[#f7f7f7] rounded-[24px] flex items-center justify-center overflow-hidden ${className}`}
-    >
-      <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
-        Add {filename} to src/assets
-      </p>
-    </div>
-  );
-}
-
 const project = {
   name: 'Online Doctor',
   title: 'Online Doctor: Telemedicine Platform',
   tags: ['Healthcare', 'Web & Mobile', 'Telemedicine'],
   meta: [
-    { label: 'Participation', value: 'Product Designer' },
+    { label: 'Role', value: 'Product Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
-    { label: 'Timeline', value: 'TBD' },
+    { label: 'Timeline', value: '11 months' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
@@ -363,7 +351,7 @@ const project = {
     },
     {
       label: 'KEY DECISION',
-      text: 'To be written — the core design decision of the case.',
+      text: 'Appointment and billing state is visible at every step, so a patient never has to ask what happens next.',
     },
   ],
   outcome: { value: 'TBD', label: 'Key outcome metric' },
