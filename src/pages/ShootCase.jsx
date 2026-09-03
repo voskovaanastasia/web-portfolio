@@ -3,6 +3,7 @@ import IATree from '../components/IATree';
 import toolFigma from '../assets/icon-figma.svg';
 import toolPhotoshop from '../assets/toolkit/photoshop.svg';
 import toolLightroom from '../assets/toolkit/lightroom.svg';
+import toolIllustrator from '../assets/toolkit/illustrator.svg';
 
 const project = {
   name: 'SHOOT',
@@ -19,6 +20,7 @@ const project = {
     { icon: toolFigma, label: 'Figma' },
     { icon: toolPhotoshop, label: 'Photoshop' },
     { icon: toolLightroom, label: 'Lightroom' },
+    { icon: toolIllustrator, label: 'Illustrator' },
   ],
   summary: [
     {

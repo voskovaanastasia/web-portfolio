@@ -26,11 +26,11 @@ const styleGuide = {
     </>
   ),
   colors: [
-    { name: 'Ukraine Blue', hex: '#2455C4', text: '#ffffff' },
-    { name: 'Seashell Blue', hex: '#DDE4F8', text: '#22292f' },
-    { name: 'White', hex: '#F8F9FA', text: '#22292f' },
-    { name: 'Vermillion', hex: '#CD4847', text: '#ffffff' },
-    { name: 'Orange', hex: '#EC8F38', text: '#22292f' },
+    { name: 'Ukraine Blue', hex: '#014CC4', text: '#ffffff' },
+    { name: 'Seashell Blue', hex: '#DFEAFF', text: '#22292f' },
+    { name: 'White', hex: '#FFFFFF', text: '#22292f' },
+    { name: 'Vermillion', hex: '#EA4335', text: '#ffffff' },
+    { name: 'Orange', hex: '#FEA502', text: '#22292f' },
   ],
   // Tint ramp built from Ukraine Blue — surfaces, states, and chart fills.
   scale: [

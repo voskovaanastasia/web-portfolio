@@ -156,6 +156,40 @@ export function ProcessColumns({ columns }) {
   );
 }
 
+// Click-to-copy swatch: click copies the hex to the clipboard and shows a
+// brief "Copied!" confirmation in place of the label under the cursor.
+function ColorSwatch({ hex, name, text, className = '', labelClassName = '' }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(hex);
+    } catch {
+      // Clipboard API unavailable (e.g. insecure context) — fail silently.
+      return;
+    }
+    setCopied(true);
+    window.clearTimeout(handleCopy._t);
+    handleCopy._t = window.setTimeout(() => setCopied(false), 1200);
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      title={`Click to copy ${hex}`}
+      aria-label={`Copy color code ${hex}`}
+      className={`group relative cursor-pointer text-left transition-[filter] hover:brightness-95 active:brightness-90 ${className}`}
+      style={{ backgroundColor: hex, color: text }}
+    >
+      {name && <p className="font-grotesk font-bold text-base">{name}</p>}
+      <p className={`font-grotesk text-base opacity-80 ${labelClassName}`}>
+        {copied ? 'Copied!' : hex}
+      </p>
+    </button>
+  );
+}
+
 // Style tile for a case: named palette, tint ramp, typeface card, and a mood image.
 // `colors` entries are { name, hex, text }; `text` is the label colour laid over the swatch.
 export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
@@ -171,14 +205,13 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-4">
         <div className="flex flex-col rounded-[24px] overflow-hidden">
           {colors.map((color) => (
-            <div
+            <ColorSwatch
               key={color.name}
+              hex={color.hex}
+              name={color.name}
+              text={color.text}
               className="flex flex-col gap-1 px-6 py-5 flex-1"
-              style={{ backgroundColor: color.hex, color: color.text }}
-            >
-              <p className="font-grotesk font-bold text-base">{color.name}</p>
-              <p className="font-grotesk text-base opacity-80">{color.hex}</p>
-            </div>
+            />
           ))}
         </div>
 

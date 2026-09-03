@@ -8,6 +8,8 @@ import caseBart from '../assets/case-bart.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
+import toolGoogleAnalytics from '../assets/toolkit/googleanalytics.svg';
+import toolHotjar from '../assets/toolkit/hotjar.svg';
 
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
@@ -20,6 +22,7 @@ const caseSections = [
   { id: 'ia', label: 'Information Architecture' },
   { id: 'menu', label: 'Navigation & Menu' },
   { id: 'pages', label: 'Website Pages' },
+  { id: 'grid', label: 'Grid System' },
   { id: 'style', label: 'Colors & Typography' },
   { id: 'analytics', label: 'Post-Launch Analytics' },
 ];
@@ -41,7 +44,7 @@ const styleGuide = {
     { name: 'White', hex: '#FFFFFF', text: '#22292f' },
     { name: 'Congo Pink', hex: '#FF7F7E', text: '#ffffff' },
     { name: 'Malachite', hex: '#20BF55', text: '#22292f' },
-    { name: 'Nero', hex: '#212121', text: '#ffffff' },
+    { name: 'Eerie Black', hex: '#1A1A1A', text: '#ffffff' },
   ],
   // Tint ramp built from Selective Yellow — surfaces, states, and chart fills.
   scale: [
@@ -724,6 +727,8 @@ const project = {
     { icon: toolFigma, label: 'Figma' },
     { icon: toolJira, label: 'Jira' },
     { icon: toolNotion, label: 'Notion' },
+    { icon: toolGoogleAnalytics, label: 'Google Analytics' },
+    { icon: toolHotjar, label: 'Hotjar' },
   ],
   summary: [
     {
@@ -1160,11 +1165,47 @@ export default function BartCase() {
           <PagesSlider pages={websitePages} />
         </section>
 
-        {/* Case content in progress */}
-        <div className="pb-20 flex flex-col items-center gap-4">
-          <ImagePlaceholder filename="bart case content (in progress)" className="w-full min-h-[320px]" />
-          <p className="font-grotesk text-base text-[#6b6a67]">More sections coming soon.</p>
-        </div>
+        {/* Grid system */}
+        <section id="grid" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Grid System</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            One responsive grid
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+            Grid System was built to ensure a <strong>scalable and consistent layout</strong>{' '}
+            across the entire platform. A responsive grid was implemented to improve alignment,
+            visual hierarchy, and content structure. The system adapts across devices with
+            tailored grid settings for each breakpoint:
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+              <p className="font-grotesk font-bold text-base text-black">Desktop</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+                3 columns, margin 80, gap 20 — ensuring a spacious and well-structured layout for
+                wide screens.
+              </p>
+              <ImagePlaceholder
+                filename="case-bart-grid-desktop.png"
+                className="min-h-[380px] mt-auto bg-white"
+              />
+            </div>
+            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+              <p className="font-grotesk font-bold text-base text-black">Mobile</p>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+                2 columns, margin 24, gap 10 — optimized for compact screens with clear spacing
+                and better readability.
+              </p>
+              <ImagePlaceholder
+                filename="case-bart-grid-mobile.png"
+                className="min-h-[480px] mt-auto bg-white"
+              />
+            </div>
+          </div>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+            This approach helped standardize layouts, simplify design decisions, and maintain
+            visual consistency across all pages and screen sizes.
+          </p>
+        </section>
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">

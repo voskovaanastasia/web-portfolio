@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import caseFarsafe from '../assets/case-farsafe.png';
 import caseBart from '../assets/case-bart.png';
-// Placeholder cover until case-cryptowallet.png and case-onlinedoctor.png are added.
-import caseFintech from '../assets/case-fintech.png';
+import caseCryptowallet from '../assets/case-cryptowallet.png';
+import caseOnlineDoctor from '../assets/case-onlinedoctor.png';
+import caseCrm from '../assets/case-crm.png';
+import caseFitness from '../assets/case-fitness.png';
+import casePayments from '../assets/case-payments.png';
+import caseShoot from '../assets/case-shoot.png';
 import DotsBackground from '../components/DotsBackground';
 
 const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
@@ -30,7 +34,7 @@ const projects = [
   {
     id: 'cryptowallet',
     category: 'Product & UX/UI Design',
-    image: caseFintech,
+    image: caseCryptowallet,
     tags: ['Fintech', 'Mobile', 'iOS & Android', 'Crypto'],
     title: 'CryptoWallet: Mobile Crypto App',
     description:
@@ -39,7 +43,7 @@ const projects = [
   {
     id: 'online-doctor',
     category: 'Product & UX/UI Design',
-    image: caseFintech,
+    image: caseOnlineDoctor,
     tags: ['Healthcare', 'Web & Mobile', 'Telemedicine'],
     title: 'Online Doctor: Telemedicine Platform',
     description:
@@ -48,7 +52,7 @@ const projects = [
   {
     id: 'crm-platform',
     category: 'Product & UX/UI Design',
-    image: caseFintech,
+    image: caseCrm,
     tags: ['B2B SaaS', 'Web App', 'Data-Dense UI', 'Marketing Automation'],
     title: 'Enterprise CRM: B2B Operations Platform',
     description:
@@ -57,7 +61,7 @@ const projects = [
   {
     id: 'fitness-app',
     category: 'Product & UX/UI Design',
-    image: caseFintech,
+    image: caseFitness,
     tags: ['Mobile', 'iOS & Android', 'Health & Wellness', 'AI Personalization'],
     title: 'Fitness App: Mobile Health & Training Platform',
     description:
@@ -66,7 +70,7 @@ const projects = [
   {
     id: 'online-payments',
     category: 'Product & UX/UI Design',
-    image: caseFintech,
+    image: casePayments,
     tags: ['Fintech', 'Web', 'Checkout', 'Compliance'],
     title: 'Online Payment Solutions: Checkout & Merchant Console',
     description:
@@ -75,7 +79,7 @@ const projects = [
   {
     id: 'shoot',
     category: 'Product & UX/UI Design',
-    image: caseFintech,
+    image: caseShoot,
     tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
     title: 'SHOOT: Creative-Services Marketplace',
     description:
