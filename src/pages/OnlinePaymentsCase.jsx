@@ -327,60 +327,73 @@ const styleGuide = {
 };
 
 const iaTree = {
-  label: 'User (@handle)',
+  label: 'App',
   children: [
     {
-      label: 'Account (Main, Savings, per-currency)',
+      label: 'Home',
       children: [
-        { label: 'Top Up (Card · Bank · Request)' },
+        { label: 'User Info' },
+        { label: 'Account Switcher' },
+        { label: 'QR Code (Show My Code / Scan)' },
         {
-          label: 'Card (Physical | Virtual)',
+          label: 'Quick Actions',
           children: [
-            { label: 'PIN' },
-            { label: 'Limits' },
-            { label: 'Block' },
-            { label: 'Wallet' },
-            {
-              label: 'Transaction',
-              children: [
-                { label: 'Belongs to Merchant' },
-                { label: 'Belongs to Contact' },
-                { label: 'Transaction Report (Dispute Case)' },
-                { label: 'Statement (Period Roll-Up)' },
-              ],
-            },
+            { label: 'Transfer to a Card — Send Money flow (modal, 3 steps)' },
+            { label: 'IBAN Payment — Send Money flow (modal, 3 steps)' },
+            { label: 'QR-Code Payment — Send Money flow (modal, 3 steps)' },
           ],
         },
+        { label: 'Transactions (Preview → History)' },
+        { label: 'Account Settings' },
+      ],
+    },
+    {
+      label: 'Cards',
+      children: [
+        { label: 'My Cards (Carousel)' },
+        { label: 'New Card' },
         {
-          label: 'Contact',
+          label: 'Selected Card',
           children: [
-            { label: 'Identified by Email' },
-            { label: 'Identified by Phone' },
-            { label: 'Identified by Card Number' },
-            { label: 'Identified by @handle' },
-            { label: 'Identified by QR' },
+            { label: 'Card Details' },
+            { label: 'Add to Wallet' },
+            { label: 'PIN Code' },
+            { label: 'Block Card' },
+            { label: 'Currency Conversion Settings' },
+            { label: 'Card Statement' },
           ],
         },
       ],
     },
     {
-      label: 'Send Money',
+      label: 'History',
       children: [
-        { label: 'Debits Account / Card' },
-        {
-          label: 'Credits Payee',
-          children: [
-            { label: 'Contact' },
-            { label: 'Card' },
-            { label: 'IBAN' },
-            { label: 'QR Payee' },
-          ],
-        },
+        { label: 'Search' },
+        { label: 'List of Transactions → Transaction Details' },
       ],
     },
     {
-      label: 'Analytics',
-      children: [{ label: 'Reads Every Transaction' }],
+      label: 'Top Up',
+      children: [
+        { label: 'Source (Another Card · Bank Transfer · Apple Pay · Request from Contact)' },
+        { label: 'Amount → Confirm → Result' },
+        { label: 'Saved Sources' },
+        { label: 'Auto Top-Up Rules' },
+      ],
+    },
+    {
+      label: 'Settings',
+      children: [
+        { label: 'Profile (Personal Data · KYC · Bank Details)' },
+        { label: 'Security (Auth · Devices · Confirmation · Privacy · Alerts)' },
+        { label: 'Accounts (My Accounts · Currencies)' },
+        { label: 'Payments (Limits · Recurring · Saved Recipients · Auto Top-Up)' },
+        { label: 'Notifications' },
+        { label: 'Preferences' },
+        { label: 'Support (Help · Chat · Disputes)' },
+        { label: 'Legal & Data' },
+        { label: 'Log Out' },
+      ],
     },
   ],
 };
@@ -389,15 +402,15 @@ function InformationArchitecture() {
   return (
     <>
       <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
-        One Ledger Behind Every Screen
+        Five Tabs, One Send-Money Flow
       </h2>
       <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
-        The structure is built around <strong>Account</strong>, not around any single screen
-        &mdash; Cards, Contacts, and Transactions all hang off it, so a top-up, a transfer, and a
-        card block are three views onto the same record rather than three separate features.{' '}
-        <strong>Every transaction resolves to a report and a statement line,</strong> which is
-        what lets Send Money and Analytics stay thin: one debits and credits the ledger, the other
-        only reads it.
+        <strong>Transfer, IBAN, and QR payment all open the same three-step modal</strong> rather
+        than three separate flows, so learning to send money once means knowing all three ways to
+        do it. Transactions live twice on purpose &mdash; a{' '}
+        <strong>preview on Home for the daily glance, a searchable History for the actual
+        lookup</strong> &mdash; and Settings is kept flat and administrative, out of the way of
+        the four tabs someone touches every day.
       </p>
       <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
         <IATree data={iaTree} defaultOpenIndex={0} />

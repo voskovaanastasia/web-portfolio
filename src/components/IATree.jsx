@@ -76,7 +76,10 @@ export default function IATree({
       measureCtx.font = `${weight} ${size}px 'Space Grotesk', sans-serif`;
       let w = measureCtx.measureText(d.data.label).width + 28;
       if (d.children || d._children) w += 20; // room for the +N / − indicator
-      return Math.min(w, 360);
+      // Capped generously rather than tightly — a pill sized to a hard cap
+      // regardless of text length was the bug: long labels overflowed their
+      // own rect. The card scrolls horizontally, so a wide pill is fine.
+      return Math.min(w, 640);
     }
 
     function diagonal(s, t) {
