@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
 import caseBart from '../assets/case-bart.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -801,7 +801,7 @@ export default function BartCase() {
             <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Back to Works
+          Back to Work
         </Link>
 
         {/* Title */}
@@ -1284,6 +1284,8 @@ export default function BartCase() {
             business goals and real user expectations.
           </p>
         </section>
+
+        <NextCaseLink caseId="bart" />
       </div>
     </main>
   );

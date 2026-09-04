@@ -290,6 +290,48 @@ export function ScreensSlider({ screens }) {
     </>
   );
 }
+// Case order as listed on the Work page — drives the "Next Case" link so it
+// always points at whichever case comes after the current one, wrapping
+// back to the first case after the last.
+const CASE_ORDER = [
+  { id: 'farsafe', path: '/project/farsafe', title: 'Farsafe' },
+  { id: 'bart', path: '/project/bart', title: 'bART Solutions' },
+  { id: 'cryptowallet', path: '/project/cryptowallet', title: 'CryptoWallet' },
+  { id: 'online-doctor', path: '/project/online-doctor', title: 'Online Doctor' },
+  { id: 'crm-platform', path: '/project/crm-platform', title: 'Enterprise CRM' },
+  { id: 'fitness-app', path: '/project/fitness-app', title: 'Fitness App' },
+  { id: 'online-payments', path: '/project/online-payments', title: 'Online Payments' },
+  { id: 'shoot', path: '/project/shoot', title: 'SHOOT' },
+];
+
+// Right-aligned counterpart to the "Back to Work" link — same style, mirrored
+// arrow, pointing at whichever case follows `caseId` in CASE_ORDER.
+export function NextCaseLink({ caseId }) {
+  const index = CASE_ORDER.findIndex((c) => c.id === caseId);
+  if (index === -1) return null;
+  const next = CASE_ORDER[(index + 1) % CASE_ORDER.length];
+
+  return (
+    <div className="pt-10 pb-4 flex justify-end">
+      <Link
+        to={next.path}
+        className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
+      >
+        Next Case: {next.title}
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-5 h-5 -scale-x-100"
+        >
+          <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </Link>
+    </div>
+  );
+}
 
 /**
  * Shared scaffold for case pages: hero image, meta bar, summary cards, intro,
@@ -300,6 +342,8 @@ export default function CaseLayout({
   screens,
   screensLabel = 'App Screens',
   sections = [],
+  caseId,
+  keyTakeaway,
 }) {
   useEffect(() => {
     document.title = `${project.name} — Anastasiia Voskova`;
@@ -314,6 +358,7 @@ export default function CaseLayout({
     ...(project.problem ? [{ id: 'problem', label: 'Problem & Solution' }] : []),
     ...sections.map((s) => ({ id: s.id, label: s.label })),
     ...(screens?.length ? [{ id: 'screens', label: screensLabel }] : []),
+    ...(keyTakeaway ? [{ id: 'key-takeaway', label: 'Key Takeaway' }] : []),
   ];
 
   return (
@@ -338,7 +383,7 @@ export default function CaseLayout({
             <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Back to Works
+          Back to Work
         </Link>
 
         {/* Title */}
@@ -385,18 +430,24 @@ export default function CaseLayout({
         </div>
 
         {/* Summary cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 ${
+            project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+          }`}
+        >
           {project.summary.map((card) => (
             <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
-            <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
-          </div>
+          {project.outcome && (
+            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
+              <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
+              <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+            </div>
+          )}
         </div>
 
         {/* Project intro */}
@@ -431,6 +482,22 @@ export default function CaseLayout({
             <ScreensSlider screens={screens} />
           </section>
         )}
+
+        {/* Key takeaway */}
+        {keyTakeaway && (
+          <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
+            <p className="font-mono-bold text-base text-black">Key Takeaway</p>
+            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+              {keyTakeaway.heading}
+            </h2>
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+              {keyTakeaway.body}
+            </p>
+          </section>
+        )}
+
+        {/* Next case */}
+        {caseId && <NextCaseLink caseId={caseId} />}
       </div>
     </main>
   );

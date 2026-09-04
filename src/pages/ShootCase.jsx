@@ -529,6 +529,7 @@ export default function ShootCase() {
       sections={caseSections}
       screens={screens}
       screensLabel="Process"
+      caseId="shoot"
     />
   );
 }

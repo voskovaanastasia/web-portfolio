@@ -1,15 +1,16 @@
 import CaseLayout, { StyleGuide } from '../components/CaseLayout';
+import IATree from '../components/IATree';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
 
 const project = {
   name: 'Online Payments',
-  title: 'Online Payment Solutions: Checkout & Merchant Console',
+  title: 'Online Payments: Mobile Wallet',
   heroImage: 'case-payments.png',
-  tags: ['Fintech', 'Web', 'Checkout', 'Compliance'],
+  tags: ['Fintech', 'Mobile', 'Payments', 'Wallet'],
   meta: [
-    { label: 'Role', value: 'Product Designer' },
+    { label: 'Role', value: 'UX/UI Designer' },
     { label: 'Service', value: 'UX/UI Design' },
     { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: '8 months' },
@@ -22,43 +23,55 @@ const project = {
   summary: [
     {
       label: 'PROBLEM',
-      text: 'Payments fail for reasons no one can see — buyers abandon and merchants cannot diagnose why.',
+      text: 'Money moves, but the app goes quiet — people cannot tell whether a payment actually went through.',
     },
     {
       label: 'MY ROLE',
-      text: 'Product Designer — checkout flow, merchant console, error and compliance states.',
+      text: 'UX/UI Designer — wallet home, transfer and payment flows, transaction states, and compliance screens.',
     },
     {
       label: 'KEY DECISION',
-      text: 'Every transaction state is named out loud — initiated, processing, completed, failed — so no one has to guess whether the money moved.',
+      text: 'Every transaction names its own state — initiated, processing, completed, failed — so no one has to guess whether the money moved.',
     },
   ],
-  outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
-    heading: 'Secure payments, without the friction.',
+    heading: 'Money you can follow, not just send.',
     image: 'case-payments-intro.png',
     body: (
       <>
-        <strong>Online Payment Solution</strong> is a fintech platform that gives businesses and
-        individuals a <strong>secure, compliant way to accept and send money online.</strong> I
-        designed the experience around fast, trustworthy transactions &mdash; a clear checkout,
-        transparent status, and compliance that stays out of the user&rsquo;s way.{' '}
-        <strong>The core challenge was</strong> making a heavily regulated, security-critical
-        product feel effortless without hiding the safeguards that make it trustworthy.
+        <strong>Online Payments</strong> is a mobile wallet built around one thing people do
+        constantly and understand rarely: moving money and knowing what happened to it. I owned
+        the product end to end &mdash; from the first sketch of the balance screen to the
+        compliance flows that decide whether a payment goes through at all. The core challenge:{' '}
+        <strong>making a heavily regulated product feel effortless without hiding the safeguards
+        that make it trustworthy.</strong>
       </>
     ),
   },
   problem: {
     image: 'case-payments-problem.png',
-    heading: 'Online payments make people choose between safe and simple',
-    body: 'Businesses and individuals need to move money online quickly, but most tools force a trade-off: checkout is long and confusing, fees and settlement times are unclear, and security steps — verification, 3-D Secure, KYC — interrupt the flow with little explanation. When a transaction sits in “pending” or fails, users can’t tell whether their money actually moved.',
-    why: 'When people can’t tell whether a payment succeeded, or the process feels unsafe, they abandon it — businesses lose revenue at the very last step, and both sides lose trust in the platform meant to protect them.',
+    heading: 'A payment you send and then stop seeing',
+    body: 'Sending money online is fast to start and slow to understand. A transfer leaves the account and the app goes quiet — no state, no timing, no fee breakdown until it is over. Security steps arrive without explanation, so verification, 3-D Secure, and KYC read as obstacles rather than protection. And when a payment sits in “pending” or fails outright, nothing on screen says whether the money left, is on its way, or is coming back.',
+    why: 'In a wallet, silence is the most expensive state. A user who cannot tell whether a payment succeeded will either repeat it or abandon the app — and both outcomes cost the platform more than the transaction was worth.',
   },
   solution: {
     image: 'case-payments-solution.png',
-    heading: 'One clear, compliant flow from checkout to confirmation',
-    body: 'I designed a streamlined payment flow with transparent fees, a short and legible checkout, and real-time transaction states — initiated, processing, completed, or failed — so users always know where their money is. Security and compliance are built into the flow with plain-language explanations and progress states, and secure access (PIN plus biometrics) protects accounts without overwhelming the user.',
-    scenario: 'My aim was that a first-time user could complete a payment in seconds and trust it, while a business owner could rely on clear statuses and compliance in production — the same confidence from checkout to confirmation.',
+    heading: 'Every step of the money says where it is',
+    body: (
+      <>
+        The home screen leads with the balance and the card it belongs to, and the three actions
+        people actually open a wallet for &mdash; <strong>transfer to a card, IBAN payment, QR
+        payment</strong> &mdash; sit directly under it. Each transaction carries a named state
+        from start to finish: <strong>initiated, processing, completed, failed</strong> &mdash;
+        with fees and timing shown before the user commits, not after. The feed groups by day
+        with merchant logos, so spend is recognised by shape before it is read. Verification and
+        compliance steps explain themselves in plain language at the moment they interrupt, and
+        secure access (PIN plus biometrics) protects the account without adding friction to every
+        session.
+      </>
+    ),
+    scenario:
+      'My aim was that someone could send money and know exactly where it is at every moment — before they confirm, while it processes, and after it lands — without opening support or checking their bank to find out.',
   },
 };
 
@@ -78,12 +91,12 @@ const screens = [
         ),
       },
       {
-        heading: 'One account switcher, many currencies',
+        heading: 'One switcher, every card',
         text: (
           <>
-            &ldquo;Main Account&rdquo; collapses cards and currencies into a single control, which{' '}
-            <strong>keeps a multi-currency wallet unified instead of fragmented</strong> across
-            separate tabs.
+            &ldquo;Main Account&rdquo; collapses the cards behind a single control, so the balance
+            stays one number instead of one per tab &mdash; and switching context never means
+            losing sight of the total.
           </>
         ),
       },
@@ -313,9 +326,106 @@ const styleGuide = {
   image: 'case-onlinepayments-style.png',
 };
 
+const iaTree = {
+  label: 'User (@handle)',
+  children: [
+    {
+      label: 'Account (Main, Savings, per-currency)',
+      children: [
+        { label: 'Top Up (Card · Bank · Request)' },
+        {
+          label: 'Card (Physical | Virtual)',
+          children: [
+            { label: 'PIN' },
+            { label: 'Limits' },
+            { label: 'Block' },
+            { label: 'Wallet' },
+            {
+              label: 'Transaction',
+              children: [
+                { label: 'Belongs to Merchant' },
+                { label: 'Belongs to Contact' },
+                { label: 'Transaction Report (Dispute Case)' },
+                { label: 'Statement (Period Roll-Up)' },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Contact',
+          children: [
+            { label: 'Identified by Email' },
+            { label: 'Identified by Phone' },
+            { label: 'Identified by Card Number' },
+            { label: 'Identified by @handle' },
+            { label: 'Identified by QR' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Send Money',
+      children: [
+        { label: 'Debits Account / Card' },
+        {
+          label: 'Credits Payee',
+          children: [
+            { label: 'Contact' },
+            { label: 'Card' },
+            { label: 'IBAN' },
+            { label: 'QR Payee' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Analytics',
+      children: [{ label: 'Reads Every Transaction' }],
+    },
+  ],
+};
+
+function InformationArchitecture() {
+  return (
+    <>
+      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        One Ledger Behind Every Screen
+      </h2>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+        The structure is built around <strong>Account</strong>, not around any single screen
+        &mdash; Cards, Contacts, and Transactions all hang off it, so a top-up, a transfer, and a
+        card block are three views onto the same record rather than three separate features.{' '}
+        <strong>Every transaction resolves to a report and a statement line,</strong> which is
+        what lets Send Money and Analytics stay thin: one debits and credits the ledger, the other
+        only reads it.
+      </p>
+      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+        <IATree data={iaTree} defaultOpenIndex={0} />
+        <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+          Click a node to expand or collapse its branch.
+        </p>
+      </div>
+    </>
+  );
+}
+
 const sections = [
-  { id: 'style', label: 'Colors & Typography', content: <StyleGuide {...styleGuide} /> },
+  { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
+  { id: 'style', label: 'Colours & Typography', content: <StyleGuide {...styleGuide} /> },
 ];
+
+const keyTakeaway = {
+  heading: 'Silence is a state',
+  body: (
+    <>
+      A payment that is processing looks identical to a payment that has failed, if the screen
+      says nothing about either. Designing the waiting moments &mdash; not the successful ones
+      &mdash; is what made this product feel safe.{' '}
+      <strong>In a regulated product, people do not resent the safeguards; they resent being
+      kept in the dark about them.</strong>
+    </>
+  ),
+};
 
 export default function OnlinePaymentsCase() {
   return (
@@ -323,7 +433,9 @@ export default function OnlinePaymentsCase() {
       project={project}
       sections={sections}
       screens={screens}
-      screensLabel="Product Screens"
+      screensLabel="App Screens"
+      keyTakeaway={keyTakeaway}
+      caseId="online-payments"
     />
   );
 }

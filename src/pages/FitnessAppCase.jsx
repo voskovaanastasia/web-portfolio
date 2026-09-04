@@ -626,6 +626,7 @@ export default function FitnessAppCase() {
       sections={sections}
       screens={screens}
       screensLabel="App Screens"
+      caseId="fitness-app"
     />
   );
 }

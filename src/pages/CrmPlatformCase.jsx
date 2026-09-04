@@ -1135,6 +1135,7 @@ export default function CrmPlatformCase() {
       sections={sections}
       screens={screens}
       screensLabel="Product Screens"
+      caseId="crm-platform"
     />
   );
 }

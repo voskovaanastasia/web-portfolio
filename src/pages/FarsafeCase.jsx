@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ImagePlaceholder } from '../components/CaseLayout';
+import { ImagePlaceholder, NextCaseLink } from '../components/CaseLayout';
 import caseFarsafe from '../assets/case-farsafe.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.png';
@@ -910,7 +910,7 @@ export default function FarsafeCase() {
             <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Back to Works
+          Back to Work
         </Link>
 
         {/* Title */}
@@ -1596,6 +1596,8 @@ export default function FarsafeCase() {
             technically demanding category feel simple from the first click to the daily dashboard.
           </p>
         </section>
+
+        <NextCaseLink caseId="farsafe" />
       </div>
     </main>
   );
