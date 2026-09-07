@@ -4,6 +4,7 @@ import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
+import ContactSection from '../components/ContactSection';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -20,8 +21,9 @@ const caseSections = [
   { id: 'empathy', label: 'Empathy Map' },
   { id: 'flow', label: 'User Flow' },
   { id: 'ia', label: 'Information Architecture' },
-  { id: 'style', label: 'Colors & Typography' },
+  { id: 'style', label: 'Colours & Typography' },
   { id: 'screens', label: 'App Screens' },
+  { id: 'contact', label: 'Get in Touch' },
 ];
 
 const styleGuide = {
@@ -736,25 +738,39 @@ const projectGoals = [
 
 const processColumns = [
   {
-    heading: 'What Problem?',
-    body: 'Core actions (send/buy/swap) feel risky and unclear; cluttered navigation and hidden fees make users hesitate.',
-  },
-  {
-    heading: 'Why?',
-    body: 'Most wallets assume expert knowledge — causing confusion over networks, fees, and status, plus fear of costly mistakes.',
-  },
-  {
-    heading: 'Who is the target?',
+    heading: 'Who',
     highlight: true,
-    body: 'New-to-intermediate users who want guided, safe-by-default flows; mobile-first investors; security-conscious users.',
+    items: [
+      'New-to-intermediate users who want guided, safe-by-default flows',
+      'Mobile-first investors checking prices daily',
+      'Security-conscious users who double-check before confirming',
+    ],
   },
   {
-    heading: 'What’s the Goal?',
-    body: 'A clear, trustworthy mobile wallet that simplifies navigation, cuts errors, and makes every transaction easy to understand.',
+    heading: 'What',
+    items: [
+      'A mobile wallet for buying, selling, swapping, and tracking crypto',
+      'Guided network selection with fees, confirmations, and ETA shown up front',
+      'One consistent transaction pattern across every money-moving action',
+    ],
   },
   {
-    heading: 'How?',
-    body: 'A consistent flow (input → review → confirm → status) with visible fees/ETA, guided network choice, and reassuring microcopy.',
+    heading: 'When',
+    items: [
+      '9-month build, from research to a full screen set',
+      'Flows and IA first, then the transaction spine, then the UI system',
+    ],
+  },
+  {
+    heading: 'Where',
+    items: [
+      'Mobile, iOS and Android',
+      'High-stakes screens designed for the moment before confirmation',
+    ],
+  },
+  {
+    heading: 'How',
+    body: 'By repeating one spine — input → review → confirm → status — so the moment before money moves always looks and behaves the same, no matter which action started it.',
   },
 ];
 
@@ -1089,7 +1105,6 @@ const project = {
       text: 'One transaction spine — input → review → confirm → status — reused for every action that moves money.',
     },
   ],
-  outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
     heading: 'Everyday crypto, made legible.',
     body: (
@@ -1199,7 +1214,11 @@ export default function CryptoWalletCase() {
         </div>
 
         {/* Summary cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 ${
+            project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+          }`}
+        >
           {project.summary.map((card) => (
             <div
               key={card.label}
@@ -1209,11 +1228,13 @@ export default function CryptoWalletCase() {
               <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
-            <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
-          </div>
+          {project.outcome && (
+            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
+              <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
+              <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+            </div>
+          )}
         </div>
 
         {/* Project intro */}
@@ -1532,7 +1553,7 @@ export default function CryptoWalletCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Colors & Typography</p>
+          <p className="font-mono-bold text-base text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
@@ -1544,6 +1565,8 @@ export default function CryptoWalletCase() {
 
         <NextCaseLink caseId="cryptowallet" />
       </div>
+
+      <ContactSection />
     </main>
   );
 }

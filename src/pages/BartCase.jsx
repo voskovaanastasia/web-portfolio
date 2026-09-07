@@ -4,6 +4,7 @@ import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
+import ContactSection from '../components/ContactSection';
 import caseBart from '../assets/case-bart.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -23,8 +24,9 @@ const caseSections = [
   { id: 'menu', label: 'Navigation & Menu' },
   { id: 'pages', label: 'Website Pages' },
   { id: 'grid', label: 'Grid System' },
-  { id: 'style', label: 'Colors & Typography' },
+  { id: 'style', label: 'Colours & Typography' },
   { id: 'analytics', label: 'Post-Launch Analytics' },
+  { id: 'contact', label: 'Get in Touch' },
 ];
 
 const styleGuide = {
@@ -455,8 +457,7 @@ const launchMetrics = [
     ],
     text: (
       <>
-        Grew from 18% to <strong>31%</strong> — aligning with the poll finding that 68% of users
-        said they would return to an updated website.
+        The poll had 68% claiming they would return. The gap between stated intent and actual behaviour is expected — the direction is what matters.
       </>
     ),
   },
@@ -1209,7 +1210,7 @@ export default function BartCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Colors & Typography</p>
+          <p className="font-mono-bold text-base text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
@@ -1275,18 +1276,27 @@ export default function BartCase() {
           <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
             Key Takeaway
           </h3>
+          <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
+            Two kinds of visitor, not one average one
+          </p>
           <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            The research didn&rsquo;t just inform the design — it <strong>created accountability.</strong>{' '}
-            Every friction point identified in the surveys became a measurable design target.
-            Every metric moved in the right direction. The result is not just a better-looking
-            website — it&rsquo;s a{' '}
-            <strong>conversion-optimised, user-validated product</strong> aligned with both
-            business goals and real user expectations.
+            The instinct on a corporate site is to design a single path and hope it fits
+            everyone. Research showed <strong>two audiences arriving with incompatible
+            questions</strong> &mdash; one hunting for a specific service, one deciding whether
+            this company understood their industry at all. Averaging them would have produced
+            navigation that half-served both.
+          </p>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            Splitting the structure along that line cost more to build and made every subsequent
+            decision easier: for any new page, there was now a question with an answer &mdash;{' '}
+            <strong>which visitor is this for?</strong>
           </p>
         </section>
 
         <NextCaseLink caseId="bart" />
       </div>
+
+      <ContactSection />
     </main>
   );
 }

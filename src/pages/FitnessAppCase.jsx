@@ -34,7 +34,6 @@ const project = {
       text: 'AI recommends from readiness, but manual browsing stays a first-class path.',
     },
   ],
-  outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
     heading: 'Train on what your body’s actually telling you.',
     image: 'case-fitness-intro.png',
@@ -69,30 +68,39 @@ const project = {
 
 const fourWPlusH = [
   {
-    title: 'What Problem?',
-    body: 'Staying consistent is hard — users must track health metrics, pick the right workout for their condition, and jump between disconnected tracking and workout apps.',
-  },
-  {
-    title: 'Why?',
-    body: 'Tracking apps don’t turn health data into action, and workout apps push one-size-fits-all plans that ignore daily readiness — leading to inefficient training and drop-off.',
-  },
-  {
-    title: 'Who is the target?',
+    title: 'Who',
     highlight: true,
     items: [
       'Beginners and people returning after a break',
       'Users wanting structured Yoga, Pilates & HIIT',
-      'Health-focused users tracking HRV, heart rate, sleep, steps',
-      'Busy users needing quick, day-matched workouts',
+      'Health-focused users tracking HRV, heart rate, sleep, and steps',
     ],
   },
   {
-    title: 'What’s the Goal?',
-    body: 'An all-in-one mobile experience that turns daily wellness metrics into the right training choice — AI-recommended, with manual pick always available.',
+    title: 'What',
+    items: [
+      'One mobile app where daily wellness metrics turn into the right training choice',
+      'AI-recommended sessions, with manual pick always available',
+      'Progress analytics across day, week, month, and year',
+    ],
   },
   {
-    title: 'How?',
-    body: 'An intuitive web app: metrics-first dashboard, AI workout recommendations, filterable library (level/duration/calories), guided player, simple progress analytics.',
+    title: 'When',
+    items: [
+      '6-month build, from research to a guided in-session player',
+      'Metrics dashboard and wearable integration first, then discovery and the player',
+    ],
+  },
+  {
+    title: 'Where',
+    items: [
+      'Mobile, iOS and Android',
+      'Designed for one-handed use mid-workout — large targets, legible at arm’s length',
+    ],
+  },
+  {
+    title: 'How',
+    body: 'By making readiness the input, not an afterthought: the dashboard reads the day’s signals, the recommendation follows from them, and manual browsing stays a first-class path for anyone who wants to override it.',
   },
 ];
 
@@ -616,8 +624,26 @@ const sections = [
   { id: 'process', label: '4W+H Process', content: <FourWPlusH /> },
   { id: 'persona', label: 'User Persona', content: <UserPersona /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
-  { id: 'style', label: 'Colors & Typography', content: <StyleGuide {...styleGuide} /> },
+  { id: 'style', label: 'Colours & Typography', content: <StyleGuide {...styleGuide} /> },
 ];
+
+const keyTakeaway = {
+  heading: 'Personalisation is only trusted if it can be ignored',
+  body: (
+    <>
+      The obvious design for an AI-driven fitness app is a single daily recommendation &mdash;
+      the product decides, the user obeys. The problem is that{' '}
+      <strong>readiness data is right most days and wrong on the day it matters, and a user who
+      has been overruled once stops believing the number.</strong>
+      <br />
+      <br />
+      Keeping manual browsing as a first-class path, not a buried escape hatch, was what made the
+      recommendation credible.{' '}
+      <strong>A suggestion you cannot refuse is not a suggestion; it is an instruction,</strong>{' '}
+      and people audit instructions far more harshly.
+    </>
+  ),
+};
 
 export default function FitnessAppCase() {
   return (
@@ -626,6 +652,7 @@ export default function FitnessAppCase() {
       sections={sections}
       screens={screens}
       screensLabel="App Screens"
+      keyTakeaway={keyTakeaway}
       caseId="fitness-app"
     />
   );

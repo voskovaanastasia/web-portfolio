@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from './SectionMenu';
+import ContactSection from './ContactSection';
 
 // Any image dropped into src/assets is picked up by filename — no import needed.
 const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
@@ -359,6 +360,7 @@ export default function CaseLayout({
     ...sections.map((s) => ({ id: s.id, label: s.label })),
     ...(screens?.length ? [{ id: 'screens', label: screensLabel }] : []),
     ...(keyTakeaway ? [{ id: 'key-takeaway', label: 'Key Takeaway' }] : []),
+    { id: 'contact', label: 'Get in Touch' },
   ];
 
   return (
@@ -499,6 +501,8 @@ export default function CaseLayout({
         {/* Next case */}
         {caseId && <NextCaseLink caseId={caseId} />}
       </div>
+
+      <ContactSection />
     </main>
   );
 }

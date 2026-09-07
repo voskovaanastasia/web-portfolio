@@ -4,6 +4,7 @@ import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ImagePlaceholder, NextCaseLink } from '../components/CaseLayout';
+import ContactSection from '../components/ContactSection';
 import caseFarsafe from '../assets/case-farsafe.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.png';
@@ -20,10 +21,11 @@ const caseSections = [
   { id: 'ia', label: 'Information Architecture' },
   { id: 'menu', label: 'Navigation & Menu' },
   { id: 'grid', label: 'Grid System' },
-  { id: 'style', label: 'Colors & Typography' },
+  { id: 'style', label: 'Colours & Typography' },
   { id: 'pages', label: 'Marketing Website' },
   { id: 'app-pages', label: 'Dashboard Pages' },
   { id: 'analytics', label: 'Post-Launch Analytics' },
+  { id: 'contact', label: 'Get in Touch' },
 ];
 
 const dashboardPages = [
@@ -700,7 +702,7 @@ const cases = {
     meta: [
       { label: 'Participation', value: 'Product Designer (solo designer)' },
       { label: 'Service', value: 'UX/UI Design  Design System' },
-      { label: 'My Team', value: 'Founder (backend), Frontend Developer, Designer' },
+      { label: 'My Team', value: 'Founder (backend), Frontend Developer' },
       { label: 'Timeline', value: '1 year 6 months' },
     ],
     tools: [
@@ -1422,7 +1424,7 @@ export default function FarsafeCase() {
               <p className="font-grotesk font-bold text-base text-black">Dashboard (App) — Desktop</p>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed">
                 A 4-column content grid sitting beside a fixed side menu, with margin 40 and
-                gutter 20. The tighter margin (vs. 80 on the marketing site) hands more working
+                gap 20. The tighter margin (vs. 80 on the marketing site) hands more working
                 width to dense tables, metric cards, and timelines.
               </p>
               <ImagePlaceholder
@@ -1447,7 +1449,7 @@ export default function FarsafeCase() {
         <section id="style" className="pb-24 flex flex-col gap-6">
           <p className="font-mono-bold text-base text-black">Visual Language</p>
           <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
-            Colors &amp; Typography
+            Colours &amp; Typography
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Palette stack */}
@@ -1587,18 +1589,28 @@ export default function FarsafeCase() {
           <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
             Key Takeaway
           </h3>
+          <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
+            Showing the price was the design decision
+          </p>
           <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            The research didn&rsquo;t just inform the design - it <strong>set the targets.</strong>{' '}
-            Every friction point uncovered became a measurable goal: pricing legibility, onboarding
-            speed, dashboard clarity, and alert trust. The outcome isn&rsquo;t just a polished
-            interface - it&rsquo;s a{' '}
-            <strong>0 to 1 product, validated against real user expectations,</strong> that makes a
-            technically demanding category feel simple from the first click to the daily dashboard.
+            Every competitor in this category hides pricing behind a demo request, and the
+            reasoning is always the same &mdash; the numbers are complicated, so explain them in a
+            conversation. Research said the opposite:{' '}
+            <strong>the hiding was the objection.</strong> People did not distrust the price, they
+            distrusted not being told it.
+          </p>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            Putting a flat, all-included figure on the landing page was not a copy choice made at
+            the end. <strong>It was the constraint the entire product had to be designed to
+            survive</strong> &mdash; the pricing model, the feature set, and the marketing site
+            all had to be simple enough to state out loud.
           </p>
         </section>
 
         <NextCaseLink caseId="farsafe" />
       </div>
+
+      <ContactSection />
     </main>
   );
 }

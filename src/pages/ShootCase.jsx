@@ -36,7 +36,6 @@ const project = {
       text: 'Talent, space, and gear share one booking flow and one calendar, instead of three services that never talk to each other.',
     },
   ],
-  outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
     heading: 'One platform for the whole shoot.',
     image: 'case-shoot-intro.png',
@@ -517,10 +516,27 @@ const caseSections = [
   },
   {
     id: 'style',
-    label: 'Colors & Typography',
+    label: 'Colours & Typography',
     content: <StyleGuide {...styleGuide} />,
   },
 ];
+
+const keyTakeaway = {
+  heading: 'Unifying three markets meant unifying one calendar',
+  body: (
+    <>
+      On the surface this was a design problem about three catalogues that needed to look like
+      one. It was actually a scheduling problem:{' '}
+      <strong>a photographer, a studio, and a camera each have their own availability, and a
+      shoot only exists when all three overlap.</strong>
+      <br />
+      <br />
+      Once availability was modelled as one shared calendar rather than three, the booking flow
+      almost designed itself. Most marketplace fragmentation is not a navigation problem wearing
+      a data costume &mdash; <strong>it is a data problem wearing a navigation costume.</strong>
+    </>
+  ),
+};
 
 export default function ShootCase() {
   return (
@@ -528,7 +544,8 @@ export default function ShootCase() {
       project={project}
       sections={caseSections}
       screens={screens}
-      screensLabel="Process"
+      screensLabel="App Screens"
+      keyTakeaway={keyTakeaway}
       caseId="shoot"
     />
   );

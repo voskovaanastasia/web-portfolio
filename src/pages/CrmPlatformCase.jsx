@@ -34,7 +34,6 @@ const project = {
       text: 'Search, quick create, notifications, and calendar were lifted out of the module tree entirely — one action away from any screen.',
     },
   ],
-  outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
     heading: 'One source of truth for the whole sales cycle.',
     image: 'case-crm-intro.png',
@@ -75,9 +74,7 @@ const screens = [
         heading: 'At-a-glance KPIs',
         text: (
           <>
-            <strong>The top cards surface what drives revenue today</strong> so the user knows
-            exactly where to act first. Counts update live as work gets done. Less noise, more
-            focus, faster wins for the user.
+            <strong>The top cards surface what drives revenue today</strong> so a rep opening the CRM in the morning knows where to act first. Counts update live as work gets done.
           </>
         ),
       },
@@ -85,9 +82,7 @@ const screens = [
         heading: 'Open Tasks table',
         text: (
           <>
-            <strong>Every follow-up is lined up with deadlines and urgency</strong> so the user
-            never misses a commitment. The list groups by &ldquo;Related To&rdquo; and contact,
-            keeping context tight.
+            <strong>Every follow-up is lined up with deadlines and urgency</strong> so nothing slips between calls. The list groups by “Related To” and contact, keeping the context of each task attached to it.
           </>
         ),
       },
@@ -1125,8 +1120,27 @@ const styleGuide = {
 
 const sections = [
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
-  { id: 'style', label: 'Colors & Typography', content: <StyleGuide {...styleGuide} /> },
+  { id: 'style', label: 'Colours & Typography', content: <StyleGuide {...styleGuide} /> },
 ];
+
+const keyTakeaway = {
+  heading: 'What I took out of the navigation mattered more than how I arranged it',
+  body: (
+    <>
+      Thirteen modules is the kind of number that invites months of argument about hierarchy
+      &mdash; what nests under what, which department owns which branch. The useful move was
+      orthogonal to that argument:{' '}
+      <strong>four things people do constantly regardless of where they are &mdash; search,
+      quick create, notifications, calendar &mdash; do not belong in a tree at all.</strong>
+      <br />
+      <br />
+      Once those were lifted into a persistent layer, the hierarchy stopped being load-bearing.
+      An enterprise system is not made usable by a better tree.{' '}
+      <strong>It is made usable by the actions that never require you to be in the right
+      place.</strong>
+    </>
+  ),
+};
 
 export default function CrmPlatformCase() {
   return (
@@ -1135,6 +1149,7 @@ export default function CrmPlatformCase() {
       sections={sections}
       screens={screens}
       screensLabel="Product Screens"
+      keyTakeaway={keyTakeaway}
       caseId="crm-platform"
     />
   );

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from '../components/SectionMenu';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
+import ContactSection from '../components/ContactSection';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -10,8 +11,10 @@ const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
   { id: 'intro', label: 'Project Intro' },
   { id: 'problem', label: 'Problem & Solution' },
-  { id: 'style', label: 'Colors & Typography' },
+  { id: 'style', label: 'Colours & Typography' },
   { id: 'screens', label: 'App Screens' },
+  { id: 'key-takeaway', label: 'Key Takeaway' },
+  { id: 'contact', label: 'Get in Touch' },
 ];
 
 const styleGuide = {
@@ -19,7 +22,7 @@ const styleGuide = {
   body: (
     <>
       Ukraine Blue carries the brand and every primary action, softened by Seashell Blue for
-      surfaces so a compliance-heavy product still reads as calm.{' '}
+      surfaces so a clinically dense product still reads as calm.{' '}
       <strong>Vermillion and Orange are reserved strictly for alerts and pending states</strong>{' '}
       &mdash; scarce by design, so urgency is never ambiguous. Roboto keeps dense medical and
       billing information legible at small sizes across web and mobile.
@@ -354,19 +357,17 @@ const project = {
       text: 'Appointment and billing state is visible at every step, so a patient never has to ask what happens next.',
     },
   ],
-  outcome: { value: 'TBD', label: 'Key outcome metric' },
   intro: {
     heading: 'Care that reaches patients where they are.',
     body: (
       <>
-        <strong>Online Doctor</strong> is a secure, HIPAA-compliant{' '}
+        <strong>Online Doctor</strong> is a {' '}
         <strong>telehealth app</strong> that brings patients and doctors together for virtual care.
         Originally built as an MVP, it grew to include{' '}
         <strong>real-time consultations, appointment scheduling, and integrated billing.</strong> I
         designed the experience to make virtual visits feel as clear and reliable as in-person ones
         &mdash; trustworthy, well-paced, and easy for patients of any age.{' '}
-        <strong>The core challenge was</strong> making a clinically sensitive, compliance-heavy
-        product feel calm and simple at the exact moments patients feel most anxious.
+        <strong>The core challenge was</strong> making a clinically sensitive product feel calm and simple at the exact moments patients feel most anxious.
       </>
     ),
   },
@@ -379,7 +380,7 @@ const project = {
   solution: {
     image: 'case-onlinedoctor-solution.png',
     heading: 'One reliable flow from booking to bill',
-    body: 'I designed a clear path from finding a doctor to finishing a visit: searchable profiles with availability, a simple scheduling flow with reminders, and a dependable real-time consultation with an obvious way to join. Billing is integrated and transparent, HIPAA-compliant handling is communicated in plain language, and appointment and payment states are visible at every step so patients always know what’s next.',
+    body: 'I designed a clear path from finding a doctor to finishing a visit: searchable profiles with availability, a simple scheduling flow with reminders, and a dependable real-time consultation with an obvious way to join. Billing is integrated and transparent, how medical data and payments are handled is explained in plain language at the moment it matters, and appointment and payment states are visible at every step so patients always know what`s next.',
     scenario: 'My aim was that a patient could book, join a consultation, and settle the bill without ever feeling lost or exposed — the same reassurance of a good in-person visit, delivered remotely.',
   },
 };
@@ -461,7 +462,11 @@ export default function OnlineDoctorCase() {
         </div>
 
         {/* Summary cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 ${
+            project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+          }`}
+        >
           {project.summary.map((card) => (
             <div
               key={card.label}
@@ -471,11 +476,13 @@ export default function OnlineDoctorCase() {
               <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
-            <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
-          </div>
+          {project.outcome && (
+            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
+              <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
+              <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+            </div>
+          )}
         </div>
 
         {/* Project intro */}
@@ -497,7 +504,7 @@ export default function OnlineDoctorCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Colors & Typography</p>
+          <p className="font-mono-bold text-base text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
@@ -507,8 +514,30 @@ export default function OnlineDoctorCase() {
           <ScreensSlider screens={appScreens} />
         </section>
 
+        {/* Key takeaway */}
+        <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-base text-black">Key Takeaway</p>
+          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            A calm palette is not a calm product
+          </h2>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            Healthcare interfaces reach for soft blues and generous white space, and none of it
+            helps a patient who does not know whether their appointment is confirmed or what the
+            visit will cost.{' '}
+            <strong>Anxiety in this product came from uncertainty, not from visual noise.</strong>
+          </p>
+          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            Making appointment and billing state explicit at every step did more for how the
+            product felt than any surface decision.{' '}
+            <strong>Calm is structural: it comes from a patient never having to ask what happens
+            next.</strong>
+          </p>
+        </section>
+
         <NextCaseLink caseId="online-doctor" />
       </div>
+
+      <ContactSection />
     </main>
   );
 }
