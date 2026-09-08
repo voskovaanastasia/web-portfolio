@@ -700,7 +700,7 @@ const cases = {
       'UX Research & Strategy',
     ],
     meta: [
-      { label: 'Participation', value: 'Product Designer (solo designer)' },
+      { label: 'Role', value: 'Product Designer (solo designer)' },
       { label: 'Service', value: 'UX/UI Design  Design System' },
       { label: 'My Team', value: 'Founder (backend), Frontend Developer' },
       { label: 'Timeline', value: '1 year 6 months' },
@@ -1019,8 +1019,7 @@ export default function FarsafeCase() {
                 Alerts can&rsquo;t be trusted when a single location triggers them.
               </p>
               <p className="font-grotesk text-base text-[#393939] mt-auto">
-                <strong className="font-bold text-black">73%</strong> wanted to share status
-                without a separate tool.
+                <strong className="font-bold text-black">73%</strong> had been burned by false alerts from a single check location.
               </p>
             </div>
             <div className="bg-[#6d3fc4] rounded-[24px] p-5 flex flex-col gap-4 text-white">
@@ -1210,9 +1209,7 @@ export default function FarsafeCase() {
                 ))}
               </ul>
               <p className="font-grotesk text-base text-[#393939] leading-relaxed">
-                Together, the top three account for{' '}
-                <strong className="font-bold text-black">75% of user frustration</strong> - each
-                one became a direct design target for the product.
+                Multiple answers were allowed, so totals exceed 100%. Three answers dominated every other option — confusing pricing, single-location false alerts, and paying extra for status — and each became one of the three Insights above.
               </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">

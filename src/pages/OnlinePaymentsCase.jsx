@@ -327,7 +327,7 @@ const styleGuide = {
 };
 
 const iaTree = {
-  label: 'App',
+  label: 'Online Payments',
   children: [
     {
       label: 'Home',

@@ -1379,6 +1379,11 @@ export default function CryptoWalletCase() {
                   </li>
                 ))}
               </ul>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+                <strong className="font-bold text-black">Security & self-custody outweighed
+                every other answer combined</strong> &mdash; confirming that trust, not
+                convenience, is what a crypto wallet is judged on first.
+              </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk font-bold text-base text-black">
@@ -1408,6 +1413,11 @@ export default function CryptoWalletCase() {
                   </li>
                 ))}
               </ul>
+              <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+                <strong className="font-bold text-black">70% said yes</strong> &mdash; confirming
+                real demand for one app that consolidates storage, swapping, and tracking across
+                networks, instead of switching between several.
+              </p>
             </div>
           </div>
         </section>
