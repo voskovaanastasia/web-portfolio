@@ -1,3 +1,4 @@
+import Chart from 'react-apexcharts';
 import CaseLayout, { ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
 import toolFigma from '../assets/icon-figma.svg';
@@ -137,6 +138,223 @@ function FourWPlusH() {
         ))}
       </div>
     </>
+  );
+}
+
+// ---- User Research --------------------------------------------------------
+
+const researchStats = [
+  {
+    pct: 71,
+    color: '#387CFF',
+    text: (
+      <>
+        Roughly <strong>7 in 10</strong> track health metrics (steps, sleep, heart rate) in a
+        different app than the one they train in — confirming the split flagged in the{' '}
+        <strong>Problem statement.</strong>
+      </>
+    ),
+  },
+  {
+    pct: 58,
+    color: '#F5B840',
+    text: (
+      <>
+        Just over half said their <strong>workout plan stays the same</strong> regardless of how
+        tired or recovered they feel — the core gap the{' '}
+        <strong>AI recommendation</strong> was built to close.
+      </>
+    ),
+  },
+  {
+    pct: 64,
+    color: '#EC474B',
+    text: (
+      <>
+        Almost two-thirds said they&rsquo;d <strong>stopped trusting</strong> a fitness
+        app&rsquo;s suggestion at least once after it clearly ignored something they could feel
+        in their body.
+      </>
+    ),
+  },
+];
+
+function DonutStat({ pct, color }) {
+  const r = 60;
+  const c = 2 * Math.PI * r;
+  return (
+    <svg viewBox="0 0 160 160" className="w-40 h-40">
+      <circle cx="80" cy="80" r={r} fill="none" stroke="#e3e3e3" strokeWidth="26" />
+      <circle
+        cx="80"
+        cy="80"
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth="26"
+        strokeLinecap="round"
+        strokeDasharray={`${(pct / 100) * c} ${c}`}
+        transform="rotate(-90 80 80)"
+      />
+      <text
+        x="80"
+        y="80"
+        textAnchor="middle"
+        dominantBaseline="central"
+        className="font-grotesk"
+        fontSize="30"
+        fontWeight="700"
+        fill="#000"
+      >
+        {pct}%
+      </text>
+    </svg>
+  );
+}
+
+function UserResearch() {
+  return (
+    <>
+      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        Regular Gym-Goers
+      </h2>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+        Research ran in two rounds: a screening survey sent to people who already use a fitness
+        or health-tracking app, followed by five follow-up interviews with respondents who train
+        at least three times a week.
+      </p>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+        Findings clustered around three recurring frictions &mdash; fragmented tools, generic
+        plans, and workouts that ignore how the body actually feels that day.
+      </p>
+      <p className="font-grotesk text-sm text-[#b3b2af] italic max-w-2xl">
+        Figures below are rounded and reconstructed from project notes; the raw research data is
+        not published.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {researchStats.map((stat) => (
+          <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
+            <DonutStat pct={stat.pct} color={stat.color} />
+            <p className="font-grotesk text-base text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
+              {stat.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+// ---- The Poll --------------------------------------------------------
+
+function Donut({ segments, hollowSize = '32%' }) {
+  const options = {
+    colors: segments.map((s) => s.color),
+    chart: { type: 'radialBar', sparkline: { enabled: true } },
+    plotOptions: {
+      radialBar: {
+        track: { background: '#ececec' },
+        dataLabels: { show: false },
+        hollow: { margin: 0, size: hollowSize },
+      },
+    },
+    grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
+    labels: segments.map((s) => s.label),
+    legend: { show: false },
+    tooltip: { enabled: true, x: { show: false } },
+    yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
+  };
+
+  return (
+    <Chart
+      options={options}
+      series={segments.map((s) => s.value)}
+      type="radialBar"
+      height={350}
+      width="100%"
+    />
+  );
+}
+
+function ThePoll() {
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
+        <p className="font-grotesk font-bold text-base text-black">
+          What frustrates you most about fitness apps?
+        </p>
+        <div className="flex justify-center">
+          <Donut
+            hollowSize="12%"
+            segments={[
+              { value: 61, color: '#387CFF', label: "Plans that don't adjust to how I actually feel" },
+              { value: 55, color: '#F5B840', label: 'Tracking and workouts live in separate apps' },
+              { value: 42, color: '#EC474B', label: 'Confusing difficulty or intensity choices' },
+              { value: 33, color: '#777FED', label: 'Workouts that break flow with messy controls' },
+              { value: 28, color: '#375F31', label: "Hard to see if I'm making real progress" },
+            ]}
+          />
+        </div>
+        <ul className="flex flex-col gap-2.5">
+          {[
+            ['#387CFF', "Plans that don't adjust to how I actually feel"],
+            ['#F5B840', 'Tracking and workouts live in separate apps'],
+            ['#EC474B', 'Confusing difficulty or intensity choices'],
+            ['#777FED', 'Workouts that break flow with messy controls'],
+            ['#375F31', "Hard to see if I'm making real progress"],
+          ].map(([color, label]) => (
+            <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+              <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
+              {label}
+            </li>
+          ))}
+        </ul>
+        <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+          Multiple answers were allowed, so totals exceed 100%.{' '}
+          <strong className="font-bold text-black">
+            Three answers dominated every other option — rigid plans, fragmented tools, and
+            unclear difficulty
+          </strong>{' '}
+          — and each became a design target for the dashboard, the AI recommendation, and the
+          discovery filters.
+        </p>
+      </div>
+      <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
+        <p className="font-grotesk font-bold text-base text-black">
+          Would you trust an app&rsquo;s workout recommendation over picking one yourself?
+        </p>
+        <div className="flex justify-center">
+          <Donut
+            segments={[
+              { value: 64, color: '#387CFF', label: 'Yes, but only if I can still choose manually' },
+              { value: 24, color: '#EC474B', label: "No, I'd rather pick every time" },
+              { value: 12, color: '#F5B840', label: 'Not sure' },
+            ]}
+          />
+        </div>
+        <ul className="flex flex-col gap-2.5">
+          {[
+            ['#387CFF', 'Yes, but only if I can still choose manually'],
+            ['#EC474B', "No, I'd rather pick every time"],
+            ['#F5B840', 'Not sure'],
+          ].map(([color, label]) => (
+            <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+              <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
+              {label}
+            </li>
+          ))}
+        </ul>
+        <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+          <strong className="font-bold text-black">64% said yes</strong> — but only with an
+          escape hatch. Almost nobody wanted the app to decide unconditionally. This is the
+          finding the whole product turns on:{' '}
+          <strong className="font-bold text-black">
+            manual browsing couldn&rsquo;t be a fallback bolted on later, it had to stay a
+            first-class path from day one.
+          </strong>
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -622,6 +840,8 @@ const styleGuide = {
 
 const sections = [
   { id: 'process', label: '4W+H Process', content: <FourWPlusH /> },
+  { id: 'research', label: 'User Research', content: <UserResearch /> },
+  { id: 'poll', label: 'The Poll', content: <ThePoll /> },
   { id: 'persona', label: 'User Persona', content: <UserPersona /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
   { id: 'style', label: 'Colours & Typography', content: <StyleGuide {...styleGuide} /> },
