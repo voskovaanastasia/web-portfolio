@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import caseFarsafe from '../assets/case-farsafe.png';
-import caseBart from '../assets/case-bart.png';
-import caseFintech from '../assets/case-fintech.png';
 
 const projects = [
   {
@@ -20,40 +18,6 @@ const projects = [
     outcomeMetric: '92%',
     outcomeLabel: 'Dashboard Task Success',
     roles: ['Product Designer', 'UX Researcher'],
-  },
-  {
-    id: 2,
-    title: 'bART Solutions: Enterprise Web Products',
-    image: caseBart,
-    tags: ['Enterprise', 'Web & Mobile', 'Design Tokens'],
-    description:
-      'Owned the UX/UI for production web and mobile products serving enterprise clients. Built scalable design systems with design tokens and worked across complex, data-dense dashboards.',
-    problem:
-      'Information-heavy interfaces made task completion slow and error-prone.',
-    role:
-      'UX/UI Designer — design system, dashboards, and mobile products.',
-    keyDecision:
-      'Progressive disclosure of complexity backed by extensive usability testing.',
-    outcomeMetric: '−40%',
-    outcomeLabel: 'Bounce Rate',
-    roles: ['UX/UI Designer'],
-  },
-  {
-    id: 3,
-    title: 'Fintech Mobile App (NDA)',
-    image: caseFintech,
-    tags: ['Fintech', 'Mobile', 'iOS & Android'],
-    description:
-      'Designed polished, device-optimized mobile UI for a fintech application. Turned wireframes and prototypes into production-ready interfaces in close collaboration with product and engineering.',
-    problem:
-      'Fintech onboarding felt slow and untrustworthy for first-time users.',
-    role:
-      'UI Designer — mobile UI, micro-interactions, and handoff documentation.',
-    keyDecision:
-      'Clear visual hierarchy and native platform patterns (iOS HIG, Material).',
-    outcomeMetric: '1m 41s',
-    outcomeLabel: 'Time-to-First-Probe',
-    roles: ['UI Designer'],
   },
 ];
 
