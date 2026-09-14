@@ -9,7 +9,7 @@ import EducationSection from '../components/EducationSection';
 import ContactSection from '../components/ContactSection';
 import SectionMenu from '../components/SectionMenu';
 
-export default function Home() {
+export default function About() {
   return (
     <main className="flex flex-col">
       <SectionMenu />

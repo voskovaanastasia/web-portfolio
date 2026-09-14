@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import Home from './pages/Home';
+import About from './pages/About';
 import Projects from './pages/Projects';
 import FarsafeCase from './pages/FarsafeCase';
 import BartCase from './pages/BartCase';
@@ -14,7 +14,7 @@ import TaxComplianceCase from './pages/TaxComplianceCase';
 import './styles/globals.css';
 
 // Routes whose hero uses the dotted body background; other pages sit on plain white.
-const dottedHeroRoutes = ['/', '/projects'];
+const dottedHeroRoutes = ['/', '/about', '/projects'];
 
 function Layout() {
   const { pathname } = useLocation();
@@ -24,7 +24,8 @@ function Layout() {
     <div className={`flex flex-col min-h-screen ${onDots ? '' : 'bg-white'}`}>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<About />} />
+          <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/farsafe" element={<FarsafeCase />} />
           <Route path="/project/bart" element={<BartCase />} />
