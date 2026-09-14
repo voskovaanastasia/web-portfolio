@@ -19,10 +19,10 @@ export default function Navigation() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-[25px] font-grotesk">
           <Link
-            to="/"
+            to="/about"
             className="text-base font-medium text-[#393939] hover:text-black transition-colors"
           >
-            Home
+            About Me
           </Link>
           <Link
             to="/projects"
@@ -30,16 +30,11 @@ export default function Navigation() {
           >
             Work
           </Link>
-          <a
-            href="#contact"
-            className="text-base font-medium text-[#393939] hover:text-black transition-colors"
-          >
-            About
-          </a>
 
           {/* Resume Button */}
           <a
-            href="#resume"
+            href="/Anastasiia-Voskova-Resume.pdf"
+            download="Anastasiia-Voskova-Resume.pdf"
             className="bg-[#288fd6] hover:bg-[#1f7ab8] text-white font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
           >
             Resume
@@ -71,11 +66,11 @@ export default function Navigation() {
       {isOpen && (
         <div className="absolute top-full left-0 right-0 mt-2 mx-4 bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-2xl p-4 flex flex-col gap-2 md:hidden font-grotesk">
           <Link
-            to="/"
+            to="/about"
             className="block px-4 py-2 text-[#393939] hover:text-black rounded-lg transition-colors text-base font-medium"
             onClick={() => setIsOpen(false)}
           >
-            Home
+            About Me
           </Link>
           <Link
             to="/projects"
@@ -85,14 +80,8 @@ export default function Navigation() {
             Work
           </Link>
           <a
-            href="#contact"
-            className="block px-4 py-2 text-[#393939] hover:text-black rounded-lg transition-colors text-base font-medium"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </a>
-          <a
-            href="#resume"
+            href="/Anastasiia-Voskova-Resume.pdf"
+            download="Anastasiia-Voskova-Resume.pdf"
             className="block px-4 py-2 bg-[#288fd6] hover:bg-[#1f7ab8] text-white rounded-lg transition-colors text-base font-medium text-center"
             onClick={() => setIsOpen(false)}
           >
