@@ -1367,15 +1367,16 @@ export default function CryptoWalletCase() {
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
-                  ['#288fd6', 'Security & self-custody'],
-                  ['#e8964a', 'Low network fees'],
-                  ['#6d3fc4', 'Multi-chain support'],
-                  ['#ee5f9b', 'Fast transfers / confirmations'],
-                  ['#2bb8a3', 'Simple UI & onboarding'],
-                ].map(([color, label]) => (
+                  ['#288fd6', 'Security & self-custody', 35],
+                  ['#e8964a', 'Low network fees', 25],
+                  ['#6d3fc4', 'Multi-chain support', 20],
+                  ['#ee5f9b', 'Fast transfers / confirmations', 12],
+                  ['#2bb8a3', 'Simple UI & onboarding', 8],
+                ].map(([color, label, pct]) => (
                   <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
-                    {label}
+                    <span className="flex-1">{label}</span>
+                    <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
@@ -1403,13 +1404,14 @@ export default function CryptoWalletCase() {
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
-                  ['#288fd6', 'Yes'],
-                  ['#e8964a', 'No'],
-                  ['#6d3fc4', 'Not sure'],
-                ].map(([color, label]) => (
+                  ['#288fd6', 'Yes', 70],
+                  ['#e8964a', 'No', 18],
+                  ['#6d3fc4', 'Not sure', 12],
+                ].map(([color, label, pct]) => (
                   <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
-                    {label}
+                    <span className="flex-1">{label}</span>
+                    <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>

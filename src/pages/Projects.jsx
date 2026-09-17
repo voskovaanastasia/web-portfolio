@@ -154,7 +154,7 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                      className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
                     />
                   </Link>
                   <div className="flex flex-wrap gap-2.5 mb-4">

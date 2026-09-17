@@ -297,15 +297,16 @@ function ThePoll() {
         </div>
         <ul className="flex flex-col gap-2.5">
           {[
-            ['#387CFF', "Plans that don't adjust to how I actually feel"],
-            ['#F5B840', 'Tracking and workouts live in separate apps'],
-            ['#EC474B', 'Confusing difficulty or intensity choices'],
-            ['#777FED', 'Workouts that break flow with messy controls'],
-            ['#375F31', "Hard to see if I'm making real progress"],
-          ].map(([color, label]) => (
+            ['#387CFF', "Plans that don't adjust to how I actually feel", 61],
+            ['#F5B840', 'Tracking and workouts live in separate apps', 55],
+            ['#EC474B', 'Confusing difficulty or intensity choices', 42],
+            ['#777FED', 'Workouts that break flow with messy controls', 33],
+            ['#375F31', "Hard to see if I'm making real progress", 28],
+          ].map(([color, label, pct]) => (
             <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
               <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
-              {label}
+              <span className="flex-1">{label}</span>
+              <span className="font-bold sm:hidden">{pct}%</span>
             </li>
           ))}
         </ul>
@@ -334,13 +335,14 @@ function ThePoll() {
         </div>
         <ul className="flex flex-col gap-2.5">
           {[
-            ['#387CFF', 'Yes, but only if I can still choose manually'],
-            ['#EC474B', "No, I'd rather pick every time"],
-            ['#F5B840', 'Not sure'],
-          ].map(([color, label]) => (
+            ['#387CFF', 'Yes, but only if I can still choose manually', 64],
+            ['#EC474B', "No, I'd rather pick every time", 24],
+            ['#F5B840', 'Not sure', 12],
+          ].map(([color, label, pct]) => (
             <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
               <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
-              {label}
+              <span className="flex-1">{label}</span>
+              <span className="font-bold sm:hidden">{pct}%</span>
             </li>
           ))}
         </ul>

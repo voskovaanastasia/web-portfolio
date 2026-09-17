@@ -59,7 +59,7 @@ export function ImagePlaceholder({ filename, className = '', alt = '' }) {
         src={src}
         alt={alt || String(filename).replace(/\.\w+$/, '').replace(/-/g, ' ')}
         loading="lazy"
-        className={`w-full h-auto block rounded-[24px] ${dropSizing(className)}`}
+        className={`w-auto h-auto max-h-[45vh] max-w-full mx-auto sm:w-full sm:max-h-none block rounded-[24px] ${dropSizing(className)}`}
       />
     );
   }

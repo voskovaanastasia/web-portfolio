@@ -789,7 +789,7 @@ export default function BartCase() {
           <img
             src={project.heroImage}
             alt={project.title}
-            className="w-full max-w-[1058px] mx-auto h-auto max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover"
+            className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover"
           />
         </div>
 
@@ -973,15 +973,16 @@ export default function BartCase() {
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
-                  ['#f2c94c', 'Outdated visual design'],
-                  ['#6abf69', 'Hard to find needed information'],
-                  ['#ee8585', 'Unclear navigation'],
-                  ['#4d8fd1', "Don't understand what the company does"],
-                  ['#6d3fc4', 'Too much text, low readability'],
-                ].map(([color, label]) => (
+                  ['#f2c94c', 'Outdated visual design', 32],
+                  ['#6abf69', 'Hard to find needed information', 28],
+                  ['#ee8585', 'Unclear navigation', 22],
+                  ['#4d8fd1', "Don't understand what the company does", 12],
+                  ['#6d3fc4', 'Too much text, low readability', 6],
+                ].map(([color, label, pct]) => (
                   <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
-                    {label}
+                    <span className="flex-1">{label}</span>
+                    <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
@@ -1006,13 +1007,14 @@ export default function BartCase() {
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
-                  ['#f2c94c', 'Yes'],
-                  ['#6abf69', 'Not sure'],
-                  ['#ee8585', 'No'],
-                ].map(([color, label]) => (
+                  ['#f2c94c', 'Yes', 68],
+                  ['#6abf69', 'Not sure', 20],
+                  ['#ee8585', 'No', 12],
+                ].map(([color, label, pct]) => (
                   <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
-                    {label}
+                    <span className="flex-1">{label}</span>
+                    <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
