@@ -36,14 +36,14 @@ export default function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
+        <h1 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug max-w-[280px] sm:max-w-none">
           I make complex,{' '}
           <span className="font-playwrite font-normal">data-dense</span>{' '}
           products feel simple, and ground every decision in research.
         </h1>
 
         {/* Subheadline */}
-        <p className="font-grotesk text-lg sm:text-xl text-black">
+        <p className="font-grotesk text-lg sm:text-xl text-black max-w-[280px] sm:max-w-none">
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 
@@ -62,7 +62,7 @@ export default function HeroSection() {
             {stackIcons.map((icon, i) => (
               <div
                 key={icon.alt + i}
-                className="bg-[#fbfbfb] flex items-center justify-center w-[50px] h-[50px] rounded-full -mr-2 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:z-10 relative cursor-pointer"
+                className="bg-[#fbfbfb] flex items-center justify-center w-[50px] h-[50px] rounded-full -mr-4 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:z-10 relative cursor-pointer"
               >
                 <img src={icon.src} alt={icon.alt} className="w-[25px] h-[25px]" />
               </div>
