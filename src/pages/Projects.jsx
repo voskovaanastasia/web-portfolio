@@ -113,7 +113,7 @@ export default function Projects() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           {/* Category filter */}
           <div className="flex justify-center mb-14">
-            <div className="bg-[#f7f7f7] border border-[#ececec] rounded-full p-1.5 flex flex-wrap justify-center gap-1">
+            <div className="bg-[#f7f7f7] border border-[#ececec] rounded-2xl sm:rounded-full p-1.5 flex flex-wrap justify-center gap-1">
               {categories.map((category) => {
                 const isEmpty = !projects.some((p) => p.category === category);
                 return (
