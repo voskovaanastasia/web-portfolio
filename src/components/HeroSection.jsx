@@ -26,7 +26,7 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
-      <div className="relative z-10 flex flex-col items-center gap-5 max-w-3xl px-4 py-20 text-center">
+      <div className="relative z-10 flex flex-col items-center gap-5 max-w-3xl px-6 sm:px-8 py-20 text-center">
         {/* Hello line */}
         <div className="flex items-center gap-2.5">
           <img src={avatar} alt="Anastasiia" className="w-9 h-9 rounded-full" />
