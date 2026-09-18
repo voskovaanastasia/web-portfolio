@@ -120,7 +120,7 @@ function ToolGroup({ label, tools }) {
 
 export default function MyToolkitSection() {
   return (
-    <section id="toolkit" className="relative overflow-hidden bg-white py-24">
+    <section id="toolkit" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
         <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
           Computer Science is my secret weapon.

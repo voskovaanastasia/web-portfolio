@@ -135,7 +135,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="relative overflow-hidden py-24 bg-white">
+    <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
           <p className="font-mono-bold text-base text-black">My Journey</p>

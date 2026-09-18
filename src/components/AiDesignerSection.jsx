@@ -34,7 +34,7 @@ const steps = [
 
 export default function AiDesignerSection() {
   return (
-    <section id="ai-designer" className="relative overflow-hidden bg-white py-24">
+    <section id="ai-designer" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-4">
           <p className="font-mono-bold text-base text-black">AI + DESIGNER</p>

@@ -48,7 +48,7 @@ const metrics = [
 
 export default function ImpactSection() {
   return (
-    <section id="impact" className="relative overflow-hidden bg-white py-24">
+    <section id="impact" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
           <p className="font-mono-bold text-base text-black">Proven Results</p>

@@ -155,7 +155,7 @@ function ToolPill({ icon, label, accent }) {
 
 export default function HowIWorkSection() {
   return (
-    <section id="how-i-work" className="relative overflow-hidden bg-white py-24">
+    <section id="how-i-work" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
           <p className="font-mono-bold text-base text-black">How I work</p>
