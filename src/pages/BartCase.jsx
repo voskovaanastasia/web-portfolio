@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink, MetricCard } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
+import { openLightbox } from '../lightboxStore';
 import caseBart from '../assets/case-bart.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -387,7 +388,7 @@ function PagesSlider({ pages }) {
             </div>
           ))}
         </div>
-        <ImagePlaceholder filename={page.image} className="min-h-[560px] lg:min-h-[720px]" />
+        <ImagePlaceholder filename={page.image} className="min-h-[560px] lg:min-h-[720px] order-first lg:order-none" />
       </div>
     </>
   );
@@ -606,26 +607,6 @@ function DonutStat({ pct, color }) {
   );
 }
 
-function MetricBars({ bars, color }) {
-  const max = Math.max(...bars.map((b) => b.value));
-  return (
-    <div className="flex items-end justify-center gap-4 h-44">
-      {bars.map((bar) => (
-        <div
-          key={bar.label}
-          className="w-16 rounded-[14px] flex items-end justify-center pb-3"
-          style={{
-            height: `${(bar.value / max) * 100}%`,
-            backgroundColor: bar.before ? '#e3e3e3' : color,
-          }}
-        >
-          <span className="font-grotesk font-bold text-sm text-black">{bar.label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 const iaTree = {
   label: 'bART Solutions',
   children: [
@@ -759,6 +740,7 @@ const project = {
   },
   problem: {
     image: 'case-bart-problem.png',
+    imageClassName: 'rounded-[10px]',
     heading: 'A brand-strong site that is hard to move through',
     body: 'The site looked the part but did not work for the people using it. Navigation did not match how visitors actually searched. The information architecture had grown tangled and could no longer absorb new services without breaking. Key flows carried friction that had no reason to be there. Surveys and interviews surfaced two things at once: where users got lost, and what they had come to do. The existing structure supported neither.',
     why: 'A corporate site is usually the first impression and the main path to action. When visitors cannot find what they need or cannot read the company`s credibility off the page, they leave — and the brands strongest asset quietly works against it.',
@@ -789,7 +771,8 @@ export default function BartCase() {
           <img
             src={project.heroImage}
             alt={project.title}
-            className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover"
+            onClick={() => openLightbox(project.heroImage, project.title)}
+            className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover cursor-zoom-in"
           />
         </div>
 
@@ -877,7 +860,7 @@ export default function BartCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-bart-intro.png" className="min-h-[420px]" />
+          <ImagePlaceholder filename="case-bart-intro.png" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}
@@ -1158,7 +1141,7 @@ export default function BartCase() {
                 </p>
               </div>
             </div>
-            <ImagePlaceholder filename="case-bart-menu.png" className="min-h-[520px]" />
+            <ImagePlaceholder filename="case-bart-menu.png" className="min-h-[520px] order-first lg:order-none" />
           </div>
         </section>
 
@@ -1246,13 +1229,7 @@ export default function BartCase() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {launchMetrics.map((metric) => (
-              <div key={metric.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-                <MetricBars bars={metric.bars} color={metric.color} />
-                <p className="font-grotesk font-bold text-base text-black">{metric.title}</p>
-                <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:font-bold [&>strong]:text-black">
-                  {metric.text}
-                </p>
-              </div>
+              <MetricCard key={metric.title} {...metric} />
             ))}
           </div>
 
@@ -1265,13 +1242,7 @@ export default function BartCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {surveyResults.map((item) => (
-              <div key={item.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-                <MetricBars bars={item.bars} color={item.color} />
-                <p className="font-grotesk font-bold text-base text-black">{item.title}</p>
-                <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:font-bold [&>strong]:text-black">
-                  {item.text}
-                </p>
-              </div>
+              <MetricCard key={item.title} {...item} />
             ))}
           </div>
 

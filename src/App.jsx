@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
+import Lightbox from './components/Lightbox';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import FarsafeCase from './pages/FarsafeCase';
@@ -37,6 +38,7 @@ function Layout() {
           <Route path="/project/shoot" element={<ShootCase />} />
           <Route path="/project/tax-compliance" element={<TaxComplianceCase />} />
         </Routes>
+        <Lightbox />
     </div>
   );
 }

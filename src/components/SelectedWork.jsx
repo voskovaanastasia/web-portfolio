@@ -57,7 +57,7 @@ export default function SelectedWork() {
               >
                 {/* Image half */}
                 <div
-                  className={`bg-[#d9d9d9] min-h-[220px] lg:min-h-0 lg:w-1/2 overflow-hidden rounded-[15px] ${
+                  className={`bg-[#d9d9d9] aspect-[4/3] lg:aspect-auto lg:min-h-0 lg:w-1/2 overflow-hidden rounded-[15px] ${
                     imageLeft ? 'lg:order-first' : 'lg:order-last'
                   }`}
                 >

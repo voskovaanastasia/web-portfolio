@@ -679,7 +679,7 @@ function ScreensSlider({ screens }) {
         <ImagePlaceholder
           filename={screen.image}
           alt={`${screen.title} screen`}
-          className="w-full aspect-square"
+          className="w-full aspect-square order-first lg:order-none"
         />
       </div>
     </>
@@ -1248,7 +1248,7 @@ export default function CryptoWalletCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-cryptowallet-intro.png" className="min-h-[420px]" />
+          <ImagePlaceholder filename="case-cryptowallet-intro.png" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}

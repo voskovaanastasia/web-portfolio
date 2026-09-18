@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ImagePlaceholder, NextCaseLink } from '../components/CaseLayout';
+import { ImagePlaceholder, NextCaseLink, MetricCard } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
+import { openLightbox } from '../lightboxStore';
 import caseFarsafe from '../assets/case-farsafe.png';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.png';
@@ -306,61 +307,61 @@ const dashboardPages = [
 const launchMetrics = [
   {
     title: 'Signup Conversion Rate — 7.4%',
-    target: '(target 6%)',
+    subtitle: '(target 6%)',
     color: '#7da7f4',
     bars: [
       { label: '7.4%', value: 7.4 },
-      { label: '6%', value: 6 },
+      { label: '6%', value: 6, before: true },
     ],
     text: 'Outcome of clear pricing and repeated low-commitment CTAs.',
   },
   {
     title: 'Dashboard Task Success — 92%',
-    target: '(target 90%)',
+    subtitle: '(target 90%)',
     color: '#b9a0ea',
     bars: [
       { label: '92%', value: 92 },
-      { label: '90%', value: 90 },
+      { label: '90%', value: 90, before: true },
     ],
     text: 'Reading uptime and finding an outage in usability testing validating the goal of making a dense product approachable.',
   },
   {
     title: 'Pricing-to-Signup Rate — 22%',
-    target: '(target 15%)',
+    subtitle: '(target 15%)',
     color: '#ee8585',
     bars: [
       { label: '22%', value: 22 },
-      { label: '15%', value: 15 },
+      { label: '15%', value: 15, before: true },
     ],
     text: 'Pricing legibility converts rather than deters — the direct answer to the 27% who named pricing their top frustration.',
   },
   {
     title: 'Time-to-First-Probe — 1 min 41 sec',
-    target: '(target under 2 min)',
+    subtitle: '(target under 2 min)',
     color: '#e8964a',
     bars: [
       { label: '1m 41s', value: 101 },
-      { label: '2 m', value: 120 },
+      { label: '2 m', value: 120, before: true },
     ],
     text: 'Onboarding friction kept low by design.',
   },
   {
     title: 'Activation Rate — 77%',
-    target: '(target 70%)',
+    subtitle: '(target 70%)',
     color: '#7da7f4',
     bars: [
       { label: '77%', value: 77 },
-      { label: '70%', value: 70 },
+      { label: '70%', value: 70, before: true },
     ],
     text: 'Signed up to first probe configured.',
   },
   {
     title: 'Bounce Rate — 36%',
-    target: '(target under 45%)',
+    subtitle: '(target under 45%)',
     color: '#6abf69',
     bars: [
       { label: '36%', value: 36 },
-      { label: '45%', value: 45 },
+      { label: '45%', value: 45, before: true },
     ],
     text: 'Clear entry points keep visitors exploring rather than leaving.',
   },
@@ -556,7 +557,7 @@ function PagesSlider({ pages }) {
             </div>
           ))}
         </div>
-        <ImagePlaceholder filename={page.image} className="min-h-[560px] lg:min-h-[720px]" />
+        <ImagePlaceholder filename={page.image} className="min-h-[560px] lg:min-h-[720px] order-first lg:order-none" />
       </div>
     </>
   );
@@ -899,7 +900,8 @@ export default function FarsafeCase() {
           <img
             src={project.heroImage}
             alt={project.title}
-            className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover"
+            onClick={() => openLightbox(project.heroImage, project.title)}
+            className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover cursor-zoom-in"
           />
         </div>
 
@@ -987,7 +989,7 @@ export default function FarsafeCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-farsafe-intro.png" className="min-h-[420px]" />
+          <ImagePlaceholder filename="case-farsafe-intro.png" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem statement */}
@@ -1075,7 +1077,7 @@ export default function FarsafeCase() {
               could trust in production - the same clarity from landing page to daily dashboard.
             </p>
           </div>
-          <ImagePlaceholder filename="case-farsafe-solution.png" className="min-h-[420px]" />
+          <ImagePlaceholder filename="case-farsafe-solution.png" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Project goals */}
@@ -1392,9 +1394,8 @@ export default function FarsafeCase() {
                 </p>
               </div>
             </div>
-            <ImagePlaceholder filename="case-farsafe-menu.png" className="min-h-[420px]" />
+            <ImagePlaceholder filename="case-farsafe-menu.png" className="min-h-[420px] order-first lg:order-none" />
           </div>
-          <ImagePlaceholder filename="case-farsafe-menu-mobile.png" className="min-h-[480px] mt-4" />
         </section>
 
         {/* Grid system */}
@@ -1541,30 +1542,9 @@ export default function FarsafeCase() {
             The Results
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {launchMetrics.map((metric) => {
-              const max = Math.max(...metric.bars.map((b) => b.value));
-              return (
-                <div key={metric.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-                  <p className="font-grotesk font-bold text-base text-black">{metric.title}</p>
-                  <p className="font-grotesk text-sm text-[#6b6a67]">{metric.target}</p>
-                  <div className="flex items-end gap-4 h-44">
-                    {metric.bars.map((bar, idx) => (
-                      <div
-                        key={bar.label}
-                        className="flex-1 rounded-[16px] flex items-end justify-center pb-3"
-                        style={{
-                          height: `${(bar.value / max) * 100}%`,
-                          backgroundColor: idx === 0 ? metric.color : '#e3e3e3',
-                        }}
-                      >
-                        <span className="font-grotesk font-bold text-sm text-black">{bar.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="font-grotesk text-base text-[#393939] leading-relaxed">{metric.text}</p>
-                </div>
-              );
-            })}
+            {launchMetrics.map((metric) => (
+              <MetricCard key={metric.title} {...metric} />
+            ))}
           </div>
 
           <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">

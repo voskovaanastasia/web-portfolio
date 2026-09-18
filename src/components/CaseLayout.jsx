@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from './SectionMenu';
 import ContactSection from './ContactSection';
+import { openLightbox } from '../lightboxStore';
 
 // Any image dropped into src/assets is picked up by filename — no import needed.
 const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
@@ -54,12 +55,17 @@ export function ImagePlaceholder({ filename, className = '', alt = '' }) {
   const [slotRef, slotSize] = useSlotSize(!src);
 
   if (src) {
+    const resolvedAlt = alt || String(filename).replace(/\.\w+$/, '').replace(/-/g, ' ');
+    const hasCustomRounding = /(?:^|\s)(?:[\w-]+:)?rounded(?:-[\w[\].,/]+)?(?=\s|$)/.test(className);
     return (
       <img
         src={src}
-        alt={alt || String(filename).replace(/\.\w+$/, '').replace(/-/g, ' ')}
+        alt={resolvedAlt}
         loading="lazy"
-        className={`w-auto h-auto max-h-[45vh] max-w-full mx-auto sm:w-full sm:max-h-none block rounded-[24px] ${dropSizing(className)}`}
+        onClick={() => openLightbox(src, resolvedAlt)}
+        className={`w-auto h-auto max-h-[45vh] max-w-full mx-auto sm:w-full sm:max-h-none block ${
+          hasCustomRounding ? '' : 'rounded-[24px]'
+        } cursor-zoom-in ${dropSizing(className)}`}
       />
     );
   }
@@ -86,12 +92,56 @@ export function ImagePlaceholder({ filename, className = '', alt = '' }) {
  * Farsafe-style Problem / Solution pair: two alternating text+image rows.
  * `problem` = { heading, body, why, image }, `solution` = { heading, body, scenario, image }.
  */
+/**
+ * Shared before/after bar chart used by every case study's results section.
+ * `bars` = [{ label, value, before? }] — the bar without `before` is the
+ * highlighted (current/after) value, rendered in `color`; `before` bars are grey.
+ */
+export function MetricBars({ bars, color }) {
+  const max = Math.max(...bars.map((b) => b.value));
+  return (
+    <div className="flex items-end justify-center gap-4 h-44">
+      {bars.map((bar) => (
+        <div
+          key={bar.label}
+          className="w-16 rounded-[14px] flex items-end justify-center pb-3"
+          style={{
+            height: `${(bar.value / max) * 100}%`,
+            backgroundColor: bar.before ? '#e3e3e3' : color,
+          }}
+        >
+          <span className="font-grotesk font-bold text-sm text-black">{bar.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Standard result-card wrapper: bars on top, title, optional subtitle, body text.
+ */
+export function MetricCard({ title, subtitle, bars, color, text }) {
+  return (
+    <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+      <MetricBars bars={bars} color={color} />
+      <p className="font-grotesk font-bold text-base text-black">{title}</p>
+      {subtitle && <p className="font-grotesk text-sm text-[#6b6a67] -mt-2">{subtitle}</p>}
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:font-bold [&>strong]:text-black">
+        {text}
+      </p>
+    </div>
+  );
+}
+
 export function ProblemSolution({ problem, solution, id = 'problem' }) {
   return (
     <>
       {problem && (
         <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-          <ImagePlaceholder filename={problem.image} className="min-h-[420px]" />
+          <ImagePlaceholder
+            filename={problem.image}
+            className={`min-h-[420px] ${problem.imageClassName ?? ''}`}
+          />
           <div className="flex flex-col gap-5 lg:col-span-2">
             <p className="font-mono-bold text-base text-black">PROBLEM</p>
             <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
@@ -117,7 +167,7 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
               {solution.scenario}
             </p>
           </div>
-          <ImagePlaceholder filename={solution.image} className="min-h-[420px]" />
+          <ImagePlaceholder filename={solution.image} className="min-h-[420px] order-first lg:order-none" />
         </section>
       )}
     </>
@@ -286,7 +336,7 @@ export function ScreensSlider({ screens }) {
             </div>
           ))}
         </div>
-        <ImagePlaceholder filename={screen.image} className="min-h-[560px] lg:min-h-[680px]" />
+        <ImagePlaceholder filename={screen.image} className="min-h-[560px] lg:min-h-[680px] order-first lg:order-none" />
       </div>
     </>
   );
@@ -463,7 +513,7 @@ export default function CaseLayout({
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename={project.intro.image} className="min-h-[420px]" />
+          <ImagePlaceholder filename={project.intro.image} className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}

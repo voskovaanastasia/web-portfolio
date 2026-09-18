@@ -322,7 +322,7 @@ function ScreensSlider({ screens }) {
             </div>
           ))}
         </div>
-        <ImagePlaceholder filename={screen.image} className="min-h-[560px] lg:min-h-[680px]" />
+        <ImagePlaceholder filename={screen.image} className="min-h-[560px] lg:min-h-[680px] order-first lg:order-none" />
       </div>
     </>
   );
@@ -496,7 +496,7 @@ export default function OnlineDoctorCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-onlinedoctor-intro.png" className="min-h-[420px]" />
+          <ImagePlaceholder filename="case-onlinedoctor-intro.png" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}
