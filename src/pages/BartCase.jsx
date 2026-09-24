@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink, MetricCard } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseBart from '../assets/case-bart.webp';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
@@ -545,33 +546,38 @@ const researchStats = [
   },
 ];
 
-function Donut({ segments, hollowSize = '32%' }) {
-  const options = {
-    colors: segments.map((s) => s.color),
-    chart: { type: 'radialBar', sparkline: { enabled: true } },
-    plotOptions: {
-      radialBar: {
-        track: { background: '#ececec' },
-        dataLabels: { show: false },
-        hollow: { margin: 0, size: hollowSize },
-      },
-    },
-    grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
-    labels: segments.map((s) => s.label),
-    legend: { show: false },
-    tooltip: { enabled: true, x: { show: false } },
-    yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
-  };
+const frustrationSegments = [
+  { value: 32, color: '#f2c94c', label: 'Outdated visual design' },
+  { value: 28, color: '#6abf69', label: 'Hard to find needed information' },
+  { value: 22, color: '#ee8585', label: 'Unclear navigation' },
+  { value: 12, color: '#4d8fd1', label: "Don't understand what the company does" },
+  { value: 6, color: '#6d3fc4', label: 'Too much text, low readability' },
+];
 
-  return (
-    <Chart
-      options={options}
-      series={segments.map((s) => s.value)}
-      type="radialBar"
-      height={350}
-      width="100%"
-    />
+function Donut({ segments, hollowSize = '32%' }) {
+  const options = useMemo(
+    () => ({
+      colors: segments.map((s) => s.color),
+      chart: { type: 'radialBar', sparkline: { enabled: true } },
+      plotOptions: {
+        radialBar: {
+          track: { background: '#ececec' },
+          dataLabels: { show: false },
+          hollow: { margin: 0, size: hollowSize },
+        },
+      },
+      grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
+      labels: segments.map((s) => s.label),
+      legend: { show: false },
+      tooltip: { enabled: true, x: { show: false } },
+      yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
+    }),
+    [segments, hollowSize]
   );
+
+  const series = useMemo(() => segments.map((s) => s.value), [segments]);
+
+  return <Chart options={options} series={series} type="radialBar" height={350} width="100%" />;
 }
 
 function DonutStat({ pct, color }) {
@@ -754,12 +760,7 @@ const project = {
 };
 
 export default function BartCase() {
-  useEffect(() => {
-    document.title = `${project.name} — Anastasiia Voskova`;
-    return () => {
-      document.title = 'Anastasiia Voskova';
-    };
-  }, []);
+  useDocumentMeta(buildCaseMeta({ project, caseId: 'bart' }));
 
   return (
     <main id="main-content" className="flex flex-col bg-white">
@@ -883,7 +884,7 @@ export default function BartCase() {
                 easier to find services, cases, and contact information in fewer clicks.
               </p>
             </div>
-            <div className="bg-[#288fd6] rounded-[24px] p-5 flex flex-col gap-4 text-white">
+            <div className="bg-[#1f7ab8] rounded-[24px] p-5 flex flex-col gap-4 text-white">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-1.8 0-1.4-1.5-1.6-1.5-2.7 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4-4-7-9-7z" strokeLinejoin="round" />
                 <circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none" />
@@ -891,7 +892,7 @@ export default function BartCase() {
                 <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none" />
               </svg>
               <p className="font-grotesk font-bold text-base">Refresh the Visual Identity</p>
-              <p className="font-grotesk text-base text-white/90 leading-relaxed">
+              <p className="font-grotesk text-base text-white leading-relaxed">
                 Deliver a modern, consistent interface aligned with the client&rsquo;s brand
                 vision — updating typography, colour system, and component style across all
                 pages.
@@ -943,16 +944,7 @@ export default function BartCase() {
                 What frustrates you most on corporate websites?
               </p>
               <div className="flex justify-center">
-                <Donut
-                  hollowSize="12%"
-                  segments={[
-                    { value: 32, color: '#f2c94c', label: 'Outdated visual design' },
-                    { value: 28, color: '#6abf69', label: 'Hard to find needed information' },
-                    { value: 22, color: '#ee8585', label: 'Unclear navigation' },
-                    { value: 12, color: '#4d8fd1', label: "Don't understand what the company does" },
-                    { value: 6, color: '#6d3fc4', label: 'Too much text, low readability' },
-                  ]}
-                />
+                <Donut hollowSize="12%" segments={frustrationSegments} />
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
@@ -1101,7 +1093,7 @@ export default function BartCase() {
           </p>
           <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
             <IATree data={iaTree} defaultOpenIndex={1} />
-            <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+            <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
               Click a node to expand or collapse its branch.
             </p>
           </div>
@@ -1266,7 +1258,7 @@ export default function BartCase() {
           </p>
         </section>
 
-        <NextCaseLink caseId="bart" />
+        <CaseNav caseId="bart" />
       </div>
 
       <ContactSection />
