@@ -2,32 +2,11 @@ import iconSearch from '../assets/how-i-work/search.svg';
 import iconColors from '../assets/how-i-work/colors.svg';
 import iconTable from '../assets/how-i-work/table.svg';
 import iconTerminal from '../assets/how-i-work/terminal.svg';
-
-import toolMaze from '../assets/how-i-work/tool-maze.svg';
-import toolGoogleForms from '../assets/how-i-work/tool-googleforms.svg';
-import toolAmplitude from '../assets/how-i-work/tool-amplitude.svg';
-import toolMiro from '../assets/how-i-work/tool-miro.svg';
-import toolNode from '../assets/how-i-work/tool-nodedotjs.svg';
-import toolZeroheight from '../assets/how-i-work/tool-zeroheight.png';
-
-import toolFigma from '../assets/icon-figma.svg';
-import toolSketch from '../assets/toolkit/sketch.svg';
-import toolNotion from '../assets/icon-notion.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolFramer from '../assets/toolkit/framer.png';
-import toolWebflow from '../assets/icon-webflow.svg';
-import toolWhimsical from '../assets/toolkit/whimsical.png';
-import toolZeplin from '../assets/toolkit/zeplin.svg';
-import toolHtml from '../assets/toolkit/html.svg';
-import toolCss from '../assets/toolkit/css.svg';
-import toolJs from '../assets/toolkit/javascript.svg';
-import toolReact from '../assets/icon-react.svg';
-import toolGit from '../assets/icon-git.svg';
-import toolGithub from '../assets/toolkit/github.svg';
-import toolVscode from '../assets/toolkit/vscode.svg';
+import { getToolsForPillar } from '../data/tools';
 
 const cards = [
   {
+    pillar: 'research',
     icon: iconSearch,
     accent: true,
     title: 'Research & Strategy',
@@ -41,15 +20,9 @@ const cards = [
       'Product Strategy',
       'Success Metrics',
     ],
-    tools: [
-      { icon: toolMaze, label: 'Maze' },
-      { icon: toolGoogleForms, label: 'Google Forms' },
-      { icon: toolJira, label: 'Jira' },
-      { icon: toolAmplitude, label: 'Amplitude' },
-      { icon: toolNotion, label: 'Notion' },
-    ],
   },
   {
+    pillar: 'design',
     icon: iconColors,
     accent: false,
     title: 'Product & Interface Design',
@@ -65,17 +38,9 @@ const cards = [
       'SaaS Platforms',
       'Systems Thinking',
     ],
-    tools: [
-      { icon: toolFigma, label: 'Figma' },
-      { icon: toolSketch, label: 'Sketch' },
-      { icon: toolFramer, label: 'Framer' },
-      { icon: toolFigma, label: 'FigJam' },
-      { icon: toolWebflow, label: 'Webflow' },
-      { icon: toolMiro, label: 'Miro' },
-      { icon: toolWhimsical, label: 'Whimsical' },
-    ],
   },
   {
+    pillar: 'systems',
     icon: iconTable,
     accent: false,
     title: 'Systems, Tokens & Handoff',
@@ -89,15 +54,9 @@ const cards = [
       'Developer Handoff',
       'Documentation',
     ],
-    tools: [
-      { icon: toolFigma, label: 'Figma' },
-      { icon: toolZeroheight, label: 'Zeroheight' },
-      { icon: toolFigma, label: 'Figma Dev Mode' },
-      { icon: toolZeplin, label: 'Zeplin' },
-      { icon: toolJira, label: 'Jira' },
-    ],
   },
   {
+    pillar: 'engineering',
     icon: iconTerminal,
     accent: true,
     title: 'Engineering Fluency',
@@ -110,16 +69,6 @@ const cards = [
       'OOP Fundamentals',
       'Technical Feasibility',
       'Design–Dev Collaboration',
-    ],
-    tools: [
-      { icon: toolNode, label: 'Node.js' },
-      { icon: toolGit, label: 'Git' },
-      { icon: toolGithub, label: 'GitHub' },
-      { icon: toolVscode, label: 'VS Code' },
-      { icon: toolReact, label: 'React' },
-      { icon: toolJs, label: 'JavaScript' },
-      { icon: toolHtml, label: 'HTML' },
-      { icon: toolCss, label: 'CSS' },
     ],
   },
 ];
@@ -146,6 +95,10 @@ function ToolPill({ icon, label, accent }) {
       <img
         src={icon}
         alt=""
+        width={24}
+        height={24}
+        loading="lazy"
+        decoding="async"
         className={`w-4 h-4 object-contain ${accent ? 'brightness-0 invert' : ''}`}
       />
       {label}
@@ -177,6 +130,10 @@ export default function HowIWorkSection() {
               <img
                 src={card.icon}
                 alt=""
+                width={24}
+                height={24}
+                loading="lazy"
+                decoding="async"
                 className={`w-7 h-7 ${
                   card.accent
                     ? 'brightness-0 invert'
@@ -202,11 +159,11 @@ export default function HowIWorkSection() {
                   card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
                 }`}
               >
-                {card.tools.map((tool) => (
+                {getToolsForPillar(card.pillar).map((tool) => (
                   <ToolPill
-                    key={tool.label}
+                    key={tool.id}
                     icon={tool.icon}
-                    label={tool.label}
+                    label={tool.name}
                     accent={card.accent}
                   />
                 ))}

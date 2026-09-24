@@ -6,7 +6,7 @@ import IATree from '../components/IATree';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink, MetricCard } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
-import caseBart from '../assets/case-bart.png';
+import caseBart from '../assets/case-bart.webp';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -67,13 +67,13 @@ const styleGuide = {
     text: '#22292f',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-bart-style.png',
+  image: 'case-bart-style.webp',
 };
 
 const websitePages = [
   {
     title: 'Landing Page',
-    image: 'case-bart-page-landing.png',
+    image: 'case-bart-page-landing.webp',
     blocks: [
       {
         heading: 'Hero Section',
@@ -175,7 +175,7 @@ const websitePages = [
   },
   {
     title: 'Blog Page',
-    image: 'case-bart-page-blog.png',
+    image: 'case-bart-page-blog.webp',
     blocks: [
       {
         heading: 'Search + Filter Tabs',
@@ -225,7 +225,7 @@ const websitePages = [
   },
   {
     title: 'Service Page',
-    image: 'case-bart-page-service.png',
+    image: 'case-bart-page-service.webp',
     blocks: [
       {
         heading: 'Services We Provide',
@@ -739,14 +739,14 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-bart-problem.png',
+    image: 'case-bart-problem.webp',
     imageClassName: 'rounded-[10px]',
     heading: 'A brand-strong site that is hard to move through',
     body: 'The site looked the part but did not work for the people using it. Navigation did not match how visitors actually searched. The information architecture had grown tangled and could no longer absorb new services without breaking. Key flows carried friction that had no reason to be there. Surveys and interviews surfaced two things at once: where users got lost, and what they had come to do. The existing structure supported neither.',
     why: 'A corporate site is usually the first impression and the main path to action. When visitors cannot find what they need or cannot read the company`s credibility off the page, they leave — and the brands strongest asset quietly works against it.',
   },
   solution: {
-    image: 'case-bart-solution.png',
+    image: 'case-bart-solution.webp',
     heading: 'Research-led structure inside a cohesive brand',
     body: 'I ran a full cycle grounded in research. Surveys and interview findings shaped a reworked navigation and a cleaner, scalable information architecture, and key interaction flows were streamlined around real user goals. A design system built to the client`s visual direction kept every page consistent and easy to extend.',
     scenario: 'The target: a visitor lands anywhere on the site, immediately understands where they are and where to go next, and completes what they came to do — while the client gains a system they can grow without breaking.',
@@ -762,7 +762,7 @@ export default function BartCase() {
   }, []);
 
   return (
-    <main className="flex flex-col bg-white">
+    <main id="main-content" className="flex flex-col bg-white">
       <SectionMenu sections={caseSections} />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
@@ -860,7 +860,7 @@ export default function BartCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-bart-intro.png" className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder filename="case-bart-intro.webp" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}
@@ -1013,7 +1013,7 @@ export default function BartCase() {
           <p className="font-mono-bold text-base text-black">User Persona</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-james.png" className="aspect-square" />
+              <ImagePlaceholder filename="persona-james.webp" className="aspect-square" />
               <h3 className="font-grotesk font-medium text-3xl text-black tracking-tight mt-2">
                 James Mitchell
               </h3>
@@ -1141,7 +1141,7 @@ export default function BartCase() {
                 </p>
               </div>
             </div>
-            <ImagePlaceholder filename="case-bart-menu.png" className="min-h-[520px] order-first lg:order-none" />
+            <ImagePlaceholder filename="case-bart-menu.webp" className="min-h-[520px] order-first lg:order-none" />
           </div>
         </section>
 
@@ -1171,7 +1171,7 @@ export default function BartCase() {
                 wide screens.
               </p>
               <ImagePlaceholder
-                filename="case-bart-grid-desktop.png"
+                filename="case-bart-grid-desktop.webp"
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
@@ -1182,7 +1182,7 @@ export default function BartCase() {
                 and better readability.
               </p>
               <ImagePlaceholder
-                filename="case-bart-grid-mobile.png"
+                filename="case-bart-grid-mobile.webp"
                 className="min-h-[480px] mt-auto bg-white"
               />
             </div>

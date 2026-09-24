@@ -7,7 +7,7 @@ import toolNotion from '../assets/icon-notion.svg';
 const project = {
   name: 'Enterprise CRM',
   title: 'Enterprise CRM: B2B Operations Platform',
-  heroImage: 'case-crm.png',
+  heroImage: 'case-crm.webp',
   tags: ['B2B SaaS', 'Web App', 'Data-Dense UI', 'Marketing Automation'],
   meta: [
     { label: 'Role', value: 'Product Designer' },
@@ -36,7 +36,7 @@ const project = {
   ],
   intro: {
     heading: 'One source of truth for the whole sales cycle.',
-    image: 'case-crm-intro.png',
+    image: 'case-crm-intro.webp',
     body: (
       <>
         <strong>Enterprise CRM</strong> is a B2B operations platform that{' '}
@@ -52,13 +52,13 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-crm-problem.png',
+    image: 'case-crm-problem.webp',
     heading: 'Enterprise data that’s everywhere and nowhere',
     body: 'In a large company, client information, sales activity, inventory, and marketing all live in different tools and formats, so teams work from partial, out-of-date pictures. Complex workflows are buried in dense screens, the sales cycle isn’t visible end to end, stock and order status are hard to track in real time, and reporting is disconnected from the work — making confident, timely decisions difficult.',
     why: 'When sales, inventory, and marketing can’t see the same truth, deals slip, stock decisions lag, and leadership steers on stale data — costing revenue and slowing growth at scale.',
   },
   solution: {
-    image: 'case-crm-solution.png',
+    image: 'case-crm-solution.webp',
     heading: 'A centralized, role-aware operations platform',
     body: 'I redesigned the CRM around one connected source of truth. Client data, the sales pipeline, inventory, and marketing share a consistent, learnable interface; the full sales cycle is visible from lead to closed deal; real-time stock and order statuses surface where teams need them; and marketing automation is aligned with live sales data. Power BI dashboards and custom reports turn that data into decisions, and a scalable design system keeps complex workflows clear as the company grows.',
     scenario: 'My aim was that each role — sales, operations, marketing, leadership — could open the CRM, immediately see the slice they need, act on it, and trust that everyone else is working from the same numbers.',
@@ -68,7 +68,7 @@ const project = {
 const screens = [
   {
     title: 'Dashboard',
-    image: 'case-crm-dashboard.png',
+    image: 'case-crm-dashboard.webp',
     blocks: [
       {
         heading: 'At-a-glance KPIs',
@@ -118,7 +118,7 @@ const screens = [
   },
   {
     title: 'New Campaign',
-    image: 'case-crm-new-campaign.png',
+    image: 'case-crm-new-campaign.webp',
     blocks: [
       {
         heading: 'Campaign info',
@@ -164,7 +164,7 @@ const screens = [
   },
   {
     title: 'Campaigns',
-    image: 'case-crm-campaigns.png',
+    image: 'case-crm-campaigns.webp',
     blocks: [
       {
         heading: 'Pro filters that find revenue fast',
@@ -1115,7 +1115,7 @@ const styleGuide = {
     hex: '#2F5245',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-crm-style.png',
+  image: 'case-crm-style.webp',
 };
 
 const sections = [

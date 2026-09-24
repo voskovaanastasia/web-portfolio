@@ -1,5 +1,5 @@
-import logoFarsafe from '../assets/logo-farsafe.png';
-import logoBart from '../assets/logo-bart.png';
+import logoFarsafe from '../assets/logo-farsafe.webp';
+import logoBart from '../assets/logo-bart.webp';
 import iconFintech from '../assets/exp-fintech.svg';
 import iconFreelance from '../assets/exp-freelance.svg';
 
@@ -35,6 +35,8 @@ export default function ExperienceSection() {
       current: true,
       title: 'Product Designer',
       logo: logoFarsafe,
+      logoW: 2024,
+      logoH: 244,
       meta: ['Farsafe', '🇺🇸 Texas, USA', 'Part-time', 'Remote'],
       subtitle: ['0-to-1 SaaS Uptime-Monitoring Platform', 'Pricing-Led Conversion'],
       challenge:
@@ -60,6 +62,8 @@ export default function ExperienceSection() {
       end: [2025, 12],
       title: 'UX/UI Designer',
       logo: logoBart,
+      logoW: 116,
+      logoH: 61,
       meta: ['bART Solutions', '🇺🇦 Lviv, Ukraine', 'Full-time', 'Remote'],
       subtitle: null,
       challenge:
@@ -88,6 +92,8 @@ export default function ExperienceSection() {
       end: [2023, 4],
       title: 'UI Designer',
       logo: iconFintech,
+      logoW: 24,
+      logoH: 24,
       meta: ['Fintech Mobile App (under NDA)', '🇺🇦 Kyiv, Ukraine', 'Full-time', 'Hybrid'],
       subtitle: ['Production Fintech App', 'iOS HIG & Material Design'],
       challenge:
@@ -114,6 +120,8 @@ export default function ExperienceSection() {
       end: [2021, 4],
       title: 'Graphic Designer',
       logo: iconFreelance,
+      logoW: 36,
+      logoH: 36,
       meta: ['Freelancer', '🇺🇦 Lviv, Ukraine', 'Self-employed'],
       subtitle: ['20+ Clients Across Industries', 'Brand Identity & Marketing Collateral'],
       challenge:
@@ -173,6 +181,10 @@ export default function ExperienceSection() {
                     <img
                       src={exp.logo}
                       alt=""
+                      width={exp.logoW}
+                      height={exp.logoH}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-contain"
                     />
                   </div>

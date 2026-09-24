@@ -414,7 +414,7 @@ export default function CaseLayout({
   ];
 
   return (
-    <main className="flex flex-col bg-white">
+    <main id="main-content" className="flex flex-col bg-white">
       <SectionMenu sections={menuSections} />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">

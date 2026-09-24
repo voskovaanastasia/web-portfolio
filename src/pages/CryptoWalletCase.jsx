@@ -63,14 +63,14 @@ const styleGuide = {
     hex: '#3D8DC4',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-cryptowallet-style.png',
+  image: 'case-cryptowallet-style.webp',
 };
 
 const appScreens = [
   {
     group: 'Onboarding & Authorization',
     title: 'Onboarding',
-    image: 'case-cryptowallet-onboarding.png',
+    image: 'case-cryptowallet-onboarding.webp',
     blocks: [
       {
         heading: 'Onboarding',
@@ -88,7 +88,7 @@ const appScreens = [
   {
     group: 'Onboarding & Authorization',
     title: 'Create Account',
-    image: 'case-cryptowallet-signup.png',
+    image: 'case-cryptowallet-signup.webp',
     blocks: [
       {
         heading: 'Alternative Sign-Up Options',
@@ -105,7 +105,7 @@ const appScreens = [
   {
     group: 'Onboarding & Authorization',
     title: 'Login',
-    image: 'case-cryptowallet-login.png',
+    image: 'case-cryptowallet-login.webp',
     blocks: [
       {
         heading: 'Login Method Toggle',
@@ -140,7 +140,7 @@ const appScreens = [
   {
     group: 'Verification',
     title: 'Country Code',
-    image: 'case-cryptowallet-country.png',
+    image: 'case-cryptowallet-country.webp',
     blocks: [
       {
         heading: 'Search Field',
@@ -183,7 +183,7 @@ const appScreens = [
   {
     group: 'Verification',
     title: 'Email Verification',
-    image: 'case-cryptowallet-email.png',
+    image: 'case-cryptowallet-email.webp',
     blocks: [
       {
         heading: 'Instruction Text',
@@ -217,7 +217,7 @@ const appScreens = [
   {
     group: 'Verification',
     title: 'Identity Verification',
-    image: 'case-cryptowallet-verify.png',
+    image: 'case-cryptowallet-verify.webp',
     blocks: [
       {
         heading: 'Verification Explanation',
@@ -252,7 +252,7 @@ const appScreens = [
   {
     group: 'Verification',
     title: 'Document Verification',
-    image: 'case-cryptowallet-document.png',
+    image: 'case-cryptowallet-document.webp',
     blocks: [
       {
         heading: 'Country Selection',
@@ -296,7 +296,7 @@ const appScreens = [
   {
     group: 'Security',
     title: 'PIN',
-    image: 'case-cryptowallet-pin.png',
+    image: 'case-cryptowallet-pin.webp',
     blocks: [
       {
         heading: 'PIN Progress Indicator',
@@ -339,7 +339,7 @@ const appScreens = [
   {
     group: 'Core Screens',
     title: 'Main Screen',
-    image: 'case-cryptowallet-main.png',
+    image: 'case-cryptowallet-main.webp',
     blocks: [
       {
         heading: 'User Profile Summary',
@@ -386,7 +386,7 @@ const appScreens = [
   {
     group: 'Core Screens',
     title: 'Token Info',
-    image: 'case-cryptowallet-token.png',
+    image: 'case-cryptowallet-token.webp',
     blocks: [
       {
         heading: 'Refresh Action',
@@ -439,7 +439,7 @@ const appScreens = [
   {
     group: 'Core Screens',
     title: 'My Wallet',
-    image: 'case-cryptowallet-wallet.png',
+    image: 'case-cryptowallet-wallet.webp',
     blocks: [
       {
         heading: 'Wallet Actions',
@@ -493,7 +493,7 @@ const appScreens = [
   {
     group: 'Transactions',
     title: 'Transaction Details',
-    image: 'case-cryptowallet-transaction.png',
+    image: 'case-cryptowallet-transaction.webp',
     blocks: [
       {
         heading: 'Transaction Status',
@@ -536,7 +536,7 @@ const appScreens = [
   {
     group: 'Transactions',
     title: 'Send',
-    image: 'case-cryptowallet-send.png',
+    image: 'case-cryptowallet-send.webp',
     blocks: [
       {
         heading: 'Asset Selector',
@@ -581,7 +581,7 @@ const appScreens = [
   {
     group: 'Transactions',
     title: 'Swap',
-    image: 'case-cryptowallet-swap.png',
+    image: 'case-cryptowallet-swap.webp',
     blocks: [
       {
         heading: 'Selling Section',
@@ -1124,13 +1124,13 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-cryptowallet-problem.png',
+    image: 'case-cryptowallet-problem.webp',
     heading: 'High-stakes actions with too little guidance',
     body: 'Everyday crypto asks users to make risky decisions with little support. Onboarding, verification, and security steps are unclear — especially when the app requests personal data (complexity). Choosing the right network and understanding fees (ERC20 / TRC20 / BEP20, confirmations, minimum deposit) feels confusing and risky, where one wrong choice can lose funds (trust). Portfolio performance is hard to read at a glance (clarity). And core actions like Send and Swap involve too many decisions, so users fear mistakes and abandon flows before confirming (friction).',
     why: 'In a wallet, a moment of confusion can mean lost money — and lost money means lost trust for good. If users don’t feel in control at the decisive step, they won’t complete it, and they won’t come back.',
   },
   solution: {
-    image: 'case-cryptowallet-solution.png',
+    image: 'case-cryptowallet-solution.webp',
     heading: 'Guidance and confidence at every decisive step',
     body: 'A guided network selection spells out the rules — confirmations, minimum deposit, ETA, and fee previews — so users choose correctly with confidence (guidance). A transparent verification flow with step-by-step explanations, progress states, and secure access (PIN plus biometrics) builds trust without overwhelm (security). A clean portfolio view with clear value breakdowns, asset-level charts, and quick actions makes performance instantly readable (understanding). And streamlined Send / Swap flows add a review step, validation to prevent errors, and a real-time transaction timeline — received, placed, executed, success (confidence).',
     scenario: 'My aim was that a user could send, swap, or check their portfolio and always know exactly what would happen before they confirmed — turning the scariest moments in crypto into the most reassuring.',
@@ -1146,14 +1146,14 @@ export default function CryptoWalletCase() {
   }, []);
 
   return (
-    <main className="flex flex-col bg-white">
+    <main id="main-content" className="flex flex-col bg-white">
       <SectionMenu sections={caseSections} />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
         {/* Hero image */}
         <div id="case-hero" className="pt-4">
           <ImagePlaceholder
-            filename="case-cryptowallet.png"
+            filename="case-cryptowallet.webp"
             className="w-full max-w-[1058px] mx-auto aspect-[1058/600]"
           />
         </div>
@@ -1248,7 +1248,7 @@ export default function CryptoWalletCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-cryptowallet-intro.png" className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder filename="case-cryptowallet-intro.webp" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}
@@ -1429,7 +1429,7 @@ export default function CryptoWalletCase() {
           <p className="font-mono-bold text-base text-black">User Persona</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-alex.png" className="aspect-square" />
+              <ImagePlaceholder filename="persona-alex.webp" className="aspect-square" />
               <h3 className="font-grotesk font-medium text-3xl text-[#288fd6] tracking-tight mt-2">
                 Alex Carter
               </h3>

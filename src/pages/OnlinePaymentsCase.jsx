@@ -7,7 +7,7 @@ import toolNotion from '../assets/icon-notion.svg';
 const project = {
   name: 'Online Payments',
   title: 'Online Payments: Mobile Wallet',
-  heroImage: 'case-payments.png',
+  heroImage: 'case-payments.webp',
   tags: ['Fintech', 'Mobile', 'Payments', 'Wallet'],
   meta: [
     { label: 'Role', value: 'UX/UI Designer' },
@@ -36,7 +36,7 @@ const project = {
   ],
   intro: {
     heading: 'Money you can follow, not just send.',
-    image: 'case-payments-intro.png',
+    image: 'case-payments-intro.webp',
     body: (
       <>
         <strong>Online Payments</strong> is a mobile wallet built around one thing people do
@@ -49,13 +49,13 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-payments-problem.png',
+    image: 'case-payments-problem.webp',
     heading: 'A payment you send and then stop seeing',
     body: 'Sending money online is fast to start and slow to understand. A transfer leaves the account and the app goes quiet — no state, no timing, no fee breakdown until it is over. Security steps arrive without explanation, so verification, 3-D Secure, and KYC read as obstacles rather than protection. And when a payment sits in “pending” or fails outright, nothing on screen says whether the money left, is on its way, or is coming back.',
     why: 'In a wallet, silence is the most expensive state. A user who cannot tell whether a payment succeeded will either repeat it or abandon the app — and both outcomes cost the platform more than the transaction was worth.',
   },
   solution: {
-    image: 'case-payments-solution.png',
+    image: 'case-payments-solution.webp',
     heading: 'Every step of the money says where it is',
     body: (
       <>
@@ -78,7 +78,7 @@ const project = {
 const screens = [
   {
     title: 'Main Screen',
-    image: 'case-payments-main.png',
+    image: 'case-payments-main.webp',
     blocks: [
       {
         heading: 'Balance first, always',
@@ -124,7 +124,7 @@ const screens = [
   },
   {
     title: 'Cards',
-    image: 'case-payments-cards.png',
+    image: 'case-payments-cards.webp',
     blocks: [
       {
         heading: 'The wallet as a shelf',
@@ -160,7 +160,7 @@ const screens = [
   },
   {
     title: 'Send Money — Recipient',
-    image: 'case-payments-send-recipient.png',
+    image: 'case-payments-send-recipient.webp',
     blocks: [
       {
         heading: 'One field, three identifiers',
@@ -206,7 +206,7 @@ const screens = [
   },
   {
     title: 'Send Money — Amount',
-    image: 'case-payments-send-amount.png',
+    image: 'case-payments-send-amount.webp',
     blocks: [
       {
         heading: 'Destination and funds in one capsule',
@@ -242,7 +242,7 @@ const screens = [
   },
   {
     title: 'Transaction Details',
-    image: 'case-payments-transaction.png',
+    image: 'case-payments-transaction.webp',
     blocks: [
       {
         heading: 'Merchant before amount',
@@ -323,7 +323,7 @@ const styleGuide = {
     hex: '#252529',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-onlinepayments-style.png',
+  image: 'case-onlinepayments-style.webp',
 };
 
 const iaTree = {

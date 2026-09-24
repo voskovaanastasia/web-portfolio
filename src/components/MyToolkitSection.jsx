@@ -1,101 +1,29 @@
-import iconFigma from '../assets/icon-figma.svg';
-import iconReact from '../assets/icon-react.svg';
-import iconGit from '../assets/icon-git.svg';
-import iconClaude from '../assets/icon-claude.svg';
-import iconWebflow from '../assets/icon-webflow.svg';
-import iconJira from '../assets/icon-jira.svg';
-import iconNotion from '../assets/icon-notion.svg';
+import { useState } from 'react';
+import { getToolsByCategory } from '../data/tools';
 
-import iconSketch from '../assets/toolkit/sketch.svg';
-import iconIllustrator from '../assets/toolkit/illustrator.svg';
-import iconPhotoshop from '../assets/toolkit/photoshop.svg';
-import iconLightroom from '../assets/toolkit/lightroom.svg';
-import iconIndesign from '../assets/toolkit/indesign.svg';
-import iconMidjourney from '../assets/toolkit/midjourney.svg';
-import iconZeplin from '../assets/toolkit/zeplin.svg';
-import iconAffinity from '../assets/toolkit/affinity.svg';
-import iconMaterialDesign from '../assets/toolkit/material-design.png';
-import iconApple from '../assets/toolkit/apple.svg';
-
-import iconHotjar from '../assets/toolkit/hotjar.svg';
-import iconZeroheight from '../assets/how-i-work/tool-zeroheight.png';
-import iconAmplitude from '../assets/how-i-work/tool-amplitude.svg';
-import iconConfluence from '../assets/toolkit/confluence.svg';
-import iconWhimsical from '../assets/toolkit/whimsical.png';
-import iconGoogleAnalytics from '../assets/toolkit/googleanalytics.svg';
-import iconFramer from '../assets/toolkit/framer.png';
-import iconGemini from '../assets/toolkit/gemini.svg';
-import iconOpenai from '../assets/toolkit/openai.svg';
-import iconSlack from '../assets/toolkit/slack.svg';
-import iconAsana from '../assets/toolkit/asana.svg';
-
-import iconHtml from '../assets/toolkit/html.svg';
-import iconCss from '../assets/toolkit/css.svg';
-import iconJavascript from '../assets/toolkit/javascript.svg';
-import iconTailwind from '../assets/toolkit/tailwind.png';
-import iconVercel from '../assets/toolkit/vercel.svg';
-import iconGithub from '../assets/toolkit/github.svg';
-import iconVscode from '../assets/toolkit/vscode.svg';
-import iconCursor from '../assets/toolkit/cursor.png';
-
-const designTools = [
-  { icon: iconFigma, label: 'Figma' },
-  { icon: iconSketch, label: 'Sketch' },
-  { icon: iconIllustrator, label: 'Illustrator' },
-  { icon: iconPhotoshop, label: 'Photoshop' },
-  { icon: iconLightroom, label: 'Lightroom' },
-  { icon: iconIndesign, label: 'InDesign' },
-  { icon: iconMidjourney, label: 'Midjourney' },
-  { icon: iconZeplin, label: 'Zeplin' },
-  { icon: iconAffinity, label: 'Affinity' },
-  { icon: iconMaterialDesign, label: 'Material Design' },
-  { icon: iconApple, label: 'Human Interface' },
-];
-
-const softwareTools = [
-  { icon: iconClaude, label: 'Claude' },
-  { icon: iconNotion, label: 'Notion' },
-  { icon: iconJira, label: 'Jira' },
-  { icon: iconHotjar, label: 'Hotjar' },
-  { icon: iconZeroheight, label: 'Zeroheight' },
-  { icon: iconConfluence, label: 'Confluence' },
-  { icon: iconWhimsical, label: 'Whimsical' },
-  { icon: iconGoogleAnalytics, label: 'Google Analytics' },
-  { icon: iconFramer, label: 'Framer' },
-  { icon: iconWebflow, label: 'Webflow' },
-  { icon: iconGemini, label: 'Gemini' },
-  { icon: iconOpenai, label: 'ChatGPT' },
-  { icon: iconSlack, label: 'Slack' },
-  { icon: iconAsana, label: 'Asana' },
-  { icon: iconAmplitude, label: 'Amplitude' },
-];
+const designTools = getToolsByCategory('design');
+const softwareTools = getToolsByCategory('software');
+const programmingTools = getToolsByCategory('programming');
 
 const languages = [
-  { flag: '🇬🇧', label: 'English', level: 'B2 (Fluent)' },
+  { flag: '🇬🇧', label: 'English', level: 'B2 (Upper-Intermediate)' },
   { flag: '🇺🇦', label: 'Ukrainian', level: 'Native' },
   { flag: '🇪🇸', label: 'Spanish', level: 'A2 (Basic)' },
-];
-
-const programmingTools = [
-  { icon: iconHtml, label: 'HTML' },
-  { icon: iconCss, label: 'CSS' },
-  { icon: iconJavascript, label: 'JavaScript' },
-  { icon: iconReact, label: 'React' },
-  { icon: iconTailwind, label: 'Tailwind CSS' },
-  { icon: iconVercel, label: 'Vercel' },
-  { icon: iconGithub, label: 'GitHub' },
-  { icon: iconGit, label: 'Git' },
-  { icon: iconVscode, label: 'VS Code' },
-  { icon: iconClaude, label: 'Claude Code' },
-  { icon: iconFigma, label: 'Figma API' },
-  { icon: iconCursor, label: 'Cursor' },
 ];
 
 function ToolCard({ icon, label }) {
   return (
     <div className="flex items-center gap-2.5">
       <div className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0 p-[7px]">
-        <img src={icon} alt="" className="w-[25px] h-[25px] object-contain" />
+        <img
+          src={icon}
+          alt=""
+          width={24}
+          height={24}
+          loading="lazy"
+          decoding="async"
+          className="w-[25px] h-[25px] object-contain"
+        />
       </div>
       <p className="font-grotesk font-bold text-sm text-black">{label}</p>
     </div>
@@ -103,16 +31,29 @@ function ToolCard({ icon, label }) {
 }
 
 function ToolGroup({ label, tools }) {
+  const [expanded, setExpanded] = useState(false);
+  const featured = tools.filter((tool) => tool.featured);
+  const hasMore = tools.length > featured.length;
+  const visibleTools = expanded ? tools : featured;
+
   return (
     <div className="flex flex-col gap-5 w-full">
       <p className="font-mono-bold text-base text-black">{label}</p>
       <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
-        {tools.map((tool) => (
-          <ToolCard key={tool.label} icon={tool.icon} label={tool.label} />
+        {visibleTools.map((tool) => (
+          <ToolCard key={tool.id} icon={tool.icon} label={tool.name} />
         ))}
-        <div className="flex items-center">
-          <p className="font-caveat font-bold text-xl text-[#6d3fc4]">+ more</p>
-        </div>
+        {hasMore && (
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="flex items-center text-left"
+          >
+            <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
+              {expanded ? 'show less' : '+ more'}
+            </p>
+          </button>
+        )}
       </div>
     </div>
   );

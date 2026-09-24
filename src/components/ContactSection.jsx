@@ -1,5 +1,6 @@
-import contactProjects from '../assets/contact-projects.png';
-import contactPhone from '../assets/contact-phone.png';
+import { Link } from 'react-router-dom';
+import contactProjects from '../assets/contact-projects.webp';
+import contactPhone from '../assets/contact-phone.webp';
 
 const EMAIL = 'anastazjav22@gmail.com';
 
@@ -57,7 +58,7 @@ const socials = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-white">
+    <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
           <p className="font-mono-bold text-base text-black">Get in Touch</p>
@@ -68,19 +69,32 @@ export default function ContactSection() {
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {/* My Projects */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 overflow-hidden flex flex-col">
+          <Link
+            to="/projects"
+            className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 overflow-hidden flex flex-col group"
+          >
             <h3 className="font-grotesk font-bold text-lg text-black mb-4">My Projects</h3>
             <img
               src={contactProjects}
               alt="Laptop showing the Farsafe dashboard project"
+              width={652}
+              height={557}
+              loading="lazy"
+              decoding="async"
               className="w-full flex-1 object-contain translate-x-4 translate-y-2 scale-110"
             />
-          </div>
+          </Link>
 
           {/* Resume */}
           <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5">
             <h3 className="font-grotesk font-bold text-lg text-black mb-6">Checkout my Resume</h3>
-            <a href="#resume" className="block group">
+            <a
+              href="/Anastasiia-Voskova-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Anastasiia-Voskova-Resume.pdf"
+              className="block group"
+            >
               <div className="bg-[#f0f0ee] rounded-[8px] px-6 py-8 flex justify-center">
                 <div className="bg-[#fdf6d8] shadow-md px-10 py-7 rotate-[-4deg] group-hover:rotate-0 transition-transform">
                   <svg viewBox="0 0 40 8" className="w-10 h-2 mb-3 text-[#e8b931]">
@@ -103,6 +117,10 @@ export default function ContactSection() {
             <img
               src={contactPhone}
               alt="Phone showing a crypto wallet app design"
+              width={686}
+              height={1200}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>
@@ -190,6 +208,6 @@ export default function ContactSection() {
           Based in Granada, Spain 🇪🇸 · Open to new opportunities and exciting design challenges.
         </p>
       </div>
-    </section>
+    </footer>
   );
 }

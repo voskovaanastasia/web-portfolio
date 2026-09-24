@@ -8,7 +8,7 @@ import toolNotion from '../assets/icon-notion.svg';
 const project = {
   name: 'Fitness App',
   title: 'Fitness App: Mobile Health & Training Platform',
-  heroImage: 'case-fitness.png',
+  heroImage: 'case-fitness.webp',
   tags: ['Mobile', 'iOS & Android', 'Health & Wellness', 'AI Personalization'],
   meta: [
     { label: 'Role', value: 'Product Designer' },
@@ -37,7 +37,7 @@ const project = {
   ],
   intro: {
     heading: 'Train on what your body’s actually telling you.',
-    image: 'case-fitness-intro.png',
+    image: 'case-fitness-intro.webp',
     body: (
       <>
         <strong>Fitness App</strong> is a <strong>mobile health-and-fitness platform</strong> that
@@ -52,13 +52,13 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-fitness-problem.png',
+    image: 'case-fitness-problem.webp',
     heading: 'Health data and training live in separate apps',
     body: 'Fitness tracking and workout guidance are usually split across multiple apps and screens, forcing users to hop between them to understand their health, pick the right session, and stay consistent. It’s hard to translate daily metrics (HRV, heart rate, sleep, steps, water) into a workout decision; plans are generic and don’t adapt to readiness or recovery; choosing the right level, duration, and intensity is confusing; in-workout controls break flow; and progress is scattered across views.',
     why: 'When effort, recovery, and results never meet in one place, people end up training against their bodies instead of with them — they lose motivation, miss real progress, and eventually stop.',
   },
   solution: {
-    image: 'case-fitness-solution.png',
+    image: 'case-fitness-solution.webp',
     heading: 'Metrics, decisions, and training in one experience',
     body: 'The app brings wellness metrics and training into a single flow. A metrics-first dashboard (HRV, average heart rate, sleep, steps, water) gives a quick daily snapshot; AI recommends workouts based on readiness, with the option to browse and pick manually; clear discovery with filters (Yoga / Pilates / HIIT) shows level, duration, and calorie range up front; a smooth guided flow with a warm-up toggle and an in-session player (timer, progress, next-exercise preview) keeps users in rhythm; and progress analytics across day, week, month, and year reinforce consistency.',
     scenario: 'My aim was that a user could open the app in the morning, read their readiness at a glance, and start the right workout in seconds — then see how today’s effort connects to their habits and long-term trends.',
@@ -437,7 +437,7 @@ function UserPersona() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col gap-5">
-        <ImagePlaceholder filename="case-fitness-persona.png" className="min-h-[480px]" />
+        <ImagePlaceholder filename="case-fitness-persona.webp" className="min-h-[480px]" />
         <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-3">
           <h3 className="font-grotesk font-medium text-3xl text-[#1552d8]">{persona.name}</h3>
           <p className="font-grotesk font-medium text-base text-[#1552d8]">{persona.role}</p>
@@ -568,7 +568,7 @@ function InformationArchitecture() {
 const screens = [
   {
     title: 'Main Screen',
-    image: 'case-fitness-main.png',
+    image: 'case-fitness-main.webp',
     blocks: [
       {
         heading: 'Metrics at a glance (HRV & Avg Heart Rate)',
@@ -613,7 +613,7 @@ const screens = [
   },
   {
     title: 'Steps',
-    image: 'case-fitness-steps.png',
+    image: 'case-fitness-steps.webp',
     blocks: [
       {
         heading: 'Daily total with date range',
@@ -668,7 +668,7 @@ const screens = [
   },
   {
     title: 'Workouts',
-    image: 'case-fitness-workouts.png',
+    image: 'case-fitness-workouts.webp',
     blocks: [
       {
         heading: 'Quick filters',
@@ -716,7 +716,7 @@ const screens = [
   },
   {
     title: 'Pre-Workout',
-    image: 'case-fitness-pre-workout.png',
+    image: 'case-fitness-pre-workout.webp',
     blocks: [
       {
         heading: 'Program header + clear tags',
@@ -752,7 +752,7 @@ const screens = [
   },
   {
     title: 'Workout',
-    image: 'case-fitness-workout.png',
+    image: 'case-fitness-workout.webp',
     blocks: [
       {
         heading: '“Next exercise” preview',
@@ -837,7 +837,7 @@ const styleGuide = {
     hex: '#387CFF',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-fitness-style.png',
+  image: 'case-fitness-style.webp',
 };
 
 const sections = [

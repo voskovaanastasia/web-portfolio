@@ -8,7 +8,7 @@ import toolIllustrator from '../assets/toolkit/illustrator.svg';
 const project = {
   name: 'SHOOT',
   title: 'SHOOT: Creative-Services Marketplace',
-  heroImage: 'case-shoot.png',
+  heroImage: 'case-shoot.webp',
   tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
   meta: [
     { label: 'Role', value: 'Product Designer' },
@@ -38,7 +38,7 @@ const project = {
   ],
   intro: {
     heading: 'One platform for the whole shoot.',
-    image: 'case-shoot-intro.png',
+    image: 'case-shoot-intro.webp',
     body: (
       <>
         <strong>SHOOT</strong> is a creative-services marketplace that connects individuals and
@@ -52,13 +52,13 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-shoot-problem.png',
+    image: 'case-shoot-problem.webp',
     heading: 'Creative bookings are scattered across too many tools',
     body: 'Photographers, studios, and equipment rentals live on separate sites and apps, so users hop between platforms just to discover and compare portfolios, spaces, and gear. Booking flows are confusing, with unclear steps and missing availability. Pricing isn’t transparent — hidden fees and custom quotes frustrate people. And with no unified calendar, users juggle messages, emails, and spreadsheets to pull a single shoot together.',
     why: 'Every extra tool adds friction, cost, and doubt: users overpay through hidden fees, lose bookings to unclear availability, and abandon the process before it’s finished — while creators lose work they never even see.',
   },
   solution: {
-    image: 'case-shoot-solution.png',
+    image: 'case-shoot-solution.webp',
     heading: 'One booking journey, from portfolio to payment',
     body: 'SHOOT unifies photographers, studios, and gear into a single searchable platform, sorted by location and availability. Verified portfolios and reviews with a “Pro-Badge” build trust, pricing is shown up front with a full fee breakdown on every profile, and a step-by-step flow — calendar picker, progress indicators, confirmation emails — keeps booking legible from the first tap. Real-time updates, reminders, and secure in-app payments keep the entire shoot in one place.',
     scenario: 'My aim was that someone planning a shoot could find talent, a studio, and gear, compare them on real prices and availability, and confirm the booking in a single sitting — confident that what they saw is exactly what they’d pay.',
@@ -204,7 +204,7 @@ function InformationArchitecture() {
 const screens = [
   {
     title: 'Sign In',
-    image: 'case-shoot-signin.png',
+    image: 'case-shoot-signin.webp',
     blocks: [
       {
         heading: 'A door, not a gate',
@@ -241,7 +241,7 @@ const screens = [
   },
   {
     title: 'Sign Up',
-    image: 'case-shoot-signup.png',
+    image: 'case-shoot-signup.webp',
     blocks: [
       {
         heading: 'Fastest path on top',
@@ -285,7 +285,7 @@ const screens = [
   },
   {
     title: 'Landing',
-    image: 'case-shoot-landing.png',
+    image: 'case-shoot-landing.webp',
     blocks: [
       {
         heading: 'Three doors, one decision',
@@ -329,7 +329,7 @@ const screens = [
   },
   {
     title: 'Catalog',
-    image: 'case-shoot-catalog.png',
+    image: 'case-shoot-catalog.webp',
     blocks: [
       {
         heading: 'Filters shaped like the decision',
@@ -374,7 +374,7 @@ const screens = [
   },
   {
     title: 'Portfolio',
-    image: 'case-shoot-portfolio.png',
+    image: 'case-shoot-portfolio.webp',
     blocks: [
       {
         heading: 'Two entrances: photo and video',
@@ -419,7 +419,7 @@ const screens = [
   },
   {
     title: 'Checkout',
-    image: 'case-shoot-checkout.png',
+    image: 'case-shoot-checkout.webp',
     blocks: [
       {
         heading: 'The booking as a receipt',
@@ -500,7 +500,7 @@ const styleGuide = {
     hex: '#242628',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-shoot-style.png',
+  image: 'case-shoot-style.webp',
 };
 
 const caseSections = [

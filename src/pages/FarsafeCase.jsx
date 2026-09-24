@@ -6,9 +6,9 @@ import IATree from '../components/IATree';
 import { ImagePlaceholder, NextCaseLink, MetricCard } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
-import caseFarsafe from '../assets/case-farsafe.png';
+import caseFarsafe from '../assets/case-farsafe.webp';
 import toolFigma from '../assets/icon-figma.svg';
-import toolFramer from '../assets/toolkit/framer.png';
+import toolFramer from '../assets/toolkit/framer.webp';
 import toolAmplitude from '../assets/how-i-work/tool-amplitude.svg';
 
 const caseSections = [
@@ -32,7 +32,7 @@ const caseSections = [
 const dashboardPages = [
   {
     title: 'Probe Page',
-    image: 'case-farsafe-app-probe.png',
+    image: 'case-farsafe-app-probe.webp',
     blocks: [
       {
         heading: 'Probe Header',
@@ -78,7 +78,7 @@ const dashboardPages = [
   },
   {
     title: 'Dashboard',
-    image: 'case-farsafe-app-dashboard.png',
+    image: 'case-farsafe-app-dashboard.webp',
     blocks: [
       {
         heading: 'Metric Cards — Top Row',
@@ -115,7 +115,7 @@ const dashboardPages = [
   },
   {
     title: 'Outage Details',
-    image: 'case-farsafe-app-outage.png',
+    image: 'case-farsafe-app-outage.webp',
     blocks: [
       {
         heading: 'Modal Header',
@@ -155,7 +155,7 @@ const dashboardPages = [
   },
   {
     title: 'Status Page',
-    image: 'case-farsafe-app-status.png',
+    image: 'case-farsafe-app-status.webp',
     blocks: [
       {
         heading: 'Status Header',
@@ -192,7 +192,7 @@ const dashboardPages = [
   },
   {
     title: 'Monitoring',
-    image: 'case-farsafe-app-monitoring.png',
+    image: 'case-farsafe-app-monitoring.webp',
     blocks: [
       {
         heading: 'Tab Switcher + Toolbar',
@@ -229,7 +229,7 @@ const dashboardPages = [
   },
   {
     title: 'Billing',
-    image: 'case-farsafe-app-billing.png',
+    image: 'case-farsafe-app-billing.webp',
     blocks: [
       {
         heading: 'Summary Cards',
@@ -268,7 +268,7 @@ const dashboardPages = [
   },
   {
     title: 'Settings',
-    image: 'case-farsafe-app-settings.png',
+    image: 'case-farsafe-app-settings.webp',
     blocks: [
       {
         heading: 'Phone Numbers',
@@ -397,7 +397,7 @@ const surveyResults = [
 const marketingPages = [
   {
     title: 'Landing page',
-    image: 'case-farsafe-page-landing.png',
+    image: 'case-farsafe-page-landing.webp',
     blocks: [
       {
         heading: 'Hero Section',
@@ -427,7 +427,7 @@ const marketingPages = [
   },
   {
     title: 'Global Network',
-    image: 'case-farsafe-page-network.png',
+    image: 'case-farsafe-page-network.webp',
     blocks: [
       {
         heading: 'Hero Section',
@@ -468,7 +468,7 @@ const marketingPages = [
   },
   {
     title: 'Pricing',
-    image: 'case-farsafe-page-pricing.png',
+    image: 'case-farsafe-page-pricing.webp',
     blocks: [
       {
         heading: 'Hero Section',
@@ -891,7 +891,7 @@ export default function FarsafeCase() {
   }, [project]);
 
   return (
-    <main className="flex flex-col bg-white">
+    <main id="main-content" className="flex flex-col bg-white">
       <SectionMenu sections={caseSections} />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
@@ -989,7 +989,7 @@ export default function FarsafeCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-farsafe-intro.png" className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder filename="case-farsafe-intro.webp" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem statement */}
@@ -1040,7 +1040,7 @@ export default function FarsafeCase() {
 
         {/* Problem */}
         <section id="problem" className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-          <ImagePlaceholder filename="case-farsafe-problem.png" className="min-h-[420px]" />
+          <ImagePlaceholder filename="case-farsafe-problem.webp" className="min-h-[420px]" />
           <div className="flex flex-col gap-5 lg:col-span-2">
             <p className="font-mono-bold text-base text-black">PROBLEM</p>
             <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
@@ -1077,7 +1077,7 @@ export default function FarsafeCase() {
               could trust in production - the same clarity from landing page to daily dashboard.
             </p>
           </div>
-          <ImagePlaceholder filename="case-farsafe-solution.png" className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder filename="case-farsafe-solution.webp" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Project goals */}
@@ -1255,7 +1255,7 @@ export default function FarsafeCase() {
           <p className="font-mono-bold text-base text-black">User Persona</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-daniel.png" className="aspect-square" />
+              <ImagePlaceholder filename="persona-daniel.webp" className="aspect-square" />
               <h3 className="font-grotesk font-medium text-3xl text-black tracking-tight mt-2">
                 Daniel Reyes
               </h3>
@@ -1394,7 +1394,7 @@ export default function FarsafeCase() {
                 </p>
               </div>
             </div>
-            <ImagePlaceholder filename="case-farsafe-menu.png" className="min-h-[420px] order-first lg:order-none" />
+            <ImagePlaceholder filename="case-farsafe-menu.webp" className="min-h-[420px] order-first lg:order-none" />
           </div>
         </section>
 
@@ -1416,7 +1416,7 @@ export default function FarsafeCase() {
                 layouts.
               </p>
               <ImagePlaceholder
-                filename="case-farsafe-grid-marketing.png"
+                filename="case-farsafe-grid-marketing.webp"
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
@@ -1428,7 +1428,7 @@ export default function FarsafeCase() {
                 width to dense tables, metric cards, and timelines.
               </p>
               <ImagePlaceholder
-                filename="case-farsafe-grid-dashboard.png"
+                filename="case-farsafe-grid-dashboard.webp"
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
@@ -1438,7 +1438,7 @@ export default function FarsafeCase() {
                 A 2-column grid, sized for comfortable reading on compact screens.
               </p>
               <ImagePlaceholder
-                filename="case-farsafe-grid-mobile.png"
+                filename="case-farsafe-grid-mobile.webp"
                 className="min-h-[480px] mt-auto bg-white"
               />
             </div>
@@ -1481,7 +1481,7 @@ export default function FarsafeCase() {
 
             {/* Alert mockups image */}
             <ImagePlaceholder
-              filename="case-farsafe-alerts.png"
+              filename="case-farsafe-alerts.webp"
               className="lg:col-span-2 min-h-[280px]"
             />
 

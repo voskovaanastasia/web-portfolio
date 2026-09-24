@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import caseFarsafe from '../assets/case-farsafe.png';
+import caseFarsafe from '../assets/case-farsafe.webp';
 
 const projects = [
   {
@@ -64,6 +64,10 @@ export default function SelectedWork() {
                   <img
                     src={project.image}
                     alt={project.title}
+                    width={2116}
+                    height={1200}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>

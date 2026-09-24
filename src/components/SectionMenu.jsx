@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const homeSections = [
   { id: 'hero', label: 'Back to Top' },
@@ -14,14 +14,22 @@ const homeSections = [
 
 // Fixed bottom-left section navigator. Hidden while the first section is active.
 export default function SectionMenu({ sections = homeSections }) {
-  const [activeId, setActiveId] = useState(sections[0].id);
+  const [intersectingIds, setIntersectingIds] = useState(() => new Set());
   const [isOpen, setIsOpen] = useState(false);
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
+  const itemRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
+        setIntersectingIds((prev) => {
+          const next = new Set(prev);
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) next.add(entry.target.id);
+            else next.delete(entry.target.id);
+          });
+          return next;
         });
       },
       { rootMargin: '-40% 0px -55% 0px' }
@@ -33,8 +41,56 @@ export default function SectionMenu({ sections = homeSections }) {
     return () => observer.disconnect();
   }, [sections]);
 
+  // Topmost section (in page order) that's currently intersecting wins, so the
+  // dropdown reliably reads "hero" at scroll position 0 instead of whichever
+  // section's observer entry happened to fire/settle last.
+  const activeId = sections.find(({ id }) => intersectingIds.has(id))?.id ?? sections[0].id;
   const hidden = activeId === sections[0].id;
   const activeLabel = sections.find(({ id }) => id === activeId)?.label ?? sections[0].label;
+
+  useEffect(() => {
+    if (isOpen) itemRefs.current[0]?.focus();
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e) => {
+      if (!menuRef.current?.contains(e.target) && !buttonRef.current?.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    buttonRef.current?.focus();
+  };
+
+  const handleMenuKeyDown = (e) => {
+    const items = itemRefs.current.filter(Boolean);
+    const currentIndex = items.indexOf(document.activeElement);
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      items[(currentIndex + 1) % items.length]?.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      items[(currentIndex - 1 + items.length) % items.length]?.focus();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      items[0]?.focus();
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      items[items.length - 1]?.focus();
+    } else if (e.key === 'Tab') {
+      closeMenu();
+    }
+  };
 
   return (
     <>
@@ -73,12 +129,21 @@ export default function SectionMenu({ sections = homeSections }) {
         }`}
       >
         {isOpen && (
-          <div className="bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]">
-            {sections.map(({ id, label }) => {
+          <div
+            id="section-menu"
+            ref={menuRef}
+            role="menu"
+            aria-label="Page sections"
+            onKeyDown={handleMenuKeyDown}
+            className="bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
+          >
+            {sections.map(({ id, label }, index) => {
               const active = id === activeId;
               return (
                 <a
                   key={id}
+                  ref={(el) => (itemRefs.current[index] = el)}
+                  role="menuitem"
                   href={`#${id}`}
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors text-sm sm:text-base font-medium ${
@@ -93,9 +158,18 @@ export default function SectionMenu({ sections = homeSections }) {
         )}
 
         <button
+          ref={buttonRef}
           onClick={() => setIsOpen((v) => !v)}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowDown' && !isOpen) {
+              e.preventDefault();
+              setIsOpen(true);
+            }
+          }}
           aria-label="Toggle page sections menu"
+          aria-haspopup="menu"
           aria-expanded={isOpen}
+          aria-controls="section-menu"
           className="bg-[rgba(240,240,240,0.2)] backdrop-blur-md border border-white/30 rounded-full pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
         >
           <span className="font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap text-black">

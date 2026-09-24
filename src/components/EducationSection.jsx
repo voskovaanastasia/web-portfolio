@@ -1,11 +1,13 @@
-import logoLpnu from '../assets/edu-lpnu.png';
-import logoLnu from '../assets/edu-lnu.png';
+import logoLpnu from '../assets/edu-lpnu.webp';
+import logoLnu from '../assets/edu-lnu.webp';
 
 const education = [
   {
     dateRange: 'SEP 2020 — JUN 2022',
     school: 'Computer Science',
     logo: logoLpnu,
+    logoW: 128,
+    logoH: 128,
     meta: [
       'Lviv Polytechnic National University',
       "Bachelor's degree",
@@ -45,6 +47,8 @@ const education = [
     dateRange: 'SEP 2017 — JUN 2020',
     school: 'Computer Science',
     logo: logoLnu,
+    logoW: 16,
+    logoH: 16,
     meta: [
       'Ivan Franko National University of Lviv',
       "Junior Specialist's degree",
@@ -95,7 +99,15 @@ export default function EducationSection() {
 
                 <div className="flex items-start gap-4 mb-5">
                   <div className="bg-white border border-[#ececec] rounded-[12px] w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
-                    <img src={edu.logo} alt="" className="w-full h-full object-contain" />
+                    <img
+                      src={edu.logo}
+                      alt=""
+                      width={edu.logoW}
+                      height={edu.logoH}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div className="flex flex-col gap-1">
                     <h3 className="font-grotesk font-bold text-lg text-black">

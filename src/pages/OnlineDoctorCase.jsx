@@ -52,13 +52,13 @@ const styleGuide = {
     hex: '#2455C4',
     weights: ['Regular', 'Medium', 'Semi Bold', 'Bold', 'Extra Bold'],
   },
-  image: 'case-onlinedoctor-style.png',
+  image: 'case-onlinedoctor-style.webp',
 };
 
 const appScreens = [
   {
     title: 'Home',
-    image: 'case-onlinedoctor-home.png',
+    image: 'case-onlinedoctor-home.webp',
     blocks: [
       {
         heading: 'My Appointments',
@@ -97,7 +97,7 @@ const appScreens = [
   },
   {
     title: 'Profile',
-    image: 'case-onlinedoctor-profile.png',
+    image: 'case-onlinedoctor-profile.webp',
     blocks: [
       {
         heading: 'Member card',
@@ -145,7 +145,7 @@ const appScreens = [
   },
   {
     title: 'Doctors',
-    image: 'case-onlinedoctor-doctors.png',
+    image: 'case-onlinedoctor-doctors.webp',
     blocks: [
       {
         heading: 'Hospital selector + Filters',
@@ -198,7 +198,7 @@ const appScreens = [
   },
   {
     title: 'Online Appointment',
-    image: 'case-onlinedoctor-appointment.png',
+    image: 'case-onlinedoctor-appointment.webp',
     blocks: [
       {
         heading: 'Doctor snapshot with proven trust',
@@ -241,7 +241,7 @@ const appScreens = [
   },
   {
     title: 'Video Call',
-    image: 'case-onlinedoctor-videocall.png',
+    image: 'case-onlinedoctor-videocall.webp',
     blocks: [
       {
         heading: 'Doctor card',
@@ -372,13 +372,13 @@ const project = {
     ),
   },
   problem: {
-    image: 'case-onlinedoctor-problem.png',
+    image: 'case-onlinedoctor-problem.webp',
     heading: 'Virtual care feels harder than it should',
     body: 'Patients need to reach a doctor quickly, but telehealth often adds friction instead of removing it: finding the right doctor and an open slot is confusing, joining a consultation is unreliable, and medical, scheduling, and billing information are scattered across disconnected steps. Sensitive data and payments raise trust concerns, and unclear appointment or billing states leave patients unsure what happens next.',
     why: 'In healthcare, confusion isn’t just friction — it delays care. When patients can’t easily book, connect, or understand what they’re paying for, they postpone visits and lose trust in the system meant to help them.',
   },
   solution: {
-    image: 'case-onlinedoctor-solution.png',
+    image: 'case-onlinedoctor-solution.webp',
     heading: 'One reliable flow from booking to bill',
     body: 'I designed a clear path from finding a doctor to finishing a visit: searchable profiles with availability, a simple scheduling flow with reminders, and a dependable real-time consultation with an obvious way to join. Billing is integrated and transparent, how medical data and payments are handled is explained in plain language at the moment it matters, and appointment and payment states are visible at every step so patients always know what`s next.',
     scenario: 'My aim was that a patient could book, join a consultation, and settle the bill without ever feeling lost or exposed — the same reassurance of a good in-person visit, delivered remotely.',
@@ -394,14 +394,14 @@ export default function OnlineDoctorCase() {
   }, []);
 
   return (
-    <main className="flex flex-col bg-white">
+    <main id="main-content" className="flex flex-col bg-white">
       <SectionMenu sections={caseSections} />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
         {/* Hero image */}
         <div id="case-hero" className="pt-4">
           <ImagePlaceholder
-            filename="case-onlinedoctor.png"
+            filename="case-onlinedoctor.webp"
             className="w-full max-w-[1058px] mx-auto aspect-[1058/600]"
           />
         </div>
@@ -496,7 +496,7 @@ export default function OnlineDoctorCase() {
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename="case-onlinedoctor-intro.png" className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder filename="case-onlinedoctor-intro.webp" className="min-h-[420px] order-first lg:order-none" />
         </section>
 
         {/* Problem & solution */}

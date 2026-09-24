@@ -11,7 +11,7 @@ import SectionMenu from '../components/SectionMenu';
 
 export default function About() {
   return (
-    <main className="flex flex-col">
+    <main id="main-content" className="flex flex-col">
       <SectionMenu />
       <HeroSection />
       <HowIWorkSection />

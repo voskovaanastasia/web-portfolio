@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import caseFarsafe from '../assets/case-farsafe.png';
-import caseBart from '../assets/case-bart.png';
-import caseCryptowallet from '../assets/case-cryptowallet.png';
-import caseOnlineDoctor from '../assets/case-onlinedoctor.png';
-import caseCrm from '../assets/case-crm.png';
-import caseFitness from '../assets/case-fitness.png';
-import casePayments from '../assets/case-payments.png';
-import caseShoot from '../assets/case-shoot.png';
+import caseFarsafe from '../assets/case-farsafe.webp';
+import caseBart from '../assets/case-bart.webp';
+import caseCryptowallet from '../assets/case-cryptowallet.webp';
+import caseOnlineDoctor from '../assets/case-onlinedoctor.webp';
+import caseCrm from '../assets/case-crm.webp';
+import caseFitness from '../assets/case-fitness.webp';
+import casePayments from '../assets/case-payments.webp';
+import caseShoot from '../assets/case-shoot.webp';
 import DotsBackground from '../components/DotsBackground';
 
 const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
@@ -93,7 +93,7 @@ export default function Projects() {
   const visible = projects.filter((p) => p.category === activeCategory);
 
   return (
-    <main className="flex flex-col">
+    <main id="main-content" className="flex flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden pt-24 pb-40">
         <DotsBackground />
