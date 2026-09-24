@@ -1,22 +1,83 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import caseFarsafe from '../assets/case-farsafe.webp';
-import caseBart from '../assets/case-bart.webp';
-import caseCryptowallet from '../assets/case-cryptowallet.webp';
-import caseOnlineDoctor from '../assets/case-onlinedoctor.webp';
-import caseCrm from '../assets/case-crm.webp';
-import caseFitness from '../assets/case-fitness.webp';
-import casePayments from '../assets/case-payments.webp';
-import caseShoot from '../assets/case-shoot.webp';
+import caseFarsafe480 from '../assets/case-farsafe-480w.webp';
+import caseFarsafe960 from '../assets/case-farsafe-960w.webp';
+import caseBart480 from '../assets/case-bart-480w.webp';
+import caseBart960 from '../assets/case-bart-960w.webp';
+import caseCryptowallet480 from '../assets/case-cryptowallet-480w.webp';
+import caseCryptowallet960 from '../assets/case-cryptowallet-960w.webp';
+import caseOnlineDoctor480 from '../assets/case-onlinedoctor-480w.webp';
+import caseOnlineDoctor960 from '../assets/case-onlinedoctor-960w.webp';
+import caseCrm480 from '../assets/case-crm-480w.webp';
+import caseCrm960 from '../assets/case-crm-960w.webp';
+import caseFitness480 from '../assets/case-fitness-480w.webp';
+import caseFitness960 from '../assets/case-fitness-960w.webp';
+import casePayments480 from '../assets/case-payments-480w.webp';
+import casePayments960 from '../assets/case-payments-960w.webp';
+import caseShoot480 from '../assets/case-shoot-480w.webp';
+import caseShoot960 from '../assets/case-shoot-960w.webp';
 import DotsBackground from '../components/DotsBackground';
+import ContactSection from '../components/ContactSection';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
+
+// Card cover images are pre-cropped to the card's 4:3 display ratio at two
+// widths so the browser never downloads more pixels than it will show.
+// Only the first card (above the fold on desktop) loads eagerly at high
+// priority; the second stays eager but default priority; the rest are lazy.
+function ProjectCard({ project, index }) {
+  const isFirst = index === 0;
+  const isEager = index < 2;
+
+  return (
+    <article className="flex flex-col">
+      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-[24px] mb-6">
+        <img
+          src={project.image960}
+          srcSet={`${project.image480} 480w, ${project.image960} 960w`}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          alt={project.title}
+          width={960}
+          height={720}
+          loading={isEager ? undefined : 'lazy'}
+          decoding={isEager ? undefined : 'async'}
+          fetchPriority={isFirst ? 'high' : undefined}
+          className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
+        />
+      </Link>
+      <div className="flex flex-wrap gap-2.5 mb-4">
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className="px-4 py-2 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-sm text-[#22292f]"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h2 className="font-grotesk font-bold text-xl text-black mb-3">{project.title}</h2>
+      <p className="font-grotesk text-base text-[#393939] leading-relaxed mb-6">
+        {project.description}
+      </p>
+      <div className="mt-auto flex justify-end">
+        <Link
+          to={`/project/${project.id}`}
+          className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-grotesk font-medium px-6 py-3 rounded-full text-base transition-colors"
+        >
+          Read case study
+        </Link>
+      </div>
+    </article>
+  );
+}
 
 const projects = [
   {
     id: 'farsafe',
     category: 'Product & UX/UI Design',
-    image: caseFarsafe,
+    image480: caseFarsafe480,
+    image960: caseFarsafe960,
     tags: ['0-to-1 SaaS', 'Web App', 'Marketing Site', 'Design System'],
     title: 'Farsafe: Uptime Monitoring Platform',
     description:
@@ -25,7 +86,8 @@ const projects = [
   {
     id: 'bart',
     category: 'Product & UX/UI Design',
-    image: caseBart,
+    image480: caseBart480,
+    image960: caseBart960,
     tags: ['Enterprise', 'Web & Mobile', 'Design Tokens'],
     title: 'bART Solutions: Enterprise Web Products',
     description:
@@ -34,7 +96,8 @@ const projects = [
   {
     id: 'cryptowallet',
     category: 'Product & UX/UI Design',
-    image: caseCryptowallet,
+    image480: caseCryptowallet480,
+    image960: caseCryptowallet960,
     tags: ['Fintech', 'Mobile', 'iOS & Android', 'Crypto'],
     title: 'CryptoWallet: Mobile Crypto App',
     description:
@@ -43,7 +106,8 @@ const projects = [
   {
     id: 'online-doctor',
     category: 'Product & UX/UI Design',
-    image: caseOnlineDoctor,
+    image480: caseOnlineDoctor480,
+    image960: caseOnlineDoctor960,
     tags: ['Healthcare', 'Web & Mobile', 'Telemedicine'],
     title: 'Online Doctor: Telemedicine Platform',
     description:
@@ -52,7 +116,8 @@ const projects = [
   {
     id: 'crm-platform',
     category: 'Product & UX/UI Design',
-    image: caseCrm,
+    image480: caseCrm480,
+    image960: caseCrm960,
     tags: ['B2B SaaS', 'Web App', 'Data-Dense UI', 'Marketing Automation'],
     title: 'Enterprise CRM: B2B Operations Platform',
     description:
@@ -61,7 +126,8 @@ const projects = [
   {
     id: 'fitness-app',
     category: 'Product & UX/UI Design',
-    image: caseFitness,
+    image480: caseFitness480,
+    image960: caseFitness960,
     tags: ['Mobile', 'iOS & Android', 'Health & Wellness', 'AI Personalization'],
     title: 'Fitness App: Mobile Health & Training Platform',
     description:
@@ -70,7 +136,8 @@ const projects = [
   {
     id: 'online-payments',
     category: 'Product & UX/UI Design',
-    image: casePayments,
+    image480: casePayments480,
+    image960: casePayments960,
     tags: ['Fintech', 'Web', 'Checkout', 'Compliance'],
     title: 'Online Payment Solutions: Checkout & Merchant Console',
     description:
@@ -79,7 +146,8 @@ const projects = [
   {
     id: 'shoot',
     category: 'Product & UX/UI Design',
-    image: caseShoot,
+    image480: caseShoot480,
+    image960: caseShoot960,
     tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
     title: 'SHOOT: Creative-Services Marketplace',
     description:
@@ -88,6 +156,13 @@ const projects = [
 ];
 
 export default function Projects() {
+  useDocumentMeta({
+    title: 'Work — Anastasiia Voskova',
+    description:
+      'Case studies in SaaS, fintech, healthcare, and mobile design — from 0-to-1 platforms to enterprise dashboards.',
+    path: '/projects',
+  });
+
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const visible = projects.filter((p) => p.category === activeCategory);
@@ -123,9 +198,9 @@ export default function Projects() {
                     aria-disabled={isEmpty}
                     className={`relative group px-6 py-3 rounded-full font-grotesk font-medium text-base transition-colors ${
                       activeCategory === category
-                        ? 'bg-[#288fd6] text-white'
+                        ? 'bg-[#1f7ab8] text-white'
                         : isEmpty
-                          ? 'text-[#b3b2af] cursor-not-allowed'
+                          ? 'text-[#6b6a67] cursor-not-allowed'
                           : 'text-black hover:bg-white'
                     }`}
                   >
@@ -148,45 +223,15 @@ export default function Projects() {
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-              {visible.map((project) => (
-                <article key={project.id} className="flex flex-col">
-                  <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-[24px] mb-6">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                    />
-                  </Link>
-                  <div className="flex flex-wrap gap-2.5 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-4 py-2 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-sm text-[#22292f]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="font-grotesk font-bold text-xl text-black mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="font-grotesk text-base text-[#393939] leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                  <div className="mt-auto flex justify-end">
-                    <Link
-                      to={`/project/${project.id}`}
-                      className="bg-[#288fd6] hover:bg-[#1f7ab8] text-white font-grotesk font-medium px-6 py-3 rounded-full text-base transition-colors"
-                    >
-                      Read case study
-                    </Link>
-                  </div>
-                </article>
+              {visible.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
           )}
         </div>
       </section>
+
+      <ContactSection />
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SectionMenu from './SectionMenu';
 import ContactSection from './ContactSection';
 import { openLightbox } from '../lightboxStore';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 
 // Any image dropped into src/assets is picked up by filename — no import needed.
 const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
@@ -75,7 +76,7 @@ export function ImagePlaceholder({ filename, className = '', alt = '' }) {
       ref={slotRef}
       className={`bg-[#f7f7f7] rounded-[24px] flex flex-col gap-2 items-center justify-center overflow-hidden ${className}`}
     >
-      <p className="font-grotesk text-sm text-[#b3b2af] px-8 text-center">
+      <p className="font-grotesk text-sm text-[#6b6a67] px-8 text-center">
         Add {filename} to src/assets
       </p>
       {slotSize && (
@@ -355,30 +356,78 @@ const CASE_ORDER = [
   { id: 'shoot', path: '/project/shoot', title: 'SHOOT' },
 ];
 
-// Right-aligned counterpart to the "Back to Work" link — same style, mirrored
-// arrow, pointing at whichever case follows `caseId` in CASE_ORDER.
-export function NextCaseLink({ caseId }) {
+// Matches the Person's "@id" in index.html's JSON-LD — kept as the same
+// literal placeholder so both update together once the real domain is set.
+const PERSON_ID = 'https://[PASTE YOUR PRODUCTION URL]/#person';
+const SITE_ORIGIN = 'https://[PASTE YOUR PRODUCTION URL]';
+
+// Builds the useDocumentMeta props (title, description, canonical path,
+// share image, and CreativeWork JSON-LD linked to the Person entity) for a
+// case-study route. Shared by CaseLayout and the 4 hand-built case pages so
+// the title format and structured data only need to be defined once.
+export function buildCaseMeta({ project, caseId }) {
+  const description = project.summary?.[0]?.text ?? project.title;
+  const path = `/project/${caseId}`;
+  const hasOgImage = CASE_ORDER.some((c) => c.id === caseId);
+  const image = hasOgImage ? `/og/${caseId}.png` : undefined;
+
+  return {
+    title: `${project.name} — Case Study | Anastasiia Voskova`,
+    description,
+    path,
+    image,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: project.name,
+      headline: project.title,
+      description,
+      url: `${SITE_ORIGIN}${path}`,
+      ...(image ? { image: `${SITE_ORIGIN}${image}` } : {}),
+      author: { '@id': PERSON_ID },
+      creator: { '@id': PERSON_ID },
+    },
+  };
+}
+
+function CaseNavArrow({ direction }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className={`w-5 h-5 ${direction === 'next' ? '-scale-x-100' : ''}`}
+    >
+      <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Same style as the "Back to Work" link, mirrored: previous case on the left,
+// next case on the right, both cycling through CASE_ORDER from `caseId`.
+export function CaseNav({ caseId }) {
   const index = CASE_ORDER.findIndex((c) => c.id === caseId);
   if (index === -1) return null;
+  const prev = CASE_ORDER[(index - 1 + CASE_ORDER.length) % CASE_ORDER.length];
   const next = CASE_ORDER[(index + 1) % CASE_ORDER.length];
 
   return (
-    <div className="pt-10 pb-4 flex justify-end">
+    <div className="pt-10 pb-4 flex items-center justify-between gap-4 flex-wrap">
+      <Link
+        to={prev.path}
+        className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
+      >
+        <CaseNavArrow direction="prev" />
+        Previous Case: {prev.title}
+      </Link>
       <Link
         to={next.path}
         className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
       >
         Next Case: {next.title}
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="w-5 h-5 -scale-x-100"
-        >
-          <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <CaseNavArrow direction="next" />
       </Link>
     </div>
   );
@@ -396,12 +445,7 @@ export default function CaseLayout({
   caseId,
   keyTakeaway,
 }) {
-  useEffect(() => {
-    document.title = `${project.name} — Anastasiia Voskova`;
-    return () => {
-      document.title = 'Anastasiia Voskova';
-    };
-  }, [project.name]);
+  useDocumentMeta(buildCaseMeta({ project, caseId }));
 
   const menuSections = [
     { id: 'case-hero', label: 'Back to Top' },
@@ -549,7 +593,7 @@ export default function CaseLayout({
         )}
 
         {/* Next case */}
-        {caseId && <NextCaseLink caseId={caseId} />}
+        {caseId && <CaseNav caseId={caseId} />}
       </div>
 
       <ContactSection />

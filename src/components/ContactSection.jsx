@@ -169,12 +169,12 @@ export default function ContactSection() {
                 <span className="font-medium">{EMAIL}</span>
               </p>
               <p className="font-grotesk font-medium text-sm text-black mb-3">Let's Chat</p>
-              <p className="font-grotesk text-sm text-[#b3b2af]">Say Hello</p>
+              <p className="font-grotesk text-sm text-[#6b6a67]">Say Hello</p>
             </div>
 
             <a
               href={`mailto:${EMAIL}`}
-              className="block text-center bg-[#288fd6] rounded-full py-4 mt-auto font-grotesk font-bold text-base text-white hover:bg-[#1f7bbd] transition-colors"
+              className="block text-center bg-[#1f7ab8] rounded-full py-4 mt-auto font-grotesk font-bold text-base text-white hover:bg-[#186a9c] transition-colors"
             >
               Email Me
             </a>

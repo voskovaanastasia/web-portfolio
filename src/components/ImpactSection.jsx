@@ -22,9 +22,9 @@ const metrics = [
     label: 'Secure Send / Swap',
     project: 'Crypto Wallet',
     description: 'Guided flow designed to prevent lost funds',
-    card: 'bg-[#288fd6] text-white',
+    card: 'bg-[#1f7ab8] text-white',
     number_color: 'text-white',
-    meta_color: 'text-[#d8efff]',
+    meta_color: 'text-white',
   },
   {
     number: '92%',
@@ -42,7 +42,7 @@ const metrics = [
     description: 'Product design, UX/UI, design systems & research',
     card: 'bg-[#6d3fc4] text-white',
     number_color: 'text-white',
-    meta_color: 'text-[#d9c9f5]',
+    meta_color: 'text-white/80',
   },
 ];
 

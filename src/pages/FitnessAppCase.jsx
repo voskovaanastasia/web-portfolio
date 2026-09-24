@@ -227,7 +227,7 @@ function UserResearch() {
         Findings clustered around three recurring frictions &mdash; fragmented tools, generic
         plans, and workouts that ignore how the body actually feels that day.
       </p>
-      <p className="font-grotesk text-sm text-[#b3b2af] italic max-w-2xl">
+      <p className="font-grotesk text-sm text-[#6b6a67] italic max-w-2xl">
         Figures below are rounded and reconstructed from project notes; the raw research data is
         not published.
       </p>
@@ -555,7 +555,7 @@ function InformationArchitecture() {
       </p>
       <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
         <IATree data={iaData} defaultOpenIndex={1} />
-        <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+        <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
           Click a node to expand or collapse its branch.
         </p>
       </div>

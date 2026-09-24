@@ -92,7 +92,7 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="bg-[#288fd6] hover:bg-[#1f7ab8] text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-full transition-colors"
+            className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-full transition-colors"
           >
             Download Resume
           </a>

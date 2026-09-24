@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionMenu from '../components/SectionMenu';
-import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -386,12 +387,7 @@ const project = {
 };
 
 export default function OnlineDoctorCase() {
-  useEffect(() => {
-    document.title = `${project.name} — Anastasiia Voskova`;
-    return () => {
-      document.title = 'Anastasiia Voskova';
-    };
-  }, []);
+  useDocumentMeta(buildCaseMeta({ project, caseId: 'online-doctor' }));
 
   return (
     <main id="main-content" className="flex flex-col bg-white">
@@ -534,7 +530,7 @@ export default function OnlineDoctorCase() {
           </p>
         </section>
 
-        <NextCaseLink caseId="online-doctor" />
+        <CaseNav caseId="online-doctor" />
       </div>
 
       <ContactSection />

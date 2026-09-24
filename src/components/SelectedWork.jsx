@@ -132,7 +132,7 @@ export default function SelectedWork() {
                   <div className="mt-auto pt-2 w-full flex justify-end">
                     <Link
                       to={`/project/${project.id}`}
-                      className="bg-[#288fd6] hover:bg-[#1f7ab8] text-white font-grotesk font-medium text-sm px-5 py-2.5 rounded-full transition-colors"
+                      className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-grotesk font-medium text-sm px-5 py-2.5 rounded-full transition-colors"
                     >
                       Read case study
                     </Link>

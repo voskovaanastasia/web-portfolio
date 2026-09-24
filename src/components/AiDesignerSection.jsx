@@ -63,7 +63,7 @@ export default function AiDesignerSection() {
             const cardClass = isFirst
               ? 'bg-[#22292f] text-white'
               : isLast
-                ? 'bg-[#288fd6] text-white'
+                ? 'bg-[#1f7ab8] text-white'
                 : 'bg-[#f7f7f7] text-black';
             const numberClass = isFirst || isLast ? 'text-white' : 'text-[#288fd6]';
             return (

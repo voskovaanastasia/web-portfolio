@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ImagePlaceholder, NextCaseLink, MetricCard } from '../components/CaseLayout';
+import { ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseFarsafe from '../assets/case-farsafe.webp';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.webp';
@@ -569,9 +570,9 @@ const brandColors = [
   { name: 'Gainsboro', hex: '#DDDDDD' },
   { name: 'Authentic White', hex: '#F8F9FA' },
   { name: 'Tibet', hex: '#4274C1', dark: true },
-  { name: 'Pine', hex: '#77B788', dark: true },
+  { name: 'Pine', hex: '#77B788' },
   { name: 'Still Red', hex: '#CD4847', dark: true },
-  { name: 'Authentic Orange', hex: '#EC8F38', dark: true },
+  { name: 'Authentic Orange', hex: '#EC8F38' },
 ];
 
 const blueShades = [
@@ -883,12 +884,7 @@ const iaAppTree = {
 export default function FarsafeCase() {
   const project = cases.farsafe;
 
-  useEffect(() => {
-    document.title = `${project.name} — Anastasiia Voskova`;
-    return () => {
-      document.title = 'Anastasiia Voskova';
-    };
-  }, [project]);
+  useDocumentMeta(buildCaseMeta({ project, caseId: 'farsafe' }));
 
   return (
     <main id="main-content" className="flex flex-col bg-white">
@@ -1025,12 +1021,12 @@ export default function FarsafeCase() {
               </p>
             </div>
             <div className="bg-[#6d3fc4] rounded-[24px] p-5 flex flex-col gap-4 text-white">
-              <p className="font-grotesk text-sm text-white/70 uppercase tracking-wide">Insight 3</p>
+              <p className="font-grotesk text-sm text-white uppercase tracking-wide">Insight 3</p>
               <p className="font-grotesk font-bold text-base">
                 Status and reporting mean buying yet another product.
               </p>
               <p className="font-grotesk font-bold text-6xl">58%</p>
-              <p className="font-grotesk text-base text-white/90">
+              <p className="font-grotesk text-base text-white">
                 <strong className="font-bold text-white">58%</strong> wanted to share status
                 without a separate tool.
               </p>
@@ -1099,14 +1095,14 @@ export default function FarsafeCase() {
                 visitor ever scrolls.
               </p>
             </div>
-            <div className="bg-[#288fd6] rounded-[24px] p-5 flex flex-col gap-4 text-white">
+            <div className="bg-[#1f7ab8] rounded-[24px] p-5 flex flex-col gap-4 text-white">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
               </svg>
               <p className="font-grotesk font-bold text-base">
                 Make a Data-Dense Product Approachable
               </p>
-              <p className="font-grotesk text-base text-white/90 leading-relaxed">
+              <p className="font-grotesk text-base text-white leading-relaxed">
                 Design a monitoring dashboard where uptime, response times, diagnostics, and
                 expirations are scannable at a glance - depth without overwhelm.
               </p>
@@ -1338,9 +1334,9 @@ export default function FarsafeCase() {
             how a visitor decides:{' '}
             <strong>see what&rsquo;s monitored, how alerts work, what it costs, then sign up.</strong>
           </p>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+          <div tabIndex={0} className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
             <IATree data={iaTree} />
-            <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+            <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
               Click a node to expand or collapse its branch.
             </p>
           </div>
@@ -1355,9 +1351,9 @@ export default function FarsafeCase() {
             task one click away, with operational detail nested only one level beneath. No deep
             hierarchies to navigate while responding to an incident.
           </p>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+          <div tabIndex={0} className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
             <IATree data={iaAppTree} />
-            <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+            <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
               Click a node to expand or collapse its branch.
             </p>
           </div>
@@ -1461,7 +1457,7 @@ export default function FarsafeCase() {
                   style={{ backgroundColor: c.hex, color: c.dark ? '#ffffff' : '#252525' }}
                 >
                   <p className="font-grotesk font-bold text-base">{c.name}</p>
-                  <p className="font-grotesk text-sm opacity-90">{c.hex}</p>
+                  <p className="font-grotesk text-sm">{c.hex}</p>
                 </div>
               ))}
             </div>
@@ -1586,7 +1582,7 @@ export default function FarsafeCase() {
           </p>
         </section>
 
-        <NextCaseLink caseId="farsafe" />
+        <CaseNav caseId="farsafe" />
       </div>
 
       <ContactSection />

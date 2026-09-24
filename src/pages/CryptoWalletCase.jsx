@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder, StyleGuide, NextCaseLink } from '../components/CaseLayout';
+import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
+import useDocumentMeta from '../hooks/useDocumentMeta';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -1006,7 +1007,7 @@ function FlowCard({ flow }) {
       </p>
       <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
         <IATree data={flow.tree} expandAll depthGap={36} />
-        <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+        <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
           Scroll sideways to follow the full path. Click a node to collapse or expand its branch.
         </p>
       </div>
@@ -1138,12 +1139,7 @@ const project = {
 };
 
 export default function CryptoWalletCase() {
-  useEffect(() => {
-    document.title = `${project.name} — Anastasiia Voskova`;
-    return () => {
-      document.title = 'Anastasiia Voskova';
-    };
-  }, []);
+  useDocumentMeta(buildCaseMeta({ project, caseId: 'cryptowallet' }));
 
   return (
     <main id="main-content" className="flex flex-col bg-white">
@@ -1261,7 +1257,7 @@ export default function CryptoWalletCase() {
             {projectGoals.map((goal, i) => (
               <div
                 key={goal.title}
-                className={`rounded-[24px] p-5 flex flex-col gap-4 ${ i === 1 ? 'bg-[#288fd6] text-white' : 'bg-[#f7f7f7]' }`}
+                className={`rounded-[24px] p-5 flex flex-col gap-4 ${ i === 1 ? 'bg-[#1f7ab8] text-white' : 'bg-[#f7f7f7]' }`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -1277,7 +1273,7 @@ export default function CryptoWalletCase() {
                 </p>
                 <p
                   className={`font-grotesk text-base leading-relaxed ${
-                    i === 1 ? 'text-white/90' : 'text-[#393939]'
+                    i === 1 ? 'text-white' : 'text-[#393939]'
                   }`}
                 >
                   {goal.text}
@@ -1557,7 +1553,7 @@ export default function CryptoWalletCase() {
           </p>
           <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
             <IATree data={iaTree} defaultOpenIndex={3} />
-            <p className="font-grotesk text-sm text-[#b3b2af] mt-4">
+            <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
               Click a node to expand or collapse its branch.
             </p>
           </div>
@@ -1575,7 +1571,7 @@ export default function CryptoWalletCase() {
           <ScreensSlider screens={appScreens} />
         </section>
 
-        <NextCaseLink caseId="cryptowallet" />
+        <CaseNav caseId="cryptowallet" />
       </div>
 
       <ContactSection />
