@@ -6,14 +6,14 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header>
+    <header className="sticky top-0 z-50">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
       >
         Skip to content
       </a>
-      <nav className="sticky top-0 z-50 flex items-center justify-center py-4 px-4">
+      <nav className="flex items-center justify-center py-4 px-4">
       <div className="bg-[rgba(240,240,240,0.2)] backdrop-blur-md border border-white/30 rounded-[64px] px-5 py-2.5 flex items-center justify-between gap-6 w-full max-w-6xl">
         {/* Logo & Name */}
         <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 pl-1">
