@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
@@ -650,45 +650,56 @@ const iaTree = {
 };
 
 function Donut({ segments, hollowSize = '32%' }) {
-  const options = {
-    colors: segments.map((s) => s.color),
-    chart: {
-      type: 'radialBar',
-      sparkline: { enabled: true },
-    },
-    plotOptions: {
-      radialBar: {
-        track: { background: '#ececec' },
-        dataLabels: { show: false },
-        hollow: { margin: 0, size: hollowSize },
+  const options = useMemo(
+    () => ({
+      colors: segments.map((s) => s.color),
+      chart: {
+        type: 'radialBar',
+        sparkline: { enabled: true },
       },
-    },
-    grid: {
-      show: false,
-      padding: { left: 2, right: 2, top: -23, bottom: -20 },
-    },
-    labels: segments.map((s) => s.label),
-    legend: { show: false },
-    tooltip: {
-      enabled: true,
-      x: { show: false },
-    },
-    yaxis: {
-      show: false,
-      labels: { formatter: (value) => `${value}%` },
-    },
-  };
-
-  return (
-    <Chart
-      options={options}
-      series={segments.map((s) => s.value)}
-      type="radialBar"
-      height={350}
-      width="100%"
-    />
+      plotOptions: {
+        radialBar: {
+          track: { background: '#ececec' },
+          dataLabels: { show: false },
+          hollow: { margin: 0, size: hollowSize },
+        },
+      },
+      grid: {
+        show: false,
+        padding: { left: 2, right: 2, top: -23, bottom: -20 },
+      },
+      labels: segments.map((s) => s.label),
+      legend: { show: false },
+      tooltip: {
+        enabled: true,
+        x: { show: false },
+      },
+      yaxis: {
+        show: false,
+        labels: { formatter: (value) => `${value}%` },
+      },
+    }),
+    [segments, hollowSize]
   );
+
+  const series = useMemo(() => segments.map((s) => s.value), [segments]);
+
+  return <Chart options={options} series={series} type="radialBar" height={350} width="100%" />;
 }
+
+const monitoringFrustrationSegments = [
+  { value: 30, color: '#f2c94c', label: 'False alerts from single-location checks' },
+  { value: 27, color: '#6abf69', label: 'Confusing or tiered pricing' },
+  { value: 18, color: '#ee8585', label: 'Paying extra for status pages / reports' },
+  { value: 14, color: '#4d8fd1', label: 'Too many separate tools to manage' },
+  { value: 11, color: '#6d3fc4', label: 'Hard or slow to set up' },
+];
+
+const allInOneToolInterestSegments = [
+  { value: 64, color: '#6abf69', label: 'Yes' },
+  { value: 23, color: '#f2c94c', label: 'Not sure' },
+  { value: 13, color: '#ee8585', label: 'No' },
+];
 
 const cases = {
   farsafe: {
@@ -1186,16 +1197,7 @@ export default function FarsafeCase() {
                 What frustrates you most about your current monitoring tool?
               </p>
               <div className="flex justify-center">
-                <Donut
-                  hollowSize="12%"
-                  segments={[
-                    { value: 30, color: '#f2c94c', label: 'False alerts from single-location checks' },
-                    { value: 27, color: '#6abf69', label: 'Confusing or tiered pricing' },
-                    { value: 18, color: '#ee8585', label: 'Paying extra for status pages / reports' },
-                    { value: 14, color: '#4d8fd1', label: 'Too many separate tools to manage' },
-                    { value: 11, color: '#6d3fc4', label: 'Hard or slow to set up' },
-                  ]}
-                />
+                <Donut hollowSize="12%" segments={monitoringFrustrationSegments} />
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
@@ -1221,13 +1223,7 @@ export default function FarsafeCase() {
                 Interested in an all-in-one, pay-as-you-go tool?
               </p>
               <div className="flex justify-center">
-                <Donut
-                  segments={[
-                    { value: 64, color: '#6abf69', label: 'Yes' },
-                    { value: 23, color: '#f2c94c', label: 'Not sure' },
-                    { value: 13, color: '#ee8585', label: 'No' },
-                  ]}
-                />
+                <Donut segments={allInOneToolInterestSegments} />
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[

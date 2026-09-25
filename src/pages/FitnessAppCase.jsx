@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Chart from 'react-apexcharts';
 import CaseLayout, { ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
@@ -248,33 +249,44 @@ function UserResearch() {
 // ---- The Poll --------------------------------------------------------
 
 function Donut({ segments, hollowSize = '32%' }) {
-  const options = {
-    colors: segments.map((s) => s.color),
-    chart: { type: 'radialBar', sparkline: { enabled: true } },
-    plotOptions: {
-      radialBar: {
-        track: { background: '#ececec' },
-        dataLabels: { show: false },
-        hollow: { margin: 0, size: hollowSize },
+  const options = useMemo(
+    () => ({
+      colors: segments.map((s) => s.color),
+      chart: { type: 'radialBar', sparkline: { enabled: true } },
+      plotOptions: {
+        radialBar: {
+          track: { background: '#ececec' },
+          dataLabels: { show: false },
+          hollow: { margin: 0, size: hollowSize },
+        },
       },
-    },
-    grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
-    labels: segments.map((s) => s.label),
-    legend: { show: false },
-    tooltip: { enabled: true, x: { show: false } },
-    yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
-  };
-
-  return (
-    <Chart
-      options={options}
-      series={segments.map((s) => s.value)}
-      type="radialBar"
-      height={350}
-      width="100%"
-    />
+      grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
+      labels: segments.map((s) => s.label),
+      legend: { show: false },
+      tooltip: { enabled: true, x: { show: false } },
+      yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
+    }),
+    [segments, hollowSize]
   );
+
+  const series = useMemo(() => segments.map((s) => s.value), [segments]);
+
+  return <Chart options={options} series={series} type="radialBar" height={350} width="100%" />;
 }
+
+const frustrationSegments = [
+  { value: 61, color: '#387CFF', label: "Plans that don't adjust to how I actually feel" },
+  { value: 55, color: '#F5B840', label: 'Tracking and workouts live in separate apps' },
+  { value: 42, color: '#EC474B', label: 'Confusing difficulty or intensity choices' },
+  { value: 33, color: '#777FED', label: 'Workouts that break flow with messy controls' },
+  { value: 28, color: '#375F31', label: "Hard to see if I'm making real progress" },
+];
+
+const trustRecommendationSegments = [
+  { value: 64, color: '#387CFF', label: 'Yes, but only if I can still choose manually' },
+  { value: 24, color: '#EC474B', label: "No, I'd rather pick every time" },
+  { value: 12, color: '#F5B840', label: 'Not sure' },
+];
 
 function ThePoll() {
   return (
@@ -284,16 +296,7 @@ function ThePoll() {
           What frustrates you most about fitness apps?
         </p>
         <div className="flex justify-center">
-          <Donut
-            hollowSize="12%"
-            segments={[
-              { value: 61, color: '#387CFF', label: "Plans that don't adjust to how I actually feel" },
-              { value: 55, color: '#F5B840', label: 'Tracking and workouts live in separate apps' },
-              { value: 42, color: '#EC474B', label: 'Confusing difficulty or intensity choices' },
-              { value: 33, color: '#777FED', label: 'Workouts that break flow with messy controls' },
-              { value: 28, color: '#375F31', label: "Hard to see if I'm making real progress" },
-            ]}
-          />
+          <Donut hollowSize="12%" segments={frustrationSegments} />
         </div>
         <ul className="flex flex-col gap-2.5">
           {[
@@ -325,13 +328,7 @@ function ThePoll() {
           Would you trust an app&rsquo;s workout recommendation over picking one yourself?
         </p>
         <div className="flex justify-center">
-          <Donut
-            segments={[
-              { value: 64, color: '#387CFF', label: 'Yes, but only if I can still choose manually' },
-              { value: 24, color: '#EC474B', label: "No, I'd rather pick every time" },
-              { value: 12, color: '#F5B840', label: 'Not sure' },
-            ]}
-          />
+          <Donut segments={trustRecommendationSegments} />
         </div>
         <ul className="flex flex-col gap-2.5">
           {[

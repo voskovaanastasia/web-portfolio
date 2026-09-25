@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import SectionMenu from '../components/SectionMenu';
@@ -1015,33 +1015,44 @@ function FlowCard({ flow }) {
   );
 }
 
-function Donut({ segments, hollowSize = '32%' }) {
-  const options = {
-    colors: segments.map((s) => s.color),
-    chart: { type: 'radialBar', sparkline: { enabled: true } },
-    plotOptions: {
-      radialBar: {
-        track: { background: '#ececec' },
-        dataLabels: { show: false },
-        hollow: { margin: 0, size: hollowSize },
-      },
-    },
-    grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
-    labels: segments.map((s) => s.label),
-    legend: { show: false },
-    tooltip: { enabled: true, x: { show: false } },
-    yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
-  };
+const walletFeatureSegments = [
+  { value: 35, color: '#288fd6', label: 'Security & self-custody' },
+  { value: 25, color: '#e8964a', label: 'Low network fees' },
+  { value: 20, color: '#6d3fc4', label: 'Multi-chain support' },
+  { value: 12, color: '#ee5f9b', label: 'Fast transfers / confirmations' },
+  { value: 8, color: '#2bb8a3', label: 'Simple UI & onboarding' },
+];
 
-  return (
-    <Chart
-      options={options}
-      series={segments.map((s) => s.value)}
-      type="radialBar"
-      height={350}
-      width="100%"
-    />
+const allInOneInterestSegments = [
+  { value: 70, color: '#288fd6', label: 'Yes' },
+  { value: 18, color: '#e8964a', label: 'No' },
+  { value: 12, color: '#6d3fc4', label: 'Not sure' },
+];
+
+function Donut({ segments, hollowSize = '32%' }) {
+  const options = useMemo(
+    () => ({
+      colors: segments.map((s) => s.color),
+      chart: { type: 'radialBar', sparkline: { enabled: true } },
+      plotOptions: {
+        radialBar: {
+          track: { background: '#ececec' },
+          dataLabels: { show: false },
+          hollow: { margin: 0, size: hollowSize },
+        },
+      },
+      grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
+      labels: segments.map((s) => s.label),
+      legend: { show: false },
+      tooltip: { enabled: true, x: { show: false } },
+      yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
+    }),
+    [segments, hollowSize]
   );
+
+  const series = useMemo(() => segments.map((s) => s.value), [segments]);
+
+  return <Chart options={options} series={series} type="radialBar" height={350} width="100%" />;
 }
 
 function DonutStat({ pct, color }) {
@@ -1351,16 +1362,7 @@ export default function CryptoWalletCase() {
                 What matters most when choosing a crypto wallet?
               </p>
               <div className="flex justify-center">
-                <Donut
-                  hollowSize="12%"
-                  segments={[
-                    { value: 35, color: '#288fd6', label: 'Security & self-custody' },
-                    { value: 25, color: '#e8964a', label: 'Low network fees' },
-                    { value: 20, color: '#6d3fc4', label: 'Multi-chain support' },
-                    { value: 12, color: '#ee5f9b', label: 'Fast transfers / confirmations' },
-                    { value: 8, color: '#2bb8a3', label: 'Simple UI & onboarding' },
-                  ]}
-                />
+                <Donut hollowSize="12%" segments={walletFeatureSegments} />
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
@@ -1391,13 +1393,7 @@ export default function CryptoWalletCase() {
                 Would you use one app to store, swap, and track all your tokens across networks?
               </p>
               <div className="flex justify-center">
-                <Donut
-                  segments={[
-                    { value: 70, color: '#288fd6', label: 'Yes' },
-                    { value: 18, color: '#e8964a', label: 'No' },
-                    { value: 12, color: '#6d3fc4', label: 'Not sure' },
-                  ]}
-                />
+                <Donut segments={allInOneInterestSegments} />
               </div>
               <ul className="flex flex-col gap-2.5">
                 {[
