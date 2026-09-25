@@ -322,7 +322,7 @@ function InformationArchitecture() {
         needs most often, and Advisor Support sits one level away from the flow itself so a stuck
         owner is never more than a tap from a human.
       </p>
-      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
         <IATree data={iaTree} defaultOpenIndex={0} />
         <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
           Click a node to expand or collapse its branch.

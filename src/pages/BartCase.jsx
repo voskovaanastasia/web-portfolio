@@ -812,7 +812,7 @@ export default function BartCase() {
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
@@ -842,13 +842,13 @@ export default function BartCase() {
           {project.summary.map((card) => (
             <div
               key={card.label}
-              className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
+              className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
-          <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+          <div className="bg-[#e9f3fa] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
             <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
             <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
             <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
@@ -876,7 +876,7 @@ export default function BartCase() {
         <section id="goals" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5V4l-6 2.5L9 4z" strokeLinejoin="round" />
                 <path d="M9 4v13M15 6.5v13" />
@@ -889,7 +889,7 @@ export default function BartCase() {
                 easier to find services, cases, and contact information in fewer clicks.
               </p>
             </div>
-            <div className="bg-[#1f7ab8] rounded-[24px] p-5 flex flex-col gap-4 text-white">
+            <div className="bg-[#1f7ab8] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 text-white">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-1.8 0-1.4-1.5-1.6-1.5-2.7 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4-4-7-9-7z" strokeLinejoin="round" />
                 <circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none" />
@@ -903,7 +903,7 @@ export default function BartCase() {
                 pages.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
               </svg>
@@ -930,7 +930,7 @@ export default function BartCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
+              <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
@@ -944,7 +944,7 @@ export default function BartCase() {
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">What Users Told Us</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 What frustrates you most on corporate websites?
               </p>
@@ -972,7 +972,7 @@ export default function BartCase() {
                 and each became a named design target in this project.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Would You Return to an Updated Website?
               </p>
@@ -1055,7 +1055,7 @@ export default function BartCase() {
                   ],
                 },
               ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
+                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
                   <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
@@ -1096,7 +1096,7 @@ export default function BartCase() {
             hierarchy — making it easier for users to find what they need at every stage of their
             journey.
           </p>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+          <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
             <IATree data={iaTree} defaultOpenIndex={1} />
             <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
               Click a node to expand or collapse its branch.
@@ -1161,7 +1161,7 @@ export default function BartCase() {
             tailored grid settings for each breakpoint:
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Desktop</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 3 columns, margin 80, gap 20 — ensuring a spacious and well-structured layout for
@@ -1172,7 +1172,7 @@ export default function BartCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Mobile</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 2 columns, margin 24, gap 10 — optimized for compact screens with clear spacing

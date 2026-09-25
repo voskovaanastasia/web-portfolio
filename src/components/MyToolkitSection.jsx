@@ -39,7 +39,7 @@ function ToolGroup({ label, tools }) {
   return (
     <div className="flex flex-col gap-5 w-full">
       <p className="font-mono-bold text-[14px] text-black">{label}</p>
-      <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
+      <div className="bg-[#f7f7f7] rounded-[15px] p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
         {visibleTools.map((tool) => (
           <ToolCard key={tool.id} icon={tool.icon} label={tool.name} />
         ))}
@@ -80,7 +80,7 @@ export default function MyToolkitSection() {
 
           <div className="flex flex-col gap-5 w-full">
             <p className="font-mono-bold text-[14px] text-black">Language</p>
-            <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
+            <div className="bg-[#f7f7f7] rounded-[15px] p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
               {languages.map((lang) => (
                 <div key={lang.label} className="flex items-center gap-2.5">
                   <div className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0">

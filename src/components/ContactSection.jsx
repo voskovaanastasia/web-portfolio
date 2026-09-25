@@ -71,9 +71,9 @@ export default function ContactSection() {
           {/* My Projects */}
           <Link
             to="/projects"
-            className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 overflow-hidden flex flex-col group"
+            className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5 overflow-hidden flex flex-col group"
           >
-            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4">My Projects</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-black mb-2 sm:mb-4">My Projects</h3>
             <img
               src={contactProjects}
               alt="Laptop showing the Farsafe dashboard project"
@@ -86,8 +86,8 @@ export default function ContactSection() {
           </Link>
 
           {/* Resume */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5">
-            <h3 className="font-grotesk font-bold text-[16px] text-black mb-6">Checkout my Resume</h3>
+          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5">
+            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4 sm:mb-6">Checkout my Resume</h3>
             <a
               href="/Anastasiia-Voskova-Resume.pdf"
               target="_blank"
@@ -126,9 +126,9 @@ export default function ContactSection() {
           </div>
 
           {/* Skills */}
-          <div className="bg-[#6d3fc4] rounded-[24px] p-5 overflow-hidden">
-            <h3 className="font-grotesk font-bold text-[16px] text-white mb-6">Skills</h3>
-            <div className="flex flex-col gap-5 items-center">
+          <div className="bg-[#6d3fc4] rounded-[24px] p-3 sm:p-5 overflow-hidden">
+            <h3 className="font-grotesk font-bold text-[16px] text-white mb-4 sm:mb-6">Skills</h3>
+            <div className="flex flex-col gap-3 sm:gap-5 items-center">
               {skillRows.map((row, i) => (
                 <div key={i} className="flex gap-4 justify-center">
                   {row.map((skill) => (
@@ -145,8 +145,8 @@ export default function ContactSection() {
           </div>
 
           {/* Email card */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 flex flex-col">
-            <div className="flex items-start justify-between mb-5">
+          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5 flex flex-col">
+            <div className="flex items-start justify-between mb-3 sm:mb-5">
               <div>
                 <h3 className="font-grotesk font-bold text-[16px] text-black">Anastasiia Voskova</h3>
                 <p className="font-grotesk text-sm text-[#6b6a67] mt-1">{EMAIL}</p>
@@ -163,7 +163,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[16px] p-5 mb-5 shadow-sm">
+            <div className="bg-white rounded-[16px] p-3 sm:p-5 mb-3 sm:mb-5 shadow-sm">
               <p className="font-grotesk text-sm text-black border-b border-[#ececec] pb-3 mb-3">
                 <span className="text-[#6b6a67]">To</span>&nbsp;&nbsp;
                 <span className="font-medium">{EMAIL}</span>

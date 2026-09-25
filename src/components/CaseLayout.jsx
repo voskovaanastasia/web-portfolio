@@ -140,7 +140,7 @@ export function MetricBars({ bars, color }) {
  */
 export function MetricCard({ title, subtitle, bars, color, text }) {
   return (
-    <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+    <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
       <MetricBars bars={bars} color={color} />
       <p className="font-grotesk font-bold text-[14px] text-black">{title}</p>
       {subtitle && <p className="font-grotesk text-sm text-[#6b6a67] -mt-2">{subtitle}</p>}
@@ -201,7 +201,7 @@ export function ProcessColumns({ columns }) {
       {columns.map((col) => (
         <div
           key={col.heading}
-          className={`rounded-[24px] p-5 flex flex-col gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
+          className={`rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
         >
           <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
           <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
@@ -291,7 +291,7 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
             ))}
           </div>
           <div
-            className="rounded-[24px] p-6 flex flex-col justify-between min-h-[280px]"
+            className="rounded-[24px] p-4 sm:p-6 flex flex-col justify-between min-h-[280px]"
             style={{ backgroundColor: typeface.hex, color: typeface.text ?? '#ffffff' }}
           >
             <div className="flex flex-col items-end gap-1">
@@ -518,7 +518,7 @@ export default function CaseLayout({
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
@@ -550,13 +550,13 @@ export default function CaseLayout({
           }`}
         >
           {project.summary.map((card) => (
-            <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
-            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+            <div className="bg-[#e9f3fa] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
               <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
               <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>

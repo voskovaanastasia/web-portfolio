@@ -24,7 +24,7 @@ const projects = [
 function InfoCell({ label, children, highlight }) {
   return (
     <div
-      className={`rounded-[10px] p-4 flex flex-col gap-2 ${
+      className={`rounded-[10px] p-2 sm:p-4 flex flex-col gap-1 sm:gap-2 ${
         highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]'
       }`}
     >

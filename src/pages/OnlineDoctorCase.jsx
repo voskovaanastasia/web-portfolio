@@ -433,7 +433,7 @@ export default function OnlineDoctorCase() {
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
@@ -467,14 +467,14 @@ export default function OnlineDoctorCase() {
           {project.summary.map((card) => (
             <div
               key={card.label}
-              className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
+              className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
-            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+            <div className="bg-[#e9f3fa] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
               <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
               <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>

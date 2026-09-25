@@ -116,7 +116,7 @@ function FourWPlusH() {
         {fourWPlusH.map((column) => (
           <div
             key={column.title}
-            className={`rounded-[24px] p-5 flex flex-col gap-4 ${ column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
+            className={`rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
           >
             <p className="font-grotesk font-medium text-lg text-black">{column.title}</p>
             <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
@@ -234,7 +234,7 @@ function UserResearch() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {researchStats.map((stat) => (
-          <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
+          <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
             <DonutStat pct={stat.pct} color={stat.color} />
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
               {stat.text}
@@ -291,7 +291,7 @@ const trustRecommendationSegments = [
 function ThePoll() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
         <p className="font-grotesk font-bold text-[14px] text-black">
           What frustrates you most about fitness apps?
         </p>
@@ -323,7 +323,7 @@ function ThePoll() {
           discovery filters.
         </p>
       </div>
-      <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
         <p className="font-grotesk font-bold text-[14px] text-black">
           Would you trust an app&rsquo;s workout recommendation over picking one yourself?
         </p>
@@ -417,7 +417,7 @@ const bulletClass =
 
 function PersonaCard({ title, points }) {
   return (
-    <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-4">
+    <div className="bg-[#f2f6ff] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
       <h3 className="font-grotesk font-medium text-[16px] text-black">{title}</h3>
       <ul className="flex flex-col gap-3">
         {points.map((point, i) => (
@@ -435,7 +435,7 @@ function UserPersona() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col gap-5">
         <ImagePlaceholder filename="case-fitness-persona.webp" className="min-h-[480px]" />
-        <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-3">
+        <div className="bg-[#f2f6ff] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
           <h3 className="font-grotesk font-medium text-[16px] text-[#1552d8]">{persona.name}</h3>
           <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.role}</p>
           <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.location}</p>
@@ -550,7 +550,7 @@ function InformationArchitecture() {
         everything administrative. Each metric on the dashboard opens its own detail view, so depth
         is available without crowding the daily glance.
       </p>
-      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
         <IATree data={iaData} defaultOpenIndex={1} />
         <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
           Click a node to expand or collapse its branch.

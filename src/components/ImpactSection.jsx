@@ -61,7 +61,7 @@ export default function ImpactSection() {
           {metrics.map((metric) => (
             <div
               key={metric.label}
-              className={`rounded-[15px] p-5 flex flex-col gap-2.5 ${metric.card}`}
+              className={`rounded-[15px] p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${metric.card}`}
             >
               <p className={`font-grotesk font-bold text-[30px] sm:text-5xl whitespace-nowrap ${metric.number_color}`}>
                 {metric.number}

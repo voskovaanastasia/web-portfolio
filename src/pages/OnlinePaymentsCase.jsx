@@ -412,7 +412,7 @@ function InformationArchitecture() {
         lookup</strong> &mdash; and Settings is kept flat and administrative, out of the way of
         the four tabs someone touches every day.
       </p>
-      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
         <IATree data={iaTree} defaultOpenIndex={0} />
         <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
           Click a node to expand or collapse its branch.

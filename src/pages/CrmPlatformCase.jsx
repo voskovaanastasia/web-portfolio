@@ -1067,7 +1067,7 @@ const InformationArchitecture = () => (
       lower-frequency administrative work is deliberately pushed behind{' '}
       <strong>More</strong> rather than competing for top-level space.
     </p>
-    <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+    <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
       <IATree data={iaTree} defaultOpenIndex={3} />
       <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
         Click a node to expand or collapse its branch.

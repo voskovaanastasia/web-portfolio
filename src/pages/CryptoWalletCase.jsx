@@ -1005,7 +1005,7 @@ function FlowCard({ flow }) {
       <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
         {flow.description}
       </p>
-      <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+      <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
         <IATree data={flow.tree} expandAll depthGap={36} />
         <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
           Scroll sideways to follow the full path. Click a node to collapse or expand its branch.
@@ -1196,7 +1196,7 @@ export default function CryptoWalletCase() {
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
@@ -1230,14 +1230,14 @@ export default function CryptoWalletCase() {
           {project.summary.map((card) => (
             <div
               key={card.label}
-              className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
+              className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
-            <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
+            <div className="bg-[#e9f3fa] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
               <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
               <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
@@ -1269,7 +1269,7 @@ export default function CryptoWalletCase() {
             {projectGoals.map((goal, i) => (
               <div
                 key={goal.title}
-                className={`rounded-[24px] p-5 flex flex-col gap-4 ${ i === 1 ? 'bg-[#1f7ab8] text-white' : 'bg-[#f7f7f7]' }`}
+                className={`rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ i === 1 ? 'bg-[#1f7ab8] text-white' : 'bg-[#f7f7f7]' }`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -1305,7 +1305,7 @@ export default function CryptoWalletCase() {
             {processColumns.map((col) => (
               <div
                 key={col.heading}
-                className={`rounded-[24px] p-5 flex flex-col gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
+                className={`rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
               >
                 <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
                 <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
@@ -1340,7 +1340,7 @@ export default function CryptoWalletCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
+              <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
@@ -1354,7 +1354,7 @@ export default function CryptoWalletCase() {
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Most Important Crypto Wallet Feature
               </p>
@@ -1385,7 +1385,7 @@ export default function CryptoWalletCase() {
                 convenience, is what a crypto wallet is judged on first.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+            <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Interest in All-in-One Crypto Wallet
               </p>
@@ -1466,7 +1466,7 @@ export default function CryptoWalletCase() {
                   ],
                 },
               ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
+                <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
                   <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
@@ -1492,7 +1492,7 @@ export default function CryptoWalletCase() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {empathyQuadrants.map((q) => (
-              <div key={q.label} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
+              <div key={q.label} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
                 <span
                   className="self-start px-5 py-2 rounded-full font-grotesk font-bold text-lg text-white"
                   style={{ backgroundColor: q.color }}
@@ -1548,7 +1548,7 @@ export default function CryptoWalletCase() {
             identity, security, and settings. Transactional depth stays inside My Wallet; everything
             administrative stays inside Account.
           </p>
-          <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
+          <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
             <IATree data={iaTree} defaultOpenIndex={3} />
             <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
               Click a node to expand or collapse its branch.

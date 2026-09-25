@@ -69,7 +69,7 @@ export default function AiDesignerSection() {
             return (
               <div
                 key={step.number}
-                className={`rounded-[15px] p-5 flex flex-col gap-2.5 ${cardClass}`}
+                className={`rounded-[15px] p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${cardClass}`}
               >
                 <p className={`font-grotesk font-bold text-[30px] sm:text-5xl ${numberClass}`}>
                   {step.number}
