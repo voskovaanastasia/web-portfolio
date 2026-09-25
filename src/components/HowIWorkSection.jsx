@@ -76,7 +76,7 @@ const cards = [
 function SkillTag({ label, accent }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-grotesk font-medium ${
+      className={`inline-flex items-center rounded-full px-3 py-1.5 text-xs font-grotesk font-medium ${
         accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#f2f3f5] text-[#22292f]'
       }`}
     >
@@ -88,7 +88,7 @@ function SkillTag({ label, accent }) {
 function ToolPill({ icon, label, accent }) {
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-grotesk font-medium ${
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-grotesk font-medium ${
         accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#f2f3f5] text-[#22292f]'
       }`}
     >
@@ -121,7 +121,7 @@ export default function HowIWorkSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className={`rounded-[24px] p-5 flex flex-col gap-4 ${
+              className={`rounded-[24px] p-5 flex flex-col gap-2 sm:gap-4 ${
                 card.accent
                   ? 'bg-[#6d3fc4] text-white'
                   : 'bg-[#f7f7f7] border border-[#ececec] text-black'
@@ -146,7 +146,7 @@ export default function HowIWorkSection() {
                 <p className="font-grotesk text-[14px]">{card.description}</p>
               </div>
               <div
-                className={`mt-auto border-t pt-4 flex flex-wrap gap-2 ${
+                className={`mt-auto border-t pt-2 sm:pt-4 flex flex-wrap gap-2 ${
                   card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
                 }`}
               >
@@ -155,7 +155,7 @@ export default function HowIWorkSection() {
                 ))}
               </div>
               <div
-                className={`border-t pt-4 flex flex-wrap gap-2 ${
+                className={`border-t pt-2 sm:pt-4 flex flex-wrap gap-2 ${
                   card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
                 }`}
               >

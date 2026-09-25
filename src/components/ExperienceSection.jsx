@@ -238,7 +238,7 @@ export default function ExperienceSection() {
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-[#e9f3fa] text-black rounded-full text-sm font-grotesk font-medium"
+                      className="px-3 py-1.5 bg-[#e9f3fa] text-black rounded-full text-xs font-grotesk font-medium"
                     >
                       {skill}
                     </span>
