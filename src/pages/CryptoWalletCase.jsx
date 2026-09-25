@@ -1151,6 +1151,7 @@ export default function CryptoWalletCase() {
           <ImagePlaceholder
             filename="case-cryptowallet.webp"
             className="w-full max-w-[1058px] mx-auto aspect-[1058/600]"
+            priority
           />
         </div>
 

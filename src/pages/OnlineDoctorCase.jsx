@@ -399,6 +399,7 @@ export default function OnlineDoctorCase() {
           <ImagePlaceholder
             filename="case-onlinedoctor.webp"
             className="w-full max-w-[1058px] mx-auto aspect-[1058/600]"
+            priority
           />
         </div>
 

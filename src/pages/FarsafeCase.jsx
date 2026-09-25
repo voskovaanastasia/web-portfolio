@@ -8,6 +8,8 @@ import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseFarsafe from '../assets/case-farsafe.webp';
+import caseFarsafe480 from '../assets/case-farsafe-480w.webp';
+import caseFarsafe960 from '../assets/case-farsafe-960w.webp';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.webp';
 import toolAmplitude from '../assets/how-i-work/tool-amplitude.svg';
@@ -895,7 +897,10 @@ export default function FarsafeCase() {
         <div id="case-hero" className="pt-4">
           <img
             src={project.heroImage}
+            srcSet={`${caseFarsafe480} 480w, ${caseFarsafe960} 960w, ${project.heroImage} 1200w`}
+            sizes="(max-width: 640px) 480px, (max-width: 1024px) 960px, 1200px"
             alt={project.title}
+            fetchPriority="high"
             onClick={() => openLightbox(project.heroImage, project.title)}
             className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover cursor-zoom-in"
           />

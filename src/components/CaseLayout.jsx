@@ -50,7 +50,7 @@ function useSlotSize(enabled) {
   return [ref, size];
 }
 
-export function ImagePlaceholder({ filename, className = '', alt = '' }) {
+export function ImagePlaceholder({ filename, className = '', alt = '', priority = false }) {
   // Cases may pass an already-imported URL instead of a bare filename.
   const src = assetByName[filename] || (filename?.includes('/') ? filename : undefined);
   const [slotRef, slotSize] = useSlotSize(!src);
@@ -58,11 +58,28 @@ export function ImagePlaceholder({ filename, className = '', alt = '' }) {
   if (src) {
     const resolvedAlt = alt || String(filename).replace(/\.\w+$/, '').replace(/-/g, ' ');
     const hasCustomRounding = /(?:^|\s)(?:[\w-]+:)?rounded(?:-[\w[\].,/]+)?(?=\s|$)/.test(className);
+
+    // Some assets ship 480w/960w variants alongside the full-size original —
+    // when present, serve them via srcset instead of the full-size file.
+    const nameMatch = typeof filename === 'string' && filename.match(/^(.*)\.(\w+)$/);
+    let srcSet;
+    if (nameMatch) {
+      const [, base, ext] = nameMatch;
+      const variants = [
+        assetByName[`${base}-480w.${ext}`] && `${assetByName[`${base}-480w.${ext}`]} 480w`,
+        assetByName[`${base}-960w.${ext}`] && `${assetByName[`${base}-960w.${ext}`]} 960w`,
+      ].filter(Boolean);
+      if (variants.length) srcSet = [...variants, `${src} 1200w`].join(', ');
+    }
+
     return (
       <img
         src={src}
+        srcSet={srcSet}
+        sizes={srcSet ? '(max-width: 640px) 480px, (max-width: 1024px) 960px, 1200px' : undefined}
         alt={resolvedAlt}
-        loading="lazy"
+        loading={priority ? undefined : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
         onClick={() => openLightbox(src, resolvedAlt)}
         className={`w-auto h-auto max-h-[45vh] max-w-full mx-auto sm:w-full sm:max-h-none block ${
           hasCustomRounding ? '' : 'rounded-[24px]'
@@ -467,6 +484,7 @@ export default function CaseLayout({
           <ImagePlaceholder
             filename={project.heroImage}
             className="w-full max-w-[1058px] mx-auto aspect-[1058/600]"
+            priority
           />
         </div>
 

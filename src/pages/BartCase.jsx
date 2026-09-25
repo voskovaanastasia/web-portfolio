@@ -8,6 +8,8 @@ import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseBart from '../assets/case-bart.webp';
+import caseBart480 from '../assets/case-bart-480w.webp';
+import caseBart960 from '../assets/case-bart-960w.webp';
 import toolFigma from '../assets/icon-figma.svg';
 import toolJira from '../assets/icon-jira.svg';
 import toolNotion from '../assets/icon-notion.svg';
@@ -771,7 +773,10 @@ export default function BartCase() {
         <div id="case-hero" className="pt-4">
           <img
             src={project.heroImage}
+            srcSet={`${caseBart480} 480w, ${caseBart960} 960w, ${project.heroImage} 1200w`}
+            sizes="(max-width: 640px) 480px, (max-width: 1024px) 960px, 1200px"
             alt={project.title}
+            fetchPriority="high"
             onClick={() => openLightbox(project.heroImage, project.title)}
             className="w-full max-w-[1058px] mx-auto h-auto max-h-[220px] sm:max-h-[600px] aspect-[1058/600] rounded-[24px] object-cover cursor-zoom-in"
           />
