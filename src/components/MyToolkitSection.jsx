@@ -38,7 +38,7 @@ function ToolGroup({ label, tools }) {
 
   return (
     <div className="flex flex-col gap-5 w-full">
-      <p className="font-mono-bold text-base text-black">{label}</p>
+      <p className="font-mono-bold text-[14px] text-black">{label}</p>
       <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
         {visibleTools.map((tool) => (
           <ToolCard key={tool.id} icon={tool.icon} label={tool.name} />
@@ -66,7 +66,7 @@ export default function MyToolkitSection() {
         <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
           Computer Science is my secret weapon.
         </p>
-        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
           I am Anastasiia Voskova,
           <span className="font-playwrite font-normal block mt-2">
             a designer who thinks like an engineer.
@@ -79,7 +79,7 @@ export default function MyToolkitSection() {
           <ToolGroup label="PROGRAMMING" tools={programmingTools} />
 
           <div className="flex flex-col gap-5 w-full">
-            <p className="font-mono-bold text-base text-black">Language</p>
+            <p className="font-mono-bold text-[14px] text-black">Language</p>
             <div className="bg-[#f7f7f7] rounded-[15px] p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-5 gap-y-5 w-full">
               {languages.map((lang) => (
                 <div key={lang.label} className="flex items-center gap-2.5">

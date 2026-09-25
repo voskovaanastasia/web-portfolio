@@ -38,7 +38,7 @@ export default function CasesCarousel() {
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-12 text-center">Case Studies</h2>
+        <h2 className="text-[26px] font-bold mb-12 text-center">Case Studies</h2>
 
         <div className="relative">
           <div className="overflow-hidden rounded-lg">
@@ -57,7 +57,7 @@ export default function CasesCarousel() {
                       className="rounded-lg object-cover h-80 w-full"
                     />
                     <div>
-                      <h3 className="text-3xl font-bold mb-4">
+                      <h3 className="text-[16px] font-bold mb-4">
                         {caseStudy.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">

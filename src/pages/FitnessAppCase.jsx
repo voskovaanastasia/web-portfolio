@@ -109,7 +109,7 @@ const fourWPlusH = [
 function FourWPlusH() {
   return (
     <>
-      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         4W+H Process
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
@@ -121,14 +121,14 @@ function FourWPlusH() {
             <p className="font-grotesk font-medium text-lg text-black">{column.title}</p>
             <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
             {column.body && (
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">{column.body}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{column.body}</p>
             )}
             {column.items && (
               <ul className="flex flex-col gap-2">
                 {column.items.map((item) => (
                   <li
                     key={item}
-                    className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                   >
                     {item}
                   </li>
@@ -216,15 +216,15 @@ function DonutStat({ pct, color }) {
 function UserResearch() {
   return (
     <>
-      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         Regular Gym-Goers
       </h2>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
         Research ran in two rounds: a screening survey sent to people who already use a fitness
         or health-tracking app, followed by five follow-up interviews with respondents who train
         at least three times a week.
       </p>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
         Findings clustered around three recurring frictions &mdash; fragmented tools, generic
         plans, and workouts that ignore how the body actually feels that day.
       </p>
@@ -236,7 +236,7 @@ function UserResearch() {
         {researchStats.map((stat) => (
           <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
             <DonutStat pct={stat.pct} color={stat.color} />
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
               {stat.text}
             </p>
           </div>
@@ -292,7 +292,7 @@ function ThePoll() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
-        <p className="font-grotesk font-bold text-base text-black">
+        <p className="font-grotesk font-bold text-[14px] text-black">
           What frustrates you most about fitness apps?
         </p>
         <div className="flex justify-center">
@@ -306,14 +306,14 @@ function ThePoll() {
             ['#777FED', 'Workouts that break flow with messy controls', 33],
             ['#375F31', "Hard to see if I'm making real progress", 28],
           ].map(([color, label, pct]) => (
-            <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+            <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
               <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
               <span className="flex-1">{label}</span>
               <span className="font-bold sm:hidden">{pct}%</span>
             </li>
           ))}
         </ul>
-        <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+        <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
           Multiple answers were allowed, so totals exceed 100%.{' '}
           <strong className="font-bold text-black">
             Three answers dominated every other option — rigid plans, fragmented tools, and
@@ -324,7 +324,7 @@ function ThePoll() {
         </p>
       </div>
       <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
-        <p className="font-grotesk font-bold text-base text-black">
+        <p className="font-grotesk font-bold text-[14px] text-black">
           Would you trust an app&rsquo;s workout recommendation over picking one yourself?
         </p>
         <div className="flex justify-center">
@@ -336,14 +336,14 @@ function ThePoll() {
             ['#EC474B', "No, I'd rather pick every time", 24],
             ['#F5B840', 'Not sure', 12],
           ].map(([color, label, pct]) => (
-            <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+            <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
               <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
               <span className="flex-1">{label}</span>
               <span className="font-bold sm:hidden">{pct}%</span>
             </li>
           ))}
         </ul>
-        <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+        <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
           <strong className="font-bold text-black">64% said yes</strong> — but only with an
           escape hatch. Almost nobody wanted the app to decide unconditionally. This is the
           finding the whole product turns on:{' '}
@@ -413,12 +413,12 @@ const persona = {
 };
 
 const bulletClass =
-  'font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-[\'\'] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px] [&_strong]:font-normal [&_strong]:text-[#1552d8]';
+  'font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-[\'\'] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px] [&_strong]:font-normal [&_strong]:text-[#1552d8]';
 
 function PersonaCard({ title, points }) {
   return (
     <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-4">
-      <h3 className="font-grotesk font-medium text-2xl text-black">{title}</h3>
+      <h3 className="font-grotesk font-medium text-[16px] text-black">{title}</h3>
       <ul className="flex flex-col gap-3">
         {points.map((point, i) => (
           <li key={i} className={bulletClass}>
@@ -436,10 +436,10 @@ function UserPersona() {
       <div className="flex flex-col gap-5">
         <ImagePlaceholder filename="case-fitness-persona.webp" className="min-h-[480px]" />
         <div className="bg-[#f2f6ff] rounded-[24px] p-5 flex flex-col gap-3">
-          <h3 className="font-grotesk font-medium text-3xl text-[#1552d8]">{persona.name}</h3>
-          <p className="font-grotesk font-medium text-base text-[#1552d8]">{persona.role}</p>
-          <p className="font-grotesk font-medium text-base text-[#1552d8]">{persona.location}</p>
-          <p className="font-grotesk text-base text-black leading-relaxed mt-1">{persona.bio}</p>
+          <h3 className="font-grotesk font-medium text-[16px] text-[#1552d8]">{persona.name}</h3>
+          <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.role}</p>
+          <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.location}</p>
+          <p className="font-grotesk text-[14px] text-black leading-relaxed mt-1">{persona.bio}</p>
         </div>
       </div>
       <div className="flex flex-col gap-5">
@@ -538,10 +538,10 @@ const iaData = {
 function InformationArchitecture() {
   return (
     <>
-      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         Mobile App
       </h2>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
         Setup is separated from daily use: <strong>Onboarding &amp; Auth</strong> runs once, front
         loading permissions, goals, and wearable pairing so the app has real data from day one.
         After that the structure follows how the day is actually spent &mdash;{' '}

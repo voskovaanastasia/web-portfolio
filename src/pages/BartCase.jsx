@@ -360,7 +360,7 @@ function PagesSlider({ pages }) {
   return (
     <>
       <div className="flex items-center justify-between gap-6 flex-wrap">
-        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
           {page.title}
         </h2>
         <div className="flex items-center gap-3">
@@ -384,8 +384,8 @@ function PagesSlider({ pages }) {
         <div className="flex flex-col gap-7">
           {page.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#4274C1]">
+              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#4274C1]">
                 {block.text}
               </p>
             </div>
@@ -795,7 +795,7 @@ export default function BartCase() {
         </Link>
 
         {/* Title */}
-        <h1 className="font-grotesk font-medium text-4xl sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
           {project.title}
         </h1>
 
@@ -815,14 +815,14 @@ export default function BartCase() {
         <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-base text-black whitespace-pre-line">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
+              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
                 {item.value}
               </p>
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-base text-[#6b6a67]">Tools</p>
+            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
             <div className="flex gap-2">
               {project.tools.map((tool) => (
                 <span
@@ -845,24 +845,24 @@ export default function BartCase() {
               className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
+              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
             <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+            <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
+            <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
           </div>
         </div>
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
               {project.intro.body}
             </p>
           </div>
@@ -874,17 +874,17 @@ export default function BartCase() {
 
         {/* Project goals */}
         <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Project Goals</p>
+          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5V4l-6 2.5L9 4z" strokeLinejoin="round" />
                 <path d="M9 4v13M15 6.5v13" />
               </svg>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Improve Navigation Clarity
               </p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Restructure the information architecture to reduce user drop-off — making it
                 easier to find services, cases, and contact information in fewer clicks.
               </p>
@@ -896,8 +896,8 @@ export default function BartCase() {
                 <circle cx="12" cy="7.5" r="1.1" fill="currentColor" stroke="none" />
                 <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none" />
               </svg>
-              <p className="font-grotesk font-bold text-base">Refresh the Visual Identity</p>
-              <p className="font-grotesk text-base text-white leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px]">Refresh the Visual Identity</p>
+              <p className="font-grotesk text-[14px] text-white leading-relaxed">
                 Deliver a modern, consistent interface aligned with the client&rsquo;s brand
                 vision — updating typography, colour system, and component style across all
                 pages.
@@ -907,10 +907,10 @@ export default function BartCase() {
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
               </svg>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Increase Conversion Rate
               </p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Optimise key user flows and CTA placement to guide visitors toward targeted
                 actions — contact requests, service inquiries, and portfolio engagement.
               </p>
@@ -920,11 +920,11 @@ export default function BartCase() {
 
         {/* User research */}
         <section id="research" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">User Research</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight max-w-3xl leading-snug [&>strong]:font-medium">
+          <p className="font-mono-bold text-[14px] text-black">User Research</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight max-w-3xl leading-snug [&>strong]:font-medium">
             To validate the redesign direction
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             To validate the redesign direction, research ran in two rounds: a screening survey distributed to existing clients and external B2B users, followed by six semi-structured interviews.
             Findings clustered around three recurring frictions — site clarity, navigation logic, and brand perception.
           </p>
@@ -932,7 +932,7 @@ export default function BartCase() {
             {researchStats.map((stat) => (
               <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
-                <p className="font-grotesk text-base text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
+                <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
                 </p>
               </div>
@@ -942,10 +942,10 @@ export default function BartCase() {
 
         {/* The poll */}
         <section id="poll" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">What Users Told Us</p>
+          <p className="font-mono-bold text-[14px] text-black">What Users Told Us</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 What frustrates you most on corporate websites?
               </p>
               <div className="flex justify-center">
@@ -959,21 +959,21 @@ export default function BartCase() {
                   ['#4d8fd1', "Don't understand what the company does", 12],
                   ['#6d3fc4', 'Too much text, low readability', 6],
                 ].map(([color, label, pct]) => (
-                  <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+                  <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
                     <span className="flex-1">{label}</span>
                     <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Multiple answers were allowed, so totals exceed 100%. Three answers dominated every other option —{' '}
                 <strong className="font-bold text-black">structure, findability, and navigation</strong> —
                 and each became a named design target in this project.
               </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Would You Return to an Updated Website?
               </p>
               <div className="flex justify-center">
@@ -991,14 +991,14 @@ export default function BartCase() {
                   ['#6abf69', 'Not sure', 20],
                   ['#ee8585', 'No', 12],
                 ].map(([color, label, pct]) => (
-                  <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+                  <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
                     <span className="flex-1">{label}</span>
                     <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
                 <strong className="font-bold text-black">68% said yes</strong> Stated intent is not behaviour — but it told us the audience was not lost, only stalled by the current site.
               </p>
             </div>
@@ -1007,18 +1007,18 @@ export default function BartCase() {
 
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">User Persona</p>
+          <p className="font-mono-bold text-[14px] text-black">User Persona</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
               <ImagePlaceholder filename="persona-james.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-3xl text-black tracking-tight mt-2">
+              <h3 className="font-grotesk font-medium text-[16px] text-black tracking-tight mt-2">
                 James Mitchell
               </h3>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 38, Business Development Manager
               </p>
-              <p className="font-grotesk font-bold text-base text-black">London, UK</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">London, UK</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 James evaluates tech vendors and service providers on behalf of his company. He
                 visits corporate websites to quickly assess whether an agency is worth a deeper
                 conversation &mdash; scanning for relevant cases, team expertise, and a clear
@@ -1056,12 +1056,12 @@ export default function BartCase() {
                 },
               ].map((group) => (
                 <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
-                  <p className="font-grotesk font-bold text-base text-black">{group.title}</p>
+                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
                       <li
                         key={i}
-                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
+                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
                       >
                         {item}
                       </li>
@@ -1071,7 +1071,7 @@ export default function BartCase() {
               ))}
             </div>
           </div>
-          <p className="font-mono-bold text-base text-black leading-relaxed max-w-3xl">
+          <p className="font-mono-bold text-[14px] text-black leading-relaxed max-w-3xl">
             Persona validation confirmed that the primary user is a time-pressured B2B evaluator
             &mdash; not a casual browser. James Mitchell, Business Development Manager, visits
             the site with one goal: to quickly assess whether this agency is worth a deeper
@@ -1083,11 +1083,11 @@ export default function BartCase() {
 
         {/* Information architecture */}
         <section id="ia" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Information Architecture</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Information Architecture</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Information Architecture
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             The IA was redesigned to create a <strong>clear and scalable structure</strong> that
             supports intuitive navigation and efficient content discovery. Based on competitor
             analysis and research findings, unnecessary pages were removed, content was
@@ -1106,13 +1106,13 @@ export default function BartCase() {
 
         {/* Navigation & menu architecture */}
         <section id="menu" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Navigation &amp; Menu Architecture</p>
+          <p className="font-mono-bold text-[14px] text-black">Navigation &amp; Menu Architecture</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div className="flex flex-col gap-5">
-              <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+              <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
                 Menu
               </h2>
-              <div className="font-grotesk text-base text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
+              <div className="font-grotesk text-[14px] text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
                 <p>
                   The previous navigation lacked <strong>information hierarchy</strong> making it
                   difficult for users to understand the company&rsquo;s full service range and
@@ -1144,17 +1144,17 @@ export default function BartCase() {
 
         {/* Website pages */}
         <section id="pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Website Pages</p>
+          <p className="font-mono-bold text-[14px] text-black">Website Pages</p>
           <PagesSlider pages={websitePages} />
         </section>
 
         {/* Grid system */}
         <section id="grid" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Grid System</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Grid System</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             One responsive grid
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             Grid System was built to ensure a <strong>scalable and consistent layout</strong>{' '}
             across the entire platform. A responsive grid was implemented to improve alignment,
             visual hierarchy, and content structure. The system adapts across devices with
@@ -1162,8 +1162,8 @@ export default function BartCase() {
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">Desktop</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">Desktop</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 3 columns, margin 80, gap 20 — ensuring a spacious and well-structured layout for
                 wide screens.
               </p>
@@ -1173,8 +1173,8 @@ export default function BartCase() {
               />
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">Mobile</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">Mobile</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 2 columns, margin 24, gap 10 — optimized for compact screens with clear spacing
                 and better readability.
               </p>
@@ -1184,7 +1184,7 @@ export default function BartCase() {
               />
             </div>
           </div>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
             This approach helped standardize layouts, simplify design decisions, and maintain
             visual consistency across all pages and screen sizes.
           </p>
@@ -1192,17 +1192,17 @@ export default function BartCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Colours & Typography</p>
+          <p className="font-mono-bold text-[14px] text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* Post-launch analytics */}
         <section id="analytics" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Post-Launch</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Post-Launch</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Post-Launch Analytics
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             <strong>Website Redesign Project</strong> delivered measurable results across all
             three core goals. Following the launch, <strong>quantitative data was collected</strong>{' '}
             over a 60-day period through Google Analytics, Hotjar session recordings, and a
@@ -1210,18 +1210,18 @@ export default function BartCase() {
             research.
           </p>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             Project Goals — Revisited
           </h3>
-          <p className="font-grotesk font-bold text-base text-black max-w-2xl">
+          <p className="font-grotesk font-bold text-[14px] text-black max-w-2xl">
             Improve Navigation Clarity · Refresh the Visual Identity · Increase Conversion Rate
           </p>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
             Each goal was tied to a specific metric from day one, making post-launch evaluation
             objective, not subjective.
           </p>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             The Results
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1230,10 +1230,10 @@ export default function BartCase() {
             ))}
           </div>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             Post-Launch User Survey
           </h3>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
             A follow-up survey mirrored the original poll questions to measure perception shift
             after the redesign.
           </p>
@@ -1243,20 +1243,20 @@ export default function BartCase() {
             ))}
           </div>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             Key Takeaway
           </h3>
           <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
             Two kinds of visitor, not one average one
           </p>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
             The instinct on a corporate site is to design a single path and hope it fits
             everyone. Research showed <strong>two audiences arriving with incompatible
             questions</strong> &mdash; one hunting for a specific service, one deciding whether
             this company understood their industry at all. Averaging them would have produced
             navigation that half-served both.
           </p>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
             Splitting the structure along that line cost more to build and made every subsequent
             decision easier: for any new page, there was now a question with an answer &mdash;{' '}
             <strong>which visitor is this for?</strong>

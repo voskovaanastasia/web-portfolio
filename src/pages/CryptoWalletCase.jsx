@@ -645,7 +645,7 @@ function ScreensSlider({ screens }) {
           <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">
             {screen.group}
           </p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             {screen.title}
           </h2>
         </div>
@@ -670,8 +670,8 @@ function ScreensSlider({ screens }) {
         <div className="flex flex-col gap-7">
           {screen.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#288fd6]">
+              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#288fd6]">
                 {block.text}
               </p>
             </div>
@@ -997,12 +997,12 @@ function FlowCard({ flow }) {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-baseline gap-4">
-        <span className="font-mono-bold text-base text-[#288fd6]">{flow.number}</span>
-        <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight">
+        <span className="font-mono-bold text-[14px] text-[#288fd6]">{flow.number}</span>
+        <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight">
           {flow.title}
         </h3>
       </div>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
         {flow.description}
       </p>
       <div className="bg-[#f7f7f7] rounded-[24px] p-5 overflow-x-auto">
@@ -1179,7 +1179,7 @@ export default function CryptoWalletCase() {
         </Link>
 
         {/* Title */}
-        <h1 className="font-grotesk font-medium text-4xl sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
           {project.title}
         </h1>
 
@@ -1199,14 +1199,14 @@ export default function CryptoWalletCase() {
         <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-base text-black whitespace-pre-line">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
+              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
                 {item.value}
               </p>
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-base text-[#6b6a67]">Tools</p>
+            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
             <div className="flex gap-2">
               {project.tools.map((tool) => (
                 <span
@@ -1233,14 +1233,14 @@ export default function CryptoWalletCase() {
               className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
+              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
             <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-              <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+              <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
+              <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
             </div>
           )}
         </div>
@@ -1248,11 +1248,11 @@ export default function CryptoWalletCase() {
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
               {project.intro.body}
             </p>
           </div>
@@ -1264,7 +1264,7 @@ export default function CryptoWalletCase() {
 
         {/* Project goals */}
         <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Project Goals</p>
+          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {projectGoals.map((goal, i) => (
               <div
@@ -1280,11 +1280,11 @@ export default function CryptoWalletCase() {
                 >
                   {goal.icon}
                 </svg>
-                <p className={`font-grotesk font-bold text-base ${i === 1 ? '' : 'text-black'}`}>
+                <p className={`font-grotesk font-bold text-[14px] ${i === 1 ? '' : 'text-black'}`}>
                   {goal.title}
                 </p>
                 <p
-                  className={`font-grotesk text-base leading-relaxed ${
+                  className={`font-grotesk text-[14px] leading-relaxed ${
                     i === 1 ? 'text-white' : 'text-[#393939]'
                   }`}
                 >
@@ -1297,8 +1297,8 @@ export default function CryptoWalletCase() {
 
         {/* 4W+H process */}
         <section id="process" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">4W+H Process</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">4W+H Process</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             4W+H Process
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
@@ -1310,13 +1310,13 @@ export default function CryptoWalletCase() {
                 <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
                 <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
                 {col.body ? (
-                  <p className="font-grotesk text-base text-[#393939] leading-relaxed">{col.body}</p>
+                  <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{col.body}</p>
                 ) : (
                   <ul className="flex flex-col gap-2">
                     {col.items.map((item) => (
                       <li
                         key={item}
-                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                       >
                         {item}
                       </li>
@@ -1330,11 +1330,11 @@ export default function CryptoWalletCase() {
 
         {/* User research */}
         <section id="research" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">User Research</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight max-w-3xl leading-snug">
+          <p className="font-mono-bold text-[14px] text-black">User Research</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight max-w-3xl leading-snug">
             To validate the redesign direction, I ran user research through interviews and polls.
           </h2>
-          <p className="font-grotesk text-base text-[#6b6a67] leading-relaxed max-w-2xl">
+          <p className="font-grotesk text-[14px] text-[#6b6a67] leading-relaxed max-w-2xl">
             Insights highlighted recurring friction around network choice, fee transparency, and
             transaction confidence.
           </p>
@@ -1342,7 +1342,7 @@ export default function CryptoWalletCase() {
             {researchStats.map((stat) => (
               <div key={stat.pct} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col items-center gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
-                <p className="font-grotesk text-base text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
+                <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
                 </p>
               </div>
@@ -1352,13 +1352,13 @@ export default function CryptoWalletCase() {
 
         {/* The poll */}
         <section id="poll" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">The Poll</p>
+          <p className="font-mono-bold text-[14px] text-black">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Most Important Crypto Wallet Feature
               </p>
-              <p className="font-grotesk text-base text-[#6b6a67]">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">
                 What matters most when choosing a crypto wallet?
               </p>
               <div className="flex justify-center">
@@ -1372,24 +1372,24 @@ export default function CryptoWalletCase() {
                   ['#ee5f9b', 'Fast transfers / confirmations', 12],
                   ['#2bb8a3', 'Simple UI & onboarding', 8],
                 ].map(([color, label, pct]) => (
-                  <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+                  <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
                     <span className="flex-1">{label}</span>
                     <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
                 <strong className="font-bold text-black">Security & self-custody outweighed
                 every other answer combined</strong> &mdash; confirming that trust, not
                 convenience, is what a crypto wallet is judged on first.
               </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Interest in All-in-One Crypto Wallet
               </p>
-              <p className="font-grotesk text-base text-[#6b6a67]">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">
                 Would you use one app to store, swap, and track all your tokens across networks?
               </p>
               <div className="flex justify-center">
@@ -1401,14 +1401,14 @@ export default function CryptoWalletCase() {
                   ['#e8964a', 'No', 18],
                   ['#6d3fc4', 'Not sure', 12],
                 ].map(([color, label, pct]) => (
-                  <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+                  <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
                     <span className="flex-1">{label}</span>
                     <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
                 <strong className="font-bold text-black">70% said yes</strong> &mdash; confirming
                 real demand for one app that consolidates storage, swapping, and tracking across
                 networks, instead of switching between several.
@@ -1419,16 +1419,16 @@ export default function CryptoWalletCase() {
 
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">User Persona</p>
+          <p className="font-mono-bold text-[14px] text-black">User Persona</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
               <ImagePlaceholder filename="persona-alex.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-3xl text-[#288fd6] tracking-tight mt-2">
+              <h3 className="font-grotesk font-medium text-[16px] text-[#288fd6] tracking-tight mt-2">
                 Alex Carter
               </h3>
-              <p className="font-grotesk font-bold text-base text-black">32, Product Manager</p>
-              <p className="font-grotesk font-bold text-base text-black">Berlin, Germany</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">32, Product Manager</p>
+              <p className="font-grotesk font-bold text-[14px] text-black">Berlin, Germany</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Alex actively uses crypto for investing and transfers but doesn&rsquo;t consider
                 himself an expert. He checks prices daily, sends and swaps tokens regularly, and
                 cares deeply about security. Alex wants confidence that every action is correct
@@ -1467,12 +1467,12 @@ export default function CryptoWalletCase() {
                 },
               ].map((group) => (
                 <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
-                  <p className="font-grotesk font-bold text-base text-black">{group.title}</p>
+                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
                       <li
                         key={i}
-                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words [&>strong]:font-bold [&>strong]:text-[#288fd6]"
+                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words [&>strong]:font-bold [&>strong]:text-[#288fd6]"
                       >
                         {item}
                       </li>
@@ -1486,8 +1486,8 @@ export default function CryptoWalletCase() {
 
         {/* Empathy map */}
         <section id="empathy" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Empathy Map</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Empathy Map</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Empathy Map
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -1503,7 +1503,7 @@ export default function CryptoWalletCase() {
                   {q.items.map((item) => (
                     <li
                       key={item}
-                      className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                      className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                     >
                       {item}
                     </li>
@@ -1516,11 +1516,11 @@ export default function CryptoWalletCase() {
 
         {/* User flow */}
         <section id="flow" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">User Flow</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">User Flow</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Intuitive Navigation, Streamlined Flow
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             The two highest-stakes journeys follow the same spine &mdash;{' '}
             <strong>input &rarr; review &rarr; confirm &rarr; status</strong> &mdash; so the moment
             before money moves always looks and behaves the same, no matter which action the user
@@ -1535,11 +1535,11 @@ export default function CryptoWalletCase() {
 
         {/* Information architecture */}
         <section id="ia" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Information Architecture</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Information Architecture</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             One Tab Bar, Four Clear Jobs
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             Both entry points &mdash; <strong>Sign Up and Login</strong> &mdash; land on the same
             Home, so the app has a single mental starting point. From there the tab bar splits into
             four jobs: <strong>Insight</strong> to see the market,{' '}
@@ -1558,13 +1558,13 @@ export default function CryptoWalletCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Colours & Typography</p>
+          <p className="font-mono-bold text-[14px] text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* App screens */}
         <section id="screens" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">App Screens</p>
+          <p className="font-mono-bold text-[14px] text-black">App Screens</p>
           <ScreensSlider screens={appScreens} />
         </section>
 

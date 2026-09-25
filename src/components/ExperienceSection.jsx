@@ -146,8 +146,8 @@ export default function ExperienceSection() {
     <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-base text-black">My Journey</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">My Journey</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Work Experience
           </h2>
         </div>
@@ -189,7 +189,7 @@ export default function ExperienceSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-lg text-black">
+                    <h3 className="font-grotesk font-bold text-[16px] text-black">
                       {exp.title}
                     </h3>
                     <p className="font-grotesk text-sm text-[#6b6a67]">
@@ -218,7 +218,7 @@ export default function ExperienceSection() {
                 </div>
 
                 <div className="bg-[#f6f6f5] rounded-[16px] px-6 py-5 mb-5">
-                  <p className="font-grotesk text-base text-[#3d3d3b] leading-relaxed">
+                  <p className="font-grotesk text-[14px] text-[#3d3d3b] leading-relaxed">
                     {exp.challenge}
                   </p>
                 </div>
@@ -227,7 +227,7 @@ export default function ExperienceSection() {
                   {exp.bullets.map((bullet, i) => (
                     <li
                       key={i}
-                      className="font-grotesk text-base text-[#3d3d3b] leading-relaxed"
+                      className="font-grotesk text-[14px] text-[#3d3d3b] leading-relaxed"
                     >
                       {bullet}
                     </li>

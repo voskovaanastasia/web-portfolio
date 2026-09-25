@@ -311,10 +311,10 @@ const iaTree = {
 function InformationArchitecture() {
   return (
     <>
-      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         One Dashboard, One Guided Flow
       </h2>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
         <strong>Every entity funnels into the same filing flow</strong>, so learning to file once
         means knowing how to file for any entity added later. The dashboard is deliberately the
         entry point rather than a menu item &mdash;{' '}

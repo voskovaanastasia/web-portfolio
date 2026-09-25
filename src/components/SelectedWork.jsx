@@ -40,8 +40,8 @@ export default function SelectedWork() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
         <div className="mb-8 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-base text-black">Selected work</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Selected work</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Featured Projects
           </h2>
         </div>
@@ -88,7 +88,7 @@ export default function SelectedWork() {
 
                   {/* Title + description */}
                   <div className="flex flex-col gap-1.5">
-                    <h3 className="font-grotesk font-medium text-xl tracking-tight">
+                    <h3 className="font-grotesk font-medium text-[16px] tracking-tight">
                       <Link
                         to={`/project/${project.id}`}
                         className="text-black hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors"
@@ -119,7 +119,7 @@ export default function SelectedWork() {
                       </p>
                     </InfoCell>
                     <InfoCell label="OUTCOME" highlight>
-                      <p className="font-grotesk font-bold text-4xl text-black whitespace-nowrap">
+                      <p className="font-grotesk font-bold text-[30px] text-black whitespace-nowrap">
                         {project.outcomeMetric}
                       </p>
                       <p className="font-grotesk font-medium text-sm text-black">

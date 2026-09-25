@@ -38,34 +38,34 @@ export default function HeroSection() {
             fetchPriority="high"
             className="w-9 h-9 rounded-full"
           />
-          <span className="font-mono-bold font-bold text-base text-black">
+          <span className="font-mono-bold font-bold text-[14px] text-black">
             Hello I&rsquo;m <span className="text-[#288fd6]">Anastasiia</span>
           </span>
         </div>
 
         {/* Headline */}
-        <h1 className="font-grotesk font-medium text-3xl sm:text-4xl md:text-5xl text-black tracking-tight leading-snug max-w-[280px] sm:max-w-none">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-black tracking-tight leading-snug max-w-[280px] sm:max-w-none">
           I make complex,{' '}
           <span className="font-playwrite font-normal">data-dense</span>{' '}
           products feel simple, and ground every decision in research.
         </h1>
 
         {/* Subheadline */}
-        <p className="font-grotesk text-lg sm:text-xl text-black max-w-[280px] sm:max-w-none">
+        <p className="font-grotesk text-[16px] sm:text-xl text-black max-w-[280px] sm:max-w-none">
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 
         {/* Based in */}
         <div className="flex flex-col items-center gap-2.5">
-          <p className="font-mono-bold text-base text-black">Based in</p>
-          <p className="font-grotesk font-medium text-base text-black">
+          <p className="font-mono-bold text-[14px] text-black">Based in</p>
+          <p className="font-grotesk font-medium text-[14px] text-black">
             🇪🇸 Granada, Spain
           </p>
         </div>
 
         {/* My Stack */}
         <div className="flex flex-col items-center gap-2.5">
-          <p className="font-mono-bold text-base text-black">My Stack</p>
+          <p className="font-mono-bold text-[14px] text-black">My Stack</p>
           <div className="flex items-center">
             {stackIcons.map((icon, i) => (
               <div

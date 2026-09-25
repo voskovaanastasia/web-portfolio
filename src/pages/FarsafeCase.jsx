@@ -529,7 +529,7 @@ function PagesSlider({ pages }) {
   return (
     <>
       <div className="flex items-center justify-between gap-6 flex-wrap">
-        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
           {page.title}
         </h2>
         <div className="flex items-center gap-3">
@@ -553,8 +553,8 @@ function PagesSlider({ pages }) {
         <div className="flex flex-col gap-7">
           {page.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#4274C1]">
+              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#4274C1]">
                 {block.text}
               </p>
             </div>
@@ -930,7 +930,7 @@ export default function FarsafeCase() {
         </Link>
 
         {/* Title */}
-        <h1 className="font-grotesk font-medium text-4xl sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
           {project.title}
         </h1>
 
@@ -950,14 +950,14 @@ export default function FarsafeCase() {
         <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-base text-black whitespace-pre-line">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
+              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
                 {item.value}
               </p>
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-base text-[#6b6a67]">Tools</p>
+            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
             <div className="flex gap-2">
               {project.tools.map((tool) => (
                 <span
@@ -980,24 +980,24 @@ export default function FarsafeCase() {
               className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
+              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
             <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+            <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
+            <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
           </div>
         </div>
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
               {project.intro.body}
             </p>
           </div>
@@ -1006,11 +1006,11 @@ export default function FarsafeCase() {
 
         {/* Problem statement */}
         <section id="problem-statement" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">PROBLEM STATEMENT</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight max-w-3xl leading-snug">
+          <p className="font-mono-bold text-[14px] text-black">PROBLEM STATEMENT</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight max-w-3xl leading-snug">
             Developers and agencies need a monitoring tool they can set up fast and actually trust.
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl">
             Existing tools bury pricing, fire false alarms from a single location, and scatter
             status and reporting across separate products.
           </p>
@@ -1018,31 +1018,31 @@ export default function FarsafeCase() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-4">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">Insight 1</p>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Pricing is impossible to predict
               </p>
               <p className="font-grotesk font-bold text-6xl text-black">66%</p>
-              <p className="font-grotesk text-base text-[#393939]">
+              <p className="font-grotesk text-[14px] text-[#393939]">
                 <strong className="font-bold text-black">66%</strong> of interviewees said tiered
                 pricing made their bill unpredictable.
               </p>
             </div>
             <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">Insight 2</p>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Alerts can&rsquo;t be trusted when a single location triggers them.
               </p>
-              <p className="font-grotesk text-base text-[#393939] mt-auto">
+              <p className="font-grotesk text-[14px] text-[#393939] mt-auto">
                 <strong className="font-bold text-black">73%</strong> had been burned by false alerts from a single check location.
               </p>
             </div>
             <div className="bg-[#6d3fc4] rounded-[24px] p-5 flex flex-col gap-4 text-white">
               <p className="font-grotesk text-sm text-white uppercase tracking-wide">Insight 3</p>
-              <p className="font-grotesk font-bold text-base">
+              <p className="font-grotesk font-bold text-[14px]">
                 Status and reporting mean buying yet another product.
               </p>
               <p className="font-grotesk font-bold text-6xl">58%</p>
-              <p className="font-grotesk text-base text-white">
+              <p className="font-grotesk text-[14px] text-white">
                 <strong className="font-bold text-white">58%</strong> wanted to share status
                 without a separate tool.
               </p>
@@ -1054,17 +1054,17 @@ export default function FarsafeCase() {
         <section id="problem" className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <ImagePlaceholder filename="case-farsafe-problem.webp" className="min-h-[420px]" />
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROBLEM</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROBLEM</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               Monitoring tools force a trade-off between simple and trustworthy
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               Developers, agencies, and small teams need to know the moment something breaks. But
               existing tools bury pricing behind tiers, fire false alarms from a single check
               location, and split status and reporting into separate paid products.
             </p>
-            <p className="font-mono-bold text-base text-black">WHY IS THIS IMPORTANT?</p>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+            <p className="font-mono-bold text-[14px] text-black">WHY IS THIS IMPORTANT?</p>
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               The result is teams that either overpay, miss real outages, or juggle multiple tools
               - and lose trust in the one system meant to warn them.
             </p>
@@ -1074,17 +1074,17 @@ export default function FarsafeCase() {
         {/* Solution */}
         <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">SOLUTION</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">SOLUTION</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               One all-included platform, legible from the first click
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               I designed FarSafe end-to-end across two surfaces - the marketing site and the
               dashboard. Pricing is exposed and flat, every alert is cross-verified across regions
               before it fires, and status pages and reports are built in, not sold separately.
             </p>
-            <p className="font-mono-bold text-base text-black">USER SCENARIO CONSIDERATION</p>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+            <p className="font-mono-bold text-[14px] text-black">USER SCENARIO CONSIDERATION</p>
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               My aim was a product a first-time visitor could understand in seconds and an engineer
               could trust in production - the same clarity from landing page to daily dashboard.
             </p>
@@ -1094,7 +1094,7 @@ export default function FarsafeCase() {
 
         {/* Project goals */}
         <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Project Goals</p>
+          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
@@ -1102,10 +1102,10 @@ export default function FarsafeCase() {
                 <path d="M12 5v4M10.5 6.2h3a1 1 0 0 1 0 2h-3a1 1 0 0 0 0 2h3" strokeLinecap="round" />
                 <path d="M3 17c2-2 4-2 6-1l3 1.5c1.5.7 3-.5 4-1.5l2.5-2.5a1.4 1.4 0 0 1 2 2L16 20c-1.5 1.5-4 2-6 1l-7-3z" strokeLinejoin="round" />
               </svg>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Make the Value Proposition Instantly Clear
               </p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Communicate &rdquo;everything included, pay only for what you use&rdquo; in seconds
                 - and remove the category&rsquo;s biggest friction, hidden tier pricing, before a
                 visitor ever scrolls.
@@ -1115,10 +1115,10 @@ export default function FarsafeCase() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
                 <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
               </svg>
-              <p className="font-grotesk font-bold text-base">
+              <p className="font-grotesk font-bold text-[14px]">
                 Make a Data-Dense Product Approachable
               </p>
-              <p className="font-grotesk text-base text-white leading-relaxed">
+              <p className="font-grotesk text-[14px] text-white leading-relaxed">
                 Design a monitoring dashboard where uptime, response times, diagnostics, and
                 expirations are scannable at a glance - depth without overwhelm.
               </p>
@@ -1129,10 +1129,10 @@ export default function FarsafeCase() {
                 <path d="M3 21c0-3.5 3-6 7-6 1.5 0 2.8.3 4 .9" strokeLinecap="round" />
                 <path d="m16 19 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Drive Low-Friction Signup &amp; Activation
               </p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Guide visitors to the free account with repeated, low-commitment CTAs, and get a
                 new user from signup to first configured probe in under 2 minutes.
               </p>
@@ -1143,12 +1143,12 @@ export default function FarsafeCase() {
         {/* User research */}
         <section id="research" className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-5">
-            <p className="font-mono-bold text-base text-black">User Research</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight leading-snug">
+            <p className="font-mono-bold text-[14px] text-black">User Research</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug">
               The goal was to map what makes existing tools frustrating - and design around those
               gaps from day one.
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               Surveys and interviews with 15 developers, agency owners, and small-team leads who
               own uptime. Three patterns stood out:
             </p>
@@ -1181,8 +1181,8 @@ export default function FarsafeCase() {
                     style={{ width: `${bar.pct}%`, backgroundColor: bar.color }}
                   />
                 </div>
-                <p className="font-grotesk font-bold text-base text-black mt-2">{bar.title}</p>
-                <p className="font-grotesk text-base text-[#393939]">{bar.text}</p>
+                <p className="font-grotesk font-bold text-[14px] text-black mt-2">{bar.title}</p>
+                <p className="font-grotesk text-[14px] text-[#393939]">{bar.text}</p>
               </div>
             ))}
           </div>
@@ -1190,10 +1190,10 @@ export default function FarsafeCase() {
 
         {/* The poll */}
         <section className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">The Poll</p>
+          <p className="font-mono-bold text-[14px] text-black">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 What frustrates you most about your current monitoring tool?
               </p>
               <div className="flex justify-center">
@@ -1207,19 +1207,19 @@ export default function FarsafeCase() {
                   ['#4d8fd1', 'Too many separate tools to manage', 14],
                   ['#6d3fc4', 'Hard or slow to set up', 11],
                 ].map(([color, label, pct]) => (
-                  <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+                  <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
                     <span className="flex-1">{label}</span>
                     <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Multiple answers were allowed, so totals exceed 100%. Three answers dominated every other option — confusing pricing, single-location false alerts, and paying extra for status — and each became one of the three Insights above.
               </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-6">
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 Interested in an all-in-one, pay-as-you-go tool?
               </p>
               <div className="flex justify-center">
@@ -1231,14 +1231,14 @@ export default function FarsafeCase() {
                   ['#f2c94c', 'Not sure', 23],
                   ['#ee8585', 'No', 13],
                 ].map(([color, label, pct]) => (
-                  <li key={label} className="flex items-center gap-3 font-grotesk text-base text-black">
+                  <li key={label} className="flex items-center gap-3 font-grotesk text-[14px] text-black">
                     <span className="w-3.5 h-3.5 rounded-md shrink-0" style={{ backgroundColor: color }} />
                     <span className="flex-1">{label}</span>
                     <span className="font-bold sm:hidden">{pct}%</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed mt-auto">
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
                 <strong className="font-bold text-black">64% said yes</strong> - confirming real
                 demand for an everything-included, pay-for-what-you-use model and giving the
                 product a clear wedge into the market.
@@ -1249,18 +1249,18 @@ export default function FarsafeCase() {
 
         {/* User persona */}
         <section id="persona" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">User Persona</p>
+          <p className="font-mono-bold text-[14px] text-black">User Persona</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
               <ImagePlaceholder filename="persona-daniel.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-3xl text-black tracking-tight mt-2">
+              <h3 className="font-grotesk font-medium text-[16px] text-black tracking-tight mt-2">
                 Daniel Reyes
               </h3>
-              <p className="font-grotesk font-bold text-base text-black">
+              <p className="font-grotesk font-bold text-[14px] text-black">
                 34, Founder / Lead Developer, small web agency
               </p>
-              <p className="font-grotesk font-bold text-base text-black">Texas, USA</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">Texas, USA</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Daniel is the person clients call when a site goes down. He manages uptime for
                 roughly 20 client sites and needs to know about problems before the client does. He
                 evaluates monitoring tools quickly &mdash; scanning for clear pricing, reliable
@@ -1299,12 +1299,12 @@ export default function FarsafeCase() {
                 },
               ].map((group) => (
                 <div key={group.title} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-3">
-                  <p className="font-grotesk font-bold text-base text-black">{group.title}</p>
+                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
                   <ul className="flex flex-col gap-2">
                     {group.items.map((item, i) => (
                       <li
                         key={i}
-                        className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
+                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
                       >
                         {item}
                       </li>
@@ -1314,7 +1314,7 @@ export default function FarsafeCase() {
               ))}
             </div>
           </div>
-          <p className="font-mono-bold text-base text-black leading-relaxed max-w-3xl">
+          <p className="font-mono-bold text-[14px] text-black leading-relaxed max-w-3xl">
             Research confirmed the primary user is a time-pressured uptime owner - not a casual
             browser. Every design decision was tested against his scenario: can he understand the
             pricing, trust the alerts, and prove uptime to a client?
@@ -1323,11 +1323,11 @@ export default function FarsafeCase() {
 
         {/* Information architecture */}
         <section id="ia" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Information Architecture</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Information Architecture</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Website
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             The public site is kept <strong>deliberately shallow</strong> so a first-time visitor
             can reach signup from anywhere. Monitoring capability sits under one parent, pricing
             is exposed at the top level (because pricing legibility is the core value), and
@@ -1342,10 +1342,10 @@ export default function FarsafeCase() {
             </p>
           </div>
 
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight mt-10">
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight mt-10">
             Dashboard
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             Inside the app, the IA is organised around{' '}
             <strong>the daily jobs of an uptime owner</strong>. A flat top level: Dashboard,
             Monitoring, Reporting, Status Page, Settings, Members, Billing - keeps every core
@@ -1362,13 +1362,13 @@ export default function FarsafeCase() {
 
         {/* Navigation & menu architecture */}
         <section id="menu" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Navigation &amp; Menu Architecture</p>
+          <p className="font-mono-bold text-[14px] text-black">Navigation &amp; Menu Architecture</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div className="flex flex-col gap-5">
-              <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+              <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
                 Menu
               </h2>
-              <div className="font-grotesk text-base text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
+              <div className="font-grotesk text-[14px] text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
                 <p>
                   A new product means no legacy clutter - so every item earns its place.{' '}
                   <strong>All monitoring lives under one parent</strong> (Advanced Monitoring,
@@ -1397,18 +1397,18 @@ export default function FarsafeCase() {
 
         {/* Grid system */}
         <section id="grid" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Grid System</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Grid System</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             One responsive grid
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
             One responsive grid keeps every layout consistent across the product — tuned per
             surface, then reused everywhere. All grids use stretch columns.
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">Marketing — Desktop</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">Marketing — Desktop</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Two setups: a 3-column grid for standard sections, a 4-column for denser card
                 layouts.
               </p>
@@ -1418,8 +1418,8 @@ export default function FarsafeCase() {
               />
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">Dashboard (App) — Desktop</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">Dashboard (App) — Desktop</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 A 4-column content grid sitting beside a fixed side menu, with margin 40 and
                 gap 20. The tighter margin (vs. 80 on the marketing site) hands more working
                 width to dense tables, metric cards, and timelines.
@@ -1430,8 +1430,8 @@ export default function FarsafeCase() {
               />
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
-              <p className="font-grotesk font-bold text-base text-black">Mobile — All pages</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+              <p className="font-grotesk font-bold text-[14px] text-black">Mobile — All pages</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 A 2-column grid, sized for comfortable reading on compact screens.
               </p>
               <ImagePlaceholder
@@ -1444,8 +1444,8 @@ export default function FarsafeCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Visual Language</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Visual Language</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Colours &amp; Typography
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -1457,7 +1457,7 @@ export default function FarsafeCase() {
                   className="flex-1 px-6 py-4 flex flex-col justify-center gap-0.5"
                   style={{ backgroundColor: c.hex, color: c.dark ? '#ffffff' : '#252525' }}
                 >
-                  <p className="font-grotesk font-bold text-base">{c.name}</p>
+                  <p className="font-grotesk font-bold text-[14px]">{c.name}</p>
                   <p className="font-grotesk text-sm">{c.hex}</p>
                 </div>
               ))}
@@ -1468,7 +1468,7 @@ export default function FarsafeCase() {
               className="rounded-[24px] p-5 flex flex-col justify-between min-h-[280px] bg-[#a3bbdf] text-[#1c1c1c]"
               style={{ fontFamily: "'Open Sans', sans-serif" }}
             >
-              <div className="flex flex-col gap-1.5 text-base">
+              <div className="flex flex-col gap-1.5 text-[14px]">
                 {fontWeights.map((w, idx) => (
                   <span key={w} style={{ fontWeight: 400 + idx * 100 }}>{w}</span>
                 ))}
@@ -1487,7 +1487,7 @@ export default function FarsafeCase() {
               className="rounded-[24px] p-5 flex flex-col justify-between items-end min-h-[280px] bg-[#33518C] text-white lg:col-start-2"
               style={{ fontFamily: "'Rubik', sans-serif" }}
             >
-              <div className="flex flex-col gap-1.5 text-base text-right">
+              <div className="flex flex-col gap-1.5 text-[14px] text-right">
                 {fontWeights.map((w, idx) => (
                   <span key={w} style={{ fontWeight: 400 + idx * 100 }}>{w}</span>
                 ))}
@@ -1512,30 +1512,30 @@ export default function FarsafeCase() {
 
         {/* Marketing website pages */}
         <section id="pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Marketing Website</p>
+          <p className="font-mono-bold text-[14px] text-black">Marketing Website</p>
           <PagesSlider pages={marketingPages} />
         </section>
 
         {/* Dashboard pages */}
         <section id="app-pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Dashboard</p>
+          <p className="font-mono-bold text-[14px] text-black">Dashboard</p>
           <PagesSlider pages={dashboardPages} />
         </section>
 
         {/* Post-launch analytics */}
         <section id="analytics" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Post-Launch</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Post-Launch</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Post-Launch Analytics
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
             Farsafe launched as a complete, from-scratch product. With no old version to compare
             against, success was set up front - every goal had a target metric. Performance was
             tracked for 8 weeks after launch using Google Analytics, Hotjar, and a post-launch
             survey. The evaluation was objective, not subjective.
           </p>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             The Results
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1544,7 +1544,7 @@ export default function FarsafeCase() {
             ))}
           </div>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             Post-Launch User Survey
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -1556,26 +1556,26 @@ export default function FarsafeCase() {
                     style={{ width: `${item.pct}%`, backgroundColor: item.color }}
                   />
                 </div>
-                <p className="font-grotesk font-bold text-base text-black mt-2">{item.title}</p>
-                <p className="font-grotesk text-base text-[#393939]">{item.text}</p>
+                <p className="font-grotesk font-bold text-[14px] text-black mt-2">{item.title}</p>
+                <p className="font-grotesk text-[14px] text-[#393939]">{item.text}</p>
               </div>
             ))}
           </div>
 
-          <h3 className="font-grotesk font-medium text-2xl sm:text-3xl text-black tracking-tight mt-4">
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             Key Takeaway
           </h3>
           <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
             Showing the price was the design decision
           </p>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
             Every competitor in this category hides pricing behind a demo request, and the
             reasoning is always the same &mdash; the numbers are complicated, so explain them in a
             conversation. Research said the opposite:{' '}
             <strong>the hiding was the objection.</strong> People did not distrust the price, they
             distrusted not being told it.
           </p>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
             Putting a flat, all-included figure on the landing page was not a copy choice made at
             the end. <strong>It was the constraint the entire product had to be designed to
             survive</strong> &mdash; the pricing model, the feature set, and the marketing site

@@ -111,8 +111,8 @@ export default function HowIWorkSection() {
     <section id="how-i-work" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-base text-black">How I work</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">How I work</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Designing with an engineer&rsquo;s mindset
           </h2>
         </div>
@@ -141,9 +141,9 @@ export default function HowIWorkSection() {
                 }`}
               />
               <div className="flex flex-col gap-2">
-                <p className="font-grotesk font-bold text-base">{card.title}</p>
-                <p className="font-grotesk font-medium text-base">{card.subtitle}</p>
-                <p className="font-grotesk text-base">{card.description}</p>
+                <p className="font-grotesk font-bold text-[14px]">{card.title}</p>
+                <p className="font-grotesk font-medium text-[14px]">{card.subtitle}</p>
+                <p className="font-grotesk text-[14px]">{card.description}</p>
               </div>
               <div
                 className={`mt-auto border-t pt-4 flex flex-wrap gap-2 ${

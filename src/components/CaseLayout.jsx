@@ -142,9 +142,9 @@ export function MetricCard({ title, subtitle, bars, color, text }) {
   return (
     <div className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
       <MetricBars bars={bars} color={color} />
-      <p className="font-grotesk font-bold text-base text-black">{title}</p>
+      <p className="font-grotesk font-bold text-[14px] text-black">{title}</p>
       {subtitle && <p className="font-grotesk text-sm text-[#6b6a67] -mt-2">{subtitle}</p>}
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:font-bold [&>strong]:text-black">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:font-bold [&>strong]:text-black">
         {text}
       </p>
     </div>
@@ -161,13 +161,13 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
             className={`min-h-[420px] ${problem.imageClassName ?? ''}`}
           />
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROBLEM</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROBLEM</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {problem.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{problem.body}</p>
-            <p className="font-mono-bold text-base text-black">WHY IS THIS IMPORTANT?</p>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{problem.why}</p>
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{problem.body}</p>
+            <p className="font-mono-bold text-[14px] text-black">WHY IS THIS IMPORTANT?</p>
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{problem.why}</p>
           </div>
         </section>
       )}
@@ -175,13 +175,13 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
       {solution && (
         <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">SOLUTION</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">SOLUTION</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {solution.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{solution.body}</p>
-            <p className="font-mono-bold text-base text-black">USER SCENARIO CONSIDERATION</p>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{solution.body}</p>
+            <p className="font-mono-bold text-[14px] text-black">USER SCENARIO CONSIDERATION</p>
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               {solution.scenario}
             </p>
           </div>
@@ -206,13 +206,13 @@ export function ProcessColumns({ columns }) {
           <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
           <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
           {col.body ? (
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed">{col.body}</p>
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{col.body}</p>
           ) : (
             <ul className="flex flex-col gap-2">
               {col.items.map((item) => (
                 <li
                   key={item}
-                  className="font-grotesk text-base text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                  className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                 >
                   {item}
                 </li>
@@ -251,8 +251,8 @@ function ColorSwatch({ hex, name, text, className = '', labelClassName = '' }) {
       className={`group relative cursor-pointer text-left transition-[filter] hover:brightness-95 active:brightness-90 ${className}`}
       style={{ backgroundColor: hex, color: text }}
     >
-      {name && <p className="font-grotesk font-bold text-base">{name}</p>}
-      <p className={`font-grotesk text-base opacity-80 ${labelClassName}`}>
+      {name && <p className="font-grotesk font-bold text-[14px]">{name}</p>}
+      <p className={`font-grotesk text-[14px] opacity-80 ${labelClassName}`}>
         {copied ? 'Copied!' : hex}
       </p>
     </button>
@@ -264,10 +264,10 @@ function ColorSwatch({ hex, name, text, className = '', labelClassName = '' }) {
 export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
   return (
     <>
-      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         {heading}
       </h2>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&_strong]:font-bold [&_strong]:text-black">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&_strong]:font-bold [&_strong]:text-black">
         {body}
       </p>
 
@@ -296,7 +296,7 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
           >
             <div className="flex flex-col items-end gap-1">
               {typeface.weights.map((weight) => (
-                <p key={weight} className="font-grotesk text-base opacity-85">
+                <p key={weight} className="font-grotesk text-[14px] opacity-85">
                   {weight}
                 </p>
               ))}
@@ -323,7 +323,7 @@ export function ScreensSlider({ screens }) {
   return (
     <>
       <div className="flex items-center justify-between gap-6 flex-wrap">
-        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
           {screen.title}
         </h2>
         <div className="flex items-center gap-3">
@@ -347,8 +347,8 @@ export function ScreensSlider({ screens }) {
         <div className="flex flex-col gap-7">
           {screen.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
+              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
                 {block.text}
               </p>
             </div>
@@ -501,7 +501,7 @@ export default function CaseLayout({
         </Link>
 
         {/* Title */}
-        <h1 className="font-grotesk font-medium text-4xl sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
           {project.title}
         </h1>
 
@@ -521,14 +521,14 @@ export default function CaseLayout({
         <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-base text-black whitespace-pre-line">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
+              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
                 {item.value}
               </p>
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-base text-[#6b6a67]">Tools</p>
+            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
             <div className="flex gap-2">
               {project.tools.map((tool) => (
                 <span
@@ -552,14 +552,14 @@ export default function CaseLayout({
           {project.summary.map((card) => (
             <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
+              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
             <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-              <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+              <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
+              <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
             </div>
           )}
         </div>
@@ -567,11 +567,11 @@ export default function CaseLayout({
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
               {project.intro.body}
             </p>
           </div>
@@ -584,7 +584,7 @@ export default function CaseLayout({
         {/* Case-specific sections */}
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="pb-20 flex flex-col gap-6">
-            <p className="font-mono-bold text-base text-black">{section.label}</p>
+            <p className="font-mono-bold text-[14px] text-black">{section.label}</p>
             {section.content}
           </section>
         ))}
@@ -592,7 +592,7 @@ export default function CaseLayout({
         {/* Screens */}
         {screens?.length > 0 && (
           <section id="screens" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-base text-black">{screensLabel}</p>
+            <p className="font-mono-bold text-[14px] text-black">{screensLabel}</p>
             <ScreensSlider screens={screens} />
           </section>
         )}
@@ -600,11 +600,11 @@ export default function CaseLayout({
         {/* Key takeaway */}
         {keyTakeaway && (
           <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-base text-black">Key Takeaway</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">Key Takeaway</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {keyTakeaway.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
               {keyTakeaway.body}
             </p>
           </section>

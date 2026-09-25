@@ -56,8 +56,8 @@ function ProjectCard({ project, index }) {
           </span>
         ))}
       </div>
-      <h2 className="font-grotesk font-bold text-xl text-black mb-3">{project.title}</h2>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed mb-6">
+      <h2 className="font-grotesk font-bold text-[26px] text-black mb-3">{project.title}</h2>
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mb-6">
         {project.description}
       </p>
       <div className="mt-auto flex justify-end">
@@ -173,7 +173,7 @@ export default function Projects() {
       <section className="relative overflow-hidden pt-24 pb-40">
         <DotsBackground />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center flex flex-col gap-6">
-          <h1 className="font-grotesk font-medium text-4xl sm:text-5xl text-black tracking-tight">
+          <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl text-black tracking-tight">
             Things I&rsquo;ve Worked On
           </h1>
           <p className="font-grotesk text-lg sm:text-xl text-[#393939] leading-relaxed">

@@ -51,8 +51,8 @@ export default function ImpactSection() {
     <section id="impact" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-base text-black">Proven Results</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight leading-snug max-w-[590px]">
+          <p className="font-mono-bold text-[14px] text-black">Proven Results</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug max-w-[590px]">
             Design decisions grounded in research, measured by real outcomes.
           </h2>
         </div>
@@ -63,10 +63,10 @@ export default function ImpactSection() {
               key={metric.label}
               className={`rounded-[15px] p-5 flex flex-col gap-2.5 ${metric.card}`}
             >
-              <p className={`font-grotesk font-bold text-4xl sm:text-5xl whitespace-nowrap ${metric.number_color}`}>
+              <p className={`font-grotesk font-bold text-[30px] sm:text-5xl whitespace-nowrap ${metric.number_color}`}>
                 {metric.number}
               </p>
-              <p className="font-grotesk font-bold text-base">{metric.label}</p>
+              <p className="font-grotesk font-bold text-[14px]">{metric.label}</p>
               <p className={`font-grotesk text-sm ${metric.meta_color}`}>{metric.project}</p>
               <p className="font-grotesk text-sm">{metric.description}</p>
             </div>

@@ -180,10 +180,10 @@ const iaTree = {
 function InformationArchitecture() {
   return (
     <>
-      <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         Six Sections, One Booking Path
       </h2>
-      <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
         <strong>Portfolio and Rent sit side by side</strong> rather than nested under one another,
         because a visitor arrives wanting to judge either talent or gear first &mdash; not to dig
         for it. Both funnel into the same <strong>Book</strong> branch, so whether the trigger was

@@ -292,7 +292,7 @@ function ScreensSlider({ screens }) {
   return (
     <>
       <div className="flex items-center justify-between gap-6 flex-wrap">
-        <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
           {screen.title}
         </h2>
         <div className="flex items-center gap-3">
@@ -316,8 +316,8 @@ function ScreensSlider({ screens }) {
         <div className="flex flex-col gap-7">
           {screen.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-base text-black">{block.heading}</p>
-              <p className="font-grotesk text-base text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
+              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
                 {block.text}
               </p>
             </div>
@@ -416,7 +416,7 @@ export default function OnlineDoctorCase() {
         </Link>
 
         {/* Title */}
-        <h1 className="font-grotesk font-medium text-4xl sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
           {project.title}
         </h1>
 
@@ -436,14 +436,14 @@ export default function OnlineDoctorCase() {
         <div className="bg-[#f7f7f7] rounded-[24px] p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-base text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-base text-black whitespace-pre-line">
+              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
+              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
                 {item.value}
               </p>
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-base text-[#6b6a67]">Tools</p>
+            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
             <div className="flex gap-2">
               {project.tools.map((tool) => (
                 <span
@@ -470,14 +470,14 @@ export default function OnlineDoctorCase() {
               className="bg-[#f7f7f7] rounded-[24px] p-5 flex flex-col gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-base text-black leading-relaxed">{card.text}</p>
+              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
             <div className="bg-[#e9f3fa] rounded-[24px] p-5 flex flex-col gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-5xl text-black">{project.outcome.value}</p>
-              <p className="font-grotesk text-base text-black">{project.outcome.label}</p>
+              <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
+              <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
             </div>
           )}
         </div>
@@ -485,11 +485,11 @@ export default function OnlineDoctorCase() {
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-base text-black">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
-            <p className="font-grotesk text-base text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
               {project.intro.body}
             </p>
           </div>
@@ -501,29 +501,29 @@ export default function OnlineDoctorCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Colours & Typography</p>
+          <p className="font-mono-bold text-[14px] text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* App screens */}
         <section id="screens" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">App Screens</p>
+          <p className="font-mono-bold text-[14px] text-black">App Screens</p>
           <ScreensSlider screens={appScreens} />
         </section>
 
         {/* Key takeaway */}
         <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-base text-black">Key Takeaway</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Key Takeaway</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             A calm palette is not a calm product
           </h2>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
             Healthcare interfaces reach for soft blues and generous white space, and none of it
             helps a patient who does not know whether their appointment is confirmed or what the
             visit will cost.{' '}
             <strong>Anxiety in this product came from uncertainty, not from visual noise.</strong>
           </p>
-          <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
             Making appointment and billing state explicit at every step did more for how the
             product felt than any surface decision.{' '}
             <strong>Calm is structural: it comes from a patient never having to ask what happens

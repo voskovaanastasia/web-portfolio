@@ -61,8 +61,8 @@ export default function ContactSection() {
     <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-base text-black">Get in Touch</p>
-          <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-black">Get in Touch</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Let's Work Together
           </h2>
         </div>
@@ -73,7 +73,7 @@ export default function ContactSection() {
             to="/projects"
             className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 overflow-hidden flex flex-col group"
           >
-            <h3 className="font-grotesk font-bold text-lg text-black mb-4">My Projects</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4">My Projects</h3>
             <img
               src={contactProjects}
               alt="Laptop showing the Farsafe dashboard project"
@@ -87,7 +87,7 @@ export default function ContactSection() {
 
           {/* Resume */}
           <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5">
-            <h3 className="font-grotesk font-bold text-lg text-black mb-6">Checkout my Resume</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-black mb-6">Checkout my Resume</h3>
             <a
               href="/Anastasiia-Voskova-Resume.pdf"
               target="_blank"
@@ -127,7 +127,7 @@ export default function ContactSection() {
 
           {/* Skills */}
           <div className="bg-[#6d3fc4] rounded-[24px] p-5 overflow-hidden">
-            <h3 className="font-grotesk font-bold text-lg text-white mb-6">Skills</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-white mb-6">Skills</h3>
             <div className="flex flex-col gap-5 items-center">
               {skillRows.map((row, i) => (
                 <div key={i} className="flex gap-4 justify-center">
@@ -148,7 +148,7 @@ export default function ContactSection() {
           <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-5 flex flex-col">
             <div className="flex items-start justify-between mb-5">
               <div>
-                <h3 className="font-grotesk font-bold text-xl text-black">Anastasiia Voskova</h3>
+                <h3 className="font-grotesk font-bold text-[16px] text-black">Anastasiia Voskova</h3>
                 <p className="font-grotesk text-sm text-[#6b6a67] mt-1">{EMAIL}</p>
               </div>
               <div className="bg-white rounded-[12px] w-12 h-12 flex items-center justify-center shadow-sm shrink-0">
@@ -183,7 +183,7 @@ export default function ContactSection() {
 
         {/* Socials */}
         <div className="mt-12 flex flex-col items-center gap-5">
-          <p className="font-mono-bold text-base text-black">My Social</p>
+          <p className="font-mono-bold text-[14px] text-black">My Social</p>
           <div className="flex items-center gap-4">
             {socials.map((social) => (
               <a

@@ -1055,10 +1055,10 @@ const iaTree = {
 
 const InformationArchitecture = () => (
   <>
-    <h2 className="font-grotesk font-medium text-3xl sm:text-4xl text-black tracking-tight">
+    <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
       Thirteen Modules, One Persistent Layer
     </h2>
-    <p className="font-grotesk text-base text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
+    <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
       A CRM this broad only stays learnable if depth is predictable. Every record module follows the
       same three-part shape &mdash; <strong>list, details, create</strong> &mdash; so a rep who
       learns Leads already knows Contacts, Accounts, and Deals. The{' '}
