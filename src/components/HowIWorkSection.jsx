@@ -146,7 +146,7 @@ export default function HowIWorkSection() {
                 <p className="font-grotesk text-[14px]">{card.description}</p>
               </div>
               <div
-                className={`mt-auto border-t pt-2 sm:pt-4 flex flex-wrap gap-2 ${
+                className={`mt-auto border-t pt-2 sm:pt-4 flex flex-wrap gap-1.5 sm:gap-2 ${
                   card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
                 }`}
               >
@@ -155,7 +155,7 @@ export default function HowIWorkSection() {
                 ))}
               </div>
               <div
-                className={`border-t pt-2 sm:pt-4 flex flex-wrap gap-2 ${
+                className={`border-t pt-2 sm:pt-4 flex flex-wrap gap-1.5 sm:gap-2 ${
                   card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
                 }`}
               >
