@@ -1021,7 +1021,7 @@ export default function FarsafeCase() {
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Pricing is impossible to predict
               </p>
-              <p className="font-grotesk font-bold text-6xl text-black">66%</p>
+              <p className="font-grotesk font-bold text-[40px] sm:text-6xl text-black">66%</p>
               <p className="font-grotesk text-[14px] text-[#393939]">
                 <strong className="font-bold text-black">66%</strong> of interviewees said tiered
                 pricing made their bill unpredictable.
@@ -1041,7 +1041,7 @@ export default function FarsafeCase() {
               <p className="font-grotesk font-bold text-[14px]">
                 Status and reporting mean buying yet another product.
               </p>
-              <p className="font-grotesk font-bold text-6xl">58%</p>
+              <p className="font-grotesk font-bold text-[40px] sm:text-6xl">58%</p>
               <p className="font-grotesk text-[14px] text-white">
                 <strong className="font-bold text-white">58%</strong> wanted to share status
                 without a separate tool.

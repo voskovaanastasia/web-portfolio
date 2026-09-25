@@ -81,7 +81,7 @@ export function ImagePlaceholder({ filename, className = '', alt = '', priority 
         loading={priority ? undefined : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
         onClick={() => openLightbox(src, resolvedAlt)}
-        className={`w-auto h-auto max-h-[45vh] max-w-full mx-auto sm:w-full sm:max-h-none block ${
+        className={`w-full h-auto block ${
           hasCustomRounding ? '' : 'rounded-[24px]'
         } cursor-zoom-in ${dropSizing(className)}`}
       />
