@@ -42,11 +42,11 @@ const project = {
     body: (
       <>
         <strong>Fitness App</strong> is a <strong>mobile health-and-fitness platform</strong> that
-        helps people reach their goals with personalized workout plans,{' '}
-        <strong>AI-driven customization,</strong> and real-time health tracking. It integrates with
+        helps people reach their goals with personalised workout plans,{' '}
+        <strong>AI-driven customisation,</strong> and real-time health tracking. It integrates with
         wearables to turn daily signals into clear training decisions. I designed the end-to-end
         experience &mdash; from a metrics-first dashboard to a guided in-session player &mdash; so
-        the product adapts to the user: AI-personalized when they want it, manual when they need
+        the product adapts to the user: AI-personalised when they want it, manual when they need
         it. <strong>The core challenge was</strong> turning dense health data into one simple,
         daily decision about how to train.
       </>
@@ -348,7 +348,7 @@ function ThePoll() {
           escape hatch. Almost nobody wanted the app to decide unconditionally. This is the
           finding the whole product turns on:{' '}
           <strong className="font-bold text-black">
-            manual browsing couldn&rsquo;t be a fallback bolted on later, it had to stay a
+            manual browsing couldn&rsquo;t be a fallback bolted on later; it had to stay a
             first-class path from day one.
           </strong>
         </p>
@@ -380,7 +380,7 @@ const persona = {
   ],
   goals: [
     <>
-      Get a personalized workout recommendation in <strong>under 1 minute</strong> and start
+      Get a personalised workout recommendation in <strong>under 1 minute</strong> and start
       immediately.
     </>,
     <>
@@ -390,7 +390,7 @@ const persona = {
       Improve wellness habits (steps, water, sleep) and see{' '}
       <strong>weekly progress trends.</strong>
     </>,
-    <>Mix training types (Yoga/Pilates/HIIT) based on how she feels and her schedule.</>,
+    <>Mix training types (Yoga/Pilates/HIIT) based on how I feel and my schedule.</>,
   ],
   frustrations: [
     <>
@@ -542,7 +542,7 @@ function InformationArchitecture() {
         Mobile App
       </h2>
       <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
-        Setup is separated from daily use: <strong>Onboarding &amp; Auth</strong> runs once, front
+        Setup is separated from daily use: <strong>Onboarding &amp; Auth</strong> runs once, front-
         loading permissions, goals, and wearable pairing so the app has real data from day one.
         After that the structure follows how the day is actually spent &mdash;{' '}
         <strong>Dashboard</strong> to read today&rsquo;s signals, <strong>Workouts</strong> to act
@@ -571,7 +571,7 @@ const screens = [
         heading: 'Metrics at a glance (HRV & Avg Heart Rate)',
         text: (
           <>
-            <strong>HRV and resting heart rate surface cardio readiness in seconds</strong> so the
+            <strong>HRV and average heart rate surface cardio readiness in seconds</strong> so the
             user knows whether to push or recover. Clear badges flag when numbers drift, guiding
             safer training for the user.
           </>
@@ -598,7 +598,7 @@ const screens = [
         ),
       },
       {
-        heading: 'Personalized Recommendations',
+        heading: 'Personalised Recommendations',
         text: (
           <>
             <strong>Cards suggest time-boxed, level-tagged sessions tailored to today&rsquo;s readiness.</strong>{' '}
@@ -639,7 +639,7 @@ const screens = [
         text: (
           <>
             <strong>Visual feedback reduces guesswork and helps the user plan walks around real life.</strong>{' '}
-            Insights arrive at a glance&mdash;no spreadsheets, no effort.
+            Insights arrive at a glance &mdash; no spreadsheets, no effort.
           </>
         ),
       },
@@ -741,7 +741,7 @@ const screens = [
           <>
             <strong>Each exercise shows a thumbnail, name, and time/reps so the user knows what&rsquo;s coming.</strong>{' '}
             Visuals boost confidence and cut second-guessing mid-set. The user enters the workout
-            prepared&mdash;and finishes stronger.
+            prepared &mdash; and finishes stronger.
           </>
         ),
       },

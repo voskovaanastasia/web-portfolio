@@ -19,14 +19,14 @@ const education = [
         Specialized in software engineering with a focus on object-oriented design,
         full-stack web development, and blockchain systems. As part of the Department of
         Computer-Aided Design, studied CAD principles and computer-aided design
-        workflows - building an early appreciation for precision, systems thinking, and
+        workflows — building an early appreciation for precision, systems thinking, and
         how tooling shapes the design process.
         <br />
-        Delivered a Bachelor&rsquo;s thesis -{' '}
+        Delivered a Bachelor&rsquo;s thesis &mdash;{' '}
         <span className="font-bold">
           &ldquo;Web Application for Multi-Blockchain System Management (Node.js)&rdquo;
         </span>{' '}
-        - architecting and building a production-style web application end-to-end, with a
+        — architecting and building a production-style web application end-to-end, with a
         disciplined emphasis on clean structure, technical documentation, and a
         maintainable development workflow.
       </>
@@ -55,7 +55,7 @@ const education = [
       '🇺🇦 Lviv, Ukraine',
     ],
     description:
-      'Built a rigorous foundation in computer science - algorithms, data structures, and core programming - with hands-on development in Python and C++. Established the analytical and problem-solving fundamentals that underpin a systematic, engineering-minded approach to design work.',
+      'Built a rigorous foundation in computer science — algorithms, data structures, and core programming - with hands-on development in Python and C++. Established the analytical and problem-solving fundamentals that underpin a systematic, engineering-minded approach to design work.',
     skills: [
       'Object-Oriented Programming (OOP)',
       'Python',

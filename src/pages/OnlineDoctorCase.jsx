@@ -67,9 +67,9 @@ const appScreens = [
           <>
             <strong>Quick snapshot of what&rsquo;s coming next, with clear visual anchors</strong>{' '}
             (doctor photo + time chip) for instant orientation. Inline actions surface what
-            matters before a visit&mdash;start a chat or open more options to manage the
-            booking&mdash;without drilling into a detail screen.{' '}
-            <strong>Horizontal cards make it easy to skim multiple bookings</strong>
+            matters before a visit &mdash; start a chat or open more options to manage the
+            booking &mdash; without drilling into a detail screen.{' '}
+            <strong>Horizontal cards make it easy to skim multiple bookings.</strong>
           </>
         ),
       },
@@ -155,7 +155,7 @@ const appScreens = [
             Picking a facility focuses{' '}
             <strong>results on doctors who practice where the user wants to visit.</strong>{' '}
             Filters narrow by specialty, price, rating, or experience so the user sees only strong
-            fits
+            fits.
           </>
         ),
       },
@@ -187,7 +187,7 @@ const appScreens = [
         text: (
           <>
             <strong>
-              Two buttons match how the user wants to be seen&mdash;instant tele-visit or an
+              Two buttons match how the user wants to be seen &mdash; instant tele-visit or an
               in-person slot.
             </strong>{' '}
             Both flows are streamlined, with confirmations and reminders included. Flexibility
@@ -362,7 +362,7 @@ const project = {
     heading: 'Care that reaches patients where they are.',
     body: (
       <>
-        <strong>Online Doctor</strong> is a {' '}
+        <strong>Online Doctor</strong> is a{' '}
         <strong>telehealth app</strong> that brings patients and doctors together for virtual care.
         Originally built as an MVP, it grew to include{' '}
         <strong>real-time consultations, appointment scheduling, and integrated billing.</strong> I
@@ -381,7 +381,7 @@ const project = {
   solution: {
     image: 'case-onlinedoctor-solution.webp',
     heading: 'One reliable flow from booking to bill',
-    body: 'I designed a clear path from finding a doctor to finishing a visit: searchable profiles with availability, a simple scheduling flow with reminders, and a dependable real-time consultation with an obvious way to join. Billing is integrated and transparent, how medical data and payments are handled is explained in plain language at the moment it matters, and appointment and payment states are visible at every step so patients always know what`s next.',
+    body: 'I designed a clear path from finding a doctor to finishing a visit: searchable profiles with availability, a simple scheduling flow with reminders, and a dependable real-time consultation with an obvious way to join. Billing is integrated and transparent, how medical data and payments are handled is explained in plain language at the moment it matters, and appointment and payment states are visible at every step so patients always know what’s next.',
     scenario: 'My aim was that a patient could book, join a consultation, and settle the bill without ever feeling lost or exposed — the same reassurance of a good in-person visit, delivered remotely.',
   },
 };

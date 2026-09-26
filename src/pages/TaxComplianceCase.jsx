@@ -6,7 +6,7 @@ const project = {
   name: 'Tax Compliance Platform',
   title: 'Tax Compliance Platform: IRS Filing for Non-Resident Owners',
   heroImage: 'case-tax.png',
-  tags: ['FinTech', 'Cross-Platform', 'Compliance Workflow', 'Guided Flow'],
+  tags: ['Fintech', 'Cross-Platform', 'Compliance Workflow', 'Guided Flow'],
   meta: [
     { label: 'Role', value: 'Product Designer (sole designer)' },
     { label: 'Service', value: 'UX/UI Design' },

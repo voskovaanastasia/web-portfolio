@@ -257,7 +257,7 @@ const screens = [
         heading: 'Four fields, no more',
         text: (
           <>
-            Name, email, password, confirm. <strong>Nothing is asked at signup that the booking
+            Name, email, password, confirm. <strong>Nothing is asked at sign-up that the booking
             flow can ask later,</strong> when the user has a reason to answer it.
           </>
         ),
@@ -291,7 +291,7 @@ const screens = [
         heading: 'Three doors, one decision',
         text: (
           <>
-            Cameras &amp; Lenses, Studios, Accessories are the first thing under the hero, because{' '}
+            Cameras &amp; Lenses, Studios, and Accessories are the first thing under the hero, because{' '}
             <strong>renters arrive knowing which of the three they need</strong> and the page should
             not make them scroll to say so.
           </>

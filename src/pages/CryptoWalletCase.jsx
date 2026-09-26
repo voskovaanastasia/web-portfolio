@@ -79,7 +79,7 @@ const appScreens = [
           <>
             <strong>Designed to onboard users with clarity and confidence,</strong> the experience
             introduces core wallet features through focused screens that explain value upfront,
-            reduce uncertainty around fees and networks, and guide users step by step - helping
+            reduce uncertainty around fees and networks, and guide users step by step — helping
             them understand how the app works before taking their first action.
           </>
         ),
@@ -147,7 +147,7 @@ const appScreens = [
         heading: 'Search Field',
         text: (
           <>
-            A search input <strong>allows users to quickly find their country by typing</strong>{' '}
+            A search input <strong>allows users to quickly find their country by typing</strong>,{' '}
             reducing scrolling effort in a long list.
           </>
         ),
@@ -157,7 +157,7 @@ const appScreens = [
         text: (
           <>
             The <strong>Based on your location</strong> section surfaces a relevant country code
-            first, enabling faster selection and minimizing friction during verification.
+            first, enabling faster selection and minimising friction during verification.
           </>
         ),
       },
@@ -244,7 +244,7 @@ const appScreens = [
         text: (
           <>
             A consent statement at the bottom clarifies how personal data will be processed and
-            links to the <strong>Privacy Policy</strong> supporting transparency and trust.
+            links to the <strong>Privacy Policy</strong>, supporting transparency and trust.
           </>
         ),
       },
@@ -259,7 +259,7 @@ const appScreens = [
         heading: 'Country Selection',
         text: (
           <>
-            The selected country is displayed at the top with <strong>a flag and label</strong>{' '}
+            The selected country is displayed at the top with <strong>a flag and label</strong>,{' '}
             allowing users to confirm or change their country before proceeding.
           </>
         ),
@@ -288,7 +288,7 @@ const appScreens = [
         text: (
           <>
             A consent message at the bottom reiterates data processing terms and links to the{' '}
-            <strong>Privacy Policy</strong> supporting transparency during verification.
+            <strong>Privacy Policy</strong>, supporting transparency during verification.
           </>
         ),
       },
@@ -313,7 +313,7 @@ const appScreens = [
         text: (
           <>
             <strong>A large, well-spaced keypad</strong> supports fast and accurate PIN entry,
-            optimized for one-handed use.
+            optimised for one-handed use.
           </>
         ),
       },
@@ -347,7 +347,7 @@ const appScreens = [
         text: (
           <>
             The profile section displays the{' '}
-            <strong>user&rsquo;s name, masked email, and avatar</strong> reinforcing account
+            <strong>user&rsquo;s name, masked email, and avatar</strong>, reinforcing account
             identity and ownership at a glance.
           </>
         ),
@@ -393,7 +393,7 @@ const appScreens = [
         heading: 'Refresh Action',
         text: (
           <>
-            A refresh icon <strong>allows users to manually update price data</strong> reinforcing
+            A refresh icon <strong>allows users to manually update price data</strong>, reinforcing
             real-time accuracy and control.
           </>
         ),
@@ -518,7 +518,7 @@ const appScreens = [
         heading: 'Overview Section',
         text: (
           <>
-            A structured Overview section organizes{' '}
+            A structured Overview section organises{' '}
             <strong>key transaction information into labeled rows for easy scanning.</strong>
           </>
         ),
@@ -562,7 +562,7 @@ const appScreens = [
         heading: 'Amount Input',
         text: (
           <>
-            A dedicated Amount field <strong>lets users enter the crypto quantity</strong>{' '}
+            A dedicated Amount field <strong>lets users enter the crypto quantity</strong>,{' '}
             supporting precise control over the transfer.
           </>
         ),
@@ -571,7 +571,7 @@ const appScreens = [
         heading: 'Send by QR Code Action',
         text: (
           <>
-            A visible <strong>QR code option enables fast and accurate address input</strong>{' '}
+            A visible <strong>QR code option enables fast and accurate address input</strong>,{' '}
             reducing the risk of manual entry errors. A dedicated action button reinforces{' '}
             <strong>QR-based sending as a supported and safe input method.</strong>
           </>
@@ -690,7 +690,7 @@ function ScreensSlider({ screens }) {
 const projectGoals = [
   {
     title: 'Keep Flows Short & Predictable',
-    text: 'Standardize action patterns (input → review → confirm → status → receipt) across the app for a consistent experience.',
+    text: 'Standardise action patterns (input → review → confirm → status → receipt) across the app for a consistent experience.',
     icon: <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />,
   },
   {
@@ -727,7 +727,7 @@ const projectGoals = [
   },
   {
     title: 'Prevent Costly Mistakes',
-    text: 'Minimize wrong-network transfers with guided selection, confirmations, and validation before users submit transactions.',
+    text: 'Minimise wrong-network transfers with guided selection, confirmations, and validation before users submit transactions.',
     icon: (
       <>
         <path d="M12 3 20 7.5v9L12 21 4 16.5v-9L12 3z" strokeLinejoin="round" />
@@ -802,7 +802,7 @@ const researchStats = [
     text: (
       <>
         Choosing the <strong>right network</strong> (ERC20 / TRC20 / BEP20) is a top source of
-        errors - users want guidance and warnings.
+        errors — users want guidance and warnings.
       </>
     ),
   },
@@ -1008,7 +1008,7 @@ function FlowCard({ flow }) {
       <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 overflow-x-auto">
         <IATree data={flow.tree} expandAll depthGap={36} />
         <p className="font-grotesk text-sm text-[#6b6a67] mt-4">
-          Scroll sideways to follow the full path. Click a node to collapse or expand its branch.
+          Scroll sideways to follow the full path. Click a node to expand or collapse its branch.
         </p>
       </div>
     </div>
@@ -1432,7 +1432,7 @@ export default function CryptoWalletCase() {
                 Alex actively uses crypto for investing and transfers but doesn&rsquo;t consider
                 himself an expert. He checks prices daily, sends and swaps tokens regularly, and
                 cares deeply about security. Alex wants confidence that every action is correct
-                before confirming&mdash;without having to overthink networks, fees, or technical
+                before confirming &mdash; without having to overthink networks, fees, or technical
                 details.
               </p>
             </div>
@@ -1442,7 +1442,7 @@ export default function CryptoWalletCase() {
                   title: 'Motivations',
                   items: [
                     <>I want to <strong>send, swap,</strong> and <strong>buy crypto without fear of making irreversible mistakes.</strong></>,
-                    <>I want <strong>clear explanations</strong> for fees, networks, and confirmation steps&mdash;not hidden logic.</>,
+                    <>I want <strong>clear explanations</strong> for fees, networks, and confirmation steps &mdash; not hidden logic.</>,
                     <>I want to <strong>feel in control and informed,</strong> especially during critical actions.</>,
                     <>I prefer <strong>predictable flows</strong> where I always know what happens next.</>,
                   ],

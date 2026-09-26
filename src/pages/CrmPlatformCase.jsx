@@ -40,7 +40,7 @@ const project = {
     body: (
       <>
         <strong>Enterprise CRM</strong> is a B2B operations platform that{' '}
-        <strong>centralizes client information</strong> and streamlines sales, inventory, and
+        <strong>centralises client information</strong> and streamlines sales, inventory, and
         marketing workflows for a large-scale company. I redesigned the UI to make complex
         processes intuitive across <strong>the full sales cycle</strong> &mdash; from lead
         generation to deal closure &mdash; while aligning marketing automation with sales data and
@@ -59,7 +59,7 @@ const project = {
   },
   solution: {
     image: 'case-crm-solution.webp',
-    heading: 'A centralized, role-aware operations platform',
+    heading: 'A centralised, role-aware operations platform',
     body: 'I redesigned the CRM around one connected source of truth. Client data, the sales pipeline, inventory, and marketing share a consistent, learnable interface; the full sales cycle is visible from lead to closed deal; real-time stock and order statuses surface where teams need them; and marketing automation is aligned with live sales data. Power BI dashboards and custom reports turn that data into decisions, and a scalable design system keeps complex workflows clear as the company grows.',
     scenario: 'My aim was that each role — sales, operations, marketing, leadership — could open the CRM, immediately see the slice they need, act on it, and trust that everyone else is working from the same numbers.',
   },
@@ -191,7 +191,7 @@ const screens = [
           <>
             <strong>Every campaign tile packs a live Running toggle, channel badges, and a quick menu.</strong>{' '}
             The user can pause, duplicate, or edit without leaving the list. Control stays where the
-            user needs it&mdash;right at the point of decision.
+            user needs it &mdash; right at the point of decision.
           </>
         ),
       },
@@ -200,7 +200,7 @@ const screens = [
         text: (
           <>
             <strong>Delivered, Opened, Clicked, Converted, ROI, Budget, Leads Generated, and Status tell the full journey.</strong>{' '}
-            The user spots leaks instantly&mdash;great opens but weak clicks, or solid clicks with
+            The user spots leaks instantly &mdash; great opens but weak clicks, or solid clicks with
             low conversions. Fix the weakest link and watch ROI climb.
           </>
         ),
@@ -294,7 +294,7 @@ const iaTree = {
               ],
             },
             {
-              label: 'Todays Leads',
+              label: 'Today’s Leads',
               children: [{ label: 'Lead List', children: leaves('Lead Details') }],
             },
             {
@@ -453,7 +453,7 @@ const iaTree = {
           label: 'Pipeline (Kanban)',
           children: leaves(
             'Qualification',
-            'Identity Decision Making',
+            'Identify Decision Makers',
             'Proposal Sent',
             'Negotiation',
             'Closed Won / Lost',
@@ -897,7 +897,7 @@ const iaTree = {
             },
             {
               label: 'Stock by Warehouse',
-              children: leaves('Location', 'Capacity', 'Utilization'),
+              children: leaves('Location', 'Capacity', 'Utilisation'),
             },
             {
               label: 'Stock Movements',

@@ -40,10 +40,10 @@ export default function ExperienceSection() {
       meta: ['Farsafe', '🇺🇸 Texas, USA', 'Part-time', 'Remote'],
       subtitle: ['0-to-1 SaaS Uptime-Monitoring Platform', 'Pricing-Led Conversion'],
       challenge:
-        "Uptime monitoring is a crowded, commoditized category where buyers assume every tool is the same and pricing is deliberately opaque. As the sole designer on a 0-to-1 product, the challenge wasn't polishing screens - it was defining what the product should stand for before a single flow existed.",
+        "Uptime monitoring is a crowded, commoditized category where buyers assume every tool is the same and pricing is deliberately opaque. As the sole designer on a 0-to-1 product, the challenge wasn't polishing screens — it was defining what the product should stand for before a single flow existed.",
       bullets: [
         'Sole designer on a 0-to-1 uptime-monitoring platform spanning the marketing website and the in-app monitoring dashboard, owning the product experience end to end.',
-        "Led discovery research - surveys and interviews with developers, agencies, and small teams - that defined the product's design targets: pricing clarity, alert reliability, and tool consolidation.",
+        "Led discovery research — surveys and interviews with developers, agencies, and small teams - that defined the product's design targets: pricing clarity, alert reliability, and tool consolidation.",
         "Made pricing transparency the core conversion strategy, turning the category's biggest friction into its strongest reason to trust.",
         'Designed one overview-first system reused across the fleet dashboard, single-probe, and public status views, keeping a data-dense product learnable across every view.',
         'Built the design system and responsive grid underpinning both surfaces, and partnered with the founder and a frontend developer for a clean design-to-development handoff.',

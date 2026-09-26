@@ -39,7 +39,7 @@ export default function HeroSection() {
             className="w-9 h-9 rounded-full"
           />
           <span className="font-mono-bold font-bold text-[14px] text-black">
-            Hello I&rsquo;m <span className="text-[#288fd6]">Anastasiia</span>
+            Hello, I&rsquo;m <span className="text-[#288fd6]">Anastasiia</span>
           </span>
         </div>
 

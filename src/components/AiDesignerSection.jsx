@@ -4,7 +4,7 @@ const steps = [
     number: '1',
     title: 'Frame the problem',
     description:
-      "Before anything visual, I get clear on what we're actually solving - the user, the friction, the outcome. Wireframes and UX direction come out of that clarity, in Figma.",
+      "Before anything visual, I get clear on what we're actually solving — the user, the friction, the outcome. Wireframes and UX direction come out of that clarity, in Figma.",
   },
   {
     number: '2',
@@ -48,10 +48,10 @@ export default function AiDesignerSection() {
               </h2>
             </div>
             <p className="font-grotesk text-sm text-[#6b6a67] leading-relaxed">
-              I don&rsquo;t just hand off screens - I ship live, interactive prototypes.
+              I don&rsquo;t just hand off screens — I ship live, interactive prototypes.
               By pairing product thinking with modern AI models, I close the gap between
               UX design and engineering, so ideas get validated in the browser, not in a
-              slide. Here&rsquo;s how I turn a product concept into a working app using AI
+              slide. Here&rsquo;s how I turn a product concept into a working app using AI.
             </p>
           </div>
         </div>

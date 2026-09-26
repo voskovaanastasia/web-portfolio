@@ -20,7 +20,7 @@ const metrics = [
   {
     number: '0→1',
     label: 'Secure Send / Swap',
-    project: 'Crypto Wallet',
+    project: 'CryptoWallet',
     description: 'Guided flow designed to prevent lost funds',
     card: 'bg-[#1f7ab8] text-white',
     number_color: 'text-white',

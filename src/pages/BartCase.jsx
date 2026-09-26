@@ -82,8 +82,8 @@ const websitePages = [
         heading: 'Hero Section',
         text: (
           <>
-            The headline &rdquo;THE ART OF SOFTWARE DEVELOPMENT&rdquo; works as both a{' '}
-            <strong>brand statement and value proposition</strong> in one. &rdquo;ART&rdquo;
+            The headline &ldquo;THE ART OF SOFTWARE DEVELOPMENT&rdquo; works as both a{' '}
+            <strong>brand statement and value proposition</strong> in one. &ldquo;ART&rdquo;
             doubling as a company name and philosophy creates an instant emotional hook. Trust
             badges in the first viewport eliminate early objections before the user starts
             scrolling.
@@ -96,7 +96,7 @@ const websitePages = [
           <>
             Surfacing the actual team is a deliberate{' '}
             <strong>trust-building product decision.</strong> Each card exposes photo, name,
-            role, stack, and seniority — turning an abstract &rdquo;we have experts&rdquo; claim
+            role, stack, and seniority — turning an abstract &ldquo;we have experts&rdquo; claim
             into <strong>verifiable, human proof.</strong> The slider scales the pattern across
             profiles without breaking page rhythm.
           </>
@@ -117,7 +117,7 @@ const websitePages = [
         text: (
           <>
             Development, Integration, and Consulting are surfaced early as{' '}
-            <strong>scannable decision anchors</strong> helping visitors self-identify their
+            <strong>scannable decision anchors</strong>, helping visitors self-identify their
             entry point before reaching the detailed service list below.
           </>
         ),
@@ -147,7 +147,7 @@ const websitePages = [
         text: (
           <>
             Naming six specific industries triggers an instant <strong>pattern-match:</strong>{' '}
-            &rdquo;they&rsquo;ve done this in my field&rdquo; — one of the fastest ways to{' '}
+            &ldquo;they&rsquo;ve done this in my field&rdquo; — one of the fastest ways to{' '}
             <strong>reduce perceived risk</strong> in a B2B decision.
           </>
         ),
@@ -197,7 +197,7 @@ const websitePages = [
           <>
             Every card follows an identical anatomy — cover image &rarr; tags &rarr; headline
             &rarr; author + read time. This <strong>parallel content structure</strong> removes
-            the need to &rdquo;learn&rdquo; each card. The brain scans rhythmically, not
+            the need to &ldquo;learn&rdquo; each card. The brain scans rhythmically, not
             randomly. Twelve posts per page maintains density without pagination anxiety.
           </>
         ),
@@ -219,7 +219,7 @@ const websitePages = [
           <>
             Surfacing real authors with bios and dedicated pages mirrors the developer section
             on the landing page. It&rsquo;s a <strong>deliberate humanization pattern:</strong>{' '}
-            converting abstract expertise into named, credible individuals. The &rdquo;Go to
+            converting abstract expertise into named, credible individuals. The &ldquo;Go to
             Author Page&rdquo; CTA extends the relationship beyond the article.
           </>
         ),
@@ -280,7 +280,7 @@ const websitePages = [
         heading: 'Client Success Stories',
         text: (
           <>
-            A full-width project card with cover image, category tags, headline, and &rdquo;Read
+            A full-width project card with cover image, category tags, headline, and &ldquo;Read
             More&rdquo; CTA follows the <strong>problem &rarr; solution &rarr; result</strong>{' '}
             storytelling frame. The image provides immediate industry context before the user
             reads a single word.
@@ -303,7 +303,7 @@ const websitePages = [
         text: (
           <>
             Six industry cards with cover photos and labels work as{' '}
-            <strong>pattern-match triggers</strong> — &rdquo;they&rsquo;ve done this in my
+            <strong>pattern-match triggers</strong> — &ldquo;they&rsquo;ve done this in my
             field.&rdquo; It&rsquo;s one of the fastest ways to reduce perceived risk in a B2B
             decision. The image-first layout lets familiarity do the persuasion before the label
             is even read.
@@ -311,7 +311,7 @@ const websitePages = [
         ),
       },
       {
-        heading: 'Why Choose bArt Solutions',
+        heading: 'Why Choose bART Solutions',
         text: (
           <>
             Four benefit blocks with icons and short paragraphs form a{' '}
@@ -327,7 +327,7 @@ const websitePages = [
           <>
             Three engagement models (Fixed Price, Time &amp; Material, Dedicated Team) laid out
             side by side let the user <strong>self-select their risk tolerance.</strong>{' '}
-            Presenting all three simultaneously eliminates the &rdquo;what if I choose
+            Presenting all three simultaneously eliminates the &ldquo;what if I choose
             wrong&rdquo; anxiety — transparency here is a conversion tool.
           </>
         ),
@@ -477,7 +477,7 @@ const surveyResults = [
     title: '"I immediately understand what this company does"',
     text: (
       <>
-        Before: 38% agreed &rarr; After: <strong>81% agreed</strong> Directly addresses the
+        Before: 38% agreed &rarr; After: <strong>81% agreed</strong>. Directly addresses the
         pre-launch finding where 62% struggled to grasp the service offer at first glance.
       </>
     ),
@@ -491,7 +491,7 @@ const surveyResults = [
     title: '"Navigation feels clear and easy to use"',
     text: (
       <>
-        Before: 26% agreed &rarr; After: <strong>79% agreed</strong> Closes the loop on the 74%
+        Before: 26% agreed &rarr; After: <strong>79% agreed</strong>. Closes the loop on the 74%
         who reported navigation required extra effort before the redesign.
       </>
     ),
@@ -505,7 +505,7 @@ const surveyResults = [
     title: '"The website looks modern and professional"',
     text: (
       <>
-        Before: 42% agreed &rarr; After: <strong>88% agreed</strong> Validates the visual
+        Before: 42% agreed &rarr; After: <strong>88% agreed</strong>. Validates the visual
         refresh — the 58% who described the old design as outdated now see a brand that matches
         the company&rsquo;s expertise level.
       </>
@@ -727,7 +727,7 @@ const project = {
     },
     {
       label: 'MY ROLE',
-      text: 'UX/UI Designer - research, information architecture, UI, and the design system.',
+      text: 'UX/UI Designer — research, information architecture, UI, and the design system.',
     },
     {
       label: 'KEY DECISION',
@@ -751,12 +751,12 @@ const project = {
     imageClassName: 'rounded-[10px]',
     heading: 'A brand-strong site that is hard to move through',
     body: 'The site looked the part but did not work for the people using it. Navigation did not match how visitors actually searched. The information architecture had grown tangled and could no longer absorb new services without breaking. Key flows carried friction that had no reason to be there. Surveys and interviews surfaced two things at once: where users got lost, and what they had come to do. The existing structure supported neither.',
-    why: 'A corporate site is usually the first impression and the main path to action. When visitors cannot find what they need or cannot read the company`s credibility off the page, they leave — and the brands strongest asset quietly works against it.',
+    why: 'A corporate site is usually the first impression and the main path to action. When visitors cannot find what they need or cannot read the company’s credibility off the page, they leave — and the brand’s strongest asset quietly works against it.',
   },
   solution: {
     image: 'case-bart-solution.webp',
     heading: 'Research-led structure inside a cohesive brand',
-    body: 'I ran a full cycle grounded in research. Surveys and interview findings shaped a reworked navigation and a cleaner, scalable information architecture, and key interaction flows were streamlined around real user goals. A design system built to the client`s visual direction kept every page consistent and easy to extend.',
+    body: 'I ran a full cycle grounded in research. Surveys and interview findings shaped a reworked navigation and a cleaner, scalable information architecture, and key interaction flows were streamlined around real user goals. A design system built to the client’s visual direction kept every page consistent and easy to extend.',
     scenario: 'The target: a visitor lands anywhere on the site, immediately understands where they are and where to go next, and completes what they came to do — while the client gains a system they can grow without breaking.',
   },
 };
@@ -999,7 +999,7 @@ export default function BartCase() {
                 ))}
               </ul>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
-                <strong className="font-bold text-black">68% said yes</strong> Stated intent is not behaviour — but it told us the audience was not lost, only stalled by the current site.
+                <strong className="font-bold text-black">68% said yes</strong>. Stated intent is not behaviour — but it told us the audience was not lost, only stalled by the current site.
               </p>
             </div>
           </div>
@@ -1114,14 +1114,14 @@ export default function BartCase() {
               </h2>
               <div className="font-grotesk text-[14px] text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
                 <p>
-                  The previous navigation lacked <strong>information hierarchy</strong> making it
+                  The previous navigation lacked <strong>information hierarchy</strong>, making it
                   difficult for users to understand the company&rsquo;s full service range and
                   find what they needed without extra effort.
                 </p>
                 <p>
                   The menu was redesigned into a <strong>mega-menu format</strong> with a
                   logical, scannable layout. Services are <strong>grouped by type</strong> and
-                  organised into 4 columns with supporting icons — reducing cognitive load and
+                  organised into four columns with supporting icons — reducing cognitive load and
                   significantly improving discoverability.
                 </p>
                 <p>
@@ -1175,7 +1175,7 @@ export default function BartCase() {
             <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Mobile</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                2 columns, margin 24, gap 10 — optimized for compact screens with clear spacing
+                2 columns, margin 24, gap 10 — optimised for compact screens with clear spacing
                 and better readability.
               </p>
               <ImagePlaceholder
@@ -1185,7 +1185,7 @@ export default function BartCase() {
             </div>
           </div>
           <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
-            This approach helped standardize layouts, simplify design decisions, and maintain
+            This approach helped standardise layouts, simplify design decisions, and maintain
             visual consistency across all pages and screen sizes.
           </p>
         </section>

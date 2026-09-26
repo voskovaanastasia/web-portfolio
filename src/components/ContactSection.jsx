@@ -87,7 +87,7 @@ export default function ContactSection() {
 
           {/* Resume */}
           <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5">
-            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4 sm:mb-6">Checkout my Resume</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4 sm:mb-6">Check out my Resume</h3>
             <a
               href="/Anastasiia-Voskova-Resume.pdf"
               target="_blank"

@@ -51,9 +51,9 @@ const dashboardPages = [
         heading: 'Metric Cards — Top Row',
         text: (
           <>
-            Four cards answer &rdquo;is everything OK?&rdquo; in one scan, ordered by priority:
+            Four cards answer &ldquo;is everything OK?&rdquo; in one scan, ordered by priority:
             health, speed, expirations, context. <strong>Status colour carries the read</strong>{' '}
-            - the ring registers before any number.
+            — the ring registers before any number.
           </>
         ),
       },
@@ -61,7 +61,7 @@ const dashboardPages = [
         heading: 'Timeline',
         text: (
           <>
-            Three response-time series show the <strong>spread, not just the average</strong>{' '}
+            Three response-time series show the <strong>spread, not just the average</strong>,{' '}
             where degradation hides before it becomes an outage. A hover tooltip keeps the chart
             clean while exposing exact values on demand.
           </>
@@ -135,7 +135,7 @@ const dashboardPages = [
         heading: 'Timeline / Notes Tabs',
         text: (
           <>
-            Splits the <strong>machine account from the human account</strong> - what the system
+            Splits the <strong>machine account from the human account</strong> — what the system
             observed vs. what the team documented. Two tabs for two reading needs: forensic
             diagnosis, and incident handoff.
           </>
@@ -148,8 +148,8 @@ const dashboardPages = [
             A <strong>funnel of depth:</strong> each failed check is stamped with its{' '}
             <strong>exact probe location,</strong> so a responder instantly sees whether the
             failure is global or regional. It then decomposes into network stages with timings,
-            down to the <strong>raw error</strong> - locating the problem at a specific step, not
-            a vague &rdquo;it&rsquo;s down.&rdquo; The clearest expression of the product&rsquo;s
+            down to the <strong>raw error</strong> — locating the problem at a specific step, not
+            a vague &ldquo;it&rsquo;s down.&rdquo; The clearest expression of the product&rsquo;s
             diagnostic value.
           </>
         ),
@@ -165,7 +165,7 @@ const dashboardPages = [
         text: (
           <>
             A <strong>dark, focused banner</strong> leading with the service name and operational
-            state in status colour - the one answer a visitor came for, before any scroll. The
+            state in status colour — the one answer a visitor came for, before any scroll. The
             live refresh timestamp signals real-time data, which is the whole credibility of a
             status page.
           </>
@@ -176,7 +176,7 @@ const dashboardPages = [
         text: (
           <>
             A <strong>health band with the same figure across widening windows</strong> (day to
-            weeks). Repeating the metric at multiple scales is a <strong>trust signal</strong> -
+            weeks). Repeating the metric at multiple scales is a <strong>trust signal</strong> —
             it invites scrutiny instead of cherry-picking one flattering number.
           </>
         ),
@@ -202,7 +202,7 @@ const dashboardPages = [
         text: (
           <>
             Two tabs split <strong>managing one monitor from organising many,</strong> matching
-            the user&rsquo;s two mental models. Search sits left, the create action far right -
+            the user&rsquo;s two mental models. Search sits left, the create action far right —
             scan, then act.
           </>
         ),
@@ -213,7 +213,7 @@ const dashboardPages = [
           <>
             A <strong>row-per-monitor table</strong> where the eye reads down a column, the
             fastest way to compare many. <strong>Status leads with colour,</strong> a paused row
-            is tinted so exceptions surface, and the name links into the detail view - the list
+            is tinted so exceptions surface, and the name links into the detail view — the list
             is the launch pad.
           </>
         ),
@@ -223,7 +223,7 @@ const dashboardPages = [
         text: (
           <>
             Pause, edit, and delete live <strong>on each row,</strong> so common actions happen
-            in place. Delete is kept <strong>visually distinct from edit</strong> - a small
+            in place. Delete is kept <strong>visually distinct from edit</strong> — a small
             safety guard on a table full of live services.
           </>
         ),
@@ -251,7 +251,7 @@ const dashboardPages = [
           <>
             A <strong>row-per-method table</strong> in the app&rsquo;s standard pattern, with a{' '}
             <strong>default indicator</strong> so there&rsquo;s no doubt which card is charged.
-            The card number is <strong>masked</strong> - the same secret-handling discipline, on
+            The card number is <strong>masked</strong> — the same secret-handling discipline, on
             a page even more likely to be shared.
           </>
         ),
@@ -288,7 +288,7 @@ const dashboardPages = [
         text: (
           <>
             The <strong>programmatic-access layer,</strong> with keys shown{' '}
-            <strong>masked</strong> - a security choice that confirms a credential exists without
+            <strong>masked</strong> — a security choice that confirms a credential exists without
             exposing it. A per-key toggle cuts off access without deleting and re-issuing.
           </>
         ),
@@ -326,7 +326,7 @@ const launchMetrics = [
       { label: '92%', value: 92 },
       { label: '90%', value: 90, before: true },
     ],
-    text: 'Reading uptime and finding an outage in usability testing validating the goal of making a dense product approachable.',
+    text: 'Reading uptime and finding an outage in usability testing validated the goal of making a dense product approachable.',
   },
   {
     title: 'Pricing-to-Signup Rate — 22%',
@@ -344,7 +344,7 @@ const launchMetrics = [
     color: '#e8964a',
     bars: [
       { label: '1m 41s', value: 101 },
-      { label: '2 m', value: 120, before: true },
+      { label: '2m', value: 120, before: true },
     ],
     text: 'Onboarding friction kept low by design.',
   },
@@ -374,25 +374,25 @@ const surveyResults = [
   {
     pct: 84,
     color: '#7da7f4',
-    title: '84% - understand what Farsafe does',
+    title: '84% — understand what Farsafe does',
     text: 'The clear value proposition landed with first-time visitors.',
   },
   {
     pct: 86,
     color: '#b9a0ea',
-    title: '86% - know exactly what they’ll pay',
+    title: '86% — know exactly what they’ll pay',
     text: 'Pricing legibility closed the confusion gap the research opened.',
   },
   {
     pct: 87,
     color: '#ee8585',
-    title: '87% - find the dashboard clear',
+    title: '87% — find the dashboard clear',
     text: 'A dense monitoring product read as simple, not overwhelming.',
   },
   {
     pct: 82,
     color: '#e8964a',
-    title: '82% - trust the alerts',
+    title: '82% — trust the alerts',
     text: 'The payoff of multi-region checks, against the 73% once burned by false alerts.',
   },
 ];
@@ -408,19 +408,19 @@ const marketingPages = [
       },
       {
         heading: 'What We Monitor',
-        text: 'Six identical cards in a parallel content structure let the eye scan rhythmically, answering the buyer’s first question: does it monitor what I care about.',
+        text: 'Six identical cards in a parallel content structure let the eye scan rhythmically, answering the buyer’s first question: does it monitor what I care about?',
       },
       {
         heading: 'Built For',
-        text: 'Four audience cards let visitors self-identify, each pinned to a concrete hook - no single-persona commitment.',
+        text: 'Four audience cards let visitors self-identify, each pinned to a concrete hook — no single-persona commitment.',
       },
       {
         heading: 'Global Network',
-        text: 'The world map makes reliability visual, and the stat row does the trust work against the category’s biggest doubt: can I rely on the alerts.',
+        text: 'The world map makes reliability visual, and the stat row does the trust work against the category’s biggest doubt: can I rely on the alerts?',
       },
       {
         heading: 'Alerts',
-        text: 'The channel logos carry the message visually - meet teams where they already work. Logos read faster than a feature list.',
+        text: 'The channel logos carry the message visually — meet teams where they already work. Logos read faster than a feature list.',
       },
       {
         heading: 'Pricing',
@@ -437,7 +437,7 @@ const marketingPages = [
         text: (
           <>
             Pairs the reliability message with a <strong>world map,</strong> turning an abstract
-            &rdquo;we&rsquo;re everywhere&rdquo; claim into something the eye can verify. The stat
+            &ldquo;we&rsquo;re everywhere&rdquo; claim into something the eye can verify. The stat
             row does the <strong>trust work</strong> up front, and the primary action sits in the
             first viewport so a convinced visitor can convert without scrolling.
           </>
@@ -448,8 +448,8 @@ const marketingPages = [
         text: (
           <>
             Publishes a <strong>filterable list of every probe server,</strong> which is a
-            deliberate transparency play. It also doubles as a practical tool - this is exactly
-            the list a buyer needs to <strong>allowlist IPs in a firewall</strong> - and the
+            deliberate transparency play. It also doubles as a practical tool — this is exactly
+            the list a buyer needs to <strong>allowlist IPs in a firewall</strong> — and the
             region filters let a technical user narrow to what&rsquo;s relevant instead of
             scanning the whole table.
           </>
@@ -488,7 +488,7 @@ const marketingPages = [
         text: (
           <>
             One feature matrix across four account types, where paid tiers{' '}
-            <strong>gate almost nothing.</strong> The table isn&rsquo;t upselling features -
+            <strong>gate almost nothing.</strong> The table isn&rsquo;t upselling features —
             it&rsquo;s proving nothing&rsquo;s hidden behind them.
           </>
         ),
@@ -508,7 +508,7 @@ const marketingPages = [
         text: (
           <>
             Places Farsafe beside the <strong>industry average,</strong> consistently lower. It
-            reframes the decision from &rdquo;is this cheap?&rdquo; to &rdquo;why pay more
+            reframes the decision from &ldquo;is this cheap?&rdquo; to &ldquo;why pay more
             elsewhere?&rdquo;
           </>
         ),
@@ -716,7 +716,7 @@ const cases = {
     ],
     meta: [
       { label: 'Role', value: 'Product Designer (solo designer)' },
-      { label: 'Service', value: 'UX/UI Design  Design System' },
+      { label: 'Service', value: 'UX/UI Design, Design System' },
       { label: 'My Team', value: 'Founder (backend), Frontend Developer' },
       { label: 'Timeline', value: '1 year 6 months' },
     ],
@@ -736,7 +736,7 @@ const cases = {
       },
       {
         label: 'KEY DECISION',
-        text: 'Made pricing transparency the centerpiece of the conversion strategy.',
+        text: 'Made pricing transparency the centrepiece of the conversion strategy.',
       },
     ],
     outcome: { value: '92%', label: 'Dashboard Task Success' },
@@ -744,7 +744,7 @@ const cases = {
       heading: 'From static concepts to live prototypes.',
       body: (
         <>
-          <strong>FarSafe</strong> is an all-included uptime-monitoring platform that{' '}
+          <strong>Farsafe</strong> is an all-included uptime-monitoring platform that{' '}
           <strong>
             tells developers, agencies, and small teams the moment a website, server, or
             certificate fails.
@@ -845,9 +845,9 @@ const iaAppTree = {
       ],
     },
     {
-      label: 'Settings (organization-level)',
+      label: 'Settings (organisation-level)',
       children: [
-        { label: 'Organization profile (name, timezone)' },
+        { label: 'Organisation profile (name, timezone)' },
         { label: 'Phone Numbers (+ Add, verify)' },
         { label: 'API Keys (+ Add, enable/disable)' },
         { label: 'Integrations (+ Add — e.g. Slack)' },
@@ -1066,7 +1066,7 @@ export default function FarsafeCase() {
             <p className="font-mono-bold text-[14px] text-black">WHY IS THIS IMPORTANT?</p>
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               The result is teams that either overpay, miss real outages, or juggle multiple tools
-              - and lose trust in the one system meant to warn them.
+              — and lose trust in the one system meant to warn them.
             </p>
           </div>
         </section>
@@ -1079,14 +1079,14 @@ export default function FarsafeCase() {
               One all-included platform, legible from the first click
             </h2>
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-              I designed FarSafe end-to-end across two surfaces - the marketing site and the
+              I designed Farsafe end-to-end across two surfaces — the marketing site and the
               dashboard. Pricing is exposed and flat, every alert is cross-verified across regions
               before it fires, and status pages and reports are built in, not sold separately.
             </p>
             <p className="font-mono-bold text-[14px] text-black">USER SCENARIO CONSIDERATION</p>
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
               My aim was a product a first-time visitor could understand in seconds and an engineer
-              could trust in production - the same clarity from landing page to daily dashboard.
+              could trust in production — the same clarity from landing page to daily dashboard.
             </p>
           </div>
           <ImagePlaceholder filename="case-farsafe-solution.webp" className="min-h-[420px] order-first lg:order-none" />
@@ -1106,8 +1106,8 @@ export default function FarsafeCase() {
                 Make the Value Proposition Instantly Clear
               </p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Communicate &rdquo;everything included, pay only for what you use&rdquo; in seconds
-                - and remove the category&rsquo;s biggest friction, hidden tier pricing, before a
+                Communicate &ldquo;everything included, pay only for what you use&rdquo; in seconds
+                — and remove the category&rsquo;s biggest friction, hidden tier pricing, before a
                 visitor ever scrolls.
               </p>
             </div>
@@ -1120,7 +1120,7 @@ export default function FarsafeCase() {
               </p>
               <p className="font-grotesk text-[14px] text-white leading-relaxed">
                 Design a monitoring dashboard where uptime, response times, diagnostics, and
-                expirations are scannable at a glance - depth without overwhelm.
+                expirations are scannable at a glance — depth without overwhelm.
               </p>
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
@@ -1145,7 +1145,7 @@ export default function FarsafeCase() {
           <div className="flex flex-col gap-5">
             <p className="font-mono-bold text-[14px] text-black">User Research</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug">
-              The goal was to map what makes existing tools frustrating - and design around those
+              The goal was to map what makes existing tools frustrating — and design around those
               gaps from day one.
             </h2>
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
@@ -1158,19 +1158,19 @@ export default function FarsafeCase() {
               {
                 pct: 66,
                 color: '#7da7f4',
-                title: '66% - couldn’t predict their bill',
+                title: '66% — couldn’t predict their bill',
                 text: 'Tiered competitor pricing hid the real cost until after commitment.',
               },
               {
                 pct: 73,
                 color: '#6abf69',
-                title: '73% - had been burned by false alerts',
+                title: '73% — had been burned by false alerts',
                 text: 'Single-location checks flag healthy sites as down; people stop trusting alerts.',
               },
               {
                 pct: 58,
                 color: '#e8964a',
-                title: '58% - wanted status sharing built in',
+                title: '58% — wanted status sharing built in',
                 text: 'Proving uptime meant buying a separate status or reporting tool.',
               },
             ].map((bar) => (
@@ -1239,7 +1239,7 @@ export default function FarsafeCase() {
                 ))}
               </ul>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mt-auto">
-                <strong className="font-bold text-black">64% said yes</strong> - confirming real
+                <strong className="font-bold text-black">64% said yes</strong> — confirming real
                 demand for an everything-included, pay-for-what-you-use model and giving the
                 product a clear wedge into the market.
               </p>
@@ -1273,7 +1273,7 @@ export default function FarsafeCase() {
                 {
                   title: 'Motivations',
                   items: [
-                    <>I want to <strong>know what I&rsquo;ll pay</strong> before I commit - no tiered guessing games.</>,
+                    <>I want to <strong>know what I&rsquo;ll pay</strong> before I commit — no tiered guessing games.</>,
                     <>I need <strong>alerts I can trust</strong>, not noise from a single bad route.</>,
                     <>I want to <strong>prove uptime to clients</strong> without spinning up another tool.</>,
                     <>I prefer products where <strong>everything I need is already included</strong>.</>,
@@ -1315,7 +1315,7 @@ export default function FarsafeCase() {
             </div>
           </div>
           <p className="font-mono-bold text-[14px] text-black leading-relaxed max-w-3xl">
-            Research confirmed the primary user is a time-pressured uptime owner - not a casual
+            Research confirmed the primary user is a time-pressured uptime owner — not a casual
             browser. Every design decision was tested against his scenario: can he understand the
             pricing, trust the alerts, and prove uptime to a client?
           </p>
@@ -1331,7 +1331,7 @@ export default function FarsafeCase() {
             The public site is kept <strong>deliberately shallow</strong> so a first-time visitor
             can reach signup from anywhere. Monitoring capability sits under one parent, pricing
             is exposed at the top level (because pricing legibility is the core value), and
-            supporting content - Blog, Company, auth - stays one level deep. The structure mirrors
+            supporting content — Blog, Company, auth — stays one level deep. The structure mirrors
             how a visitor decides:{' '}
             <strong>see what&rsquo;s monitored, how alerts work, what it costs, then sign up.</strong>
           </p>
@@ -1348,7 +1348,7 @@ export default function FarsafeCase() {
           <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl [&>strong]:font-bold [&>strong]:text-black">
             Inside the app, the IA is organised around{' '}
             <strong>the daily jobs of an uptime owner</strong>. A flat top level: Dashboard,
-            Monitoring, Reporting, Status Page, Settings, Members, Billing - keeps every core
+            Monitoring, Reporting, Status Page, Settings, Members, Billing — keeps every core
             task one click away, with operational detail nested only one level beneath. No deep
             hierarchies to navigate while responding to an incident.
           </p>
@@ -1370,19 +1370,19 @@ export default function FarsafeCase() {
               </h2>
               <div className="font-grotesk text-[14px] text-[#393939] leading-relaxed flex flex-col gap-4 [&_strong]:font-bold [&_strong]:text-black">
                 <p>
-                  A new product means no legacy clutter - so every item earns its place.{' '}
+                  A new product means no legacy clutter — so every item earns its place.{' '}
                   <strong>All monitoring lives under one parent</strong> (Advanced Monitoring,
                   Flexible Alerts, Global Architecture, Status Pages, Scheduled Reporting),
                   keeping a dense feature set scannable rather than scattered.
                 </p>
                 <p>
-                  <strong>Pricing sits at the top level, not inside a menu</strong> - in a
+                  <strong>Pricing sits at the top level, not inside a menu</strong> — in a
                   category defined by confusing tiers, exposing it is a trust move. Login and
                   Signup stay isolated on the right, Signup as the single high-contrast CTA.
                 </p>
                 <p>
                   Inside the app, the <strong>sidebar follows the same flat logic</strong>{' '}
-                  (Dashboard, Monitoring, Reporting, Status Pages, Settings, Members, Billing) -
+                  (Dashboard, Monitoring, Reporting, Status Pages, Settings, Members, Billing) —
                   predictable enough to operate without hunting.
                 </p>
                 <p>
@@ -1430,7 +1430,7 @@ export default function FarsafeCase() {
               />
             </div>
             <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <p className="font-grotesk font-bold text-[14px] text-black">Mobile — All pages</p>
+              <p className="font-grotesk font-bold text-[14px] text-black">Mobile — All Pages</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 A 2-column grid, sized for comfortable reading on compact screens.
               </p>
@@ -1530,7 +1530,7 @@ export default function FarsafeCase() {
           </h2>
           <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">
             Farsafe launched as a complete, from-scratch product. With no old version to compare
-            against, success was set up front - every goal had a target metric. Performance was
+            against, success was set up front — every goal had a target metric. Performance was
             tracked for 8 weeks after launch using Google Analytics, Hotjar, and a post-launch
             survey. The evaluation was objective, not subjective.
           </p>
@@ -1572,7 +1572,7 @@ export default function FarsafeCase() {
             Every competitor in this category hides pricing behind a demo request, and the
             reasoning is always the same &mdash; the numbers are complicated, so explain them in a
             conversation. Research said the opposite:{' '}
-            <strong>the hiding was the objection.</strong> People did not distrust the price, they
+            <strong>the hiding was the objection.</strong> People did not distrust the price; they
             distrusted not being told it.
           </p>
           <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
