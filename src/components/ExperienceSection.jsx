@@ -47,6 +47,8 @@ export default function ExperienceSection() {
         "Made pricing transparency the core conversion strategy, turning the category's biggest friction into its strongest reason to trust.",
         'Designed one overview-first system reused across the fleet dashboard, single-probe, and public status views, keeping a data-dense product learnable across every view.',
         'Built the design system and responsive grid underpinning both surfaces, and partnered with the founder and a frontend developer for a clean design-to-development handoff.',
+        'Used Claude Code to build working prototypes for user testing, speeding up validation before development handoff.',
+        'Used Claude to draft and refine marketing copy for the pricing page and onboarding flows, support competitor research, and generate documentation for the design system — on top of using Claude Code for interactive prototypes.',
       ],
       skills: [
         'Product Design',
@@ -76,6 +78,7 @@ export default function ExperienceSection() {
         'Reviewed and directed the UI work of an external designer, safeguarding consistency, usability, and product alignment.',
         'Led client and stakeholder communication to align on goals, scope, and requirements, and documented design decisions and their rationale.',
         'Partnered with developers through implementation, handoff, and QA in an agile workflow, iterating on designs based on real usage.',
+        'Used Claude and ChatGPT to synthesize user interviews faster, draft documentation and user stories, and generate initial UI concepts during brainstorming — reducing time spent on repetitive tasks.',
       ],
       skills: [
         'UX/UI Design',
