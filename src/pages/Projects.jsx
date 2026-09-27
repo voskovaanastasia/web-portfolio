@@ -47,7 +47,7 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <div className="flex flex-wrap gap-2.5 mb-4">
+      <div className="flex flex-wrap content-start gap-2.5 mb-4 min-h-[82px]">
         {project.tags.map((tag) => (
           <span
             key={tag}
@@ -162,7 +162,7 @@ const projects = [
 
 export default function Projects() {
   useDocumentMeta({
-    title: 'Work — Anastasiia Voskova',
+    title: 'Portfolio — Anastasiia Voskova',
     description:
       'Case studies in SaaS, fintech, healthcare, and mobile design — from 0-to-1 platforms to enterprise dashboards.',
     path: '/projects',

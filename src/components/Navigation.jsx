@@ -41,7 +41,7 @@ export default function Navigation() {
             to="/projects"
             className="text-base font-medium text-[#393939] hover:text-black transition-colors"
           >
-            Work
+            Portfolio
           </Link>
 
           {/* Resume Button */}
@@ -98,7 +98,7 @@ export default function Navigation() {
             className="block px-4 py-2 text-[#393939] hover:text-black rounded-lg transition-colors text-base font-medium"
             onClick={() => setIsOpen(false)}
           >
-            Work
+            Portfolio
           </Link>
           <a
             href="/Anastasiia-Voskova-Resume.pdf"
