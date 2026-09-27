@@ -47,11 +47,11 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <div className="flex flex-wrap content-start gap-2.5 mb-4 min-h-[82px]">
+      <div className="flex flex-wrap content-start gap-2 mb-4 min-h-[64px]">
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="px-4 py-2 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-sm text-[#22292f]"
+            className="px-3 py-1.5 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-xs text-[#22292f]"
           >
             {tag}
           </span>
