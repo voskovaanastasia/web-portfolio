@@ -418,7 +418,7 @@ const bulletClass =
 function PersonaCard({ title, points }) {
   return (
     <div className="bg-[#f2f6ff] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-      <h3 className="font-grotesk font-medium text-[16px] text-black">{title}</h3>
+      <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black">{title}</h3>
       <ul className="flex flex-col gap-3">
         {points.map((point, i) => (
           <li key={i} className={bulletClass}>
@@ -436,7 +436,7 @@ function UserPersona() {
       <div className="flex flex-col gap-5">
         <ImagePlaceholder filename="case-fitness-persona.webp" className="min-h-[480px]" />
         <div className="bg-[#f2f6ff] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-          <h3 className="font-grotesk font-medium text-[16px] text-[#1552d8]">{persona.name}</h3>
+          <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-[#1552d8]">{persona.name}</h3>
           <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.role}</p>
           <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.location}</p>
           <p className="font-grotesk text-[14px] text-black leading-relaxed mt-1">{persona.bio}</p>

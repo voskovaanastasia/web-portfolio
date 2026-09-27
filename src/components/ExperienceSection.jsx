@@ -192,7 +192,7 @@ export default function ExperienceSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-[16px] text-black">
+                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-black">
                       {exp.title}
                     </h3>
                     <p className="font-grotesk text-sm text-[#6b6a67]">

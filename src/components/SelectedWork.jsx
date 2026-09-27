@@ -42,7 +42,7 @@ export default function SelectedWork() {
         <div className="mb-8 flex flex-col gap-2.5">
           <p className="font-mono-bold text-[14px] text-black">Selected work</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
-            Featured Projects
+            Featured Project
           </h2>
         </div>
 
@@ -88,7 +88,7 @@ export default function SelectedWork() {
 
                   {/* Title + description */}
                   <div className="flex flex-col gap-1.5">
-                    <h3 className="font-grotesk font-medium text-[16px] tracking-tight">
+                    <h3 className="font-grotesk font-medium text-[16px] sm:text-lg tracking-tight">
                       <Link
                         to={`/project/${project.id}`}
                         className="text-black hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors"

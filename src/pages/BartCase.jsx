@@ -1011,7 +1011,7 @@ export default function BartCase() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="flex flex-col gap-4">
               <ImagePlaceholder filename="persona-james.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-[16px] text-black tracking-tight mt-2">
+              <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black tracking-tight mt-2">
                 James Mitchell
               </h3>
               <p className="font-grotesk font-bold text-[14px] text-black">

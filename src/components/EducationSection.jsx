@@ -110,7 +110,7 @@ export default function EducationSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-[16px] text-black">
+                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-black">
                       {edu.school}
                     </h3>
                     <p className="font-grotesk text-sm text-[#6b6a67]">

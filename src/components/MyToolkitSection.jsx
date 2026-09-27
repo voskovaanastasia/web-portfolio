@@ -66,7 +66,7 @@ export default function MyToolkitSection() {
         <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
           Computer Science is my secret weapon.
         </p>
-        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-black tracking-tight leading-snug">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug">
           I am Anastasiia Voskova,
           <span className="font-playwrite font-normal block mt-2">
             a designer who thinks like an engineer.

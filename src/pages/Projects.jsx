@@ -25,10 +25,11 @@ const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Cl
 // Card cover images are pre-cropped to the card's 4:3 display ratio at two
 // widths so the browser never downloads more pixels than it will show.
 // Only the first card (above the fold on desktop) loads eagerly at high
-// priority; the second stays eager but default priority; the rest are lazy.
+// priority; the next two in the first row stay eager but default priority;
+// the rest are lazy.
 function ProjectCard({ project, index }) {
   const isFirst = index === 0;
-  const isEager = index < 2;
+  const isEager = index < 3;
 
   return (
     <article className="flex flex-col">
@@ -36,7 +37,7 @@ function ProjectCard({ project, index }) {
         <img
           src={project.image960}
           srcSet={`${project.image480} 480w, ${project.image960} 960w`}
-          sizes="(min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           alt={project.title}
           width={960}
           height={720}
@@ -185,7 +186,7 @@ export default function Projects() {
 
       {/* Cases */}
       <section className="bg-white py-16 min-h-[60vh]">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Category filter */}
           <div className="flex justify-center mb-14">
             <div className="bg-[#f7f7f7] border border-[#ececec] rounded-2xl sm:rounded-full p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto">
@@ -222,7 +223,7 @@ export default function Projects() {
               Cases in this category are coming soon.
             </p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
               {visible.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
