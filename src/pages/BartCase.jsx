@@ -26,9 +26,9 @@ const caseSections = [
   { id: 'persona', label: 'User Persona' },
   { id: 'ia', label: 'Information Architecture' },
   { id: 'menu', label: 'Navigation & Menu' },
-  { id: 'pages', label: 'Website Pages' },
   { id: 'grid', label: 'Grid System' },
   { id: 'style', label: 'Colours & Typography' },
+  { id: 'pages', label: 'Website Pages' },
   { id: 'analytics', label: 'Post-Launch Analytics' },
   { id: 'contact', label: 'Get in Touch' },
 ];
@@ -1143,11 +1143,6 @@ export default function BartCase() {
         </section>
 
         {/* Website pages */}
-        <section id="pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Website Pages</p>
-          <PagesSlider pages={websitePages} />
-        </section>
-
         {/* Grid system */}
         <section id="grid" className="pb-24 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">Grid System</p>
@@ -1194,6 +1189,12 @@ export default function BartCase() {
         <section id="style" className="pb-24 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
+        </section>
+
+        {/* Website pages */}
+        <section id="pages" className="pb-24 flex flex-col gap-6">
+          <p className="font-mono-bold text-[14px] text-black">Website Pages</p>
+          <PagesSlider pages={websitePages} />
         </section>
 
         {/* Post-launch analytics */}

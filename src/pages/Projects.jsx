@@ -57,7 +57,11 @@ function ProjectCard({ project, index }) {
           </span>
         ))}
       </div>
-      <h2 className="font-grotesk font-bold text-[26px] text-black mb-3">{project.title}</h2>
+      <h2 className="font-grotesk font-bold text-[26px] text-black mb-3">
+        <Link to={`/project/${project.id}`} className="hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors">
+          {project.title}
+        </Link>
+      </h2>
       <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mb-6">
         {project.description}
       </p>

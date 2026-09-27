@@ -56,8 +56,9 @@ export default function SelectedWork() {
                 className="flex flex-col lg:flex-row items-stretch gap-8"
               >
                 {/* Image half */}
-                <div
-                  className={`bg-[#d9d9d9] aspect-[4/3] lg:aspect-auto lg:min-h-0 lg:w-1/2 overflow-hidden rounded-[15px] ${
+                <Link
+                  to={`/project/${project.id}`}
+                  className={`block group bg-[#d9d9d9] aspect-[4/3] lg:aspect-auto lg:min-h-0 lg:w-1/2 overflow-hidden rounded-[15px] ${
                     imageLeft ? 'lg:order-first' : 'lg:order-last'
                   }`}
                 >
@@ -68,9 +69,9 @@ export default function SelectedWork() {
                     height={1200}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                   />
-                </div>
+                </Link>
 
                 {/* Content half */}
                 <div className="lg:w-1/2 flex flex-col items-start gap-4">
