@@ -47,7 +47,15 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <div className="flex flex-wrap content-start gap-2 mb-4 min-h-[64px]">
+      <h2 className="font-grotesk font-bold text-[26px] text-black mb-3">
+        <Link to={`/project/${project.id}`} className="hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors">
+          {project.title}
+        </Link>
+      </h2>
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mb-4">
+        {project.description}
+      </p>
+      <div className="flex flex-wrap gap-2 mb-6">
         {project.tags.map((tag) => (
           <span
             key={tag}
@@ -57,14 +65,6 @@ function ProjectCard({ project, index }) {
           </span>
         ))}
       </div>
-      <h2 className="font-grotesk font-bold text-[26px] text-black mb-3">
-        <Link to={`/project/${project.id}`} className="hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors">
-          {project.title}
-        </Link>
-      </h2>
-      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mb-6">
-        {project.description}
-      </p>
       <div className="mt-auto flex justify-end">
         <Link
           to={`/project/${project.id}`}
