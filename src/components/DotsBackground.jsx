@@ -49,7 +49,7 @@ export default function DotsBackground() {
       aria-hidden="true"
       className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-150 z-0"
       style={{
-        backgroundImage: 'radial-gradient(circle, #288FD6 2.5px, transparent 2.5px)',
+        backgroundImage: 'radial-gradient(circle, rgba(40, 143, 214, 0.5) 2.5px, transparent 2.5px)',
         backgroundSize: '24px 24px',
       }}
     />
