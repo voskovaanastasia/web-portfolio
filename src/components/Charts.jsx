@@ -118,3 +118,33 @@ export function DonutStat({ pct, color }) {
     </svg>
   );
 }
+
+// Horizontal progress bar whose fill grows from 0 to `pct` each time it scrolls into view.
+export function ProgressBar({ pct, color }) {
+  const trackRef = useRef(null);
+  const fillRef = useRef(null);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const tween = gsap.fromTo(
+      fillRef.current,
+      { width: '0%' },
+      {
+        width: `${pct}%`,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: trackRef.current, start: 'top 90%', toggleActions: 'restart none restart reset' },
+      }
+    );
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, [pct]);
+
+  return (
+    <div ref={trackRef} className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
+      <div ref={fillRef} className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }} />
+    </div>
+  );
+}

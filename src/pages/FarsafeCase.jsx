@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import useStaggerReveal from '../hooks/useStaggerReveal';
 import { Link } from 'react-router-dom';
-import { Donut } from '../components/Charts';
+import { Donut, ProgressBar } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
@@ -1141,12 +1141,7 @@ export default function FarsafeCase() {
               },
             ].map((bar) => (
               <div key={bar.title} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                <div className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: `${bar.pct}%`, backgroundColor: bar.color }}
-                  />
-                </div>
+                <ProgressBar pct={bar.pct} color={bar.color} />
                 <p className="font-grotesk font-bold text-[14px] text-black mt-2">{bar.title}</p>
                 <p className="font-grotesk text-[14px] text-[#393939]">{bar.text}</p>
               </div>
@@ -1516,12 +1511,7 @@ export default function FarsafeCase() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {surveyResults.map((item) => (
               <div key={item.title} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                <div className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: `${item.pct}%`, backgroundColor: item.color }}
-                  />
-                </div>
+                <ProgressBar pct={item.pct} color={item.color} />
                 <p className="font-grotesk font-bold text-[14px] text-black mt-2">{item.title}</p>
                 <p className="font-grotesk text-[14px] text-[#393939]">{item.text}</p>
               </div>
