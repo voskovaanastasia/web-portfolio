@@ -26,7 +26,7 @@ const skillRows = [
 const socials = [
   {
     label: 'Behance',
-    href: 'https://www.behance.net/anastasiiavoskova',
+    href: 'https://www.behance.net/0dd9826d',
     bg: 'bg-[#0057ff]',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
@@ -36,7 +36,7 @@ const socials = [
   },
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/anastazjav22',
+    href: 'https://www.instagram.com/anastazja_v/',
     bg: 'bg-[radial-gradient(circle_at_30%_110%,#fdf497_0%,#fd5949_45%,#d6249f_60%,#285aeb_90%)]',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
