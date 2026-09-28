@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { getToolsByCategory } from '../data/tools';
+import flagGb from '../assets/flags/gb.svg';
+import flagUa from '../assets/flags/ua.svg';
+import flagEs from '../assets/flags/es.svg';
 
 const designTools = getToolsByCategory('design');
 const softwareTools = getToolsByCategory('software');
 const programmingTools = getToolsByCategory('programming');
 
 const languages = [
-  { flag: '🇬🇧', label: 'English', level: 'B2 (Upper-Intermediate)' },
-  { flag: '🇺🇦', label: 'Ukrainian', level: 'Native' },
-  { flag: '🇪🇸', label: 'Spanish', level: 'A2 (Basic)' },
+  { flag: flagGb, label: 'English', level: 'B2 (Upper-Intermediate)' },
+  { flag: flagUa, label: 'Ukrainian', level: 'Native' },
+  { flag: flagEs, label: 'Spanish', level: 'A2 (Basic)' },
 ];
 
 function ToolCard({ icon, label }) {
@@ -84,7 +87,7 @@ export default function MyToolkitSection() {
               {languages.map((lang) => (
                 <div key={lang.label} className="flex items-center gap-2.5">
                   <div className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0">
-                    <span className="text-2xl leading-none">{lang.flag}</span>
+                    <img src={lang.flag} alt={`${lang.label} flag`} className="w-8 h-[22px] rounded-[3px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
                   </div>
                   <div className="flex flex-col">
                     <p className="font-grotesk font-bold text-sm text-black">{lang.label}</p>
