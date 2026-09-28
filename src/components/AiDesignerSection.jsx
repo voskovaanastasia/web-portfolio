@@ -1,3 +1,8 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -33,8 +38,27 @@ const steps = [
 ];
 
 export default function AiDesignerSection() {
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from('[data-ai-cards] > div', {
+        y: 30,
+        opacity: 0,
+        duration: 0.45,
+        ease: 'power3.out',
+        stagger: 0.12,
+        scrollTrigger: { trigger: '[data-ai-cards]', start: 'top 85%', once: true },
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="ai-designer" className="relative overflow-hidden bg-white py-12 sm:py-24">
+    <section ref={rootRef} id="ai-designer" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-4">
           <p className="font-mono-bold text-[14px] text-black">AI + DESIGNER</p>
@@ -56,7 +80,7 @@ export default function AiDesignerSection() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div data-ai-cards className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {steps.map((step, index) => {
             const isFirst = index === 0;
             const isLast = index === steps.length - 1;
