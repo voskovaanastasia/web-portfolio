@@ -142,7 +142,8 @@ export function MetricBars({ bars, color }) {
 
   return (
     <div ref={wrapRef} className="flex items-end justify-center gap-4 h-44">
-      {bars.map((bar) => (
+      {/* Grey "before"/target bars first, so the highlighted bar sits on the right. */}
+      {[...bars].sort((a, b) => Number(!!b.before) - Number(!!a.before)).map((bar) => (
         <div
           key={bar.label}
           className="w-16 rounded-[14px] flex items-end justify-center pb-3"
