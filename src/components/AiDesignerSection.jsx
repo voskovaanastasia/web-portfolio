@@ -50,7 +50,7 @@ export default function AiDesignerSection() {
         duration: 0.45,
         ease: 'power3.out',
         stagger: 0.12,
-        scrollTrigger: { trigger: '[data-ai-cards]', start: 'top 85%', once: true },
+        scrollTrigger: { trigger: '[data-ai-cards]', start: 'top 85%', toggleActions: 'restart none restart reset' },
       });
     }, rootRef);
 

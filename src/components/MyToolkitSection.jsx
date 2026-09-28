@@ -97,7 +97,7 @@ export default function MyToolkitSection() {
         duration: 0.7,
         ease: 'power3.out',
         stagger: 0.12,
-        scrollTrigger: { trigger: '#toolkit', start: 'top 75%', once: true },
+        scrollTrigger: { trigger: '#toolkit', start: 'top 75%', toggleActions: 'restart none restart reset' },
       });
 
       // Each group's cards stagger in when that group reaches the viewport.
@@ -109,7 +109,7 @@ export default function MyToolkitSection() {
           duration: 0.55,
           ease: 'back.out(1.6)',
           stagger: 0.05,
-          scrollTrigger: { trigger: group, start: 'top 85%', once: true },
+          scrollTrigger: { trigger: group, start: 'top 85%', toggleActions: 'restart none restart reset' },
         });
       });
 

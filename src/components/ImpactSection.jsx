@@ -85,7 +85,7 @@ export default function ImpactSection() {
           onComplete: () => {
             el.textContent = finalText;
           },
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'restart none restart reset' },
         });
       });
     }, rootRef);
