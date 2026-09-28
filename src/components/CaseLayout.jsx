@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionMenu from './SectionMenu';
 import ContactSection from './ContactSection';
 import { openLightbox } from '../lightboxStore';
@@ -117,8 +119,28 @@ export function ImagePlaceholder({ filename, className = '', alt = '', priority 
  */
 export function MetricBars({ bars, color }) {
   const max = Math.max(...bars.map((b) => b.value));
+  const wrapRef = useRef(null);
+
+  // Bars grow up from the baseline, one after another, each time the card scrolls into view.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const tween = gsap.from(wrapRef.current.children, {
+      scaleY: 0,
+      transformOrigin: 'bottom',
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.12,
+      scrollTrigger: { trigger: wrapRef.current, start: 'top 90%', toggleActions: 'restart none restart reset' },
+    });
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, []);
+
   return (
-    <div className="flex items-end justify-center gap-4 h-44">
+    <div ref={wrapRef} className="flex items-end justify-center gap-4 h-44">
       {bars.map((bar) => (
         <div
           key={bar.label}

@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Chart from 'react-apexcharts';
+import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
@@ -1029,64 +1029,7 @@ const allInOneInterestSegments = [
   { value: 12, color: '#6d3fc4', label: 'Not sure' },
 ];
 
-function Donut({ segments, hollowSize = '32%' }) {
-  const options = useMemo(
-    () => ({
-      colors: segments.map((s) => s.color),
-      chart: { type: 'radialBar', sparkline: { enabled: true } },
-      plotOptions: {
-        radialBar: {
-          track: { background: '#ececec' },
-          dataLabels: { show: false },
-          hollow: { margin: 0, size: hollowSize },
-        },
-      },
-      grid: { show: false, padding: { left: 2, right: 2, top: -23, bottom: -20 } },
-      labels: segments.map((s) => s.label),
-      legend: { show: false },
-      tooltip: { enabled: true, x: { show: false } },
-      yaxis: { show: false, labels: { formatter: (value) => `${value}%` } },
-    }),
-    [segments, hollowSize]
-  );
 
-  const series = useMemo(() => segments.map((s) => s.value), [segments]);
-
-  return <Chart options={options} series={series} type="radialBar" height={350} width="100%" />;
-}
-
-function DonutStat({ pct, color }) {
-  const r = 60;
-  const c = 2 * Math.PI * r;
-  return (
-    <svg viewBox="0 0 160 160" className="w-40 h-40">
-      <circle cx="80" cy="80" r={r} fill="none" stroke="#e3e3e3" strokeWidth="26" />
-      <circle
-        cx="80"
-        cy="80"
-        r={r}
-        fill="none"
-        stroke={color}
-        strokeWidth="26"
-        strokeLinecap="round"
-        strokeDasharray={`${(pct / 100) * c} ${c}`}
-        transform="rotate(-90 80 80)"
-      />
-      <text
-        x="80"
-        y="80"
-        textAnchor="middle"
-        dominantBaseline="central"
-        className="font-grotesk"
-        fontSize="30"
-        fontWeight="700"
-        fill="#000"
-      >
-        {pct}%
-      </text>
-    </svg>
-  );
-}
 
 const project = {
   name: 'CryptoWallet',

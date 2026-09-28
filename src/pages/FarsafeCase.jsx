@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Chart from 'react-apexcharts';
+import { Donut } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
@@ -649,43 +649,6 @@ const iaTree = {
   ],
 };
 
-function Donut({ segments, hollowSize = '32%' }) {
-  const options = useMemo(
-    () => ({
-      colors: segments.map((s) => s.color),
-      chart: {
-        type: 'radialBar',
-        sparkline: { enabled: true },
-      },
-      plotOptions: {
-        radialBar: {
-          track: { background: '#ececec' },
-          dataLabels: { show: false },
-          hollow: { margin: 0, size: hollowSize },
-        },
-      },
-      grid: {
-        show: false,
-        padding: { left: 2, right: 2, top: -23, bottom: -20 },
-      },
-      labels: segments.map((s) => s.label),
-      legend: { show: false },
-      tooltip: {
-        enabled: true,
-        x: { show: false },
-      },
-      yaxis: {
-        show: false,
-        labels: { formatter: (value) => `${value}%` },
-      },
-    }),
-    [segments, hollowSize]
-  );
-
-  const series = useMemo(() => segments.map((s) => s.value), [segments]);
-
-  return <Chart options={options} series={series} type="radialBar" height={350} width="100%" />;
-}
 
 const monitoringFrustrationSegments = [
   { value: 30, color: '#f2c94c', label: 'False alerts from single-location checks' },
