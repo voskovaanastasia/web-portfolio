@@ -52,7 +52,7 @@ export default function Navigation() {
             download="Anastasiia-Voskova-Resume.pdf"
             className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
           >
-            Resume
+            Download CV
           </a>
         </div>
 
@@ -108,7 +108,7 @@ export default function Navigation() {
             className="block px-4 py-2 bg-[#1f7ab8] hover:bg-[#186a9c] text-white rounded-lg transition-colors text-base font-medium text-center"
             onClick={() => setIsOpen(false)}
           >
-            Resume
+            Download CV
           </a>
         </div>
       )}
