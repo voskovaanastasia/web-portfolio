@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import useStaggerReveal from '../hooks/useStaggerReveal';
 import { Link } from 'react-router-dom';
 import { Donut } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
@@ -859,6 +860,8 @@ const iaAppTree = {
 
 export default function FarsafeCase() {
   const project = cases.farsafe;
+  const paletteRef = useRef(null);
+  useStaggerReveal(paletteRef);
 
   useDocumentMeta(buildCaseMeta({ project, caseId: 'farsafe' }));
 
@@ -1413,7 +1416,7 @@ export default function FarsafeCase() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Palette stack */}
-            <div className="rounded-[24px] overflow-hidden flex flex-col lg:row-span-2 min-h-[500px]">
+            <div ref={paletteRef} className="rounded-[24px] overflow-hidden flex flex-col lg:row-span-2 min-h-[500px]">
               {brandColors.map((c) => (
                 <div
                   key={c.name}

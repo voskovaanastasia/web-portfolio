@@ -6,6 +6,7 @@ import SectionMenu from './SectionMenu';
 import ContactSection from './ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
+import useStaggerReveal from '../hooks/useStaggerReveal';
 
 // Any image dropped into src/assets is picked up by filename — no import needed.
 const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
@@ -284,6 +285,9 @@ function ColorSwatch({ hex, name, text, className = '', labelClassName = '' }) {
 // Style tile for a case: named palette, tint ramp, typeface card, and a mood image.
 // `colors` entries are { name, hex, text }; `text` is the label colour laid over the swatch.
 export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
+  const swatchesRef = useRef(null);
+  useStaggerReveal(swatchesRef);
+
   return (
     <>
       <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
@@ -294,7 +298,7 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-4">
-        <div className="flex flex-col rounded-[24px] overflow-hidden">
+        <div ref={swatchesRef} className="flex flex-col rounded-[24px] overflow-hidden">
           {colors.map((color) => (
             <ColorSwatch
               key={color.name}
