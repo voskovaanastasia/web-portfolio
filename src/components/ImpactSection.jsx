@@ -77,7 +77,7 @@ export default function ImpactSection() {
 
         gsap.to(state, {
           p: 1,
-          duration: 1.6,
+          duration: 0.9,
           ease: 'power2.out',
           onUpdate: () => {
             el.textContent = renderProgress(finalText, state.p);
