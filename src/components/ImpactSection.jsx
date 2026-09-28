@@ -1,3 +1,20 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Renders `text` with every digit run replaced by an in-progress value at progress `p` (0..1).
+// Multi-digit runs count up; single digits flicker through random values before settling.
+function renderProgress(text, p) {
+  return text.replace(/\d+/g, (run) => {
+    if (p >= 1) return run;
+    const target = Number(run);
+    if (run.length === 1) return String(Math.floor(Math.random() * 10));
+    return String(Math.round(target * p)).padStart(run.length, '0');
+  });
+}
+
 const metrics = [
   {
     number: '1m 41s',
@@ -47,8 +64,37 @@ const metrics = [
 ];
 
 export default function ImpactSection() {
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray('[data-metric-number]').forEach((el) => {
+        const finalText = el.textContent;
+        const state = { p: 0 };
+        el.textContent = renderProgress(finalText, 0);
+
+        gsap.to(state, {
+          p: 1,
+          duration: 1.6,
+          ease: 'power2.out',
+          onUpdate: () => {
+            el.textContent = renderProgress(finalText, state.p);
+          },
+          onComplete: () => {
+            el.textContent = finalText;
+          },
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        });
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="impact" className="relative overflow-hidden bg-white py-12 sm:py-24">
+    <section ref={rootRef} id="impact" className="relative overflow-hidden bg-white py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
           <p className="font-mono-bold text-[14px] text-black">Proven Results</p>
@@ -63,7 +109,11 @@ export default function ImpactSection() {
               key={metric.label}
               className={`rounded-[15px] p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${metric.card}`}
             >
-              <p className={`font-grotesk font-bold text-[30px] sm:text-5xl whitespace-nowrap ${metric.number_color}`}>
+              <p
+                data-metric-number
+                style={{ fontVariantNumeric: 'tabular-nums' }}
+                className={`font-grotesk font-bold text-[30px] sm:text-5xl whitespace-nowrap ${metric.number_color}`}
+              >
                 {metric.number}
               </p>
               <p className="font-grotesk font-bold text-[14px]">{metric.label}</p>
