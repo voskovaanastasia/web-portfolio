@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import contactProjects from '../assets/contact-projects.webp';
 import contactPhone from '../assets/contact-phone.webp';
@@ -67,6 +68,18 @@ const socials = [
 ];
 
 export default function ContactSection() {
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable; mailto link is still the primary action.
+    }
+  };
+
   return (
     <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
@@ -97,7 +110,7 @@ export default function ContactSection() {
 
           {/* Resume */}
           <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5">
-            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4 sm:mb-6">Check out my Resume</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4 sm:mb-6">Check out my CV</h3>
             <a
               href="/Anastasiia-Voskova-Resume.pdf"
               target="_blank"
@@ -115,7 +128,7 @@ export default function ContactSection() {
                       fill="none"
                     />
                   </svg>
-                  <p className="font-grotesk font-bold text-xl text-black">My Resume</p>
+                  <p className="font-grotesk font-bold text-xl text-black">My CV</p>
                   <div className="h-1 bg-[#e8b931] mt-3 w-24" />
                 </div>
               </div>
@@ -184,9 +197,10 @@ export default function ContactSection() {
 
             <a
               href={`mailto:${EMAIL}`}
+              onClick={handleEmailClick}
               className="block text-center bg-[#1f7ab8] rounded-full py-4 mt-auto font-grotesk font-bold text-base text-white hover:bg-[#186a9c] transition-colors"
             >
-              Email Me
+              {copied ? 'Email Copied!' : 'Email Me'}
             </a>
           </div>
         </div>

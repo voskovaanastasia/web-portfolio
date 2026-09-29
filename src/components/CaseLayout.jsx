@@ -314,7 +314,13 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
         <div className="flex flex-col gap-5">
           <div className="flex flex-col rounded-[24px] overflow-hidden flex-1 min-h-[280px]">
             {scale.map((hex) => (
-              <div key={hex} className="flex-1" style={{ backgroundColor: hex }} />
+              <ColorSwatch
+                key={hex}
+                hex={hex}
+                text="#ffffff"
+                className="flex-1 items-center justify-center flex"
+                labelClassName="mix-blend-difference opacity-0 group-hover:opacity-100 transition-opacity"
+              />
             ))}
           </div>
           <div
