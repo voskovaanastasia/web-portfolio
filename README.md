@@ -2,7 +2,7 @@
 
 Personal portfolio website showcasing product design case studies, built with React and Tailwind CSS. Designed and developed with AI-assisted workflow using Claude Code.
 
-🔗 **Live site:** [web-portfolio-one-indol-14.vercel.app](https://web-portfolio-one-indol-14.vercel.app)
+🔗 **Live site:** [www.anastasiiavoskova.com](https://www.anastasiiavoskova.com)
 
 ## About
 
