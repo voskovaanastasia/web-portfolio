@@ -1,7 +1,7 @@
 // Generates OG/Twitter share images at build time:
-//  - public/og-image.png        — temporary placeholder for the default (home) card.
-//    Replace with a real design per docs/og-image-spec.md, then delete this
-//    script's placeholder branch (or just overwrite the file and leave it).
+//  - public/og-image.png        — default (home) card. If the file already
+//    exists (e.g. a real design was committed), it's left untouched;
+//    otherwise a placeholder is generated.
 //  - public/og/<slug>.png       — a 1200x630 crop of each case study's cover
 //    image, so link previews for /project/:slug show that project's work
 //    instead of the generic card.
@@ -62,6 +62,10 @@ function placeholderSvg() {
 
 async function generatePlaceholder() {
   const outPath = path.join(PUBLIC_DIR, 'og-image.png');
+  if (existsSync(outPath)) {
+    console.log('og-image.png already exists, skipping placeholder generation');
+    return;
+  }
   await sharp(Buffer.from(placeholderSvg())).png().toFile(outPath);
   console.log('og-image.png (placeholder) ->', path.relative(ROOT, outPath));
 }
