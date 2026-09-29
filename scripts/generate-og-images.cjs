@@ -1,5 +1,5 @@
 // Generates OG/Twitter share images at build time:
-//  - public/og-image.png        — default (home) card. If the file already
+//  - public/og-cover.png        — default (home) card. If the file already
 //    exists (e.g. a real design was committed), it's left untouched;
 //    otherwise a placeholder is generated.
 //  - public/og/<slug>.png       — a 1200x630 crop of each case study's cover
@@ -22,7 +22,7 @@ const ASSETS_DIR = path.join(ROOT, 'src', 'assets');
 // basenames don't always match the route slug 1:1 (e.g. "online-doctor"'s
 // cover is case-onlinedoctor.webp). tax-compliance has no cover asset yet,
 // so it isn't listed here and the route falls back to the default
-// /og-image.png.
+// /og-cover.png.
 const CASE_SLUGS = [
   { slug: 'farsafe', asset: 'case-farsafe' },
   { slug: 'bart', asset: 'case-bart' },
@@ -61,13 +61,13 @@ function placeholderSvg() {
 }
 
 async function generatePlaceholder() {
-  const outPath = path.join(PUBLIC_DIR, 'og-image.png');
+  const outPath = path.join(PUBLIC_DIR, 'og-cover.png');
   if (existsSync(outPath)) {
-    console.log('og-image.png already exists, skipping placeholder generation');
+    console.log('og-cover.png already exists, skipping placeholder generation');
     return;
   }
   await sharp(Buffer.from(placeholderSvg())).png().toFile(outPath);
-  console.log('og-image.png (placeholder) ->', path.relative(ROOT, outPath));
+  console.log('og-cover.png (placeholder) ->', path.relative(ROOT, outPath));
 }
 
 async function generateCaseImages() {
