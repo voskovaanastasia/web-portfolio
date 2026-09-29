@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://web-portfolio-one-indol-14.vercel.app/sitemap.xml
