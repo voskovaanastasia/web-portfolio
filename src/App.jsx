@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
 import About from './pages/About';
@@ -43,6 +44,7 @@ function Layout() {
           </Routes>
         </Suspense>
         <Lightbox />
+        <Analytics />
     </div>
   );
 }
