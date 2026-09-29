@@ -27,7 +27,7 @@ export default function About() {
           path: '/about',
         }
       : {
-          title: 'Anastasiia Voskova — Product Designer',
+          title: 'Anastasiia Voskova — UX/UI & Product Designer',
           description:
             'A product designer who makes complex, data-dense products feel simple and grounds every decision in research.',
           path: '/',
