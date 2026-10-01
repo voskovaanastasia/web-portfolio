@@ -455,7 +455,7 @@ function CaseNavArrow({ direction }) {
   );
 }
 
-// Same style as the "Back to Work" link, mirrored: previous case on the left,
+// Same style as the "Back to Portfolio" link, mirrored: previous case on the left,
 // next case on the right, both cycling through CASE_ORDER from `caseId`.
 export function CaseNav({ caseId }) {
   const index = CASE_ORDER.findIndex((c) => c.id === caseId);
@@ -530,7 +530,7 @@ export default function CaseLayout({
             <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Back to Work
+          Back to Portfolio
         </Link>
 
         {/* Title */}
