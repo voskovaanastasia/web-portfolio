@@ -4,6 +4,7 @@ const homeSections = [
   { id: 'hero', label: 'Back to Top' },
   { id: 'how-i-work', label: 'How I Work' },
   { id: 'work', label: 'Selected Work' },
+  { id: 'recommendations', label: 'What People Say' },
   { id: 'toolkit', label: 'My Toolkit' },
   { id: 'impact', label: 'Proven Results' },
   { id: 'experience', label: 'Experience' },

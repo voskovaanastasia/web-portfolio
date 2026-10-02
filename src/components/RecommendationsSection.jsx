@@ -17,7 +17,7 @@ export default function RecommendationsSection() {
         <div className="mb-8 flex flex-col gap-2.5">
           <p className="font-mono-bold text-[14px] text-black">Recommendations</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
-            What colleagues say
+            What people say
           </h2>
         </div>
 
