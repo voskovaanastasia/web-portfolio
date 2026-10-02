@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import HowIWorkSection from '../components/HowIWorkSection';
 import SelectedWork from '../components/SelectedWork';
+import RecommendationsSection from '../components/RecommendationsSection';
 import MyToolkitSection from '../components/MyToolkitSection';
 import ImpactSection from '../components/ImpactSection';
 import ExperienceSection from '../components/ExperienceSection';
@@ -40,6 +41,7 @@ export default function About() {
       <HeroSection />
       <HowIWorkSection />
       <SelectedWork />
+      <RecommendationsSection />
       <MyToolkitSection />
       <ImpactSection />
       <ExperienceSection />
