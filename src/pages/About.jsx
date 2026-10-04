@@ -44,8 +44,8 @@ export default function About() {
       <RecommendationsSection />
       <MyToolkitSection />
       <ImpactSection />
-      <ExperienceSection />
       <AiDesignerSection />
+      <ExperienceSection />
       <EducationSection />
       <ContactSection />
     </main>

@@ -27,7 +27,7 @@ const steps = [
     number: '4',
     title: 'Put it live',
     description:
-      'The result ships to Firebase Hosting as a real URL you can open and use — decisions get tested on a live product, not argued over a static frame.',
+      'The result ships as a real URL you can open and use — decisions get tested on a live product, not argued over a static frame.',
   },
   {
     number: '5',
