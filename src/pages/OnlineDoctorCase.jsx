@@ -287,7 +287,7 @@ function ScreensSlider({ screens }) {
   const next = () => setIndex((index + 1) % screens.length);
 
   const arrowClass =
-    'w-11 h-11 rounded-full border border-[#e2e2e2] flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-colors';
+    'w-11 h-11 rounded-pill border border-[#e2e2e2] flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-colors';
 
   return (
     <>
@@ -425,7 +425,7 @@ export default function OnlineDoctorCase() {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-4 py-2 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-sm text-[#22292f]"
+              className="px-4 py-2 bg-[#f2f3f5] rounded-pill font-grotesk font-medium text-sm text-[#22292f]"
             >
               {tag}
             </span>
@@ -433,7 +433,7 @@ export default function OnlineDoctorCase() {
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
+        <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
               <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
@@ -449,7 +449,7 @@ export default function OnlineDoctorCase() {
                 <span
                   key={tool.label}
                   title={tool.label}
-                  className="bg-white rounded-full w-9 h-9 flex items-center justify-center shadow-sm"
+                  className="bg-white rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
                 >
                   <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
                 </span>
@@ -467,14 +467,14 @@ export default function OnlineDoctorCase() {
           {project.summary.map((card) => (
             <div
               key={card.label}
-              className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
+              className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
             >
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
               <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
-            <div className="bg-[#e9f3fa] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
+            <div className="bg-[#e9f3fa] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
               <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
               <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
               <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>

@@ -85,7 +85,7 @@ export function ImagePlaceholder({ filename, className = '', alt = '', priority 
         fetchPriority={priority ? 'high' : undefined}
         onClick={() => openLightbox(src, resolvedAlt)}
         className={`w-full h-auto block ${
-          hasCustomRounding ? '' : 'rounded-[24px]'
+          hasCustomRounding ? '' : 'rounded-card'
         } cursor-zoom-in ${dropSizing(className)}`}
       />
     );
@@ -94,9 +94,9 @@ export function ImagePlaceholder({ filename, className = '', alt = '', priority 
   return (
     <div
       ref={slotRef}
-      className={`bg-[#f7f7f7] rounded-[24px] flex flex-col gap-2 items-center justify-center overflow-hidden ${className}`}
+      className={`bg-surface-subtle rounded-card flex flex-col gap-2 items-center justify-center overflow-hidden ${className}`}
     >
-      <p className="font-grotesk text-sm text-[#6b6a67] px-8 text-center">
+      <p className="font-grotesk text-sm text-text-secondary px-8 text-center">
         Add {filename} to src/assets
       </p>
       {slotSize && (
@@ -152,7 +152,7 @@ export function MetricBars({ bars, color }) {
             backgroundColor: bar.before ? '#e3e3e3' : color,
           }}
         >
-          <span className="font-grotesk font-bold text-sm text-black">{bar.label}</span>
+          <span className="font-grotesk font-bold text-sm text-text-primary">{bar.label}</span>
         </div>
       ))}
     </div>
@@ -164,11 +164,11 @@ export function MetricBars({ bars, color }) {
  */
 export function MetricCard({ title, subtitle, bars, color, text }) {
   return (
-    <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+    <div className="bg-surface-subtle rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
       <MetricBars bars={bars} color={color} />
-      <p className="font-grotesk font-bold text-[14px] text-black">{title}</p>
-      {subtitle && <p className="font-grotesk text-sm text-[#6b6a67] -mt-2">{subtitle}</p>}
-      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:font-bold [&>strong]:text-black">
+      <p className="font-grotesk font-bold text-[14px] text-text-primary">{title}</p>
+      {subtitle && <p className="font-grotesk text-sm text-text-secondary -mt-2">{subtitle}</p>}
+      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&>strong]:font-bold [&>strong]:text-text-primary">
         {text}
       </p>
     </div>
@@ -185,13 +185,13 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
             className={`min-h-[420px] ${problem.imageClassName ?? ''}`}
           />
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">PROBLEM</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-text-primary">PROBLEM</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
               {problem.heading}
             </h2>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{problem.body}</p>
-            <p className="font-mono-bold text-[14px] text-black">WHY IS THIS IMPORTANT?</p>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{problem.why}</p>
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{problem.body}</p>
+            <p className="font-mono-bold text-[14px] text-text-primary">WHY IS THIS IMPORTANT?</p>
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{problem.why}</p>
           </div>
         </section>
       )}
@@ -199,13 +199,13 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
       {solution && (
         <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">SOLUTION</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-text-primary">SOLUTION</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
               {solution.heading}
             </h2>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{solution.body}</p>
-            <p className="font-mono-bold text-[14px] text-black">USER SCENARIO CONSIDERATION</p>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{solution.body}</p>
+            <p className="font-mono-bold text-[14px] text-text-primary">USER SCENARIO CONSIDERATION</p>
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
               {solution.scenario}
             </p>
           </div>
@@ -225,18 +225,18 @@ export function ProcessColumns({ columns }) {
       {columns.map((col) => (
         <div
           key={col.heading}
-          className={`rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
+          className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-surface-brand-tint' : 'bg-surface-subtle' }`}
         >
-          <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
-          <span className="h-0.5 w-full bg-[#288fd6] rounded-full" />
+          <p className="font-grotesk font-medium text-lg text-text-primary">{col.heading}</p>
+          <span className="h-0.5 w-full bg-blue-500 rounded-pill" />
           {col.body ? (
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{col.body}</p>
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{col.body}</p>
           ) : (
             <ul className="flex flex-col gap-2">
               {col.items.map((item) => (
                 <li
                   key={item}
-                  className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                  className="font-grotesk text-[14px] text-text-primary leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
                 >
                   {item}
                 </li>
@@ -291,15 +291,15 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
 
   return (
     <>
-      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
         {heading}
       </h2>
-      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&_strong]:font-bold [&_strong]:text-black">
+      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed max-w-3xl [&_strong]:font-bold [&_strong]:text-text-primary">
         {body}
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-4">
-        <div ref={swatchesRef} className="flex flex-col rounded-[24px] overflow-hidden">
+        <div ref={swatchesRef} className="flex flex-col rounded-card overflow-hidden">
           {colors.map((color) => (
             <ColorSwatch
               key={color.name}
@@ -312,7 +312,7 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
         </div>
 
         <div className="flex flex-col gap-5">
-          <div className="flex flex-col rounded-[24px] overflow-hidden flex-1 min-h-[280px]">
+          <div className="flex flex-col rounded-card overflow-hidden flex-1 min-h-[280px]">
             {scale.map((hex) => (
               <ColorSwatch
                 key={hex}
@@ -324,7 +324,7 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
             ))}
           </div>
           <div
-            className="rounded-[24px] p-4 sm:p-6 flex flex-col justify-between min-h-[280px]"
+            className="rounded-card p-4 sm:p-6 flex flex-col justify-between min-h-[280px]"
             style={{ backgroundColor: typeface.hex, color: typeface.text ?? '#ffffff' }}
           >
             <div className="flex flex-col items-end gap-1">
@@ -351,16 +351,16 @@ export function ScreensSlider({ screens }) {
   const next = () => setIndex((index + 1) % screens.length);
 
   const arrowClass =
-    'w-11 h-11 rounded-full border border-[#e2e2e2] flex items-center justify-center text-black hover:bg-black hover:text-white hover:border-black transition-colors';
+    'w-11 h-11 rounded-pill border border-[#e2e2e2] flex items-center justify-center text-text-primary hover:bg-black hover:text-white hover:border-black transition-colors';
 
   return (
     <>
       <div className="flex items-center justify-between gap-6 flex-wrap">
-        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
           {screen.title}
         </h2>
         <div className="flex items-center gap-3">
-          <span className="font-grotesk text-sm text-[#6b6a67] mr-1">
+          <span className="font-grotesk text-sm text-text-secondary mr-1">
             {index + 1} / {screens.length}
           </span>
           <button type="button" onClick={prev} aria-label="Previous screen" className={arrowClass}>
@@ -380,8 +380,8 @@ export function ScreensSlider({ screens }) {
         <div className="flex flex-col gap-7">
           {screen.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
+              <p className="font-grotesk font-bold text-[14px] text-text-primary">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
                 {block.text}
               </p>
             </div>
@@ -467,14 +467,14 @@ export function CaseNav({ caseId }) {
     <div className="pt-10 pb-4 flex items-center justify-between gap-4 flex-wrap">
       <Link
         to={prev.path}
-        className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
+        className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
       >
         <CaseNavArrow direction="prev" />
         Previous Case: {prev.title}
       </Link>
       <Link
         to={next.path}
-        className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
+        className="inline-flex items-center gap-3 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
       >
         Next Case: {next.title}
         <CaseNavArrow direction="next" />
@@ -508,7 +508,7 @@ export default function CaseLayout({
   ];
 
   return (
-    <main id="main-content" className="flex flex-col bg-white">
+    <main id="main-content" className="flex flex-col bg-surface-default">
       <SectionMenu sections={menuSections} />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
@@ -524,7 +524,7 @@ export default function CaseLayout({
         {/* Back link */}
         <Link
           to="/projects"
-          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
+          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
             <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -534,7 +534,7 @@ export default function CaseLayout({
         </Link>
 
         {/* Title */}
-        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
+        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-text-primary tracking-tight leading-tight mt-8 max-w-3xl">
           {project.title}
         </h1>
 
@@ -543,7 +543,7 @@ export default function CaseLayout({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-4 py-2 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-sm text-[#22292f]"
+              className="px-4 py-2 bg-surface-subtle rounded-pill font-grotesk font-medium text-sm text-ink"
             >
               {tag}
             </span>
@@ -551,23 +551,23 @@ export default function CaseLayout({
         </div>
 
         {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
+        <div className="bg-surface-subtle rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {project.meta.map((item) => (
             <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
+              <p className="font-grotesk text-[14px] text-text-secondary">{item.label}</p>
+              <p className="font-grotesk font-medium text-[14px] text-text-primary whitespace-pre-line">
                 {item.value}
               </p>
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
+            <p className="font-grotesk text-[14px] text-text-secondary">Tools</p>
             <div className="flex gap-2">
               {project.tools.map((tool) => (
                 <span
                   key={tool.label}
                   title={tool.label}
-                  className="bg-white rounded-full w-9 h-9 flex items-center justify-center shadow-sm"
+                  className="bg-surface-default rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
                 >
                   <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
                 </span>
@@ -583,16 +583,16 @@ export default function CaseLayout({
           }`}
         >
           {project.summary.map((card) => (
-            <div key={card.label} className="bg-[#f7f7f7] rounded-[24px] p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
+            <div key={card.label} className="bg-surface-subtle rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+              <p className="font-grotesk text-sm text-text-secondary uppercase tracking-wide">{card.label}</p>
+              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{card.text}</p>
             </div>
           ))}
           {project.outcome && (
-            <div className="bg-[#e9f3fa] rounded-[24px] p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
-              <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
+            <div className="bg-surface-brand-tint rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
+              <p className="font-grotesk text-sm text-text-secondary uppercase tracking-wide">OUTCOME</p>
+              <p className="font-grotesk font-bold text-[30px] text-text-primary">{project.outcome.value}</p>
+              <p className="font-grotesk text-[14px] text-text-primary">{project.outcome.label}</p>
             </div>
           )}
         </div>
@@ -600,11 +600,11 @@ export default function CaseLayout({
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-text-primary">PROJECT INTRO</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
               {project.intro.heading}
             </h2>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&>strong]:text-black [&>strong]:font-bold">
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&>strong]:text-text-primary [&>strong]:font-bold">
               {project.intro.body}
             </p>
           </div>
@@ -617,7 +617,7 @@ export default function CaseLayout({
         {/* Case-specific sections */}
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="pb-20 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-black">{section.label}</p>
+            <p className="font-mono-bold text-[14px] text-text-primary">{section.label}</p>
             {section.content}
           </section>
         ))}
@@ -625,7 +625,7 @@ export default function CaseLayout({
         {/* Screens */}
         {screens?.length > 0 && (
           <section id="screens" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-black">{screensLabel}</p>
+            <p className="font-mono-bold text-[14px] text-text-primary">{screensLabel}</p>
             <ScreensSlider screens={screens} />
           </section>
         )}
@@ -633,11 +633,11 @@ export default function CaseLayout({
         {/* Key takeaway */}
         {keyTakeaway && (
           <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-black">Key Takeaway</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+            <p className="font-mono-bold text-[14px] text-text-primary">Key Takeaway</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
               {keyTakeaway.heading}
             </h2>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-text-primary">
               {keyTakeaway.body}
             </p>
           </section>

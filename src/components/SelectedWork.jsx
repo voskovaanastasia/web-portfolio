@@ -25,10 +25,10 @@ function InfoCell({ label, children, highlight }) {
   return (
     <div
       className={`rounded-[10px] p-2 sm:p-4 flex flex-col gap-1 sm:gap-2 ${
-        highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]'
+        highlight ? 'bg-surface-brand-tint' : 'bg-surface-subtle'
       }`}
     >
-      <p className="font-mono-bold text-xs text-[#4a4a48] tracking-wide">{label}</p>
+      <p className="font-mono-bold text-xs text-text-primary tracking-wide">{label}</p>
       {children}
     </div>
   );
@@ -36,12 +36,12 @@ function InfoCell({ label, children, highlight }) {
 
 export default function SelectedWork() {
   return (
-    <section id="work" className="relative overflow-hidden pt-5 pb-12 sm:pt-10 sm:pb-24 bg-white">
+    <section id="work" className="relative overflow-hidden pt-5 pb-12 sm:pt-10 sm:pb-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section heading */}
         <div className="mb-8 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-[14px] text-black">Selected work</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-text-primary">Selected work</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Featured Project
           </h2>
         </div>
@@ -58,7 +58,7 @@ export default function SelectedWork() {
                 {/* Image half */}
                 <Link
                   to={`/project/${project.id}`}
-                  className={`block group bg-[#d9d9d9] aspect-[4/3] lg:aspect-auto lg:min-h-0 lg:w-1/2 overflow-hidden rounded-[15px] ${
+                  className={`block group bg-[#d9d9d9] aspect-[4/3] lg:aspect-auto lg:min-h-0 lg:w-1/2 overflow-hidden rounded-panel ${
                     imageLeft ? 'lg:order-first' : 'lg:order-last'
                   }`}
                 >
@@ -80,7 +80,7 @@ export default function SelectedWork() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-[5px] bg-gray-100 text-gray-800 rounded-full text-xs font-medium"
+                        className="px-2.5 py-[5px] bg-surface-subtle text-ink rounded-pill text-xs font-medium"
                       >
                         {tag}
                       </span>
@@ -92,12 +92,12 @@ export default function SelectedWork() {
                     <h3 className="font-grotesk font-medium text-[16px] sm:text-lg tracking-tight">
                       <Link
                         to={`/project/${project.id}`}
-                        className="text-black hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors"
+                        className="text-text-primary hover:text-text-brand hover:underline underline-offset-4 transition-colors"
                       >
                         {project.title}
                       </Link>
                     </h3>
-                    <p className="font-grotesk text-sm text-[#6b6a67] leading-relaxed">
+                    <p className="font-grotesk text-sm text-text-secondary leading-relaxed">
                       {project.description}
                     </p>
                   </div>
@@ -105,25 +105,25 @@ export default function SelectedWork() {
                   {/* PROBLEM / MY ROLE / KEY DECISION / OUTCOME grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full">
                     <InfoCell label="PROBLEM">
-                      <p className="font-grotesk font-medium text-sm text-black">
+                      <p className="font-grotesk font-medium text-sm text-text-primary">
                         {project.problem}
                       </p>
                     </InfoCell>
                     <InfoCell label="MY ROLE">
-                      <p className="font-grotesk font-medium text-sm text-black">
+                      <p className="font-grotesk font-medium text-sm text-text-primary">
                         {project.role}
                       </p>
                     </InfoCell>
                     <InfoCell label="KEY DECISION">
-                      <p className="font-grotesk font-medium text-sm text-black">
+                      <p className="font-grotesk font-medium text-sm text-text-primary">
                         {project.keyDecision}
                       </p>
                     </InfoCell>
                     <InfoCell label="OUTCOME" highlight>
-                      <p className="font-grotesk font-bold text-[30px] text-black whitespace-nowrap">
+                      <p className="font-grotesk font-bold text-[30px] text-text-primary whitespace-nowrap">
                         {project.outcomeMetric}
                       </p>
-                      <p className="font-grotesk font-medium text-sm text-black">
+                      <p className="font-grotesk font-medium text-sm text-text-primary">
                         {project.outcomeLabel}
                       </p>
                     </InfoCell>
@@ -133,7 +133,7 @@ export default function SelectedWork() {
                   <div className="mt-auto pt-2 w-full flex justify-end">
                     <Link
                       to={`/project/${project.id}`}
-                      className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-grotesk font-medium text-sm px-5 py-2.5 rounded-full transition-colors"
+                      className="bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
                     >
                       Read case study
                     </Link>
@@ -148,7 +148,7 @@ export default function SelectedWork() {
         <div className="mt-12 flex justify-center">
           <Link
             to="/projects"
-            className="font-grotesk font-medium text-base text-black hover:text-[#288fd6] underline underline-offset-4 transition-colors"
+            className="font-grotesk font-medium text-base text-text-primary hover:text-text-brand underline underline-offset-4 transition-colors"
           >
             All work →
           </Link>

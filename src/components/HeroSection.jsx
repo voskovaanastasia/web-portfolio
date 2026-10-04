@@ -91,42 +91,42 @@ export default function HeroSection() {
             height={74}
             loading="eager"
             fetchPriority="high"
-            className="w-9 h-9 rounded-full"
+            className="w-9 h-9 rounded-pill"
           />
-          <span className="font-mono-bold font-bold text-[14px] text-black">
-            Hello, I&rsquo;m <span className="text-[#288fd6]">Anastasiia</span>
+          <span className="font-mono-bold font-bold text-[14px] text-text-primary">
+            Hello, I&rsquo;m <span className="text-text-brand">Anastasiia</span>
           </span>
         </div>
 
         {/* Headline */}
-        <h1 data-hero-item className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-black tracking-tight leading-snug max-w-[280px] sm:max-w-none">
+        <h1 data-hero-item className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-text-primary tracking-tight leading-snug max-w-[280px] sm:max-w-none">
           I make complex,{' '}
           <span className="font-playwrite font-normal">data-dense</span>{' '}
           products feel simple, and ground every decision in research.
         </h1>
 
         {/* Subheadline */}
-        <p data-hero-item className="font-grotesk text-[16px] sm:text-xl text-black max-w-[280px] sm:max-w-none">
+        <p data-hero-item className="font-grotesk text-[16px] sm:text-xl text-text-primary max-w-[280px] sm:max-w-none">
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 
         {/* Based in */}
         <div data-hero-item className="flex flex-col items-center gap-2.5">
-          <p className="font-mono-bold text-[14px] text-black">Based in</p>
-          <p className="font-grotesk font-medium text-[14px] text-black">
+          <p className="font-mono-bold text-[14px] text-text-primary">Based in</p>
+          <p className="font-grotesk font-medium text-[14px] text-text-primary">
             🇪🇸 Granada, Spain
           </p>
         </div>
 
         {/* My Stack */}
         <div data-hero-item className="flex flex-col items-center gap-2.5">
-          <p className="font-mono-bold text-[14px] text-black">My Stack</p>
+          <p className="font-mono-bold text-[14px] text-text-primary">My Stack</p>
           <div className="flex items-center">
             {stackIcons.map((icon, i) => (
               <div
                 key={icon.alt + i}
                 data-stack-icon
-                className="group bg-[#fbfbfb] flex items-center justify-center w-[50px] h-[50px] rounded-full -mr-4 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] hover:z-10 relative cursor-pointer"
+                className="group bg-[#fbfbfb] flex items-center justify-center w-[50px] h-[50px] rounded-pill -mr-4 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] hover:z-10 relative cursor-pointer"
               >
                 <span
                   role="tooltip"
@@ -147,7 +147,7 @@ export default function HeroSection() {
           <a
             href="/about#toolkit"
             onClick={scrollToToolkit}
-            className="font-caveat font-bold text-xl text-[#6d3fc4] hover:underline underline-offset-4"
+            className="font-caveat font-bold text-xl text-accent-handwritten hover:underline underline-offset-4"
           >
             + more
           </a>
@@ -160,11 +160,11 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-full transition-colors"
+            className="bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors"
           >
             Download CV
           </a>
-          <p className="font-caveat font-bold text-xl text-[#6d3fc4] max-w-[280px] sm:max-w-[300px]">
+          <p className="font-caveat font-bold text-xl text-accent-handwritten max-w-[280px] sm:max-w-[300px]">
             This entire portfolio was built with Claude Code.
           </p>
         </div>

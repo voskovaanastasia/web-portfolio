@@ -146,11 +146,11 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-white">
+    <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-black">My Journey</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-text-primary">My Journey</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Work Experience
           </h2>
         </div>
@@ -161,26 +161,26 @@ export default function ExperienceSection() {
               {/* Timeline rail */}
               <div className="flex flex-col items-center shrink-0 w-4">
                 <div
-                  className={`w-4 h-4 rounded-full mt-0.5 shrink-0 ${
-                    exp.current ? 'bg-[#288fd6]' : 'bg-[#c4c4c4]'
+                  className={`w-4 h-4 rounded-pill mt-0.5 shrink-0 ${
+                    exp.current ? 'bg-blue-500' : 'bg-grey-300'
                   }`}
                 />
                 {index < experiences.length - 1 && (
                   <div
                     className={`w-0.5 flex-1 ${
-                      exp.current ? 'bg-[#288fd6]' : 'bg-[#e0e0e0]'
+                      exp.current ? 'bg-blue-500' : 'bg-border-subtle'
                     }`}
                   />
                 )}
               </div>
 
               <div className="pb-12 flex-1">
-                <p className="font-mono-bold text-sm text-[#4a4a48] tracking-wide mb-5">
+                <p className="font-mono-bold text-sm text-text-primary tracking-wide mb-5">
                   {formatDateRange(exp.start, exp.end)}
                 </p>
 
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="bg-white border border-[#ececec] rounded-[12px] w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
+                  <div className="bg-surface-default border border-border-subtle rounded-control w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
                     <img
                       src={exp.logo}
                       alt=""
@@ -192,26 +192,26 @@ export default function ExperienceSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-black">
+                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-text-primary">
                       {exp.title}
                     </h3>
-                    <p className="font-grotesk text-sm text-[#6b6a67]">
+                    <p className="font-grotesk text-sm text-text-secondary">
                       {[
                         exp.meta[0],
                         formatDuration(exp.start, exp.end, now),
                         ...exp.meta.slice(1),
                       ].map((part, i) => (
                         <span key={i}>
-                          {i > 0 && <span className="mx-1.5 text-[#c4c4c4]">•</span>}
+                          {i > 0 && <span className="mx-1.5 text-grey-300">•</span>}
                           {part}
                         </span>
                       ))}
                     </p>
                     {exp.subtitle && (
-                      <p className="font-grotesk text-sm text-[#6b6a67]">
+                      <p className="font-grotesk text-sm text-text-secondary">
                         {exp.subtitle.map((part, i) => (
                           <span key={i}>
-                            {i > 0 && <span className="mx-1.5 text-[#c4c4c4]">•</span>}
+                            {i > 0 && <span className="mx-1.5 text-grey-300">•</span>}
                             {part}
                           </span>
                         ))}
@@ -220,8 +220,8 @@ export default function ExperienceSection() {
                   </div>
                 </div>
 
-                <div className="bg-[#f6f6f5] rounded-[16px] px-6 py-5 mb-5">
-                  <p className="font-grotesk text-[14px] text-[#3d3d3b] leading-relaxed">
+                <div className="bg-surface-subtle rounded-panel px-6 py-5 mb-5">
+                  <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
                     {exp.challenge}
                   </p>
                 </div>
@@ -230,7 +230,7 @@ export default function ExperienceSection() {
                   {exp.bullets.map((bullet, i) => (
                     <li
                       key={i}
-                      className="font-grotesk text-[14px] text-[#3d3d3b] leading-relaxed"
+                      className="font-grotesk text-[14px] text-text-primary leading-relaxed"
                     >
                       {bullet}
                     </li>
@@ -241,7 +241,7 @@ export default function ExperienceSection() {
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-[#e9f3fa] text-black rounded-full text-xs font-grotesk font-medium"
+                      className="px-3 py-1.5 bg-surface-brand-tint text-text-primary rounded-pill text-xs font-grotesk font-medium"
                     >
                       {skill}
                     </span>

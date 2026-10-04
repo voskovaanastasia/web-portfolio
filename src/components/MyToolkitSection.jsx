@@ -23,7 +23,7 @@ const languages = [
 function ToolCard({ icon, label }) {
   return (
     <div data-tool-card className="flex items-center gap-2.5">
-      <div data-tool-tile className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0 p-[7px]">
+      <div data-tool-tile className="bg-surface-default border border-border-subtle rounded-panel w-[50px] h-[50px] flex items-center justify-center shrink-0 p-[7px]">
         <img
           src={icon}
           alt=""
@@ -34,7 +34,7 @@ function ToolCard({ icon, label }) {
           className="w-[25px] h-[25px] object-contain"
         />
       </div>
-      <p className="font-grotesk font-bold text-sm text-black">{label}</p>
+      <p className="font-grotesk font-bold text-sm text-text-primary">{label}</p>
     </div>
   );
 }
@@ -62,8 +62,8 @@ function ToolGroup({ label, tools }) {
 
   return (
     <div data-tool-group className="flex flex-col gap-5 w-full">
-      <p className="font-mono-bold text-[14px] text-black">{label}</p>
-      <div ref={gridRef} className="bg-[#f7f7f7] rounded-[15px] p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
+      <p className="font-mono-bold text-[14px] text-text-primary">{label}</p>
+      <div ref={gridRef} className="bg-surface-subtle rounded-panel p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
         {visibleTools.map((tool) => (
           <ToolCard key={tool.id} icon={tool.icon} label={tool.name} />
         ))}
@@ -73,7 +73,7 @@ function ToolGroup({ label, tools }) {
             onClick={() => setExpanded((v) => !v)}
             className="flex items-center text-left"
           >
-            <p className="font-caveat font-bold text-xl text-[#6d3fc4]">
+            <p className="font-caveat font-bold text-xl text-accent-handwritten">
               {expanded ? 'show less' : '+ more'}
             </p>
           </button>
@@ -140,12 +140,12 @@ export default function MyToolkitSection() {
   }, []);
 
   return (
-    <section ref={rootRef} id="toolkit" className="relative overflow-hidden bg-white py-12 sm:py-24">
+    <section ref={rootRef} id="toolkit" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
-        <p data-toolkit-intro className="font-caveat font-bold text-xl text-[#6d3fc4]">
+        <p data-toolkit-intro className="font-caveat font-bold text-xl text-accent-handwritten">
           Computer Science is my secret weapon.
         </p>
-        <h2 data-toolkit-intro className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug">
+        <h2 data-toolkit-intro className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug">
           I am Anastasiia Voskova,
           <span className="font-playwrite font-normal block mt-2">
             a designer who thinks like an engineer.
@@ -158,16 +158,16 @@ export default function MyToolkitSection() {
           <ToolGroup label="PROGRAMMING" tools={programmingTools} />
 
           <div data-tool-group className="flex flex-col gap-5 w-full">
-            <p className="font-mono-bold text-[14px] text-black">Language</p>
-            <div className="bg-[#f7f7f7] rounded-[15px] p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
+            <p className="font-mono-bold text-[14px] text-text-primary">Language</p>
+            <div className="bg-surface-subtle rounded-panel p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
               {languages.map((lang) => (
                 <div key={lang.label} data-tool-card className="flex items-center gap-2.5">
-                  <div data-tool-tile className="bg-white border border-[#ececec] rounded-[15px] w-[50px] h-[50px] flex items-center justify-center shrink-0">
+                  <div data-tool-tile className="bg-surface-default border border-border-subtle rounded-panel w-[50px] h-[50px] flex items-center justify-center shrink-0">
                     <img src={lang.flag} alt={`${lang.label} flag`} className="w-8 h-[22px] rounded-[3px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
                   </div>
                   <div className="flex flex-col">
-                    <p className="font-grotesk font-bold text-sm text-black">{lang.label}</p>
-                    <p className="font-grotesk text-xs text-[#6b6a67]">{lang.level}</p>
+                    <p className="font-grotesk font-bold text-sm text-text-primary">{lang.label}</p>
+                    <p className="font-grotesk text-xs text-text-secondary">{lang.level}</p>
                   </div>
                 </div>
               ))}

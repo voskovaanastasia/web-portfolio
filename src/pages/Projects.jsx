@@ -33,7 +33,7 @@ function ProjectCard({ project, index }) {
 
   return (
     <article className="flex flex-col">
-      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-[24px] mb-6">
+      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-6">
         <img
           src={project.image960}
           srcSet={`${project.image480} 480w, ${project.image960} 960w`}
@@ -47,19 +47,19 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <h2 className="font-grotesk font-bold text-[26px] text-black mb-3">
-        <Link to={`/project/${project.id}`} className="hover:text-[#288fd6] hover:underline underline-offset-4 transition-colors">
+      <h2 className="font-grotesk font-bold text-[26px] text-text-primary mb-3">
+        <Link to={`/project/${project.id}`} className="hover:text-text-brand hover:underline underline-offset-4 transition-colors">
           {project.title}
         </Link>
       </h2>
-      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed mb-4">
+      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed mb-4">
         {project.description}
       </p>
       <div className="flex flex-wrap gap-2 mb-6">
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1.5 bg-[#f2f3f5] rounded-full font-grotesk font-medium text-xs text-[#22292f]"
+            className="px-3 py-1.5 bg-surface-subtle rounded-pill font-grotesk font-medium text-xs text-ink"
           >
             {tag}
           </span>
@@ -68,7 +68,7 @@ function ProjectCard({ project, index }) {
       <div className="mt-auto flex justify-end">
         <Link
           to={`/project/${project.id}`}
-          className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-grotesk font-medium px-6 py-3 rounded-full text-base transition-colors"
+          className="bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium px-6 py-3 rounded-pill text-base transition-colors"
         >
           Read case study
         </Link>
@@ -178,10 +178,10 @@ export default function Projects() {
       <section className="relative overflow-hidden pt-24 pb-40">
         <DotsBackground />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center flex flex-col gap-6">
-          <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl text-black tracking-tight">
+          <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl text-text-primary tracking-tight">
             Things I&rsquo;ve Worked On
           </h1>
-          <p className="font-grotesk text-lg sm:text-xl text-[#393939] leading-relaxed">
+          <p className="font-grotesk text-lg sm:text-xl text-text-primary leading-relaxed">
             This is where ideas meet execution &mdash; a space that brings together the projects,
             experiments, and collaborations that define how I create and what I value.
           </p>
@@ -189,11 +189,11 @@ export default function Projects() {
       </section>
 
       {/* Cases */}
-      <section className="bg-white py-16 min-h-[60vh]">
+      <section className="bg-surface-default py-16 min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Category filter */}
           <div className="flex justify-center mb-14">
-            <div className="bg-[#f7f7f7] border border-[#ececec] rounded-2xl sm:rounded-full p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto">
+            <div className="bg-surface-subtle border border-border-subtle rounded-panel sm:rounded-pill p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto">
               {categories.map((category) => {
                 const isEmpty = !projects.some((p) => p.category === category);
                 return (
@@ -201,12 +201,12 @@ export default function Projects() {
                     key={category}
                     onClick={() => !isEmpty && setActiveCategory(category)}
                     aria-disabled={isEmpty}
-                    className={`relative group px-6 py-3 rounded-full font-grotesk font-medium text-base transition-colors ${
+                    className={`relative group px-6 py-3 rounded-pill font-grotesk font-medium text-base transition-colors ${
                       activeCategory === category
-                        ? 'bg-[#1f7ab8] text-white'
+                        ? 'bg-action-primary text-white'
                         : isEmpty
-                          ? 'text-[#6b6a67] cursor-not-allowed'
-                          : 'text-black hover:bg-white'
+                          ? 'text-text-secondary cursor-not-allowed'
+                          : 'text-text-primary hover:bg-surface-default'
                     }`}
                   >
                     {category}
@@ -223,7 +223,7 @@ export default function Projects() {
 
           {/* Cards */}
           {visible.length === 0 ? (
-            <p className="text-center font-grotesk text-lg text-[#6b6a67] py-20">
+            <p className="text-center font-grotesk text-lg text-text-secondary py-20">
               Cases in this category are coming soon.
             </p>
           ) : (

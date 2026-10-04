@@ -25,7 +25,7 @@ function Layout() {
   const onDots = dottedHeroRoutes.includes(pathname);
 
   return (
-    <div className={`flex flex-col min-h-screen ${onDots ? '' : 'bg-white'}`}>
+    <div className={`flex flex-col min-h-screen ${onDots ? '' : 'bg-surface-default'}`}>
         <Navigation />
         <Suspense fallback={null}>
           <Routes>

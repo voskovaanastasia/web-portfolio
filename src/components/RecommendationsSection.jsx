@@ -12,11 +12,11 @@ const recommendations = [
 
 export default function RecommendationsSection() {
   return (
-    <section id="recommendations" className="relative overflow-hidden bg-white py-12 sm:py-24">
+    <section id="recommendations" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-[14px] text-black">Recommendations</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-text-primary">Recommendations</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             What people say
           </h2>
         </div>
@@ -25,9 +25,9 @@ export default function RecommendationsSection() {
           {recommendations.map((rec) => (
             <figure
               key={rec.name}
-              className="rounded-[15px] bg-[#f7f7f7] p-5 sm:p-8 flex flex-col justify-between gap-6"
+              className="rounded-panel bg-surface-subtle p-5 sm:p-8 flex flex-col justify-between gap-6"
             >
-              <blockquote className="font-grotesk text-[16px] sm:text-lg text-black leading-relaxed">
+              <blockquote className="font-grotesk text-[16px] sm:text-lg text-text-primary leading-relaxed">
                 &ldquo;{rec.quote}&rdquo;
               </blockquote>
               <figcaption className="flex items-center gap-3">
@@ -37,11 +37,11 @@ export default function RecommendationsSection() {
                   width="48"
                   height="48"
                   loading="lazy"
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-12 h-12 rounded-pill object-cover"
                 />
                 <div className="flex flex-col">
-                  <span className="font-grotesk font-bold text-[15px] text-black">{rec.name}</span>
-                  <span className="font-grotesk text-sm text-[#4a4a48]">{rec.role}</span>
+                  <span className="font-grotesk font-bold text-[15px] text-text-primary">{rec.name}</span>
+                  <span className="font-grotesk text-sm text-text-primary">{rec.role}</span>
                 </div>
               </figcaption>
             </figure>

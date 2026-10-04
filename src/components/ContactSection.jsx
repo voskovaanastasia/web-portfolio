@@ -91,11 +91,11 @@ export default function ContactSection() {
   };
 
   return (
-    <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-white">
+    <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-black">Get in Touch</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-text-primary">Get in Touch</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Let's Work Together
           </h2>
         </div>
@@ -104,9 +104,9 @@ export default function ContactSection() {
           {/* My Projects */}
           <Link
             to="/projects"
-            className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5 overflow-hidden flex flex-col group"
+            className="bg-surface-subtle border border-border-subtle rounded-card p-3 sm:p-5 overflow-hidden flex flex-col group"
           >
-            <h3 className="font-grotesk font-bold text-[16px] text-black mb-2 sm:mb-4">My Projects</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-text-primary mb-2 sm:mb-4">My Projects</h3>
             <img
               src={contactProjects}
               alt="Laptop showing the Farsafe dashboard project"
@@ -119,8 +119,8 @@ export default function ContactSection() {
           </Link>
 
           {/* Resume */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5">
-            <h3 className="font-grotesk font-bold text-[16px] text-black mb-4 sm:mb-6">Check out my CV</h3>
+          <div className="bg-surface-subtle border border-border-subtle rounded-card p-3 sm:p-5">
+            <h3 className="font-grotesk font-bold text-[16px] text-text-primary mb-4 sm:mb-6">Check out my CV</h3>
             <a
               href="/Anastasiia-Voskova-Resume.pdf"
               target="_blank"
@@ -138,7 +138,7 @@ export default function ContactSection() {
                       fill="none"
                     />
                   </svg>
-                  <p className="font-grotesk font-bold text-xl text-black">My CV</p>
+                  <p className="font-grotesk font-bold text-xl text-text-primary">My CV</p>
                   <div className="h-1 bg-[#e8b931] mt-3 w-24" />
                 </div>
               </div>
@@ -146,7 +146,7 @@ export default function ContactSection() {
           </div>
 
           {/* Phone mockup */}
-          <div className="rounded-[24px] overflow-hidden md:row-span-2 min-h-[320px]">
+          <div className="rounded-card overflow-hidden md:row-span-2 min-h-[320px]">
             <img
               src={contactPhone}
               alt="Phone showing a crypto wallet app design"
@@ -159,7 +159,7 @@ export default function ContactSection() {
           </div>
 
           {/* Skills */}
-          <div className="bg-[#6d3fc4] rounded-[24px] p-3 sm:p-5 overflow-hidden">
+          <div className="bg-accent-handwritten rounded-card p-3 sm:p-5 overflow-hidden">
             <h3 className="font-grotesk font-bold text-[16px] text-white mb-4 sm:mb-6">Skills</h3>
             <div className="flex flex-col gap-3 sm:gap-5 items-center">
               {skillRows.map((row, i) => (
@@ -167,7 +167,7 @@ export default function ContactSection() {
                   {row.map((skill) => (
                     <span
                       key={skill.label}
-                      className={`px-5 py-2.5 bg-[#4c2c8a] rounded-full font-grotesk font-medium text-sm text-white whitespace-nowrap ${skill.rotate} ${skill.offset ?? ''}`}
+                      className={`px-5 py-2.5 bg-purple-700 rounded-pill font-grotesk font-medium text-sm text-white whitespace-nowrap ${skill.rotate} ${skill.offset ?? ''}`}
                     >
                       {skill.label}
                     </span>
@@ -178,13 +178,13 @@ export default function ContactSection() {
           </div>
 
           {/* Email card */}
-          <div className="bg-[#f6f6f5] border border-[#ececec] rounded-[24px] p-3 sm:p-5 flex flex-col">
+          <div className="bg-surface-subtle border border-border-subtle rounded-card p-3 sm:p-5 flex flex-col">
             <div className="flex items-start justify-between mb-3 sm:mb-5">
               <div>
-                <h3 className="font-grotesk font-bold text-[16px] text-black">Anastasiia Voskova</h3>
-                <p className="font-grotesk text-sm text-[#6b6a67] mt-1">{EMAIL}</p>
+                <h3 className="font-grotesk font-bold text-[16px] text-text-primary">Anastasiia Voskova</h3>
+                <p className="font-grotesk text-sm text-text-secondary mt-1">{EMAIL}</p>
               </div>
-              <div className="bg-white rounded-[12px] w-12 h-12 flex items-center justify-center shadow-sm shrink-0">
+              <div className="bg-surface-default rounded-control w-12 h-12 flex items-center justify-center shadow-sm shrink-0">
                 <svg viewBox="0 0 24 24" className="w-6 h-6">
                   <path fill="#4285f4" d="M20 18h1.5A1.5 1.5 0 0 0 23 16.5v-9l-3 2.25V18z" />
                   <path fill="#34a853" d="M1 7.5v9A1.5 1.5 0 0 0 2.5 18H4V9.75L1 7.5z" />
@@ -196,19 +196,19 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[16px] p-3 sm:p-5 mb-3 sm:mb-5 shadow-sm">
-              <p className="font-grotesk text-sm text-black border-b border-[#ececec] pb-3 mb-3">
-                <span className="text-[#6b6a67]">To</span>&nbsp;&nbsp;
+            <div className="bg-surface-default rounded-panel p-3 sm:p-5 mb-3 sm:mb-5 shadow-sm">
+              <p className="font-grotesk text-sm text-text-primary border-b border-border-subtle pb-3 mb-3">
+                <span className="text-text-secondary">To</span>&nbsp;&nbsp;
                 <span className="font-medium">{EMAIL}</span>
               </p>
-              <p className="font-grotesk font-medium text-sm text-black mb-3">Let's Chat</p>
-              <p className="font-grotesk text-sm text-[#6b6a67]">Say Hello</p>
+              <p className="font-grotesk font-medium text-sm text-text-primary mb-3">Let's Chat</p>
+              <p className="font-grotesk text-sm text-text-secondary">Say Hello</p>
             </div>
 
             <a
               href={`mailto:${EMAIL}`}
               onClick={handleEmailClick}
-              className="block text-center bg-[#1f7ab8] rounded-full py-4 mt-auto font-grotesk font-bold text-base text-white hover:bg-[#186a9c] transition-colors"
+              className="block text-center bg-action-primary rounded-pill py-4 mt-auto font-grotesk font-bold text-base text-white hover:bg-action-primary-hover transition-colors"
             >
               {copied ? 'Email Copied!' : 'Email Me'}
             </a>
@@ -217,7 +217,7 @@ export default function ContactSection() {
 
         {/* Socials */}
         <div className="mt-12 flex flex-col items-center gap-5">
-          <p className="font-mono-bold text-[14px] text-black">My Social</p>
+          <p className="font-mono-bold text-[14px] text-text-primary">My Social</p>
           <div className="flex items-center gap-4">
             {socials.map((social) => (
               <a
@@ -226,10 +226,10 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="bg-white border border-[#ececec] shadow-sm w-14 h-14 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                className="bg-surface-default border border-border-subtle shadow-sm w-14 h-14 rounded-pill flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <span
-                  className={`${social.bg} w-9 h-9 rounded-full flex items-center justify-center`}
+                  className={`${social.bg} w-9 h-9 rounded-pill flex items-center justify-center`}
                 >
                   {social.icon}
                 </span>
@@ -238,7 +238,7 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <p className="text-center font-grotesk text-sm text-[#6b6a67] mt-10">
+        <p className="text-center font-grotesk text-sm text-text-secondary mt-10">
           Based in Granada, Spain 🇪🇸 · Open to new opportunities and exciting design challenges.
         </p>
       </div>

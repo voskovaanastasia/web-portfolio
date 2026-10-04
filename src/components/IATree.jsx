@@ -176,7 +176,7 @@ export default function IATree({
         .attr('fill', (d) => {
           if (d.depth === 0) return '#181212';
           const idx = d.data._branchIdx;
-          return idx >= 0 ? FILLS[idx % FILLS.length] : '#f7f7f7';
+          return idx >= 0 ? FILLS[idx % FILLS.length] : 'var(--color-surface-subtle)';
         })
         .attr('stroke', (d) => {
           if (d.depth === 0) return '#181212';

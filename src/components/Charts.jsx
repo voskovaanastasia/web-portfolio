@@ -34,7 +34,7 @@ export function Donut({ segments, hollowSize = '32%' }) {
       },
       plotOptions: {
         radialBar: {
-          track: { background: '#ececec' },
+          track: { background: 'var(--color-border-subtle)' },
           dataLabels: { show: false },
           hollow: { margin: 0, size: hollowSize },
         },
@@ -143,8 +143,8 @@ export function ProgressBar({ pct, color }) {
   }, [pct]);
 
   return (
-    <div ref={trackRef} className="h-2.5 rounded-full bg-[#d9d9d9] overflow-hidden">
-      <div ref={fillRef} className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }} />
+    <div ref={trackRef} className="h-2.5 rounded-pill bg-[#d9d9d9] overflow-hidden">
+      <div ref={fillRef} className="h-full rounded-pill" style={{ width: `${pct}%`, backgroundColor: color }} />
     </div>
   );
 }

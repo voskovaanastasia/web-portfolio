@@ -76,8 +76,8 @@ const cards = [
 function SkillTag({ label, accent }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1.5 text-xs font-grotesk font-medium ${
-        accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#f2f3f5] text-[#22292f]'
+      className={`inline-flex items-center rounded-pill px-3 py-1.5 text-xs font-grotesk font-medium ${
+        accent ? 'bg-purple-700 text-white' : 'bg-surface-subtle text-ink'
       }`}
     >
       {label}
@@ -88,8 +88,8 @@ function SkillTag({ label, accent }) {
 function ToolPill({ icon, label, accent }) {
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-grotesk font-medium ${
-        accent ? 'bg-[#4c2c8a] text-white' : 'bg-[#f2f3f5] text-[#22292f]'
+      className={`inline-flex items-center gap-2 rounded-pill px-3 py-1.5 text-xs font-grotesk font-medium ${
+        accent ? 'bg-purple-700 text-white' : 'bg-surface-subtle text-ink'
       }`}
     >
       <img
@@ -108,11 +108,11 @@ function ToolPill({ icon, label, accent }) {
 
 export default function HowIWorkSection() {
   return (
-    <section id="how-i-work" className="relative overflow-hidden bg-white py-12 sm:py-24">
+    <section id="how-i-work" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-black">How I work</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-text-primary">How I work</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Designing with an engineer&rsquo;s mindset
           </h2>
         </div>
@@ -121,10 +121,10 @@ export default function HowIWorkSection() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className={`rounded-[24px] p-5 flex flex-col gap-2 sm:gap-4 ${
+              className={`rounded-card p-5 flex flex-col gap-2 sm:gap-4 ${
                 card.accent
-                  ? 'bg-[#6d3fc4] text-white'
-                  : 'bg-[#f7f7f7] border border-[#ececec] text-black'
+                  ? 'bg-accent-handwritten text-white'
+                  : 'bg-surface-subtle border border-border-subtle text-text-primary'
               }`}
             >
               <img

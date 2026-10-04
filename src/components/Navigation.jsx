@@ -9,7 +9,7 @@ export default function Navigation() {
     <header className="sticky top-0 z-50">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-surface-default focus:text-text-primary focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
       >
         Skip to content
       </a>
@@ -24,7 +24,7 @@ export default function Navigation() {
             height={30}
             className="w-[37px] h-[30px]"
           />
-          <span className="font-mono-bold font-bold text-xl whitespace-nowrap text-black hidden sm:inline">
+          <span className="font-mono-bold font-bold text-xl whitespace-nowrap text-text-primary hidden sm:inline">
             ANASTASIIA VOSKOVA
           </span>
         </Link>
@@ -33,13 +33,13 @@ export default function Navigation() {
         <div className="hidden md:flex items-center gap-[25px] font-grotesk">
           <Link
             to="/about"
-            className="text-base font-medium text-[#393939] hover:text-black transition-colors"
+            className="text-base font-medium text-text-primary hover:text-text-primary transition-colors"
           >
             About Me
           </Link>
           <Link
             to="/projects"
-            className="text-base font-medium text-[#393939] hover:text-black transition-colors"
+            className="text-base font-medium text-text-primary hover:text-text-primary transition-colors"
           >
             Portfolio
           </Link>
@@ -50,7 +50,7 @@ export default function Navigation() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="bg-[#1f7ab8] hover:bg-[#186a9c] text-white font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
+            className="bg-action-primary hover:bg-action-primary-hover text-white font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
           >
             Download CV
           </a>
@@ -65,7 +65,7 @@ export default function Navigation() {
           className="md:hidden p-2 ml-auto"
         >
           <svg
-            className="w-5 h-5 text-gray-700"
+            className="w-5 h-5 text-text-primary"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -84,18 +84,18 @@ export default function Navigation() {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="absolute top-full left-0 right-0 mt-2 mx-4 bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-2xl p-4 flex flex-col gap-2 md:hidden font-grotesk"
+          className="absolute top-full left-0 right-0 mt-2 mx-4 bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-panel p-4 flex flex-col gap-2 md:hidden font-grotesk"
         >
           <Link
             to="/about"
-            className="block px-4 py-2 text-[#393939] hover:text-black rounded-lg transition-colors text-base font-medium"
+            className="block px-4 py-2 text-text-primary hover:text-text-primary rounded-lg transition-colors text-base font-medium"
             onClick={() => setIsOpen(false)}
           >
             About Me
           </Link>
           <Link
             to="/projects"
-            className="block px-4 py-2 text-[#393939] hover:text-black rounded-lg transition-colors text-base font-medium"
+            className="block px-4 py-2 text-text-primary hover:text-text-primary rounded-lg transition-colors text-base font-medium"
             onClick={() => setIsOpen(false)}
           >
             Portfolio
@@ -105,7 +105,7 @@ export default function Navigation() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="block px-4 py-2 bg-[#1f7ab8] hover:bg-[#186a9c] text-white rounded-lg transition-colors text-base font-medium text-center"
+            className="block px-4 py-2 bg-action-primary hover:bg-action-primary-hover text-white rounded-lg transition-colors text-base font-medium text-center"
             onClick={() => setIsOpen(false)}
           >
             Download CV

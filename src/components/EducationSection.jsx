@@ -72,11 +72,11 @@ const education = [
 
 export default function EducationSection() {
   return (
-    <section id="education" className="relative overflow-hidden py-12 sm:py-24 bg-white">
+    <section id="education" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-black">My Learning</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          <p className="font-mono-bold text-[14px] text-text-primary">My Learning</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Education
           </h2>
         </div>
@@ -86,19 +86,19 @@ export default function EducationSection() {
             <div key={edu.dateRange} className="flex gap-6">
               {/* Timeline rail */}
               <div className="flex flex-col items-center shrink-0 w-4">
-                <div className="w-4 h-4 rounded-full mt-0.5 shrink-0 bg-[#c4c4c4]" />
+                <div className="w-4 h-4 rounded-pill mt-0.5 shrink-0 bg-grey-300" />
                 {index < education.length - 1 && (
-                  <div className="w-0.5 flex-1 bg-[#e0e0e0]" />
+                  <div className="w-0.5 flex-1 bg-border-subtle" />
                 )}
               </div>
 
               <div className="pb-12 flex-1">
-                <p className="font-mono-bold text-sm text-[#4a4a48] tracking-wide mb-5">
+                <p className="font-mono-bold text-sm text-text-primary tracking-wide mb-5">
                   {edu.dateRange}
                 </p>
 
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="bg-white border border-[#ececec] rounded-[12px] w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
+                  <div className="bg-surface-default border border-border-subtle rounded-control w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
                     <img
                       src={edu.logo}
                       alt=""
@@ -110,13 +110,13 @@ export default function EducationSection() {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-black">
+                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-text-primary">
                       {edu.school}
                     </h3>
-                    <p className="font-grotesk text-sm text-[#6b6a67]">
+                    <p className="font-grotesk text-sm text-text-secondary">
                       {edu.meta.map((part, i) => (
                         <span key={i}>
-                          {i > 0 && <span className="mx-1.5 text-[#c4c4c4]">•</span>}
+                          {i > 0 && <span className="mx-1.5 text-grey-300">•</span>}
                           {part}
                         </span>
                       ))}
@@ -124,7 +124,7 @@ export default function EducationSection() {
                   </div>
                 </div>
 
-                <p className="font-grotesk text-[14px] text-[#3d3d3b] leading-relaxed mb-5">
+                <p className="font-grotesk text-[14px] text-text-primary leading-relaxed mb-5">
                   {edu.description}
                 </p>
 
@@ -132,7 +132,7 @@ export default function EducationSection() {
                   {edu.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-[#e9f3fa] text-black rounded-full text-sm font-grotesk font-medium"
+                      className="px-3 py-1.5 bg-surface-brand-tint text-text-primary rounded-pill text-sm font-grotesk font-medium"
                     >
                       {skill}
                     </span>

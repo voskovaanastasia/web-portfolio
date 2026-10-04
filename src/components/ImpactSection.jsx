@@ -21,7 +21,7 @@ const metrics = [
     label: 'Time-to-First-Probe',
     project: 'Farsafe',
     description: 'Optimized user onboarding and product discovery',
-    card: 'bg-[#22292f] text-white',
+    card: 'bg-surface-inverse text-white',
     number_color: 'text-white',
     meta_color: 'text-[#bdbdbd]',
   },
@@ -30,16 +30,16 @@ const metrics = [
     label: 'Bounce Rate',
     project: 'bART Solutions',
     description: '68% → 41% after restructured IA',
-    card: 'bg-[#f7f7f7] text-black',
-    number_color: 'text-[#288fd6]',
-    meta_color: 'text-black',
+    card: 'bg-surface-subtle text-text-primary',
+    number_color: 'text-blue-500', // large text only
+    meta_color: 'text-text-primary',
   },
   {
     number: '0→1',
     label: 'Secure Send / Swap',
     project: 'CryptoWallet',
     description: 'Guided flow designed to prevent lost funds',
-    card: 'bg-[#1f7ab8] text-white',
+    card: 'bg-action-primary text-white',
     number_color: 'text-white',
     meta_color: 'text-white',
   },
@@ -48,16 +48,16 @@ const metrics = [
     label: 'Dashboard Task Success',
     project: 'Farsafe',
     description: 'High usability in a data-dense interface',
-    card: 'bg-[#f7f7f7] text-black',
-    number_color: 'text-[#288fd6]',
-    meta_color: 'text-black',
+    card: 'bg-surface-subtle text-text-primary',
+    number_color: 'text-blue-500', // large text only
+    meta_color: 'text-text-primary',
   },
   {
     number: '6+',
     label: 'Years of Experience',
     project: 'Web, Mobile & SaaS',
     description: 'Product design, UX/UI, design systems & research',
-    card: 'bg-[#6d3fc4] text-white',
+    card: 'bg-accent-handwritten text-white',
     number_color: 'text-white',
     meta_color: 'text-white/80',
   },
@@ -94,11 +94,11 @@ export default function ImpactSection() {
   }, []);
 
   return (
-    <section ref={rootRef} id="impact" className="relative overflow-hidden bg-white py-12 sm:py-24">
+    <section ref={rootRef} id="impact" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-[14px] text-black">Proven Results</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug max-w-[590px]">
+          <p className="font-mono-bold text-[14px] text-text-primary">Proven Results</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug max-w-[590px]">
             Design decisions grounded in research, measured by real outcomes.
           </h2>
         </div>
@@ -107,7 +107,7 @@ export default function ImpactSection() {
           {metrics.map((metric) => (
             <div
               key={metric.label}
-              className={`rounded-[15px] p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${metric.card}`}
+              className={`rounded-panel p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${metric.card}`}
             >
               <p
                 data-metric-number
