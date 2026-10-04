@@ -51,9 +51,20 @@ const DEFAULT_IMAGE = '/og-image.png';
  * 1200x630 share image (e.g. "/og/farsafe.png") and falls back to the
  * default card when omitted. `jsonLd` is an optional structured-data object
  * (e.g. a CreativeWork) injected as this route's <script type="ld+json">
- * and removed again on routes that don't pass one.
+ * and removed again on routes that don't pass one. `robots` is an optional
+ * robots directive (e.g. "noindex, nofollow") applied only while the route
+ * is mounted.
  */
-export default function useDocumentMeta({ title, description, path, image, jsonLd }) {
+export default function useDocumentMeta({ title, description, path, image, jsonLd, robots }) {
+  useEffect(() => {
+    if (!robots) return undefined;
+    const el = document.createElement('meta');
+    el.setAttribute('name', 'robots');
+    el.setAttribute('content', robots);
+    document.head.appendChild(el);
+    return () => el.remove();
+  }, [robots]);
+
   useEffect(() => {
     document.title = title ?? SITE_NAME;
 
