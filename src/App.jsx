@@ -16,6 +16,8 @@ const FitnessAppCase = lazy(() => import('./pages/FitnessAppCase'));
 const OnlinePaymentsCase = lazy(() => import('./pages/OnlinePaymentsCase'));
 const ShootCase = lazy(() => import('./pages/ShootCase'));
 const TaxComplianceCase = lazy(() => import('./pages/TaxComplianceCase'));
+// Preview-only page: not linked from anywhere, noindex, not in the sitemap.
+const BuiltWithClaudeCase = lazy(() => import('./pages/BuiltWithClaudeCase'));
 
 // Routes whose hero uses the dotted body background; other pages sit on plain white.
 const dottedHeroRoutes = ['/', '/about', '/projects'];
@@ -41,6 +43,7 @@ function Layout() {
             <Route path="/project/online-payments" element={<OnlinePaymentsCase />} />
             <Route path="/project/shoot" element={<ShootCase />} />
             <Route path="/project/tax-compliance" element={<TaxComplianceCase />} />
+            <Route path="/project/built-with-claude" element={<BuiltWithClaudeCase />} />
           </Routes>
         </Suspense>
         <Lightbox />
