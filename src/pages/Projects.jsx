@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { Link } from 'react-router-dom';
 import caseFarsafe480 from '../assets/case-farsafe-480w.webp';
 import caseFarsafe960 from '../assets/case-farsafe-960w.webp';
@@ -184,6 +185,24 @@ export default function Projects() {
 
   const visible = projects.filter((p) => p.category === activeCategory);
 
+  // Cards fade and rise in one after another when the tab changes. Skipped on
+  // first load (so the above-the-fold cover isn't delayed) and for reduced motion.
+  const gridRef = useRef(null);
+  const hasMounted = useRef(false);
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return undefined;
+    }
+    if (!gridRef.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const tween = gsap.fromTo(
+      gridRef.current.children,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,transform' }
+    );
+    return () => tween.kill();
+  }, [activeCategory]);
+
   return (
     <main id="main-content" className="flex flex-col">
       {/* Hero */}
@@ -239,7 +258,7 @@ export default function Projects() {
               Cases in this category are coming soon.
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
               {visible.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
