@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { Link } from 'react-router-dom';
 import caseFarsafe480 from '../assets/case-farsafe-480w.webp';
@@ -189,7 +189,28 @@ export default function Projects() {
   // first load (so the above-the-fold cover isn't delayed) and for reduced motion.
   const gridRef = useRef(null);
   const hasMounted = useRef(false);
+  const prevIndex = useRef(0);
+  const tabsRef = useRef(null);
+  const tabRefs = useRef([]);
+  const [pill, setPill] = useState(null);
+
+  // The active pill slides between tabs: measure the active button and move one
+  // shared highlight to it, instead of each button painting its own background.
+  useLayoutEffect(() => {
+    const measure = () => {
+      const el = tabRefs.current[categories.indexOf(activeCategory)];
+      if (el) setPill({ left: el.offsetLeft, top: el.offsetTop, width: el.offsetWidth, height: el.offsetHeight });
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    document.fonts?.ready.then(measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [activeCategory]);
+
   useEffect(() => {
+    const index = categories.indexOf(activeCategory);
+    const direction = index >= prevIndex.current ? 1 : -1;
+    prevIndex.current = index;
     if (!hasMounted.current) {
       hasMounted.current = true;
       return undefined;
@@ -197,8 +218,8 @@ export default function Projects() {
     if (!gridRef.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
     const tween = gsap.fromTo(
       gridRef.current.children,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,transform' }
+      { opacity: 0, x: 40 * direction },
+      { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,transform' }
     );
     return () => tween.kill();
   }, [activeCategory]);
@@ -220,21 +241,33 @@ export default function Projects() {
       </section>
 
       {/* Cases */}
-      <section className="bg-surface-default py-16 min-h-[60vh]">
+      <section className="bg-surface-default py-16 min-h-[60vh] overflow-x-clip">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Category filter */}
           <div className="flex justify-center mb-14">
-            <div className="bg-surface-subtle border border-border-subtle rounded-panel sm:rounded-pill p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto">
-              {categories.map((category) => {
+            <div
+              ref={tabsRef}
+              className="relative bg-surface-subtle border border-border-subtle rounded-panel sm:rounded-pill p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto"
+            >
+              {pill && (
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 rounded-pill bg-action-primary motion-safe:transition-[transform,width,height] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  style={{ width: pill.width, height: pill.height, transform: `translate(${pill.left}px, ${pill.top}px)` }}
+                />
+              )}
+              {categories.map((category, i) => {
                 const isEmpty = !projects.some((p) => p.category === category);
                 return (
                   <button
                     key={category}
+                    ref={(el) => (tabRefs.current[i] = el)}
+                    aria-pressed={activeCategory === category}
                     onClick={() => !isEmpty && setActiveCategory(category)}
                     aria-disabled={isEmpty}
-                    className={`relative group px-6 py-3 rounded-pill font-grotesk font-medium text-base transition-colors ${
+                    className={`relative group px-6 py-3 rounded-pill font-grotesk font-medium text-base transition-colors duration-300 ${
                       activeCategory === category
-                        ? 'bg-action-primary text-white'
+                        ? 'text-white'
                         : isEmpty
                           ? 'text-text-secondary cursor-not-allowed'
                           : 'text-text-primary hover:bg-surface-default'
