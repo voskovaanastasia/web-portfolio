@@ -35,21 +35,20 @@ const project = {
   summary: [
     {
       label: 'PROBLEM',
-      text: 'I needed a portfolio that shows how I work from research to implementation, not another template that looks like everyone else’s.',
+      text: 'I needed a portfolio that shows how I work from research to code, not another template.',
     },
     {
       label: 'MY ROLE',
-      text: 'Product designer and product owner: researched other portfolios and spoke with a recruiter, designed the components and design tokens in Figma, directed Claude Code to build them and compose the pages, and iterated on feedback from a QA tester and a front-end developer who reviewed the live site.',
+      text: 'Product designer and product owner: research, Figma components and tokens, directing Claude Code, and acting on review feedback.',
     },
     {
       label: 'APPROACH',
-      text: 'I started by studying other designers’ portfolios and talking to a recruiter about what they look for. Then I designed the building blocks in Figma, and Claude Code turned them into code and assembled the pages from them. Whenever a page needed something I hadn’t designed, I designed that component separately and added it to the project. I reviewed each result in the browser, and after launch a QA tester and a front-end developer reviewed the live site. I fixed what they found, alongside what I caught myself: responsive behaviour, performance, accessibility, the design system and copy.',
+      text: 'I studied other portfolios and talked to a recruiter, designed components in Figma, and had Claude Code build them and assemble the pages. I reviewed every diff, and a QA tester and a front-end developer reviewed the live site. I fixed what they found.',
     },
   ],
   outcome: {
     value: '68 → 95',
-    label:
-      'Mobile Lighthouse performance (LCP 5.2 s → 2.5 s, FCP 4.4 s → 2.3 s). Accessibility, Best Practices and SEO at 100.',
+    label: 'Mobile Lighthouse performance (LCP 5.2 s → 2.5 s). Accessibility, Best Practices and SEO at 100.',
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
