@@ -122,10 +122,10 @@
   }
 
   h1 {
-    @apply text-blue-600;
+    @apply text-text-brand;
   }
 
   h2 {
-    @apply text-blue-600;
+    @apply text-text-brand;
   }
 }

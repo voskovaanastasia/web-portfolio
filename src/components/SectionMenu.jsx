@@ -113,7 +113,7 @@ export default function SectionMenu({ sections = homeSections }) {
               />
               <span
                 className={`font-grotesk font-medium text-xs tracking-wide transition-colors duration-300 ${
-                  active ? 'text-black' : 'text-[#c4c4c4] group-hover:text-black'
+                  active ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
                 }`}
               >
                 {label}
@@ -136,7 +136,7 @@ export default function SectionMenu({ sections = homeSections }) {
             role="menu"
             aria-label="Page sections"
             onKeyDown={handleMenuKeyDown}
-            className="bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
+            className="bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
           >
             {sections.map(({ id, label }, index) => {
               const active = id === activeId;
@@ -148,7 +148,7 @@ export default function SectionMenu({ sections = homeSections }) {
                   href={`#${id}`}
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors text-sm sm:text-base font-medium ${
-                    active ? 'text-black' : 'text-[#393939] hover:text-black'
+                    active ? 'text-text-primary' : 'text-text-primary hover:text-text-primary'
                   }`}
                 >
                   {label}
@@ -171,12 +171,12 @@ export default function SectionMenu({ sections = homeSections }) {
           aria-haspopup="menu"
           aria-expanded={isOpen}
           aria-controls="section-menu"
-          className="bg-[rgba(240,240,240,0.2)] backdrop-blur-md border border-white/30 rounded-full pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
+          className="bg-[rgba(240,240,240,0.2)] backdrop-blur-md border border-white/30 rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
         >
-          <span className="font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap text-black">
+          <span className="font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap text-text-primary">
             {activeLabel}
           </span>
-          <span className="bg-[#288fd6] rounded-full w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0">
+          <span className="bg-blue-500 rounded-pill w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0">
             <svg
               className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white"
               fill="none"

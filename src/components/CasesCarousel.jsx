@@ -36,7 +36,7 @@ export default function CasesCarousel() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section className="py-20 bg-surface-subtle">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-[26px] font-bold mb-12 text-center">Case Studies</h2>
 
@@ -50,7 +50,7 @@ export default function CasesCarousel() {
             >
               {cases.map((caseStudy) => (
                 <div key={caseStudy.id} className="w-full flex-shrink-0">
-                  <div className="grid md:grid-cols-2 gap-8 items-center bg-white dark:bg-gray-800 p-8 rounded-lg">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-surface-default p-8 rounded-lg">
                     <img
                       src={caseStudy.image}
                       alt={caseStudy.title}
@@ -60,14 +60,14 @@ export default function CasesCarousel() {
                       <h3 className="text-[16px] font-bold mb-4">
                         {caseStudy.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">
+                      <p className="text-text-secondary text-lg mb-6">
                         {caseStudy.description}
                       </p>
-                      <div className="bg-blue-100 dark:bg-blue-900 p-4 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <div className="bg-surface-brand-tint p-4 rounded-lg">
+                        <p className="text-sm text-text-secondary">
                           Key Result
                         </p>
-                        <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                        <p className="text-2xl font-bold text-text-brand">
                           {caseStudy.results}
                         </p>
                       </div>
@@ -81,7 +81,7 @@ export default function CasesCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 transition-colors"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 bg-action-primary hover:bg-action-primary-hover text-white rounded-pill p-3 transition-colors"
             aria-label="Previous slide"
           >
             <svg
@@ -101,7 +101,7 @@ export default function CasesCarousel() {
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 transition-colors"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 bg-action-primary hover:bg-action-primary-hover text-white rounded-pill p-3 transition-colors"
             aria-label="Next slide"
           >
             <svg
@@ -125,10 +125,10 @@ export default function CasesCarousel() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-3 rounded-full transition-all ${
+                className={`h-3 rounded-pill transition-all ${
                   index === currentIndex
-                    ? 'bg-blue-600 w-8'
-                    : 'bg-gray-300 dark:bg-gray-600 w-3'
+                    ? 'bg-action-primary w-8'
+                    : 'bg-grey-300 w-3'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
