@@ -16,6 +16,8 @@ import casePayments480 from '../assets/case-payments-480w.webp';
 import casePayments960 from '../assets/case-payments-960w.webp';
 import caseShoot480 from '../assets/case-shoot-480w.webp';
 import caseShoot960 from '../assets/case-shoot-960w.webp';
+import caseBuiltWithClaude480 from '../assets/case-built-with-claude-480w.webp';
+import caseBuiltWithClaude960 from '../assets/case-built-with-claude-960w.webp';
 import DotsBackground from '../components/DotsBackground';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -157,6 +159,16 @@ const projects = [
     title: 'SHOOT: Creative-Services Marketplace',
     description:
       'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
+  },
+  {
+    id: 'built-with-claude',
+    category: 'Built with Claude',
+    image480: caseBuiltWithClaude480,
+    image960: caseBuiltWithClaude960,
+    tags: ['Claude Code', 'Figma MCP', 'Design System', 'Lighthouse 95'],
+    title: 'This Portfolio: Designed and Shipped with Claude Code',
+    description:
+      'A portfolio treated as a real product: researched against other designers’ sites, designed in Figma, built with Claude Code, and measured. A case study on directing AI without giving up design judgement, including the mistakes I caught along the way.',
   },
 ];
 
