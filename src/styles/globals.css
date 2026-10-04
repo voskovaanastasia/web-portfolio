@@ -9,6 +9,105 @@
   --color-white: #FFFFFF;
 }
 
+/* Design tokens from Figma (Primitives, Semantic, radius, Typography, Spacing) */
+:root {
+  /* Primitives */
+  --color-white-primitive: #FFFFFF;
+  --color-blue-50: #E9F3FA;
+  --color-blue-500: #288FD6;
+  --color-blue-600: #1F7AB8;
+  --color-blue-700: #186A9C;
+  --color-ink-900: #22292F;
+  --color-grey-100: #F7F7F7;
+  --color-grey-200: #ECECEC;
+  --color-grey-300: #C4C4C4;
+  --color-grey-500: #6B6A67;
+  --color-grey-700: #393939;
+  --color-purple-500: #6D3FC4;
+  --color-purple-700: #4C2C8A;
+
+  /* Semantic */
+  --color-text-primary: var(--color-grey-700);
+  --color-text-secondary: var(--color-grey-500);
+  --color-text-brand: var(--color-blue-700);
+  --color-text-inverse: var(--color-white-primitive);
+  --color-surface-default: var(--color-white-primitive);
+  --color-surface-subtle: var(--color-grey-100);
+  --color-surface-inverse: var(--color-ink-900);
+  --color-surface-brand-tint: var(--color-blue-50);
+  --color-border-subtle: var(--color-grey-200);
+  --color-action-primary: var(--color-blue-600);
+  --color-action-primary-hover: var(--color-blue-700);
+  --color-accent-handwritten: var(--color-purple-500);
+  --color-focus-ring: var(--color-blue-600);
+  --color-focus-ring-inverse: var(--color-white-primitive);
+
+  /* Radius */
+  --radius-card: 24px;
+  --radius-panel: 16px;
+  --radius-control: 12px;
+  --radius-pill: 9999px;
+
+  /* Font family */
+  --font-ui: 'Space Grotesk', sans-serif;
+  --font-mono: 'Courier New', monospace;
+  --font-handwritten: 'Caveat', cursive;
+
+  /* Font weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Line height */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.38;
+  --line-height-relaxed: 1.63;
+
+  /* Letter spacing (Figma values -2 / 5, read as percent) */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.05em;
+
+  /* Font size (mobile) */
+  --font-size-caption: 12px;
+  --font-size-body: 14px;
+  --font-size-body-lg: 16px;
+  --font-size-title-sm: 16px;
+  --font-size-lead: 16px;
+  --font-size-subheading: 16px;
+  --font-size-heading: 26px;
+  --font-size-title: 26px;
+  --font-size-stat: 30px;
+  --font-size-stat-lg: 40px;
+
+  /* Space */
+  --space-gap-sm: 8px;
+  --space-gap-md: 16px;
+  --space-section: 48px;
+  --space-card: 12px;
+
+  /* Focus */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --font-size-caption: 12px;
+    --font-size-body: 14px;
+    --font-size-body-lg: 16px;
+    --font-size-title-sm: 18px;
+    --font-size-lead: 20px;
+    --font-size-subheading: 30px;
+    --font-size-heading: 36px;
+    --font-size-title: 48px;
+    --font-size-stat: 48px;
+    --font-size-stat-lg: 60px;
+
+    --space-section: 96px;
+    --space-card: 20px;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
