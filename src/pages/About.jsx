@@ -39,8 +39,8 @@ export default function About() {
     <main id="main-content" className="flex flex-col">
       <SectionMenu />
       <HeroSection />
-      <HowIWorkSection />
       <SelectedWork />
+      <HowIWorkSection />
       <RecommendationsSection />
       <MyToolkitSection />
       <ImpactSection />
