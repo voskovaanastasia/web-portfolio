@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useStaggerReveal from '../hooks/useStaggerReveal';
 import { Link } from 'react-router-dom';
 import { Donut, ProgressBar } from '../components/Charts';
@@ -14,6 +14,9 @@ import caseFarsafe960 from '../assets/case-farsafe-960w.webp';
 import toolFigma from '../assets/icon-figma.svg';
 import toolFramer from '../assets/toolkit/framer.webp';
 import toolAmplitude from '../assets/how-i-work/tool-amplitude.svg';
+
+const SPECIMEN_FONTS_URL =
+  'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap';
 
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
@@ -862,6 +865,15 @@ export default function FarsafeCase() {
   const project = cases.farsafe;
   const paletteRef = useRef(null);
   useStaggerReveal(paletteRef);
+
+  // Open Sans / Rubik are only used as type specimens on this page.
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = SPECIMEN_FONTS_URL;
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, []);
 
   useDocumentMeta(buildCaseMeta({ project, caseId: 'farsafe' }));
 
