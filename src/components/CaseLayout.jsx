@@ -426,6 +426,7 @@ export function buildCaseMeta({ project, caseId }) {
     description,
     path,
     image,
+    ...(project.robots ? { robots: project.robots } : {}),
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'CreativeWork',
