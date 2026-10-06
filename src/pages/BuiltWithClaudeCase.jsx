@@ -2,6 +2,13 @@ import CaseLayout from '../components/CaseLayout';
 import { ChartCard, RowBarChart, ColumnChart } from '../components/ChartCard';
 import toolFigma from '../assets/icon-figma.svg';
 import toolClaude from '../assets/icon-claude.svg';
+import toolReact from '../assets/icon-react.svg';
+import toolVite from '../assets/toolkit/vite.svg';
+import toolTailwind from '../assets/toolkit/tailwind.webp';
+import toolGsap from '../assets/toolkit/gsap.svg';
+import toolVercel from '../assets/toolkit/vercel.svg';
+import iconGithub from '../assets/toolkit/github.svg';
+import iconWebsite from '/favicon.svg';
 
 const linkClass =
   'underline underline-offset-2 text-text-brand hover:text-action-primary-hover rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring';
@@ -25,12 +32,19 @@ const project = {
     { label: 'Role', value: 'Product designer and product owner' },
     { label: 'Build time', value: '10 weeks\nJuly 21 → September 29, 2026' },
     { label: 'Built with', value: 'Claude Code\n91 commits, 86 co-authored' },
-    { label: 'Stack', value: 'Figma, React, Vite, Tailwind CSS, GSAP, Vercel' },
-    { label: 'Scope', value: '11 pages · 9 case studies' },
   ],
   tools: [
     { icon: toolFigma, label: 'Figma' },
     { icon: toolClaude, label: 'Claude Code' },
+    { icon: toolReact, label: 'React' },
+    { icon: toolVite, label: 'Vite' },
+    { icon: toolTailwind, label: 'Tailwind CSS' },
+    { icon: toolGsap, label: 'GSAP' },
+    { icon: toolVercel, label: 'Vercel' },
+  ],
+  links: [
+    { icon: iconWebsite, label: 'Website', href: 'https://www.anastasiiavoskova.com/' },
+    { icon: iconGithub, label: 'GitHub', href: 'https://github.com/voskovaanastasia/web-portfolio' },
   ],
   summary: [
     {

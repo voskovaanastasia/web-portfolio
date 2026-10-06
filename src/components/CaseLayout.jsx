@@ -575,6 +575,26 @@ export default function CaseLayout({
               ))}
             </div>
           </div>
+          {project.links && (
+            <div className="flex flex-col gap-3">
+              <p className="font-grotesk text-[14px] text-text-secondary">Links</p>
+              <div className="flex gap-2">
+                {project.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={link.label}
+                    aria-label={link.label}
+                    className="bg-surface-default rounded-pill w-9 h-9 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+                  >
+                    <img src={link.icon} alt="" className="w-5 h-5 object-contain" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Summary cards */}
