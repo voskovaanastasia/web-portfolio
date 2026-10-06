@@ -77,13 +77,22 @@ const cardClass = 'rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4';
 
 const contextCards = [
   {
-    title: 'Why I needed a new site',
+    title: 'The problem with Behance',
     icon: (
       <>
         <path d="M4 5h16v11H4zM8 20h8M12 16v4" strokeLinejoin="round" />
       </>
     ),
-    text: 'My portfolio lived on Behance, and it was getting in my way. Formatting each case study took a lot of time, and the platform made it hard to show what I care about most: large user flows and information architecture. Once I started looking for a new role, I wanted one place that shows my full range: my experience, my case studies, my tech stack and my computer science education.',
+    text: 'My portfolio lived on Behance. Formatting each case study took a lot of time, and the platform made it hard to show large user flows and information architecture.',
+  },
+  {
+    title: 'What I wanted',
+    icon: (
+      <>
+        <path d="M12 3 14.6 9.4 21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3z" strokeLinejoin="round" />
+      </>
+    ),
+    text: 'Once I started looking for a new role, I wanted one place for my full range: experience, case studies, tech stack and computer science education.',
   },
   {
     title: 'Why I built it myself',
@@ -92,7 +101,7 @@ const contextCards = [
         <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" strokeLinejoin="round" strokeLinecap="round" />
       </>
     ),
-    text: 'I studied computer science, so code isn’t foreign territory for me, and I had already been testing ideas and prototypes with Claude Code. Building the site myself was a natural way to show how I work from design through to implementation. There were no real constraints on time or budget. I rewrote most of the copy with Claude’s help, then reviewed and proofread it.',
+    text: 'I studied computer science and had already been testing prototypes with Claude Code, so building the site was a natural way to show how I work from design to implementation. I rewrote most of the copy with Claude’s help, then proofread it.',
   },
   {
     title: 'Who it’s for',
@@ -101,7 +110,7 @@ const contextCards = [
         <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
       </>
     ),
-    text: 'The main audience is recruiters and potential clients. I’m looking for full-time roles and I’ve worked in product companies, outsourcing and startups, so the site needed to speak to all three. I expected them to want to know three things within the first 30 seconds: is this experience relevant, what does the portfolio show, and what tools does this person work with.',
+    text: 'Recruiters and potential clients. I’m looking for full-time roles and have worked in product companies, outsourcing and startups. I expected them to want three answers within 30 seconds: is this experience relevant, what does the portfolio show, and what tools do I work with.',
   },
   {
     title: 'Positioning',
@@ -124,7 +133,7 @@ const contextCards = [
         <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
       </>
     ),
-    text: 'I didn’t set numeric targets up front. The goals were simple: raise my visibility with recruiters and get invited to interviews.',
+    text: 'No numeric targets. The goals were simple: raise my visibility with recruiters and get invited to interviews.',
   },
 ];
 
@@ -151,7 +160,7 @@ function Context() {
   return (
     <>
       <h2 className={h2Class}>Context and goals</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {contextCards.map((card) => (
           <div
             key={card.title}
