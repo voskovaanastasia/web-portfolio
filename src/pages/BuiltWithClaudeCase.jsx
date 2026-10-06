@@ -10,17 +10,6 @@ import toolVercel from '../assets/toolkit/vercel.svg';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
 
-const linkClass =
-  'underline underline-offset-2 text-text-brand hover:text-action-primary-hover rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring';
-
-function ExternalLink({ href, children }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
-      {children}
-    </a>
-  );
-}
-
 const project = {
   name: 'Built with Claude',
   title: 'From Research to Production: Designing and Shipping My Portfolio with Claude Code',
@@ -76,16 +65,6 @@ const project = {
         <strong>The result.</strong> A live site with nine case studies, a design system built from Figma components,
         and a repeatable way of directing AI without giving up design judgement. It also includes the mistakes I caught
         along the way, which are the most useful part of this story.
-        <br />
-        <br />
-        <ExternalLink href="https://www.anastasiiavoskova.com">Live site</ExternalLink> ·{' '}
-        <ExternalLink href="https://github.com/voskovaanastasia/web-portfolio">GitHub</ExternalLink>
-        <br />
-        <br />
-        <em>
-          Lighthouse figures: PageSpeed Insights, mobile, October 4, 2026. Performance varied between 88 and 95 across
-          runs.
-        </em>
       </>
     ),
   },
@@ -99,18 +78,38 @@ const cardClass = 'rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4';
 const contextCards = [
   {
     title: 'Why I needed a new site',
+    icon: (
+      <>
+        <path d="M4 5h16v11H4zM8 20h8M12 16v4" strokeLinejoin="round" />
+      </>
+    ),
     text: 'My portfolio lived on Behance, and it was getting in my way. Formatting each case study took a lot of time, and the platform made it hard to show what I care about most: large user flows and information architecture. Once I started looking for a new role, I wanted one place that shows my full range: my experience, my case studies, my tech stack and my computer science education.',
   },
   {
     title: 'Why I built it myself',
+    icon: (
+      <>
+        <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" strokeLinejoin="round" strokeLinecap="round" />
+      </>
+    ),
     text: 'I studied computer science, so code isn’t foreign territory for me, and I had already been testing ideas and prototypes with Claude Code. Building the site myself was a natural way to show how I work from design through to implementation. There were no real constraints on time or budget. I rewrote most of the copy with Claude’s help, then reviewed and proofread it.',
   },
   {
     title: 'Who it’s for',
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
+      </>
+    ),
     text: 'The main audience is recruiters and potential clients. I’m looking for full-time roles and I’ve worked in product companies, outsourcing and startups, so the site needed to speak to all three. I expected them to want to know three things within the first 30 seconds: is this experience relevant, what does the portfolio show, and what tools does this person work with.',
   },
   {
     title: 'Positioning',
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+      </>
+    ),
     text: (
       <>
         The line I built the site around is: <em>I make complex, data-dense products feel simple.</em>
@@ -120,6 +119,11 @@ const contextCards = [
   },
   {
     title: 'Goals',
+    icon: (
+      <>
+        <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
+      </>
+    ),
     text: 'I didn’t set numeric targets up front. The goals were simple: raise my visibility with recruiters and get invited to interviews.',
   },
 ];
@@ -151,10 +155,19 @@ function Context() {
         {contextCards.map((card) => (
           <div
             key={card.title}
-            className={`${cardClass} ${card.tint ? 'bg-surface-brand-tint' : 'bg-surface-subtle'}`}
+            className={`${cardClass} ${card.tint ? 'bg-[#1f7ab8] text-white' : 'bg-surface-subtle text-[#288fd6]'}`}
           >
-            <p className="font-grotesk font-bold text-[14px] text-text-primary">{card.title}</p>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{card.text}</p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
+              {card.icon}
+            </svg>
+            <p className={`font-grotesk font-bold text-[14px] ${card.tint ? 'text-white' : 'text-text-primary'}`}>
+              {card.title}
+            </p>
+            <p
+              className={`font-grotesk text-[14px] leading-relaxed ${card.tint ? 'text-white' : 'text-text-primary'}`}
+            >
+              {card.text}
+            </p>
           </div>
         ))}
       </div>
