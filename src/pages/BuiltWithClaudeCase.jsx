@@ -145,7 +145,7 @@ const roleRows = [
         <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
       </>
     ),
-    what: "Positioning and information architecture. Research: other designers' portfolios and a conversation with a recruiter. The components and design-system variables in Figma, and any missing component designed separately when a page needed one. Markdown specs for the sections. Most of the copy, rewritten by me with AI's help. Every decision about what the page says and leaves out. A read of every diff before it was committed.",
+    what: "Positioning, information architecture and research. Figma components and variables. Every decision on what the page says and leaves out, and a read of every diff before commit.",
   },
   {
     who: 'Claude Code',
@@ -225,24 +225,26 @@ function Role() {
         ))}
       </div>
 
-      <p className={bodyText}>
-        <strong>How the workflow ran.</strong> Design and code ran in parallel, and both were component-led. I designed
-        components in Figma; Claude Code built them and composed the pages I needed from those pieces. I did not design
-        every page up front. When a page called for something the component set didn&rsquo;t cover, I designed that
-        component separately and added it to the project.
-      </p>
-      <p className={bodyText}>
-        <strong>What stayed with me.</strong> Anything that needed judgement: what the page leads with, how a case study
-        ends, which tools represent a pillar, and whether a result was good enough to ship. I treated everything Claude
-        produced as a draft. Audit findings were evidence to check against the code and the browser, not instructions to
-        follow, and nothing reached a commit without my reading the diff.
-      </p>
-      <p className={bodyText}>
-        <strong>Where that wasn&rsquo;t enough.</strong> Reading diffs catches what a change does, not what it leaves
-        out. The design tokens I&rsquo;d defined in Figma only reached the code after launch, and a bundling
-        &ldquo;fix&rdquo; I had accepted without measuring it slowed down every page. Both are covered below, because
-        they show where my review needed a different kind of check.
-      </p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+        <div className="lg:col-span-2 flex flex-col gap-5">
+          <p className="font-mono-bold text-[14px] text-text-primary">How the workflow ran</p>
+          <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
+            Design and code ran in parallel, and both were component-led. I designed components in Figma; Claude Code
+            built them and composed the pages from those pieces, and when a page needed something the set didn&rsquo;t
+            cover, I designed it separately. Judgement stayed with me: what the page leads with, how a case study ends,
+            and whether a result was good enough to ship. I treated everything Claude produced as a draft, and audit
+            findings as evidence to check, not instructions to follow.
+          </p>
+        </div>
+        <div className={`${cardClass} bg-action-primary`}>
+          <p className="font-grotesk font-bold text-[14px] text-white">Where that wasn&rsquo;t enough</p>
+          <p className="font-grotesk text-[14px] text-white leading-relaxed">
+            Reading diffs shows what a change does, not what it leaves out. My Figma design tokens reached the code only
+            after launch, and a bundling &ldquo;fix&rdquo; I accepted without measuring slowed down every page. Both are
+            covered below.
+          </p>
+        </div>
+      </div>
     </>
   );
 }
