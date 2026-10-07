@@ -140,18 +140,38 @@ const contextCards = [
 const roleRows = [
   {
     who: 'Me',
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
+      </>
+    ),
     what: "Positioning and information architecture. Research: other designers' portfolios and a conversation with a recruiter. The components and design-system variables in Figma, and any missing component designed separately when a page needed one. Markdown specs for the sections. Most of the copy, rewritten by me with AI's help. Every decision about what the page says and leaves out. A read of every diff before it was committed.",
   },
   {
     who: 'Claude Code',
+    icon: (
+      <>
+        <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" strokeLinejoin="round" strokeLinecap="round" />
+      </>
+    ),
     what: 'Built the components in code, then composed the pages from them, reading my Figma work through the Figma MCP. Handled repetitive work: responsive images, share-card generation, page metadata, lazy-loaded routes.',
   },
   {
     who: 'Claude (chat)',
+    icon: (
+      <>
+        <path d="M4 5h16v11H9l-5 4V5z" strokeLinejoin="round" />
+      </>
+    ),
     what: 'Reviewer and prompt partner. Wrote prioritised audits of the live pages, helped me turn each finding into a scoped prompt, and flagged inconsistencies in copy.',
   },
   {
     who: 'A recruiter, a QA tester, a front-end developer',
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="9" /><path d="m8 12.5 2.8 2.8L16.5 9.5" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
     what: 'The recruiter shaped what the site should show. The tester and the developer reviewed the live site after launch.',
   },
 ];
@@ -193,34 +213,16 @@ function Role() {
         way.
       </p>
 
-      <div className="bg-surface-subtle rounded-card p-3 sm:p-5">
-        <table className="w-full text-left border-collapse">
-          <thead className="sr-only sm:not-sr-only">
-            <tr className="border-b border-grey-300">
-              <th scope="col" className="font-grotesk font-bold text-[14px] text-text-primary py-3 pr-4 w-1/4">
-                Who
-              </th>
-              <th scope="col" className="font-grotesk font-bold text-[14px] text-text-primary py-3">
-                What they did
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {roleRows.map((row) => (
-              <tr key={row.who} className="block sm:table-row border-b border-grey-300 last:border-b-0">
-                <th
-                  scope="row"
-                  className="block sm:table-cell font-grotesk font-bold text-[14px] text-text-primary pt-4 pb-1 sm:py-4 sm:pr-4 align-top"
-                >
-                  {row.who}
-                </th>
-                <td className="block sm:table-cell font-grotesk text-[14px] text-text-primary leading-relaxed pb-4 sm:py-4 align-top">
-                  {row.what}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {roleRows.map((row) => (
+          <div key={row.who} className={`${cardClass} bg-surface-subtle text-[#288fd6]`}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
+              {row.icon}
+            </svg>
+            <p className="font-grotesk font-bold text-[14px] text-text-primary">{row.who}</p>
+            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{row.what}</p>
+          </div>
+        ))}
       </div>
 
       <p className={bodyText}>
