@@ -1,5 +1,5 @@
 import CaseLayout from '../components/CaseLayout';
-import { ChartCard, RowBarChart, ColumnChart } from '../components/ChartCard';
+import { ProgressBar } from '../components/Charts';
 import toolFigma from '../assets/icon-figma.svg';
 import toolClaude from '../assets/icon-claude.svg';
 import toolReact from '../assets/icon-react.svg';
@@ -184,7 +184,7 @@ function Context() {
         {contextCards.map((card) => (
           <div
             key={card.title}
-            className={`${cardClass} ${card.tint ? 'bg-[#1f7ab8] text-white' : 'bg-surface-subtle text-[#288fd6]'}`}
+            className={`${cardClass} ${card.tint ? 'bg-action-primary text-white' : 'bg-surface-subtle text-blue-500'}`}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
               {card.icon}
@@ -215,7 +215,7 @@ function Role() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {roleRows.map((row) => (
-          <div key={row.who} className={`${cardClass} bg-surface-subtle text-[#288fd6]`}>
+          <div key={row.who} className={`${cardClass} bg-surface-subtle text-blue-500`}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
               {row.icon}
             </svg>
@@ -247,58 +247,57 @@ function Role() {
   );
 }
 
+const researchStats = [
+  {
+    pct: 68,
+    color: 'var(--color-blue-500)',
+    title: '68% (13 of 19) — link a resume from the home page',
+    text: 'Visitors can get the CV without leaving the home page.',
+  },
+  {
+    pct: 47,
+    color: 'var(--color-grey-500)',
+    title: '47% (9 of 19) — list roles or skills on the home page',
+    text: 'Almost half put CV content right on the home page.',
+  },
+];
+
 function Research() {
   return (
     <>
-      <h2 className={h2Class}>Research</h2>
-      <p className={bodyText}>
-        <strong>Before I opened Figma, I looked at what recruiters actually meet.</strong> I reviewed around 40 designer
-        portfolios and had a short consultation with a technical recruiter who hires for many different companies.
-      </p>
-      <p className={bodyText}>
-        <strong>What repeated across the portfolios.</strong> I ran 21 of them through the same checklist, with Claude
-        reading each page; two would not load properly, so the counts below use the 19 I could read. The home page often
-        carried CV content: 13 of 19 offered a resume link right on it, and 9 of 19 listed roles or skills there. The
-        typical home page showed four case studies, and the typical top menu had four items.
-      </p>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <ChartCard
-          title="13 of 19 portfolios link a resume from the home page; 9 list roles or skills there"
-          subtitle="Share of readable portfolios (n = 19)"
-          note="My site does both: roles and skills on the home page, and a Download CV button in the first screen."
-          caption="Checklist on portfolio home pages, page text only · 19 of 21 sites readable · October 4, 2026"
-        >
-          <RowBarChart
-            max={19}
-            rows={[
-              { label: 'Resume link on the home page', value: 13, display: '13 of 19 (68%)', tone: 'accent' },
-              { label: 'Roles or skills list on the home page', value: 9, display: '9 of 19 (47%)', tone: 'grey' },
-            ]}
-          />
-        </ChartCard>
-
-        <ChartCard
-          title="The typical portfolio home page shows 4 case studies; mine shows one featured case"
-          subtitle="Number of portfolios by case studies on the home page (n = 18, median 4)"
-          caption={
-            'Checklist on portfolio home pages, page text only · 18 of 21 sites readable; “Coming soon” cards counted · October 4, 2026'
-          }
-        >
-          <ColumnChart
-            max={8}
-            xLabel="Case studies shown on the home page (observed counts only)"
-            columns={[
-              { label: '1', value: 1, dashed: true, topLabel: 'This site' },
-              { label: '2', value: 1, tone: 'grey' },
-              { label: '3', value: 4, tone: 'grey' },
-              { label: '4', value: 8, tone: 'accent' },
-              { label: '5', value: 3, tone: 'grey' },
-              { label: '7', value: 1, tone: 'grey' },
-              { label: '13', value: 1, tone: 'grey' },
-            ]}
-          />
-        </ChartCard>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <div className="flex flex-col gap-5">
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug">
+            Before I opened Figma, I looked at what recruiters actually meet.
+          </h2>
+          <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
+            I reviewed around 40 designer portfolios and ran 21 of them through the same checklist, with Claude reading
+            each page. Two would not load, so the counts use the 19 I could read.
+          </p>
+        </div>
+        <div className="lg:col-span-2 flex flex-col gap-5">
+          {researchStats.map((stat) => (
+            <div key={stat.title} className={`${cardClass} bg-surface-subtle`}>
+              <ProgressBar pct={stat.pct} color={stat.color} />
+              <p className="font-grotesk font-bold text-[14px] text-text-primary mt-2">{stat.title}</p>
+              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{stat.text}</p>
+            </div>
+          ))}
+          <div className={`${cardClass} bg-action-primary`}>
+            <p className="font-grotesk font-bold text-[14px] text-white">My site does both</p>
+            <p className="font-grotesk text-[14px] text-white leading-relaxed">
+              Roles and skills on the home page, and a Download CV button in the first screen.
+            </p>
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="font-grotesk text-[14px] text-text-primary">
+              The typical home page also showed four case studies and four menu items.
+            </p>
+            <p className="font-grotesk text-[12px] text-text-secondary">
+              Checklist on portfolio home pages, page text only · 19 of 21 sites readable · October 4, 2026
+            </p>
+          </div>
+        </div>
       </div>
 
       <p className={bodyText}>
@@ -313,39 +312,6 @@ function Research() {
         balanced it with the featured case and clear navigation. The full set of case studies lives on its own Portfolio
         page in the top menu.
       </p>
-      <p className={bodyText}>
-        <strong>What the sample cannot say.</strong> The checklist was run on page text, so sites that render heavily in
-        JavaScript were read only in part, and &ldquo;Coming soon&rdquo; cards count as cases. Treat these as a snapshot
-        of 19 portfolios, not a measure of the market.
-      </p>
-      <p className={bodyText}>
-        <strong>What they were built on.</strong> Of the 21 portfolios, 9 used a no-code builder (8 Framer, 1 Wix). Five
-        were confirmed hand-coded, and for 7 the page markup gave no sign either way.
-      </p>
-
-      <div className="max-w-3xl">
-        <ChartCard
-          title="9 of 21 portfolios use a no-code builder; 5 are confirmed hand-coded"
-          subtitle="9 no-code · 5 hand-coded · 7 undetermined (n = 21)"
-          note="Detected from page markup (generator tags, asset domains). No markers means undetermined, not hand-coded."
-          caption="Page markup of 21 portfolios (generator tags, asset domains) · October 4, 2026"
-        >
-          <RowBarChart
-            max={8}
-            rows={[
-              { label: 'Framer (no-code)', value: 8, tone: 'grey' },
-              { label: 'Wix (no-code)', value: 1, tone: 'grey' },
-              { label: 'Next.js (hand-coded)', value: 1, tone: 'accent' },
-              {
-                label: 'Other hand-coded: Firebase, Netlify, Cloudflare Pages, Cloud Run',
-                value: 4,
-                tone: 'accent',
-              },
-              { label: 'No markers found in the page', value: 7, tone: 'light' },
-            ]}
-          />
-        </ChartCard>
-      </div>
     </>
   );
 }
