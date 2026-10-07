@@ -267,7 +267,7 @@ const researchStats = [
 function Research() {
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
         <div className="flex flex-col gap-5">
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug">
             Before I opened Figma, I looked at what recruiters actually meet.
@@ -302,18 +302,32 @@ function Research() {
         </div>
       </div>
 
-      <p className={bodyText}>
-        <strong>What the recruiter told me.</strong> The main point was not to overload the page, and to make navigation
-        easy. That confirmed what I was already doing: the section menu and the mobile menu were my own idea, and the
-        conversation told me I was on the right track.
-      </p>
-      <p className={bodyText}>
-        <strong>How it shaped the site.</strong> I kept the home page as my CV, with a <em>Download CV</em> button in the
-        first screen, and added a featured latest case study with a path on to the others. My first audit flagged that
-        Experience dominated the page. I chose to keep it, because recruiters expect a CV-like home page, and instead
-        balanced it with the featured case and clear navigation. The full set of case studies lives on its own Portfolio
-        page in the top menu.
-      </p>
+      <p className="font-mono-bold text-[14px] text-text-primary">What I did with it</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className={`${cardClass} bg-surface-subtle text-blue-500`}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
+            <path d="M4 5h16v11H9l-5 4V5z" strokeLinejoin="round" />
+          </svg>
+          <p className="font-grotesk font-bold text-[14px] text-text-primary">What the recruiter told me</p>
+          <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
+            The main point was not to overload the page and to make navigation easy. That confirmed what I was already
+            doing: the section menu and the mobile menu were my own idea.
+          </p>
+        </div>
+        <div className={`${cardClass} bg-action-primary text-white`}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="m8 12.5 2.8 2.8L16.5 9.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <p className="font-grotesk font-bold text-[14px] text-white">How it shaped the site</p>
+          <p className="font-grotesk text-[14px] text-white leading-relaxed">
+            I kept the home page as my CV, with Download CV in the first screen, and added a featured case with a path
+            on to the others. My first audit flagged that Experience dominated the page. I kept it, because recruiters
+            expect a CV-like home page, and balanced it with the featured case and clear navigation. All cases live on
+            the Portfolio page.
+          </p>
+        </div>
+      </div>
     </>
   );
 }
