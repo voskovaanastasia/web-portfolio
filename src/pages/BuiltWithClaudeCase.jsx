@@ -267,8 +267,8 @@ const researchStats = [
 function Research() {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
-        <div className="flex flex-col gap-5 md:justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+        <div className="flex flex-col gap-6 self-start lg:sticky lg:top-24">
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug md:-mt-[0.15em]">
             Before I opened Figma, I looked at what recruiters actually meet.
           </h2>
