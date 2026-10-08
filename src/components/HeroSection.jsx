@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import DotsBackground from './DotsBackground';
+import EmailMenu from './EmailMenu';
 import avatar from '../assets/avatar.webp';
 import iconFigma from '../assets/icon-figma.svg';
 import iconReact from '../assets/icon-react.svg';
@@ -155,15 +156,18 @@ export default function HeroSection() {
 
         {/* CTA + handwritten note, tighter pairing */}
         <div data-hero-item className="flex flex-col items-center gap-3">
-          <a
-            href="/Anastasiia-Voskova-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Anastasiia-Voskova-Resume.pdf"
-            className="bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors"
-          >
-            Download CV
-          </a>
+          <div className="flex flex-col-reverse items-center min-[480px]:flex-row justify-center gap-3 w-full">
+            <EmailMenu />
+            <a
+              href="/Anastasiia-Voskova-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Anastasiia-Voskova-Resume.pdf"
+              className="w-full max-w-[280px] min-[480px]:w-auto min-[480px]:max-w-none text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+            >
+              Download CV
+            </a>
+          </div>
           <p className="font-caveat font-bold text-xl text-accent-handwritten max-w-[280px] sm:max-w-[300px]">
             This entire portfolio was built with Claude Code.
           </p>

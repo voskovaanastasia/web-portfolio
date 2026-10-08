@@ -267,9 +267,9 @@ const researchStats = [
 function Research() {
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-        <div className="flex flex-col gap-5">
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+        <div className="flex flex-col gap-5 md:justify-between">
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug md:-mt-[0.15em]">
             Before I opened Figma, I looked at what recruiters actually meet.
           </h2>
           <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
@@ -277,7 +277,7 @@ function Research() {
             each page. Two would not load, so the counts use the 19 I could read.
           </p>
         </div>
-        <div className="lg:col-span-2 flex flex-col gap-5">
+        <div className="md:col-span-2 flex flex-col gap-5">
           {researchStats.map((stat) => (
             <div key={stat.title} className={`${cardClass} bg-surface-subtle`}>
               <ProgressBar pct={stat.pct} color={stat.color} />
@@ -291,40 +291,34 @@ function Research() {
               Roles and skills on the home page, and a Download CV button in the first screen.
             </p>
           </div>
-          <div className="flex flex-col gap-1">
-            <p className="font-grotesk text-[14px] text-text-primary">
-              The typical home page also showed four case studies and four menu items.
-            </p>
-            <p className="font-grotesk text-[12px] text-text-secondary">
-              Checklist on portfolio home pages, page text only · 19 of 21 sites readable · October 4, 2026
-            </p>
-          </div>
         </div>
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <p className="font-grotesk text-[14px] text-text-primary">
+          The typical home page also showed four case studies and four menu items.
+        </p>
+        <p className="font-grotesk text-[12px] text-text-secondary">
+          Checklist on portfolio home pages, page text only · 19 of 21 sites readable · October 4, 2026
+        </p>
       </div>
 
       <p className="font-mono-bold text-[14px] text-text-primary">What I did with it</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className={`${cardClass} bg-surface-subtle text-blue-500`}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
-            <path d="M4 5h16v11H9l-5 4V5z" strokeLinejoin="round" />
-          </svg>
+        <div className={`${cardClass} bg-surface-subtle`}>
           <p className="font-grotesk font-bold text-[14px] text-text-primary">What the recruiter told me</p>
           <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
-            The main point was not to overload the page and to make navigation easy. That confirmed what I was already
-            doing: the section menu and the mobile menu were my own idea.
+            Don't overload the page, and make navigation easy. That confirmed my direction: the section menu and mobile
+            menu were my own idea.
           </p>
         </div>
-        <div className={`${cardClass} bg-action-primary text-white`}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <path d="m8 12.5 2.8 2.8L16.5 9.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <p className="font-grotesk font-bold text-[14px] text-white">How it shaped the site</p>
-          <p className="font-grotesk text-[14px] text-white leading-relaxed">
-            I kept the home page as my CV, with Download CV in the first screen, and added a featured case with a path
-            on to the others. My first audit flagged that Experience dominated the page. I kept it, because recruiters
-            expect a CV-like home page, and balanced it with the featured case and clear navigation. All cases live on
-            the Portfolio page.
+        <div className={`${cardClass} bg-surface-subtle`}>
+          <p className="font-grotesk font-bold text-[14px] text-text-primary">How it shaped the site</p>
+          <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
+            Home stays a CV, with a <em>Download CV</em> button in the first screen and a featured latest case study
+            leading to the rest. My audit flagged that Experience dominates; I kept it because recruiters expect a
+            CV-like home, and balanced it with the featured case and clear navigation. All case studies live on the
+            Portfolio page.
           </p>
         </div>
       </div>
