@@ -36,7 +36,7 @@ function ProjectCard({ project, index }) {
 
   return (
     <article className="flex flex-col">
-      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-6">
+      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-5">
         <img
           src={project.image960}
           srcSet={`${project.image480} 480w, ${project.image960} 960w`}
@@ -50,30 +50,32 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <h2 className="font-grotesk font-bold text-[26px] text-text-primary mb-3">
-        <Link to={`/project/${project.id}`} className="hover:text-text-brand hover:underline underline-offset-4 transition-colors">
+      <p className="font-mono-bold text-[12px] text-text-secondary mb-3">
+        {project.tags.map((tag, i) => (
+          <span key={tag}>
+            {tag}
+            {i < project.tags.length - 1 && (
+              <span aria-hidden="true" className="mx-2">
+                ·
+              </span>
+            )}
+          </span>
+        ))}
+      </p>
+      <h2 className="font-grotesk font-medium text-[22px] sm:text-[26px] leading-tight tracking-tight text-text-primary mb-3">
+        <Link to={`/project/${project.id}`} className="hover:text-text-brand transition-colors">
           {project.title}
         </Link>
       </h2>
-      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed mb-4">
+      <p className="font-grotesk text-[15px] text-text-primary leading-relaxed mb-5">
         {project.description}
       </p>
-      <div className="flex flex-wrap gap-2 mb-6">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-3 py-1.5 bg-surface-subtle rounded-pill font-grotesk font-medium text-xs text-ink"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="mt-auto flex justify-end">
+      <div className="mt-auto">
         <Link
           to={`/project/${project.id}`}
-          className="bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium px-6 py-3 rounded-pill text-base transition-colors"
+          className="font-grotesk font-medium text-[15px] text-text-brand hover:text-action-primary-hover underline-offset-4 hover:underline transition-colors"
         >
-          Read case study
+          Read case study →
         </Link>
       </div>
     </article>
@@ -194,12 +196,12 @@ export default function Projects() {
   const tabRefs = useRef([]);
   const [pill, setPill] = useState(null);
 
-  // The active pill slides between tabs: measure the active button and move one
-  // shared highlight to it, instead of each button painting its own background.
+  // The active underline slides between tabs: measure the active button and move one
+  // shared indicator to it, instead of each button painting its own underline.
   useLayoutEffect(() => {
     const measure = () => {
       const el = tabRefs.current[categories.indexOf(activeCategory)];
-      if (el) setPill({ left: el.offsetLeft, top: el.offsetTop, width: el.offsetWidth, height: el.offsetHeight });
+      if (el) setPill({ left: el.offsetLeft, width: el.offsetWidth });
     };
     measure();
     window.addEventListener('resize', measure);
@@ -244,38 +246,36 @@ export default function Projects() {
       <section className="bg-surface-default py-16 min-h-[60vh] overflow-x-clip">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Category filter */}
-          <div className="flex justify-center mb-14">
-            <div
-              ref={tabsRef}
-              className="relative bg-surface-subtle border border-border-subtle rounded-panel sm:rounded-pill p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto"
-            >
+          <div className="mb-12 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div ref={tabsRef} className="relative flex w-max min-w-full items-center gap-8 border-b border-border-subtle">
               {pill && (
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-0 rounded-pill bg-action-primary motion-safe:transition-[transform,width,height] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.4,0,0.2,1)]"
-                  style={{ width: pill.width, height: pill.height, transform: `translate(${pill.left}px, ${pill.top}px)` }}
+                  className="absolute bottom-0 left-0 h-0.5 bg-text-brand motion-safe:transition-[transform,width] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  style={{ width: pill.width, transform: `translateX(${pill.left}px)` }}
                 />
               )}
               {categories.map((category, i) => {
                 const isEmpty = !projects.some((p) => p.category === category);
+                const isActive = activeCategory === category;
                 return (
                   <button
                     key={category}
                     ref={(el) => (tabRefs.current[i] = el)}
-                    aria-pressed={activeCategory === category}
+                    aria-pressed={isActive}
                     onClick={() => !isEmpty && setActiveCategory(category)}
                     aria-disabled={isEmpty}
-                    className={`relative group px-6 py-3 rounded-pill font-grotesk font-medium text-base transition-colors duration-300 ${
-                      activeCategory === category
-                        ? 'text-white'
+                    className={`flex items-center gap-3 whitespace-nowrap pb-4 font-grotesk font-medium text-base transition-colors duration-300 ${
+                      isActive
+                        ? 'text-text-brand'
                         : isEmpty
                           ? 'text-text-secondary cursor-not-allowed'
-                          : 'text-text-primary hover:bg-surface-default'
+                          : 'text-text-secondary hover:text-text-primary'
                     }`}
                   >
                     {category}
                     {isEmpty && (
-                      <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-11 whitespace-nowrap bg-black text-white font-grotesk font-medium text-sm px-3.5 py-2 rounded-[10px] opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-[6px] after:border-transparent after:border-t-black">
+                      <span className="font-mono-bold text-[11px] uppercase tracking-wider text-text-secondary border border-border-subtle rounded-pill px-2.5 py-1">
                         Coming soon
                       </span>
                     )}
