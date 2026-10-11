@@ -176,39 +176,45 @@ export function MetricCard({ title, subtitle, bars, color, text }) {
   );
 }
 
+const sectionLabel = 'font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary';
+const sectionHeading =
+  'font-grotesk font-medium text-[28px] sm:text-4xl lg:text-[44px] leading-[1.2] text-text-primary tracking-tight';
+
+// Highlighted aside under the body: blue rule on the left, small blue mono label, short text.
+function CalloutQuote({ label, children }) {
+  return (
+    <blockquote className="border-l-2 border-text-brand pl-4 flex flex-col gap-2 mt-1">
+      <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-brand">{label}</p>
+      <p className="font-grotesk text-[15px] text-text-primary leading-relaxed">{children}</p>
+    </blockquote>
+  );
+}
+
 export function ProblemSolution({ problem, solution, id = 'problem' }) {
   return (
     <>
       {problem && (
-        <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
           <ImagePlaceholder
             filename={problem.image}
             className={`min-h-[420px] ${problem.imageClassName ?? ''}`}
           />
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-text-primary">PROBLEM</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-              {problem.heading}
-            </h2>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{problem.body}</p>
-            <p className="font-mono-bold text-[14px] text-text-primary">WHY IS THIS IMPORTANT?</p>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{problem.why}</p>
+            <p className={sectionLabel}>Problem</p>
+            <h2 className={sectionHeading}>{problem.heading}</h2>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{problem.body}</p>
+            <CalloutQuote label="Why is this important?">{problem.why}</CalloutQuote>
           </div>
         </section>
       )}
 
       {solution && (
-        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-text-primary">SOLUTION</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-              {solution.heading}
-            </h2>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{solution.body}</p>
-            <p className="font-mono-bold text-[14px] text-text-primary">USER SCENARIO CONSIDERATION</p>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
-              {solution.scenario}
-            </p>
+            <p className={sectionLabel}>Solution</p>
+            <h2 className={sectionHeading}>{solution.heading}</h2>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{solution.body}</p>
+            <CalloutQuote label="User scenario consideration">{solution.scenario}</CalloutQuote>
           </div>
           <ImagePlaceholder filename={solution.image} className="min-h-[420px] order-first lg:order-none" />
         </section>
@@ -441,6 +447,105 @@ export function buildCaseMeta({ project, caseId }) {
   };
 }
 
+const dottedTags = (tags) =>
+  tags.map((tag, i) => (
+    <span key={tag}>
+      {tag}
+      {i < tags.length - 1 && (
+        <span aria-hidden="true" className="mx-2">
+          ·
+        </span>
+      )}
+    </span>
+  ));
+
+const headerLabel = 'font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary';
+
+// Shared top of every case study: back link, tags, title, meta columns (with tool icons) and summary columns.
+export function CaseHeader({ project }) {
+  return (
+    <>
+      <Link
+        to="/projects"
+        className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+          <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Back to Portfolio
+      </Link>
+
+      <p className="font-mono-bold text-[12px] sm:text-[13px] text-text-secondary mt-8">{dottedTags(project.tags)}</p>
+
+      <h1 className="font-grotesk font-medium text-[28px] sm:text-5xl lg:text-[64px] text-text-primary tracking-tight leading-[1.1] mt-4 max-w-4xl">
+        {project.title}
+      </h1>
+
+      {/* Meta */}
+      <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-8">
+        {project.meta.map((item) => (
+          <div key={item.label} className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+            <p className={headerLabel}>{item.label}</p>
+            <p className="font-grotesk font-medium text-[15px] text-text-primary whitespace-pre-line leading-snug">
+              {item.value}
+            </p>
+          </div>
+        ))}
+        <div className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+          <p className={headerLabel}>Tools</p>
+          <div className="flex flex-wrap gap-2">
+            {project.tools.map((id) => (
+              <ToolIcon key={id} id={id} className="bg-surface-default w-9 h-9 shrink-0 shadow-sm" />
+            ))}
+          </div>
+        </div>
+        {project.links && (
+          <div className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+            <p className={headerLabel}>Links</p>
+            <div className="flex flex-wrap gap-2">
+              {project.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link.label}
+                  aria-label={link.label}
+                  className="bg-surface-default rounded-pill w-9 h-9 shrink-0 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+                >
+                  <img src={link.icon} alt="" className="w-5 h-5 object-contain" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Summary */}
+      <div
+        className={`mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-8 ${
+          project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+        }`}
+      >
+        {project.summary.map((card) => (
+          <div key={card.label} className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+            <p className={headerLabel}>{card.label}</p>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{card.text}</p>
+          </div>
+        ))}
+        {project.outcome && (
+          <div className="flex flex-col gap-3 pt-4 border-t border-action-primary">
+            <p className={headerLabel}>Outcome</p>
+            <p className="font-grotesk font-bold text-[36px] leading-none text-text-brand">{project.outcome.value}</p>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary">{project.outcome.label}</p>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
 function CaseNavArrow({ direction }) {
   return (
     <svg
@@ -522,95 +627,7 @@ export default function CaseLayout({
           />
         </div>
 
-        {/* Back link */}
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Portfolio
-        </Link>
-
-        {/* Title */}
-        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-text-primary tracking-tight leading-tight mt-8 max-w-3xl">
-          {project.title}
-        </h1>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2.5 mt-8">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 bg-surface-subtle rounded-pill font-grotesk font-medium text-sm text-ink"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Meta bar */}
-        <div className="bg-surface-subtle rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {project.meta.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-text-secondary">{item.label}</p>
-              <p className="font-grotesk font-medium text-[14px] text-text-primary whitespace-pre-line">
-                {item.value}
-              </p>
-            </div>
-          ))}
-          <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-[14px] text-text-secondary">Tools</p>
-            <div className="flex flex-wrap gap-2">
-              {project.tools.map((id) => (
-                <ToolIcon key={id} id={id} className="bg-surface-default w-9 h-9 shrink-0 shadow-sm" />
-              ))}
-            </div>
-          </div>
-          {project.links && (
-            <div className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-text-secondary">Links</p>
-              <div className="flex flex-wrap gap-2">
-                {project.links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={link.label}
-                    aria-label={link.label}
-                    className="bg-surface-default rounded-pill w-9 h-9 shrink-0 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-                  >
-                    <img src={link.icon} alt="" className="w-5 h-5 object-contain" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Summary cards */}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 ${
-            project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
-          }`}
-        >
-          {project.summary.map((card) => (
-            <div key={card.label} className="bg-surface-subtle rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <p className="font-grotesk text-sm text-text-secondary uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{card.text}</p>
-            </div>
-          ))}
-          {project.outcome && (
-            <div className="bg-surface-brand-tint rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-              <p className="font-grotesk text-sm text-text-secondary uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-[30px] text-text-primary">{project.outcome.value}</p>
-              <p className="font-grotesk text-[14px] text-text-primary">{project.outcome.label}</p>
-            </div>
-          )}
-        </div>
+        <CaseHeader project={project} />
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">

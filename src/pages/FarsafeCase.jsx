@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import useStaggerReveal from '../hooks/useStaggerReveal';
-import { Link } from 'react-router-dom';
 import { Donut, ProgressBar } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import ToolIcon from '../components/ToolIcon';
-import { ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
+import { CaseHeader, ProblemSolution, ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
@@ -865,6 +863,26 @@ const iaAppTree = {
   ],
 };
 
+const problemInsights = [
+  { label: 'Insight 1', title: 'Pricing is impossible to predict', value: '66%', text: 'of interviewees said tiered pricing made their bill unpredictable.' },
+  { label: 'Insight 2', title: 'Alerts can’t be trusted when a single location triggers them.', value: '73%', text: 'had been burned by false alerts from a single check location.' },
+  { label: 'Insight 3', title: 'Status and reporting mean buying yet another product.', value: '58%', text: 'wanted to share status without a separate tool.' },
+];
+
+const farsafeProblem = {
+  image: 'case-farsafe-problem.webp',
+  heading: 'Monitoring tools force a trade-off between simple and trustworthy',
+  body: 'Developers, agencies, and small teams need to know the moment something breaks. But existing tools bury pricing behind tiers, fire false alarms from a single check location, and split status and reporting into separate paid products.',
+  why: 'The result is teams that either overpay, miss real outages, or juggle multiple tools — and lose trust in the one system meant to warn them.',
+};
+
+const farsafeSolution = {
+  image: 'case-farsafe-solution.webp',
+  heading: 'One all-included platform, legible from the first click',
+  body: 'I designed Farsafe end-to-end across two surfaces — the marketing site and the dashboard. Pricing is exposed and flat, every alert is cross-verified across regions before it fires, and status pages and reports are built in, not sold separately.',
+  scenario: 'My aim was a product a first-time visitor could understand in seconds and an engineer could trust in production — the same clarity from landing page to daily dashboard.',
+};
+
 export default function FarsafeCase() {
   const project = cases.farsafe;
   const paletteRef = useRef(null);
@@ -899,72 +917,7 @@ export default function FarsafeCase() {
           />
         </div>
 
-        {/* Back link */}
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Portfolio
-        </Link>
-
-        {/* Title */}
-        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
-          {project.title}
-        </h1>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2.5 mt-8">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 bg-[#f2f3f5] rounded-pill font-grotesk font-medium text-sm text-[#22292f]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {project.meta.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
-                {item.value}
-              </p>
-            </div>
-          ))}
-          <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
-            <div className="flex gap-2">
-              {project.tools.map((id) => (
-                <ToolIcon key={id} id={id} className="bg-white w-9 h-9 shadow-sm" />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Summary cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
-          {project.summary.map((card) => (
-            <div
-              key={card.label}
-              className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
-            >
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
-            </div>
-          ))}
-          <div className="bg-[#e9f3fa] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-            <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
-          </div>
-        </div>
+        <CaseHeader project={project} />
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
@@ -982,91 +935,43 @@ export default function FarsafeCase() {
 
         {/* Problem statement */}
         <section id="problem-statement" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">PROBLEM STATEMENT</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight max-w-3xl leading-snug">
+          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">Problem statement</p>
+          <h2 className="font-grotesk font-medium text-[28px] sm:text-4xl lg:text-[44px] text-text-primary tracking-tight max-w-4xl leading-[1.2]">
             Developers and agencies need a monitoring tool they can set up fast and actually trust.
           </h2>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl">
+          <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed max-w-3xl">
             Existing tools bury pricing, fire false alarms from a single location, and scatter
             status and reporting across separate products.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-4">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">Insight 1</p>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Pricing is impossible to predict
-              </p>
-              <p className="font-grotesk font-bold text-[40px] sm:text-6xl text-black">66%</p>
-              <p className="font-grotesk text-[14px] text-[#393939]">
-                <strong className="font-bold text-black">66%</strong> of interviewees said tiered
-                pricing made their bill unpredictable.
-              </p>
-            </div>
-            <div className="bg-[#e9f3fa] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">Insight 2</p>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Alerts can&rsquo;t be trusted when a single location triggers them.
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] mt-auto">
-                <strong className="font-bold text-black">73%</strong> had been burned by false alerts from a single check location.
-              </p>
-            </div>
-            <div className="bg-[#6d3fc4] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 text-white">
-              <p className="font-grotesk text-sm text-white uppercase tracking-wide">Insight 3</p>
-              <p className="font-grotesk font-bold text-[14px]">
-                Status and reporting mean buying yet another product.
-              </p>
-              <p className="font-grotesk font-bold text-[40px] sm:text-6xl">58%</p>
-              <p className="font-grotesk text-[14px] text-white">
-                <strong className="font-bold text-white">58%</strong> wanted to share status
-                without a separate tool.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-10 mt-6">
+            {problemInsights.map((insight, i) => {
+              const last = i === problemInsights.length - 1;
+              return (
+                <div
+                  key={insight.label}
+                  className={`flex flex-col gap-3 pt-5 border-t ${last ? 'border-action-primary' : 'border-border-subtle'}`}
+                >
+                  <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-brand">{insight.label}</p>
+                  <p className="font-grotesk font-medium text-[18px] leading-snug text-text-primary">{insight.title}</p>
+                  <p
+                    className={`font-grotesk font-medium text-[44px] sm:text-6xl leading-none ${
+                      last ? 'text-text-brand' : 'text-text-primary'
+                    }`}
+                  >
+                    {insight.value}
+                  </p>
+                  <p className="font-grotesk text-sm text-text-primary leading-relaxed">
+                    <strong className="font-bold">{insight.value}</strong> {insight.text}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* Problem */}
-        <section id="problem" className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-          <ImagePlaceholder filename="case-farsafe-problem.webp" className="min-h-[420px]" />
-          <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">PROBLEM</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
-              Monitoring tools force a trade-off between simple and trustworthy
-            </h2>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-              Developers, agencies, and small teams need to know the moment something breaks. But
-              existing tools bury pricing behind tiers, fire false alarms from a single check
-              location, and split status and reporting into separate paid products.
-            </p>
-            <p className="font-mono-bold text-[14px] text-black">WHY IS THIS IMPORTANT?</p>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-              The result is teams that either overpay, miss real outages, or juggle multiple tools
-              — and lose trust in the one system meant to warn them.
-            </p>
-          </div>
-        </section>
-
-        {/* Solution */}
-        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-          <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">SOLUTION</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
-              One all-included platform, legible from the first click
-            </h2>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-              I designed Farsafe end-to-end across two surfaces — the marketing site and the
-              dashboard. Pricing is exposed and flat, every alert is cross-verified across regions
-              before it fires, and status pages and reports are built in, not sold separately.
-            </p>
-            <p className="font-mono-bold text-[14px] text-black">USER SCENARIO CONSIDERATION</p>
-            <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-              My aim was a product a first-time visitor could understand in seconds and an engineer
-              could trust in production — the same clarity from landing page to daily dashboard.
-            </p>
-          </div>
-          <ImagePlaceholder filename="case-farsafe-solution.webp" className="min-h-[420px] order-first lg:order-none" />
-        </section>
+        {/* Problem & solution */}
+        <ProblemSolution problem={farsafeProblem} solution={farsafeSolution} />
 
         {/* Project goals */}
         <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
