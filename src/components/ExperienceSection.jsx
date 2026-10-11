@@ -25,6 +25,55 @@ const formatDuration = ([startYear, startMonth], end, now) => {
   return parts.join(' ');
 };
 
+const VISIBLE_BULLETS = 3;
+
+const bulletClass = 'font-grotesk text-[14px] text-text-primary leading-relaxed';
+
+// First three bullets always show; the rest sit behind a native <details> toggle placed right after them.
+// <details> gives keyboard (Tab + Enter/Space) and screen-reader support for free, and the hidden bullets stay in
+// the DOM (find-in-page opens the toggle).
+function BulletList({ bullets }) {
+  const shown = bullets.slice(0, VISIBLE_BULLETS);
+  const rest = bullets.slice(VISIBLE_BULLETS);
+
+  return (
+    <div className="mb-5">
+      <ul className="list-disc pl-5 space-y-2">
+        {shown.map((bullet, i) => (
+          <li key={i} className={bulletClass}>
+            {bullet}
+          </li>
+        ))}
+      </ul>
+      {rest.length > 0 && (
+        <details className="group mt-2">
+          <summary className="list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-1.5 cursor-pointer rounded-md font-grotesk font-medium text-[14px] text-text-brand hover:text-action-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring">
+            <span className="group-open:hidden">Show {rest.length} more</span>
+            <span className="hidden group-open:inline">Show less</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+              className="w-4 h-4 transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180"
+            >
+              <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </summary>
+          <ul className="list-disc pl-5 space-y-2 mt-2">
+            {rest.map((bullet, i) => (
+              <li key={i} className={bulletClass}>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </div>
+  );
+}
+
 export default function ExperienceSection() {
   const now = new Date();
 
@@ -226,16 +275,7 @@ export default function ExperienceSection() {
                   </p>
                 </div>
 
-                <ul className="list-disc pl-5 space-y-2 mb-5">
-                  {exp.bullets.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="font-grotesk text-[14px] text-text-primary leading-relaxed"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+                <BulletList bullets={exp.bullets} />
 
                 <div className="flex flex-wrap gap-2.5">
                   {exp.skills.map((skill) => (

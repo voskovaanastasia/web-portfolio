@@ -39,6 +39,8 @@ import iconGithub from '../assets/toolkit/github.svg';
 import iconGit from '../assets/icon-git.svg';
 import iconVscode from '../assets/toolkit/vscode.svg';
 import iconCursor from '../assets/toolkit/cursor.webp';
+import iconVite from '../assets/toolkit/vite.svg';
+import iconGsap from '../assets/toolkit/gsap.svg';
 import iconNode from '../assets/how-i-work/tool-nodedotjs.svg';
 
 // Single source of truth for every tool referenced on the home page.
@@ -90,6 +92,8 @@ export const tools = [
   { id: 'tailwind', name: 'Tailwind CSS', icon: iconTailwind, category: 'programming', featured: true, pillars: [] },
   { id: 'vercel', name: 'Vercel', icon: iconVercel, category: 'programming', featured: true, pillars: [] },
   { id: 'cursor', name: 'Cursor', icon: iconCursor, category: 'programming', featured: true, pillars: [] },
+  { id: 'vite', name: 'Vite', icon: iconVite, category: 'programming', featured: false, pillars: [] },
+  { id: 'gsap', name: 'GSAP', icon: iconGsap, category: 'programming', featured: false, pillars: [] },
   { id: 'nodejs', name: 'Node.js', icon: iconNode, category: 'programming', featured: true, pillars: ['engineering'] },
 ];
 
@@ -97,3 +101,5 @@ export const getToolsForPillar = (pillarId, max = 4) =>
   tools.filter((tool) => tool.pillars.includes(pillarId)).slice(0, max);
 
 export const getToolsByCategory = (category) => tools.filter((tool) => tool.category === category);
+
+export const getToolById = (id) => tools.find((tool) => tool.id === id);

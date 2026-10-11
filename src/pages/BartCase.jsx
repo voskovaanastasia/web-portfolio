@@ -11,11 +11,6 @@ import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseBart from '../assets/case-bart.webp';
 import caseBart480 from '../assets/case-bart-480w.webp';
 import caseBart960 from '../assets/case-bart-960w.webp';
-import toolFigma from '../assets/icon-figma.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolNotion from '../assets/icon-notion.svg';
-import toolGoogleAnalytics from '../assets/toolkit/googleanalytics.svg';
-import toolHotjar from '../assets/toolkit/hotjar.svg';
 
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
@@ -667,13 +662,7 @@ const project = {
     { label: 'My Team', value: 'Product Managers, Developers, Marketing Department, Copywriter' },
     { label: 'Timeline', value: '10 months, 2024' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolJira, label: 'Jira' },
-    { icon: toolNotion, label: 'Notion' },
-    { icon: toolGoogleAnalytics, label: 'Google Analytics' },
-    { icon: toolHotjar, label: 'Hotjar' },
-  ],
+  tools: ['figma', 'jira', 'notion', 'google-analytics', 'hotjar'],
   summary: [
     {
       label: 'PROBLEM',

@@ -4,9 +4,6 @@ import SectionMenu from '../components/SectionMenu';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
-import toolFigma from '../assets/icon-figma.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolNotion from '../assets/icon-notion.svg';
 
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
@@ -339,11 +336,7 @@ const project = {
     { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: '11 months' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolJira, label: 'Jira' },
-    { icon: toolNotion, label: 'Notion' },
-  ],
+  tools: ['figma', 'jira', 'notion'],
   summary: [
     {
       label: 'PROBLEM',

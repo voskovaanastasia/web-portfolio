@@ -1,9 +1,6 @@
 import { Donut, DonutStat } from '../components/Charts';
 import CaseLayout, { ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
-import toolFigma from '../assets/icon-figma.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolNotion from '../assets/icon-notion.svg';
 
 const project = {
   name: 'Fitness App',
@@ -16,11 +13,7 @@ const project = {
     { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: '6 months' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolJira, label: 'Jira' },
-    { icon: toolNotion, label: 'Notion' },
-  ],
+  tools: ['figma', 'jira', 'notion'],
   summary: [
     {
       label: 'PROBLEM',

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionMenu from './SectionMenu';
+import ToolIcon from './ToolIcon';
 import ContactSection from './ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -563,14 +564,8 @@ export default function CaseLayout({
           <div className="flex flex-col gap-3">
             <p className="font-grotesk text-[14px] text-text-secondary">Tools</p>
             <div className="flex flex-wrap gap-2">
-              {project.tools.map((tool) => (
-                <span
-                  key={tool.label}
-                  title={tool.label}
-                  className="bg-surface-default rounded-pill w-9 h-9 shrink-0 flex items-center justify-center shadow-sm"
-                >
-                  <img src={tool.icon} alt={tool.label} width="20" height="20" className="w-5 h-5 object-contain" />
-                </span>
+              {project.tools.map((id) => (
+                <ToolIcon key={id} id={id} className="bg-surface-default w-9 h-9 shrink-0 shadow-sm" />
               ))}
             </div>
           </div>

@@ -1,13 +1,6 @@
 import CaseLayout from '../components/CaseLayout';
 import { ProgressBar } from '../components/Charts';
 import Goals from '../components/Goals';
-import toolFigma from '../assets/icon-figma.svg';
-import toolClaude from '../assets/icon-claude.svg';
-import toolReact from '../assets/icon-react.svg';
-import toolVite from '../assets/toolkit/vite.svg';
-import toolTailwind from '../assets/toolkit/tailwind.webp';
-import toolGsap from '../assets/toolkit/gsap.svg';
-import toolVercel from '../assets/toolkit/vercel.svg';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
 
@@ -23,15 +16,7 @@ const project = {
     { label: 'Build time', value: '10 weeks\nJuly 21 → September 29, 2026' },
     { label: 'Built with', value: 'Claude Code\n91 commits, 86 co-authored' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolClaude, label: 'Claude Code' },
-    { icon: toolReact, label: 'React' },
-    { icon: toolVite, label: 'Vite' },
-    { icon: toolTailwind, label: 'Tailwind CSS' },
-    { icon: toolGsap, label: 'GSAP' },
-    { icon: toolVercel, label: 'Vercel' },
-  ],
+  tools: ['figma', 'claude-code', 'react', 'vite', 'tailwind', 'gsap', 'vercel'],
   links: [
     { icon: iconWebsite, label: 'Website', href: 'https://www.anastasiiavoskova.com/' },
     { icon: iconGithub, label: 'GitHub', href: 'https://github.com/voskovaanastasia/web-portfolio' },

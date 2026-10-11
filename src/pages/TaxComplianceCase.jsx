@@ -1,6 +1,5 @@
 import CaseLayout, { StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
-import toolFigma from '../assets/icon-figma.svg';
 
 const project = {
   name: 'Tax Compliance Platform',
@@ -13,7 +12,7 @@ const project = {
     { label: 'My Team', value: 'Product Manager, Developers, QA, Tax Advisors' },
     { label: 'Timeline', value: '8 months' },
   ],
-  tools: [{ icon: toolFigma, label: 'Figma' }],
+  tools: ['figma'],
   summary: [
     {
       label: 'PROBLEM',

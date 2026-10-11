@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Donut, ProgressBar } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
+import ToolIcon from '../components/ToolIcon';
 import { ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
@@ -12,9 +13,6 @@ import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseFarsafe from '../assets/case-farsafe.webp';
 import caseFarsafe480 from '../assets/case-farsafe-480w.webp';
 import caseFarsafe960 from '../assets/case-farsafe-960w.webp';
-import toolFigma from '../assets/icon-figma.svg';
-import toolFramer from '../assets/toolkit/framer.webp';
-import toolAmplitude from '../assets/how-i-work/tool-amplitude.svg';
 
 const SPECIMEN_FONTS_URL =
   'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap';
@@ -697,11 +695,7 @@ const cases = {
       { label: 'My Team', value: 'Founder (backend), Frontend Developer' },
       { label: 'Timeline', value: '1 year 6 months' },
     ],
-    tools: [
-      { icon: toolFigma, label: 'Figma' },
-      { icon: toolFramer, label: 'Framer' },
-      { icon: toolAmplitude, label: 'Amplitude' },
-    ],
+    tools: ['figma', 'framer', 'amplitude'],
     summary: [
       {
         label: 'PROBLEM',
@@ -947,14 +941,8 @@ export default function FarsafeCase() {
           <div className="flex flex-col gap-3">
             <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
             <div className="flex gap-2">
-              {project.tools.map((tool) => (
-                <span
-                  key={tool.label}
-                  title={tool.label}
-                  className="bg-white rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
-                >
-                  <img src={tool.icon} alt={tool.label} width="20" height="20" className="w-5 h-5 object-contain" />
-                </span>
+              {project.tools.map((id) => (
+                <ToolIcon key={id} id={id} className="bg-white w-9 h-9 shadow-sm" />
               ))}
             </div>
           </div>

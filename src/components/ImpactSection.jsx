@@ -111,8 +111,7 @@ export default function ImpactSection() {
             >
               <p
                 data-metric-number
-                style={{ fontVariantNumeric: 'tabular-nums' }}
-                className={`font-grotesk font-bold text-[30px] sm:text-5xl whitespace-nowrap ${metric.number_color}`}
+                className={`font-grotesk font-bold text-[30px] sm:text-5xl lg:text-[clamp(1.75rem,calc(5.55vw_-_1.2rem),2.8rem)] whitespace-nowrap tabular-nums ${metric.number_color}`}
               >
                 {metric.number}
               </p>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { Analytics } from '@vercel/analytics/react';
 import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
+import ScrollManager from './components/ScrollManager';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import useDocumentMeta from './hooks/useDocumentMeta';
@@ -40,6 +41,7 @@ function Layout() {
 
   return (
     <div className={`flex flex-col min-h-screen ${onDots ? '' : 'bg-surface-default'}`}>
+        <ScrollManager />
         <Navigation />
         <Suspense fallback={null}>
           <Routes>

@@ -13,7 +13,7 @@ const homeSections = [
   { id: 'contact', label: 'Contact' },
 ];
 
-// Fixed bottom-left section navigator. Hidden while the first section is active.
+// Fixed bottom-left section navigator on wide screens, burger dropdown otherwise. Hidden while the first section is active.
 export default function SectionMenu({ sections = homeSections }) {
   const [intersectingIds, setIntersectingIds] = useState(() => new Set());
   const [isOpen, setIsOpen] = useState(false);
@@ -95,24 +95,35 @@ export default function SectionMenu({ sections = homeSections }) {
 
   return (
     <>
-      {/* Desktop section navigator (xl and up) */}
+      {/* Desktop section navigator. Only shown where the gutter beside the 1152px content column is wide
+          enough for it (>= 1450px); its width and offset are derived from that gutter, so it can't overlap
+          the content. Every item reserves the same left padding for the line, so the active state never
+          changes an item's width or moves its label. */}
       <nav
         aria-label="Page sections"
-        className={`fixed bottom-8 left-8 z-50 hidden xl:flex flex-col gap-2.5 transition-all duration-300 ${
+        style={{
+          '--menu-left': 'clamp(16px, calc((100vw - 1450px) / 2 + 16px), 32px)',
+          '--menu-pad': 'clamp(32px, 3vw, 52px)',
+          left: 'var(--menu-left)',
+          width: 'clamp(130px, calc((100vw - 1152px) / 2 + 32px - var(--menu-left) - 32px), 200px)',
+        }}
+        className={`fixed bottom-8 z-50 hidden min-[1450px]:flex flex-col gap-2.5 transition-all duration-300 ${
           hidden ? 'opacity-0 -translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0'
         }`}
       >
         {sections.map(({ id, label }) => {
           const active = id === activeId;
           return (
-            <a key={id} href={`#${id}`} className="group flex items-center">
+            <a key={id} href={`#${id}`} className="group relative block pl-[var(--menu-pad)]">
               <span
-                className={`h-px bg-black transition-all duration-300 ${
-                  active ? 'w-10 mr-3' : 'w-0 mr-0'
+                aria-hidden="true"
+                style={{ width: 'calc(var(--menu-pad) - 12px)' }}
+                className={`absolute left-0 top-[0.6em] h-px bg-black origin-left transition-transform duration-300 ${
+                  active ? 'scale-x-100' : 'scale-x-0'
                 }`}
               />
               <span
-                className={`font-grotesk font-medium text-xs tracking-wide transition-colors duration-300 ${
+                className={`block font-grotesk font-medium text-[clamp(11px,0.8vw,12px)] leading-snug tracking-wide break-words transition-colors duration-300 ${
                   active ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
                 }`}
               >
@@ -123,9 +134,9 @@ export default function SectionMenu({ sections = homeSections }) {
         })}
       </nav>
 
-      {/* Mobile/tablet section navigator (below xl): burger menu, bottom-right */}
+      {/* Compact section navigator (below 1450px): burger menu showing the current section, bottom-right */}
       <div
-        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex xl:hidden flex-col items-end gap-2 sm:gap-2.5 transition-all duration-300 ${
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex min-[1450px]:hidden flex-col items-end gap-2 sm:gap-2.5 transition-all duration-300 ${
           hidden ? 'opacity-0 translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'
         }`}
       >

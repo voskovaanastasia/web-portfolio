@@ -1,29 +1,10 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import DotsBackground from './DotsBackground';
-import EmailMenu from './EmailMenu';
 import avatar from '../assets/avatar.webp';
-import iconFigma from '../assets/icon-figma.svg';
-import iconReact from '../assets/icon-react.svg';
-import iconStack1 from '../assets/icon-stack1.webp';
-import iconGit from '../assets/icon-git.svg';
-import iconClaude from '../assets/icon-claude.svg';
-import iconWebflow from '../assets/icon-webflow.svg';
-import iconStack2 from '../assets/icon-stack2.webp';
-import iconJira from '../assets/icon-jira.svg';
-import iconNotion from '../assets/icon-notion.svg';
+import ToolIcon from './ToolIcon';
 
-const stackIcons = [
-  { src: iconFigma, alt: 'Figma', w: 25, h: 25 },
-  { src: iconReact, alt: 'React', w: 24, h: 22 },
-  { src: iconStack1, alt: 'Framer', w: 512, h: 512 },
-  { src: iconGit, alt: 'Git', w: 25, h: 25 },
-  { src: iconClaude, alt: 'Claude', w: 22, h: 22 },
-  { src: iconWebflow, alt: 'Webflow', w: 25, h: 25 },
-  { src: iconStack2, alt: 'Tailwind CSS', w: 512, h: 512 },
-  { src: iconJira, alt: 'Jira', w: 25, h: 25 },
-  { src: iconNotion, alt: 'Notion', w: 25, h: 25 },
-];
+const stackToolIds = ['figma', 'react', 'framer', 'git', 'claude-code', 'webflow', 'tailwind', 'jira', 'notion'];
 
 export default function HeroSection() {
   const rootRef = useRef(null);
@@ -72,8 +53,8 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  const scrollToToolkit = (e) => {
-    const target = document.getElementById('toolkit');
+  const scrollToContact = (e) => {
+    const target = document.getElementById('contact');
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -102,7 +83,7 @@ export default function HeroSection() {
         {/* Headline */}
         <h1 data-hero-item className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-text-primary tracking-tight leading-snug max-w-[280px] sm:max-w-none">
           I make complex,{' '}
-          <span className="font-playwrite font-normal">data-dense</span>{' '}
+          <span className="font-caveat font-bold text-[1.18em] leading-none">data-dense</span>{' '}
           products feel simple, and ground every decision in research.
         </h1>
 
@@ -111,66 +92,43 @@ export default function HeroSection() {
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 
-        {/* Based in */}
-        <div data-hero-item className="flex flex-col items-center gap-2.5">
-          <p className="font-mono-bold text-[14px] text-text-primary">Based in</p>
-          <p className="font-grotesk font-medium text-[14px] text-text-primary">
-            🇪🇸 Granada, Spain
-          </p>
-        </div>
-
-        {/* My Stack */}
-        <div data-hero-item className="flex flex-col items-center gap-2.5">
-          <p className="font-mono-bold text-[14px] text-text-primary">My Stack</p>
-          <div className="flex items-center">
-            {stackIcons.map((icon, i) => (
-              <div
-                key={icon.alt + i}
-                data-stack-icon
-                className="group bg-[#fbfbfb] flex items-center justify-center w-[50px] h-[50px] rounded-pill -mr-4 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] hover:z-10 relative cursor-pointer"
-              >
-                <span
-                  role="tooltip"
-                  className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black px-2.5 py-1 font-grotesk text-xs font-medium text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-                >
-                  {icon.alt}
-                </span>
-                <img
-                  src={icon.src}
-                  alt={icon.alt}
-                  width={icon.w}
-                  height={icon.h}
-                  className="w-[25px] h-[25px]"
-                />
-              </div>
-            ))}
-          </div>
+        {/* Buttons */}
+        <div data-hero-item className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-[280px] sm:max-w-none">
           <a
-            href="/about#toolkit"
-            onClick={scrollToToolkit}
-            className="font-caveat font-bold text-xl text-accent-handwritten hover:underline underline-offset-4"
+            href="/Anastasiia-Voskova-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Anastasiia-Voskova-Resume.pdf"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
-            + more
+            Download CV
+          </a>
+          <a
+            href="#contact"
+            onClick={scrollToContact}
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] bg-white border-action-primary text-action-primary hover:bg-surface-brand-tint font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          >
+            Contact
           </a>
         </div>
 
-        {/* CTA + handwritten note, tighter pairing */}
-        <div data-hero-item className="flex flex-col items-center gap-3">
-          <div className="flex flex-col-reverse items-center min-[480px]:flex-row justify-center gap-3 w-full">
-            <EmailMenu />
-            <a
-              href="/Anastasiia-Voskova-Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download="Anastasiia-Voskova-Resume.pdf"
-              className="w-full max-w-[280px] min-[480px]:w-auto min-[480px]:max-w-none text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-            >
-              Download CV
-            </a>
-          </div>
-          <p className="font-caveat font-bold text-xl text-accent-handwritten max-w-[280px] sm:max-w-[300px]">
-            This entire portfolio was built with Claude Code.
+        {/* Location + stack */}
+        <div data-hero-item className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
+          <p className="font-grotesk font-medium text-[14px] text-text-primary whitespace-nowrap">
+            🇪🇸 Granada, Spain
           </p>
+          <span aria-hidden="true" className="hidden sm:block w-1 h-1 rounded-pill bg-text-secondary" />
+          <div className="flex items-center">
+            {stackToolIds.map((id) => (
+              <ToolIcon
+                key={id}
+                id={id}
+                data-stack-icon
+                iconClassName="w-[25px] h-[25px]"
+                className="bg-[#fbfbfb] w-[50px] h-[50px] -mr-4 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] hover:z-10"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -147,7 +147,7 @@ export default function MyToolkitSection() {
         </p>
         <h2 data-toolkit-intro className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug">
           I am Anastasiia Voskova,
-          <span className="font-playwrite font-normal block mt-2">
+          <span className="font-caveat font-bold text-[1.18em] leading-none block mt-2">
             a designer who thinks like an engineer.
           </span>
         </h2>
