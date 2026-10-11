@@ -117,7 +117,7 @@ export default function SectionMenu({ sections = homeSections }) {
             <a key={id} href={`#${id}`} className="group relative block pl-[var(--menu-pad)]">
               <span
                 aria-hidden="true"
-                style={{ width: 'calc(var(--menu-pad) - 12px)' }}
+                style={{ width: 'calc((var(--menu-pad) - 12px) / 2)' }}
                 className={`absolute left-0 top-[0.6em] h-px bg-black origin-left transition-transform duration-300 ${
                   active ? 'scale-x-100' : 'scale-x-0'
                 }`}
