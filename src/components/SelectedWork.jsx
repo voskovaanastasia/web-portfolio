@@ -24,11 +24,11 @@ const featured = {
 
 // More work, numbered after the featured project. `highlight` renders the metric in bold.
 const moreWork = [
-  { id: 'bart', title: 'bART Solutions — Corporate Website Redesign', tags: ['Web', 'UX Research', 'Design System'], metric: '68→41% bounce', highlight: true, preview: caseBart480 },
+  { id: 'bart', title: 'bART Solutions — Corporate Website Redesign', tags: ['Web', 'UX Research', 'Design System'], metric: 'Web', preview: caseBart480 },
   { id: 'cryptowallet', title: 'CryptoWallet — Mobile Crypto App', tags: ['Fintech', 'iOS & Android'], metric: 'iOS & Android', preview: caseCrypto480 },
-  { id: 'crm-platform', title: 'Enterprise CRM — B2B Operations Platform', tags: ['B2B SaaS', 'Data-Dense UI'], metric: '13 modules', preview: caseCrm480 },
-  { id: 'online-payments', title: 'Online Payments — Mobile Wallet', tags: ['Fintech', 'Mobile'], metric: '8 months', preview: casePayments480 },
-  { id: 'online-doctor', title: 'Online Doctor — Telemedicine Platform', tags: ['Healthcare', 'Web & Mobile'], metric: '11 months', preview: caseDoctor480 },
+  { id: 'crm-platform', title: 'Enterprise CRM — B2B Operations Platform', tags: ['B2B SaaS', 'Data-Dense UI'], metric: 'SaaS', preview: caseCrm480 },
+  { id: 'online-payments', title: 'Online Payments — Mobile Wallet', tags: ['Fintech', 'Mobile'], metric: 'Mobile', preview: casePayments480 },
+  { id: 'online-doctor', title: 'Online Doctor — Telemedicine Platform', tags: ['Healthcare', 'Web & Mobile'], metric: 'Mobile', preview: caseDoctor480 },
   { id: 'fitness-app', title: 'Fitness App — Health & Training', tags: ['Mobile', 'AI Personalization'], metric: 'iOS & Android', preview: caseFitness480 },
   { id: 'shoot', title: 'SHOOT — Creative-Services Marketplace', tags: ['Marketplace', 'Booking Flow'], metric: 'Web & Mobile', preview: caseShoot480 },
 ];
