@@ -23,7 +23,7 @@ import DotsBackground from '../components/DotsBackground';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
-const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
+const categories = ['Product & UX/UI Design', 'Built with Claude', 'Logos & Branding'];
 
 // Card cover images are pre-cropped to the card's 4:3 display ratio at two
 // widths so the browser never downloads more pixels than it will show.
