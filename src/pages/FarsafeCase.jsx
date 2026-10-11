@@ -953,7 +953,7 @@ export default function FarsafeCase() {
                   title={tool.label}
                   className="bg-white rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
                 >
-                  <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
+                  <img src={tool.icon} alt={tool.label} width="20" height="20" className="w-5 h-5 object-contain" />
                 </span>
               ))}
             </div>

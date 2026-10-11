@@ -406,10 +406,9 @@ const CASE_ORDER = [
   { id: 'shoot', path: '/project/shoot', title: 'SHOOT' },
 ];
 
-// Matches the Person's "@id" in index.html's JSON-LD — kept as the same
-// literal placeholder so both update together once the real domain is set.
-const PERSON_ID = 'https://[PASTE YOUR PRODUCTION URL]/#person';
-const SITE_ORIGIN = 'https://[PASTE YOUR PRODUCTION URL]';
+// Matches the Person's "@id" in index.html's JSON-LD.
+const SITE_ORIGIN = 'https://www.anastasiiavoskova.com';
+const PERSON_ID = `${SITE_ORIGIN}/#person`;
 
 // Builds the useDocumentMeta props (title, description, canonical path,
 // share image, and CreativeWork JSON-LD linked to the Person entity) for a
@@ -570,7 +569,7 @@ export default function CaseLayout({
                   title={tool.label}
                   className="bg-surface-default rounded-pill w-9 h-9 shrink-0 flex items-center justify-center shadow-sm"
                 >
-                  <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
+                  <img src={tool.icon} alt={tool.label} width="20" height="20" className="w-5 h-5 object-contain" />
                 </span>
               ))}
             </div>

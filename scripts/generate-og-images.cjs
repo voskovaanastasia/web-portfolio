@@ -87,7 +87,28 @@ async function generateCaseImages() {
   }
 }
 
+// Favicon / touch / manifest icons: the AV mark on brand blue. Existing files are left untouched.
+async function generateIcons() {
+  const icons = [
+    { file: 'favicon-32x32.png', size: 32 },
+    { file: 'apple-touch-icon.png', size: 180 },
+    { file: 'icon-192.png', size: 192 },
+    { file: 'icon-512.png', size: 512 },
+  ];
+  for (const { file, size } of icons) {
+    const outPath = path.join(PUBLIC_DIR, file);
+    if (existsSync(outPath)) continue;
+    const scale = (size * 0.6) / 37;
+    const x = (size - 37 * scale) / 2;
+    const y = (size - 30 * scale) / 2;
+    const svg = `<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg"><rect width="${size}" height="${size}" fill="${BRAND_BLUE}"/><g transform="translate(${x}, ${y}) scale(${scale})">${AV_MARK_PATHS.map((d) => `<path d="${d}" fill="#ffffff"/>`).join('')}</g></svg>`;
+    await sharp(Buffer.from(svg)).png().toFile(outPath);
+    console.log(`${file} ->`, path.relative(ROOT, outPath));
+  }
+}
+
 async function main() {
+  await generateIcons();
   await generatePlaceholder();
   await generateCaseImages();
 }

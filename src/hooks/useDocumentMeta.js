@@ -39,7 +39,7 @@ function upsertJsonLd(data) {
   el.textContent = JSON.stringify(data);
 }
 
-const DEFAULT_IMAGE = '/og-image.png';
+const DEFAULT_IMAGE = '/og-cover.png';
 
 /**
  * Keeps document.title, meta description, canonical and OG/Twitter tags in
