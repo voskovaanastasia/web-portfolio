@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { getToolsByCategory } from '../data/tools';
+import ToolIcon from './ToolIcon';
 import flagGb from '../assets/flags/gb.svg';
 import flagUa from '../assets/flags/ua.svg';
 import flagEs from '../assets/flags/es.svg';
@@ -20,68 +21,15 @@ const languages = [
   { flag: flagEs, label: 'Spanish', level: 'A2 (Basic)' },
 ];
 
-function ToolCard({ icon, label }) {
-  return (
-    <div data-tool-card className="flex items-center gap-2.5">
-      <div data-tool-tile className="bg-surface-default border border-border-subtle rounded-panel w-[50px] h-[50px] flex items-center justify-center shrink-0 p-[7px]">
-        <img
-          src={icon}
-          alt=""
-          width={24}
-          height={24}
-          loading="lazy"
-          decoding="async"
-          className="w-[25px] h-[25px] object-contain"
-        />
-      </div>
-      <p className="font-grotesk font-bold text-sm text-text-primary">{label}</p>
-    </div>
-  );
-}
+const toolRows = [
+  { label: 'DESIGN', tools: designTools },
+  { label: 'SOFTWARE', tools: softwareTools },
+  { label: 'PROGRAMMING', tools: programmingTools },
+];
 
-function ToolGroup({ label, tools }) {
-  const [expanded, setExpanded] = useState(false);
-  const featured = tools.filter((tool) => tool.featured);
-  const hasMore = tools.length > featured.length;
-  const visibleTools = expanded ? tools : featured;
-  const gridRef = useRef(null);
-  const firstRender = useRef(true);
-
-  // Newly revealed cards (after "+ more") pop in; the initial batch is handled by the scroll animation.
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
-    if (!expanded || reduceMotion()) return;
-    const extra = gridRef.current?.querySelectorAll('[data-tool-card]:nth-child(n + ' + (featured.length + 1) + ')');
-    if (extra?.length) {
-      gsap.from(extra, { y: 16, scale: 0.8, opacity: 0, duration: 0.5, ease: 'back.out(1.8)', stagger: 0.04 });
-    }
-  }, [expanded, featured.length]);
-
-  return (
-    <div data-tool-group className="flex flex-col gap-5 w-full">
-      <p className="font-mono-bold text-[14px] text-text-primary">{label}</p>
-      <div ref={gridRef} className="bg-surface-subtle rounded-panel p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
-        {visibleTools.map((tool) => (
-          <ToolCard key={tool.id} icon={tool.icon} label={tool.name} />
-        ))}
-        {hasMore && (
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="flex items-center text-left"
-          >
-            <p className="font-caveat font-bold text-xl text-accent-handwritten">
-              {expanded ? 'show less' : '+ more'}
-            </p>
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
+const rowClass =
+  'grid md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] gap-4 md:gap-10 items-center py-6 border-t border-border-subtle';
+const labelClass = 'font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary';
 
 export default function MyToolkitSection() {
   const rootRef = useRef(null);
@@ -141,37 +89,58 @@ export default function MyToolkitSection() {
 
   return (
     <section ref={rootRef} id="toolkit" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-5 text-left">
-        <p data-toolkit-intro className="font-caveat font-bold text-xl text-accent-handwritten">
-          Computer Science is my secret weapon.
-        </p>
-        <h2 data-toolkit-intro className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug">
-          I am Anastasiia Voskova,
-          <span className="font-caveat font-bold text-[1.18em] leading-none block mt-2">
-            a designer who thinks like an engineer.
-          </span>
-        </h2>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col gap-2.5 mb-12">
+          <p data-toolkit-intro className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">
+            My Toolkit
+          </p>
+          <p data-toolkit-intro className="font-caveat font-bold text-xl text-text-brand">
+            Computer Science is my secret weapon.
+          </p>
+          <h2
+            data-toolkit-intro
+            className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug max-w-3xl"
+          >
+            I am Anastasiia Voskova, a designer who thinks like an engineer.
+          </h2>
+        </div>
 
-        <div className="flex flex-col gap-8 w-full mt-6 text-left">
-          <ToolGroup label="DESIGN" tools={designTools} />
-          <ToolGroup label="SOFTWARE" tools={softwareTools} />
-          <ToolGroup label="PROGRAMMING" tools={programmingTools} />
+        <div className="border-b border-border-subtle">
+          {toolRows.map((row) => (
+            <div key={row.label} data-tool-group className={rowClass}>
+              <p className={labelClass}>{row.label}</p>
+              <ul className="flex flex-wrap gap-3">
+                {row.tools.map((tool) => (
+                  <li key={tool.id} data-tool-card>
+                    <ToolIcon
+                      id={tool.id}
+                      data-tool-tile
+                      iconClassName="w-[25px] h-[25px]"
+                      className="bg-[#fbfbfb] w-[50px] h-[50px] shadow-[1px_1px_5px_rgba(124,124,124,0.25)]"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-          <div data-tool-group className="flex flex-col gap-5 w-full">
-            <p className="font-mono-bold text-[14px] text-text-primary">Language</p>
-            <div className="bg-surface-subtle rounded-panel p-3 sm:p-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-3 sm:gap-x-5 gap-y-3 sm:gap-y-5 w-full">
+          <div data-tool-group className={rowClass}>
+            <p className={labelClass}>Language</p>
+            <ul className="flex flex-wrap gap-x-10 gap-y-4">
               {languages.map((lang) => (
-                <div key={lang.label} data-tool-card className="flex items-center gap-2.5">
-                  <div data-tool-tile className="bg-surface-default border border-border-subtle rounded-panel w-[50px] h-[50px] flex items-center justify-center shrink-0">
-                    <img src={lang.flag} alt={`${lang.label} flag`} className="w-8 h-[22px] rounded-[3px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
-                  </div>
+                <li key={lang.label} data-tool-card className="flex items-center gap-3">
+                  <img
+                    src={lang.flag}
+                    alt={`${lang.label} flag`}
+                    className="w-8 h-[22px] rounded-[3px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.08)]"
+                  />
                   <div className="flex flex-col">
                     <p className="font-grotesk font-bold text-sm text-text-primary">{lang.label}</p>
                     <p className="font-grotesk text-xs text-text-secondary">{lang.level}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
