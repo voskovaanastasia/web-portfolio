@@ -21,7 +21,7 @@ const education = [
         Computer-Aided Design, studied CAD principles and computer-aided design
         workflows — building an early appreciation for precision, systems thinking, and
         how tooling shapes the design process.
-        <br />
+        <span className="block h-3" aria-hidden="true" />
         Delivered a Bachelor&rsquo;s thesis &mdash;{' '}
         <span className="font-bold">
           &ldquo;Web Application for Multi-Blockchain System Management (Node.js)&rdquo;
@@ -75,72 +75,70 @@ export default function EducationSection() {
     <section id="education" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-text-primary">My Learning</p>
+          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">My Learning</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Education
           </h2>
         </div>
 
-        <div>
-          {education.map((edu, index) => (
-            <div key={edu.dateRange} className="flex gap-6">
-              {/* Timeline rail */}
-              <div className="flex flex-col items-center shrink-0 w-4">
-                <div className="w-4 h-4 rounded-pill mt-0.5 shrink-0 bg-grey-300" />
-                {index < education.length - 1 && (
-                  <div className="w-0.5 flex-1 bg-border-subtle" />
-                )}
-              </div>
-
-              <div className="pb-12 flex-1">
-                <p className="font-mono-bold text-sm text-text-primary tracking-wide mb-5">
-                  {edu.dateRange}
+        <div className="border-b border-border-subtle">
+          {education.map((edu) => {
+            const [school, ...metaRest] = edu.meta;
+            const [from, to] = edu.dateRange.split(' — ');
+            return (
+              <article
+                key={edu.dateRange}
+                className="border-t border-border-subtle py-10 grid gap-5 md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] md:gap-10"
+              >
+                <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary md:pt-3">
+                  {from} —<br className="hidden md:block" /> {to}
                 </p>
 
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="bg-surface-default border border-border-subtle rounded-control w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
-                    <img
-                      src={edu.logo}
-                      alt=""
-                      width={edu.logoW}
-                      height={edu.logoH}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-contain"
-                    />
+                <div>
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className="bg-surface-default border border-border-subtle rounded-control w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
+                      <img
+                        src={edu.logo}
+                        alt=""
+                        width={edu.logoW}
+                        height={edu.logoH}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h3 className="font-grotesk font-medium text-[20px] sm:text-2xl leading-tight text-text-primary">
+                        {edu.school}
+                      </h3>
+                      <p className="font-grotesk text-sm text-text-primary">
+                        <span className="font-medium text-text-brand">{school}</span>
+                        {metaRest.map((part, i) => (
+                          <span key={i}>
+                            <span aria-hidden="true" className="mx-1.5 text-text-secondary">·</span>
+                            {part}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-text-primary">
-                      {edu.school}
-                    </h3>
-                    <p className="font-grotesk text-sm text-text-secondary">
-                      {edu.meta.map((part, i) => (
-                        <span key={i}>
-                          {i > 0 && <span className="mx-1.5 text-grey-300">•</span>}
-                          {part}
-                        </span>
-                      ))}
-                    </p>
-                  </div>
-                </div>
 
-                <p className="font-grotesk text-[14px] text-text-primary leading-relaxed mb-5">
-                  {edu.description}
-                </p>
+                  <p className="font-grotesk text-[14px] sm:text-[15px] text-text-primary leading-relaxed mb-5">
+                    {edu.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-2.5">
-                  {edu.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 bg-surface-brand-tint text-text-primary rounded-pill text-sm font-grotesk font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  <ul className="flex flex-wrap gap-y-1 font-mono-bold text-[12px] text-text-secondary">
+                    {edu.skills.map((skill, i) => (
+                      <li key={skill}>
+                        {skill}
+                        {i < edu.skills.length - 1 && <span aria-hidden="true" className="mx-2">·</span>}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
