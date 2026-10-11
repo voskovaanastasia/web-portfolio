@@ -638,7 +638,7 @@ export default function CaseLayout({
         {/* Case-specific sections */}
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="pb-20 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-text-primary">{section.label}</p>
+            {!section.bare && <p className="font-mono-bold text-[14px] text-text-primary">{section.label}</p>}
             {section.content}
           </section>
         ))}

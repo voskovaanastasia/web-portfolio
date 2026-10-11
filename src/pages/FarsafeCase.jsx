@@ -5,6 +5,7 @@ import { Donut, ProgressBar } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
+import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -654,6 +655,15 @@ const iaTree = {
 };
 
 
+const projectGoals = {
+  headline: 'Make a data-dense monitoring product feel approachable, from the first scroll to the first configured probe.',
+  items: [
+    'Make the value proposition instantly clear: communicate “everything included, pay only for what you use” in seconds, and remove hidden tier pricing before a visitor ever scrolls.',
+    'Make a data-dense product approachable: a monitoring dashboard where uptime, response times, diagnostics and expirations scan at a glance, with depth but no overwhelm.',
+    'Drive low-friction signup and activation: guide visitors to the free account with repeated, low-commitment CTAs, and get a new user from signup to first configured probe in under 2 minutes.',
+  ],
+};
+
 const monitoringFrustrationSegments = [
   { value: 30, color: '#f2c94c', label: 'False alerts from single-location checks' },
   { value: 27, color: '#6abf69', label: 'Confusing or tiered pricing' },
@@ -1071,52 +1081,7 @@ export default function FarsafeCase() {
         </section>
 
         {/* Project goals */}
-        <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
-                <circle cx="12" cy="7" r="4" />
-                <path d="M12 5v4M10.5 6.2h3a1 1 0 0 1 0 2h-3a1 1 0 0 0 0 2h3" strokeLinecap="round" />
-                <path d="M3 17c2-2 4-2 6-1l3 1.5c1.5.7 3-.5 4-1.5l2.5-2.5a1.4 1.4 0 0 1 2 2L16 20c-1.5 1.5-4 2-6 1l-7-3z" strokeLinejoin="round" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Make the Value Proposition Instantly Clear
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Communicate &ldquo;everything included, pay only for what you use&rdquo; in seconds
-                — and remove the category&rsquo;s biggest friction, hidden tier pricing, before a
-                visitor ever scrolls.
-              </p>
-            </div>
-            <div className="bg-[#1f7ab8] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 text-white">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px]">
-                Make a Data-Dense Product Approachable
-              </p>
-              <p className="font-grotesk text-[14px] text-white leading-relaxed">
-                Design a monitoring dashboard where uptime, response times, diagnostics, and
-                expirations are scannable at a glance — depth without overwhelm.
-              </p>
-            </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
-                <circle cx="10" cy="8" r="4" />
-                <path d="M3 21c0-3.5 3-6 7-6 1.5 0 2.8.3 4 .9" strokeLinecap="round" />
-                <path d="m16 19 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Drive Low-Friction Signup &amp; Activation
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Guide visitors to the free account with repeated, low-commitment CTAs, and get a
-                new user from signup to first configured probe in under 2 minutes.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
 
         {/* User research */}
         <section id="research" className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">

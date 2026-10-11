@@ -4,6 +4,7 @@ import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
+import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -548,6 +549,16 @@ const researchStats = [
   },
 ];
 
+const projectGoals = {
+  headline:
+    'Help visitors find services and cases faster, and turn visits into contact requests, with a modern look that matches the client’s brand.',
+  items: [
+    'Improve navigation clarity: restructure the information architecture so visitors find services, cases and contact information in fewer clicks.',
+    'Refresh the visual identity: deliver a consistent interface aligned with the client’s brand vision, with updated typography, colour system and component style across all pages.',
+    'Increase conversion rate: optimise key user flows and CTA placement to guide visitors toward contact requests, service inquiries and portfolio engagement.',
+  ],
+};
+
 const frustrationSegments = [
   { value: 32, color: '#f2c94c', label: 'Outdated visual design' },
   { value: 28, color: '#6abf69', label: 'Hard to find needed information' },
@@ -816,50 +827,7 @@ export default function BartCase() {
         <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Project goals */}
-        <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5V4l-6 2.5L9 4z" strokeLinejoin="round" />
-                <path d="M9 4v13M15 6.5v13" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Improve Navigation Clarity
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Restructure the information architecture to reduce user drop-off — making it
-                easier to find services, cases, and contact information in fewer clicks.
-              </p>
-            </div>
-            <div className="bg-[#1f7ab8] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 text-white">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-1.8 0-1.4-1.5-1.6-1.5-2.7 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4-4-7-9-7z" strokeLinejoin="round" />
-                <circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none" />
-                <circle cx="12" cy="7.5" r="1.1" fill="currentColor" stroke="none" />
-                <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px]">Refresh the Visual Identity</p>
-              <p className="font-grotesk text-[14px] text-white leading-relaxed">
-                Deliver a modern, consistent interface aligned with the client&rsquo;s brand
-                vision — updating typography, colour system, and component style across all
-                pages.
-              </p>
-            </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Increase Conversion Rate
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Optimise key user flows and CTA placement to guide visitors toward targeted
-                actions — contact requests, service inquiries, and portfolio engagement.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
 
         {/* User research */}
         <section id="research" className="pb-20 flex flex-col gap-6">

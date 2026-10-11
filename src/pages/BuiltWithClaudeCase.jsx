@@ -1,5 +1,6 @@
 import CaseLayout from '../components/CaseLayout';
 import { ProgressBar } from '../components/Charts';
+import Goals from '../components/Goals';
 import toolFigma from '../assets/icon-figma.svg';
 import toolClaude from '../assets/icon-claude.svg';
 import toolReact from '../assets/icon-react.svg';
@@ -75,68 +76,6 @@ const bodyText =
 const h2Class = 'font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight max-w-3xl';
 const cardClass = 'rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4';
 
-const contextCards = [
-  {
-    title: 'The problem with Behance',
-    icon: (
-      <>
-        <path d="M4 5h16v11H4zM8 20h8M12 16v4" strokeLinejoin="round" />
-      </>
-    ),
-    text: 'My portfolio lived on Behance. Formatting each case study took a lot of time, and the platform made it hard to show large user flows and information architecture.',
-  },
-  {
-    title: 'What I wanted',
-    icon: (
-      <>
-        <path d="M12 3 14.6 9.4 21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3z" strokeLinejoin="round" />
-      </>
-    ),
-    text: 'Once I started looking for a new role, I wanted one place for my full range: experience, case studies, tech stack and computer science education.',
-  },
-  {
-    title: 'Why I built it myself',
-    icon: (
-      <>
-        <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" strokeLinejoin="round" strokeLinecap="round" />
-      </>
-    ),
-    text: 'I studied computer science and had already been testing prototypes with Claude Code, so building the site was a natural way to show how I work from design to implementation. I rewrote most of the copy with Claude’s help, then proofread it.',
-  },
-  {
-    title: 'Who it’s for',
-    icon: (
-      <>
-        <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
-      </>
-    ),
-    text: 'Recruiters and potential clients. I’m looking for full-time roles and have worked in product companies, outsourcing and startups. I expected them to want three answers within 30 seconds: is this experience relevant, what does the portfolio show, and what tools do I work with.',
-  },
-  {
-    title: 'Positioning',
-    icon: (
-      <>
-        <circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
-      </>
-    ),
-    text: (
-      <>
-        The line I built the site around is: <em>I make complex, data-dense products feel simple.</em>
-      </>
-    ),
-    tint: true,
-  },
-  {
-    title: 'Goals',
-    icon: (
-      <>
-        <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
-      </>
-    ),
-    text: 'No numeric targets. The goals were simple: raise my visibility with recruiters and get invited to interviews.',
-  },
-];
-
 const roleRows = [
   {
     who: 'Me',
@@ -176,32 +115,19 @@ const roleRows = [
   },
 ];
 
+const projectGoals = {
+  headline:
+    'Give recruiters one place to see my full range, from research through design to implementation, and get invited to interviews.',
+  items: [
+    'Replace Behance with one home for experience, case studies, tech stack and computer science background.',
+    'Answer a recruiter’s three questions in 30 seconds: is the experience relevant, what does the portfolio show, which tools do I work with.',
+    'Show large user flows and information architecture in full, without fighting the platform’s formatting.',
+    'Prove how I work from design to implementation by designing, building and shipping the site myself with Claude Code.',
+  ],
+};
+
 function Context() {
-  return (
-    <>
-      <h2 className={h2Class}>Context and goals</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {contextCards.map((card) => (
-          <div
-            key={card.title}
-            className={`${cardClass} ${card.tint ? 'bg-action-primary text-white' : 'bg-surface-subtle text-blue-500'}`}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
-              {card.icon}
-            </svg>
-            <p className={`font-grotesk font-bold text-[14px] ${card.tint ? 'text-white' : 'text-text-primary'}`}>
-              {card.title}
-            </p>
-            <p
-              className={`font-grotesk text-[14px] leading-relaxed ${card.tint ? 'text-white' : 'text-text-primary'}`}
-            >
-              {card.text}
-            </p>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+  return <Goals as="div" headline={projectGoals.headline} items={projectGoals.items} />;
 }
 
 function Role() {
@@ -327,7 +253,7 @@ function Research() {
 }
 
 const sections = [
-  { id: 'context', label: 'Context & Goals', content: <Context /> },
+  { id: 'context', label: 'Project Goals', bare: true, content: <Context /> },
   { id: 'role', label: 'Role & Who Did What', content: <Role /> },
   { id: 'research', label: 'Research', content: <Research /> },
 ];

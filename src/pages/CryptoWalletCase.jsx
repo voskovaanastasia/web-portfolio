@@ -4,6 +4,7 @@ import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
+import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import toolFigma from '../assets/icon-figma.svg';
@@ -687,55 +688,16 @@ function ScreensSlider({ screens }) {
   );
 }
 
-const projectGoals = [
-  {
-    title: 'Keep Flows Short & Predictable',
-    text: 'Standardise action patterns (input → review → confirm → status → receipt) across the app for a consistent experience.',
-    icon: <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />,
-  },
-  {
-    title: 'Build Trust Through Transparency',
-    text: 'Explain verification and security steps clearly, showing progress states and why each step is needed.',
-    icon: (
-      <>
-        <rect x="4" y="10" width="16" height="11" rx="2.5" />
-        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-        <path d="M12 14v3M10.6 14.8h2.2a.9.9 0 0 1 0 1.8h-2.2a.9.9 0 0 0 0 1.8H13" strokeLinecap="round" />
-      </>
-    ),
-  },
-  {
-    title: 'Make Performance Understandable',
-    text: 'Turn complex portfolios into readable insights: value changes, asset contribution, and time-based charts.',
-    icon: (
-      <>
-        <rect x="3" y="3" width="18" height="18" rx="3" />
-        <path d="M7 16v-3M11 16v-5M15 16v-2" strokeLinecap="round" />
-        <path d="m7 10 4-3 3 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      </>
-    ),
-  },
-  {
-    title: 'Support Smarter Decisions',
-    text: 'Provide market views, watchlists, and quick token comparisons to help users decide what to buy or swap.',
-    icon: (
-      <>
-        <path d="M12 4.5a3 3 0 0 0-5.6 1.4A3 3 0 0 0 4.5 11a3 3 0 0 0 1 4.6A3 3 0 0 0 12 19.5z" strokeLinejoin="round" />
-        <path d="M12 4.5a3 3 0 0 1 5.6 1.4A3 3 0 0 1 19.5 11a3 3 0 0 1-1 4.6A3 3 0 0 1 12 19.5z" strokeLinejoin="round" />
-      </>
-    ),
-  },
-  {
-    title: 'Prevent Costly Mistakes',
-    text: 'Minimise wrong-network transfers with guided selection, confirmations, and validation before users submit transactions.',
-    icon: (
-      <>
-        <path d="M12 3 20 7.5v9L12 21 4 16.5v-9L12 3z" strokeLinejoin="round" />
-        <path d="M12 8v5M12 16.2v.1" strokeLinecap="round" />
-      </>
-    ),
-  },
-];
+const projectGoals = {
+  headline: 'Make a crypto wallet feel safe and predictable, so people decide well and avoid costly mistakes.',
+  items: [
+    'Keep flows short and predictable: one action pattern (input, review, confirm, status, receipt) across the whole app.',
+    'Build trust through transparency: explain verification and security steps, showing progress and why each step is needed.',
+    'Make performance understandable: turn complex portfolios into readable insights, like value changes, asset contribution and time-based charts.',
+    'Support smarter decisions with market views, watchlists and quick token comparison for buy or swap.',
+    'Prevent costly mistakes: minimise wrong-network transfers with guided selection, confirmations and validation before submit.',
+  ],
+};
 
 const processColumns = [
   {
@@ -1206,37 +1168,7 @@ export default function CryptoWalletCase() {
         <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Project goals */}
-        <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {projectGoals.map((goal, i) => (
-              <div
-                key={goal.title}
-                className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ i === 1 ? 'bg-[#1f7ab8] text-white' : 'bg-[#f7f7f7]' }`}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke={i === 1 ? 'currentColor' : '#288fd6'}
-                  strokeWidth="1.8"
-                  className="w-8 h-8"
-                >
-                  {goal.icon}
-                </svg>
-                <p className={`font-grotesk font-bold text-[14px] ${i === 1 ? '' : 'text-black'}`}>
-                  {goal.title}
-                </p>
-                <p
-                  className={`font-grotesk text-[14px] leading-relaxed ${
-                    i === 1 ? 'text-white' : 'text-[#393939]'
-                  }`}
-                >
-                  {goal.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
 
         {/* 4W+H process */}
         <section id="process" className="pb-20 flex flex-col gap-6">
