@@ -140,9 +140,9 @@ export default function SelectedWork() {
             <li key={item.id} className="border-t border-border-subtle">
               <Link
                 to={`/project/${item.id}`}
-                className="group -mx-3 px-3 py-6 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[48px_minmax(0,1fr)_auto_28px] items-center gap-x-4 hover:bg-surface-subtle focus-visible:bg-surface-subtle transition-colors rounded-sm"
+                className="group -mx-3 px-3 py-6 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[48px_minmax(0,1fr)_auto_28px] items-center gap-x-4 hover:bg-surface-subtle focus-visible:bg-surface-subtle transition-colors duration-300 ease-out rounded-sm"
               >
-                <span className="font-mono-bold text-[12px] text-text-secondary group-hover:text-text-brand transition-colors">
+                <span className="font-mono-bold text-[12px] text-text-secondary group-hover:text-text-brand transition-colors duration-300">
                   {String(index + 2).padStart(2, '0')}
                 </span>
                 <span className="flex flex-col gap-1.5 min-w-0">
@@ -153,10 +153,11 @@ export default function SelectedWork() {
                     {dotted(item.tags)}
                   </span>
                 </span>
-                <span className="hidden sm:flex justify-end items-center min-w-[160px]">
+                {/* Fixed-size slot: the note and the preview crossfade here without changing the row height. */}
+                <span className="hidden sm:block relative w-40 h-10 self-center">
                   <span
-                    className={`font-mono-bold text-sm text-right group-hover:hidden group-focus-visible:hidden ${
-                      item.highlight ? 'font-bold text-text-primary' : 'text-text-secondary'
+                    className={`absolute inset-y-0 right-0 flex items-center font-mono-bold text-sm text-right text-text-secondary transition-opacity duration-300 ease-out group-hover:opacity-0 group-focus-visible:opacity-0 ${
+                      item.highlight ? 'font-bold text-text-primary' : ''
                     }`}
                   >
                     {item.metric}
@@ -168,7 +169,7 @@ export default function SelectedWork() {
                     height={90}
                     loading="lazy"
                     decoding="async"
-                    className="hidden group-hover:block group-focus-visible:block w-40 h-[90px] rounded-control object-cover"
+                    className="pointer-events-none absolute right-0 top-1/2 w-40 h-[90px] -translate-y-1/2 scale-95 rounded-control object-cover opacity-0 transition duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
                   />
                 </span>
                 <span aria-hidden="true" className="text-action-primary text-xl justify-self-end">
