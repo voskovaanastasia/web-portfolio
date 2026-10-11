@@ -143,8 +143,25 @@ export function ProgressBar({ pct, color }) {
   }, [pct]);
 
   return (
-    <div ref={trackRef} className="h-2.5 rounded-pill bg-[#d9d9d9] overflow-hidden">
+    <div ref={trackRef} className="h-1.5 rounded-pill bg-[#d9d9d9] overflow-hidden">
       <div ref={fillRef} className="h-full rounded-pill" style={{ width: `${pct}%`, backgroundColor: color }} />
+    </div>
+  );
+}
+
+// Stat row: label on the left, value on the right in the bar's colour, bar underneath, caption below.
+// `title` is "<value> — <label>"; the part before the dash becomes the value.
+export function StatBar({ pct, color, title, text }) {
+  const [value, ...rest] = title.split(' — ');
+  const label = rest.join(' — ');
+  return (
+    <div className="flex flex-col gap-2.5">
+      <div className="flex items-baseline justify-between gap-4">
+        <p className="font-grotesk font-medium text-[16px] text-black">{label}</p>
+        <p className="font-grotesk font-bold text-[14px] shrink-0" style={{ color }}>{value}</p>
+      </div>
+      <ProgressBar pct={pct} color={color} />
+      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{text}</p>
     </div>
   );
 }

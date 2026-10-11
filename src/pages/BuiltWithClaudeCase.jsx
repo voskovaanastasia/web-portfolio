@@ -1,5 +1,5 @@
 import CaseLayout from '../components/CaseLayout';
-import { ProgressBar } from '../components/Charts';
+import { StatBar } from '../components/Charts';
 import Goals from '../components/Goals';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
@@ -190,11 +190,7 @@ function Research() {
         </div>
         <div className="md:col-span-2 flex flex-col gap-5">
           {researchStats.map((stat) => (
-            <div key={stat.title} className={`${cardClass} bg-surface-subtle`}>
-              <ProgressBar pct={stat.pct} color={stat.color} />
-              <p className="font-grotesk font-bold text-[14px] text-text-primary mt-2">{stat.title}</p>
-              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{stat.text}</p>
-            </div>
+            <StatBar key={stat.title} {...stat} />
           ))}
           <div className={`${cardClass} bg-action-primary`}>
             <p className="font-grotesk font-bold text-[14px] text-white">My site does both</p>
