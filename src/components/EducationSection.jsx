@@ -84,14 +84,13 @@ export default function EducationSection() {
         <div className="border-b border-border-subtle">
           {education.map((edu) => {
             const [school, ...metaRest] = edu.meta;
-            const [from, to] = edu.dateRange.split(' — ');
             return (
               <article
                 key={edu.dateRange}
                 className="border-t border-border-subtle py-10 grid gap-5 md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] md:gap-10"
               >
                 <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary md:pt-3">
-                  {from} —<br className="hidden md:block" /> {to}
+                  {edu.dateRange}
                 </p>
 
                 <div>
