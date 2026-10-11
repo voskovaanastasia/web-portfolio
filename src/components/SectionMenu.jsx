@@ -103,7 +103,8 @@ export default function SectionMenu({ sections = homeSections }) {
         aria-label="Page sections"
         style={{
           '--menu-left': 'clamp(16px, calc((100vw - 1450px) / 2 + 16px), 32px)',
-          '--menu-pad': 'clamp(32px, 3vw, 52px)',
+          '--menu-line': 'clamp(10px, calc(1.5vw - 6px), 20px)',
+          '--menu-pad': 'calc(var(--menu-line) + 8px)',
           left: 'var(--menu-left)',
           width: 'clamp(130px, calc((100vw - 1152px) / 2 + 32px - var(--menu-left) - 32px), 200px)',
         }}
@@ -117,7 +118,7 @@ export default function SectionMenu({ sections = homeSections }) {
             <a key={id} href={`#${id}`} className="group relative block pl-[var(--menu-pad)]">
               <span
                 aria-hidden="true"
-                style={{ width: 'calc((var(--menu-pad) - 12px) / 2)' }}
+                style={{ width: 'var(--menu-line)' }}
                 className={`absolute left-0 top-[0.6em] h-px bg-black origin-left transition-transform duration-300 ${
                   active ? 'scale-x-100' : 'scale-x-0'
                 }`}
