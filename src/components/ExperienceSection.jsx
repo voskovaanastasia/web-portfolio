@@ -27,7 +27,7 @@ const formatDuration = ([startYear, startMonth], end, now) => {
 
 const VISIBLE_BULLETS = 3;
 
-const bulletClass = 'font-grotesk text-[14px] text-text-primary leading-relaxed';
+const bulletClass = 'font-grotesk text-body text-text-primary leading-relaxed';
 
 // First three bullets always show; the rest sit behind a native <details> toggle placed right after them.
 // <details> gives keyboard (Tab + Enter/Space) and screen-reader support for free, and the hidden bullets stay in
@@ -47,7 +47,7 @@ function BulletList({ bullets }) {
       </ul>
       {rest.length > 0 && (
         <details className="group mt-2">
-          <summary className="list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-1.5 cursor-pointer rounded-md font-grotesk font-medium text-[14px] text-text-brand hover:text-action-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring">
+          <summary className="list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-1.5 cursor-pointer rounded-md font-grotesk font-medium text-body text-text-brand hover:text-action-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring">
             <span className="group-open:hidden">Show {rest.length} more</span>
             <span className="hidden group-open:inline">Show less</span>
             <svg
@@ -198,7 +198,7 @@ export default function ExperienceSection() {
     <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">My Journey</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">My Journey</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Work Experience
           </h2>
@@ -212,7 +212,7 @@ export default function ExperienceSection() {
                 key={index}
                 className="border-t border-border-subtle py-10 grid gap-5 md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] md:gap-10"
               >
-                <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary md:pt-3">
+                <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary md:pt-3">
                   {formatDateRange(exp.start, exp.end)}
                 </p>
 
@@ -246,7 +246,7 @@ export default function ExperienceSection() {
                   </div>
 
                   {exp.subtitle && (
-                    <p className="font-mono-bold text-[12px] text-text-secondary mb-4">
+                    <p className="font-mono-bold text-caption text-text-secondary mb-4">
                       {exp.subtitle.join(' · ')}
                     </p>
                   )}
@@ -259,7 +259,7 @@ export default function ExperienceSection() {
 
                   <BulletList bullets={exp.bullets} />
 
-                  <ul className="flex flex-wrap gap-y-1 font-mono-bold text-[12px] text-text-secondary">
+                  <ul className="flex flex-wrap gap-y-1 font-mono-bold text-caption text-text-secondary">
                     {exp.skills.map((skill, i) => (
                       <li key={skill}>
                         {skill}

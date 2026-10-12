@@ -29,7 +29,7 @@ const toolRows = [
 
 const rowClass =
   'grid md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] gap-4 md:gap-10 items-center py-6 border-t border-border-subtle';
-const labelClass = 'font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary';
+const labelClass = 'font-mono-bold text-caption uppercase tracking-wider text-text-secondary';
 
 export default function MyToolkitSection() {
   const rootRef = useRef(null);
@@ -91,7 +91,7 @@ export default function MyToolkitSection() {
     <section ref={rootRef} id="toolkit" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-12">
-          <p data-toolkit-intro className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">
+          <p data-toolkit-intro className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">
             My Toolkit
           </p>
           <p data-toolkit-intro className="font-caveat font-bold text-xl text-text-brand">

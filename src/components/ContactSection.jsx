@@ -94,7 +94,7 @@ export default function ContactSection() {
     <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-text-primary">Get in Touch</p>
+          <p className="font-mono-bold text-body text-text-primary">Get in Touch</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Let's Work Together
           </h2>
@@ -106,7 +106,7 @@ export default function ContactSection() {
             to="/projects"
             className="bg-surface-subtle border border-border-subtle rounded-card p-3 sm:p-5 overflow-hidden flex flex-col group"
           >
-            <h3 className="font-grotesk font-bold text-[16px] text-text-primary mb-2 sm:mb-4">My Projects</h3>
+            <h3 className="font-grotesk font-bold text-body-lg text-text-primary mb-2 sm:mb-4">My Projects</h3>
             <img
               src={contactProjects}
               alt="Laptop showing the Farsafe dashboard project"
@@ -120,7 +120,7 @@ export default function ContactSection() {
 
           {/* Resume */}
           <div className="bg-surface-subtle border border-border-subtle rounded-card p-3 sm:p-5">
-            <h3 className="font-grotesk font-bold text-[16px] text-text-primary mb-4 sm:mb-6">Check out my CV</h3>
+            <h3 className="font-grotesk font-bold text-body-lg text-text-primary mb-4 sm:mb-6">Check out my CV</h3>
             <a
               href="/Anastasiia-Voskova-Resume.pdf"
               target="_blank"
@@ -160,7 +160,7 @@ export default function ContactSection() {
 
           {/* Skills */}
           <div className="bg-accent-handwritten rounded-card p-3 sm:p-5 overflow-hidden">
-            <h3 className="font-grotesk font-bold text-[16px] text-text-inverse mb-4 sm:mb-6">Skills</h3>
+            <h3 className="font-grotesk font-bold text-body-lg text-text-inverse mb-4 sm:mb-6">Skills</h3>
             <div className="flex flex-col gap-3 sm:gap-5 items-center">
               {skillRows.map((row, i) => (
                 <div key={i} className="flex gap-4 justify-center">
@@ -181,7 +181,7 @@ export default function ContactSection() {
           <div className="bg-surface-subtle border border-border-subtle rounded-card p-3 sm:p-5 flex flex-col">
             <div className="flex items-start justify-between mb-3 sm:mb-5">
               <div>
-                <h3 className="font-grotesk font-bold text-[16px] text-text-primary">Anastasiia Voskova</h3>
+                <h3 className="font-grotesk font-bold text-body-lg text-text-primary">Anastasiia Voskova</h3>
                 <p className="font-grotesk text-sm text-text-secondary mt-1">{EMAIL}</p>
               </div>
               <div className="bg-surface-default rounded-control w-12 h-12 flex items-center justify-center shadow-sm shrink-0">
@@ -217,7 +217,7 @@ export default function ContactSection() {
 
         {/* Socials */}
         <div className="mt-12 flex flex-col items-center gap-5">
-          <p className="font-mono-bold text-[14px] text-text-primary">My Social</p>
+          <p className="font-mono-bold text-body text-text-primary">My Social</p>
           <div className="flex items-center gap-4">
             {socials.map((social) => (
               <a

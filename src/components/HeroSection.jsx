@@ -81,7 +81,7 @@ export default function HeroSection() {
             fetchPriority="high"
             className="w-9 h-9 rounded-pill"
           />
-          <span className="font-mono-bold font-bold text-[14px] text-text-primary">
+          <span className="font-mono-bold font-bold text-body text-text-primary">
             Hello, I&rsquo;m <span className="text-text-brand">Anastasiia</span>
           </span>
         </div>
@@ -120,7 +120,7 @@ export default function HeroSection() {
 
         {/* Location + stack */}
         <div data-hero-item className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
-          <p className="font-grotesk font-medium text-[14px] text-text-primary whitespace-nowrap">
+          <p className="font-grotesk font-medium text-body text-text-primary whitespace-nowrap">
             🇪🇸 Granada, Spain
           </p>
           <span aria-hidden="true" className="hidden sm:block w-1 h-1 rounded-pill bg-text-secondary" />

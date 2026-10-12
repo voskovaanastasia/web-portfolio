@@ -77,6 +77,7 @@ export default {
         'body-md': 'var(--font-size-body-md)',
         'body-lg': 'var(--font-size-body-lg)',
         'title-sm': 'var(--font-size-title-sm)',
+        'title-md': 'var(--font-size-title-md)',
         lead: 'var(--font-size-lead)',
         subheading: 'var(--font-size-subheading)',
         heading: 'var(--font-size-heading)',

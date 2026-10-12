@@ -65,7 +65,7 @@ function ToolItem({ icon, label }) {
   return (
     <li className="flex items-center gap-3">
       <img src={icon} alt="" width={24} height={24} loading="lazy" decoding="async" className="w-6 h-6 object-contain shrink-0" />
-      <span className="font-grotesk font-medium text-[15px] text-text-primary">{label}</span>
+      <span className="font-grotesk font-medium text-body-md text-text-primary">{label}</span>
     </li>
   );
 }
@@ -75,7 +75,7 @@ export default function HowIWorkSection() {
     <section id="how-i-work" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-12">
-          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">How I work</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">How I work</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Designing with an engineer&rsquo;s mindset
           </h2>
@@ -91,14 +91,14 @@ export default function HowIWorkSection() {
                 <h3 className="font-grotesk font-medium text-[20px] sm:text-2xl leading-tight text-text-primary">
                   {card.title}
                 </h3>
-                <p className="font-grotesk font-medium text-[14px] text-text-brand">{card.subtitle}</p>
+                <p className="font-grotesk font-medium text-body text-text-brand">{card.subtitle}</p>
               </div>
 
               <div className="flex flex-col gap-4">
                 <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">
                   {card.description}
                 </p>
-                <ul className="flex flex-wrap gap-y-1 font-mono-bold text-[12px] text-text-secondary">
+                <ul className="flex flex-wrap gap-y-1 font-mono-bold text-caption text-text-secondary">
                   {card.skills.map((skill, i) => (
                     <li key={skill}>
                       {skill}

@@ -58,7 +58,7 @@ export default function CasesCarousel() {
                       className="rounded-lg object-cover h-80 w-full"
                     />
                     <div>
-                      <h3 className="text-[16px] font-bold mb-4">
+                      <h3 className="text-body-lg font-bold mb-4">
                         {caseStudy.title}
                       </h3>
                       <p className="text-text-secondary text-lg mb-6">

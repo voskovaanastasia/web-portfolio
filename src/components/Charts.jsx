@@ -157,11 +157,11 @@ export function StatBar({ pct, color, title, text }) {
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex items-baseline justify-between gap-4">
-        <p className="font-grotesk font-medium text-[16px] text-ink">{label}</p>
-        <p className="font-grotesk font-bold text-[14px] shrink-0" style={{ color }}>{value}</p>
+        <p className="font-grotesk font-medium text-body-lg text-ink">{label}</p>
+        <p className="font-grotesk font-bold text-body shrink-0" style={{ color }}>{value}</p>
       </div>
       <ProgressBar pct={pct} color={color} />
-      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{text}</p>
+      <p className="font-grotesk text-body text-text-primary leading-relaxed">{text}</p>
     </div>
   );
 }

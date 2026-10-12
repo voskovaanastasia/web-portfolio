@@ -61,12 +61,12 @@ export default function AiDesignerSection() {
     <section ref={rootRef} id="ai-designer" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">AI + DESIGNER</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">AI + DESIGNER</p>
           <p className="font-caveat font-bold text-xl text-text-brand">Where design stops being a picture</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             From static concepts to live prototypes.
           </h2>
-          <p className="font-grotesk text-[16px] text-text-primary leading-relaxed max-w-3xl mt-2">
+          <p className="font-grotesk text-body-lg text-text-primary leading-relaxed max-w-3xl mt-2">
             I don&rsquo;t just hand off screens — I ship live, interactive prototypes.
             By pairing product thinking with modern AI models, I close the gap between
             UX design and engineering, so ideas get validated in the browser, not in a
@@ -82,7 +82,7 @@ export default function AiDesignerSection() {
                 key={step.number}
                 className={`flex flex-col gap-3 pt-5 border-t ${isLast ? 'border-action-primary' : 'border-border-subtle'}`}
               >
-                <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-brand">
+                <p className="font-mono-bold text-caption uppercase tracking-wider text-text-brand">
                   Step {step.number}
                 </p>
                 <h3 className="font-grotesk font-medium text-[18px] leading-snug text-text-primary">{step.title}</h3>
