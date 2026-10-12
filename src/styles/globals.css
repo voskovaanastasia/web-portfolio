@@ -40,6 +40,7 @@
   --glass-light: rgba(240, 240, 240, 0.2);
   --glass-dark: rgba(17, 17, 17, 0.45);
   --glass-panel: rgba(240, 240, 240, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.3);
   --color-dots: rgba(0, 0, 0, 0.15);
   --color-dots-hover: rgba(40, 143, 214, 0.25);
   --color-track: rgba(0, 0, 0, 0.08);

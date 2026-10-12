@@ -18,7 +18,7 @@ export default function Navigation() {
         Skip to content
       </a>
       <nav className="flex items-center justify-center py-4 px-4">
-      <div className="header-glass backdrop-blur-md border border-white/30 rounded-[64px] px-5 py-2.5 flex items-center justify-between gap-6 w-full max-w-6xl">
+      <div className="header-glass backdrop-blur-md border border-glass-border rounded-[64px] px-5 py-2.5 flex items-center justify-between gap-6 w-full max-w-6xl">
         {/* Logo & Name */}
         <Link to="/" data-header-zone="left" className="flex items-center gap-2.5 flex-shrink-0 pl-1">
           <img
@@ -89,7 +89,7 @@ export default function Navigation() {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="absolute top-full left-0 right-0 mt-2 mx-4 bg-glass-panel backdrop-blur-md border border-white/30 rounded-panel p-4 flex flex-col gap-2 md:hidden font-grotesk"
+          className="absolute top-full left-0 right-0 mt-2 mx-4 bg-glass-panel backdrop-blur-md border border-glass-border rounded-panel p-4 flex flex-col gap-2 md:hidden font-grotesk"
         >
           <Link
             to="/about"

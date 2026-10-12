@@ -148,7 +148,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
             role="menu"
             aria-label="Page sections"
             onKeyDown={handleMenuKeyDown}
-            className="bg-glass-panel backdrop-blur-md border border-white/30 rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
+            className="bg-glass-panel backdrop-blur-md border border-glass-border rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
           >
             {sections.map(({ id, label }, index) => {
               const active = id === activeId;
@@ -183,7 +183,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
           aria-haspopup="menu"
           aria-expanded={isOpen}
           aria-controls="section-menu"
-          className="bg-glass-light backdrop-blur-md border border-white/30 rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
+          className="bg-glass-light backdrop-blur-md border border-glass-border rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
         >
           <span className="font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap text-text-primary">
             {activeLabel}

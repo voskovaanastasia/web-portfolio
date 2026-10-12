@@ -37,6 +37,7 @@ export default {
           light: 'var(--glass-light)',
           dark: 'var(--glass-dark)',
           panel: 'var(--glass-panel)',
+          border: 'var(--glass-border)',
         },
         dots: { DEFAULT: 'var(--color-dots)', hover: 'var(--color-dots-hover)' },
         track: 'var(--color-track)',
