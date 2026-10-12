@@ -356,7 +356,7 @@ export function EmpathyMap({ says, thinks, does, feels, accent = 'var(--color-ac
           {says.map((item) => (
             <li
               key={item}
-              className="font-grotesk text-body-lg leading-snug px-5 py-3 rounded-[18px]"
+              className="font-grotesk text-body-lg leading-snug px-5 py-3 rounded-panel"
               style={{ color: accent, backgroundColor: `color-mix(in srgb, ${accent} 10%, transparent)` }}
             >
               {item}
@@ -370,7 +370,7 @@ export function EmpathyMap({ says, thinks, does, feels, accent = 'var(--color-ac
           {thinks.map((item) => (
             <li
               key={item}
-              className="font-grotesk italic text-body-lg text-ink leading-snug px-5 py-3 rounded-[18px] border border-dashed"
+              className="font-grotesk italic text-body-lg text-ink leading-snug px-5 py-3 rounded-panel border border-dashed"
               style={{ borderColor: `color-mix(in srgb, ${accent} 50%, transparent)` }}
             >
               {item}
