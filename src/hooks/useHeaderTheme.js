@@ -5,9 +5,6 @@ import { luminance, measureBehind } from '../lib/backdropLuminance';
 // luminance behind its logo zone ([data-header-zone="left"]) and nav zone ([data-header-zone="right"]).
 // The CSS in globals.css turns those two numbers into text colours and the glass tint.
 
-// Must match the glass tints in globals.css (.header-glass).
-const TINT_LIGHT = { a: 0.2, L: luminance(240, 240, 240) };
-const TINT_DARK = { a: 0.45, L: luminance(17, 17, 17) };
 const MIN_CONTRAST = 4.75; // WCAG AA is 4.5; the extra margin covers blur / sampling error
 const RAMP = 0.025; // width (in luminance) of the smoothstep ramp, placed where the current colour is failing anyway
 const EASE_MS = 110; // lerp time constant
@@ -26,14 +23,14 @@ function parseHex(value, fallback) {
 }
 
 // Luminance of the header ink. Resolved in JS (hex, or any CSS colour via a canvas) so start-up never appends a
-// probe element and forces a layout.
-const INK_FALLBACK = '#393939';
+// probe element and forces a layout. Falls back to the --color-text-primary token.
 function inkLuminance(value) {
-  const raw = value.trim() || INK_FALLBACK;
+  const fallback = getComputedStyle(document.documentElement).getPropertyValue('--color-text-primary').trim();
+  const raw = value.trim() || fallback;
   const hex = /^#?([0-9a-f]{6})$/i.exec(raw);
   if (hex) return parseHex(raw, 0);
   const ctx = document.createElement('canvas').getContext('2d');
-  ctx.fillStyle = INK_FALLBACK;
+  ctx.fillStyle = fallback;
   ctx.fillStyle = raw; // ignored if unparseable, so the fallback stays
   const norm = ctx.fillStyle;
   if (norm.startsWith('#')) return parseHex(norm, 0);
@@ -41,11 +38,19 @@ function inkLuminance(value) {
   return luminance(r, g, b);
 }
 
+// The glass tints are the --glass-light / --glass-dark tokens in globals.css, read here as { a, L }:
+// alpha and relative luminance of the tint colour.
+function readTint(name) {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name);
+  const [r, g, b, a = 1] = raw.match(/[\d.]+/g).map(Number);
+  return { a, L: luminance(r, g, b) };
+}
+
 // Backdrop luminance limits: white text (over the dark tint) keeps >= MIN_CONTRAST up to `white`, dark text (over the
 // light tint) reaches MIN_CONTRAST from `dark`. Where dark < white both colours pass, which is the hysteresis band:
 // the header keeps its current colour inside it, so it can't flicker. If the ink is too light for a band to
 // exist, both limits collapse to the contrast crossover.
-function contrastLimits(inkL) {
+function contrastLimits(inkL, TINT_LIGHT, TINT_DARK) {
   const contrastWhite = (L) => 1.05 / ((1 - TINT_DARK.a) * L + TINT_DARK.a * TINT_DARK.L + 0.05);
   const contrastInk = (L) => ((1 - TINT_LIGHT.a) * L + TINT_LIGHT.a * TINT_LIGHT.L + 0.05) / (inkL + 0.05);
   const solve = (f, increasing, target) => {
@@ -78,7 +83,11 @@ export default function useHeaderTheme(headerRef, routeKey) {
     if (!header) return undefined;
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const limits = contrastLimits(inkLuminance(getComputedStyle(header).getPropertyValue('--header-ink-dark')));
+    const limits = contrastLimits(
+      inkLuminance(getComputedStyle(header).getPropertyValue('--header-ink-dark')),
+      readTint('--glass-light'),
+      readTint('--glass-dark')
+    );
 
     const zones = {
       left: { t: 0, target: 0, white: false, rampL: null, rampAt: 0 },

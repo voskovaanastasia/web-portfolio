@@ -30,7 +30,7 @@ const socials = [
     href: 'https://www.behance.net/0dd9826d',
     bg: 'bg-[#0057ff]',
     icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-text-inverse">
         <path d="M8.84 6.55c.87 0 1.66.08 2.37.23.71.15 1.31.4 1.82.74.5.34.89.8 1.17 1.37.27.57.41 1.27.41 2.11 0 .9-.2 1.66-.62 2.26-.41.6-1.02 1.1-1.83 1.48 1.11.32 1.93.88 2.48 1.68.55.8.82 1.77.82 2.9 0 .91-.18 1.7-.53 2.36a4.6 4.6 0 0 1-1.42 1.63c-.6.42-1.28.73-2.05.93-.77.2-1.56.3-2.37.3H0V6.55h8.84zm-.53 6.7c.72 0 1.31-.17 1.77-.51.46-.34.69-.9.69-1.67 0-.43-.08-.78-.23-1.05a1.7 1.7 0 0 0-.62-.64 2.6 2.6 0 0 0-.89-.32 5.8 5.8 0 0 0-1.05-.09H4.1v4.28h4.21zm.24 7.03c.4 0 .78-.04 1.13-.12.36-.08.68-.21.95-.4.27-.19.49-.44.65-.76.16-.32.24-.73.24-1.23 0-.98-.28-1.68-.83-2.1-.55-.42-1.28-.63-2.19-.63H4.1v5.24h4.45zM17.98 8.6h5.86v1.68h-5.86V8.6zM24 17.13c0 .1 0 .2-.01.31h-8.35c0 .95.32 1.85.85 2.34.53.48 1.29.73 2.28.73.71 0 1.32-.18 1.83-.53.51-.36.82-.73.94-1.13h3.28c-.53 1.63-1.33 2.8-2.42 3.5-1.08.7-2.4 1.05-3.94 1.05a7.7 7.7 0 0 1-2.89-.52 6 6 0 0 1-2.18-1.47 6.6 6.6 0 0 1-1.38-2.28 8.4 8.4 0 0 1-.48-2.92c0-1.03.17-1.98.5-2.87a6.7 6.7 0 0 1 1.42-2.3 6.5 6.5 0 0 1 2.18-1.52 7 7 0 0 1 2.83-.56c1.14 0 2.13.22 2.98.66a5.9 5.9 0 0 1 2.09 1.77c.55.74.94 1.58 1.18 2.53.17.66.25 1.4.29 2.21zm-3.73-2.02a3.06 3.06 0 0 0-.97-1.98c-.5-.43-1.14-.65-1.9-.65-.5 0-.92.09-1.26.25a2.7 2.7 0 0 0-.84.64 2.5 2.5 0 0 0-.48.81c-.11.29-.17.6-.19.93h5.64z" />
       </svg>
     ),
@@ -40,7 +40,7 @@ const socials = [
     href: 'https://www.instagram.com/anastazja_v/',
     bg: 'bg-[radial-gradient(circle_at_30%_110%,#fdf497_0%,#fd5949_45%,#d6249f_60%,#285aeb_90%)]',
     icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-text-inverse">
         <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z" />
       </svg>
     ),
@@ -50,7 +50,7 @@ const socials = [
     href: 'https://www.upwork.com/freelancers/~0160de67b81721f9ab',
     bg: 'bg-[#14a800]',
     icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-text-inverse">
         <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" />
       </svg>
     ),
@@ -60,7 +60,7 @@ const socials = [
     href: 'https://linkedin.com/in/anastasiia-voskova',
     bg: 'bg-[#0a66c2]',
     icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-text-inverse">
         <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
       </svg>
     ),
@@ -70,7 +70,7 @@ const socials = [
     href: 'https://github.com/voskovaanastasia',
     bg: 'bg-[#181717]',
     icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-text-inverse">
         <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.41-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.21.67.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
       </svg>
     ),
@@ -160,14 +160,14 @@ export default function ContactSection() {
 
           {/* Skills */}
           <div className="bg-accent-handwritten rounded-card p-3 sm:p-5 overflow-hidden">
-            <h3 className="font-grotesk font-bold text-[16px] text-white mb-4 sm:mb-6">Skills</h3>
+            <h3 className="font-grotesk font-bold text-[16px] text-text-inverse mb-4 sm:mb-6">Skills</h3>
             <div className="flex flex-col gap-3 sm:gap-5 items-center">
               {skillRows.map((row, i) => (
                 <div key={i} className="flex gap-4 justify-center">
                   {row.map((skill) => (
                     <span
                       key={skill.label}
-                      className={`px-5 py-2.5 bg-purple-700 rounded-pill font-grotesk font-medium text-sm text-white whitespace-nowrap ${skill.rotate} ${skill.offset ?? ''}`}
+                      className={`px-5 py-2.5 bg-purple-700 rounded-pill font-grotesk font-medium text-sm text-text-inverse whitespace-nowrap ${skill.rotate} ${skill.offset ?? ''}`}
                     >
                       {skill.label}
                     </span>
@@ -208,7 +208,7 @@ export default function ContactSection() {
             <a
               href={`mailto:${EMAIL}`}
               onClick={handleEmailClick}
-              className="block text-center bg-action-primary rounded-pill py-4 mt-auto font-grotesk font-bold text-base text-white hover:bg-action-primary-hover transition-colors"
+              className="block text-center bg-action-primary rounded-pill py-4 mt-auto font-grotesk font-bold text-base text-text-inverse hover:bg-action-primary-hover transition-colors"
             >
               {copied ? 'Email Copied!' : 'Email Me'}
             </a>

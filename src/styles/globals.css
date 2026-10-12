@@ -157,7 +157,7 @@
 
 /* Header colour follows what is behind it. useHeaderTheme sets --header-t-left / --header-t-right on the
    header (0 = dark text, 1 = white text); the glass tint follows the same value per side. The tint values
-   here must match TINT_LIGHT / TINT_DARK in src/hooks/useHeaderTheme.js. */
+   are the --glass-light / --glass-dark tokens, which useHeaderTheme.js reads from here. */
 .site-header {
   --header-t-left: 0;
   --header-t-right: 0;
@@ -168,21 +168,21 @@
 
 @supports (color: color-mix(in srgb, white 50%, black)) {
   .site-header {
-    --header-ink-left: color-mix(in srgb, #fff calc(var(--header-t-left) * 100%), var(--header-ink-dark));
-    --header-ink-right: color-mix(in srgb, #fff calc(var(--header-t-right) * 100%), var(--header-ink-dark));
-    --header-glass-left: color-mix(in srgb, rgba(17, 17, 17, 0.45) calc(var(--header-t-left) * 100%), rgba(240, 240, 240, 0.2));
-    --header-glass-right: color-mix(in srgb, rgba(17, 17, 17, 0.45) calc(var(--header-t-right) * 100%), rgba(240, 240, 240, 0.2));
+    --header-ink-left: color-mix(in srgb, var(--color-white-primitive) calc(var(--header-t-left) * 100%), var(--header-ink-dark));
+    --header-ink-right: color-mix(in srgb, var(--color-white-primitive) calc(var(--header-t-right) * 100%), var(--header-ink-dark));
+    --header-glass-left: color-mix(in srgb, var(--glass-dark) calc(var(--header-t-left) * 100%), var(--glass-light));
+    --header-glass-right: color-mix(in srgb, var(--glass-dark) calc(var(--header-t-right) * 100%), var(--glass-light));
   }
 }
 
 .header-glass {
-  background-color: rgba(240, 240, 240, 0.2);
+  background-color: var(--glass-light);
   background-image: linear-gradient(
     90deg,
-    var(--header-glass-left, rgba(240, 240, 240, 0.2)) 0%,
-    var(--header-glass-left, rgba(240, 240, 240, 0.2)) 35%,
-    var(--header-glass-right, rgba(240, 240, 240, 0.2)) 65%,
-    var(--header-glass-right, rgba(240, 240, 240, 0.2)) 100%
+    var(--header-glass-left, var(--glass-light)) 0%,
+    var(--header-glass-left, var(--glass-light)) 35%,
+    var(--header-glass-right, var(--glass-light)) 65%,
+    var(--header-glass-right, var(--glass-light)) 100%
   );
 }
 

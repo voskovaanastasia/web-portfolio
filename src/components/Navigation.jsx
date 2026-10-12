@@ -54,7 +54,7 @@ export default function Navigation() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="bg-action-primary hover:bg-action-primary-hover text-white font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
+            className="bg-action-primary hover:bg-action-primary-hover text-text-inverse font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
           >
             Download CV
           </a>
@@ -89,7 +89,7 @@ export default function Navigation() {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="absolute top-full left-0 right-0 mt-2 mx-4 bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-panel p-4 flex flex-col gap-2 md:hidden font-grotesk"
+          className="absolute top-full left-0 right-0 mt-2 mx-4 bg-glass-panel backdrop-blur-md border border-white/30 rounded-panel p-4 flex flex-col gap-2 md:hidden font-grotesk"
         >
           <Link
             to="/about"
@@ -110,7 +110,7 @@ export default function Navigation() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="block px-4 py-2 bg-action-primary hover:bg-action-primary-hover text-white rounded-lg transition-colors text-base font-medium text-center"
+            className="block px-4 py-2 bg-action-primary hover:bg-action-primary-hover text-text-inverse rounded-lg transition-colors text-base font-medium text-center"
             onClick={() => setIsOpen(false)}
           >
             Download CV
