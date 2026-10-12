@@ -7,6 +7,7 @@ import ScrollManager from './components/ScrollManager';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import useDocumentMeta from './hooks/useDocumentMeta';
+import { BUILT_WITH_CLAUDE_PUBLISHED } from './config/publishedCases';
 import './styles/globals.css';
 
 const FarsafeCase = lazy(() => import('./pages/FarsafeCase'));
@@ -18,8 +19,10 @@ const FitnessAppCase = lazy(() => import('./pages/FitnessAppCase'));
 const OnlinePaymentsCase = lazy(() => import('./pages/OnlinePaymentsCase'));
 const ShootCase = lazy(() => import('./pages/ShootCase'));
 const TaxComplianceCase = lazy(() => import('./pages/TaxComplianceCase'));
-// Preview-only page: not linked from anywhere, noindex, not in the sitemap.
-const BuiltWithClaudeCase = lazy(() => import('./pages/BuiltWithClaudeCase'));
+// Locked via BUILT_WITH_CLAUDE_PUBLISHED (src/config/publishedCases.js); noindex, not in the sitemap.
+const BuiltWithClaudeCase = BUILT_WITH_CLAUDE_PUBLISHED
+  ? lazy(() => import('./pages/BuiltWithClaudeCase'))
+  : null;
 
 // Unknown URLs still get the SPA shell with a 200 from the host, so mark them noindex.
 function NotFound() {
@@ -57,7 +60,9 @@ function Layout() {
             <Route path="/project/online-payments" element={<OnlinePaymentsCase />} />
             <Route path="/project/shoot" element={<ShootCase />} />
             <Route path="/project/tax-compliance" element={<TaxComplianceCase />} />
-            <Route path="/project/built-with-claude" element={<BuiltWithClaudeCase />} />
+            {BUILT_WITH_CLAUDE_PUBLISHED && (
+              <Route path="/project/built-with-claude" element={<BuiltWithClaudeCase />} />
+            )}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

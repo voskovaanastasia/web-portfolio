@@ -17,11 +17,11 @@ import casePayments480 from '../assets/case-payments-480w.webp';
 import casePayments960 from '../assets/case-payments-960w.webp';
 import caseShoot480 from '../assets/case-shoot-480w.webp';
 import caseShoot960 from '../assets/case-shoot-960w.webp';
-import caseBuiltWithClaude480 from '../assets/case-built-with-claude-480w.webp';
-import caseBuiltWithClaude960 from '../assets/case-built-with-claude-960w.webp';
 import DotsBackground from '../components/DotsBackground';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
+import { BUILT_WITH_CLAUDE_PUBLISHED } from '../config/publishedCases';
+import builtWithClaudeProject from '../data/builtWithClaudeProject';
 
 const categories = ['Product & UX/UI Design', 'Built with Claude', 'Logos & Branding'];
 
@@ -163,17 +163,14 @@ const projects = [
     description:
       'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
   },
-  {
-    id: 'built-with-claude',
-    category: 'Built with Claude',
-    image480: caseBuiltWithClaude480,
-    image960: caseBuiltWithClaude960,
-    tags: ['Claude Code', 'Figma MCP', 'Design System', 'Lighthouse 95'],
-    title: 'This Portfolio: Designed and Shipped with Claude Code',
-    description:
-      'A portfolio treated as a real product: researched against other designers’ sites, designed in Figma, built with Claude Code, and measured. A case study on directing AI without giving up design judgement, including the mistakes I caught along the way.',
-  },
+  ...(BUILT_WITH_CLAUDE_PUBLISHED ? [builtWithClaudeProject] : []),
 ];
+
+// While the "Built with Claude" case is locked its category is hidden from the tabs entirely
+// (its card data isn't even included). Categories that never had cases keep their "Coming soon" tab.
+const visibleCategories = BUILT_WITH_CLAUDE_PUBLISHED
+  ? categories
+  : categories.filter((c) => c !== 'Built with Claude');
 
 export default function Projects() {
   useDocumentMeta({
@@ -183,7 +180,7 @@ export default function Projects() {
     path: '/projects',
   });
 
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [activeCategory, setActiveCategory] = useState(visibleCategories[0]);
 
   const visible = projects.filter((p) => p.category === activeCategory);
 
@@ -200,7 +197,7 @@ export default function Projects() {
   // shared indicator to it, instead of each button painting its own underline.
   useLayoutEffect(() => {
     const measure = () => {
-      const el = tabRefs.current[categories.indexOf(activeCategory)];
+      const el = tabRefs.current[visibleCategories.indexOf(activeCategory)];
       if (el) setPill({ left: el.offsetLeft, width: el.offsetWidth });
     };
     measure();
@@ -210,7 +207,7 @@ export default function Projects() {
   }, [activeCategory]);
 
   useEffect(() => {
-    const index = categories.indexOf(activeCategory);
+    const index = visibleCategories.indexOf(activeCategory);
     const direction = index >= prevIndex.current ? 1 : -1;
     prevIndex.current = index;
     if (!hasMounted.current) {
@@ -255,7 +252,7 @@ export default function Projects() {
                   style={{ width: pill.width, transform: `translateX(${pill.left}px)` }}
                 />
               )}
-              {categories.map((category, i) => {
+              {visibleCategories.map((category, i) => {
                 const isEmpty = !projects.some((p) => p.category === category);
                 const isActive = activeCategory === category;
                 return (
