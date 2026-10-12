@@ -20,7 +20,9 @@ const OnlinePaymentsCase = lazy(() => import('./pages/OnlinePaymentsCase'));
 const ShootCase = lazy(() => import('./pages/ShootCase'));
 const TaxComplianceCase = lazy(() => import('./pages/TaxComplianceCase'));
 // Locked via BUILT_WITH_CLAUDE_PUBLISHED (src/config/publishedCases.js); noindex, not in the sitemap.
-const BuiltWithClaudeCase = lazy(() => import('./pages/BuiltWithClaudeCase'));
+const BuiltWithClaudeCase = BUILT_WITH_CLAUDE_PUBLISHED
+  ? lazy(() => import('./pages/BuiltWithClaudeCase'))
+  : null;
 
 // Unknown URLs still get the SPA shell with a 200 from the host, so mark them noindex.
 function NotFound() {
