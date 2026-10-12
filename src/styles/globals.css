@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary: #4274C1;
-  --color-dark: #1E3A5F;
-  --color-light-bg: #E8EEF7;
-  --color-white: #FFFFFF;
-}
-
 /* Design tokens from Figma (Primitives, Semantic, radius, Typography, Spacing) */
 :root {
   /* Primitives */
