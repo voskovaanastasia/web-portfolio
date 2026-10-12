@@ -1,5 +1,5 @@
 import { Donut, DonutStat } from '../components/Charts';
-import CaseLayout, { PersonaBlock, StyleGuide } from '../components/CaseLayout';
+import CaseLayout, { PersonaBlock, ProcessColumns, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
 
 const project = {
@@ -104,32 +104,10 @@ function FourWPlusH() {
       <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         4W+H Process
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-        {fourWPlusH.map((column) => (
-          <div
-            key={column.title}
-            className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
-          >
-            <p className="font-grotesk font-medium text-lg text-black">{column.title}</p>
-            <span className="h-0.5 w-full bg-[#288fd6] rounded-pill" />
-            {column.body && (
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{column.body}</p>
-            )}
-            {column.items && (
-              <ul className="flex flex-col gap-2">
-                {column.items.map((item) => (
-                  <li
-                    key={item}
-                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
-      </div>
+      <ProcessColumns
+        columns={fourWPlusH.map(({ title, ...rest }) => ({ heading: title, ...rest }))}
+        accent="#288fd6"
+      />
     </>
   );
 }
@@ -194,7 +172,7 @@ function UserResearch() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {researchStats.map((stat) => (
-          <div key={stat.pct} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
+          <div key={stat.pct} className="rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
             <DonutStat pct={stat.pct} color={stat.color} />
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
               {stat.text}

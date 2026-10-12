@@ -759,7 +759,7 @@ export default function BartCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
+              <div key={stat.pct} className="rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}

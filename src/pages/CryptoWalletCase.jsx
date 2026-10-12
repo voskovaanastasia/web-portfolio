@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
+import { EmpathyMap, ProcessColumns, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -766,48 +766,32 @@ const researchStats = [
   },
 ];
 
-const empathyQuadrants = [
-  {
-    label: 'Says',
-    color: '#288fd6',
-    items: [
-      '“Is this the right network for this transfer?”',
-      '“Why are the fees different every time?”',
-      '“I want to double-check before confirming.”',
-      '“I wish this explained what’s happening.”',
-    ],
-  },
-  {
-    label: 'Thinks',
-    color: '#e8964a',
-    items: [
-      'Could one wrong choice cause me to lose funds?',
-      'Is this transaction secure and irreversible?',
-      'Why isn’t this step clearer?',
-      'I want everything in one app, without guessing.',
-    ],
-  },
-  {
-    label: 'Does',
-    color: '#6d3fc4',
-    items: [
-      'Compares fees and networks before sending.',
-      'Reviews transaction details multiple times.',
-      'Tracks portfolio value and recent activity daily.',
-      'Avoids sending until the app feels clear and safe.',
-    ],
-  },
-  {
-    label: 'Feels',
-    color: '#ee5f9b',
-    items: [
-      'Anxious when fees or networks aren’t explained.',
-      'Frustrated by unclear confirmation steps.',
-      'Relieved when progress and status are visible.',
-      'Confident when the app guides each step clearly.',
-    ],
-  },
-];
+const empathy = {
+  says: [
+    'Is this the right network for this transfer?',
+    'Why are the fees different every time?',
+    'I want to double-check before confirming.',
+    'I wish this explained what’s happening.',
+  ],
+  thinks: [
+    'Could one wrong choice cause me to lose funds?',
+    'Is this transaction secure and irreversible?',
+    'Why isn’t this step clearer?',
+    'I want everything in one app, without guessing.',
+  ],
+  does: [
+    'Compares fees and networks before sending.',
+    'Reviews transaction details multiple times.',
+    'Tracks portfolio value and recent activity daily.',
+    'Avoids sending until the app feels clear and safe.',
+  ],
+  feels: [
+    { feeling: 'Anxious', when: 'when fees or networks aren’t explained.' },
+    { feeling: 'Frustrated', when: 'by unclear confirmation steps.' },
+    { feeling: 'Relieved', when: 'when progress and status are visible.' },
+    { feeling: 'Confident', when: 'when the app guides each step clearly.' },
+  ],
+};
 
 // Builds a linear chain of nodes, optionally ending in a branching tail.
 const chain = (labels, tail) =>
@@ -1091,31 +1075,7 @@ export default function CryptoWalletCase() {
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             4W+H Process
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-            {processColumns.map((col) => (
-              <div
-                key={col.heading}
-                className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
-              >
-                <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
-                <span className="h-0.5 w-full bg-[#288fd6] rounded-pill" />
-                {col.body ? (
-                  <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{col.body}</p>
-                ) : (
-                  <ul className="flex flex-col gap-2">
-                    {col.items.map((item) => (
-                      <li
-                        key={item}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
+          <ProcessColumns columns={processColumns} accent="#288fd6" />
         </section>
 
         {/* User research */}
@@ -1130,7 +1090,7 @@ export default function CryptoWalletCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
+              <div key={stat.pct} className="rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
@@ -1259,28 +1219,7 @@ export default function CryptoWalletCase() {
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Empathy Map
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {empathyQuadrants.map((q) => (
-              <div key={q.label} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-                <span
-                  className="self-start px-5 py-2 rounded-pill font-grotesk font-bold text-lg text-white"
-                  style={{ backgroundColor: q.color }}
-                >
-                  {q.label}
-                </span>
-                <ul className="flex flex-col gap-2.5">
-                  {q.items.map((item) => (
-                    <li
-                      key={item}
-                      className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <EmpathyMap {...empathy} accent="#288fd6" />
         </section>
 
         {/* User flow */}

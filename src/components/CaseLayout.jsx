@@ -323,34 +323,127 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
 }
 
 /**
- * 4W+H process grid. Each column = { heading, body } or { heading, items[], highlight }.
+ * Empathy map: Says (pills), Thinks (dashed italic bubbles), Does (numbered rows),
+ * Feels (gradient bar with the feelings below). feels = [{ feeling, when }], ordered negative → positive.
  */
-export function ProcessColumns({ columns }) {
+export function EmpathyMap({ says, thinks, does, feels, accent = '#2f6db5' }) {
+  const label = 'font-mono-bold text-[12px] uppercase tracking-wider';
+  const cell = 'flex flex-col gap-5 pt-6 border-t border-black/15';
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-      {columns.map((col) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Says</p>
+        <ul className="flex flex-col gap-3 items-start">
+          {says.map((item) => (
+            <li
+              key={item}
+              className="font-grotesk text-[16px] leading-snug px-5 py-3 rounded-[18px]"
+              style={{ color: accent, backgroundColor: `${accent}1a` }}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Thinks</p>
+        <ul className="flex flex-col gap-3 items-start">
+          {thinks.map((item) => (
+            <li
+              key={item}
+              className="font-grotesk italic text-[16px] text-black leading-snug px-5 py-3 rounded-[18px] border border-dashed"
+              style={{ borderColor: `${accent}80` }}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Does</p>
+        <ol className="flex flex-col">
+          {does.map((item, i) => (
+            <li
+              key={item}
+              className="flex items-baseline gap-5 py-3.5 border-b border-black/10 last:border-b-0 font-grotesk text-[16px] text-black"
+            >
+              <span className="font-mono-bold text-[12px] shrink-0" style={{ color: accent }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Feels</p>
         <div
-          key={col.heading}
-          className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-surface-brand-tint' : 'bg-surface-subtle' }`}
-        >
-          <p className="font-grotesk font-medium text-lg text-text-primary">{col.heading}</p>
-          <span className="h-0.5 w-full bg-blue-500 rounded-pill" />
-          {col.body ? (
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{col.body}</p>
-          ) : (
-            <ul className="flex flex-col gap-2">
-              {col.items.map((item) => (
-                <li
-                  key={item}
-                  className="font-grotesk text-[14px] text-text-primary leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+          className="h-2 rounded-full"
+          style={{ background: `linear-gradient(90deg, #d9d9d9 0%, #d9d9d9 40%, ${accent} 75%)` }}
+        />
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-6">
+          {feels.map((f, i) => (
+            <li key={f.feeling} className="flex flex-col gap-2">
+              <p
+                className="font-grotesk font-medium text-[20px]"
+                style={{ color: i >= feels.length / 2 ? accent : '#393939' }}
+              >
+                {f.feeling}
+              </p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{f.when}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * 4W+H process, stacked rows. Each column = { heading, body } or { heading, items[], highlight }.
+ * The highlighted row (How) takes the accent colour.
+ */
+export function ProcessColumns({ columns, accent = '#2f6db5' }) {
+  return (
+    <div className="flex flex-col">
+      {columns.map((col) => {
+        const color = col.highlight ? accent : undefined;
+        return (
+          <div
+            key={col.heading}
+            className="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] gap-3 md:gap-10 py-6 border-t border-black/10 last:border-b"
+          >
+            <div className="flex items-baseline gap-3">
+              <span
+                className="font-grotesk font-bold text-[44px] leading-none text-black/15"
+                style={color ? { color } : undefined}
+              >
+                {col.heading === 'How' ? 'H' : 'W'}
+              </span>
+              <p
+                className="font-grotesk font-medium text-[20px] text-black"
+                style={color ? { color } : undefined}
+              >
+                {col.heading}
+              </p>
+            </div>
+            {col.body ? (
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">{col.body}</p>
+            ) : (
+              <ul className="flex flex-col gap-2 max-w-2xl">
+                {col.items.map((item) => (
+                  <li
+                    key={item}
+                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
