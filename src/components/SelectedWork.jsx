@@ -80,7 +80,7 @@ export default function SelectedWork() {
         <article className="flex flex-col gap-6">
           <Link
             to={`/project/${featured.id}`}
-            className="block group bg-[#d9d9d9] overflow-hidden rounded-card"
+            className="block group bg-surface-placeholder overflow-hidden rounded-card"
           >
             <img
               src={caseFarsafe1440}
@@ -131,7 +131,7 @@ export default function SelectedWork() {
           <div>
             <Link
               to={`/project/${featured.id}`}
-              className="inline-flex bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
+              className="inline-flex bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
             >
               Read case study
             </Link>

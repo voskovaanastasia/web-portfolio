@@ -116,7 +116,7 @@ export default function MyToolkitSection() {
                       id={tool.id}
                       data-tool-tile
                       iconClassName="w-[25px] h-[25px]"
-                      className="bg-[#fbfbfb] w-[50px] h-[50px] shadow-[1px_1px_5px_rgba(124,124,124,0.25)]"
+                      className="bg-surface-default w-[50px] h-[50px] shadow-icon"
                     />
                   </li>
                 ))}
@@ -132,7 +132,7 @@ export default function MyToolkitSection() {
                   <img
                     src={lang.flag}
                     alt={`${lang.label} flag`}
-                    className="w-8 h-[22px] rounded-[3px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.08)]"
+                    className="w-8 h-[22px] rounded-[3px] object-cover ring-1 ring-track"
                   />
                   <div className="flex flex-col">
                     <p className="font-grotesk font-bold text-sm text-text-primary">{lang.label}</p>
