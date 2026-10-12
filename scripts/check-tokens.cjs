@@ -5,13 +5,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 
-// Files that may hold raw colours, and why.
-const ALLOW = [
-  [/^src\/styles\/globals\.css$/, 'the tokens file'],
-  [/^src\/pages\/\w+Case\.jsx$/, 'client product palettes in the case pages'],
-  [/^src\/components\/ContactSection\.jsx$/, 'third-party brand logo colours (Google, Upwork, LinkedIn, GitHub) and the sticky-note illustration'],
-  [/^src\/components\/IATree\.jsx$/, 'information-architecture diagram palette'],
-];
+const ALLOW = require('./token-allowlist.cjs');
 
 const COLOR = /#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?)\(/g;
 const EXT = /\.(jsx?|css|html)$/;
