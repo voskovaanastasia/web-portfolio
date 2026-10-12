@@ -166,12 +166,11 @@ const projects = [
   ...(BUILT_WITH_CLAUDE_PUBLISHED ? [builtWithClaudeProject] : []),
 ];
 
-// Locked cases (published: false) are dropped entirely. A category whose cases are all locked
-// disappears from the tabs; a category with no cases at all still shows "Coming soon".
-const publishedProjects = projects.filter((p) => p.published !== false);
-const visibleCategories = categories.filter(
-  (c) => publishedProjects.some((p) => p.category === c) || !projects.some((p) => p.category === c)
-);
+// While the "Built with Claude" case is locked its category is hidden from the tabs entirely
+// (its card data isn't even included). Categories that never had cases keep their "Coming soon" tab.
+const visibleCategories = BUILT_WITH_CLAUDE_PUBLISHED
+  ? categories
+  : categories.filter((c) => c !== 'Built with Claude');
 
 export default function Projects() {
   useDocumentMeta({
@@ -183,7 +182,7 @@ export default function Projects() {
 
   const [activeCategory, setActiveCategory] = useState(visibleCategories[0]);
 
-  const visible = publishedProjects.filter((p) => p.category === activeCategory);
+  const visible = projects.filter((p) => p.category === activeCategory);
 
   // Cards fade and rise in one after another when the tab changes. Skipped on
   // first load (so the above-the-fold cover isn't delayed) and for reduced motion.
@@ -254,7 +253,7 @@ export default function Projects() {
                 />
               )}
               {visibleCategories.map((category, i) => {
-                const isEmpty = !publishedProjects.some((p) => p.category === category);
+                const isEmpty = !projects.some((p) => p.category === category);
                 const isActive = activeCategory === category;
                 return (
                   <button
