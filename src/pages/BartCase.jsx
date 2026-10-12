@@ -1029,7 +1029,7 @@ export default function BartCase() {
             The Results
           </h3>
           <div>
-            <MetricList metrics={launchMetrics} accent="#2f6db5" markerName="Before" />
+            <MetricList metrics={launchMetrics} markerName="Before" />
           </div>
 
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
@@ -1040,7 +1040,7 @@ export default function BartCase() {
             after the redesign.
           </p>
           <div>
-            <MetricList metrics={surveyResults} accent="#2f6db5" markerName="Before" />
+            <MetricList metrics={surveyResults} markerName="Before" />
           </div>
 
           <KeyTakeaway heading="Two kinds of visitor, not one average one" className="mt-8">
