@@ -9,7 +9,9 @@
     "build": "vite build",
     "postbuild": "node scripts/prerender-routes.cjs",
     "generate:og": "node scripts/generate-og-images.cjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:tokens": "node scripts/check-tokens.cjs",
+    "lint": "npm run check:tokens"
   },
   "keywords": [],
   "author": "",
