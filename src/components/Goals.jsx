@@ -3,7 +3,13 @@ import useStaggerReveal from '../hooks/useStaggerReveal';
 
 // Same five colours, in the same order (outer ring to inner ring), as the radial charts
 // (frustrationSegments in BartCase / monitoringFrustrationSegments in FarsafeCase).
-const GOAL_COLORS = ['#f2c94c', '#6abf69', '#ee8585', '#4d8fd1', '#6d3fc4'];
+const GOAL_COLORS = [
+  'var(--color-data-1)',
+  'var(--color-data-2)',
+  'var(--color-data-3)',
+  'var(--color-data-4)',
+  'var(--color-purple-500)',
+];
 
 const pad = (n) => String(n).padStart(2, '0');
 

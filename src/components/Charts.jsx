@@ -89,7 +89,7 @@ export function DonutStat({ pct, color }) {
 
   return (
     <svg ref={svgRef} viewBox="0 0 160 160" className="w-40 h-40">
-      <circle cx="80" cy="80" r={r} fill="none" stroke="#e3e3e3" strokeWidth="26" />
+      <circle cx="80" cy="80" r={r} fill="none" stroke="var(--color-border-subtle)" strokeWidth="26" />
       <circle
         ref={arcRef}
         cx="80"
@@ -111,7 +111,7 @@ export function DonutStat({ pct, color }) {
         className="font-grotesk"
         fontSize="30"
         fontWeight="700"
-        fill="#000"
+        fill="var(--color-ink-900)"
       >
         {pct}%
       </text>
@@ -143,7 +143,7 @@ export function ProgressBar({ pct, color }) {
   }, [pct]);
 
   return (
-    <div ref={trackRef} className="h-1.5 rounded-pill bg-[#d9d9d9] overflow-hidden">
+    <div ref={trackRef} className="h-1.5 rounded-pill bg-surface-placeholder overflow-hidden">
       <div ref={fillRef} className="h-full rounded-pill" style={{ width: `${pct}%`, backgroundColor: color }} />
     </div>
   );
@@ -157,11 +157,11 @@ export function StatBar({ pct, color, title, text }) {
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex items-baseline justify-between gap-4">
-        <p className="font-grotesk font-medium text-[16px] text-black">{label}</p>
+        <p className="font-grotesk font-medium text-[16px] text-ink">{label}</p>
         <p className="font-grotesk font-bold text-[14px] shrink-0" style={{ color }}>{value}</p>
       </div>
       <ProgressBar pct={pct} color={color} />
-      <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{text}</p>
+      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{text}</p>
     </div>
   );
 }

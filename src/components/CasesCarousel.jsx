@@ -82,7 +82,7 @@ export default function CasesCarousel() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 bg-action-primary hover:bg-action-primary-hover text-white rounded-pill p-3 transition-colors"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 bg-action-primary hover:bg-action-primary-hover text-text-inverse rounded-pill p-3 transition-colors"
             aria-label="Previous slide"
           >
             <svg
@@ -102,7 +102,7 @@ export default function CasesCarousel() {
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 bg-action-primary hover:bg-action-primary-hover text-white rounded-pill p-3 transition-colors"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 bg-action-primary hover:bg-action-primary-hover text-text-inverse rounded-pill p-3 transition-colors"
             aria-label="Next slide"
           >
             <svg
