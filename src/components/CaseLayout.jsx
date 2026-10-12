@@ -330,7 +330,7 @@ export function KeyTakeaway({ heading, children, id, className = '' }) {
     <section id={id} className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 ${className}`}>
       <div className="flex flex-col gap-6">
         <p className="font-mono-bold text-body text-ink">Key Takeaway</p>
-        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-ink tracking-tight">
+        <h2 className="font-grotesk font-medium text-heading text-ink tracking-tight">
           {heading}
         </h2>
       </div>
@@ -511,7 +511,7 @@ export function StyleGuide({ heading, body, colors, scale, typeface, image }) {
 
   return (
     <>
-      <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+      <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
         {heading}
       </h2>
       <p className="font-grotesk text-body text-text-primary leading-relaxed max-w-3xl [&_strong]:font-bold [&_strong]:text-text-primary">
@@ -576,7 +576,7 @@ export function ScreensSlider({ screens }) {
   return (
     <>
       <div className="flex items-center justify-between gap-6 flex-wrap">
-        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+        <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
           {screen.title}
         </h2>
         <div className="flex items-center gap-3">
@@ -846,7 +846,7 @@ export default function CaseLayout({
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
             <p className="font-mono-bold text-body text-text-primary">PROJECT INTRO</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+            <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
               {project.intro.heading}
             </h2>
             <p className="font-grotesk text-body text-text-primary leading-relaxed [&>strong]:text-text-primary [&>strong]:font-bold">

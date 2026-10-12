@@ -95,7 +95,7 @@ export default function ContactSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
           <p className="font-mono-bold text-body text-text-primary">Get in Touch</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+          <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
             Let's Work Together
           </h2>
         </div>

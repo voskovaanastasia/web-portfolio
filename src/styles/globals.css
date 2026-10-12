@@ -92,6 +92,12 @@
   --font-size-stat: 30px;
   --font-size-stat-lg: 40px;
 
+  /* Line height paired with the display sizes (mobile: the page default 1.5) */
+  --line-height-heading: 1.5;
+  --line-height-title: 1.5;
+  --line-height-lead: 1.5;
+  --line-height-stat: 1.5;
+
   /* Space */
   --space-gap-sm: 8px;
   --space-gap-md: 16px;
@@ -118,6 +124,11 @@
     --font-size-title: 48px;
     --font-size-stat: 48px;
     --font-size-stat-lg: 60px;
+
+    --line-height-heading: 2.5rem;
+    --line-height-title: 1;
+    --line-height-lead: 1.75rem;
+    --line-height-stat: 1;
 
     --space-section: 96px;
     --space-card: 20px;

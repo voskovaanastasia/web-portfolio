@@ -94,7 +94,7 @@ export default function HeroSection() {
         </h1>
 
         {/* Subheadline */}
-        <p data-hero-item className="font-grotesk text-[16px] sm:text-xl text-text-primary max-w-[280px] sm:max-w-none">
+        <p data-hero-item className="font-grotesk text-lead text-text-primary max-w-[280px] sm:max-w-none">
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 

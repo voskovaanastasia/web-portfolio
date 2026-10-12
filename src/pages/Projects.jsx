@@ -229,7 +229,7 @@ export default function Projects() {
       <section className="relative overflow-hidden pt-24 pb-40">
         <DotsBackground />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center flex flex-col gap-6">
-          <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl text-text-primary tracking-tight">
+          <h1 className="font-grotesk font-medium text-title text-text-primary tracking-tight">
             Things I&rsquo;ve Worked On
           </h1>
           <p className="font-grotesk text-lg sm:text-xl text-text-primary leading-relaxed">

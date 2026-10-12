@@ -64,7 +64,7 @@ export default function SelectedWork() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div className="flex flex-col gap-2.5">
             <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Selected work</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+            <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
               Featured Project
             </h2>
           </div>

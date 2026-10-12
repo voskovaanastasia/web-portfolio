@@ -63,7 +63,7 @@ export default function AiDesignerSection() {
         <div className="mb-12 flex flex-col gap-2.5">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">AI + DESIGNER</p>
           <p className="font-caveat font-bold text-xl text-text-brand">Where design stops being a picture</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+          <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
             From static concepts to live prototypes.
           </h2>
           <p className="font-grotesk text-body-lg text-text-primary leading-relaxed max-w-3xl mt-2">
