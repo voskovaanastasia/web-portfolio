@@ -85,6 +85,18 @@ for (const page of pages) {
   writeFileSync(path.join(dir, 'index.html'), render(page));
 }
 
+// Unknown URLs: Vercel serves dist/404.html with a real 404 status (vercel.json has no catch-all rewrite).
+// The React app still boots from this shell and renders its own "Page not found" screen. noindex, no canonical.
+const notFoundTitle = 'Page not found — Anastasiia Voskova';
+writeFileSync(
+  path.join(DIST, '404.html'),
+  template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(notFoundTitle)}</title>`)
+    .replace(/\s*<link rel="canonical"[^>]*>/, '')
+    .replace(/\s*<meta property="og:url"[^>]*>/, '')
+    .replace('</head>', '    <meta name="robots" content="noindex, nofollow" />\n  </head>')
+);
+
 const urls = ['/', ...pages.map((p) => p.path)];
 writeFileSync(
   path.join(DIST, 'sitemap.xml'),
