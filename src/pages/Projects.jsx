@@ -22,6 +22,7 @@ import caseBuiltWithClaude960 from '../assets/case-built-with-claude-960w.webp';
 import DotsBackground from '../components/DotsBackground';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
+import { BUILT_WITH_CLAUDE_PUBLISHED } from '../config/publishedCases';
 
 const categories = ['Product & UX/UI Design', 'Built with Claude', 'Logos & Branding'];
 
@@ -165,6 +166,7 @@ const projects = [
   },
   {
     id: 'built-with-claude',
+    published: BUILT_WITH_CLAUDE_PUBLISHED,
     category: 'Built with Claude',
     image480: caseBuiltWithClaude480,
     image960: caseBuiltWithClaude960,
@@ -175,6 +177,13 @@ const projects = [
   },
 ];
 
+// Locked cases (published: false) are dropped entirely. A category whose cases are all locked
+// disappears from the tabs; a category with no cases at all still shows "Coming soon".
+const publishedProjects = projects.filter((p) => p.published !== false);
+const visibleCategories = categories.filter(
+  (c) => publishedProjects.some((p) => p.category === c) || !projects.some((p) => p.category === c)
+);
+
 export default function Projects() {
   useDocumentMeta({
     title: 'Portfolio — Anastasiia Voskova',
@@ -183,9 +192,9 @@ export default function Projects() {
     path: '/projects',
   });
 
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [activeCategory, setActiveCategory] = useState(visibleCategories[0]);
 
-  const visible = projects.filter((p) => p.category === activeCategory);
+  const visible = publishedProjects.filter((p) => p.category === activeCategory);
 
   // Cards fade and rise in one after another when the tab changes. Skipped on
   // first load (so the above-the-fold cover isn't delayed) and for reduced motion.
@@ -200,7 +209,7 @@ export default function Projects() {
   // shared indicator to it, instead of each button painting its own underline.
   useLayoutEffect(() => {
     const measure = () => {
-      const el = tabRefs.current[categories.indexOf(activeCategory)];
+      const el = tabRefs.current[visibleCategories.indexOf(activeCategory)];
       if (el) setPill({ left: el.offsetLeft, width: el.offsetWidth });
     };
     measure();
@@ -210,7 +219,7 @@ export default function Projects() {
   }, [activeCategory]);
 
   useEffect(() => {
-    const index = categories.indexOf(activeCategory);
+    const index = visibleCategories.indexOf(activeCategory);
     const direction = index >= prevIndex.current ? 1 : -1;
     prevIndex.current = index;
     if (!hasMounted.current) {
@@ -255,8 +264,8 @@ export default function Projects() {
                   style={{ width: pill.width, transform: `translateX(${pill.left}px)` }}
                 />
               )}
-              {categories.map((category, i) => {
-                const isEmpty = !projects.some((p) => p.category === category);
+              {visibleCategories.map((category, i) => {
+                const isEmpty = !publishedProjects.some((p) => p.category === category);
                 const isActive = activeCategory === category;
                 return (
                   <button
