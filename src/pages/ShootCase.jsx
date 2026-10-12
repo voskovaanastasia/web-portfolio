@@ -1,9 +1,5 @@
 import CaseLayout, { ProcessColumns, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
-import toolFigma from '../assets/icon-figma.svg';
-import toolPhotoshop from '../assets/toolkit/photoshop.svg';
-import toolLightroom from '../assets/toolkit/lightroom.svg';
-import toolIllustrator from '../assets/toolkit/illustrator.svg';
 
 const project = {
   name: 'SHOOT',
@@ -16,12 +12,7 @@ const project = {
     { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: '4 months' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolPhotoshop, label: 'Photoshop' },
-    { icon: toolLightroom, label: 'Lightroom' },
-    { icon: toolIllustrator, label: 'Illustrator' },
-  ],
+  tools: ['figma', 'photoshop', 'lightroom', 'illustrator'],
   summary: [
     {
       label: 'PROBLEM',

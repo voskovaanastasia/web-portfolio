@@ -44,7 +44,7 @@ export default function AiDesignerSection() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const ctx = gsap.context(() => {
-      gsap.from('[data-ai-cards] > div', {
+      gsap.from('[data-ai-cards] > li', {
         y: 30,
         opacity: 0,
         duration: 0.45,
@@ -60,50 +60,37 @@ export default function AiDesignerSection() {
   return (
     <section ref={rootRef} id="ai-designer" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="mb-8 flex flex-col gap-4">
-          <p className="font-mono-bold text-[14px] text-text-primary">AI + DESIGNER</p>
-          <div className="max-w-[590px] flex flex-col gap-4">
-            <div className="flex flex-col gap-2.5">
-              <p className="font-caveat font-bold text-xl text-accent-handwritten">
-                Where design stops being a picture
-              </p>
-              <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-                From static concepts to live prototypes.
-              </h2>
-            </div>
-            <p className="font-grotesk text-sm text-text-secondary leading-relaxed">
-              I don&rsquo;t just hand off screens — I ship live, interactive prototypes.
-              By pairing product thinking with modern AI models, I close the gap between
-              UX design and engineering, so ideas get validated in the browser, not in a
-              slide. Here&rsquo;s how I turn a product concept into a working app using AI.
-            </p>
-          </div>
+        <div className="mb-12 flex flex-col gap-2.5">
+          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">AI + DESIGNER</p>
+          <p className="font-caveat font-bold text-xl text-text-brand">Where design stops being a picture</p>
+          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+            From static concepts to live prototypes.
+          </h2>
+          <p className="font-grotesk text-[16px] text-text-primary leading-relaxed max-w-3xl mt-2">
+            I don&rsquo;t just hand off screens — I ship live, interactive prototypes.
+            By pairing product thinking with modern AI models, I close the gap between
+            UX design and engineering, so ideas get validated in the browser, not in a
+            slide. Here&rsquo;s how I turn a product concept into a working app using AI.
+          </p>
         </div>
 
-        <div data-ai-cards className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <ol data-ai-cards className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-5 gap-y-10">
           {steps.map((step, index) => {
-            const isFirst = index === 0;
             const isLast = index === steps.length - 1;
-            const cardClass = isFirst
-              ? 'bg-surface-inverse text-white'
-              : isLast
-                ? 'bg-action-primary text-white'
-                : 'bg-surface-subtle text-text-primary';
-            const numberClass = isFirst || isLast ? 'text-white' : 'text-text-brand';
             return (
-              <div
+              <li
                 key={step.number}
-                className={`rounded-panel p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${cardClass}`}
+                className={`flex flex-col gap-3 pt-5 border-t ${isLast ? 'border-action-primary' : 'border-border-subtle'}`}
               >
-                <p className={`font-grotesk font-bold text-[30px] sm:text-5xl ${numberClass}`}>
-                  {step.number}
+                <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-brand">
+                  Step {step.number}
                 </p>
-                <p className="font-grotesk font-bold text-[14px]">{step.title}</p>
-                <p className="font-grotesk text-sm">{step.description}</p>
-              </div>
+                <h3 className="font-grotesk font-medium text-[18px] leading-snug text-text-primary">{step.title}</h3>
+                <p className="font-grotesk text-sm text-text-primary leading-relaxed">{step.description}</p>
+              </li>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
   );

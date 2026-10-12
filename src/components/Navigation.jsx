@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import useHeaderTheme from '../hooks/useHeaderTheme';
 import logoAv from '../assets/logo-av.svg';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null);
+  const { pathname } = useLocation();
+  useHeaderTheme(headerRef, pathname);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header ref={headerRef} className="site-header sticky top-0 z-50">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-surface-default focus:text-text-primary focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
@@ -14,9 +18,9 @@ export default function Navigation() {
         Skip to content
       </a>
       <nav className="flex items-center justify-center py-4 px-4">
-      <div className="bg-[rgba(240,240,240,0.2)] backdrop-blur-md border border-white/30 rounded-[64px] px-5 py-2.5 flex items-center justify-between gap-6 w-full max-w-6xl">
+      <div className="header-glass backdrop-blur-md border border-white/30 rounded-[64px] px-5 py-2.5 flex items-center justify-between gap-6 w-full max-w-6xl">
         {/* Logo & Name */}
-        <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 pl-1">
+        <Link to="/" data-header-zone="left" className="flex items-center gap-2.5 flex-shrink-0 pl-1">
           <img
             src={logoAv}
             alt="AV logo"
@@ -24,22 +28,22 @@ export default function Navigation() {
             height={30}
             className="w-[37px] h-[30px]"
           />
-          <span className="font-mono-bold font-bold text-xl whitespace-nowrap text-text-primary hidden sm:inline">
+          <span className="font-mono-bold font-bold text-xl whitespace-nowrap header-ink-left hidden sm:inline">
             ANASTASIIA VOSKOVA
           </span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-[25px] font-grotesk">
+        <div data-header-zone="right" className="hidden md:flex items-center gap-[25px] font-grotesk">
           <Link
             to="/about"
-            className="text-base font-medium text-text-primary hover:text-text-primary transition-colors"
+            className="text-base font-medium header-ink-right"
           >
             About Me
           </Link>
           <Link
             to="/projects"
-            className="text-base font-medium text-text-primary hover:text-text-primary transition-colors"
+            className="text-base font-medium header-ink-right"
           >
             Portfolio
           </Link>
@@ -62,10 +66,11 @@ export default function Navigation() {
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          className="md:hidden p-2 ml-auto"
+          data-header-zone="right"
+          className="md:hidden p-2 ml-auto header-ink-right"
         >
           <svg
-            className="w-5 h-5 text-text-primary"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

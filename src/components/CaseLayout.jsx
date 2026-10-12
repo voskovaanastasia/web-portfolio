@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionMenu from './SectionMenu';
+import ToolIcon from './ToolIcon';
 import ContactSection from './ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -118,21 +119,89 @@ export function ImagePlaceholder({ filename, className = '', alt = '', priority 
  * `bars` = [{ label, value, before? }] — the bar without `before` is the
  * highlighted (current/after) value, rendered in `color`; `before` bars are grey.
  */
-export function MetricBars({ bars, color }) {
-  const max = Math.max(...bars.map((b) => b.value));
-  const wrapRef = useRef(null);
+export function PersonaBlock({ image, name, role, location, bio, groups, summary, accent = '#2f6db5' }) {
+  return (
+    <div className="flex flex-col gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-10 lg:gap-16">
+        <div className="flex flex-col gap-4">
+          <ImagePlaceholder filename={image} className="aspect-[4/3] rounded-card" />
+          <h3 className="font-grotesk font-medium text-[22px] sm:text-[26px] text-black tracking-tight mt-2">
+            {name}
+          </h3>
+          <div className="flex flex-col gap-1">
+            <p className="font-grotesk font-medium text-[14px] text-black">{role}</p>
+            <p className="font-grotesk text-[14px] text-[#393939]">{location}</p>
+          </div>
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{bio}</p>
+        </div>
+        <div className="flex flex-col">
+          {groups.map((group) => (
+            <div
+              key={group.title}
+              className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-6 py-5 border-t border-black/10 last:border-b"
+            >
+              <p
+                className="font-mono-bold text-[12px] uppercase tracking-wider"
+                style={{ color: accent }}
+              >
+                {group.title}
+              </p>
+              <ul className="flex flex-col gap-2">
+                {group.items.map((item, i) => (
+                  <li
+                    key={i}
+                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0 break-words [&>strong]:font-bold [&>strong]:text-black"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {summary && (
+            <p
+              className="font-grotesk text-[16px] sm:text-[18px] text-black leading-relaxed border-l-2 pl-5 mt-8"
+              style={{ borderColor: accent }}
+            >
+              {summary}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-  // Bars grow up from the baseline, one after another, each time the card scrolls into view.
+const NICE_STEPS = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10];
+
+// Track length for a row: 100 for high percentages, otherwise the next "nice" number above the data.
+function trackMax(values, isPct) {
+  const top = Math.max(...values);
+  if (isPct && top > 50) return 100;
+  const target = top * 1.1;
+  const pow = 10 ** Math.floor(Math.log10(target));
+  return (NICE_STEPS.find((n) => n * pow >= target) ?? 10) * pow;
+}
+
+function MetricRow({ metric, accent }) {
+  const { title, subtitle, bars, text, lowerIsBetter, markerLabel } = metric;
+  const result = bars.find((b) => !b.before);
+  const ref = bars.find((b) => b.before);
+  const name = title.split(' — ')[0];
+  const max = trackMax(bars.map((b) => b.value), result.label.includes('%'));
+  const marker =
+    markerLabel ?? (subtitle ? subtitle.replace(/^\(|\)$/g, '') : ref ? `before ${ref.label}` : null);
+  const fillRef = useRef(null);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
-    const tween = gsap.from(wrapRef.current.children, {
-      scaleY: 0,
-      transformOrigin: 'bottom',
-      duration: 0.7,
+    const tween = gsap.from(fillRef.current, {
+      scaleX: 0,
+      transformOrigin: 'left',
+      duration: 0.8,
       ease: 'power3.out',
-      stagger: 0.12,
-      scrollTrigger: { trigger: wrapRef.current, start: 'top 90%', toggleActions: 'restart none restart reset' },
+      scrollTrigger: { trigger: fillRef.current, start: 'top 92%', toggleActions: 'restart none restart reset' },
     });
     return () => {
       tween.scrollTrigger?.kill();
@@ -141,37 +210,82 @@ export function MetricBars({ bars, color }) {
   }, []);
 
   return (
-    <div ref={wrapRef} className="flex items-end justify-center gap-4 h-44">
-      {/* Grey "before"/target bars first, so the highlighted bar sits on the right. */}
-      {[...bars].sort((a, b) => Number(!!b.before) - Number(!!a.before)).map((bar) => (
-        <div
-          key={bar.label}
-          className="w-16 rounded-[14px] flex items-end justify-center pb-3"
-          style={{
-            height: `${(bar.value / max) * 100}%`,
-            backgroundColor: bar.before ? '#e3e3e3' : color,
-          }}
-        >
-          <span className="font-grotesk font-bold text-sm text-text-primary">{bar.label}</span>
+    <div className="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,3fr)_minmax(0,5fr)_auto] items-center gap-x-8 gap-y-3 py-5 border-t border-black/10 last:border-b">
+      <div className="flex flex-col gap-1.5">
+        <p className="font-grotesk font-medium text-[16px] text-black">{name}</p>
+        <p className="font-grotesk text-[13px] text-[#393939] leading-snug [&>strong]:font-bold [&>strong]:text-black">
+          {text}
+        </p>
+        {lowerIsBetter && (
+          <p className="font-mono-bold text-[11px] uppercase tracking-wider" style={{ color: accent }}>
+            Lower is better
+          </p>
+        )}
+      </div>
+      <p className="md:order-3 font-grotesk font-medium text-[28px] sm:text-[34px] text-black tracking-tight text-right leading-none">
+        {result.label}
+      </p>
+      <div className="col-span-2 md:col-span-1 md:order-2 relative pt-6">
+        {ref && marker && (
+          <span
+            className="absolute top-0 -translate-x-1/2 font-mono-bold text-[11px] leading-none text-[#393939] whitespace-nowrap"
+            style={{ left: `${(ref.value / max) * 100}%` }}
+          >
+            {marker}
+          </span>
+        )}
+        <div className="relative h-2 rounded-full bg-black/[0.08]">
+          <div
+            ref={fillRef}
+            className="h-full rounded-full"
+            style={{ width: `${(result.value / max) * 100}%`, backgroundColor: accent }}
+          />
+          {ref && (
+            <span
+              className="absolute -top-1.5 -bottom-1.5 w-px bg-black"
+              style={{ left: `${(ref.value / max) * 100}%` }}
+            />
+          )}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
 
 /**
- * Standard result-card wrapper: bars on top, title, optional subtitle, body text.
+ * Result list: one row per metric — name and note, a bar with a target/before marker, big value.
  */
-export function MetricCard({ title, subtitle, bars, color, text }) {
+export function MetricList({ metrics, accent = '#2f6db5', markerName = 'Target' }) {
   return (
-    <div className="bg-surface-subtle rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-      <MetricBars bars={bars} color={color} />
-      <p className="font-grotesk font-bold text-[14px] text-text-primary">{title}</p>
-      {subtitle && <p className="font-grotesk text-sm text-text-secondary -mt-2">{subtitle}</p>}
-      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&>strong]:font-bold [&>strong]:text-text-primary">
-        {text}
-      </p>
+    <div className="flex flex-col">
+      <div className="flex justify-end gap-5 pb-3 font-grotesk text-[12px] text-[#393939]">
+        <span className="flex items-center gap-2">
+          <span className="w-4 h-2 rounded-full" style={{ backgroundColor: accent }} />
+          Result
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="w-px h-3.5 bg-black" />
+          {markerName}
+        </span>
+      </div>
+      {metrics.map((metric) => (
+        <MetricRow key={metric.title} metric={metric} accent={accent} />
+      ))}
     </div>
+  );
+}
+
+const sectionLabel = 'font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary';
+const sectionHeading =
+  'font-grotesk font-medium text-[28px] sm:text-4xl lg:text-[44px] leading-[1.2] text-text-primary tracking-tight';
+
+// Highlighted aside under the body: blue rule on the left, small blue mono label, short text.
+function CalloutQuote({ label, children }) {
+  return (
+    <blockquote className="border-l-2 border-text-brand pl-4 flex flex-col gap-2 mt-1">
+      <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-brand">{label}</p>
+      <p className="font-grotesk text-[15px] text-text-primary leading-relaxed">{children}</p>
+    </blockquote>
   );
 }
 
@@ -179,35 +293,27 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
   return (
     <>
       {problem && (
-        <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
           <ImagePlaceholder
             filename={problem.image}
             className={`min-h-[420px] ${problem.imageClassName ?? ''}`}
           />
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-text-primary">PROBLEM</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-              {problem.heading}
-            </h2>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{problem.body}</p>
-            <p className="font-mono-bold text-[14px] text-text-primary">WHY IS THIS IMPORTANT?</p>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{problem.why}</p>
+            <p className={sectionLabel}>Problem</p>
+            <h2 className={sectionHeading}>{problem.heading}</h2>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{problem.body}</p>
+            <CalloutQuote label="Why is this important?">{problem.why}</CalloutQuote>
           </div>
         </section>
       )}
 
       {solution && (
-        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
           <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-text-primary">SOLUTION</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-              {solution.heading}
-            </h2>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{solution.body}</p>
-            <p className="font-mono-bold text-[14px] text-text-primary">USER SCENARIO CONSIDERATION</p>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
-              {solution.scenario}
-            </p>
+            <p className={sectionLabel}>Solution</p>
+            <h2 className={sectionHeading}>{solution.heading}</h2>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{solution.body}</p>
+            <CalloutQuote label="User scenario consideration">{solution.scenario}</CalloutQuote>
           </div>
           <ImagePlaceholder filename={solution.image} className="min-h-[420px] order-first lg:order-none" />
         </section>
@@ -217,34 +323,146 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
 }
 
 /**
- * 4W+H process grid. Each column = { heading, body } or { heading, items[], highlight }.
+ * Key takeaway: label and heading on the left, the body paragraphs on the right.
  */
-export function ProcessColumns({ columns }) {
+export function KeyTakeaway({ heading, children, id, className = '' }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-      {columns.map((col) => (
+    <section id={id} className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 ${className}`}>
+      <div className="flex flex-col gap-6">
+        <p className="font-mono-bold text-[14px] text-black">Key Takeaway</p>
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          {heading}
+        </h2>
+      </div>
+      <div className="flex flex-col gap-5 lg:pt-10 font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-black">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Empathy map: Says (pills), Thinks (dashed italic bubbles), Does (numbered rows),
+ * Feels (gradient bar with the feelings below). feels = [{ feeling, when }], ordered negative → positive.
+ */
+export function EmpathyMap({ says, thinks, does, feels, accent = '#2f6db5' }) {
+  const label = 'font-mono-bold text-[12px] uppercase tracking-wider';
+  const cell = 'flex flex-col gap-5 pt-6 border-t border-black/15';
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Says</p>
+        <ul className="flex flex-col gap-3 items-start">
+          {says.map((item) => (
+            <li
+              key={item}
+              className="font-grotesk text-[16px] leading-snug px-5 py-3 rounded-[18px]"
+              style={{ color: accent, backgroundColor: `${accent}1a` }}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Thinks</p>
+        <ul className="flex flex-col gap-3 items-start">
+          {thinks.map((item) => (
+            <li
+              key={item}
+              className="font-grotesk italic text-[16px] text-black leading-snug px-5 py-3 rounded-[18px] border border-dashed"
+              style={{ borderColor: `${accent}80` }}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Does</p>
+        <ol className="flex flex-col">
+          {does.map((item, i) => (
+            <li
+              key={item}
+              className="flex items-baseline gap-5 py-3.5 border-b border-black/10 last:border-b-0 font-grotesk text-[16px] text-black"
+            >
+              <span className="font-mono-bold text-[12px] shrink-0" style={{ color: accent }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className={cell}>
+        <p className={label} style={{ color: accent }}>Feels</p>
         <div
-          key={col.heading}
-          className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-surface-brand-tint' : 'bg-surface-subtle' }`}
-        >
-          <p className="font-grotesk font-medium text-lg text-text-primary">{col.heading}</p>
-          <span className="h-0.5 w-full bg-blue-500 rounded-pill" />
-          {col.body ? (
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{col.body}</p>
-          ) : (
-            <ul className="flex flex-col gap-2">
-              {col.items.map((item) => (
-                <li
-                  key={item}
-                  className="font-grotesk text-[14px] text-text-primary leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+          className="h-2 rounded-full"
+          style={{ background: `linear-gradient(90deg, #d9d9d9 0%, #d9d9d9 40%, ${accent} 75%)` }}
+        />
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-6">
+          {feels.map((f, i) => (
+            <li key={f.feeling} className="flex flex-col gap-2">
+              <p
+                className="font-grotesk font-medium text-[20px]"
+                style={{ color: i >= feels.length / 2 ? accent : '#393939' }}
+              >
+                {f.feeling}
+              </p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{f.when}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * 4W+H process, stacked rows. Each column = { heading, body } or { heading, items[], highlight }.
+ * The highlighted row (How) takes the accent colour.
+ */
+export function ProcessColumns({ columns, accent = '#2f6db5' }) {
+  return (
+    <div className="flex flex-col">
+      {columns.map((col) => {
+        const color = col.highlight ? accent : undefined;
+        return (
+          <div
+            key={col.heading}
+            className="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] gap-3 md:gap-10 py-6 border-t border-black/10 last:border-b"
+          >
+            <div className="flex items-baseline gap-3">
+              <span
+                className="font-grotesk font-bold text-[44px] leading-none text-black/15"
+                style={color ? { color } : undefined}
+              >
+                {col.heading === 'How' ? 'H' : 'W'}
+              </span>
+              <p
+                className="font-grotesk font-medium text-[20px] text-black"
+                style={color ? { color } : undefined}
+              >
+                {col.heading}
+              </p>
+            </div>
+            {col.body ? (
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-2xl">{col.body}</p>
+            ) : (
+              <ul className="flex flex-col gap-2 max-w-2xl">
+                {col.items.map((item) => (
+                  <li
+                    key={item}
+                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -377,11 +595,11 @@ export function ScreensSlider({ screens }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
-        <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-9 border-l border-black/10 pl-4 sm:pl-5 py-2">
           {screen.blocks.map((block) => (
-            <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-[14px] text-text-primary">{block.heading}</p>
-              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
+            <div key={block.heading} className="flex flex-col gap-2.5">
+              <p className="font-grotesk font-medium text-[18px] text-text-primary">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-black">
                 {block.text}
               </p>
             </div>
@@ -406,10 +624,9 @@ const CASE_ORDER = [
   { id: 'shoot', path: '/project/shoot', title: 'SHOOT' },
 ];
 
-// Matches the Person's "@id" in index.html's JSON-LD — kept as the same
-// literal placeholder so both update together once the real domain is set.
-const PERSON_ID = 'https://[PASTE YOUR PRODUCTION URL]/#person';
-const SITE_ORIGIN = 'https://[PASTE YOUR PRODUCTION URL]';
+// Matches the Person's "@id" in index.html's JSON-LD.
+const SITE_ORIGIN = 'https://www.anastasiiavoskova.com';
+const PERSON_ID = `${SITE_ORIGIN}/#person`;
 
 // Builds the useDocumentMeta props (title, description, canonical path,
 // share image, and CreativeWork JSON-LD linked to the Person entity) for a
@@ -426,6 +643,7 @@ export function buildCaseMeta({ project, caseId }) {
     description,
     path,
     image,
+    ...(project.robots ? { robots: project.robots } : {}),
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'CreativeWork',
@@ -438,6 +656,105 @@ export function buildCaseMeta({ project, caseId }) {
       creator: { '@id': PERSON_ID },
     },
   };
+}
+
+const dottedTags = (tags) =>
+  tags.map((tag, i) => (
+    <span key={tag}>
+      {tag}
+      {i < tags.length - 1 && (
+        <span aria-hidden="true" className="mx-2">
+          ·
+        </span>
+      )}
+    </span>
+  ));
+
+const headerLabel = 'font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary';
+
+// Shared top of every case study: back link, tags, title, meta columns (with tool icons) and summary columns.
+export function CaseHeader({ project }) {
+  return (
+    <>
+      <Link
+        to="/projects"
+        className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+          <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Back to Portfolio
+      </Link>
+
+      <p className="font-mono-bold text-[12px] sm:text-[13px] text-text-secondary mt-8">{dottedTags(project.tags)}</p>
+
+      <h1 className="font-grotesk font-medium text-[28px] sm:text-5xl lg:text-[64px] text-text-primary tracking-tight leading-[1.1] mt-4 max-w-4xl">
+        {project.title}
+      </h1>
+
+      {/* Meta */}
+      <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-8">
+        {project.meta.map((item) => (
+          <div key={item.label} className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+            <p className={headerLabel}>{item.label}</p>
+            <p className="font-grotesk font-medium text-[15px] text-text-primary whitespace-pre-line leading-snug">
+              {item.value}
+            </p>
+          </div>
+        ))}
+        <div className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+          <p className={headerLabel}>Tools</p>
+          <div className="flex flex-wrap gap-2">
+            {project.tools.map((id) => (
+              <ToolIcon key={id} id={id} className="bg-surface-default w-9 h-9 shrink-0 shadow-sm" />
+            ))}
+          </div>
+        </div>
+        {project.links && (
+          <div className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+            <p className={headerLabel}>Links</p>
+            <div className="flex flex-wrap gap-2">
+              {project.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link.label}
+                  aria-label={link.label}
+                  className="bg-surface-default rounded-pill w-9 h-9 shrink-0 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+                >
+                  <img src={link.icon} alt="" className="w-5 h-5 object-contain" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Summary */}
+      <div
+        className={`mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-8 ${
+          project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+        }`}
+      >
+        {project.summary.map((card) => (
+          <div key={card.label} className="flex flex-col gap-3 pt-4 border-t border-border-subtle">
+            <p className={headerLabel}>{card.label}</p>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{card.text}</p>
+          </div>
+        ))}
+        {project.outcome && (
+          <div className="flex flex-col gap-3 pt-4 border-t border-action-primary">
+            <p className={headerLabel}>Outcome</p>
+            <p className="font-grotesk font-bold text-[36px] leading-none text-text-brand">{project.outcome.value}</p>
+            <p className="font-grotesk text-[15px] sm:text-base text-text-primary">{project.outcome.label}</p>
+          </div>
+        )}
+      </div>
+    </>
+  );
 }
 
 function CaseNavArrow({ direction }) {
@@ -521,81 +838,7 @@ export default function CaseLayout({
           />
         </div>
 
-        {/* Back link */}
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-text-primary hover:text-text-brand transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Portfolio
-        </Link>
-
-        {/* Title */}
-        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-text-primary tracking-tight leading-tight mt-8 max-w-3xl">
-          {project.title}
-        </h1>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2.5 mt-8">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 bg-surface-subtle rounded-pill font-grotesk font-medium text-sm text-ink"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Meta bar */}
-        <div className="bg-surface-subtle rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {project.meta.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-text-secondary">{item.label}</p>
-              <p className="font-grotesk font-medium text-[14px] text-text-primary whitespace-pre-line">
-                {item.value}
-              </p>
-            </div>
-          ))}
-          <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-[14px] text-text-secondary">Tools</p>
-            <div className="flex gap-2">
-              {project.tools.map((tool) => (
-                <span
-                  key={tool.label}
-                  title={tool.label}
-                  className="bg-surface-default rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
-                >
-                  <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Summary cards */}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 ${
-            project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
-          }`}
-        >
-          {project.summary.map((card) => (
-            <div key={card.label} className="bg-surface-subtle rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <p className="font-grotesk text-sm text-text-secondary uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{card.text}</p>
-            </div>
-          ))}
-          {project.outcome && (
-            <div className="bg-surface-brand-tint rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-              <p className="font-grotesk text-sm text-text-secondary uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-[30px] text-text-primary">{project.outcome.value}</p>
-              <p className="font-grotesk text-[14px] text-text-primary">{project.outcome.label}</p>
-            </div>
-          )}
-        </div>
+        <CaseHeader project={project} />
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
@@ -617,7 +860,7 @@ export default function CaseLayout({
         {/* Case-specific sections */}
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="pb-20 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-text-primary">{section.label}</p>
+            {!section.bare && <p className="font-mono-bold text-[14px] text-text-primary">{section.label}</p>}
             {section.content}
           </section>
         ))}
@@ -632,15 +875,9 @@ export default function CaseLayout({
 
         {/* Key takeaway */}
         {keyTakeaway && (
-          <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-text-primary">Key Takeaway</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-              {keyTakeaway.heading}
-            </h2>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-text-primary">
-              {keyTakeaway.body}
-            </p>
-          </section>
+          <KeyTakeaway id="key-takeaway" heading={keyTakeaway.heading} className="pb-24">
+            <p>{keyTakeaway.body}</p>
+          </KeyTakeaway>
         )}
 
         {/* Next case */}

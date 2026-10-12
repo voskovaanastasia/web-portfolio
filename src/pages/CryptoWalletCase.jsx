@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
+import { EmpathyMap, ProcessColumns, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
+import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
-import toolFigma from '../assets/icon-figma.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolNotion from '../assets/icon-notion.svg';
 
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
@@ -667,11 +664,11 @@ function ScreensSlider({ screens }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
-        <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-9 border-l border-black/10 pl-4 sm:pl-5 py-2">
           {screen.blocks.map((block) => (
-            <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#288fd6]">
+            <div key={block.heading} className="flex flex-col gap-2.5">
+              <p className="font-grotesk font-medium text-[18px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-black">
                 {block.text}
               </p>
             </div>
@@ -687,55 +684,16 @@ function ScreensSlider({ screens }) {
   );
 }
 
-const projectGoals = [
-  {
-    title: 'Keep Flows Short & Predictable',
-    text: 'Standardise action patterns (input → review → confirm → status → receipt) across the app for a consistent experience.',
-    icon: <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />,
-  },
-  {
-    title: 'Build Trust Through Transparency',
-    text: 'Explain verification and security steps clearly, showing progress states and why each step is needed.',
-    icon: (
-      <>
-        <rect x="4" y="10" width="16" height="11" rx="2.5" />
-        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-        <path d="M12 14v3M10.6 14.8h2.2a.9.9 0 0 1 0 1.8h-2.2a.9.9 0 0 0 0 1.8H13" strokeLinecap="round" />
-      </>
-    ),
-  },
-  {
-    title: 'Make Performance Understandable',
-    text: 'Turn complex portfolios into readable insights: value changes, asset contribution, and time-based charts.',
-    icon: (
-      <>
-        <rect x="3" y="3" width="18" height="18" rx="3" />
-        <path d="M7 16v-3M11 16v-5M15 16v-2" strokeLinecap="round" />
-        <path d="m7 10 4-3 3 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      </>
-    ),
-  },
-  {
-    title: 'Support Smarter Decisions',
-    text: 'Provide market views, watchlists, and quick token comparisons to help users decide what to buy or swap.',
-    icon: (
-      <>
-        <path d="M12 4.5a3 3 0 0 0-5.6 1.4A3 3 0 0 0 4.5 11a3 3 0 0 0 1 4.6A3 3 0 0 0 12 19.5z" strokeLinejoin="round" />
-        <path d="M12 4.5a3 3 0 0 1 5.6 1.4A3 3 0 0 1 19.5 11a3 3 0 0 1-1 4.6A3 3 0 0 1 12 19.5z" strokeLinejoin="round" />
-      </>
-    ),
-  },
-  {
-    title: 'Prevent Costly Mistakes',
-    text: 'Minimise wrong-network transfers with guided selection, confirmations, and validation before users submit transactions.',
-    icon: (
-      <>
-        <path d="M12 3 20 7.5v9L12 21 4 16.5v-9L12 3z" strokeLinejoin="round" />
-        <path d="M12 8v5M12 16.2v.1" strokeLinecap="round" />
-      </>
-    ),
-  },
-];
+const projectGoals = {
+  headline: 'Make a crypto wallet feel safe and predictable, so people decide well and avoid costly mistakes.',
+  items: [
+    'Keep flows short and predictable: one action pattern (input, review, confirm, status, receipt) across the whole app.',
+    'Build trust through transparency: explain verification and security steps, showing progress and why each step is needed.',
+    'Make performance understandable: turn complex portfolios into readable insights, like value changes, asset contribution and time-based charts.',
+    'Support smarter decisions with market views, watchlists and quick token comparison for buy or swap.',
+    'Prevent costly mistakes: minimise wrong-network transfers with guided selection, confirmations and validation before submit.',
+  ],
+};
 
 const processColumns = [
   {
@@ -808,48 +766,32 @@ const researchStats = [
   },
 ];
 
-const empathyQuadrants = [
-  {
-    label: 'Says',
-    color: '#288fd6',
-    items: [
-      '“Is this the right network for this transfer?”',
-      '“Why are the fees different every time?”',
-      '“I want to double-check before confirming.”',
-      '“I wish this explained what’s happening.”',
-    ],
-  },
-  {
-    label: 'Thinks',
-    color: '#e8964a',
-    items: [
-      'Could one wrong choice cause me to lose funds?',
-      'Is this transaction secure and irreversible?',
-      'Why isn’t this step clearer?',
-      'I want everything in one app, without guessing.',
-    ],
-  },
-  {
-    label: 'Does',
-    color: '#6d3fc4',
-    items: [
-      'Compares fees and networks before sending.',
-      'Reviews transaction details multiple times.',
-      'Tracks portfolio value and recent activity daily.',
-      'Avoids sending until the app feels clear and safe.',
-    ],
-  },
-  {
-    label: 'Feels',
-    color: '#ee5f9b',
-    items: [
-      'Anxious when fees or networks aren’t explained.',
-      'Frustrated by unclear confirmation steps.',
-      'Relieved when progress and status are visible.',
-      'Confident when the app guides each step clearly.',
-    ],
-  },
-];
+const empathy = {
+  says: [
+    'Is this the right network for this transfer?',
+    'Why are the fees different every time?',
+    'I want to double-check before confirming.',
+    'I wish this explained what’s happening.',
+  ],
+  thinks: [
+    'Could one wrong choice cause me to lose funds?',
+    'Is this transaction secure and irreversible?',
+    'Why isn’t this step clearer?',
+    'I want everything in one app, without guessing.',
+  ],
+  does: [
+    'Compares fees and networks before sending.',
+    'Reviews transaction details multiple times.',
+    'Tracks portfolio value and recent activity daily.',
+    'Avoids sending until the app feels clear and safe.',
+  ],
+  feels: [
+    { feeling: 'Anxious', when: 'when fees or networks aren’t explained.' },
+    { feeling: 'Frustrated', when: 'by unclear confirmation steps.' },
+    { feeling: 'Relieved', when: 'when progress and status are visible.' },
+    { feeling: 'Confident', when: 'when the app guides each step clearly.' },
+  ],
+};
 
 // Builds a linear chain of nodes, optionally ending in a branching tail.
 const chain = (labels, tail) =>
@@ -1041,11 +983,7 @@ const project = {
     { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: '9 months' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolJira, label: 'Jira' },
-    { icon: toolNotion, label: 'Notion' },
-  ],
+  tools: ['figma', 'jira', 'notion'],
   summary: [
     {
       label: 'PROBLEM',
@@ -1109,84 +1047,7 @@ export default function CryptoWalletCase() {
           />
         </div>
 
-        {/* Back link */}
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Portfolio
-        </Link>
-
-        {/* Title */}
-        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
-          {project.title}
-        </h1>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2.5 mt-8">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 bg-[#f2f3f5] rounded-pill font-grotesk font-medium text-sm text-[#22292f]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {project.meta.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
-                {item.value}
-              </p>
-            </div>
-          ))}
-          <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
-            <div className="flex gap-2">
-              {project.tools.map((tool) => (
-                <span
-                  key={tool.label}
-                  title={tool.label}
-                  className="bg-white rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
-                >
-                  <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Summary cards */}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 ${
-            project.outcome ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
-          }`}
-        >
-          {project.summary.map((card) => (
-            <div
-              key={card.label}
-              className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
-            >
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
-            </div>
-          ))}
-          {project.outcome && (
-            <div className="bg-[#e9f3fa] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-              <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
-              <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
-            </div>
-          )}
-        </div>
+        <CaseHeader project={project} />
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
@@ -1206,37 +1067,7 @@ export default function CryptoWalletCase() {
         <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Project goals */}
-        <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {projectGoals.map((goal, i) => (
-              <div
-                key={goal.title}
-                className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ i === 1 ? 'bg-[#1f7ab8] text-white' : 'bg-[#f7f7f7]' }`}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke={i === 1 ? 'currentColor' : '#288fd6'}
-                  strokeWidth="1.8"
-                  className="w-8 h-8"
-                >
-                  {goal.icon}
-                </svg>
-                <p className={`font-grotesk font-bold text-[14px] ${i === 1 ? '' : 'text-black'}`}>
-                  {goal.title}
-                </p>
-                <p
-                  className={`font-grotesk text-[14px] leading-relaxed ${
-                    i === 1 ? 'text-white' : 'text-[#393939]'
-                  }`}
-                >
-                  {goal.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
 
         {/* 4W+H process */}
         <section id="process" className="pb-20 flex flex-col gap-6">
@@ -1244,31 +1075,7 @@ export default function CryptoWalletCase() {
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             4W+H Process
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-            {processColumns.map((col) => (
-              <div
-                key={col.heading}
-                className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ col.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
-              >
-                <p className="font-grotesk font-medium text-lg text-black">{col.heading}</p>
-                <span className="h-0.5 w-full bg-[#288fd6] rounded-pill" />
-                {col.body ? (
-                  <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{col.body}</p>
-                ) : (
-                  <ul className="flex flex-col gap-2">
-                    {col.items.map((item) => (
-                      <li
-                        key={item}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
+          <ProcessColumns columns={processColumns} accent="#288fd6" />
         </section>
 
         {/* User research */}
@@ -1283,7 +1090,7 @@ export default function CryptoWalletCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
+              <div key={stat.pct} className="rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
@@ -1297,7 +1104,7 @@ export default function CryptoWalletCase() {
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Most Important Crypto Wallet Feature
               </p>
@@ -1328,7 +1135,7 @@ export default function CryptoWalletCase() {
                 convenience, is what a crypto wallet is judged on first.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Interest in All-in-One Crypto Wallet
               </p>
@@ -1363,24 +1170,17 @@ export default function CryptoWalletCase() {
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">User Persona</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-alex.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-[#288fd6] tracking-tight mt-2">
-                Alex Carter
-              </h3>
-              <p className="font-grotesk font-bold text-[14px] text-black">32, Product Manager</p>
-              <p className="font-grotesk font-bold text-[14px] text-black">Berlin, Germany</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Alex actively uses crypto for investing and transfers but doesn&rsquo;t consider
+          <PersonaBlock
+            image="persona-alex.webp"
+            name="Alex Carter"
+            role="32, Product Manager"
+            location="Berlin, Germany"
+            bio={<>Alex actively uses crypto for investing and transfers but doesn&rsquo;t consider
                 himself an expert. He checks prices daily, sends and swaps tokens regularly, and
                 cares deeply about security. Alex wants confidence that every action is correct
                 before confirming &mdash; without having to overthink networks, fees, or technical
-                details.
-              </p>
-            </div>
-            <div className="lg:col-span-2 flex flex-col gap-5">
-              {[
+                details.</>}
+            groups={[
                 {
                   title: 'Motivations',
                   items: [
@@ -1408,23 +1208,9 @@ export default function CryptoWalletCase() {
                     <><strong>Overloaded interfaces</strong> that add friction during high-stress moments like sending or swapping.</>,
                   ],
                 },
-              ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
-                  <ul className="flex flex-col gap-2">
-                    {group.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words [&>strong]:font-bold [&>strong]:text-[#288fd6]"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
+              ]}
+            accent="#288fd6"
+          />
         </section>
 
         {/* Empathy map */}
@@ -1433,28 +1219,7 @@ export default function CryptoWalletCase() {
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Empathy Map
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {empathyQuadrants.map((q) => (
-              <div key={q.label} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-                <span
-                  className="self-start px-5 py-2 rounded-pill font-grotesk font-bold text-lg text-white"
-                  style={{ backgroundColor: q.color }}
-                >
-                  {q.label}
-                </span>
-                <ul className="flex flex-col gap-2.5">
-                  {q.items.map((item) => (
-                    <li
-                      key={item}
-                      className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <EmpathyMap {...empathy} accent="#288fd6" />
         </section>
 
         {/* User flow */}

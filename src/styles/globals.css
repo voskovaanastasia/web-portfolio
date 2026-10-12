@@ -49,9 +49,9 @@
   --radius-pill: 9999px;
 
   /* Font family */
-  --font-ui: 'Space Grotesk', sans-serif;
-  --font-mono: 'Courier New', monospace;
-  --font-handwritten: 'Caveat', cursive;
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-hand: 'Caveat', cursive;
 
   /* Font weight */
   --font-weight-regular: 400;
@@ -114,6 +114,11 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* Anchor targets clear the sticky header (side-menu links, #hash URLs). */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
   body {
     @apply bg-white text-gray-900 transition-colors;
     background-image: radial-gradient(circle, rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
@@ -127,5 +132,50 @@
 
   h2 {
     @apply text-text-brand;
+  }
+}
+
+/* Header colour follows what is behind it. useHeaderTheme sets --header-t-left / --header-t-right on the
+   header (0 = dark text, 1 = white text); the glass tint follows the same value per side. The tint values
+   here must match TINT_LIGHT / TINT_DARK in src/hooks/useHeaderTheme.js. */
+.site-header {
+  --header-t-left: 0;
+  --header-t-right: 0;
+  --header-ink-dark: var(--color-text-primary);
+  --header-ink-left: var(--header-ink-dark);
+  --header-ink-right: var(--header-ink-dark);
+}
+
+@supports (color: color-mix(in srgb, white 50%, black)) {
+  .site-header {
+    --header-ink-left: color-mix(in srgb, #fff calc(var(--header-t-left) * 100%), var(--header-ink-dark));
+    --header-ink-right: color-mix(in srgb, #fff calc(var(--header-t-right) * 100%), var(--header-ink-dark));
+    --header-glass-left: color-mix(in srgb, rgba(17, 17, 17, 0.45) calc(var(--header-t-left) * 100%), rgba(240, 240, 240, 0.2));
+    --header-glass-right: color-mix(in srgb, rgba(17, 17, 17, 0.45) calc(var(--header-t-right) * 100%), rgba(240, 240, 240, 0.2));
+  }
+}
+
+.header-glass {
+  background-color: rgba(240, 240, 240, 0.2);
+  background-image: linear-gradient(
+    90deg,
+    var(--header-glass-left, rgba(240, 240, 240, 0.2)) 0%,
+    var(--header-glass-left, rgba(240, 240, 240, 0.2)) 35%,
+    var(--header-glass-right, rgba(240, 240, 240, 0.2)) 65%,
+    var(--header-glass-right, rgba(240, 240, 240, 0.2)) 100%
+  );
+}
+
+.header-ink-left,
+.header-ink-right {
+  transition: color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, border-color 0.3s ease;
+}
+.header-ink-left { color: var(--header-ink-left); }
+.header-ink-right { color: var(--header-ink-right); }
+
+@media (prefers-reduced-motion: reduce) {
+  .header-ink-left,
+  .header-ink-right {
+    transition: none;
   }
 }

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { Link } from 'react-router-dom';
 import caseFarsafe480 from '../assets/case-farsafe-480w.webp';
 import caseFarsafe960 from '../assets/case-farsafe-960w.webp';
@@ -16,11 +17,13 @@ import casePayments480 from '../assets/case-payments-480w.webp';
 import casePayments960 from '../assets/case-payments-960w.webp';
 import caseShoot480 from '../assets/case-shoot-480w.webp';
 import caseShoot960 from '../assets/case-shoot-960w.webp';
+import caseBuiltWithClaude480 from '../assets/case-built-with-claude-480w.webp';
+import caseBuiltWithClaude960 from '../assets/case-built-with-claude-960w.webp';
 import DotsBackground from '../components/DotsBackground';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
-const categories = ['Product & UX/UI Design', 'Logos & Branding', 'Built with Claude'];
+const categories = ['Product & UX/UI Design', 'Built with Claude', 'Logos & Branding'];
 
 // Card cover images are pre-cropped to the card's 4:3 display ratio at two
 // widths so the browser never downloads more pixels than it will show.
@@ -33,7 +36,7 @@ function ProjectCard({ project, index }) {
 
   return (
     <article className="flex flex-col">
-      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-6">
+      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-5">
         <img
           src={project.image960}
           srcSet={`${project.image480} 480w, ${project.image960} 960w`}
@@ -47,30 +50,32 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <h2 className="font-grotesk font-bold text-[26px] text-text-primary mb-3">
-        <Link to={`/project/${project.id}`} className="hover:text-text-brand hover:underline underline-offset-4 transition-colors">
+      <p className="font-mono-bold text-[12px] text-text-secondary mb-3">
+        {project.tags.map((tag, i) => (
+          <span key={tag}>
+            {tag}
+            {i < project.tags.length - 1 && (
+              <span aria-hidden="true" className="mx-2">
+                ·
+              </span>
+            )}
+          </span>
+        ))}
+      </p>
+      <h2 className="font-grotesk font-medium text-[22px] sm:text-[26px] leading-tight tracking-tight text-text-primary mb-3">
+        <Link to={`/project/${project.id}`} className="hover:text-text-brand transition-colors">
           {project.title}
         </Link>
       </h2>
-      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed mb-4">
+      <p className="font-grotesk text-[15px] text-text-primary leading-relaxed mb-5">
         {project.description}
       </p>
-      <div className="flex flex-wrap gap-2 mb-6">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-3 py-1.5 bg-surface-subtle rounded-pill font-grotesk font-medium text-xs text-ink"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="mt-auto flex justify-end">
+      <div className="mt-auto">
         <Link
           to={`/project/${project.id}`}
-          className="bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium px-6 py-3 rounded-pill text-base transition-colors"
+          className="font-grotesk font-medium text-[15px] text-text-brand hover:text-action-primary-hover underline-offset-4 hover:underline transition-colors"
         >
-          Read case study
+          Read case study →
         </Link>
       </div>
     </article>
@@ -158,6 +163,16 @@ const projects = [
     description:
       'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
   },
+  {
+    id: 'built-with-claude',
+    category: 'Built with Claude',
+    image480: caseBuiltWithClaude480,
+    image960: caseBuiltWithClaude960,
+    tags: ['Claude Code', 'Figma MCP', 'Design System', 'Lighthouse 95'],
+    title: 'This Portfolio: Designed and Shipped with Claude Code',
+    description:
+      'A portfolio treated as a real product: researched against other designers’ sites, designed in Figma, built with Claude Code, and measured. A case study on directing AI without giving up design judgement, including the mistakes I caught along the way.',
+  },
 ];
 
 export default function Projects() {
@@ -171,6 +186,45 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const visible = projects.filter((p) => p.category === activeCategory);
+
+  // Cards fade and rise in one after another when the tab changes. Skipped on
+  // first load (so the above-the-fold cover isn't delayed) and for reduced motion.
+  const gridRef = useRef(null);
+  const hasMounted = useRef(false);
+  const prevIndex = useRef(0);
+  const tabsRef = useRef(null);
+  const tabRefs = useRef([]);
+  const [pill, setPill] = useState(null);
+
+  // The active underline slides between tabs: measure the active button and move one
+  // shared indicator to it, instead of each button painting its own underline.
+  useLayoutEffect(() => {
+    const measure = () => {
+      const el = tabRefs.current[categories.indexOf(activeCategory)];
+      if (el) setPill({ left: el.offsetLeft, width: el.offsetWidth });
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    document.fonts?.ready.then(measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const index = categories.indexOf(activeCategory);
+    const direction = index >= prevIndex.current ? 1 : -1;
+    prevIndex.current = index;
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return undefined;
+    }
+    if (!gridRef.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const tween = gsap.fromTo(
+      gridRef.current.children,
+      { opacity: 0, x: 40 * direction },
+      { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,transform' }
+    );
+    return () => tween.kill();
+  }, [activeCategory]);
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -189,29 +243,39 @@ export default function Projects() {
       </section>
 
       {/* Cases */}
-      <section className="bg-surface-default py-16 min-h-[60vh]">
+      <section className="bg-surface-default py-16 min-h-[60vh] overflow-x-clip">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Category filter */}
-          <div className="flex justify-center mb-14">
-            <div className="bg-surface-subtle border border-border-subtle rounded-panel sm:rounded-pill p-1.5 flex flex-wrap justify-center gap-1 w-fit max-w-full mx-auto">
-              {categories.map((category) => {
+          <div className="mb-12 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div ref={tabsRef} className="relative flex w-max min-w-full items-center gap-8 border-b border-border-subtle">
+              {pill && (
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-0 left-0 h-0.5 bg-text-brand motion-safe:transition-[transform,width] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  style={{ width: pill.width, transform: `translateX(${pill.left}px)` }}
+                />
+              )}
+              {categories.map((category, i) => {
                 const isEmpty = !projects.some((p) => p.category === category);
+                const isActive = activeCategory === category;
                 return (
                   <button
                     key={category}
+                    ref={(el) => (tabRefs.current[i] = el)}
+                    aria-pressed={isActive}
                     onClick={() => !isEmpty && setActiveCategory(category)}
                     aria-disabled={isEmpty}
-                    className={`relative group px-6 py-3 rounded-pill font-grotesk font-medium text-base transition-colors ${
-                      activeCategory === category
-                        ? 'bg-action-primary text-white'
+                    className={`flex items-center gap-3 whitespace-nowrap pb-4 font-grotesk font-medium text-base transition-colors duration-300 ${
+                      isActive
+                        ? 'text-text-brand'
                         : isEmpty
                           ? 'text-text-secondary cursor-not-allowed'
-                          : 'text-text-primary hover:bg-surface-default'
+                          : 'text-text-secondary hover:text-text-primary'
                     }`}
                   >
                     {category}
                     {isEmpty && (
-                      <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-11 whitespace-nowrap bg-black text-white font-grotesk font-medium text-sm px-3.5 py-2 rounded-[10px] opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-[6px] after:border-transparent after:border-t-black">
+                      <span className="font-mono-bold text-[11px] uppercase tracking-wider text-text-secondary border border-border-subtle rounded-pill px-2.5 py-1">
                         Coming soon
                       </span>
                     )}
@@ -227,7 +291,7 @@ export default function Projects() {
               Cases in this category are coming soon.
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
               {visible.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}

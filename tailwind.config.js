@@ -7,13 +7,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'grotesk': ['Space Grotesk', 'sans-serif'],
-        'caveat': ['Caveat', 'cursive'],
-        'playwrite': ['Playwrite IE', 'cursive'],
-        'mono-bold': ['Courier New', 'monospace'],
-        ui: 'var(--font-ui)',
+        // Families are defined once, as CSS variables in src/styles/globals.css.
+        grotesk: 'var(--font-sans)',
+        sans: 'var(--font-sans)',
+        'mono-bold': 'var(--font-mono)',
         mono: 'var(--font-mono)',
-        handwritten: 'var(--font-handwritten)',
+        caveat: 'var(--font-hand)',
+        hand: 'var(--font-hand)',
       },
       colors: {
         ink: 'var(--color-ink-900)',

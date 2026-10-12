@@ -25,6 +25,55 @@ const formatDuration = ([startYear, startMonth], end, now) => {
   return parts.join(' ');
 };
 
+const VISIBLE_BULLETS = 3;
+
+const bulletClass = 'font-grotesk text-[14px] text-text-primary leading-relaxed';
+
+// First three bullets always show; the rest sit behind a native <details> toggle placed right after them.
+// <details> gives keyboard (Tab + Enter/Space) and screen-reader support for free, and the hidden bullets stay in
+// the DOM (find-in-page opens the toggle).
+function BulletList({ bullets }) {
+  const shown = bullets.slice(0, VISIBLE_BULLETS);
+  const rest = bullets.slice(VISIBLE_BULLETS);
+
+  return (
+    <div className="mb-5">
+      <ul className="list-disc pl-5 space-y-2">
+        {shown.map((bullet, i) => (
+          <li key={i} className={bulletClass}>
+            {bullet}
+          </li>
+        ))}
+      </ul>
+      {rest.length > 0 && (
+        <details className="group mt-2">
+          <summary className="list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-1.5 cursor-pointer rounded-md font-grotesk font-medium text-[14px] text-text-brand hover:text-action-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring">
+            <span className="group-open:hidden">Show {rest.length} more</span>
+            <span className="hidden group-open:inline">Show less</span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+              className="w-3.5 h-3.5 transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180"
+            >
+              <path d="M12 5v14m0 0-6-6m6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </summary>
+          <ul className="list-disc pl-5 space-y-2 mt-2">
+            {rest.map((bullet, i) => (
+              <li key={i} className={bulletClass}>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </div>
+  );
+}
+
 export default function ExperienceSection() {
   const now = new Date();
 
@@ -149,107 +198,79 @@ export default function ExperienceSection() {
     <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-text-primary">My Journey</p>
+          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">My Journey</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Work Experience
           </h2>
         </div>
 
-        <div>
-          {experiences.map((exp, index) => (
-            <div key={index} className="flex gap-6">
-              {/* Timeline rail */}
-              <div className="flex flex-col items-center shrink-0 w-4">
-                <div
-                  className={`w-4 h-4 rounded-pill mt-0.5 shrink-0 ${
-                    exp.current ? 'bg-blue-500' : 'bg-grey-300'
-                  }`}
-                />
-                {index < experiences.length - 1 && (
-                  <div
-                    className={`w-0.5 flex-1 ${
-                      exp.current ? 'bg-blue-500' : 'bg-border-subtle'
-                    }`}
-                  />
-                )}
-              </div>
-
-              <div className="pb-12 flex-1">
-                <p className="font-mono-bold text-sm text-text-primary tracking-wide mb-5">
+        <div className="border-b border-border-subtle">
+          {experiences.map((exp, index) => {
+            const [company, ...metaRest] = exp.meta;
+            return (
+              <article
+                key={index}
+                className="border-t border-border-subtle py-10 grid gap-5 md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] md:gap-10"
+              >
+                <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary md:pt-3">
                   {formatDateRange(exp.start, exp.end)}
                 </p>
 
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="bg-surface-default border border-border-subtle rounded-control w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
-                    <img
-                      src={exp.logo}
-                      alt=""
-                      width={exp.logoW}
-                      height={exp.logoH}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-grotesk font-bold text-[16px] sm:text-lg text-text-primary">
-                      {exp.title}
-                    </h3>
-                    <p className="font-grotesk text-sm text-text-secondary">
-                      {[
-                        exp.meta[0],
-                        formatDuration(exp.start, exp.end, now),
-                        ...exp.meta.slice(1),
-                      ].map((part, i) => (
-                        <span key={i}>
-                          {i > 0 && <span className="mx-1.5 text-grey-300">•</span>}
-                          {part}
-                        </span>
-                      ))}
-                    </p>
-                    {exp.subtitle && (
-                      <p className="font-grotesk text-sm text-text-secondary">
-                        {exp.subtitle.map((part, i) => (
+                <div>
+                  <div className="flex items-start gap-4 mb-3">
+                    <div className="bg-surface-default border border-border-subtle rounded-control w-[54px] h-[54px] flex items-center justify-center shrink-0 p-2">
+                      <img
+                        src={exp.logo}
+                        alt=""
+                        width={exp.logoW}
+                        height={exp.logoH}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h3 className="font-grotesk font-medium text-[20px] sm:text-2xl leading-tight text-text-primary">
+                        {exp.title}
+                      </h3>
+                      <p className="font-grotesk text-sm text-text-primary">
+                        <span className="font-medium text-text-brand">{company}</span>
+                        {[formatDuration(exp.start, exp.end, now), ...metaRest].map((part, i) => (
                           <span key={i}>
-                            {i > 0 && <span className="mx-1.5 text-grey-300">•</span>}
+                            <span aria-hidden="true" className="mx-1.5 text-text-secondary">·</span>
                             {part}
                           </span>
                         ))}
                       </p>
-                    )}
+                    </div>
                   </div>
-                </div>
 
-                <div className="bg-surface-subtle rounded-panel px-6 py-5 mb-5">
-                  <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">
-                    {exp.challenge}
-                  </p>
-                </div>
+                  {exp.subtitle && (
+                    <p className="font-mono-bold text-[12px] text-text-secondary mb-4">
+                      {exp.subtitle.join(' · ')}
+                    </p>
+                  )}
 
-                <ul className="list-disc pl-5 space-y-2 mb-5">
-                  {exp.bullets.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="font-grotesk text-[14px] text-text-primary leading-relaxed"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+                  <blockquote className="border-l-2 border-text-brand pl-4 mb-5 mt-4">
+                    <p className="font-grotesk text-[14px] sm:text-[15px] text-text-primary leading-relaxed">
+                      {exp.challenge}
+                    </p>
+                  </blockquote>
 
-                <div className="flex flex-wrap gap-2.5">
-                  {exp.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 bg-surface-brand-tint text-text-primary rounded-pill text-xs font-grotesk font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  <BulletList bullets={exp.bullets} />
+
+                  <ul className="flex flex-wrap gap-y-1 font-mono-bold text-[12px] text-text-secondary">
+                    {exp.skills.map((skill, i) => (
+                      <li key={skill}>
+                        {skill}
+                        {i < exp.skills.length - 1 && <span aria-hidden="true" className="mx-2">·</span>}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

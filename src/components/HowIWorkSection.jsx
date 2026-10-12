@@ -1,14 +1,8 @@
-import iconSearch from '../assets/how-i-work/search.svg';
-import iconColors from '../assets/how-i-work/colors.svg';
-import iconTable from '../assets/how-i-work/table.svg';
-import iconTerminal from '../assets/how-i-work/terminal.svg';
 import { getToolsForPillar } from '../data/tools';
 
 const cards = [
   {
     pillar: 'research',
-    icon: iconSearch,
-    accent: true,
     title: 'Research & Strategy',
     subtitle: 'Decisions grounded in evidence, not opinion',
     description:
@@ -23,8 +17,6 @@ const cards = [
   },
   {
     pillar: 'design',
-    icon: iconColors,
-    accent: false,
     title: 'Product & Interface Design',
     subtitle: 'Complex, data-dense products made simple',
     description:
@@ -41,8 +33,6 @@ const cards = [
   },
   {
     pillar: 'systems',
-    icon: iconTable,
-    accent: false,
     title: 'Systems, Tokens & Handoff',
     subtitle: 'Built for adoption, shipped clean',
     description:
@@ -57,8 +47,6 @@ const cards = [
   },
   {
     pillar: 'engineering',
-    icon: iconTerminal,
-    accent: true,
     title: 'Engineering Fluency',
     subtitle: 'The bridge between design and engineering',
     description:
@@ -73,36 +61,12 @@ const cards = [
   },
 ];
 
-function SkillTag({ label, accent }) {
+function ToolItem({ icon, label }) {
   return (
-    <span
-      className={`inline-flex items-center rounded-pill px-3 py-1.5 text-xs font-grotesk font-medium ${
-        accent ? 'bg-purple-700 text-white' : 'bg-surface-subtle text-ink'
-      }`}
-    >
-      {label}
-    </span>
-  );
-}
-
-function ToolPill({ icon, label, accent }) {
-  return (
-    <span
-      className={`inline-flex items-center gap-2 rounded-pill px-3 py-1.5 text-xs font-grotesk font-medium ${
-        accent ? 'bg-purple-700 text-white' : 'bg-surface-subtle text-ink'
-      }`}
-    >
-      <img
-        src={icon}
-        alt=""
-        width={24}
-        height={24}
-        loading="lazy"
-        decoding="async"
-        className={`w-4 h-4 object-contain ${accent ? 'brightness-0 invert' : ''}`}
-      />
-      {label}
-    </span>
+    <li className="flex items-center gap-3">
+      <img src={icon} alt="" width={24} height={24} loading="lazy" decoding="async" className="w-6 h-6 object-contain shrink-0" />
+      <span className="font-grotesk font-medium text-[15px] text-text-primary">{label}</span>
+    </li>
   );
 }
 
@@ -110,65 +74,46 @@ export default function HowIWorkSection() {
   return (
     <section id="how-i-work" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[14px] text-text-primary">How I work</p>
+        <div className="flex flex-col gap-2.5 mb-12">
+          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">How I work</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
             Designing with an engineer&rsquo;s mindset
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="border-b border-border-subtle">
           {cards.map((card) => (
-            <div
+            <article
               key={card.title}
-              className={`rounded-card p-5 flex flex-col gap-2 sm:gap-4 ${
-                card.accent
-                  ? 'bg-accent-handwritten text-white'
-                  : 'bg-surface-subtle border border-border-subtle text-text-primary'
-              }`}
+              className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-10 py-10 border-t border-border-subtle"
             >
-              <img
-                src={card.icon}
-                alt=""
-                width={24}
-                height={24}
-                loading="lazy"
-                decoding="async"
-                className={`w-7 h-7 ${
-                  card.accent
-                    ? 'brightness-0 invert'
-                    : '[filter:invert(58%)_sepia(58%)_saturate(1740%)_hue-rotate(177deg)_brightness(97%)_contrast(90%)]'
-                }`}
-              />
               <div className="flex flex-col gap-2">
-                <p className="font-grotesk font-bold text-[14px]">{card.title}</p>
-                <p className="font-grotesk font-medium text-[14px]">{card.subtitle}</p>
-                <p className="font-grotesk text-[14px]">{card.description}</p>
+                <h3 className="font-grotesk font-medium text-[20px] sm:text-2xl leading-tight text-text-primary">
+                  {card.title}
+                </h3>
+                <p className="font-grotesk font-medium text-[14px] text-text-brand">{card.subtitle}</p>
               </div>
-              <div
-                className={`mt-auto border-t pt-2 sm:pt-4 flex flex-wrap gap-1.5 sm:gap-2 ${
-                  card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
-                }`}
-              >
-                {card.skills.map((skill) => (
-                  <SkillTag key={skill} label={skill} accent={card.accent} />
-                ))}
+
+              <div className="flex flex-col gap-4">
+                <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">
+                  {card.description}
+                </p>
+                <ul className="flex flex-wrap gap-y-1 font-mono-bold text-[12px] text-text-secondary">
+                  {card.skills.map((skill, i) => (
+                    <li key={skill}>
+                      {skill}
+                      {i < card.skills.length - 1 && <span aria-hidden="true" className="mx-2">·</span>}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div
-                className={`border-t pt-2 sm:pt-4 flex flex-wrap gap-1.5 sm:gap-2 ${
-                  card.accent ? 'border-white/30' : 'border-[#e5e5e5]'
-                }`}
-              >
+
+              <ul className="grid grid-cols-2 gap-x-5 gap-y-4 content-start">
                 {getToolsForPillar(card.pillar).map((tool) => (
-                  <ToolPill
-                    key={tool.id}
-                    icon={tool.icon}
-                    label={tool.name}
-                    accent={card.accent}
-                  />
+                  <ToolItem key={tool.id} icon={tool.icon} label={tool.name} />
                 ))}
-              </div>
-            </div>
+              </ul>
+            </article>
           ))}
         </div>
       </div>

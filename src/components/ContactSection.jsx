@@ -238,9 +238,14 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <p className="text-center font-grotesk text-sm text-text-secondary mt-10">
-          Based in Granada, Spain 🇪🇸 · Open to new opportunities and exciting design challenges.
-        </p>
+        <div className="flex flex-col items-center gap-3 mt-10">
+          <p className="text-center font-grotesk text-sm text-text-secondary">
+            Based in Granada, Spain 🇪🇸 · Open to new opportunities and exciting design challenges.
+          </p>
+          <p className="text-center font-caveat font-bold text-xl text-accent-handwritten">
+            This entire portfolio was built with Claude Code.
+          </p>
+        </div>
       </div>
     </footer>
   );

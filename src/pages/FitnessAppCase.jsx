@@ -1,9 +1,6 @@
 import { Donut, DonutStat } from '../components/Charts';
-import CaseLayout, { ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
+import CaseLayout, { PersonaBlock, ProcessColumns, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
-import toolFigma from '../assets/icon-figma.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolNotion from '../assets/icon-notion.svg';
 
 const project = {
   name: 'Fitness App',
@@ -16,11 +13,7 @@ const project = {
     { label: 'My Team', value: 'Product Manager, Developers' },
     { label: 'Timeline', value: '6 months' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolJira, label: 'Jira' },
-    { icon: toolNotion, label: 'Notion' },
-  ],
+  tools: ['figma', 'jira', 'notion'],
   summary: [
     {
       label: 'PROBLEM',
@@ -111,32 +104,10 @@ function FourWPlusH() {
       <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
         4W+H Process
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-        {fourWPlusH.map((column) => (
-          <div
-            key={column.title}
-            className={`rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 ${ column.highlight ? 'bg-[#e9f3fa]' : 'bg-[#f7f7f7]' }`}
-          >
-            <p className="font-grotesk font-medium text-lg text-black">{column.title}</p>
-            <span className="h-0.5 w-full bg-[#288fd6] rounded-pill" />
-            {column.body && (
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{column.body}</p>
-            )}
-            {column.items && (
-              <ul className="flex flex-col gap-2">
-                {column.items.map((item) => (
-                  <li
-                    key={item}
-                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
-      </div>
+      <ProcessColumns
+        columns={fourWPlusH.map(({ title, ...rest }) => ({ heading: title, ...rest }))}
+        accent="#288fd6"
+      />
     </>
   );
 }
@@ -201,7 +172,7 @@ function UserResearch() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {researchStats.map((stat) => (
-          <div key={stat.pct} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
+          <div key={stat.pct} className="rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
             <DonutStat pct={stat.pct} color={stat.color} />
             <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
               {stat.text}
@@ -233,7 +204,7 @@ const trustRecommendationSegments = [
 function ThePoll() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+      <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
         <p className="font-grotesk font-bold text-[14px] text-black">
           What frustrates you most about fitness apps?
         </p>
@@ -265,7 +236,7 @@ function ThePoll() {
           discovery filters.
         </p>
       </div>
-      <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+      <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
         <p className="font-grotesk font-bold text-[14px] text-black">
           Would you trust an app&rsquo;s workout recommendation over picking one yourself?
         </p>
@@ -354,42 +325,21 @@ const persona = {
   ],
 };
 
-const bulletClass =
-  'font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-[\'\'] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px] [&_strong]:font-normal [&_strong]:text-[#1552d8]';
-
-function PersonaCard({ title, points }) {
-  return (
-    <div className="bg-[#f2f6ff] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-      <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black">{title}</h3>
-      <ul className="flex flex-col gap-3">
-        {points.map((point, i) => (
-          <li key={i} className={bulletClass}>
-            {point}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function UserPersona() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <div className="flex flex-col gap-5">
-        <ImagePlaceholder filename="case-fitness-persona.webp" className="min-h-[480px]" />
-        <div className="bg-[#f2f6ff] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-          <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-[#1552d8]">{persona.name}</h3>
-          <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.role}</p>
-          <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.location}</p>
-          <p className="font-grotesk text-[14px] text-black leading-relaxed mt-1">{persona.bio}</p>
-        </div>
-      </div>
-      <div className="flex flex-col gap-5">
-        <PersonaCard title="Motivations" points={persona.motivations} />
-        <PersonaCard title="Goals" points={persona.goals} />
-        <PersonaCard title="Frustrations" points={persona.frustrations} />
-      </div>
-    </div>
+    <PersonaBlock
+      image="case-fitness-persona.webp"
+      name={persona.name}
+      role={persona.role}
+      location={persona.location}
+      bio={persona.bio}
+      accent="#1552d8"
+      groups={[
+        { title: 'Motivations', items: persona.motivations },
+        { title: 'Goals', items: persona.goals },
+        { title: 'Frustrations', items: persona.frustrations },
+      ]}
+    />
   );
 }
 

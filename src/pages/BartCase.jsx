@@ -1,20 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
+import { KeyTakeaway, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
+import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseBart from '../assets/case-bart.webp';
 import caseBart480 from '../assets/case-bart-480w.webp';
 import caseBart960 from '../assets/case-bart-960w.webp';
-import toolFigma from '../assets/icon-figma.svg';
-import toolJira from '../assets/icon-jira.svg';
-import toolNotion from '../assets/icon-notion.svg';
-import toolGoogleAnalytics from '../assets/toolkit/googleanalytics.svg';
-import toolHotjar from '../assets/toolkit/hotjar.svg';
 
 const caseSections = [
   { id: 'case-hero', label: 'Back to Top' },
@@ -381,11 +376,11 @@ function PagesSlider({ pages }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
-        <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-9 border-l border-black/10 pl-4 sm:pl-5 py-2">
           {page.blocks.map((block) => (
-            <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-[14px] text-black">{block.heading}</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-[#4274C1]">
+            <div key={block.heading} className="flex flex-col gap-2.5">
+              <p className="font-grotesk font-medium text-[18px] text-black">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-black">
                 {block.text}
               </p>
             </div>
@@ -400,10 +395,11 @@ function PagesSlider({ pages }) {
 const launchMetrics = [
   {
     title: 'Bounce Rate',
+    lowerIsBetter: true,
     color: '#f2c94c',
     bars: [
-      { label: '68', value: 68, before: true },
-      { label: '41', value: 41 },
+      { label: '68%', value: 68, before: true },
+      { label: '41%', value: 41 },
     ],
     text: (
       <>
@@ -444,7 +440,7 @@ const launchMetrics = [
   {
     title: 'Contact Form Submissions',
     color: '#4d8fd1',
-    bars: [{ label: '+74%', value: 100 }],
+    bars: [{ label: '+74%', value: 74 }],
     text: (
       <>
         Increased by <strong>+74%</strong> — the most direct conversion signal. Optimised CTA
@@ -471,8 +467,8 @@ const surveyResults = [
   {
     color: '#f2c94c',
     bars: [
-      { label: '38', value: 38, before: true },
-      { label: '81', value: 81 },
+      { label: '38%', value: 38, before: true },
+      { label: '81%', value: 81 },
     ],
     title: '"I immediately understand what this company does"',
     text: (
@@ -485,8 +481,8 @@ const surveyResults = [
   {
     color: '#6abf69',
     bars: [
-      { label: '26', value: 26, before: true },
-      { label: '79', value: 79 },
+      { label: '26%', value: 26, before: true },
+      { label: '79%', value: 79 },
     ],
     title: '"Navigation feels clear and easy to use"',
     text: (
@@ -499,8 +495,8 @@ const surveyResults = [
   {
     color: '#ee8585',
     bars: [
-      { label: '42', value: 42, before: true },
-      { label: '88', value: 88 },
+      { label: '42%', value: 42, before: true },
+      { label: '88%', value: 88 },
     ],
     title: '"The website looks modern and professional"',
     text: (
@@ -547,6 +543,16 @@ const researchStats = [
     ),
   },
 ];
+
+const projectGoals = {
+  headline:
+    'Help visitors find services and cases faster, and turn visits into contact requests, with a modern look that matches the client’s brand.',
+  items: [
+    'Improve navigation clarity: restructure the information architecture so visitors find services, cases and contact information in fewer clicks.',
+    'Refresh the visual identity: deliver a consistent interface aligned with the client’s brand vision, with updated typography, colour system and component style across all pages.',
+    'Increase conversion rate: optimise key user flows and CTA placement to guide visitors toward contact requests, service inquiries and portfolio engagement.',
+  ],
+};
 
 const frustrationSegments = [
   { value: 32, color: '#f2c94c', label: 'Outdated visual design' },
@@ -656,13 +662,7 @@ const project = {
     { label: 'My Team', value: 'Product Managers, Developers, Marketing Department, Copywriter' },
     { label: 'Timeline', value: '10 months, 2024' },
   ],
-  tools: [
-    { icon: toolFigma, label: 'Figma' },
-    { icon: toolJira, label: 'Jira' },
-    { icon: toolNotion, label: 'Notion' },
-    { icon: toolGoogleAnalytics, label: 'Google Analytics' },
-    { icon: toolHotjar, label: 'Hotjar' },
-  ],
+  tools: ['figma', 'jira', 'notion', 'google-analytics', 'hotjar'],
   summary: [
     {
       label: 'PROBLEM',
@@ -725,78 +725,7 @@ export default function BartCase() {
           />
         </div>
 
-        {/* Back link */}
-        <Link
-          to="/projects"
-          className="inline-flex items-center gap-3 mt-10 font-grotesk font-medium text-base text-black hover:text-[#288fd6] transition-colors"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M9 14 4 9l5-5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M4 9h11a5 5 0 0 1 5 5v6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Portfolio
-        </Link>
-
-        {/* Title */}
-        <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl lg:text-[56px] text-black tracking-tight leading-tight mt-8 max-w-3xl">
-          {project.title}
-        </h1>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2.5 mt-8">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 bg-[#f2f3f5] rounded-pill font-grotesk font-medium text-sm text-[#22292f]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Meta bar */}
-        <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {project.meta.map((item) => (
-            <div key={item.label} className="flex flex-col gap-3">
-              <p className="font-grotesk text-[14px] text-[#6b6a67]">{item.label}</p>
-              <p className="font-grotesk font-medium text-[14px] text-black whitespace-pre-line">
-                {item.value}
-              </p>
-            </div>
-          ))}
-          <div className="flex flex-col gap-3">
-            <p className="font-grotesk text-[14px] text-[#6b6a67]">Tools</p>
-            <div className="flex gap-2">
-              {project.tools.map((tool) => (
-                <span
-                  key={tool.label}
-                  title={tool.label}
-                  className="bg-white rounded-pill w-9 h-9 flex items-center justify-center shadow-sm"
-                >
-                  <img src={tool.icon} alt={tool.label} className="w-5 h-5 object-contain" />
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Summary cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
-          {project.summary.map((card) => (
-            <div
-              key={card.label}
-              className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4"
-            >
-              <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">{card.label}</p>
-              <p className="font-grotesk text-[14px] text-black leading-relaxed">{card.text}</p>
-            </div>
-          ))}
-          <div className="bg-[#e9f3fa] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-            <p className="font-grotesk text-sm text-[#6b6a67] uppercase tracking-wide">OUTCOME</p>
-            <p className="font-grotesk font-bold text-[30px] text-black">{project.outcome.value}</p>
-            <p className="font-grotesk text-[14px] text-black">{project.outcome.label}</p>
-          </div>
-        </div>
+        <CaseHeader project={project} />
 
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
@@ -816,50 +745,7 @@ export default function BartCase() {
         <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Project goals */}
-        <section id="goals" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Project Goals</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5V4l-6 2.5L9 4z" strokeLinejoin="round" />
-                <path d="M9 4v13M15 6.5v13" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Improve Navigation Clarity
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Restructure the information architecture to reduce user drop-off — making it
-                easier to find services, cases, and contact information in fewer clicks.
-              </p>
-            </div>
-            <div className="bg-[#1f7ab8] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4 text-white">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-1.8 0-1.4-1.5-1.6-1.5-2.7 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4-4-7-9-7z" strokeLinejoin="round" />
-                <circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none" />
-                <circle cx="12" cy="7.5" r="1.1" fill="currentColor" stroke="none" />
-                <circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px]">Refresh the Visual Identity</p>
-              <p className="font-grotesk text-[14px] text-white leading-relaxed">
-                Deliver a modern, consistent interface aligned with the client&rsquo;s brand
-                vision — updating typography, colour system, and component style across all
-                pages.
-              </p>
-            </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#288fd6" strokeWidth="1.8" className="w-8 h-8">
-                <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" strokeLinejoin="round" />
-              </svg>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                Increase Conversion Rate
-              </p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Optimise key user flows and CTA placement to guide visitors toward targeted
-                actions — contact requests, service inquiries, and portfolio engagement.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
 
         {/* User research */}
         <section id="research" className="pb-20 flex flex-col gap-6">
@@ -873,7 +759,7 @@ export default function BartCase() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {researchStats.map((stat) => (
-              <div key={stat.pct} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
+              <div key={stat.pct} className="rounded-card p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-5">
                 <DonutStat pct={stat.pct} color={stat.color} />
                 <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed text-center [&>strong]:font-bold [&>strong]:text-black">
                   {stat.text}
@@ -887,7 +773,7 @@ export default function BartCase() {
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">What Users Told Us</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 What frustrates you most on corporate websites?
               </p>
@@ -915,7 +801,7 @@ export default function BartCase() {
                 and each became a named design target in this project.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Would You Return to an Updated Website?
               </p>
@@ -951,25 +837,16 @@ export default function BartCase() {
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">User Persona</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-james.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black tracking-tight mt-2">
-                James Mitchell
-              </h3>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                38, Business Development Manager
-              </p>
-              <p className="font-grotesk font-bold text-[14px] text-black">London, UK</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                James evaluates tech vendors and service providers on behalf of his company. He
+          <PersonaBlock
+            image="persona-james.webp"
+            name="James Mitchell"
+            role="38, Business Development Manager"
+            location="London, UK"
+            bio={<>James evaluates tech vendors and service providers on behalf of his company. He
                 visits corporate websites to quickly assess whether an agency is worth a deeper
                 conversation &mdash; scanning for relevant cases, team expertise, and a clear
-                service offering before deciding to reach out.
-              </p>
-            </div>
-            <div className="lg:col-span-2 flex flex-col gap-5">
-              {[
+                service offering before deciding to reach out.</>}
+            groups={[
                 {
                   title: 'Motivations',
                   items: [
@@ -997,31 +874,14 @@ export default function BartCase() {
                     <><strong>Hard-to-find contact</strong> options or unclear next steps.</>,
                   ],
                 },
-              ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
-                  <ul className="flex flex-col gap-2">
-                    {group.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="font-mono-bold text-[14px] text-black leading-relaxed max-w-3xl">
-            Persona validation confirmed that the primary user is a time-pressured B2B evaluator
+              ]}
+            summary={<>Persona validation confirmed that the primary user is a time-pressured B2B evaluator
             &mdash; not a casual browser. James Mitchell, Business Development Manager, visits
             the site with one goal: to quickly assess whether this agency is worth a deeper
             conversation. He scans for relevant cases, team credibility, and a clear service
             offering &mdash; and leaves if any of those signals are missing or hard to find.
-            Every design decision in this project was tested against his scenario.
-          </p>
+            Every design decision in this project was tested against his scenario.</>}
+          />
         </section>
 
         {/* Information architecture */}
@@ -1099,7 +959,7 @@ export default function BartCase() {
             tailored grid settings for each breakpoint:
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Desktop</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 3 columns, margin 80, gap 20 — ensuring a spacious and well-structured layout for
@@ -1110,7 +970,7 @@ export default function BartCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Mobile</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 2 columns, margin 24, gap 10 — optimised for compact screens with clear spacing
@@ -1168,10 +1028,8 @@ export default function BartCase() {
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             The Results
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {launchMetrics.map((metric) => (
-              <MetricCard key={metric.title} {...metric} />
-            ))}
+          <div>
+            <MetricList metrics={launchMetrics} accent="#2f6db5" markerName="Before" />
           </div>
 
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
@@ -1181,30 +1039,20 @@ export default function BartCase() {
             A follow-up survey mirrored the original poll questions to measure perception shift
             after the redesign.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {surveyResults.map((item) => (
-              <MetricCard key={item.title} {...item} />
-            ))}
+          <div>
+            <MetricList metrics={surveyResults} accent="#2f6db5" markerName="Before" />
           </div>
 
-          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
-            Key Takeaway
-          </h3>
-          <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
-            Two kinds of visitor, not one average one
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            The instinct on a corporate site is to design a single path and hope it fits
+          <KeyTakeaway heading="Two kinds of visitor, not one average one" className="mt-8">
+            <p>The instinct on a corporate site is to design a single path and hope it fits
             everyone. Research showed <strong>two audiences arriving with incompatible
             questions</strong> &mdash; one hunting for a specific service, one deciding whether
             this company understood their industry at all. Averaging them would have produced
-            navigation that half-served both.
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            Splitting the structure along that line cost more to build and made every subsequent
+            navigation that half-served both.</p>
+            <p>Splitting the structure along that line cost more to build and made every subsequent
             decision easier: for any new page, there was now a question with an answer &mdash;{' '}
-            <strong>which visitor is this for?</strong>
-          </p>
+            <strong>which visitor is this for?</strong></p>
+          </KeyTakeaway>
         </section>
 
         <CaseNav caseId="bart" />

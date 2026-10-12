@@ -54,6 +54,7 @@ export default function CasesCarousel() {
                     <img
                       src={caseStudy.image}
                       alt={caseStudy.title}
+                      loading="lazy"
                       className="rounded-lg object-cover h-80 w-full"
                     />
                     <div>

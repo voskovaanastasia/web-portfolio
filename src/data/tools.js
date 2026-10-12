@@ -39,12 +39,14 @@ import iconGithub from '../assets/toolkit/github.svg';
 import iconGit from '../assets/icon-git.svg';
 import iconVscode from '../assets/toolkit/vscode.svg';
 import iconCursor from '../assets/toolkit/cursor.webp';
+import iconVite from '../assets/toolkit/vite.svg';
+import iconGsap from '../assets/toolkit/gsap.svg';
 import iconNode from '../assets/how-i-work/tool-nodedotjs.svg';
 
 // Single source of truth for every tool referenced on the home page.
 // - `category` groups tools for the My Toolkit section (design / software / programming).
 // - `featured` controls which tools My Toolkit shows before "+ more" is expanded.
-// - `pillars` lists the How I Work pillar ids a tool backs (each pillar renders at most 4).
+// - `pillars` lists the How I Work pillar ids a tool backs.
 export const tools = [
   // Design
   { id: 'figma', name: 'Figma', icon: iconFigma, category: 'design', featured: true, pillars: ['design', 'systems'] },
@@ -55,45 +57,49 @@ export const tools = [
   { id: 'indesign', name: 'InDesign', icon: iconIndesign, category: 'design', featured: true, pillars: [] },
   { id: 'midjourney', name: 'Midjourney', icon: iconMidjourney, category: 'design', featured: true, pillars: [] },
   { id: 'zeplin', name: 'Zeplin', icon: iconZeplin, category: 'design', featured: true, pillars: ['systems'] },
-  { id: 'affinity', name: 'Affinity', icon: iconAffinity, category: 'design', featured: true, pillars: [] },
+  { id: 'affinity', name: 'Affinity Designer', icon: iconAffinity, category: 'design', featured: true, pillars: ['design'] },
   { id: 'material-design', name: 'Material Design', icon: iconMaterialDesign, category: 'design', featured: true, pillars: [] },
   { id: 'human-interface', name: 'Human Interface', icon: iconApple, category: 'design', featured: true, pillars: [] },
 
   // Software
   { id: 'notion', name: 'Notion', icon: iconNotion, category: 'software', featured: true, pillars: ['research'] },
   { id: 'jira', name: 'Jira', icon: iconJira, category: 'software', featured: true, pillars: ['systems'] },
-  { id: 'slack', name: 'Slack', icon: iconSlack, category: 'software', featured: true, pillars: [] },
+  { id: 'slack', name: 'Slack', icon: iconSlack, category: 'software', featured: true, pillars: ['systems'] },
   { id: 'framer', name: 'Framer', icon: iconFramer, category: 'software', featured: true, pillars: ['design'] },
   { id: 'webflow', name: 'Webflow', icon: iconWebflow, category: 'software', featured: true, pillars: ['design'] },
   { id: 'hotjar', name: 'Hotjar', icon: iconHotjar, category: 'software', featured: true, pillars: [] },
   { id: 'zeroheight', name: 'Zeroheight', icon: iconZeroheight, category: 'software', featured: true, pillars: ['systems'] },
-  { id: 'confluence', name: 'Confluence', icon: iconConfluence, category: 'software', featured: true, pillars: [] },
+  { id: 'confluence', name: 'Confluence', icon: iconConfluence, category: 'software', featured: true, pillars: ['research', 'systems'] },
   { id: 'whimsical', name: 'Whimsical', icon: iconWhimsical, category: 'software', featured: true, pillars: [] },
-  { id: 'google-analytics', name: 'Google Analytics', icon: iconGoogleAnalytics, category: 'software', featured: true, pillars: [] },
-  { id: 'gemini', name: 'Gemini', icon: iconGemini, category: 'software', featured: true, pillars: [] },
-  { id: 'chatgpt', name: 'ChatGPT', icon: iconOpenai, category: 'software', featured: true, pillars: [] },
+  { id: 'google-analytics', name: 'Google Analytics', icon: iconGoogleAnalytics, category: 'software', featured: true, pillars: ['research'] },
+  { id: 'gemini', name: 'Gemini', icon: iconGemini, category: 'software', featured: true, pillars: ['research'] },
+  { id: 'chatgpt', name: 'ChatGPT', icon: iconOpenai, category: 'software', featured: true, pillars: ['research'] },
   { id: 'asana', name: 'Asana', icon: iconAsana, category: 'software', featured: true, pillars: [] },
   { id: 'amplitude', name: 'Amplitude', icon: iconAmplitude, category: 'software', featured: true, pillars: ['research'] },
   { id: 'maze', name: 'Maze', icon: iconMaze, category: 'software', featured: true, pillars: ['research'] },
   { id: 'google-forms', name: 'Google Forms', icon: iconGoogleForms, category: 'software', featured: true, pillars: ['research'] },
-  { id: 'miro', name: 'Miro', icon: iconMiro, category: 'software', featured: true, pillars: [] },
+  { id: 'miro', name: 'Miro', icon: iconMiro, category: 'software', featured: true, pillars: ['research'] },
 
   // Programming
   { id: 'react', name: 'React', icon: iconReact, category: 'programming', featured: true, pillars: ['engineering'] },
   { id: 'git', name: 'Git', icon: iconGit, category: 'programming', featured: true, pillars: ['engineering'] },
   { id: 'github', name: 'GitHub', icon: iconGithub, category: 'programming', featured: true, pillars: ['engineering'] },
-  { id: 'vscode', name: 'VS Code', icon: iconVscode, category: 'programming', featured: true, pillars: [] },
-  { id: 'claude-code', name: 'Claude Code', icon: iconClaude, category: 'programming', featured: true, pillars: [] },
-  { id: 'html', name: 'HTML', icon: iconHtml, category: 'programming', featured: true, pillars: [] },
-  { id: 'css', name: 'CSS', icon: iconCss, category: 'programming', featured: true, pillars: [] },
-  { id: 'javascript', name: 'JavaScript', icon: iconJavascript, category: 'programming', featured: true, pillars: [] },
-  { id: 'tailwind', name: 'Tailwind CSS', icon: iconTailwind, category: 'programming', featured: true, pillars: [] },
+  { id: 'vscode', name: 'VS Code', icon: iconVscode, category: 'programming', featured: true, pillars: ['engineering'] },
+  { id: 'claude-code', name: 'Claude Code', icon: iconClaude, category: 'programming', featured: true, pillars: ['engineering'] },
+  { id: 'html', name: 'HTML5', icon: iconHtml, category: 'programming', featured: true, pillars: ['engineering'] },
+  { id: 'css', name: 'CSS3', icon: iconCss, category: 'programming', featured: true, pillars: ['engineering'] },
+  { id: 'javascript', name: 'JavaScript', icon: iconJavascript, category: 'programming', featured: true, pillars: ['engineering'] },
+  { id: 'tailwind', name: 'Tailwind CSS', icon: iconTailwind, category: 'programming', featured: true, pillars: ['systems'] },
   { id: 'vercel', name: 'Vercel', icon: iconVercel, category: 'programming', featured: true, pillars: [] },
   { id: 'cursor', name: 'Cursor', icon: iconCursor, category: 'programming', featured: true, pillars: [] },
+  { id: 'vite', name: 'Vite', icon: iconVite, category: 'programming', featured: false, pillars: [] },
+  { id: 'gsap', name: 'GSAP', icon: iconGsap, category: 'programming', featured: false, pillars: [] },
   { id: 'nodejs', name: 'Node.js', icon: iconNode, category: 'programming', featured: true, pillars: ['engineering'] },
 ];
 
-export const getToolsForPillar = (pillarId, max = 4) =>
-  tools.filter((tool) => tool.pillars.includes(pillarId)).slice(0, max);
+export const getToolsForPillar = (pillarId) =>
+  tools.filter((tool) => tool.pillars.includes(pillarId));
 
 export const getToolsByCategory = (category) => tools.filter((tool) => tool.category === category);
+
+export const getToolById = (id) => tools.find((tool) => tool.id === id);

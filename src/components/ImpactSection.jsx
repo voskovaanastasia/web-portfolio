@@ -21,45 +21,30 @@ const metrics = [
     label: 'Time-to-First-Probe',
     project: 'Farsafe',
     description: 'Optimized user onboarding and product discovery',
-    card: 'bg-surface-inverse text-white',
-    number_color: 'text-white',
-    meta_color: 'text-[#bdbdbd]',
   },
   {
     number: '−40%',
     label: 'Bounce Rate',
     project: 'bART Solutions',
     description: '68% → 41% after restructured IA',
-    card: 'bg-surface-subtle text-text-primary',
-    number_color: 'text-blue-500', // large text only
-    meta_color: 'text-text-primary',
   },
   {
     number: '0→1',
     label: 'Secure Send / Swap',
     project: 'CryptoWallet',
     description: 'Guided flow designed to prevent lost funds',
-    card: 'bg-action-primary text-white',
-    number_color: 'text-white',
-    meta_color: 'text-white',
   },
   {
     number: '92%',
     label: 'Dashboard Task Success',
     project: 'Farsafe',
     description: 'High usability in a data-dense interface',
-    card: 'bg-surface-subtle text-text-primary',
-    number_color: 'text-blue-500', // large text only
-    meta_color: 'text-text-primary',
   },
   {
     number: '6+',
     label: 'Years of Experience',
     project: 'Web, Mobile & SaaS',
     description: 'Product design, UX/UI, design systems & research',
-    card: 'bg-accent-handwritten text-white',
-    number_color: 'text-white',
-    meta_color: 'text-white/80',
   },
 ];
 
@@ -103,22 +88,23 @@ export default function ImpactSection() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-          {metrics.map((metric) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-5 gap-y-10">
+          {metrics.map((metric, index) => (
             <div
               key={metric.label}
-              className={`rounded-panel p-3 sm:p-5 flex flex-col gap-1 sm:gap-2.5 ${metric.card}`}
+              className={`flex flex-col gap-1 sm:gap-2.5 pt-5 border-t ${
+                index === metrics.length - 1 ? 'border-action-primary' : 'border-border-subtle'
+              }`}
             >
               <p
                 data-metric-number
-                style={{ fontVariantNumeric: 'tabular-nums' }}
-                className={`font-grotesk font-bold text-[30px] sm:text-5xl whitespace-nowrap ${metric.number_color}`}
+                className="font-grotesk font-bold text-[30px] sm:text-5xl lg:text-[clamp(1.75rem,calc(5.55vw_-_1.2rem),2.8rem)] whitespace-nowrap tabular-nums text-text-brand"
               >
                 {metric.number}
               </p>
-              <p className="font-grotesk font-bold text-[14px]">{metric.label}</p>
-              <p className={`font-grotesk text-sm ${metric.meta_color}`}>{metric.project}</p>
-              <p className="font-grotesk text-sm">{metric.description}</p>
+              <p className="font-grotesk font-bold text-[14px] text-text-primary">{metric.label}</p>
+              <p className="font-grotesk text-sm text-text-secondary">{metric.project}</p>
+              <p className="font-grotesk text-sm text-text-primary">{metric.description}</p>
             </div>
           ))}
         </div>
