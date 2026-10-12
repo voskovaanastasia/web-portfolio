@@ -3,7 +3,7 @@ import useStaggerReveal from '../hooks/useStaggerReveal';
 import { Donut, StatBar } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
+import { KeyTakeaway, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
@@ -1355,25 +1355,17 @@ export default function FarsafeCase() {
             ))}
           </div>
 
-          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
-            Key Takeaway
-          </h3>
-          <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
-            Showing the price was the design decision
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            Every competitor in this category hides pricing behind a demo request, and the
+          <KeyTakeaway heading="Showing the price was the design decision" className="mt-8">
+            <p>Every competitor in this category hides pricing behind a demo request, and the
             reasoning is always the same &mdash; the numbers are complicated, so explain them in a
             conversation. Research said the opposite:{' '}
             <strong>the hiding was the objection.</strong> People did not distrust the price; they
-            distrusted not being told it.
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            Putting a flat, all-included figure on the landing page was not a copy choice made at
+            distrusted not being told it.</p>
+            <p>Putting a flat, all-included figure on the landing page was not a copy choice made at
             the end. <strong>It was the constraint the entire product had to be designed to
             survive</strong> &mdash; the pricing model, the feature set, and the marketing site
-            all had to be simple enough to state out loud.
-          </p>
+            all had to be simple enough to state out loud.</p>
+          </KeyTakeaway>
         </section>
 
         <CaseNav caseId="farsafe" />

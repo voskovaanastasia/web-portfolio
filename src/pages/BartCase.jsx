@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
+import { KeyTakeaway, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
@@ -1043,24 +1043,16 @@ export default function BartCase() {
             <MetricList metrics={surveyResults} accent="#2f6db5" markerName="Before" />
           </div>
 
-          <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
-            Key Takeaway
-          </h3>
-          <p className="font-grotesk font-bold text-lg text-black max-w-3xl">
-            Two kinds of visitor, not one average one
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            The instinct on a corporate site is to design a single path and hope it fits
+          <KeyTakeaway heading="Two kinds of visitor, not one average one" className="mt-8">
+            <p>The instinct on a corporate site is to design a single path and hope it fits
             everyone. Research showed <strong>two audiences arriving with incompatible
             questions</strong> &mdash; one hunting for a specific service, one deciding whether
             this company understood their industry at all. Averaging them would have produced
-            navigation that half-served both.
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            Splitting the structure along that line cost more to build and made every subsequent
+            navigation that half-served both.</p>
+            <p>Splitting the structure along that line cost more to build and made every subsequent
             decision easier: for any new page, there was now a question with an answer &mdash;{' '}
-            <strong>which visitor is this for?</strong>
-          </p>
+            <strong>which visitor is this for?</strong></p>
+          </KeyTakeaway>
         </section>
 
         <CaseNav caseId="bart" />

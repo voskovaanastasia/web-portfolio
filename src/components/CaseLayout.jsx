@@ -323,6 +323,25 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
 }
 
 /**
+ * Key takeaway: label and heading on the left, the body paragraphs on the right.
+ */
+export function KeyTakeaway({ heading, children, id, className = '' }) {
+  return (
+    <section id={id} className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 ${className}`}>
+      <div className="flex flex-col gap-6">
+        <p className="font-mono-bold text-[14px] text-black">Key Takeaway</p>
+        <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
+          {heading}
+        </h2>
+      </div>
+      <div className="flex flex-col gap-5 lg:pt-10 font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-black">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+/**
  * Empathy map: Says (pills), Thinks (dashed italic bubbles), Does (numbered rows),
  * Feels (gradient bar with the feelings below). feels = [{ feeling, when }], ordered negative → positive.
  */
@@ -576,11 +595,11 @@ export function ScreensSlider({ screens }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
-        <div className="flex flex-col gap-7">
+        <div className="flex flex-col gap-9 border-l border-black/10 pl-4 sm:pl-5 py-2">
           {screen.blocks.map((block) => (
-            <div key={block.heading} className="flex flex-col gap-2">
-              <p className="font-grotesk font-bold text-[14px] text-text-primary">{block.heading}</p>
-              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&_strong]:font-bold [&_strong]:text-[#1552d8]">
+            <div key={block.heading} className="flex flex-col gap-2.5">
+              <p className="font-grotesk font-medium text-[18px] text-text-primary">{block.heading}</p>
+              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed [&_strong]:font-bold [&_strong]:text-black">
                 {block.text}
               </p>
             </div>
@@ -856,15 +875,9 @@ export default function CaseLayout({
 
         {/* Key takeaway */}
         {keyTakeaway && (
-          <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-[14px] text-text-primary">Key Takeaway</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
-              {keyTakeaway.heading}
-            </h2>
-            <p className="font-grotesk text-[14px] text-text-primary leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-text-primary">
-              {keyTakeaway.body}
-            </p>
-          </section>
+          <KeyTakeaway id="key-takeaway" heading={keyTakeaway.heading} className="pb-24">
+            <p>{keyTakeaway.body}</p>
+          </KeyTakeaway>
         )}
 
         {/* Next case */}

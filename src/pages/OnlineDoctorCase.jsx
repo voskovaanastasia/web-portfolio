@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SectionMenu from '../components/SectionMenu';
-import { CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
+import { KeyTakeaway, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
@@ -427,24 +427,16 @@ export default function OnlineDoctorCase() {
         </section>
 
         {/* Key takeaway */}
-        <section id="key-takeaway" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Key Takeaway</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
-            A calm palette is not a calm product
-          </h2>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            Healthcare interfaces reach for soft blues and generous white space, and none of it
+        <KeyTakeaway id="key-takeaway" heading="A calm palette is not a calm product" className="pb-24">
+          <p>Healthcare interfaces reach for soft blues and generous white space, and none of it
             helps a patient who does not know whether their appointment is confirmed or what the
             visit will cost.{' '}
-            <strong>Anxiety in this product came from uncertainty, not from visual noise.</strong>
-          </p>
-          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-black">
-            Making appointment and billing state explicit at every step did more for how the
+            <strong>Anxiety in this product came from uncertainty, not from visual noise.</strong></p>
+          <p>Making appointment and billing state explicit at every step did more for how the
             product felt than any surface decision.{' '}
             <strong>Calm is structural: it comes from a patient never having to ask what happens
-            next.</strong>
-          </p>
-        </section>
+            next.</strong></p>
+        </KeyTakeaway>
 
         <CaseNav caseId="online-doctor" />
       </div>
