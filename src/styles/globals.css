@@ -41,6 +41,22 @@
   --color-accent-handwritten: var(--color-purple-500);
   --color-focus-ring: var(--color-blue-600);
   --color-focus-ring-inverse: var(--color-white-primitive);
+  --color-surface-placeholder: #D9D9D9;
+
+  /* Effects: header / menu glass, dot grids, hairline ring, icon-tile shadow */
+  --glass-light: rgba(240, 240, 240, 0.2);
+  --glass-dark: rgba(17, 17, 17, 0.45);
+  --glass-panel: rgba(240, 240, 240, 0.6);
+  --color-dots: rgba(0, 0, 0, 0.15);
+  --color-dots-hover: rgba(40, 143, 214, 0.25);
+  --color-track: rgba(0, 0, 0, 0.08);
+  --shadow-icon: 1px 1px 5px rgba(124, 124, 124, 0.25);
+
+  /* Data visualisation */
+  --color-data-1: #F2C94C;
+  --color-data-2: #6ABF69;
+  --color-data-3: #EE8585;
+  --color-data-4: #4D8FD1;
 
   /* Radius */
   --radius-card: 24px;
@@ -68,8 +84,10 @@
   --letter-spacing-wide: 0.05em;
 
   /* Font size (mobile) */
+  --font-size-caption-xs: 11px;
   --font-size-caption: 12px;
   --font-size-body: 14px;
+  --font-size-body-md: 15px;
   --font-size-body-lg: 16px;
   --font-size-title-sm: 16px;
   --font-size-lead: 16px;
@@ -92,8 +110,10 @@
 
 @media (min-width: 640px) {
   :root {
+    --font-size-caption-xs: 11px;
     --font-size-caption: 12px;
     --font-size-body: 14px;
+    --font-size-body-md: 15px;
     --font-size-body-lg: 16px;
     --font-size-title-sm: 18px;
     --font-size-lead: 20px;

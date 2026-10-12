@@ -31,6 +31,20 @@ export default {
           subtle: 'var(--color-surface-subtle)',
           inverse: 'var(--color-surface-inverse)',
           'brand-tint': 'var(--color-surface-brand-tint)',
+          placeholder: 'var(--color-surface-placeholder)',
+        },
+        glass: {
+          light: 'var(--glass-light)',
+          dark: 'var(--glass-dark)',
+          panel: 'var(--glass-panel)',
+        },
+        dots: { DEFAULT: 'var(--color-dots)', hover: 'var(--color-dots-hover)' },
+        track: 'var(--color-track)',
+        data: {
+          1: 'var(--color-data-1)',
+          2: 'var(--color-data-2)',
+          3: 'var(--color-data-3)',
+          4: 'var(--color-data-4)',
         },
         border: {
           subtle: 'var(--color-border-subtle)',
@@ -53,9 +67,14 @@ export default {
         control: 'var(--radius-control)',
         pill: 'var(--radius-pill)',
       },
+      boxShadow: {
+        icon: 'var(--shadow-icon)',
+      },
       fontSize: {
+        'caption-xs': 'var(--font-size-caption-xs)',
         caption: 'var(--font-size-caption)',
         body: 'var(--font-size-body)',
+        'body-md': 'var(--font-size-body-md)',
         'body-lg': 'var(--font-size-body-lg)',
         'title-sm': 'var(--font-size-title-sm)',
         lead: 'var(--font-size-lead)',
