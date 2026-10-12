@@ -225,10 +225,10 @@ function MetricRow({ metric, accent }) {
       <p className="md:order-3 font-grotesk font-medium text-[28px] sm:text-[34px] text-black tracking-tight text-right leading-none">
         {result.label}
       </p>
-      <div className="col-span-2 md:col-span-1 md:order-2 relative pt-5">
+      <div className="col-span-2 md:col-span-1 md:order-2 relative pt-6">
         {ref && marker && (
           <span
-            className="absolute top-0 -translate-x-1/2 font-mono-bold text-[11px] text-[#393939] whitespace-nowrap"
+            className="absolute top-0 -translate-x-1/2 font-mono-bold text-[11px] leading-none text-[#393939] whitespace-nowrap"
             style={{ left: `${(ref.value / max) * 100}%` }}
           >
             {marker}
@@ -242,7 +242,7 @@ function MetricRow({ metric, accent }) {
           />
           {ref && (
             <span
-              className="absolute -top-2.5 -bottom-2.5 w-px bg-black"
+              className="absolute -top-1.5 -bottom-1.5 w-px bg-black"
               style={{ left: `${(ref.value / max) * 100}%` }}
             />
           )}
