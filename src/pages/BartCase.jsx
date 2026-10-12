@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
+import { PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
@@ -395,10 +395,11 @@ function PagesSlider({ pages }) {
 const launchMetrics = [
   {
     title: 'Bounce Rate',
+    lowerIsBetter: true,
     color: '#f2c94c',
     bars: [
-      { label: '68', value: 68, before: true },
-      { label: '41', value: 41 },
+      { label: '68%', value: 68, before: true },
+      { label: '41%', value: 41 },
     ],
     text: (
       <>
@@ -439,7 +440,7 @@ const launchMetrics = [
   {
     title: 'Contact Form Submissions',
     color: '#4d8fd1',
-    bars: [{ label: '+74%', value: 100 }],
+    bars: [{ label: '+74%', value: 74 }],
     text: (
       <>
         Increased by <strong>+74%</strong> — the most direct conversion signal. Optimised CTA
@@ -466,8 +467,8 @@ const surveyResults = [
   {
     color: '#f2c94c',
     bars: [
-      { label: '38', value: 38, before: true },
-      { label: '81', value: 81 },
+      { label: '38%', value: 38, before: true },
+      { label: '81%', value: 81 },
     ],
     title: '"I immediately understand what this company does"',
     text: (
@@ -480,8 +481,8 @@ const surveyResults = [
   {
     color: '#6abf69',
     bars: [
-      { label: '26', value: 26, before: true },
-      { label: '79', value: 79 },
+      { label: '26%', value: 26, before: true },
+      { label: '79%', value: 79 },
     ],
     title: '"Navigation feels clear and easy to use"',
     text: (
@@ -494,8 +495,8 @@ const surveyResults = [
   {
     color: '#ee8585',
     bars: [
-      { label: '42', value: 42, before: true },
-      { label: '88', value: 88 },
+      { label: '42%', value: 42, before: true },
+      { label: '88%', value: 88 },
     ],
     title: '"The website looks modern and professional"',
     text: (
@@ -772,7 +773,7 @@ export default function BartCase() {
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">What Users Told Us</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 What frustrates you most on corporate websites?
               </p>
@@ -800,7 +801,7 @@ export default function BartCase() {
                 and each became a named design target in this project.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Would You Return to an Updated Website?
               </p>
@@ -836,25 +837,16 @@ export default function BartCase() {
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">User Persona</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-james.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black tracking-tight mt-2">
-                James Mitchell
-              </h3>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                38, Business Development Manager
-              </p>
-              <p className="font-grotesk font-bold text-[14px] text-black">London, UK</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                James evaluates tech vendors and service providers on behalf of his company. He
+          <PersonaBlock
+            image="persona-james.webp"
+            name="James Mitchell"
+            role="38, Business Development Manager"
+            location="London, UK"
+            bio={<>James evaluates tech vendors and service providers on behalf of his company. He
                 visits corporate websites to quickly assess whether an agency is worth a deeper
                 conversation &mdash; scanning for relevant cases, team expertise, and a clear
-                service offering before deciding to reach out.
-              </p>
-            </div>
-            <div className="lg:col-span-2 flex flex-col gap-5">
-              {[
+                service offering before deciding to reach out.</>}
+            groups={[
                 {
                   title: 'Motivations',
                   items: [
@@ -882,31 +874,14 @@ export default function BartCase() {
                     <><strong>Hard-to-find contact</strong> options or unclear next steps.</>,
                   ],
                 },
-              ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
-                  <ul className="flex flex-col gap-2">
-                    {group.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="font-mono-bold text-[14px] text-black leading-relaxed max-w-3xl">
-            Persona validation confirmed that the primary user is a time-pressured B2B evaluator
+              ]}
+            summary={<>Persona validation confirmed that the primary user is a time-pressured B2B evaluator
             &mdash; not a casual browser. James Mitchell, Business Development Manager, visits
             the site with one goal: to quickly assess whether this agency is worth a deeper
             conversation. He scans for relevant cases, team credibility, and a clear service
             offering &mdash; and leaves if any of those signals are missing or hard to find.
-            Every design decision in this project was tested against his scenario.
-          </p>
+            Every design decision in this project was tested against his scenario.</>}
+          />
         </section>
 
         {/* Information architecture */}
@@ -984,7 +959,7 @@ export default function BartCase() {
             tailored grid settings for each breakpoint:
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Desktop</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 3 columns, margin 80, gap 20 — ensuring a spacious and well-structured layout for
@@ -995,7 +970,7 @@ export default function BartCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Mobile</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 2 columns, margin 24, gap 10 — optimised for compact screens with clear spacing
@@ -1053,10 +1028,8 @@ export default function BartCase() {
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             The Results
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {launchMetrics.map((metric) => (
-              <MetricCard key={metric.title} {...metric} />
-            ))}
+          <div>
+            <MetricList metrics={launchMetrics} accent="#2f6db5" markerName="Before" />
           </div>
 
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
@@ -1066,10 +1039,8 @@ export default function BartCase() {
             A follow-up survey mirrored the original poll questions to measure perception shift
             after the redesign.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {surveyResults.map((item) => (
-              <MetricCard key={item.title} {...item} />
-            ))}
+          <div>
+            <MetricList metrics={surveyResults} accent="#2f6db5" markerName="Before" />
           </div>
 
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">

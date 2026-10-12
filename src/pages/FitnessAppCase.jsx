@@ -1,5 +1,5 @@
 import { Donut, DonutStat } from '../components/Charts';
-import CaseLayout, { ImagePlaceholder, StyleGuide } from '../components/CaseLayout';
+import CaseLayout, { PersonaBlock, StyleGuide } from '../components/CaseLayout';
 import IATree from '../components/IATree';
 
 const project = {
@@ -226,7 +226,7 @@ const trustRecommendationSegments = [
 function ThePoll() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+      <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
         <p className="font-grotesk font-bold text-[14px] text-black">
           What frustrates you most about fitness apps?
         </p>
@@ -258,7 +258,7 @@ function ThePoll() {
           discovery filters.
         </p>
       </div>
-      <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+      <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
         <p className="font-grotesk font-bold text-[14px] text-black">
           Would you trust an app&rsquo;s workout recommendation over picking one yourself?
         </p>
@@ -347,42 +347,21 @@ const persona = {
   ],
 };
 
-const bulletClass =
-  'font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-[\'\'] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:bg-[#1552d8] before:rounded-[1px] [&_strong]:font-normal [&_strong]:text-[#1552d8]';
-
-function PersonaCard({ title, points }) {
-  return (
-    <div className="bg-[#f2f6ff] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-      <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black">{title}</h3>
-      <ul className="flex flex-col gap-3">
-        {points.map((point, i) => (
-          <li key={i} className={bulletClass}>
-            {point}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function UserPersona() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <div className="flex flex-col gap-5">
-        <ImagePlaceholder filename="case-fitness-persona.webp" className="min-h-[480px]" />
-        <div className="bg-[#f2f6ff] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-          <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-[#1552d8]">{persona.name}</h3>
-          <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.role}</p>
-          <p className="font-grotesk font-medium text-[14px] text-[#1552d8]">{persona.location}</p>
-          <p className="font-grotesk text-[14px] text-black leading-relaxed mt-1">{persona.bio}</p>
-        </div>
-      </div>
-      <div className="flex flex-col gap-5">
-        <PersonaCard title="Motivations" points={persona.motivations} />
-        <PersonaCard title="Goals" points={persona.goals} />
-        <PersonaCard title="Frustrations" points={persona.frustrations} />
-      </div>
-    </div>
+    <PersonaBlock
+      image="case-fitness-persona.webp"
+      name={persona.name}
+      role={persona.role}
+      location={persona.location}
+      bio={persona.bio}
+      accent="#1552d8"
+      groups={[
+        { title: 'Motivations', items: persona.motivations },
+        { title: 'Goals', items: persona.goals },
+        { title: 'Frustrations', items: persona.frustrations },
+      ]}
+    />
   );
 }
 

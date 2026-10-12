@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Donut, DonutStat } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
+import { PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -1144,7 +1144,7 @@ export default function CryptoWalletCase() {
         <section id="poll" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Most Important Crypto Wallet Feature
               </p>
@@ -1175,7 +1175,7 @@ export default function CryptoWalletCase() {
                 convenience, is what a crypto wallet is judged on first.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Interest in All-in-One Crypto Wallet
               </p>
@@ -1210,24 +1210,17 @@ export default function CryptoWalletCase() {
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">User Persona</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-alex.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-[#288fd6] tracking-tight mt-2">
-                Alex Carter
-              </h3>
-              <p className="font-grotesk font-bold text-[14px] text-black">32, Product Manager</p>
-              <p className="font-grotesk font-bold text-[14px] text-black">Berlin, Germany</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Alex actively uses crypto for investing and transfers but doesn&rsquo;t consider
+          <PersonaBlock
+            image="persona-alex.webp"
+            name="Alex Carter"
+            role="32, Product Manager"
+            location="Berlin, Germany"
+            bio={<>Alex actively uses crypto for investing and transfers but doesn&rsquo;t consider
                 himself an expert. He checks prices daily, sends and swaps tokens regularly, and
                 cares deeply about security. Alex wants confidence that every action is correct
                 before confirming &mdash; without having to overthink networks, fees, or technical
-                details.
-              </p>
-            </div>
-            <div className="lg:col-span-2 flex flex-col gap-5">
-              {[
+                details.</>}
+            groups={[
                 {
                   title: 'Motivations',
                   items: [
@@ -1255,23 +1248,9 @@ export default function CryptoWalletCase() {
                     <><strong>Overloaded interfaces</strong> that add friction during high-stress moments like sending or swapping.</>,
                   ],
                 },
-              ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
-                  <ul className="flex flex-col gap-2">
-                    {group.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 break-words [&>strong]:font-bold [&>strong]:text-[#288fd6]"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
+              ]}
+            accent="#288fd6"
+          />
         </section>
 
         {/* Empathy map */}

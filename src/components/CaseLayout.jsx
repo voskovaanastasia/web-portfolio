@@ -119,21 +119,89 @@ export function ImagePlaceholder({ filename, className = '', alt = '', priority 
  * `bars` = [{ label, value, before? }] — the bar without `before` is the
  * highlighted (current/after) value, rendered in `color`; `before` bars are grey.
  */
-export function MetricBars({ bars, color }) {
-  const max = Math.max(...bars.map((b) => b.value));
-  const wrapRef = useRef(null);
+export function PersonaBlock({ image, name, role, location, bio, groups, summary, accent = '#2f6db5' }) {
+  return (
+    <div className="flex flex-col gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-10 lg:gap-16">
+        <div className="flex flex-col gap-4">
+          <ImagePlaceholder filename={image} className="aspect-[4/3] rounded-card" />
+          <h3 className="font-grotesk font-medium text-[22px] sm:text-[26px] text-black tracking-tight mt-2">
+            {name}
+          </h3>
+          <div className="flex flex-col gap-1">
+            <p className="font-grotesk font-medium text-[14px] text-black">{role}</p>
+            <p className="font-grotesk text-[14px] text-[#393939]">{location}</p>
+          </div>
+          <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">{bio}</p>
+        </div>
+        <div className="flex flex-col">
+          {groups.map((group) => (
+            <div
+              key={group.title}
+              className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-6 py-5 border-t border-black/10 last:border-b"
+            >
+              <p
+                className="font-mono-bold text-[12px] uppercase tracking-wider"
+                style={{ color: accent }}
+              >
+                {group.title}
+              </p>
+              <ul className="flex flex-col gap-2">
+                {group.items.map((item, i) => (
+                  <li
+                    key={i}
+                    className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0 break-words [&>strong]:font-bold [&>strong]:text-black"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {summary && (
+            <p
+              className="font-grotesk text-[16px] sm:text-[18px] text-black leading-relaxed border-l-2 pl-5 mt-8"
+              style={{ borderColor: accent }}
+            >
+              {summary}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-  // Bars grow up from the baseline, one after another, each time the card scrolls into view.
+const NICE_STEPS = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10];
+
+// Track length for a row: 100 for high percentages, otherwise the next "nice" number above the data.
+function trackMax(values, isPct) {
+  const top = Math.max(...values);
+  if (isPct && top > 50) return 100;
+  const target = top * 1.1;
+  const pow = 10 ** Math.floor(Math.log10(target));
+  return (NICE_STEPS.find((n) => n * pow >= target) ?? 10) * pow;
+}
+
+function MetricRow({ metric, accent }) {
+  const { title, subtitle, bars, text, lowerIsBetter, markerLabel } = metric;
+  const result = bars.find((b) => !b.before);
+  const ref = bars.find((b) => b.before);
+  const name = title.split(' — ')[0];
+  const max = trackMax(bars.map((b) => b.value), result.label.includes('%'));
+  const marker =
+    markerLabel ?? (subtitle ? subtitle.replace(/^\(|\)$/g, '') : ref ? `before ${ref.label}` : null);
+  const fillRef = useRef(null);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
-    const tween = gsap.from(wrapRef.current.children, {
-      scaleY: 0,
-      transformOrigin: 'bottom',
-      duration: 0.7,
+    const tween = gsap.from(fillRef.current, {
+      scaleX: 0,
+      transformOrigin: 'left',
+      duration: 0.8,
       ease: 'power3.out',
-      stagger: 0.12,
-      scrollTrigger: { trigger: wrapRef.current, start: 'top 90%', toggleActions: 'restart none restart reset' },
+      scrollTrigger: { trigger: fillRef.current, start: 'top 92%', toggleActions: 'restart none restart reset' },
     });
     return () => {
       tween.scrollTrigger?.kill();
@@ -142,36 +210,67 @@ export function MetricBars({ bars, color }) {
   }, []);
 
   return (
-    <div ref={wrapRef} className="flex items-end justify-center gap-4 h-44">
-      {/* Grey "before"/target bars first, so the highlighted bar sits on the right. */}
-      {[...bars].sort((a, b) => Number(!!b.before) - Number(!!a.before)).map((bar) => (
-        <div
-          key={bar.label}
-          className="w-16 rounded-[14px] flex items-end justify-center pb-3"
-          style={{
-            height: `${(bar.value / max) * 100}%`,
-            backgroundColor: bar.before ? '#e3e3e3' : color,
-          }}
-        >
-          <span className="font-grotesk font-bold text-sm text-text-primary">{bar.label}</span>
+    <div className="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,3fr)_minmax(0,5fr)_auto] items-center gap-x-8 gap-y-3 py-5 border-t border-black/10 last:border-b">
+      <div className="flex flex-col gap-1.5">
+        <p className="font-grotesk font-medium text-[16px] text-black">{name}</p>
+        <p className="font-grotesk text-[13px] text-[#393939] leading-snug [&>strong]:font-bold [&>strong]:text-black">
+          {text}
+        </p>
+        {lowerIsBetter && (
+          <p className="font-mono-bold text-[11px] uppercase tracking-wider" style={{ color: accent }}>
+            Lower is better
+          </p>
+        )}
+      </div>
+      <p className="md:order-3 font-grotesk font-medium text-[28px] sm:text-[34px] text-black tracking-tight text-right leading-none">
+        {result.label}
+      </p>
+      <div className="col-span-2 md:col-span-1 md:order-2 relative pt-5">
+        {ref && marker && (
+          <span
+            className="absolute top-0 -translate-x-1/2 font-mono-bold text-[11px] text-[#393939] whitespace-nowrap"
+            style={{ left: `${(ref.value / max) * 100}%` }}
+          >
+            {marker}
+          </span>
+        )}
+        <div className="relative h-2 rounded-full bg-black/[0.08]">
+          <div
+            ref={fillRef}
+            className="h-full rounded-full"
+            style={{ width: `${(result.value / max) * 100}%`, backgroundColor: accent }}
+          />
+          {ref && (
+            <span
+              className="absolute -top-2.5 -bottom-2.5 w-px bg-black"
+              style={{ left: `${(ref.value / max) * 100}%` }}
+            />
+          )}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
 
 /**
- * Standard result-card wrapper: bars on top, title, optional subtitle, body text.
+ * Result list: one row per metric — name and note, a bar with a target/before marker, big value.
  */
-export function MetricCard({ title, subtitle, bars, color, text }) {
+export function MetricList({ metrics, accent = '#2f6db5', markerName = 'Target' }) {
   return (
-    <div className="bg-surface-subtle rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
-      <MetricBars bars={bars} color={color} />
-      <p className="font-grotesk font-bold text-[14px] text-text-primary">{title}</p>
-      {subtitle && <p className="font-grotesk text-sm text-text-secondary -mt-2">{subtitle}</p>}
-      <p className="font-grotesk text-[14px] text-text-primary leading-relaxed [&>strong]:font-bold [&>strong]:text-text-primary">
-        {text}
-      </p>
+    <div className="flex flex-col">
+      <div className="flex justify-end gap-5 pb-3 font-grotesk text-[12px] text-[#393939]">
+        <span className="flex items-center gap-2">
+          <span className="w-4 h-2 rounded-full" style={{ backgroundColor: accent }} />
+          Result
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="w-px h-3.5 bg-black" />
+          {markerName}
+        </span>
+      </div>
+      {metrics.map((metric) => (
+        <MetricRow key={metric.title} metric={metric} accent={accent} />
+      ))}
     </div>
   );
 }

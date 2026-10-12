@@ -3,7 +3,7 @@ import useStaggerReveal from '../hooks/useStaggerReveal';
 import { Donut, StatBar } from '../components/Charts';
 import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
-import { CaseHeader, ProblemSolution, ImagePlaceholder, CaseNav, MetricCard, buildCaseMeta } from '../components/CaseLayout';
+import { PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
@@ -340,6 +340,7 @@ const launchMetrics = [
     text: 'Pricing legibility converts rather than deters — the direct answer to the 27% who named pricing their top frustration.',
   },
   {
+    lowerIsBetter: true,
     title: 'Time-to-First-Probe — 1 min 41 sec',
     subtitle: '(target under 2 min)',
     color: '#e8964a',
@@ -360,6 +361,7 @@ const launchMetrics = [
     text: 'Signed up to first probe configured.',
   },
   {
+    lowerIsBetter: true,
     title: 'Bounce Rate — 36%',
     subtitle: '(target under 45%)',
     color: '#6abf69',
@@ -1019,7 +1021,7 @@ export default function FarsafeCase() {
         <section className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 What frustrates you most about your current monitoring tool?
               </p>
@@ -1045,7 +1047,7 @@ export default function FarsafeCase() {
                 Multiple answers were allowed, so totals exceed 100%. Three answers dominated every other option — confusing pricing, single-location false alerts, and paying extra for status — and each became one of the three Insights above.
               </p>
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
                 Interested in an all-in-one, pay-as-you-go tool?
               </p>
@@ -1077,26 +1079,17 @@ export default function FarsafeCase() {
         {/* User persona */}
         <section id="persona" className="pb-24 flex flex-col gap-6">
           <p className="font-mono-bold text-[14px] text-black">User Persona</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="flex flex-col gap-4">
-              <ImagePlaceholder filename="persona-daniel.webp" className="aspect-square" />
-              <h3 className="font-grotesk font-medium text-[16px] sm:text-lg text-black tracking-tight mt-2">
-                Daniel Reyes
-              </h3>
-              <p className="font-grotesk font-bold text-[14px] text-black">
-                34, Founder / Lead Developer, small web agency
-              </p>
-              <p className="font-grotesk font-bold text-[14px] text-black">Texas, USA</p>
-              <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
-                Daniel is the person clients call when a site goes down. He manages uptime for
+          <PersonaBlock
+            image="persona-daniel.webp"
+            name="Daniel Reyes"
+            role="34, Founder / Lead Developer, small web agency"
+            location="Texas, USA"
+            bio={<>Daniel is the person clients call when a site goes down. He manages uptime for
                 roughly 20 client sites and needs to know about problems before the client does. He
                 evaluates monitoring tools quickly &mdash; scanning for clear pricing, reliable
                 alerting, and a way to prove uptime to clients &mdash; and abandons anything that
-                buries those signals.
-              </p>
-            </div>
-            <div className="lg:col-span-2 flex flex-col gap-5">
-              {[
+                buries those signals.</>}
+            groups={[
                 {
                   title: 'Motivations',
                   items: [
@@ -1124,28 +1117,12 @@ export default function FarsafeCase() {
                     <>Juggling <strong>multiple separate tools</strong> for alerts, status, and reporting.</>,
                   ],
                 },
-              ].map((group) => (
-                <div key={group.title} className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-1.5 sm:gap-3">
-                  <p className="font-grotesk font-bold text-[14px] text-black">{group.title}</p>
-                  <ul className="flex flex-col gap-2">
-                    {group.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="font-grotesk text-[14px] text-[#393939] leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-1 [&>strong]:font-bold [&>strong]:text-black"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="font-mono-bold text-[14px] text-black leading-relaxed max-w-3xl">
-            Research confirmed the primary user is a time-pressured uptime owner — not a casual
+              ]}
+            summary={<>Research confirmed the primary user is a time-pressured uptime owner — not a casual
             browser. Every design decision was tested against his scenario: can he understand the
-            pricing, trust the alerts, and prove uptime to a client?
-          </p>
+            pricing, trust the alerts, and prove uptime to a client?</>}
+            accent="#2f6db5"
+          />
         </section>
 
         {/* Information architecture */}
@@ -1233,7 +1210,7 @@ export default function FarsafeCase() {
             surface, then reused everywhere. All grids use stretch columns.
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Marketing — Desktop</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 Two setups: a 3-column grid for standard sections, a 4-column for denser card
@@ -1244,7 +1221,7 @@ export default function FarsafeCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Dashboard (App) — Desktop</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 A 4-column content grid sitting beside a fixed side menu, with margin 40 and
@@ -1256,7 +1233,7 @@ export default function FarsafeCase() {
                 className="min-h-[380px] mt-auto bg-white"
               />
             </div>
-            <div className="bg-[#f7f7f7] rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
+            <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
               <p className="font-grotesk font-bold text-[14px] text-black">Mobile — All Pages</p>
               <p className="font-grotesk text-[14px] text-[#393939] leading-relaxed">
                 A 2-column grid, sized for comfortable reading on compact screens.
@@ -1365,10 +1342,8 @@ export default function FarsafeCase() {
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
             The Results
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {launchMetrics.map((metric) => (
-              <MetricCard key={metric.title} {...metric} />
-            ))}
+          <div>
+            <MetricList metrics={launchMetrics} accent="#2f6db5" />
           </div>
 
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">
