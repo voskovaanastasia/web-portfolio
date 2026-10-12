@@ -14,7 +14,7 @@ const homeSections = [
 ];
 
 // Fixed bottom-left section navigator on wide screens, burger dropdown otherwise. Hidden while the first section is active.
-export default function SectionMenu({ sections = homeSections }) {
+export default function SectionMenu({ sections = homeSections, refreshKey = 0 }) {
   const [intersectingIds, setIntersectingIds] = useState(() => new Set());
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef(null);
@@ -40,7 +40,7 @@ export default function SectionMenu({ sections = homeSections }) {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, [sections]);
+  }, [sections, refreshKey]);
 
   // Topmost section (in page order) that's currently intersecting wins, so the
   // dropdown reliably reads "hero" at scroll position 0 instead of whichever

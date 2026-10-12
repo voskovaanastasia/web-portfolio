@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
 import DotsBackground from './DotsBackground';
 import avatar from '../assets/avatar.webp';
 import ToolIcon from './ToolIcon';
@@ -9,48 +8,55 @@ const stackToolIds = ['figma', 'react', 'framer', 'git', 'claude-code', 'webflow
 export default function HeroSection() {
   const rootRef = useRef(null);
 
+  // The entrance runs in CSS (see globals.css) so the hero paints without waiting for GSAP.
+  // GSAP is only needed for the icon hover physics, so it loads once the page is idle.
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (!window.matchMedia('(hover: hover)').matches) return undefined;
 
-    const ctx = gsap.context(() => {
-      // Entrance: content rises in, then the stack icons pop in one by one.
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.from('[data-hero-item]', { y: 24, opacity: 0, duration: 0.7, stagger: 0.1 })
-        .from(
-          '[data-stack-icon]',
-          { scale: 0, y: 20, opacity: 0, duration: 0.6, ease: 'back.out(2)', stagger: 0.06 },
-          '-=0.5'
-        );
+    let cancelled = false;
+    let ctx;
+    const setup = async () => {
+      const { default: gsap } = await import('gsap');
+      if (cancelled || !rootRef.current) return;
+      ctx = gsap.context(() => {
+        // Interaction: icons lean toward the cursor and spring back on leave.
+        const icons = gsap.utils.toArray('[data-stack-icon]');
+        const cleanups = icons.map((el) => {
+          const xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' });
+          const yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' });
+          const onMove = (e) => {
+            const r = el.getBoundingClientRect();
+            xTo((e.clientX - (r.left + r.width / 2)) * 0.35);
+            yTo((e.clientY - (r.top + r.height / 2)) * 0.35 - 8);
+          };
+          const onEnter = () => gsap.to(el, { scale: 1.2, duration: 0.3, ease: 'back.out(2)' });
+          const onLeave = () => {
+            xTo(0);
+            yTo(0);
+            gsap.to(el, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+          };
+          el.addEventListener('mousemove', onMove);
+          el.addEventListener('mouseenter', onEnter);
+          el.addEventListener('mouseleave', onLeave);
+          return () => {
+            el.removeEventListener('mousemove', onMove);
+            el.removeEventListener('mouseenter', onEnter);
+            el.removeEventListener('mouseleave', onLeave);
+          };
+        });
+        return () => cleanups.forEach((fn) => fn());
+      }, rootRef);
+    };
 
-      // Interaction: icons lean toward the cursor and spring back on leave.
-      const icons = gsap.utils.toArray('[data-stack-icon]');
-      const cleanups = icons.map((el) => {
-        const xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' });
-        const yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' });
-        const onMove = (e) => {
-          const r = el.getBoundingClientRect();
-          xTo((e.clientX - (r.left + r.width / 2)) * 0.35);
-          yTo((e.clientY - (r.top + r.height / 2)) * 0.35 - 8);
-        };
-        const onEnter = () => gsap.to(el, { scale: 1.2, duration: 0.3, ease: 'back.out(2)' });
-        const onLeave = () => {
-          xTo(0);
-          yTo(0);
-          gsap.to(el, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
-        };
-        el.addEventListener('mousemove', onMove);
-        el.addEventListener('mouseenter', onEnter);
-        el.addEventListener('mouseleave', onLeave);
-        return () => {
-          el.removeEventListener('mousemove', onMove);
-          el.removeEventListener('mouseenter', onEnter);
-          el.removeEventListener('mouseleave', onLeave);
-        };
-      });
-      return () => cleanups.forEach((fn) => fn());
-    }, rootRef);
-
-    return () => ctx.revert();
+    const idle = window.requestIdleCallback ?? ((cb) => setTimeout(cb, 1));
+    const cancelIdle = window.cancelIdleCallback ?? clearTimeout;
+    const handle = idle(setup, { timeout: 3000 });
+    return () => {
+      cancelled = true;
+      cancelIdle(handle);
+      ctx?.revert();
+    };
   }, []);
 
   const scrollToContact = (e) => {

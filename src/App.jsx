@@ -5,11 +5,11 @@ import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
 import About from './pages/About';
-import Projects from './pages/Projects';
 import useDocumentMeta from './hooks/useDocumentMeta';
 import { BUILT_WITH_CLAUDE_PUBLISHED } from './config/publishedCases';
 import './styles/globals.css';
 
+const Projects = lazy(() => import('./pages/Projects'));
 const FarsafeCase = lazy(() => import('./pages/FarsafeCase'));
 const BartCase = lazy(() => import('./pages/BartCase'));
 const CryptoWalletCase = lazy(() => import('./pages/CryptoWalletCase'));

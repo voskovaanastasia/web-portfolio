@@ -179,3 +179,37 @@
     transition: none;
   }
 }
+
+/* Hero entrance (was a GSAP timeline): content rises in, then the stack icons pop in one by one. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+@keyframes hero-slide {
+  from { transform: translateY(24px); }
+}
+@keyframes hero-pop {
+  from { opacity: 0; transform: scale(0) translateY(20px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #hero [data-hero-item] {
+    animation: hero-rise 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+  }
+  /* The headline is the LCP element: it moves but never starts transparent. */
+  #hero h1[data-hero-item] { animation-name: hero-slide; }
+  #hero [data-hero-item]:nth-child(2) { animation-delay: 0.1s; }
+  #hero [data-hero-item]:nth-child(3) { animation-delay: 0.2s; }
+  #hero [data-hero-item]:nth-child(4) { animation-delay: 0.3s; }
+  #hero [data-hero-item]:nth-child(5) { animation-delay: 0.4s; }
+  #hero [data-stack-icon] {
+    animation: hero-pop 0.6s cubic-bezier(0.34, 1.7, 0.64, 1) backwards;
+  }
+  #hero [data-stack-icon]:nth-child(1) { animation-delay: 0.6s; }
+  #hero [data-stack-icon]:nth-child(2) { animation-delay: 0.66s; }
+  #hero [data-stack-icon]:nth-child(3) { animation-delay: 0.72s; }
+  #hero [data-stack-icon]:nth-child(4) { animation-delay: 0.78s; }
+  #hero [data-stack-icon]:nth-child(5) { animation-delay: 0.84s; }
+  #hero [data-stack-icon]:nth-child(6) { animation-delay: 0.9s; }
+  #hero [data-stack-icon]:nth-child(7) { animation-delay: 0.96s; }
+  #hero [data-stack-icon]:nth-child(8) { animation-delay: 1.02s; }
+  #hero [data-stack-icon]:nth-child(9) { animation-delay: 1.08s; }
+}
