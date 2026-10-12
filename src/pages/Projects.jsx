@@ -50,7 +50,7 @@ function ProjectCard({ project, index }) {
           className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
         />
       </Link>
-      <p className="font-mono-bold text-[12px] text-text-secondary mb-3">
+      <p className="font-mono-bold text-caption text-text-secondary mb-3">
         {project.tags.map((tag, i) => (
           <span key={tag}>
             {tag}
@@ -67,13 +67,13 @@ function ProjectCard({ project, index }) {
           {project.title}
         </Link>
       </h2>
-      <p className="font-grotesk text-[15px] text-text-primary leading-relaxed mb-5">
+      <p className="font-grotesk text-body-md text-text-primary leading-relaxed mb-5">
         {project.description}
       </p>
       <div className="mt-auto">
         <Link
           to={`/project/${project.id}`}
-          className="font-grotesk font-medium text-[15px] text-text-brand hover:text-action-primary-hover underline-offset-4 hover:underline transition-colors"
+          className="font-grotesk font-medium text-body-md text-text-brand hover:text-action-primary-hover underline-offset-4 hover:underline transition-colors"
         >
           Read case study →
         </Link>
@@ -229,7 +229,7 @@ export default function Projects() {
       <section className="relative overflow-hidden pt-24 pb-40">
         <DotsBackground />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center flex flex-col gap-6">
-          <h1 className="font-grotesk font-medium text-[26px] sm:text-5xl text-text-primary tracking-tight">
+          <h1 className="font-grotesk font-medium text-title text-text-primary tracking-tight">
             Things I&rsquo;ve Worked On
           </h1>
           <p className="font-grotesk text-lg sm:text-xl text-text-primary leading-relaxed">
@@ -272,7 +272,7 @@ export default function Projects() {
                   >
                     {category}
                     {isEmpty && (
-                      <span className="font-mono-bold text-[11px] uppercase tracking-wider text-text-secondary border border-border-subtle rounded-pill px-2.5 py-1">
+                      <span className="font-mono-bold text-caption-xs uppercase tracking-wider text-text-secondary border border-border-subtle rounded-pill px-2.5 py-1">
                         Coming soon
                       </span>
                     )}

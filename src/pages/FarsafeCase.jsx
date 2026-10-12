@@ -1121,7 +1121,6 @@ export default function FarsafeCase() {
             summary={<>Research confirmed the primary user is a time-pressured uptime owner — not a casual
             browser. Every design decision was tested against his scenario: can he understand the
             pricing, trust the alerts, and prove uptime to a client?</>}
-            accent="#2f6db5"
           />
         </section>
 
@@ -1343,7 +1342,7 @@ export default function FarsafeCase() {
             The Results
           </h3>
           <div>
-            <MetricList metrics={launchMetrics} accent="#2f6db5" />
+            <MetricList metrics={launchMetrics} />
           </div>
 
           <h3 className="font-grotesk font-medium text-[16px] sm:text-3xl text-black tracking-tight mt-4">

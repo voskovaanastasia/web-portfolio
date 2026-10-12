@@ -46,7 +46,7 @@ export function ChartCard({ title, subtitle, note, caption, children }) {
         {subtitle && <p className="font-grotesk text-sm text-text-secondary">{subtitle}</p>}
       </div>
       {children}
-      {note && <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{note}</p>}
+      {note && <p className="font-grotesk text-body text-text-primary leading-relaxed">{note}</p>}
       <figcaption className="font-grotesk text-caption text-text-secondary leading-relaxed">{caption}</figcaption>
     </figure>
   );
@@ -65,8 +65,8 @@ export function RowBarChart({ rows, max }) {
       {rows.map((row) => (
         <li key={row.label} className="flex flex-col gap-1.5">
           <div className="flex items-baseline justify-between gap-4">
-            <span className="font-grotesk text-[14px] text-text-primary leading-snug">{row.label}</span>
-            <span className="font-grotesk font-bold text-[16px] text-text-primary whitespace-nowrap">
+            <span className="font-grotesk text-body text-text-primary leading-snug">{row.label}</span>
+            <span className="font-grotesk font-bold text-body-lg text-text-primary whitespace-nowrap">
               {row.display ?? row.value}
             </span>
           </div>
@@ -113,7 +113,7 @@ export function ColumnChart({ columns, max, xLabel }) {
         {columns.map((col) => (
           <li
             key={col.label}
-            className="flex-1 min-w-0 font-grotesk text-[14px] text-text-primary text-center"
+            className="flex-1 min-w-0 font-grotesk text-body text-text-primary text-center"
           >
             {col.label}
           </li>

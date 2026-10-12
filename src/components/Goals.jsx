@@ -3,7 +3,13 @@ import useStaggerReveal from '../hooks/useStaggerReveal';
 
 // Same five colours, in the same order (outer ring to inner ring), as the radial charts
 // (frustrationSegments in BartCase / monitoringFrustrationSegments in FarsafeCase).
-const GOAL_COLORS = ['#f2c94c', '#6abf69', '#ee8585', '#4d8fd1', '#6d3fc4'];
+const GOAL_COLORS = [
+  'var(--color-data-1)',
+  'var(--color-data-2)',
+  'var(--color-data-3)',
+  'var(--color-data-4)',
+  'var(--color-purple-500)',
+];
 
 const pad = (n) => String(n).padStart(2, '0');
 
@@ -15,7 +21,7 @@ export default function Goals({ headline, items, title = 'Project Goals', as: Wr
 
   return (
     <Wrapper id={id} className="pb-20 flex flex-col gap-10">
-      <p className="font-mono-bold text-[14px] text-text-primary">{title}</p>
+      <p className="font-mono-bold text-body text-text-primary">{title}</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
         <h2 className="font-grotesk font-medium text-text-primary tracking-tight leading-[1.1] text-[clamp(28px,4.2vw,48px)] lg:max-w-[16em]">
@@ -27,12 +33,12 @@ export default function Goals({ headline, items, title = 'Project Goals', as: Wr
             <li key={text} className="flex gap-5 py-4">
               <span
                 aria-hidden="true"
-                className="font-mono-bold font-semibold text-[14px] leading-relaxed shrink-0 tabular-nums"
+                className="font-mono-bold font-semibold text-body leading-relaxed shrink-0 tabular-nums"
                 style={{ color: GOAL_COLORS[i % GOAL_COLORS.length] }}
               >
                 {pad(i + 1)}
               </span>
-              <p className="font-grotesk text-[14px] text-text-primary leading-relaxed">{text}</p>
+              <p className="font-grotesk text-body text-text-primary leading-relaxed">{text}</p>
             </li>
           ))}
         </ol>

@@ -81,7 +81,7 @@ export default function HeroSection() {
             fetchPriority="high"
             className="w-9 h-9 rounded-pill"
           />
-          <span className="font-mono-bold font-bold text-[14px] text-text-primary">
+          <span className="font-mono-bold font-bold text-body text-text-primary">
             Hello, I&rsquo;m <span className="text-text-brand">Anastasiia</span>
           </span>
         </div>
@@ -94,7 +94,7 @@ export default function HeroSection() {
         </h1>
 
         {/* Subheadline */}
-        <p data-hero-item className="font-grotesk text-[16px] sm:text-xl text-text-primary max-w-[280px] sm:max-w-none">
+        <p data-hero-item className="font-grotesk text-lead text-text-primary max-w-[280px] sm:max-w-none">
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 
@@ -105,14 +105,14 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             Download CV
           </a>
           <a
             href="#contact"
             onClick={scrollToContact}
-            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] bg-white border-action-primary text-action-primary hover:bg-surface-brand-tint font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] bg-surface-default border-action-primary text-action-primary hover:bg-surface-brand-tint font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             Contact
           </a>
@@ -120,7 +120,7 @@ export default function HeroSection() {
 
         {/* Location + stack */}
         <div data-hero-item className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
-          <p className="font-grotesk font-medium text-[14px] text-text-primary whitespace-nowrap">
+          <p className="font-grotesk font-medium text-body text-text-primary whitespace-nowrap">
             🇪🇸 Granada, Spain
           </p>
           <span aria-hidden="true" className="hidden sm:block w-1 h-1 rounded-pill bg-text-secondary" />
@@ -131,7 +131,7 @@ export default function HeroSection() {
                 id={id}
                 data-stack-icon
                 iconClassName="w-[25px] h-[25px]"
-                className="bg-[#fbfbfb] w-[50px] h-[50px] -mr-4 last:mr-0 shadow-[1px_1px_5px_rgba(124,124,124,0.25)] hover:z-10"
+                className="bg-surface-default w-[50px] h-[50px] -mr-4 last:mr-0 shadow-icon hover:z-10"
               />
             ))}
           </div>

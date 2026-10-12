@@ -50,7 +50,7 @@ const dotted = (items) =>
 function InfoColumn({ label, highlight, children }) {
   return (
     <div className={`flex flex-col gap-2 pt-4 border-t ${highlight ? 'border-action-primary' : 'border-border-subtle'}`}>
-      <p className="font-mono-bold text-[11px] uppercase tracking-wider text-text-secondary">{label}</p>
+      <p className="font-mono-bold text-caption-xs uppercase tracking-wider text-text-secondary">{label}</p>
       {children}
     </div>
   );
@@ -63,8 +63,8 @@ export default function SelectedWork() {
         {/* Section heading */}
         <div className="mb-8 flex items-end justify-between gap-4">
           <div className="flex flex-col gap-2.5">
-            <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">Selected work</p>
-            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Selected work</p>
+            <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
               Featured Project
             </h2>
           </div>
@@ -80,7 +80,7 @@ export default function SelectedWork() {
         <article className="flex flex-col gap-6">
           <Link
             to={`/project/${featured.id}`}
-            className="block group bg-[#d9d9d9] overflow-hidden rounded-card"
+            className="block group bg-surface-placeholder overflow-hidden rounded-card"
           >
             <img
               src={caseFarsafe1440}
@@ -96,7 +96,7 @@ export default function SelectedWork() {
           </Link>
 
           <div className="flex flex-col gap-3">
-            <p className="font-mono-bold text-[12px] text-text-secondary">{dotted(featured.tags)}</p>
+            <p className="font-mono-bold text-caption text-text-secondary">{dotted(featured.tags)}</p>
             <h3 className="font-grotesk font-medium text-[22px] sm:text-[26px] tracking-tight leading-tight">
               <Link
                 to={`/project/${featured.id}`}
@@ -131,7 +131,7 @@ export default function SelectedWork() {
           <div>
             <Link
               to={`/project/${featured.id}`}
-              className="inline-flex bg-action-primary hover:bg-action-primary-hover text-white font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
+              className="inline-flex bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
             >
               Read case study
             </Link>
@@ -146,14 +146,14 @@ export default function SelectedWork() {
                 to={`/project/${item.id}`}
                 className="group -mx-3 px-3 py-6 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[48px_minmax(0,1fr)_auto_28px] items-center gap-x-4 hover:bg-surface-subtle focus-visible:bg-surface-subtle transition-colors duration-300 ease-out rounded-sm"
               >
-                <span className="font-mono-bold text-[12px] text-text-secondary group-hover:text-text-brand transition-colors duration-300">
+                <span className="font-mono-bold text-caption text-text-secondary group-hover:text-text-brand transition-colors duration-300">
                   {String(index + 2).padStart(2, '0')}
                 </span>
                 <span className="flex flex-col gap-1.5 min-w-0">
                   <span className="font-grotesk font-medium text-[17px] sm:text-[22px] leading-tight text-text-primary group-hover:text-text-brand transition-colors">
                     {item.title}
                   </span>
-                  <span className="font-mono-bold text-[12px] uppercase tracking-wide text-text-secondary">
+                  <span className="font-mono-bold text-caption uppercase tracking-wide text-text-secondary">
                     {dotted(item.tags)}
                   </span>
                 </span>
