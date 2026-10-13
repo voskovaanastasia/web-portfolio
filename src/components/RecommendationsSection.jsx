@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import vitaliiAvatar from '../assets/rec-vitalii.webp';
 import ostapAvatar from '../assets/rec-ostap.webp';
 
@@ -18,7 +19,15 @@ const recommendations = [
   },
 ];
 
+const arrowClass =
+  'w-11 h-11 flex items-center justify-center rounded-pill border border-border-subtle text-text-primary hover:bg-surface-subtle transition-colors';
+
 export default function RecommendationsSection() {
+  const [index, setIndex] = useState(0);
+  const count = recommendations.length;
+  const prev = () => setIndex((i) => (i - 1 + count) % count);
+  const next = () => setIndex((i) => (i + 1) % count);
+
   return (
     <section id="recommendations" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
@@ -29,9 +38,17 @@ export default function RecommendationsSection() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-10">
-          {recommendations.map((rec) => (
-            <figure key={rec.name} className="flex flex-col sm:flex-row gap-5 sm:gap-12">
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
+          {recommendations.map((rec, i) => (
+            <figure
+              key={rec.name}
+              aria-hidden={i !== index}
+              className="w-full shrink-0 flex flex-col sm:flex-row gap-5 sm:gap-12"
+            >
               <svg
                 viewBox="0 0 48 36"
                 aria-hidden="true"
@@ -62,7 +79,36 @@ export default function RecommendationsSection() {
               </div>
             </figure>
           ))}
+          </div>
         </div>
+
+        {count > 1 && (
+          <div className="mt-10 flex items-center gap-6">
+            <div className="flex gap-3">
+              <button type="button" onClick={prev} className={arrowClass} aria-label="Previous recommendation">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button type="button" onClick={next} className={arrowClass} aria-label="Next recommendation">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex gap-2">
+              {recommendations.map((rec, i) => (
+                <button
+                  type="button"
+                  key={rec.name}
+                  onClick={() => setIndex(i)}
+                  aria-label={`Show recommendation from ${rec.name}`}
+                  className={`h-2.5 rounded-pill transition-all ${i === index ? 'bg-action-primary w-8' : 'bg-grey-300 w-2.5'}`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
