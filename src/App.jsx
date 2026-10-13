@@ -5,11 +5,11 @@ import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
 import About from './pages/About';
-import Projects from './pages/Projects';
 import useDocumentMeta from './hooks/useDocumentMeta';
 import { BUILT_WITH_CLAUDE_PUBLISHED } from './config/publishedCases';
 import './styles/globals.css';
 
+const Projects = lazy(() => import('./pages/Projects'));
 const FarsafeCase = lazy(() => import('./pages/FarsafeCase'));
 const BartCase = lazy(() => import('./pages/BartCase'));
 const CryptoWalletCase = lazy(() => import('./pages/CryptoWalletCase'));
@@ -29,8 +29,8 @@ function NotFound() {
   useDocumentMeta({ title: 'Page not found — Anastasiia Voskova', robots: 'noindex, nofollow' });
   return (
     <main id="main-content" className="flex flex-col items-center gap-4 px-6 py-32 text-center">
-      <h1 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">Page not found</h1>
-      <Link to="/" className="font-grotesk text-[14px] text-text-brand underline">Back to home</Link>
+      <h1 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">Page not found</h1>
+      <Link to="/" className="font-grotesk text-body text-text-brand underline">Back to home</Link>
     </main>
   );
 }

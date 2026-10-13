@@ -14,7 +14,7 @@ const homeSections = [
 ];
 
 // Fixed bottom-left section navigator on wide screens, burger dropdown otherwise. Hidden while the first section is active.
-export default function SectionMenu({ sections = homeSections }) {
+export default function SectionMenu({ sections = homeSections, refreshKey = 0 }) {
   const [intersectingIds, setIntersectingIds] = useState(() => new Set());
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef(null);
@@ -40,7 +40,7 @@ export default function SectionMenu({ sections = homeSections }) {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, [sections]);
+  }, [sections, refreshKey]);
 
   // Topmost section (in page order) that's currently intersecting wins, so the
   // dropdown reliably reads "hero" at scroll position 0 instead of whichever
@@ -119,7 +119,7 @@ export default function SectionMenu({ sections = homeSections }) {
               <span
                 aria-hidden="true"
                 style={{ width: 'var(--menu-line)' }}
-                className={`absolute left-0 top-[0.6em] h-px bg-black origin-left transition-transform duration-300 ${
+                className={`absolute left-0 top-[0.6em] h-px bg-ink origin-left transition-transform duration-300 ${
                   active ? 'scale-x-100' : 'scale-x-0'
                 }`}
               />
@@ -148,7 +148,7 @@ export default function SectionMenu({ sections = homeSections }) {
             role="menu"
             aria-label="Page sections"
             onKeyDown={handleMenuKeyDown}
-            className="bg-[rgba(240,240,240,0.6)] backdrop-blur-md border border-white/30 rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
+            className="bg-glass-panel backdrop-blur-md border border-glass-border rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
           >
             {sections.map(({ id, label }, index) => {
               const active = id === activeId;
@@ -183,14 +183,14 @@ export default function SectionMenu({ sections = homeSections }) {
           aria-haspopup="menu"
           aria-expanded={isOpen}
           aria-controls="section-menu"
-          className="bg-[rgba(240,240,240,0.2)] backdrop-blur-md border border-white/30 rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
+          className="bg-glass-light backdrop-blur-md border border-glass-border rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
         >
           <span className="font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap text-text-primary">
             {activeLabel}
           </span>
           <span className="bg-blue-500 rounded-pill w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0">
             <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-inverse"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

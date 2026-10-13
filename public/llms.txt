@@ -1,0 +1,21 @@
+# Anastasiia Voskova — UX/UI & Product Designer
+
+> Portfolio of Anastasiia Voskova, a product designer with a Computer Science background based in Granada, Spain. Six years across SaaS, fintech, and healthcare products. She makes complex, data-dense products feel simple and grounds every decision in research.
+
+## Main pages
+
+- [Home](https://www.anastasiiavoskova.com/): Selected work, how she works, toolkit, results, experience, and contact.
+- [About](https://www.anastasiiavoskova.com/about): Background, experience, and education.
+- [Portfolio](https://www.anastasiiavoskova.com/projects): All case studies.
+
+## Case studies
+
+- [Farsafe](https://www.anastasiiavoskova.com/project/farsafe): Monitoring tools hide pricing and overwhelm users with complex setup flows.
+- [bART Solutions](https://www.anastasiiavoskova.com/project/bart): A brand-strong corporate site that people could not navigate, redesigned for clear structure.
+- [CryptoWallet](https://www.anastasiiavoskova.com/project/cryptowallet): Crypto apps overwhelm first-time users and bury the actions that matter.
+- [Online Doctor](https://www.anastasiiavoskova.com/project/online-doctor): Getting medical help online still feels slow, confusing, and impersonal.
+- [Enterprise CRM](https://www.anastasiiavoskova.com/project/crm-platform): Client data, sales operations, inventory, and marketing in one platform at large-company scale.
+- [Fitness App](https://www.anastasiiavoskova.com/project/fitness-app): Tracking and training live in separate apps, so daily health data never turns into the right workout.
+- [Online Payments](https://www.anastasiiavoskova.com/project/online-payments): Money moves, but the app goes quiet; people cannot tell whether a payment went through.
+- [SHOOT](https://www.anastasiiavoskova.com/project/shoot): Talent, studios, and gear on separate platforms with unclear pricing and availability.
+- [Tax Compliance Platform](https://www.anastasiiavoskova.com/project/tax-compliance): A US tax filing that non-resident owners can read, on a deadline where mistakes are costly.

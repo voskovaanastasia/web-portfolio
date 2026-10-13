@@ -75,8 +75,8 @@ export default function EducationSection() {
     <section id="education" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
-          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">My Learning</p>
-          <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight">
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">My Learning</p>
+          <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
             Education
           </h2>
         </div>
@@ -89,7 +89,7 @@ export default function EducationSection() {
                 key={edu.dateRange}
                 className="border-t border-border-subtle py-10 grid gap-5 md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] md:gap-10"
               >
-                <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary md:pt-3">
+                <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary md:pt-3">
                   {edu.dateRange}
                 </p>
 
@@ -126,7 +126,7 @@ export default function EducationSection() {
                     {edu.description}
                   </p>
 
-                  <ul className="flex flex-wrap gap-y-1 font-mono-bold text-[12px] text-text-secondary">
+                  <ul className="flex flex-wrap gap-y-1 font-mono-bold text-caption text-text-secondary">
                     {edu.skills.map((skill, i) => (
                       <li key={skill}>
                         {skill}

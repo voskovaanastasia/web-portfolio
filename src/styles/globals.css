@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary: #4274C1;
-  --color-dark: #1E3A5F;
-  --color-light-bg: #E8EEF7;
-  --color-white: #FFFFFF;
-}
-
 /* Design tokens from Figma (Primitives, Semantic, radius, Typography, Spacing) */
 :root {
   /* Primitives */
@@ -41,6 +34,23 @@
   --color-accent-handwritten: var(--color-purple-500);
   --color-focus-ring: var(--color-blue-600);
   --color-focus-ring-inverse: var(--color-white-primitive);
+  --color-surface-placeholder: #D9D9D9;
+
+  /* Effects: header / menu glass, dot grids, hairline ring, icon-tile shadow */
+  --glass-light: rgba(240, 240, 240, 0.2);
+  --glass-dark: rgba(17, 17, 17, 0.45);
+  --glass-panel: rgba(240, 240, 240, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --color-dots: rgba(0, 0, 0, 0.15);
+  --color-dots-hover: rgba(40, 143, 214, 0.25);
+  --color-track: rgba(0, 0, 0, 0.08);
+  --shadow-icon: 1px 1px 5px rgba(124, 124, 124, 0.25);
+
+  /* Data visualisation */
+  --color-data-1: #F2C94C;
+  --color-data-2: #6ABF69;
+  --color-data-3: #EE8585;
+  --color-data-4: #4D8FD1;
 
   /* Radius */
   --radius-card: 24px;
@@ -68,16 +78,25 @@
   --letter-spacing-wide: 0.05em;
 
   /* Font size (mobile) */
+  --font-size-caption-xs: 11px;
   --font-size-caption: 12px;
   --font-size-body: 14px;
+  --font-size-body-md: 15px;
   --font-size-body-lg: 16px;
   --font-size-title-sm: 16px;
+  --font-size-title-md: 20px;
   --font-size-lead: 16px;
   --font-size-subheading: 16px;
   --font-size-heading: 26px;
   --font-size-title: 26px;
   --font-size-stat: 30px;
   --font-size-stat-lg: 40px;
+
+  /* Line height paired with the display sizes (mobile: the page default 1.5) */
+  --line-height-heading: 1.5;
+  --line-height-title: 1.5;
+  --line-height-lead: 1.5;
+  --line-height-stat: 1.5;
 
   /* Space */
   --space-gap-sm: 8px;
@@ -92,16 +111,24 @@
 
 @media (min-width: 640px) {
   :root {
+    --font-size-caption-xs: 11px;
     --font-size-caption: 12px;
     --font-size-body: 14px;
+    --font-size-body-md: 15px;
     --font-size-body-lg: 16px;
     --font-size-title-sm: 18px;
+    --font-size-title-md: 20px;
     --font-size-lead: 20px;
     --font-size-subheading: 30px;
     --font-size-heading: 36px;
     --font-size-title: 48px;
     --font-size-stat: 48px;
     --font-size-stat-lg: 60px;
+
+    --line-height-heading: 2.5rem;
+    --line-height-title: 1;
+    --line-height-lead: 1.75rem;
+    --line-height-stat: 1;
 
     --space-section: 96px;
     --space-card: 20px;
@@ -121,7 +148,7 @@
 
   body {
     @apply bg-white text-gray-900 transition-colors;
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(circle, var(--color-dots) 1.5px, transparent 1.5px);
     background-size: 24px 24px;
     background-position: 0 0;
   }
@@ -137,7 +164,7 @@
 
 /* Header colour follows what is behind it. useHeaderTheme sets --header-t-left / --header-t-right on the
    header (0 = dark text, 1 = white text); the glass tint follows the same value per side. The tint values
-   here must match TINT_LIGHT / TINT_DARK in src/hooks/useHeaderTheme.js. */
+   are the --glass-light / --glass-dark tokens, which useHeaderTheme.js reads from here. */
 .site-header {
   --header-t-left: 0;
   --header-t-right: 0;
@@ -148,21 +175,21 @@
 
 @supports (color: color-mix(in srgb, white 50%, black)) {
   .site-header {
-    --header-ink-left: color-mix(in srgb, #fff calc(var(--header-t-left) * 100%), var(--header-ink-dark));
-    --header-ink-right: color-mix(in srgb, #fff calc(var(--header-t-right) * 100%), var(--header-ink-dark));
-    --header-glass-left: color-mix(in srgb, rgba(17, 17, 17, 0.45) calc(var(--header-t-left) * 100%), rgba(240, 240, 240, 0.2));
-    --header-glass-right: color-mix(in srgb, rgba(17, 17, 17, 0.45) calc(var(--header-t-right) * 100%), rgba(240, 240, 240, 0.2));
+    --header-ink-left: color-mix(in srgb, var(--color-white-primitive) calc(var(--header-t-left) * 100%), var(--header-ink-dark));
+    --header-ink-right: color-mix(in srgb, var(--color-white-primitive) calc(var(--header-t-right) * 100%), var(--header-ink-dark));
+    --header-glass-left: color-mix(in srgb, var(--glass-dark) calc(var(--header-t-left) * 100%), var(--glass-light));
+    --header-glass-right: color-mix(in srgb, var(--glass-dark) calc(var(--header-t-right) * 100%), var(--glass-light));
   }
 }
 
 .header-glass {
-  background-color: rgba(240, 240, 240, 0.2);
+  background-color: var(--glass-light);
   background-image: linear-gradient(
     90deg,
-    var(--header-glass-left, rgba(240, 240, 240, 0.2)) 0%,
-    var(--header-glass-left, rgba(240, 240, 240, 0.2)) 35%,
-    var(--header-glass-right, rgba(240, 240, 240, 0.2)) 65%,
-    var(--header-glass-right, rgba(240, 240, 240, 0.2)) 100%
+    var(--header-glass-left, var(--glass-light)) 0%,
+    var(--header-glass-left, var(--glass-light)) 35%,
+    var(--header-glass-right, var(--glass-light)) 65%,
+    var(--header-glass-right, var(--glass-light)) 100%
   );
 }
 
@@ -178,4 +205,38 @@
   .header-ink-right {
     transition: none;
   }
+}
+
+/* Hero entrance (was a GSAP timeline): content rises in, then the stack icons pop in one by one. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+@keyframes hero-slide {
+  from { transform: translateY(24px); }
+}
+@keyframes hero-pop {
+  from { opacity: 0; transform: scale(0) translateY(20px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #hero [data-hero-item] {
+    animation: hero-rise 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+  }
+  /* The headline is the LCP element: it moves but never starts transparent. */
+  #hero h1[data-hero-item] { animation-name: hero-slide; }
+  #hero [data-hero-item]:nth-child(2) { animation-delay: 0.1s; }
+  #hero [data-hero-item]:nth-child(3) { animation-delay: 0.2s; }
+  #hero [data-hero-item]:nth-child(4) { animation-delay: 0.3s; }
+  #hero [data-hero-item]:nth-child(5) { animation-delay: 0.4s; }
+  #hero [data-stack-icon] {
+    animation: hero-pop 0.6s cubic-bezier(0.34, 1.7, 0.64, 1) backwards;
+  }
+  #hero [data-stack-icon]:nth-child(1) { animation-delay: 0.6s; }
+  #hero [data-stack-icon]:nth-child(2) { animation-delay: 0.66s; }
+  #hero [data-stack-icon]:nth-child(3) { animation-delay: 0.72s; }
+  #hero [data-stack-icon]:nth-child(4) { animation-delay: 0.78s; }
+  #hero [data-stack-icon]:nth-child(5) { animation-delay: 0.84s; }
+  #hero [data-stack-icon]:nth-child(6) { animation-delay: 0.9s; }
+  #hero [data-stack-icon]:nth-child(7) { animation-delay: 0.96s; }
+  #hero [data-stack-icon]:nth-child(8) { animation-delay: 1.02s; }
+  #hero [data-stack-icon]:nth-child(9) { animation-delay: 1.08s; }
 }

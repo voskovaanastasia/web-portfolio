@@ -11,7 +11,7 @@ export default function ToolIcon({ id, className = '', iconClassName = 'w-5 h-5'
     <div className={`group relative flex items-center justify-center rounded-pill cursor-pointer ${className}`} {...rest}>
       <span
         role="tooltip"
-        className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black px-2.5 py-1 font-grotesk text-xs font-medium text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+        className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2.5 py-1 font-grotesk text-xs font-medium text-text-inverse opacity-0 transition-opacity duration-150 group-hover:opacity-100"
       >
         {tool.name}
       </span>
