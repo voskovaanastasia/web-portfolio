@@ -1,4 +1,5 @@
 import vitaliiAvatar from '../assets/rec-vitalii.webp';
+import ostapAvatar from '../assets/rec-ostap.webp';
 
 const recommendations = [
   {
@@ -7,6 +8,13 @@ const recommendations = [
     name: 'Vitalii Chetak',
     role: 'CMO & CBDO',
     avatar: vitaliiAvatar,
+  },
+  {
+    quote:
+      "I worked with Anastasiia for approximately a year. She is a professional UX/UI designer, and working with her was a genuinely great experience. Anastasiia works well with feedback, provides well-reasoned explanations for design decisions, and interacts effectively with developers, product managers, and other team members. At the same time, she consistently focuses not only on the visual aspects but also on user needs and the product's business goals. A great team player, proactive problem-solver, and someone you can always count on.",
+    name: 'Ostap Kinakh',
+    role: 'QA Engineer',
+    avatar: ostapAvatar,
   },
 ];
 
