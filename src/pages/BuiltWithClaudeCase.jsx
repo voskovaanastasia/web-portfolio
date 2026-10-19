@@ -650,13 +650,42 @@ function Mistakes() {
 
 // ---- 11 · Performance and results -----------------------------------------
 
-const scoreTiles = [
-  { value: '97', label: 'Performance' },
-  { value: '100', label: 'Accessibility' },
-  { value: '100', label: 'Best Practices' },
-  { value: '100', label: 'SEO' },
-  { value: '3/3', label: 'Agentic browsing' },
+const scoreGauges = [
+  { value: '97', pct: 97, label: 'Performance' },
+  { value: '100', pct: 100, label: 'Accessibility' },
+  { value: '100', pct: 100, label: 'Best Practices' },
+  { value: '100', pct: 100, label: 'SEO' },
+  { value: '3/3', pct: 100, label: 'Agentic browsing' },
 ];
+
+// Circular score: the ring is drawn from the percentage (circumference of r=40 is about 251).
+function ScoreGauge({ value, pct, label }) {
+  const circumference = 2 * Math.PI * 40;
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="relative h-24 w-24">
+        <svg viewBox="0 0 100 100" aria-hidden="true" className="h-full w-full -rotate-90">
+          <circle cx="50" cy="50" r="40" fill="none" strokeWidth="9" className="stroke-track" />
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            strokeWidth="9"
+            strokeLinecap="round"
+            strokeDasharray={`${(pct / 100) * circumference} ${circumference}`}
+            className={pct < 100 ? 'stroke-blue-500' : 'stroke-text-brand'}
+          />
+        </svg>
+        <p className="absolute inset-0 flex items-center justify-center font-grotesk text-title-md font-bold text-text-brand">
+          {value}
+        </p>
+      </div>
+      <p className={`${cardText} text-center`}>{label}</p>
+    </div>
+  );
+}
+
 
 const pageSpeedMetrics = [
   {
@@ -756,30 +785,35 @@ function Results() {
       <h2 className={h2Class}>From 68 to 97 on mobile, and who arrived</h2>
 
       <h3 className={h3Class}>Performance</h3>
-      <p className={bodyText}>
-        The first score was 68 on mobile, with a largest contentful paint of 5.2 s. Removing the forced chunk preload,
-        self-hosting the fonts and compressing the images took it to 95 and 2.5 s (PageSpeed Insights, 4 October).
-      </p>
-      <p className={bodyText}>
-        A second pass split the below-the-fold sections and the animation library out of the entry bundle and loaded
-        them when the browser is idle. In a controlled local comparison, five runs each, first paint came sooner (2.41 s
-        → 2.07 s), blocking time fell (374 → 290 ms) and the main script shrank from 495 to 324 KB. Largest contentful
-        paint did not improve, and I did not claim otherwise.
-      </p>
-      <p className={bodyText}>
-        On 19 October PageSpeed Insights gave <strong>97</strong> for performance, <strong>100</strong> for
-        Accessibility, Best Practices and SEO, and 3/3 on Agentic browsing.
-      </p>
+      <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2">
+        <p className={cardText}>
+          The first score was 68 on mobile, with a largest contentful paint of 5.2 s. Removing the forced chunk preload,
+          self-hosting the fonts and compressing the images took it to 95 and 2.5 s (PageSpeed Insights, 4 October).
+        </p>
+        <p className={cardText}>
+          A second pass split the below-the-fold sections and the animation library out of the entry bundle and loaded
+          them when the browser is idle. In a controlled local comparison, five runs each, first paint came sooner (2.41
+          s → 2.07 s), blocking time fell (374 → 290 ms) and the main script shrank from 495 to 324 KB. Largest
+          contentful paint did not improve, and I did not claim otherwise.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-        {scoreTiles.map((tile) => (
-          <div key={tile.label} className="last:col-span-2 md:last:col-span-1 flex">
-            <div className={`${cardClass} bg-surface-subtle w-full`}>
-              <p className="font-grotesk font-bold text-stat text-text-brand leading-none">{tile.value}</p>
-              <p className={cardText}>{tile.label}</p>
+      <div className="mt-2 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
+        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
+          <p className="font-grotesk text-body font-bold text-text-primary">PageSpeed Insights · mobile</p>
+          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">19 October</p>
+        </div>
+        <div className="grid grid-cols-2 gap-x-5 gap-y-8 px-5 py-8 sm:grid-cols-3 md:grid-cols-5 md:px-8">
+          {scoreGauges.map((gauge) => (
+            <div key={gauge.label} className="flex justify-center last:col-span-2 sm:last:col-span-1">
+              <ScoreGauge {...gauge} />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <p className={`${cardText} border-t border-border-subtle px-5 py-4 text-text-secondary md:px-8 [&>strong]:font-bold [&>strong]:text-text-primary`}>
+          On 19 October PageSpeed Insights gave <strong>97</strong> for performance, <strong>100</strong> for
+          Accessibility, Best Practices and SEO, and 3/3 on Agentic browsing.
+        </p>
       </div>
 
       <MetricList metrics={pageSpeedMetrics} markerName="Before" />
