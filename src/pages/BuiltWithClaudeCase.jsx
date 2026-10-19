@@ -47,7 +47,7 @@ const project = {
   outcome: {
     value: '68 → 97',
     label:
-      'mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100, Agentic browsing 3/3. (PageSpeed Insights, mobile, 19 October 2026.)',
+      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100, Agentic browsing 3/3. (PageSpeed Insights, mobile, 19 October 2026.)',
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
