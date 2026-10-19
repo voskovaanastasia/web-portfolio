@@ -751,9 +751,9 @@ const pageSpeedMetrics = [
     max: 6,
     bars: [
       { label: '5.2 s', value: 5.2, before: true },
-      { label: '2.5 s', value: 2.5 },
+      { label: '1.8 s', value: 1.8 },
     ],
-    text: 'PageSpeed Insights, 4 October.',
+    text: 'PageSpeed Insights, 19 October.',
   },
 ];
 
