@@ -109,15 +109,6 @@ const cardText = 'font-grotesk text-body text-text-primary leading-relaxed';
 const calloutTitle = 'font-grotesk font-bold text-body text-text-inverse';
 const calloutText = 'font-grotesk text-body text-text-inverse leading-relaxed';
 
-function StatTile({ value, label }) {
-  return (
-    <div className={`${cardClass} bg-surface-subtle`}>
-      <p className="font-grotesk font-bold text-stat text-text-brand leading-none">{value}</p>
-      <p className={cardText}>{label}</p>
-    </div>
-  );
-}
-
 // ---- 4 · Project goals ----------------------------------------------------
 
 const projectGoals = {
@@ -380,18 +371,6 @@ const loopSteps = [
   },
 ];
 
-const loopRules = [
-  { lead: 'No invented content.', text: 'Prompts for new cases asked for marked TODO fields instead of made-up metrics.' },
-  {
-    lead: 'Report, do not repair.',
-    text: 'Audit prompts ended with “report every mismatch”, so the decision stayed mine.',
-  },
-  {
-    lead: 'Before launch, Claude Code pushed to the live branch directly.',
-    text: 'After I published the site, every change went through a test branch first.',
-  },
-];
-
 function StepIcon({ active, repeat }) {
   if (repeat) {
     return (
@@ -455,22 +434,6 @@ function Loop() {
           </div>
         ))}
       </div>
-
-      <h3 className={`${h3Class} mt-4`}>Rules I set</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {loopRules.map((rule) => (
-          <div key={rule.lead} className={`${cardClass} bg-surface-subtle`}>
-            <p className={cardTitle}>{rule.lead}</p>
-            <p className={cardText}>{rule.text}</p>
-          </div>
-        ))}
-      </div>
-
-      <ImagePlaceholder
-        filename="case-built-with-claude-loop-figma-claude.webp"
-        alt="Figma component library next to a Claude Code session"
-        className="min-h-[320px]"
-      />
     </>
   );
 }
@@ -745,6 +708,48 @@ const localMetrics = [
   },
 ];
 
+const audienceStats = [
+  { label: 'Visitors', value: '3,281' },
+  { label: 'Page views', value: '5,940' },
+  { label: 'From LinkedIn', value: '~2,700' },
+];
+
+// value is the label shown; count is the number the bar is drawn from (3.1K is 3,100).
+const pageVisits = [
+  { name: 'Home', value: '3.1K', count: 3100 },
+  { name: 'Portfolio', value: '637', count: 637 },
+  { name: 'About', value: '294', count: 294 },
+];
+const caseVisits = [
+  { name: 'Farsafe · featured', value: '544', count: 544, strong: true },
+  { name: 'Next most visited', value: '68', count: 68 },
+  { name: 'Then', value: '52', count: 52 },
+  { name: 'Then', value: '47', count: 47 },
+];
+
+function BarPanel({ label, rows }) {
+  const max = Math.max(...rows.map((row) => row.count));
+  return (
+    <div className="flex flex-col gap-4 px-5 py-5 md:px-8">
+      <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">{label}</p>
+      {rows.map((row, i) => (
+        <div key={`${row.name}-${i}`} className="flex flex-col gap-2">
+          <div className="flex items-baseline justify-between gap-4">
+            <p className={cardText}>{row.name}</p>
+            <p className="font-grotesk text-body font-bold text-text-primary">{row.value}</p>
+          </div>
+          <div className="h-1.5 rounded-full bg-track">
+            <div
+              className={`h-full rounded-full ${row.strong ? 'bg-text-brand' : 'bg-blue-500'}`}
+              style={{ width: `${(row.count / max) * 100}%` }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Results() {
   return (
     <>
@@ -790,21 +795,42 @@ function Results() {
       <h3 className={`${h3Class} mt-4`}>Who arrived</h3>
       <p className={bodyText}>
         Vercel Analytics, as of 19 October: <strong>3,281 visitors</strong> and <strong>5,940 page views</strong>. About
-        2,700 visitors came from LinkedIn, where I announced the site, which is over 80% of the total. The home page had
-        3.1K visitors, Portfolio 637 and About 294.
-      </p>
-      <p className={bodyText}>
-        The featured Farsafe case drew 544 visitors. The next most visited cases had 68, 52 and 47. Interview
-        invitations followed, and their number has kept growing.
+        2,700 visitors came from LinkedIn, where I announced the site, which is over 80% of the total.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <StatTile value="3,281" label="visitors" />
-        <StatTile value="5,940" label="page views" />
-        <StatTile
-          value="About 2,700"
-          label="visitors came from LinkedIn, where I announced the site, which is over 80% of the total."
-        />
+      <div className="overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
+        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
+          <p className="font-grotesk text-body font-bold text-text-primary">anastasiiavoskova.com · Analytics</p>
+          <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">launch → 19 Oct</p>
+        </div>
+
+        <div className="grid grid-cols-1 divide-y divide-border-subtle border-b border-border-subtle sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {audienceStats.map((stat) => (
+            <div key={stat.label} className="flex flex-col gap-2 px-5 py-5 md:px-8">
+              <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">{stat.label}</p>
+              <p className="font-grotesk text-heading font-bold leading-none text-text-brand">{stat.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 divide-y divide-border-subtle md:grid-cols-2 md:divide-x md:divide-y-0">
+          <BarPanel label="Pages" rows={pageVisits} />
+          <BarPanel label="Case studies" rows={caseVisits} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-5">
+        <div className="flex items-center gap-4 border-t border-border-subtle pt-5 md:col-span-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6 shrink-0 text-text-brand">
+            <path d="m3 17 6-6 4 4 8-8M15 7h6v6" />
+          </svg>
+          <p className="font-grotesk text-body-lg font-medium text-text-primary">
+            Interview invitations followed, and their number has kept growing.
+          </p>
+        </div>
+        <p className={`${cardText} border-t border-border-subtle pt-5 text-text-secondary md:col-span-2`}>
+          The home page had 3.1K visitors, Portfolio 637 and About 294.
+        </p>
       </div>
 
       <ImagePlaceholder
