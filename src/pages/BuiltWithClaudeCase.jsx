@@ -290,19 +290,6 @@ function Research() {
           CV-like home, and balanced it with the featured case and clear navigation.
         </p>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <ImagePlaceholder
-          filename="case-built-with-claude-research-checklist.webp"
-          alt="Checklist charts: resume link and roles or skills on the home page, 4 October 2026"
-          className="min-h-[320px]"
-        />
-        <ImagePlaceholder
-          filename="case-built-with-claude-research-built-on.webp"
-          alt="Chart: what the 21 portfolios were built on"
-          className="min-h-[320px]"
-        />
-      </div>
     </>
   );
 }
