@@ -286,53 +286,101 @@ function Research() {
 
 // ---- 7 · From version 1 to version 2 --------------------------------------
 
+// The two image columns: one big home-page shot and two block shots per version.
+const versionImages = [
+  {
+    key: 'v1',
+    label: 'Version 1',
+    labelClass: 'text-text-secondary',
+    home: { file: 'case-built-with-claude-v1-home.webp', alt: 'Version 1, full home page' },
+    blocks: [
+      { file: 'case-built-with-claude-v1-toolkit.webp', alt: 'Version 1, toolkit block' },
+      { file: 'case-built-with-claude-v1-ai-designer.webp', alt: 'Version 1, AI + Designer block' },
+    ],
+  },
+  {
+    key: 'v2',
+    label: 'Version 2',
+    labelClass: 'text-text-brand',
+    home: { file: 'case-built-with-claude-v2-home.webp', alt: 'Version 2, full home page' },
+    blocks: [
+      { file: 'case-built-with-claude-v2-toolkit.webp', alt: 'Version 2, toolkit block' },
+      { file: 'case-built-with-claude-v2-ai-designer.webp', alt: 'Version 2, AI + Designer block' },
+    ],
+  },
+];
+
+const changelogRow = 'flex flex-col gap-2 border-b border-border-subtle px-5 py-5 md:flex-row md:gap-8 md:px-8';
+const changelogKey = 'font-mono text-body md:w-32 md:shrink-0';
+
 function VersionTwo() {
   return (
     <>
       <h2 className={h2Class}>From version 1 to version 2</h2>
-      <p className={bodyText}>
-        The first home page opened with one featured project, filled purple cards on how I work, a testimonial, my full
-        toolkit and a long Experience section. It worked, but it read more like a CV than a portfolio, and the work was
-        hard to find. People who looked at it said the same.
-      </p>
-      <p className={bodyText}>
-        For version 2 I showed more cases straight away, dropped the filled cards, reordered the home page blocks and
-        refreshed the UI. I asked Claude Design to review the first version. It found front-end bugs, including
-        typography problems I fixed, and proposed 31 changes. I treated them as options and implemented 8, testing each
-        against one question: does it help a reviewer reach the work faster? I also changed the font set so the page
-        loads faster.
-      </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-2">
-        <ImagePlaceholder
-          filename="case-built-with-claude-v1-home.webp"
-          alt="Version 1, full home page"
-          className="lg:col-span-2 min-h-[320px] lg:min-h-full"
-        />
-        <div className="flex flex-col gap-5">
-          <ImagePlaceholder
-            filename="case-built-with-claude-v1-toolkit.webp"
-            alt="Version 1, toolkit block"
-            className="min-h-[200px] flex-1"
-          />
-          <ImagePlaceholder
-            filename="case-built-with-claude-v1-ai-designer.webp"
-            alt="Version 1, AI + Designer block"
-            className="min-h-[200px] flex-1"
-          />
+      <div className="mt-4 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
+        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
+          <p className="font-grotesk text-body font-bold text-text-primary">CHANGELOG.md</p>
+          <p className="flex items-center gap-2 font-mono text-caption">
+            <span className="rounded-pill border border-border-subtle bg-surface-default px-3 py-1 text-text-secondary">v1</span>
+            <span className="rounded-pill bg-text-brand px-3 py-1 font-bold text-text-inverse">v2 · current</span>
+          </p>
+        </div>
+
+        <div className={changelogRow}>
+          <p className={`${changelogKey} text-text-secondary`}>v1</p>
+          <p className={`${cardText} flex-1`}>
+            The first home page opened with one featured project, filled purple cards on how I work, a testimonial, my
+            full toolkit and a long Experience section. It worked, but it read more like a CV than a portfolio, and the
+            work was hard to find. People who looked at it said the same.
+          </p>
+        </div>
+        <div className={changelogRow}>
+          <p className={`${changelogKey} text-text-brand`}>v2</p>
+          <p className={`${cardText} flex-1`}>
+            For version 2 I showed more cases straight away, dropped the filled cards, reordered the home page blocks
+            and refreshed the UI. I asked Claude Design to review the first version. It found front-end bugs, including
+            typography problems I fixed, and proposed 31 changes. I treated them as options and implemented 8, testing
+            each against one question: does it help a reviewer reach the work faster? I also changed the font set so
+            the page loads faster.
+          </p>
+        </div>
+        <div className={changelogRow}>
+          <p className={`${changelogKey} text-text-secondary`}>review</p>
+          <p className={`${cardText} flex-1 border-l-2 border-blue-500 pl-4`}>
+            Every change had to pass one question: <em>does it help a reviewer reach the work faster?</em>
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-3 bg-surface-subtle px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
+          <p className="font-mono text-caption text-text-secondary">
+            claude-design: <span className="text-text-primary">31</span> proposed →{' '}
+            <span className="font-bold text-text-brand">8 implemented</span>
+          </p>
+          <div
+            role="img"
+            aria-label="8 of 31 proposed changes implemented"
+            className="flex gap-0.5"
+          >
+            {Array.from({ length: 31 }, (_, i) => (
+              <span key={i} className={`h-4 w-1.5 rounded-sm ${i < 8 ? 'bg-blue-500' : 'bg-track'}`} />
+            ))}
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <ImagePlaceholder
-          filename="case-built-with-claude-v1-v2-first-screen.webp"
-          alt="Before and after, first screen"
-          className="min-h-[320px]"
-        />
-        <ImagePlaceholder
-          filename="case-built-with-claude-v1-v2-cases.webp"
-          alt="Before and after, cases block"
-          className="min-h-[320px]"
-        />
+
+      <div className="mt-2 grid grid-cols-1 gap-x-5 gap-y-8 md:grid-cols-2">
+        {versionImages.map((version) => (
+          <div key={version.key} className="flex flex-col gap-4">
+            <p className={`font-mono text-caption uppercase tracking-wider ${version.labelClass}`}>{version.label}</p>
+            <ImagePlaceholder filename={version.home.file} alt={version.home.alt} className="min-h-[320px]" />
+            <div className="grid grid-cols-2 gap-5">
+              {version.blocks.map((block) => (
+                <ImagePlaceholder key={block.file} filename={block.file} alt={block.alt} className="min-h-[200px]" />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
