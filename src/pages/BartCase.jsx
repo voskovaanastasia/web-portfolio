@@ -730,7 +730,7 @@ export default function BartCase() {
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
@@ -749,7 +749,7 @@ export default function BartCase() {
 
         {/* User research */}
         <section id="research" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">User Research</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Research</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight max-w-3xl leading-snug [&>strong]:font-medium">
             To validate the redesign direction
           </h2>
@@ -771,7 +771,7 @@ export default function BartCase() {
 
         {/* The poll */}
         <section id="poll" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">What Users Told Us</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">What Users Told Us</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
@@ -836,7 +836,7 @@ export default function BartCase() {
 
         {/* User persona */}
         <section id="persona" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">User Persona</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Persona</p>
           <PersonaBlock
             image="persona-james.webp"
             name="James Mitchell"
@@ -886,7 +886,7 @@ export default function BartCase() {
 
         {/* Information architecture */}
         <section id="ia" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Information Architecture</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Information Architecture</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Information Architecture
           </h2>
@@ -909,7 +909,7 @@ export default function BartCase() {
 
         {/* Navigation & menu architecture */}
         <section id="menu" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Navigation &amp; Menu Architecture</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Navigation &amp; Menu Architecture</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div className="flex flex-col gap-5">
               <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
@@ -948,7 +948,7 @@ export default function BartCase() {
         {/* Website pages */}
         {/* Grid system */}
         <section id="grid" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Grid System</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Grid System</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             One responsive grid
           </h2>
@@ -990,19 +990,19 @@ export default function BartCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Colours & Typography</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* Website pages */}
         <section id="pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Website Pages</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Website Pages</p>
           <PagesSlider pages={websitePages} />
         </section>
 
         {/* Post-launch analytics */}
         <section id="analytics" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Post-Launch</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Post-Launch</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Post-Launch Analytics
           </h2>

@@ -400,7 +400,7 @@ export default function OnlineDoctorCase() {
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
@@ -416,13 +416,13 @@ export default function OnlineDoctorCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Colours & Typography</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* App screens */}
         <section id="screens" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">App Screens</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">App Screens</p>
           <ScreensSlider screens={appScreens} />
         </section>
 

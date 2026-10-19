@@ -343,7 +343,7 @@ export function KeyTakeaway({ heading, children, id, className = '' }) {
   return (
     <section id={id} className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 ${className}`}>
       <div className="flex flex-col gap-6">
-        <p className="font-mono-bold text-body text-ink">Key Takeaway</p>
+        <p className={sectionLabel}>Key Takeaway</p>
         <h2 className="font-grotesk font-medium text-heading text-ink tracking-tight">
           {heading}
         </h2>
@@ -859,7 +859,7 @@ export default function CaseLayout({
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-body text-text-primary">PROJECT INTRO</p>
+            <p className={sectionLabel}>PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
               {project.intro.heading}
             </h2>
@@ -876,7 +876,7 @@ export default function CaseLayout({
         {/* Case-specific sections */}
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="pb-20 flex flex-col gap-6">
-            {!section.bare && <p className="font-mono-bold text-body text-text-primary">{section.label}</p>}
+            {!section.bare && <p className={sectionLabel}>{section.label}</p>}
             {section.content}
           </section>
         ))}
@@ -884,7 +884,7 @@ export default function CaseLayout({
         {/* Screens */}
         {screens?.length > 0 && (
           <section id="screens" className="pb-24 flex flex-col gap-6">
-            <p className="font-mono-bold text-body text-text-primary">{screensLabel}</p>
+            <p className={sectionLabel}>{screensLabel}</p>
             <ScreensSlider screens={screens} />
           </section>
         )}

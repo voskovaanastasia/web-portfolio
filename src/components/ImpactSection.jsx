@@ -82,7 +82,7 @@ export default function ImpactSection() {
     <section ref={rootRef} id="impact" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-body text-text-primary">Proven Results</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Proven Results</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug max-w-[590px]">
             Design decisions grounded in research, measured by real outcomes.
           </h2>

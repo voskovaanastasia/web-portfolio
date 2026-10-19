@@ -101,7 +101,7 @@ const project = {
 const bodyText =
   'font-grotesk text-body text-text-primary leading-relaxed max-w-3xl [&>strong]:font-bold [&>strong]:text-text-primary';
 const h2Class = 'font-grotesk font-medium text-heading text-text-primary tracking-tight max-w-3xl';
-const h3Class = 'font-mono-bold text-body text-text-primary';
+const h3Class = 'font-mono-bold text-caption uppercase tracking-wider text-text-secondary';
 const captionClass = 'font-grotesk text-caption text-text-secondary';
 const cardClass = 'rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4';
 const cardTitle = 'font-grotesk font-bold text-body text-text-primary';

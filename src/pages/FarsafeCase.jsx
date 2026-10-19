@@ -924,7 +924,7 @@ export default function FarsafeCase() {
         {/* Project intro */}
         <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <p className="font-mono-bold text-[14px] text-black">PROJECT INTRO</p>
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
               {project.intro.heading}
             </h2>
@@ -937,7 +937,7 @@ export default function FarsafeCase() {
 
         {/* Problem statement */}
         <section id="problem-statement" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[12px] uppercase tracking-wider text-text-secondary">Problem statement</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Problem statement</p>
           <h2 className="font-grotesk font-medium text-[28px] sm:text-4xl lg:text-[44px] text-text-primary tracking-tight max-w-4xl leading-[1.2]">
             Developers and agencies need a monitoring tool they can set up fast and actually trust.
           </h2>
@@ -981,7 +981,7 @@ export default function FarsafeCase() {
         {/* User research */}
         <section id="research" className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-5">
-            <p className="font-mono-bold text-[14px] text-black">User Research</p>
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Research</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight leading-snug">
               The goal was to map what makes existing tools frustrating — and design around those
               gaps from day one.
@@ -1019,7 +1019,7 @@ export default function FarsafeCase() {
 
         {/* The poll */}
         <section className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">The Poll</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="rounded-card p-3 sm:p-5 flex flex-col gap-4 sm:gap-6">
               <p className="font-grotesk font-bold text-[14px] text-black">
@@ -1078,7 +1078,7 @@ export default function FarsafeCase() {
 
         {/* User persona */}
         <section id="persona" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">User Persona</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Persona</p>
           <PersonaBlock
             image="persona-daniel.webp"
             name="Daniel Reyes"
@@ -1126,7 +1126,7 @@ export default function FarsafeCase() {
 
         {/* Information architecture */}
         <section id="ia" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Information Architecture</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Information Architecture</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Website
           </h2>
@@ -1165,7 +1165,7 @@ export default function FarsafeCase() {
 
         {/* Navigation & menu architecture */}
         <section id="menu" className="pb-20 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Navigation &amp; Menu Architecture</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Navigation &amp; Menu Architecture</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div className="flex flex-col gap-5">
               <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
@@ -1200,7 +1200,7 @@ export default function FarsafeCase() {
 
         {/* Grid system */}
         <section id="grid" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Grid System</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Grid System</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             One responsive grid
           </h2>
@@ -1247,7 +1247,7 @@ export default function FarsafeCase() {
 
         {/* Colors & typography */}
         <section id="style" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Visual Language</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Visual Language</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Colours &amp; Typography
           </h2>
@@ -1315,19 +1315,19 @@ export default function FarsafeCase() {
 
         {/* Marketing website pages */}
         <section id="pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Marketing Website</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Marketing Website</p>
           <PagesSlider pages={marketingPages} />
         </section>
 
         {/* Dashboard pages */}
         <section id="app-pages" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Dashboard</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Dashboard</p>
           <PagesSlider pages={dashboardPages} />
         </section>
 
         {/* Post-launch analytics */}
         <section id="analytics" className="pb-24 flex flex-col gap-6">
-          <p className="font-mono-bold text-[14px] text-black">Post-Launch</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Post-Launch</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Post-Launch Analytics
           </h2>
