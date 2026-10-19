@@ -15,7 +15,7 @@ registerCaseAssets(
 const project = {
   name: 'Built with Claude',
   title: 'From Research to Production: Designing and Shipping My Portfolio with Claude Code',
-  heroImage: 'case-built-with-claude-hero.png',
+  heroImage: 'case-built-with-claude-hero.webp',
   // Preview-only page: keep it out of search until it is ready to ship.
   robots: 'noindex, nofollow',
   tags: ['Claude Code', 'Figma MCP', 'Design System', 'Performance'],
@@ -50,7 +50,7 @@ const project = {
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
-    image: 'case-built-with-claude-intro.webp',
+    image: 'case-built-with-claude-intro.png',
     body: (
       <>
         A case study on turning my portfolio into a real product: researched, designed in Figma, built with Claude
