@@ -44,7 +44,7 @@ const project = {
     },
   ],
   outcome: {
-    value: '68 → 97',
+    value: '68 → 99',
     label:
       'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100. PageSpeed Insights, 19 October 2026.',
   },
@@ -699,7 +699,7 @@ function Mistakes() {
 // ---- 11 · Performance and results -----------------------------------------
 
 const scoreGauges = [
-  { value: '97', pct: 97, label: 'Performance' },
+  { value: '99', pct: 99, label: 'Performance' },
   { value: '100', pct: 100, label: 'Accessibility' },
   { value: '100', pct: 100, label: 'Best Practices' },
   { value: '100', pct: 100, label: 'SEO' },
@@ -741,7 +741,7 @@ const pageSpeedMetrics = [
     max: 100,
     bars: [
       { label: '68', value: 68, before: true },
-      { label: '97', value: 97 },
+      { label: '99', value: 99 },
     ],
     text: 'PageSpeed Insights, mobile, 19 October.',
   },
@@ -835,7 +835,7 @@ function BarPanel({ label, rows }) {
 function Results() {
   return (
     <>
-      <h2 className={h2Class}>From 68 to 97 on mobile, and who arrived</h2>
+      <h2 className={h2Class}>From 68 to 99 on mobile, and who arrived</h2>
 
       <h3 className={h3Class}>Performance</h3>
       <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2">
@@ -864,7 +864,7 @@ function Results() {
           ))}
         </div>
         <p className={`${cardText} border-t border-border-subtle px-5 py-4 text-text-secondary md:px-8 [&>strong]:font-bold [&>strong]:text-text-primary`}>
-          On 19 October PageSpeed Insights gave <strong>97</strong> for performance, <strong>100</strong> for
+          On 19 October PageSpeed Insights gave <strong>99</strong> for performance, <strong>100</strong> for
           Accessibility, Best Practices and SEO, and 3/3 on Agentic browsing.
         </p>
       </div>
@@ -875,7 +875,7 @@ function Results() {
 
       <ImagePlaceholder
         filename="case-built-with-claude-results-psi.webp"
-        alt="PageSpeed Insights, mobile, 19 October 2026: 97 performance, 100 accessibility, 100 best practices, 100 SEO, Agentic browsing 3/3"
+        alt="PageSpeed Insights, mobile, 19 October 2026: 99 performance, 100 accessibility, 100 best practices, 100 SEO, Agentic browsing 3/3"
         className="min-h-[320px]"
       />
 
