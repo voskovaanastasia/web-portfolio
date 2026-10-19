@@ -548,29 +548,38 @@ function Tokens() {
 
 // ---- 10 · Mistakes worth showing ------------------------------------------
 
+// Shown as a terminal log. The short hashes and tags are illustrative, not real commits.
 const mistakes = [
   {
+    hash: 'a41f2c9',
+    tag: 'TOKENS',
     lead: 'The design system did not reach the code.',
     text: 'The components existed in Figma, but the variables did not carry through, so colours and sizes were hard-coded. I wired the tokens in after launch.',
   },
   {
+    hash: 'b7730e1',
+    tag: 'PERF',
     lead: 'A bundling “fix” I accepted without measuring.',
     text: 'A build setting forced an 847 KB charting library to load on every page, including the home page, where it is not used. I removed it on 4 October.',
   },
   {
+    hash: 'c90ad44',
+    tag: 'SEO',
     lead: 'A placeholder URL went live.',
     text: 'A placeholder from one of my own prompts reached the canonical link and the share tags. The tool did exactly what I asked. I replaced it with the real domain.',
   },
   {
+    hash: 'd2e81b7',
+    tag: 'COPY',
     lead: 'The wrong title and the wrong hosting claim.',
     text: 'The page title was still the starter template’s for a while, and one line named the wrong hosting provider. I fixed both in review.',
   },
+];
+
+const mistakeNotes = [
+  { label: 'Found by the QA tester', text: 'A button I had forgotten to link, and an email form that did not work on Windows.' },
   {
-    lead: 'Found by the QA tester.',
-    text: 'A button I had forgotten to link, and an email form that did not work on Windows.',
-  },
-  {
-    lead: 'Advised by the front-end developer.',
+    label: 'Advised by the front-end developer',
     text: 'Run a performance check and optimise loading, which led to the next block.',
   },
 ];
@@ -579,11 +588,40 @@ function Mistakes() {
   return (
     <>
       <h2 className={h2Class}>Not everything Claude Code did was right, and some mistakes were mine</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {mistakes.map((item) => (
-          <div key={item.lead} className={`${cardClass} bg-surface-subtle`}>
-            <p className={cardTitle}>{item.lead}</p>
-            <p className={cardText}>{item.text}</p>
+
+      <div className="mt-4 overflow-hidden rounded-card bg-surface-inverse text-text-inverse">
+        <div className="flex items-center gap-4 border-b border-glass-border px-5 py-4">
+          <span aria-hidden="true" className="flex gap-2">
+            <span className="h-3 w-3 rounded-full bg-data-3" />
+            <span className="h-3 w-3 rounded-full bg-data-1" />
+            <span className="h-3 w-3 rounded-full bg-data-2" />
+          </span>
+          <p className="font-mono text-caption text-grey-300">git log --oneline --grep=&quot;fix&quot;</p>
+        </div>
+        <div className="flex flex-col px-5 py-2 sm:px-8">
+          {mistakes.map((item) => (
+            <div
+              key={item.hash}
+              className="flex flex-col gap-2 border-b border-glass-border py-5 last:border-b-0 sm:flex-row sm:gap-6"
+            >
+              <div className="flex shrink-0 gap-4 font-mono text-caption sm:gap-6">
+                <span className="text-data-1 sm:w-20">{item.hash}</span>
+                <span className="text-blue-500 sm:w-24">{item.tag}</span>
+              </div>
+              <div className="flex flex-1 flex-col gap-1">
+                <p className="font-grotesk text-body font-bold text-text-inverse">{item.lead}</p>
+                <p className="font-grotesk text-body leading-relaxed text-grey-300">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-2">
+        {mistakeNotes.map((note) => (
+          <div key={note.label} className="flex flex-col gap-3 border-t border-border-subtle pt-5">
+            <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">{note.label}</p>
+            <p className={cardText}>{note.text}</p>
           </div>
         ))}
       </div>
