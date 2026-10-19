@@ -180,21 +180,29 @@ const roleRows = [
 function Role() {
   return (
     <>
-      <h2 className={h2Class}>Role and who did what</h2>
-      <p className={bodyText}>
+      <p className="font-mono text-body-md uppercase tracking-wider text-text-secondary">Role &amp; Who Did What</p>
+      <h2 className="font-grotesk font-medium text-title text-text-primary tracking-tight">Role and who did what</h2>
+      <p className="font-grotesk text-lead leading-relaxed text-text-primary max-w-4xl">
         I worked as the designer and product owner. Claude had three jobs, and three groups of people reviewed along the
         way. Judgement stayed with me: what the page leads with, how a case study ends, and whether a result was good
         enough to ship.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {roleRows.map((row) => (
-          <div key={row.who} className={`${cardClass} bg-surface-subtle text-blue-500`}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-8 h-8" aria-hidden="true">
-              {row.icon}
-            </svg>
-            <p className={cardTitle}>{row.who}</p>
-            <p className={cardText}>{row.what}</p>
+          <div key={row.who} className="flex flex-col gap-5 border-t border-border-subtle pt-5">
+            <span
+              aria-hidden="true"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-brand-tint text-action-primary"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+                {row.icon}
+              </svg>
+            </span>
+            <div className="flex flex-col gap-3">
+              <p className="font-grotesk font-medium text-title-md text-text-primary">{row.who}</p>
+              <p className="font-grotesk text-body-lg leading-7 text-text-primary">{row.what}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -686,7 +694,7 @@ const keyTakeaway = {
 
 const sections = [
   { id: 'context', label: 'Project Goals', bare: true, content: <Context /> },
-  { id: 'role', label: 'Role & Who Did What', content: <Role /> },
+  { id: 'role', label: 'Role & Who Did What', bare: true, content: <Role /> },
   { id: 'research', label: 'Research', content: <Research /> },
   { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
