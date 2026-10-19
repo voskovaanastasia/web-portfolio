@@ -161,7 +161,7 @@ export function StatBar({ pct, color, title, text }) {
         <p className="font-grotesk font-bold text-body shrink-0" style={{ color }}>{value}</p>
       </div>
       <ProgressBar pct={pct} color={color} />
-      <p className="font-grotesk text-body text-text-primary leading-relaxed">{text}</p>
+      {text && <p className="font-grotesk text-body text-text-primary leading-relaxed">{text}</p>}
     </div>
   );
 }

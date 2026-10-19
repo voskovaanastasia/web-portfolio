@@ -303,13 +303,14 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
         <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
           <ImagePlaceholder
             filename={problem.image}
+            alt={problem.imageAlt}
             className={`min-h-[420px] ${problem.imageClassName ?? ''}`}
           />
           <div className="flex flex-col gap-5 lg:col-span-2">
             <p className={sectionLabel}>Problem</p>
             <h2 className={sectionHeading}>{problem.heading}</h2>
             <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{problem.body}</p>
-            <CalloutQuote label="Why is this important?">{problem.why}</CalloutQuote>
+            {problem.why && <CalloutQuote label="Why is this important?">{problem.why}</CalloutQuote>}
           </div>
         </section>
       )}
@@ -320,9 +321,15 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
             <p className={sectionLabel}>Solution</p>
             <h2 className={sectionHeading}>{solution.heading}</h2>
             <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{solution.body}</p>
-            <CalloutQuote label="User scenario consideration">{solution.scenario}</CalloutQuote>
+            {solution.scenario && (
+              <CalloutQuote label="User scenario consideration">{solution.scenario}</CalloutQuote>
+            )}
           </div>
-          <ImagePlaceholder filename={solution.image} className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder
+            filename={solution.image}
+            alt={solution.imageAlt}
+            className="min-h-[420px] order-first lg:order-none"
+          />
         </section>
       )}
     </>
@@ -429,7 +436,7 @@ export function EmpathyMap({ says, thinks, does, feels, accent = 'var(--color-ac
 
 /**
  * 4W+H process, stacked rows. Each column = { heading, body } or { heading, items[], highlight }.
- * The highlighted row (How) takes the accent colour.
+ * The highlighted row (How) takes the accent colour. `marker` overrides the big letter (e.g. a step number).
  */
 export function ProcessColumns({ columns, accent = 'var(--color-action-primary)' }) {
   return (
@@ -446,7 +453,7 @@ export function ProcessColumns({ columns, accent = 'var(--color-action-primary)'
                 className="font-grotesk font-bold text-[44px] leading-none text-surface-placeholder"
                 style={color ? { color } : undefined}
               >
-                {col.heading === 'How' ? 'H' : 'W'}
+                {col.marker ?? (col.heading === 'How' ? 'H' : 'W')}
               </span>
               <p
                 className="font-grotesk font-medium text-title-md text-ink"
@@ -885,7 +892,10 @@ export default function CaseLayout({
         {/* Key takeaway */}
         {keyTakeaway && (
           <KeyTakeaway id="key-takeaway" heading={keyTakeaway.heading} className="pb-24">
-            <p>{keyTakeaway.body}</p>
+            {/* body is one paragraph, or an array with one entry per paragraph */}
+            {(Array.isArray(keyTakeaway.body) ? keyTakeaway.body : [keyTakeaway.body]).map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
           </KeyTakeaway>
         )}
 
