@@ -180,17 +180,16 @@ const roleRows = [
 function Role() {
   return (
     <>
-      <p className="font-mono text-body-md uppercase tracking-wider text-text-secondary">Role &amp; Who Did What</p>
-      <h2 className="font-grotesk font-medium text-title text-text-primary tracking-tight">Role and who did what</h2>
-      <p className="font-grotesk text-lead leading-relaxed text-text-primary max-w-4xl">
+      <h2 className={h2Class}>Role and who did what</h2>
+      <p className={bodyText}>
         I worked as the designer and product owner. Claude had three jobs, and three groups of people reviewed along the
         way. Judgement stayed with me: what the page leads with, how a case study ends, and whether a result was good
         enough to ship.
       </p>
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {roleRows.map((row) => (
-          <div key={row.who} className="flex flex-col gap-5 border-t border-border-subtle pt-5">
+          <div key={row.who} className="flex flex-col gap-4 border-t border-border-subtle pt-5">
             <span
               aria-hidden="true"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-brand-tint text-action-primary"
@@ -199,21 +198,10 @@ function Role() {
                 {row.icon}
               </svg>
             </span>
-            <div className="flex flex-col gap-3">
-              <p className="font-grotesk font-medium text-title-md text-text-primary">{row.who}</p>
-              <p className="font-grotesk text-body-lg leading-7 text-text-primary">{row.what}</p>
-            </div>
+            <p className={cardTitle}>{row.who}</p>
+            <p className={cardText}>{row.what}</p>
           </div>
         ))}
-      </div>
-
-      <div className={`${cardClass} bg-action-primary`}>
-        <p className={calloutTitle}>Where that was not enough</p>
-        <p className={`${calloutText} max-w-3xl`}>
-          Reading diffs shows what a change does, not what it leaves out. My Figma design tokens reached the code only
-          after launch, and a bundling &ldquo;fix&rdquo; I accepted without measuring slowed down every page. Both are
-          covered below.
-        </p>
       </div>
     </>
   );
@@ -694,7 +682,7 @@ const keyTakeaway = {
 
 const sections = [
   { id: 'context', label: 'Project Goals', bare: true, content: <Context /> },
-  { id: 'role', label: 'Role & Who Did What', bare: true, content: <Role /> },
+  { id: 'role', label: 'Role & Who Did What', content: <Role /> },
   { id: 'research', label: 'Research', content: <Research /> },
   { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
