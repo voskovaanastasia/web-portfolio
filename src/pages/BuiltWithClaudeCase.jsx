@@ -32,7 +32,7 @@ const project = {
   summary: [
     {
       label: 'PROBLEM',
-      text: 'I needed a portfolio that shows how I work from research to code, not another template.',
+      text: 'My portfolio lived on Behance, where formatting each case took a lot of time and large user flows were hard to show. I needed one place that shows how I work from research to code, not another template.',
     },
     {
       label: 'MY ROLE',
@@ -40,13 +40,13 @@ const project = {
     },
     {
       label: 'APPROACH',
-      text: 'I studied other portfolios and talked to a recruiter, designed components in Figma, and had Claude Code build them and assemble the pages. I reviewed every diff, and a QA tester and a front-end developer reviewed the live site. I fixed what they found.',
+      text: 'I researched other portfolios, designed components in Figma and had Claude Code build the pages. I reviewed every diff and fixed what a QA tester and a front-end developer found on the live site.',
     },
   ],
   outcome: {
     value: '68 → 97',
     label:
-      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100, Agentic browsing 3/3. (PageSpeed Insights, mobile, 19 October 2026.)',
+      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100. PageSpeed Insights, 19 October 2026.',
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
@@ -122,7 +122,7 @@ function StatTile({ value, label }) {
 
 const projectGoals = {
   headline:
-    'Give recruiters one place to see my full range, from research through design to implementation, and get invited to interviews.',
+    'Give recruiters one place to see my full range, from research to code, and get invited to interviews.',
   items: [
     'Replace Behance with one home for experience, case studies, tech stack and computer science background.',
     'Answer a recruiter’s three questions in 30 seconds: is the experience relevant, what does the portfolio show, which tools do I work with.',
