@@ -24,7 +24,7 @@ export default function Goals({ headline, items, title = 'Project Goals', as: Wr
       <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">{title}</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-        <h2 className="font-grotesk font-medium text-text-primary tracking-tight leading-[1.1] text-[clamp(28px,4.2vw,48px)] lg:max-w-[16em]">
+        <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight lg:max-w-[16em]">
           {headline}
         </h2>
 

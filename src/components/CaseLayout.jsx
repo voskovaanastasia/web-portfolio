@@ -132,7 +132,7 @@ export function PersonaBlock({ image, name, role, location, bio, groups, summary
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-10 lg:gap-16">
         <div className="flex flex-col gap-4">
           <ImagePlaceholder filename={image} className="aspect-[4/3] rounded-card" />
-          <h3 className="font-grotesk font-medium text-[22px] sm:text-[26px] text-ink tracking-tight mt-2">
+          <h3 className="font-grotesk font-medium text-title-md text-ink tracking-tight mt-2">
             {name}
           </h3>
           <div className="flex flex-col gap-1">
@@ -167,7 +167,7 @@ export function PersonaBlock({ image, name, role, location, bio, groups, summary
           ))}
           {summary && (
             <p
-              className="font-grotesk text-[16px] sm:text-[18px] text-ink leading-relaxed border-l-2 pl-5 mt-8"
+              className="font-grotesk text-body text-ink leading-relaxed border-l-2 pl-5 mt-8"
               style={{ borderColor: accent }}
             >
               {summary}
@@ -223,7 +223,7 @@ function MetricRow({ metric, accent }) {
     <div className="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,3fr)_minmax(0,5fr)_auto] items-center gap-x-8 gap-y-3 py-5 border-t border-border-subtle last:border-b">
       <div className="flex flex-col gap-1.5">
         <p className="font-grotesk font-medium text-body-lg text-ink">{name}</p>
-        <p className="font-grotesk text-[13px] text-text-primary leading-snug [&>strong]:font-bold [&>strong]:text-ink">
+        <p className="font-grotesk text-body text-text-primary leading-snug [&>strong]:font-bold [&>strong]:text-ink">
           {text}
         </p>
         {lowerIsBetter && (
@@ -288,8 +288,7 @@ export function MetricList({ metrics, accent = 'var(--color-action-primary)', ma
 }
 
 const sectionLabel = 'font-mono-bold text-caption uppercase tracking-wider text-text-secondary';
-const sectionHeading =
-  'font-grotesk font-medium text-[28px] sm:text-4xl lg:text-[44px] leading-[1.2] text-text-primary tracking-tight';
+const sectionHeading = 'font-grotesk font-medium text-heading text-text-primary tracking-tight';
 
 // Highlighted aside under the body: blue rule on the left, small blue mono label, short text.
 function CalloutQuote({ label, children }) {
@@ -314,7 +313,7 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
           <div className="flex flex-col gap-5 lg:col-span-2">
             <p className={sectionLabel}>Problem</p>
             <h2 className={sectionHeading}>{problem.heading}</h2>
-            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{problem.body}</p>
+            <p className="font-grotesk text-body text-text-primary leading-relaxed">{problem.body}</p>
             {problem.why && <CalloutQuote label="Why is this important?">{problem.why}</CalloutQuote>}
           </div>
         </section>
@@ -325,7 +324,7 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
           <div className="flex flex-col gap-5 lg:col-span-2">
             <p className={sectionLabel}>Solution</p>
             <h2 className={sectionHeading}>{solution.heading}</h2>
-            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed">{solution.body}</p>
+            <p className="font-grotesk text-body text-text-primary leading-relaxed">{solution.body}</p>
             {solution.scenario && (
               <CalloutQuote label="User scenario consideration">{solution.scenario}</CalloutQuote>
             )}
@@ -619,7 +618,7 @@ export function ScreensSlider({ screens }) {
         <div className="flex flex-col gap-9 border-l border-border-subtle pl-4 sm:pl-5 py-2">
           {screen.blocks.map((block) => (
             <div key={block.heading} className="flex flex-col gap-2.5">
-              <p className="font-grotesk font-medium text-[18px] text-text-primary">{block.heading}</p>
+              <p className="font-grotesk font-medium text-title-sm text-text-primary">{block.heading}</p>
               <p className="font-grotesk text-body text-text-primary leading-relaxed [&_strong]:font-bold [&_strong]:text-ink">
                 {block.text}
               </p>

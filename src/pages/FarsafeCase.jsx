@@ -938,10 +938,10 @@ export default function FarsafeCase() {
         {/* Problem statement */}
         <section id="problem-statement" className="pb-20 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Problem statement</p>
-          <h2 className="font-grotesk font-medium text-[28px] sm:text-4xl lg:text-[44px] text-text-primary tracking-tight max-w-4xl leading-[1.2]">
+          <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight max-w-4xl">
             Developers and agencies need a monitoring tool they can set up fast and actually trust.
           </h2>
-          <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed max-w-3xl">
+          <p className="font-grotesk text-body text-text-primary leading-relaxed max-w-3xl">
             Existing tools bury pricing, fire false alarms from a single location, and scatter
             status and reporting across separate products.
           </p>
