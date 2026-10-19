@@ -15,7 +15,7 @@ registerCaseAssets(
 const project = {
   name: 'Built with Claude',
   title: 'From Research to Production: Designing and Shipping My Portfolio with Claude Code',
-  heroImage: 'case-built-with-claude-hero.webp',
+  heroImage: 'case-built-with-claude-hero.png',
   // Preview-only page: keep it out of search until it is ready to ship.
   robots: 'noindex, nofollow',
   tags: ['Claude Code', 'Figma MCP', 'Design System', 'Performance'],
