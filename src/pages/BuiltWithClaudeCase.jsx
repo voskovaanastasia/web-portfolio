@@ -255,13 +255,12 @@ function Research() {
             <div className="flex items-center gap-4 border-b border-border-subtle py-4">
               <CheckMark />
               <p className={cardText}>
-                The typical home page showed four case studies and four menu items. Of the 21 portfolios, 9 used a
-                no-code builder and 5 were confirmed hand-coded.
+                The typical home page showed four case studies and four menu items. 
               </p>
             </div>
           </div>
           <p className="font-mono text-caption text-text-secondary">
-            page text only · 19 of 21 sites readable · 4 October 2026. A snapshot, not a measure of the market.
+            page text only · 19 of 21 sites readable · 4 October 2026.
           </p>
         </div>
 
@@ -423,52 +422,118 @@ function Loop() {
 // ---- 9 · Design tokens -----------------------------------------------------
 
 const tokenResults = [
-  { value: '39 → 0', label: 'Raw colour values outside the case-study palettes.' },
-  { value: '148 → 47', label: 'Arbitrary font sizes.' },
+  { from: '39', to: '0', label: 'raw colour values outside the case-study palettes' },
+  { from: '148', to: '47', label: 'arbitrary font sizes' },
 ];
+
+// Token examples shown in the two panels below (values are the real ones in src/styles/globals.css).
+const figmaPrimitives = [
+  { name: 'blue-500', value: '#288FD6', swatch: 'bg-blue-500' },
+  { name: 'blue-700', value: '#186A9C', swatch: 'bg-text-brand', active: true },
+];
+const figmaSemantic = [
+  { name: 'text/brand', value: 'blue-700', swatch: 'bg-text-brand', active: true },
+  { name: 'surface/subtle', value: 'grey-100', swatch: 'bg-surface-subtle border border-border-subtle' },
+];
+
+function ArrowRight({ className = '' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
+      <path d="M3 12h17M14 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function FigmaRow({ name, value, swatch, active }) {
+  return (
+    <div className={`flex items-center gap-3 px-5 py-2.5 ${active ? 'bg-surface-brand-tint' : ''}`}>
+      <span aria-hidden="true" className={`h-5 w-5 shrink-0 rounded-md ${swatch}`} />
+      <span className={`flex-1 font-mono text-body text-text-primary ${active ? 'font-bold' : ''}`}>{name}</span>
+      <span className={`font-mono text-caption ${active ? 'text-text-brand' : 'text-text-secondary'}`}>{value}</span>
+    </div>
+  );
+}
+
+function CodeLine({ name, value, active, comment }) {
+  if (comment) return <p className="px-4 pt-3 text-data-2">{comment}</p>;
+  return (
+    <p className={`px-4 py-1 ${active ? 'rounded-md bg-glass-light' : ''}`}>
+      <span className="text-blue-500">{name}</span>
+      <span className="text-grey-300">: </span>
+      <span className="text-text-inverse">{value}</span>
+    </p>
+  );
+}
 
 function Tokens() {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
-        <div className="flex flex-col gap-6 self-start lg:sticky lg:top-24">
-          <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight leading-snug md:-mt-[0.15em]">
-            Design tokens: one vocabulary for Figma and code
-          </h2>
-          <p className={cardText}>
-            The first build looked consistent by accident. The same text colour was typed out by hand 98 times, the same
-            card radius 82 times and the same body size 257 times, and nothing stopped the next prompt from typing a
-            slightly different value.
-          </p>
-          <p className={cardText}>
-            I defined the tokens in Figma in two layers, primitives and semantic roles. Claude Code read them through the
-            Figma MCP into CSS variables and the Tailwind theme. They first reached the code on 4 October, after launch,
-            and the migration was finished on 13 October.
-          </p>
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-5">
-          <h3 className={h3Class}>Result</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {tokenResults.map((item) => (
-              <StatTile key={item.value} {...item} />
+      <h2 className={h2Class}>Design tokens: one vocabulary for Figma and code</h2>
+      <p className={bodyText}>
+        The first build looked consistent by accident. The same text colour was typed out by hand <strong>98 times</strong>,
+        the same card radius <strong>82 times</strong> and the same body size <strong>257 times</strong>, and nothing
+        stopped the next prompt from typing a slightly different value.
+      </p>
+
+      <div className="mt-4 flex flex-col items-stretch gap-5 lg:flex-row">
+        <div className="flex-1 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
+          <div className="flex items-center justify-between border-b border-border-subtle bg-surface-subtle px-5 py-3">
+            <p className="font-grotesk text-body font-bold text-text-primary">Figma · Variables</p>
+            <p className="font-mono text-caption text-text-secondary">2 layers</p>
+          </div>
+          <div className="flex flex-col py-2">
+            {figmaPrimitives.map((row) => (
+              <FigmaRow key={row.name} {...row} />
+            ))}
+            <div className="mx-5 my-1 border-t border-border-subtle" />
+            {figmaSemantic.map((row) => (
+              <FigmaRow key={row.name} {...row} />
             ))}
           </div>
-          <div className={`${cardClass} bg-surface-subtle`}>
-            <p className={cardText}>A lint check now fails if a raw colour is added.</p>
+        </div>
+
+        <ArrowRight className="h-6 w-6 shrink-0 rotate-90 self-center text-blue-500 lg:rotate-0" />
+
+        <div className="flex-1 overflow-hidden rounded-card bg-surface-inverse text-text-inverse">
+          <div className="flex items-center justify-between border-b border-glass-border px-5 py-3">
+            <p className="font-grotesk text-body font-bold">theme.css</p>
+            <p className="font-mono text-caption text-grey-300">via Figma MCP</p>
           </div>
-          <div className={`${cardClass} bg-surface-subtle`}>
-            <p className={cardText}>
-              The brand blue (<code className="font-mono-bold">#288FD6</code>) has 3.5:1 contrast on white, so it is
-              never used for text. Text and links use a deeper blue (<code className="font-mono-bold">#186A9C</code>,
-              5.9:1).
-            </p>
+          <div className="flex flex-col py-3 font-mono text-caption leading-relaxed">
+            <p className="px-4 py-1 text-grey-300">:root {'{'}</p>
+            <CodeLine name="--color-blue-500" value="#288FD6;" />
+            <CodeLine name="--color-blue-700" value="#186A9C;" active />
+            <CodeLine name="--color-text-brand" value="var(--color-blue-700);" active />
+            <CodeLine name="--color-surface-subtle" value="var(--color-grey-100);" />
+            <p className="px-4 py-1 text-grey-300">{'}'}</p>
+            <CodeLine comment="// lint fails if a raw colour is added" />
           </div>
-          <div className={`${cardClass} bg-surface-subtle`}>
-            <p className={cardText}>
-              Colours inside case studies belong to the client&rsquo;s product, so they stay outside the system on
-              purpose.
-            </p>
-          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 grid grid-cols-1 gap-x-10 lg:grid-cols-2">
+        <div className="flex flex-col">
+          {tokenResults.map((item) => (
+            <div key={item.from} className="flex items-center gap-5 border-t border-border-subtle py-5">
+              <p className="flex shrink-0 items-center gap-3 font-grotesk text-heading font-bold leading-none">
+                <span className="text-text-secondary">{item.from}</span>
+                <ArrowRight className="h-5 w-5 text-text-brand" />
+                <span className="text-text-brand">{item.to}</span>
+              </p>
+              <p className={cardText}>{item.label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-col">
+          <p className={`${cardText} border-t border-border-subtle py-5`}>
+            I defined the tokens in Figma in two layers, primitives and semantic roles. They first reached the code on 4
+            October, after launch, and the migration was finished on 13 October.
+          </p>
+          <p className={`${cardText} border-t border-border-subtle py-5`}>
+            The brand blue (#288FD6) has 3.5:1 contrast on white, so it is never used for text. Text and links use a
+            deeper blue (#186A9C, 5.9:1). Colours inside case studies belong to the client&rsquo;s product, so they stay
+            outside the system on purpose.
+          </p>
         </div>
       </div>
 
