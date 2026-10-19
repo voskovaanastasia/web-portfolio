@@ -191,11 +191,14 @@ function trackMax(values, isPct) {
 }
 
 function MetricRow({ metric, accent }) {
-  const { title, subtitle, bars, text, lowerIsBetter, markerLabel } = metric;
+  const { title, subtitle, bars, text, lowerIsBetter, markerLabel, max: fixedMax } = metric;
   const result = bars.find((b) => !b.before);
   const ref = bars.find((b) => b.before);
   const name = title.split(' — ')[0];
-  const max = trackMax(bars.map((b) => b.value), result.label.includes('%'));
+  // `max` pins the end of the track (e.g. 100 for a score); otherwise it is picked from the values.
+  // A "before" value beyond `max` is drawn at the end of the track, and its label is right-aligned near the
+  // end, so neither can push the page wider.
+  const max = fixedMax ?? trackMax(bars.map((b) => b.value), result.label.includes('%'));
   const marker =
     markerLabel ?? (subtitle ? subtitle.replace(/^\(|\)$/g, '') : ref ? `before ${ref.label}` : null);
   const fillRef = useRef(null);
@@ -235,8 +238,10 @@ function MetricRow({ metric, accent }) {
       <div className="col-span-2 md:col-span-1 md:order-2 relative pt-6">
         {ref && marker && (
           <span
-            className="absolute top-0 -translate-x-1/2 font-mono-bold text-caption-xs leading-none text-text-primary whitespace-nowrap"
-            style={{ left: `${(ref.value / max) * 100}%` }}
+            className={`absolute top-0 font-mono-bold text-caption-xs leading-none text-text-primary whitespace-nowrap ${
+              ref.value / max >= 0.85 ? 'right-0' : '-translate-x-1/2'
+            }`}
+            style={ref.value / max >= 0.85 ? undefined : { left: `${(ref.value / max) * 100}%` }}
           >
             {marker}
           </span>
@@ -250,7 +255,7 @@ function MetricRow({ metric, accent }) {
           {ref && (
             <span
               className="absolute -top-1.5 -bottom-1.5 w-px bg-ink"
-              style={{ left: `${(ref.value / max) * 100}%` }}
+              style={{ left: `${Math.min(ref.value / max, 1) * 100}%` }}
             />
           )}
         </div>

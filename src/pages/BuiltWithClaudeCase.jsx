@@ -690,6 +690,7 @@ function ScoreGauge({ value, pct, label }) {
 const pageSpeedMetrics = [
   {
     title: 'Mobile performance',
+    max: 100,
     bars: [
       { label: '68', value: 68, before: true },
       { label: '97', value: 97 },
@@ -699,6 +700,7 @@ const pageSpeedMetrics = [
   {
     title: 'Largest contentful paint',
     lowerIsBetter: true,
+    max: 6,
     bars: [
       { label: '5.2 s', value: 5.2, before: true },
       { label: '2.5 s', value: 2.5 },
@@ -711,6 +713,7 @@ const localMetrics = [
   {
     title: 'First paint',
     lowerIsBetter: true,
+    max: 3,
     bars: [
       { label: '2.41 s', value: 2.41, before: true },
       { label: '2.07 s', value: 2.07 },
@@ -720,6 +723,7 @@ const localMetrics = [
   {
     title: 'Blocking time',
     lowerIsBetter: true,
+    max: 400,
     bars: [
       { label: '374 ms', value: 374, before: true },
       { label: '290 ms', value: 290 },
@@ -729,6 +733,7 @@ const localMetrics = [
   {
     title: 'Main script',
     lowerIsBetter: true,
+    max: 500,
     bars: [
       { label: '495 KB', value: 495, before: true },
       { label: '324 KB', value: 324 },
