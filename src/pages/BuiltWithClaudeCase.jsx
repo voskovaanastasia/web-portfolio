@@ -1,4 +1,4 @@
-import CaseLayout, { ImagePlaceholder, MetricList, ProcessColumns, registerCaseAssets } from '../components/CaseLayout';
+import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
@@ -349,31 +349,34 @@ function VersionTwo() {
 
 // ---- 8 · The loop ----------------------------------------------------------
 
+// The tag on the right of each step is the tool or artefact of that step.
 const loopSteps = [
   {
-    marker: '1',
     heading: 'Frame the problem',
     body: 'What I am solving, for whom, with what outcome. Wireframes and direction in Figma.',
+    tag: 'figma',
   },
   {
-    marker: '2',
     heading: 'Turn design into instructions',
     body: 'Flows, states and edge cases as precise written specs in Markdown.',
+    tag: 'spec.md',
   },
   {
-    marker: '3',
     heading: 'Build with AI',
     body: 'Claude Code writes the front end from the specs. I read every diff.',
+    tag: 'claude-code',
+    active: true,
   },
   {
-    marker: '4',
     heading: 'Put it live',
     body: 'The result ships as a real URL, so decisions are tested on a working page, not argued over a frame.',
+    tag: 'deploy ✓',
   },
   {
-    marker: '5',
     heading: 'Test and refine',
     body: 'People and audits find what I cannot see, and each finding becomes the next prompt.',
+    tag: 're-runs',
+    repeat: true,
   },
 ];
 
@@ -389,6 +392,30 @@ const loopRules = [
   },
 ];
 
+function StepIcon({ active, repeat }) {
+  if (repeat) {
+    return (
+      <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-blue-500 text-blue-500">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+          <path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4" />
+        </svg>
+      </span>
+    );
+  }
+  return (
+    <span
+      aria-hidden="true"
+      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+        active ? 'bg-text-brand text-text-inverse' : 'bg-surface-brand-tint text-action-primary'
+      }`}
+    >
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+        <path d="m3.5 8.5 3 3 6-7" />
+      </svg>
+    </span>
+  );
+}
+
 function Loop() {
   return (
     <>
@@ -398,7 +425,36 @@ function Loop() {
         not cover, I designed that component separately and added it to the project.
       </p>
 
-      <ProcessColumns columns={loopSteps} />
+      <div className="mt-4 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
+        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
+          <p className="font-grotesk text-body font-bold text-text-primary">portfolio · design-to-code</p>
+          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">run on every page</p>
+        </div>
+        {loopSteps.map((step, i) => (
+          <div
+            key={step.heading}
+            className={`flex flex-col gap-3 border-b border-border-subtle px-5 py-5 last:border-b-0 md:flex-row md:items-center md:gap-8 md:px-8 ${
+              step.active ? 'bg-surface-brand-tint' : ''
+            }`}
+          >
+            <div className="flex items-center gap-4 md:w-72 md:shrink-0">
+              <StepIcon active={step.active} repeat={step.repeat} />
+              <div className="flex flex-col gap-1">
+                <p className="font-mono text-caption uppercase tracking-wider text-text-brand">Step {i + 1}</p>
+                <p className="font-grotesk text-body-lg font-bold text-text-primary">{step.heading}</p>
+              </div>
+            </div>
+            <p className={`${cardText} flex-1`}>{step.body}</p>
+            <p
+              className={`font-mono text-caption md:w-28 md:text-right ${
+                step.active || step.repeat ? 'text-text-brand' : 'text-text-secondary'
+              }`}
+            >
+              {step.tag}
+            </p>
+          </div>
+        ))}
+      </div>
 
       <h3 className={`${h3Class} mt-4`}>Rules I set</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
