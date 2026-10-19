@@ -54,6 +54,29 @@ for (const [slug, name, description, headline, hasOg] of cases) {
   });
 }
 
+// "Built with Claude" is shown only outside production (see src/config/publishedCases.js), so its page is
+// prerendered only then; otherwise a refresh of /project/built-with-claude on a Vercel preview would 404.
+// It is noindex in every environment and never goes into sitemap.xml (llms.txt is a static file without it).
+if (process.env.VERCEL_ENV !== 'production') {
+  const description = 'I needed a portfolio that shows how I work from research to code, not another template.';
+  pages.push({
+    path: '/project/built-with-claude',
+    title: `Built with Claude — ${SUFFIX}`,
+    description,
+    noindex: true,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: 'Built with Claude',
+      headline: 'From Research to Production: Designing and Shipping My Portfolio with Claude Code',
+      description,
+      url: `${ORIGIN}/project/built-with-claude`,
+      author: { '@id': PERSON_ID },
+      creator: { '@id': PERSON_ID },
+    },
+  });
+}
+
 const template = readFileSync(path.join(DIST, 'index.html'), 'utf8');
 
 function render(page) {
@@ -72,6 +95,9 @@ function render(page) {
     .replace(/(<meta name="twitter:title" content=")[^"]*"/, `$1${title}"`)
     .replace(/(<meta name="twitter:description" content=")[^"]*"/, `$1${description}"`)
     .replace(/(<meta name="twitter:image" content=")[^"]*"/, `$1${image}"`);
+  if (page.noindex) {
+    html = html.replace('</head>', '    <meta name="robots" content="noindex, nofollow" />\n  </head>');
+  }
   if (page.jsonLd) {
     // Appended after the Person block so the "@id" references below resolve.
     html = html.replace('</head>', `    <script type="application/ld+json">${JSON.stringify(page.jsonLd)}</script>\n  </head>`);
@@ -97,7 +123,7 @@ writeFileSync(
     .replace('</head>', '    <meta name="robots" content="noindex, nofollow" />\n  </head>')
 );
 
-const urls = ['/', ...pages.map((p) => p.path)];
+const urls = ['/', ...pages.filter((p) => !p.noindex).map((p) => p.path)];
 writeFileSync(
   path.join(DIST, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls

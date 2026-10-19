@@ -10,7 +10,9 @@ import useDocumentMeta from '../hooks/useDocumentMeta';
 import useStaggerReveal from '../hooks/useStaggerReveal';
 
 // Any image dropped into src/assets is picked up by filename — no import needed.
-const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
+// case-built-with-claude-* is left out: that case registers its own images (registerCaseAssets), so
+// they only reach the build together with its page chunk (see src/config/publishedCases.js).
+const assetUrls = import.meta.glob(['../assets/*.{png,jpg,jpeg,svg,webp}', '!../assets/case-built-with-claude-*'], {
   eager: true,
   query: '?url',
   import: 'default',
@@ -18,6 +20,11 @@ const assetUrls = import.meta.glob('../assets/*.{png,jpg,jpeg,svg,webp}', {
 const assetByName = Object.fromEntries(
   Object.entries(assetUrls).map(([path, url]) => [path.split('/').pop(), url]),
 );
+
+// Lets a case page add image URLs of its own to the filename lookup above. Call it at module level.
+export function registerCaseAssets(urlsByPath) {
+  for (const [path, url] of Object.entries(urlsByPath)) assetByName[path.split('/').pop()] = url;
+}
 
 // Reserved-space utilities only matter while a slot is empty — once the real
 // image is in, the slot takes the image's own height instead of a grey box.

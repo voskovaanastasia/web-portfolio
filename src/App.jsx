@@ -6,7 +6,7 @@ import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
 import About from './pages/About';
 import useDocumentMeta from './hooks/useDocumentMeta';
-import { BUILT_WITH_CLAUDE_PUBLISHED } from './config/publishedCases';
+import { SHOW_BUILT_WITH_CLAUDE } from './config/publishedCases';
 import './styles/globals.css';
 
 const Projects = lazy(() => import('./pages/Projects'));
@@ -19,8 +19,8 @@ const FitnessAppCase = lazy(() => import('./pages/FitnessAppCase'));
 const OnlinePaymentsCase = lazy(() => import('./pages/OnlinePaymentsCase'));
 const ShootCase = lazy(() => import('./pages/ShootCase'));
 const TaxComplianceCase = lazy(() => import('./pages/TaxComplianceCase'));
-// Locked via BUILT_WITH_CLAUDE_PUBLISHED (src/config/publishedCases.js); noindex, not in the sitemap.
-const BuiltWithClaudeCase = BUILT_WITH_CLAUDE_PUBLISHED
+// Gated by SHOW_BUILT_WITH_CLAUDE (src/config/publishedCases.js); noindex, not in the sitemap.
+const BuiltWithClaudeCase = SHOW_BUILT_WITH_CLAUDE
   ? lazy(() => import('./pages/BuiltWithClaudeCase'))
   : null;
 
@@ -60,7 +60,7 @@ function Layout() {
             <Route path="/project/online-payments" element={<OnlinePaymentsCase />} />
             <Route path="/project/shoot" element={<ShootCase />} />
             <Route path="/project/tax-compliance" element={<TaxComplianceCase />} />
-            {BUILT_WITH_CLAUDE_PUBLISHED && (
+            {SHOW_BUILT_WITH_CLAUDE && (
               <Route path="/project/built-with-claude" element={<BuiltWithClaudeCase />} />
             )}
             <Route path="*" element={<NotFound />} />

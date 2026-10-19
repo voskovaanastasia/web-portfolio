@@ -1,8 +1,17 @@
-import CaseLayout from '../components/CaseLayout';
+import CaseLayout, { registerCaseAssets } from '../components/CaseLayout';
 import { StatBar } from '../components/Charts';
 import Goals from '../components/Goals';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
+
+// This case's images (including any added later as case-built-with-claude-<slot>.webp) load with the page.
+registerCaseAssets(
+  import.meta.glob('../assets/case-built-with-claude-*.{png,jpg,jpeg,svg,webp}', {
+    eager: true,
+    query: '?url',
+    import: 'default',
+  }),
+);
 
 const project = {
   name: 'Built with Claude',

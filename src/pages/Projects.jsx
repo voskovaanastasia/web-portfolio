@@ -20,7 +20,7 @@ import caseShoot960 from '../assets/case-shoot-960w.webp';
 import DotsBackground from '../components/DotsBackground';
 import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
-import { BUILT_WITH_CLAUDE_PUBLISHED } from '../config/publishedCases';
+import { SHOW_BUILT_WITH_CLAUDE } from '../config/publishedCases';
 import builtWithClaudeProject from '../data/builtWithClaudeProject';
 
 const categories = ['Product & UX/UI Design', 'Built with Claude', 'Logos & Branding'];
@@ -163,12 +163,12 @@ const projects = [
     description:
       'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
   },
-  ...(BUILT_WITH_CLAUDE_PUBLISHED ? [builtWithClaudeProject] : []),
+  ...(SHOW_BUILT_WITH_CLAUDE ? [builtWithClaudeProject] : []),
 ];
 
-// While the "Built with Claude" case is locked its category is hidden from the tabs entirely
+// While the "Built with Claude" case is hidden its category is hidden from the tabs entirely
 // (its card data isn't even included). Categories that never had cases keep their "Coming soon" tab.
-const visibleCategories = BUILT_WITH_CLAUDE_PUBLISHED
+const visibleCategories = SHOW_BUILT_WITH_CLAUDE
   ? categories
   : categories.filter((c) => c !== 'Built with Claude');
 
