@@ -247,16 +247,13 @@ function Research() {
                 </div>
               </div>
             ))}
-            <div className="flex items-center gap-4 border-b border-border-subtle py-4">
+            <div className="flex items-center gap-4 py-4">
               <CheckMark />
               <p className={cardText}>
                 The typical home page showed four case studies and four menu items. 
               </p>
             </div>
           </div>
-          <p className="font-mono text-caption text-text-secondary">
-            page text only · 19 of 21 sites readable · 4 October 2026.
-          </p>
         </div>
 
         <div className="flex flex-col gap-6 lg:pt-6">
