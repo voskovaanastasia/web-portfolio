@@ -615,28 +615,24 @@ function Tokens() {
 
 // ---- 10 · Mistakes worth showing ------------------------------------------
 
-// Shown as a terminal log. The short hashes and tags are illustrative, not real commits.
+// Shown as a terminal log. The tags are labels, not real commits.
 const mistakes = [
   {
-    hash: 'a41f2c9',
     tag: 'TOKENS',
     lead: 'The design system did not reach the code.',
     text: 'The components existed in Figma, but the variables did not carry through, so colours and sizes were hard-coded. I wired the tokens in after launch.',
   },
   {
-    hash: 'b7730e1',
     tag: 'PERF',
     lead: 'A bundling “fix” I accepted without measuring.',
     text: 'A build setting forced an 847 KB charting library to load on every page, including the home page, where it is not used. I removed it on 4 October.',
   },
   {
-    hash: 'c90ad44',
     tag: 'SEO',
     lead: 'A placeholder URL went live.',
     text: 'A placeholder from one of my own prompts reached the canonical link and the share tags. The tool did exactly what I asked. I replaced it with the real domain.',
   },
   {
-    hash: 'd2e81b7',
     tag: 'COPY',
     lead: 'The wrong title and the wrong hosting claim.',
     text: 'The page title was still the starter template’s for a while, and one line named the wrong hosting provider. I fixed both in review.',
@@ -668,11 +664,10 @@ function Mistakes() {
         <div className="flex flex-col px-5 py-2 sm:px-8">
           {mistakes.map((item) => (
             <div
-              key={item.hash}
+              key={item.tag}
               className="flex flex-col gap-2 border-b border-glass-border py-5 last:border-b-0 sm:flex-row sm:gap-6"
             >
               <div className="flex shrink-0 gap-4 font-mono text-caption sm:gap-6">
-                <span className="text-data-1 sm:w-20">{item.hash}</span>
                 <span className="text-blue-500 sm:w-24">{item.tag}</span>
               </div>
               <div className="flex flex-1 flex-col gap-1">
@@ -804,9 +799,9 @@ const pageVisits = [
 ];
 const caseVisits = [
   { name: 'Farsafe · featured', value: '544', count: 544, strong: true },
-  { name: 'Next most visited', value: '68', count: 68 },
-  { name: 'Then', value: '52', count: 52 },
-  { name: 'Then', value: '47', count: 47 },
+  { name: 'bART Solutions', value: '68', count: 68 },
+  { name: 'Online Doctor', value: '52', count: 52 },
+  { name: 'CryptoWallet', value: '47', count: 47 },
 ];
 
 function BarPanel({ label, rows }) {
@@ -906,17 +901,12 @@ function Results() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-5">
-        <div className="flex items-center gap-4 border-t border-border-subtle pt-5 md:col-span-3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6 shrink-0 text-text-brand">
-            <path d="m3 17 6-6 4 4 8-8M15 7h6v6" />
-          </svg>
-          <p className="font-grotesk text-body-lg font-medium text-text-primary">
-            Interview invitations followed, and their number has kept growing.
-          </p>
-        </div>
-        <p className={`${cardText} border-t border-border-subtle pt-5 text-text-secondary md:col-span-2`}>
-          The home page had 3.1K visitors, Portfolio 637 and About 294.
+      <div className="flex items-center gap-4 border-t border-border-subtle pt-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6 shrink-0 text-text-brand">
+          <path d="m3 17 6-6 4 4 8-8M15 7h6v6" />
+        </svg>
+        <p className="font-grotesk text-body-lg font-medium text-text-primary">
+          Interview invitations followed, and their number has kept growing.
         </p>
       </div>
 
