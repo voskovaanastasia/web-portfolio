@@ -9,6 +9,8 @@ import casePayments480 from '../assets/case-payments-480w.webp';
 import caseDoctor480 from '../assets/case-onlinedoctor-480w.webp';
 import caseFitness480 from '../assets/case-fitness-480w.webp';
 import caseShoot480 from '../assets/case-shoot-480w.webp';
+import { SHOW_BUILT_WITH_CLAUDE } from '../config/publishedCases';
+import builtWithClaudeProject from '../data/builtWithClaudeProject';
 
 const featured = {
   id: 'farsafe',
@@ -33,6 +35,18 @@ const moreWork = [
   { id: 'online-doctor', title: 'Online Doctor — Telemedicine Platform', tags: ['Healthcare', 'Web & Mobile'], metric: 'Mobile', preview: caseDoctor480 },
   { id: 'fitness-app', title: 'Fitness App — Health & Training', tags: ['Mobile', 'AI Personalization'], metric: 'iOS & Android', preview: caseFitness480 },
   { id: 'shoot', title: 'SHOOT — Creative-Services Marketplace', tags: ['Marketplace', 'Booking Flow'], metric: 'Web & Mobile', preview: caseShoot480 },
+  // Hidden together with the case itself (see config/publishedCases.js).
+  ...(SHOW_BUILT_WITH_CLAUDE
+    ? [
+        {
+          id: builtWithClaudeProject.id,
+          title: 'Built with Claude — This Portfolio',
+          tags: ['Claude Code', 'Design System'],
+          metric: 'Web',
+          preview: builtWithClaudeProject.image480,
+        },
+      ]
+    : []),
 ];
 
 const dotted = (items) =>
