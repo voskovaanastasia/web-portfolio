@@ -65,7 +65,7 @@ const project = {
   },
   problem: {
     heading: 'My portfolio lived on Behance, and it was getting in my way',
-    image: 'case-built-with-claude-problem-behance.webp',
+    image: 'case-built-with-claude-problem-behance.png',
     imageAlt: 'The old Behance portfolio',
     body: (
       <>
@@ -82,7 +82,7 @@ const project = {
   },
   solution: {
     heading: 'One site I own, designed in Figma and built with Claude Code',
-    image: 'case-built-with-claude-solution-home.webp',
+    image: 'case-built-with-claude-solution-home.png',
     imageAlt: 'The live home page',
     body: (
       <>
