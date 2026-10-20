@@ -158,6 +158,15 @@ const roleRows = [
     what: 'Reviewer and prompt partner. Wrote prioritised audits of the live pages and helped me turn each finding into a scoped prompt.',
   },
   {
+    who: 'Claude Design',
+    icon: (
+      <>
+        <path d="m4 20 1-4L16 5l3 3L8 19l-4 1zM14 7l3 3" strokeLinejoin="round" strokeLinecap="round" />
+      </>
+    ),
+    what: 'Reviewed the first version of the site: it found front-end bugs and proposed changes, which I treated as options.',
+  },
+  {
     who: 'A recruiter, a QA tester, a front-end developer',
     icon: (
       <>
@@ -178,7 +187,7 @@ function Role() {
         enough to ship.
       </p>
 
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {roleRows.map((row) => (
           <div key={row.who} className="flex flex-col gap-4 border-t border-border-subtle pt-5">
             <span
