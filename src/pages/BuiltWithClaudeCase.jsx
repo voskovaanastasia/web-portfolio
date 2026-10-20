@@ -1,5 +1,6 @@
 import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
 import Goals from '../components/Goals';
+import IATree from '../components/IATree';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
 
@@ -381,6 +382,134 @@ function VersionTwo() {
             </div>
           </div>
         ))}
+      </div>
+    </>
+  );
+}
+
+// ---- 7b · Information architecture -----------------------------------------
+
+const siteTree = {
+  label: 'anastasiiavoskova.com',
+  children: [
+    {
+      label: 'About (home)',
+      children: [
+        { label: 'Hero' },
+        { label: 'Selected Work' },
+        { label: 'How I Work' },
+        { label: 'What People Say' },
+        { label: 'My Toolkit' },
+        { label: 'Proven Results' },
+        { label: 'AI + Designer' },
+        { label: 'Experience' },
+        { label: 'Education' },
+        { label: 'Contact' },
+      ],
+    },
+    {
+      label: 'Portfolio',
+      children: [
+        {
+          label: 'Product & UX/UI Design',
+          children: [
+            { label: 'Farsafe' },
+            { label: 'bART Solutions' },
+            { label: 'CryptoWallet' },
+            { label: 'Online Doctor' },
+            { label: 'Enterprise CRM' },
+            { label: 'Fitness App' },
+            { label: 'Online Payment Solutions' },
+            { label: 'SHOOT' },
+          ],
+        },
+        { label: 'Built with Claude', children: [{ label: 'This case study' }] },
+        { label: 'Logos & Branding', children: [{ label: 'Coming soon' }] },
+      ],
+    },
+    { label: 'Download CV (PDF)' },
+    {
+      label: 'Case study page (shared frame)',
+      children: [
+        { label: 'Hero and meta bar' },
+        { label: 'Summary cards' },
+        { label: 'Project intro' },
+        { label: 'Problem and solution' },
+        { label: 'Case-specific blocks' },
+        { label: 'Key takeaway' },
+        { label: 'Next case' },
+        { label: 'Contact' },
+      ],
+    },
+    { label: '404 page' },
+  ],
+};
+
+const homeTree = {
+  label: 'Home page',
+  children: [
+    {
+      label: 'At launch · 29 Sep',
+      children: [
+        { label: '1 · Hero' },
+        { label: '2 · How I Work' },
+        { label: '3 · Selected Work' },
+        { label: '4 · My Toolkit' },
+        { label: '5 · Proven Results' },
+        { label: '6 · Experience' },
+        { label: '7 · AI + Designer' },
+        { label: '8 · Education' },
+        { label: '9 · Contact' },
+      ],
+    },
+    {
+      label: 'Now',
+      children: [
+        { label: '1 · Hero' },
+        { label: '2 · Selected Work' },
+        { label: '3 · How I Work' },
+        { label: '4 · What People Say' },
+        { label: '5 · My Toolkit' },
+        { label: '6 · Proven Results' },
+        { label: '7 · AI + Designer' },
+        { label: '8 · Experience' },
+        { label: '9 · Education' },
+        { label: '10 · Contact' },
+      ],
+    },
+    {
+      label: 'What changed',
+      children: [
+        { label: '2 Oct · What People Say added' },
+        { label: '4 Oct · Selected Work above How I Work' },
+        { label: '4 Oct · AI + Designer above Experience' },
+      ],
+    },
+  ],
+};
+
+function InformationArchitecture() {
+  return (
+    <>
+      <h2 className={h2Class}>The site map and the order of the home page</h2>
+      <p className={bodyText}>
+        The header has three destinations: <strong>About, Portfolio and Download CV.</strong> All nine case studies live
+        on one Portfolio page, one click from anywhere. Every case follows the same frame, so a reader who has seen one
+        knows where to look in the next.
+      </p>
+      <div tabIndex={0} className="rounded-card bg-surface-subtle p-3 sm:p-5 overflow-x-auto">
+        <IATree data={siteTree} defaultOpenIndex={0} />
+        <p className={`${captionClass} mt-4`}>Click a node to expand or collapse its branch.</p>
+      </div>
+
+      <p className={`${bodyText} mt-4`}>
+        The home page stays a CV, and I changed the order of its blocks after launch. <strong>What People Say</strong>{' '}
+        was added on 2 October. On 4 October <strong>Selected Work</strong> moved above How I Work, and{' '}
+        <strong>AI + Designer</strong> moved above Experience, so that the work is reached sooner.
+      </p>
+      <div tabIndex={0} className="rounded-card bg-surface-subtle p-3 sm:p-5 overflow-x-auto">
+        <IATree data={homeTree} defaultOpenIndex={2} />
+        <p className={`${captionClass} mt-4`}>Click a node to expand or collapse its branch.</p>
       </div>
     </>
   );
@@ -991,6 +1120,7 @@ const sections = [
   { id: 'role', label: 'Role & Who Did What', content: <Role /> },
   { id: 'research', label: 'Research', content: <Research /> },
   { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
+  { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
   { id: 'checks', label: 'How I Checked the Output', content: <OutputChecks /> },
   { id: 'tokens', label: 'Design System', content: <Tokens /> },
