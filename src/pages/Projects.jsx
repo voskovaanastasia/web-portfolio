@@ -22,6 +22,7 @@ import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import { SHOW_BUILT_WITH_CLAUDE } from '../config/publishedCases';
 import builtWithClaudeProject from '../data/builtWithClaudeProject';
+import { caseStudy } from '../data/caseStudies';
 
 const categories = ['Product & UX/UI Design', 'Built with Claude', 'Logos & Branding'];
 
@@ -84,82 +85,66 @@ function ProjectCard({ project, index }) {
 
 const projects = [
   {
-    id: 'farsafe',
+    ...caseStudy('farsafe'),
     category: 'Product & UX/UI Design',
     image480: caseFarsafe480,
     image960: caseFarsafe960,
-    tags: ['0-to-1 SaaS', 'Web App', 'Marketing Site', 'Design System'],
-    title: 'Farsafe: Uptime Monitoring Platform',
     description:
       'Sole designer on a 0-to-1 uptime-monitoring platform, spanning the marketing website and in-app monitoring dashboard. Led discovery research that defined the product’s design targets — pricing clarity, alert reliability, and tool consolidation.',
   },
   {
-    id: 'bart',
+    ...caseStudy('bart'),
     category: 'Product & UX/UI Design',
     image480: caseBart480,
     image960: caseBart960,
-    tags: ['Enterprise', 'Web & Mobile', 'Design Tokens'],
-    title: 'bART Solutions: Enterprise Web Products',
     description:
       'Owned the UX/UI for production web and mobile products serving enterprise clients. Built scalable design systems with design tokens and worked across complex, data-dense dashboards.',
   },
   {
-    id: 'cryptowallet',
+    ...caseStudy('cryptowallet'),
     category: 'Product & UX/UI Design',
     image480: caseCryptowallet480,
     image960: caseCryptowallet960,
-    tags: ['Fintech', 'Mobile', 'iOS & Android', 'Crypto'],
-    title: 'CryptoWallet: Mobile Crypto App',
     description:
       'Designed a mobile app for buying, storing, and sending crypto — turning a category that overwhelms first-time users into a flow that feels confident and clear from the first screen.',
   },
   {
-    id: 'online-doctor',
+    ...caseStudy('online-doctor'),
     category: 'Product & UX/UI Design',
     image480: caseOnlineDoctor480,
     image960: caseOnlineDoctor960,
-    tags: ['Healthcare', 'Web & Mobile', 'Telemedicine'],
-    title: 'Online Doctor: Telemedicine Platform',
     description:
       'A secure, HIPAA-compliant telehealth platform designed to enhance patient-doctor interactions. Grown from an MVP into a product with real-time consultations, appointment scheduling, and integrated billing.',
   },
   {
-    id: 'crm-platform',
+    ...caseStudy('crm-platform'),
     category: 'Product & UX/UI Design',
     image480: caseCrm480,
     image960: caseCrm960,
-    tags: ['B2B SaaS', 'Web App', 'Data-Dense UI', 'Marketing Automation'],
-    title: 'Enterprise CRM: B2B Operations Platform',
     description:
       'A B2B operations platform that centralizes client information, streamlines sales operations, and optimizes inventory and marketing workflows at large-company scale. The UI was redesigned to support the full sales cycle from lead generation to deal closure.',
   },
   {
-    id: 'fitness-app',
+    ...caseStudy('fitness-app'),
     category: 'Product & UX/UI Design',
     image480: caseFitness480,
     image960: caseFitness960,
-    tags: ['Mobile', 'iOS & Android', 'Health & Wellness', 'AI Personalization'],
-    title: 'Fitness App: Mobile Health & Training Platform',
     description:
       'An advanced mobile health and fitness platform designed to support individuals in reaching their fitness goals. Personalized workout plans, AI-driven customization, and real-time health tracking that integrates with wearable devices for comprehensive wellness insights.',
   },
   {
-    id: 'online-payments',
+    ...caseStudy('online-payments'),
     category: 'Product & UX/UI Design',
     image480: casePayments480,
     image960: casePayments960,
-    tags: ['Fintech', 'Web', 'Checkout', 'Compliance'],
-    title: 'Online Payment Solutions: Checkout & Merchant Console',
     description:
       'Both ends of a transaction: a checkout that survives real-world failure — declines, 3-D Secure, retries — and a merchant console where those same events are legible enough to act on. Error states designed as primary screens, not edge cases.',
   },
   {
-    id: 'shoot',
+    ...caseStudy('shoot'),
     category: 'Product & UX/UI Design',
     image480: caseShoot480,
     image960: caseShoot960,
-    tags: ['Marketplace', 'Web & Mobile', 'Booking Flow', 'Payments'],
-    title: 'SHOOT: Creative-Services Marketplace',
     description:
       'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
   },

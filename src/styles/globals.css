@@ -241,3 +241,9 @@
   #hero [data-stack-icon]:nth-child(8) { animation-delay: 0.36s; }
   #hero [data-stack-icon]:nth-child(9) { animation-delay: 0.39s; }
 }
+
+/* The 404 page sits on the same dot grid as Home, About and Portfolio. The layout wrapper paints white on
+   every other route, so NotFound marks the body while it is mounted and the wrapper goes transparent. */
+body[data-page='not-found'] #root > div {
+  background-color: transparent;
+}

@@ -1,11 +1,10 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
 import About from './pages/About';
-import useDocumentMeta from './hooks/useDocumentMeta';
 import { SHOW_BUILT_WITH_CLAUDE } from './config/publishedCases';
 import './styles/globals.css';
 
@@ -19,21 +18,11 @@ const FitnessAppCase = lazy(() => import('./pages/FitnessAppCase'));
 const OnlinePaymentsCase = lazy(() => import('./pages/OnlinePaymentsCase'));
 const ShootCase = lazy(() => import('./pages/ShootCase'));
 const TaxComplianceCase = lazy(() => import('./pages/TaxComplianceCase'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 // Gated by SHOW_BUILT_WITH_CLAUDE (src/config/publishedCases.js); noindex, not in the sitemap.
 const BuiltWithClaudeCase = SHOW_BUILT_WITH_CLAUDE
   ? lazy(() => import('./pages/BuiltWithClaudeCase'))
   : null;
-
-// Unknown URLs still get the SPA shell with a 200 from the host, so mark them noindex.
-function NotFound() {
-  useDocumentMeta({ title: 'Page not found — Anastasiia Voskova', robots: 'noindex, nofollow' });
-  return (
-    <main id="main-content" className="flex flex-col items-center gap-4 px-6 py-32 text-center">
-      <h1 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">Page not found</h1>
-      <Link to="/" className="font-grotesk text-body text-text-brand underline">Back to home</Link>
-    </main>
-  );
-}
 
 // Routes whose hero uses the dotted body background; other pages sit on plain white.
 const dottedHeroRoutes = ['/', '/about', '/projects'];
