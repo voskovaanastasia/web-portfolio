@@ -56,11 +56,6 @@ const project = {
       <>
         A case study on turning my portfolio into a real product: researched, designed in Figma, built with Claude
         Code, and measured, with me making the decisions, reviewing the output and fixing what the AI got wrong.
-        <br />
-        <br />
-        <strong>The result.</strong> A live site with nine case studies, a design system built from Figma components,
-        and a repeatable way of directing AI without giving up design judgement. It also includes the mistakes I caught
-        along the way, which are the most useful part of this story.
       </>
     ),
   },
@@ -349,8 +344,7 @@ function VersionTwo() {
           <p className={`${cardText} flex-1`}>
             For version 2 I showed more cases straight away, dropped the filled cards, reordered the home page blocks
             and refreshed the UI. I asked Claude Design to review the first version. It found front-end bugs, including
-            typography problems I fixed, and proposed 31 changes. I treated them as options and implemented 8, testing
-            each against one question: does it help a reviewer reach the work faster? I also changed the font set so
+            typography problems I fixed, and proposed changes, which I treated as options. I also changed the font set so
             the page loads faster.
           </p>
         </div>
@@ -486,7 +480,7 @@ const loopSteps = [
   },
   {
     heading: 'Build with AI',
-    body: 'Claude Code writes the front end from the specs. I read every diff.',
+    body: 'Claude Code writes the front end from the specs.',
     tag: 'claude-code',
     active: true,
   },
@@ -748,7 +742,7 @@ const mistakes = [
   {
     tag: 'TOKENS',
     lead: 'The design system did not reach the code.',
-    text: 'The components existed in Figma, but the variables did not carry through, so colours and sizes were hard-coded. I wired the tokens in after launch.',
+    text: 'The components existed in Figma, but the variables did not carry through, so colours and sizes were hard-coded.',
   },
   {
     tag: 'PERF',
