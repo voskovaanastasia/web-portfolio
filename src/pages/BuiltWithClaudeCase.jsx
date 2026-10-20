@@ -87,8 +87,7 @@ const project = {
     imageAlt: 'The live home page',
     body: (
       <>
-        I designed the building blocks in Figma, and Claude Code built them and assembled the pages. I read every diff,
-        and a QA tester and a front-end developer reviewed the live site.
+        I designed the building blocks in Figma, and Claude Code built them and assembled the pages.
         <br />
         <br />
         A site I own changes in minutes. A new case is one data entry plus its images, and a number can be corrected
@@ -137,7 +136,7 @@ const roleRows = [
         <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
       </>
     ),
-    what: 'Positioning, information architecture and research. Figma components and variables. Every decision on what the page says and leaves out, and a read of every diff before commit.',
+    what: 'Positioning, information architecture and research. Figma components and variables. Every decision on what the page says and leaves out.',
   },
   {
     who: 'Claude Code',
