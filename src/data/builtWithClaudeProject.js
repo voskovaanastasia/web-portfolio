@@ -8,7 +8,7 @@ const builtWithClaudeProject = {
   category: 'Built with Claude',
   image480: caseBuiltWithClaude480,
   image960: caseBuiltWithClaude960,
-  tags: ['Claude Code', 'Figma MCP', 'Design System', 'Lighthouse 97'],
+  tags: ['Claude Code', 'Figma MCP', 'Design System', 'Lighthouse 99'],
   title: 'This Portfolio: Designed and Shipped with Claude Code',
   description:
     'A portfolio treated as a real product: researched against other designers’ sites, designed in Figma, built with Claude Code, and measured. A case study on directing AI without giving up design judgement, including the mistakes I caught along the way.',
