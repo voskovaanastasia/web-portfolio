@@ -988,8 +988,7 @@ function Results() {
           ))}
         </div>
         <p className={`${cardText} border-t border-border-subtle px-5 py-4 text-text-secondary md:px-8 [&>strong]:font-bold [&>strong]:text-text-primary`}>
-          On 19 October PageSpeed Insights gave <strong>99</strong> for performance, <strong>100</strong> for
-          Accessibility, Best Practices and SEO, and 3/3 on Agentic browsing.
+          Final result after several runs. Scores vary slightly from run to run.
         </p>
       </div>
 
