@@ -292,20 +292,20 @@ const versionImages = [
     key: 'v1',
     label: 'Version 1',
     labelClass: 'text-text-secondary',
-    home: { file: 'case-built-with-claude-v1-home.webp', alt: 'Version 1, full home page' },
+    home: { file: 'case-built-with-claude-v1-home.png', alt: 'Version 1, full home page' },
     blocks: [
-      { file: 'case-built-with-claude-v1-toolkit.webp', alt: 'Version 1, toolkit block' },
-      { file: 'case-built-with-claude-v1-ai-designer.webp', alt: 'Version 1, AI + Designer block' },
+      { file: 'case-built-with-claude-v1-toolkit.png', alt: 'Version 1, toolkit block' },
+      { file: 'case-built-with-claude-v1-ai-designer.png', alt: 'Version 1, AI + Designer block' },
     ],
   },
   {
     key: 'v2',
     label: 'Version 2',
     labelClass: 'text-text-brand',
-    home: { file: 'case-built-with-claude-v2-home.webp', alt: 'Version 2, full home page' },
+    home: { file: 'case-built-with-claude-v2-home.png', alt: 'Version 2, full home page' },
     blocks: [
-      { file: 'case-built-with-claude-v2-toolkit.webp', alt: 'Version 2, toolkit block' },
-      { file: 'case-built-with-claude-v2-ai-designer.webp', alt: 'Version 2, AI + Designer block' },
+      { file: 'case-built-with-claude-v2-toolkit.png', alt: 'Version 2, toolkit block' },
+      { file: 'case-built-with-claude-v2-ai-designer.png', alt: 'Version 2, AI + Designer block' },
     ],
   },
 ];
@@ -605,7 +605,7 @@ function Tokens() {
       </div>
 
       <ImagePlaceholder
-        filename="case-built-with-claude-tokens-structure.webp"
+        filename="case-built-with-claude-tokens-structure.png"
         alt="Token structure: raw value, primitive, semantic, in code"
         className="min-h-[420px]"
       />
@@ -874,7 +874,7 @@ function Results() {
       <MetricList metrics={localMetrics} markerName="Before" />
 
       <ImagePlaceholder
-        filename="case-built-with-claude-results-psi.webp"
+        filename="case-built-with-claude-results-psi.png"
         alt="PageSpeed Insights, mobile, 19 October 2026: 99 performance, 100 accessibility, 100 best practices, 100 SEO, Agentic browsing 3/3"
         className="min-h-[320px]"
       />
@@ -921,7 +921,7 @@ function Results() {
       </div>
 
       <ImagePlaceholder
-        filename="case-built-with-claude-results-analytics.webp"
+        filename="case-built-with-claude-results-analytics.png"
         alt="Vercel Analytics, 19 October 2026: visitors, page views, pages, referrers"
         className="min-h-[320px]"
       />
