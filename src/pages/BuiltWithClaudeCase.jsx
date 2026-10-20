@@ -486,6 +486,50 @@ function Loop() {
   );
 }
 
+// ---- 8b · How I checked the output ----------------------------------------
+
+const outputChecks = [
+  {
+    label: 'Diff',
+    title: 'What changed.',
+    text: 'Every change was read line by line before commit. A diff shows what a change does, not what it leaves out.',
+  },
+  {
+    label: 'Browser',
+    title: 'How it looks.',
+    text: 'Each result was opened in the browser to check layout and responsive behaviour, which a diff cannot show.',
+  },
+  {
+    label: 'Lighthouse',
+    title: 'How fast and accessible.',
+    text: 'PageSpeed Insights showed that the first build was slow (68 on mobile) and that the fixes worked (99).',
+  },
+  {
+    label: 'Linter',
+    title: 'What must not come back.',
+    text: 'A lint check fails if a raw colour is added, so the design system rule holds even when I am not reading the diff.',
+  },
+];
+
+function OutputChecks() {
+  return (
+    <>
+      <h2 className={h2Class}>How I checked what Claude Code wrote</h2>
+      <p className={bodyText}>Each check catches something the others miss.</p>
+
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {outputChecks.map((check) => (
+          <div key={check.label} className={`${cardClass} bg-surface-subtle`}>
+            <p className={h3Class}>{check.label}</p>
+            <p className={cardTitle}>{check.title}</p>
+            <p className={cardText}>{check.text}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
 // ---- 9 · Design tokens -----------------------------------------------------
 
 const tokenResults = [
@@ -948,6 +992,7 @@ const sections = [
   { id: 'research', label: 'Research', content: <Research /> },
   { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
+  { id: 'checks', label: 'How I Checked the Output', content: <OutputChecks /> },
   { id: 'tokens', label: 'Design System', content: <Tokens /> },
   { id: 'mistakes', label: 'Mistakes', content: <Mistakes /> },
   { id: 'results', label: 'Results', content: <Results /> },
