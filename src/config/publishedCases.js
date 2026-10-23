@@ -8,5 +8,5 @@
 // defined in vite.config.js from VERCEL_ENV. While SHOW_BUILT_WITH_CLAUDE is false there is no
 // card or tab, the route renders the 404 page, and the chunk and cover images stay out of the build.
 // The case stays noindex and out of sitemap.xml and llms.txt in every environment.
-export const BUILT_WITH_CLAUDE_PUBLISHED = false;
+export const BUILT_WITH_CLAUDE_PUBLISHED = true;
 export const SHOW_BUILT_WITH_CLAUDE = BUILT_WITH_CLAUDE_PUBLISHED || !__IS_PRODUCTION__;
