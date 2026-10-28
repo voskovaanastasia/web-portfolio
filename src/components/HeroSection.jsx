@@ -69,7 +69,16 @@ export default function HeroSection() {
   return (
     <section ref={rootRef} id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
-      <div className="relative z-10 flex flex-col items-center gap-5 max-w-3xl px-6 sm:px-8 py-20 text-center">
+      {/* Collaborator cursor, as in a shared Figma file */}
+      <div aria-hidden="true" className="hidden lg:flex absolute z-10 left-[6%] top-[18%] flex-col items-start">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-accent-handwritten">
+          <path d="M1 1l5.2 13.5 2-5.6 5.6-2L1 1z" fill="currentColor" />
+        </svg>
+        <span className="ml-3 -mt-0.5 px-3 py-1 rounded-pill bg-accent-handwritten text-text-inverse font-grotesk font-medium text-sm">
+          Your team
+        </span>
+      </div>
+      <div className="relative z-10 flex flex-col items-center gap-5 max-w-5xl px-6 sm:px-8 py-20 text-center">
         {/* Hello line */}
         <div data-hero-item className="flex items-center gap-2.5">
           <img
@@ -87,34 +96,59 @@ export default function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 data-hero-item className="font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl text-text-primary tracking-tight leading-snug max-w-[280px] sm:max-w-none">
+        <h1 data-hero-item className="relative font-grotesk font-medium text-[26px] sm:text-4xl md:text-5xl lg:text-[64px] text-text-primary tracking-tight leading-[1.15] max-w-[280px] sm:max-w-none lg:max-w-[1000px]">
           I make complex,{' '}
-          <span className="font-caveat font-bold text-[1.18em] leading-none">data-dense</span>{' '}
-          products feel simple, and ground every decision in research.
+          {/* Figma-style selection frame around the handwritten word */}
+          <span className="relative inline-block px-2 sm:px-3 border-[1.5px] border-action-primary">
+            <span className="font-caveat font-bold text-[1.18em] leading-none">data-dense</span>
+            {['-top-[5px] -left-[5px]', '-top-[5px] -right-[5px]', '-bottom-[5px] -left-[5px]', '-bottom-[5px] -right-[5px]'].map((pos) => (
+              <span
+                key={pos}
+                aria-hidden="true"
+                className={`absolute ${pos} w-[9px] h-[9px] bg-surface-default border-[1.5px] border-action-primary`}
+              />
+            ))}
+          </span>{' '}
+          products feel simple, and ground every decision in research<span className="text-action-primary">.</span>
+          {/* Sticky note */}
+          <span
+            aria-hidden="true"
+            className="hidden xl:block absolute -right-24 top-[46%] rotate-[4deg] bg-[#FCF1BF] px-4 py-3 font-caveat font-bold text-[22px] leading-tight tracking-normal text-left text-text-primary shadow-[2px_6px_14px_rgba(0,0,0,0.12)]"
+          >
+            research first,
+            <br />
+            pixels second &#10003;
+          </span>
         </h1>
 
         {/* Subheadline */}
-        <p data-hero-item className="font-grotesk text-lead text-text-primary max-w-[280px] sm:max-w-none">
+        <p data-hero-item className="font-grotesk text-lead text-text-primary max-w-[280px] sm:max-w-md md:max-w-xl">
           Currently designing uptime-monitoring platforms and scalable design systems that users actually love.
         </p>
 
         {/* Buttons */}
         <div data-hero-item className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-[280px] sm:max-w-none">
           <a
+            href="#contact"
+            onClick={scrollToContact}
+            className="group w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-3 text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base pl-6 pr-1.5 py-1.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          >
+            Contact me
+            <span
+              aria-hidden="true"
+              className="w-[34px] h-[34px] inline-flex items-center justify-center rounded-pill bg-surface-default text-action-primary transition-transform group-hover:rotate-45"
+            >
+              &#8599;
+            </span>
+          </a>
+          <a
             href="/Anastasiia-Voskova-Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download="Anastasiia-Voskova-Resume.pdf"
-            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] bg-surface-default border-action-primary text-action-primary hover:bg-surface-brand-tint font-grotesk font-medium text-base px-6 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             Download CV
-          </a>
-          <a
-            href="#contact"
-            onClick={scrollToContact}
-            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] bg-surface-default border-action-primary text-action-primary hover:bg-surface-brand-tint font-grotesk font-medium text-base px-5 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-          >
-            Contact
           </a>
         </div>
 
