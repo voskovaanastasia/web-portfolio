@@ -14,7 +14,7 @@ const steps = [
   {
     number: '2',
     file: '02-spec.md',
-    title: 'Turn design into instructions',
+    title: 'Design to spec',
     description: "Flows, states and edge cases become precise Markdown specs an AI can't misread.",
   },
   {
