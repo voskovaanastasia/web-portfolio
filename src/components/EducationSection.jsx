@@ -1,3 +1,4 @@
+import { CompactJourney } from './CompactJourney';
 import logoLpnu from '../assets/edu-lpnu.webp';
 import logoLnu from '../assets/edu-lnu.webp';
 
@@ -70,7 +71,32 @@ const education = [
   },
 ];
 
-export default function EducationSection() {
+export default function EducationSection({ compact = false }) {
+  if (compact) {
+    return (
+      <CompactJourney
+        id="education"
+        eyebrow="My Learning"
+        title="Education"
+        linkLabel="Full education"
+        linkTo="/about#education"
+        rows={education.map((edu) => {
+          const [school, ...metaRest] = edu.meta;
+          return {
+            key: edu.dateRange,
+            dateRange: edu.dateRange,
+            title: edu.school,
+            logo: edu.logo,
+            logoW: edu.logoW,
+            logoH: edu.logoH,
+            org: school,
+            details: metaRest.slice(0, 2),
+          };
+        })}
+      />
+    );
+  }
+
   return (
     <section id="education" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">

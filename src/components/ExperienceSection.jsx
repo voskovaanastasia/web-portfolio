@@ -1,3 +1,4 @@
+import { CompactJourney } from './CompactJourney';
 import logoFarsafe from '../assets/logo-farsafe.webp';
 import logoBart from '../assets/logo-bart.webp';
 import iconFintech from '../assets/exp-fintech.svg';
@@ -74,7 +75,7 @@ function BulletList({ bullets }) {
   );
 }
 
-export default function ExperienceSection() {
+export default function ExperienceSection({ compact = false }) {
   const now = new Date();
 
   const experiences = [
@@ -193,6 +194,31 @@ export default function ExperienceSection() {
       ],
     },
   ];
+
+  if (compact) {
+    return (
+      <CompactJourney
+        id="experience"
+        eyebrow="My Journey"
+        title="Work Experience"
+        linkLabel="Full experience"
+        linkTo="/about#experience"
+        rows={experiences.map((exp, index) => {
+          const [company, ...metaRest] = exp.meta;
+          return {
+            key: index,
+            dateRange: formatDateRange(exp.start, exp.end),
+            title: exp.title,
+            logo: exp.logo,
+            logoW: exp.logoW,
+            logoH: exp.logoH,
+            org: company,
+            details: [formatDuration(exp.start, exp.end, now), ...metaRest.filter((part) => part !== 'Part-time' && part !== 'Full-time')],
+          };
+        })}
+      />
+    );
+  }
 
   return (
     <section id="experience" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">

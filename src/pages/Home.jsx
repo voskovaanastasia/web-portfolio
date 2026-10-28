@@ -20,8 +20,8 @@ const sections = [
   { id: 'toolkit', Component: MyToolkitSection, space: 'min-h-[1850px] md:min-h-[1330px] lg:min-h-[1150px]' },
   { id: 'impact', Component: ImpactSection, space: 'min-h-[1180px] md:min-h-[950px] lg:min-h-[570px]' },
   { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1900px] md:min-h-[1400px] lg:min-h-[900px]' },
-  { id: 'experience', Component: ExperienceSection, space: 'min-h-[3540px] md:min-h-[2750px] lg:min-h-[2250px]' },
-  { id: 'education', Component: EducationSection, space: 'min-h-[1440px] md:min-h-[1240px] lg:min-h-[1010px]' },
+  { id: 'experience', Component: ExperienceSection, space: 'min-h-[940px] md:min-h-[780px] lg:min-h-[700px]', props: { compact: true } },
+  { id: 'education', Component: EducationSection, space: 'min-h-[640px] md:min-h-[540px] lg:min-h-[490px]', props: { compact: true } },
   { id: 'contact', Component: ContactSection, space: 'min-h-[2170px] md:min-h-[1520px] lg:min-h-[1230px]' },
 ];
 
@@ -56,11 +56,11 @@ export default function Home() {
       <SectionMenu refreshKey={loadedCount} />
       <HeroSection />
       <SelectedWork />
-      {sections.map(({ id, Component, space }) => (
+      {sections.map(({ id, Component, space, props }) => (
         <Suspense key={id} fallback={<div id={id} aria-hidden="true" className={space} />}>
           {renderRest ? (
             <>
-              <Component />
+              <Component {...props} />
               <Loaded onLoaded={onLoaded} />
             </>
           ) : (
