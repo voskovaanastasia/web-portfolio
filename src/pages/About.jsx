@@ -18,7 +18,7 @@ const ContactSection = lazy(() => import('../components/ContactSection'));
 const sections = [
   { id: 'how-i-work', Component: HowIWorkSection, space: 'min-h-[2430px] md:min-h-[2100px] lg:min-h-[1390px]' },
   { id: 'recommendations', Component: RecommendationsSection, space: 'min-h-[720px] md:min-h-[620px] lg:min-h-[530px]' },
-  { id: 'toolkit', Component: MyToolkitSection, space: 'min-h-[1320px] md:min-h-[1020px] lg:min-h-[890px]' },
+  { id: 'toolkit', Component: MyToolkitSection, space: 'min-h-[1850px] md:min-h-[1330px] lg:min-h-[1150px]' },
   { id: 'impact', Component: ImpactSection, space: 'min-h-[1180px] md:min-h-[950px] lg:min-h-[570px]' },
   { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1900px] md:min-h-[1400px] lg:min-h-[900px]' },
   { id: 'experience', Component: ExperienceSection, space: 'min-h-[3540px] md:min-h-[2750px] lg:min-h-[2250px]' },
