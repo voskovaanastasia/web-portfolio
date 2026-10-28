@@ -1,6 +1,7 @@
 import DotsBackground from '../components/DotsBackground';
 import EducationSection from '../components/EducationSection';
 import ContactSection from '../components/ContactSection';
+import RightNowSection from '../components/RightNowSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import avatar from '../assets/avatar.webp';
 
@@ -137,6 +138,7 @@ export default function About() {
 
       <EducationSection />
       <ContactSection />
+      <RightNowSection />
     </main>
   );
 }
