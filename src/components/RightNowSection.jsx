@@ -34,13 +34,10 @@ function MediaCard({ title, image, tag, years, note, tilt, ratio }) {
     <li className={`${mediaCard} ${tilt}`}>
       <div className={`relative ${ratio} rounded-control overflow-hidden bg-track`}>
         <img src={image} alt={`${title} cover`} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
-        <span className="absolute left-3 top-3 px-2.5 py-1 rounded-pill bg-surface-default/85 font-mono text-caption-xs text-text-primary">
-          {tag}
-        </span>
       </div>
       <span className="px-1.5 font-grotesk font-medium text-body-lg text-text-primary">{title}</span>
-      <div className="flex items-center justify-between gap-2 px-1.5 pb-1 -mt-2">
-        {years ? <span className="font-mono text-caption text-text-secondary">{years}</span> : null}
+      <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5 px-1.5 pb-1 -mt-2">
+        <span className="font-mono text-caption text-text-secondary">{years ? `${tag} · ${years}` : tag}</span>
         <span className="font-grotesk font-bold text-caption text-accent-handwritten">{note}</span>
       </div>
     </li>
@@ -60,23 +57,8 @@ export default function RightNowSection() {
 
         <div className="flex flex-wrap gap-5">
           {/* Playlist */}
-          <div className="flex-[2_1_560px] min-w-0 rounded-card bg-accent-handwritten p-7 flex flex-wrap items-center gap-7 overflow-hidden">
-            <div aria-hidden="true" className="relative w-[260px] h-[220px] flex-none mx-auto">
-              <div className="rn-vinyl absolute left-20 top-2.5 w-[200px] h-[200px] rounded-full shadow-[0_8px_20px_rgba(0,0,0,0.3)] flex items-center justify-center">
-                <div className="relative w-[70px] h-[70px] rounded-full bg-data-1 flex items-center justify-center">
-                  <span className="font-caveat font-bold text-[18px] text-purple-700">on repeat</span>
-                  <span className="absolute left-[31px] top-[31px] w-2 h-2 rounded-full bg-ink" />
-                </div>
-              </div>
-              <div className="absolute left-0 top-0 w-[220px] h-[220px] rounded-control bg-purple-700 shadow-[4px_8px_20px_rgba(0,0,0,0.25)] p-5 flex flex-col justify-between">
-                <span className="font-mono text-caption-xs uppercase tracking-wider text-text-inverse opacity-80">Playlist</span>
-                <div className="flex flex-col gap-1">
-                  <span className="font-grotesk font-bold text-[24px] leading-[1.1] text-text-inverse">Job Playlist</span>
-                  <span className="font-caveat font-bold text-title-md text-data-1">by Anastasiia</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex-[1_1_240px] min-w-0 flex flex-col gap-4">
+          <div className="flex-[2_1_560px] min-w-0 rounded-card bg-accent-handwritten p-7 flex flex-col gap-4 overflow-hidden">
+            <div className="w-full min-w-0 flex flex-col gap-4">
               <div className="flex items-center justify-between gap-3">
                 <h3 className="font-grotesk font-bold text-title-sm text-text-inverse">Now playing</h3>
                 <span aria-hidden="true" className="inline-flex items-end gap-[3px] h-4">

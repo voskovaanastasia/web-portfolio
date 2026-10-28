@@ -1,4 +1,5 @@
 import DotsBackground from '../components/DotsBackground';
+import ExperienceSection from '../components/ExperienceSection';
 import EducationSection from '../components/EducationSection';
 import ContactSection from '../components/ContactSection';
 import RightNowSection from '../components/RightNowSection';
@@ -136,9 +137,10 @@ export default function About() {
         </div>
       </section>
 
+      <ExperienceSection />
       <EducationSection />
-      <ContactSection />
       <RightNowSection />
+      <ContactSection />
     </main>
   );
 }

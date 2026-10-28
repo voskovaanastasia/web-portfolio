@@ -254,21 +254,14 @@ body[data-page='not-found'] #root > div {
   background-color: transparent;
 }
 
-/* About › Right now: spinning record and equaliser bars on the playlist card. */
-@keyframes rn-spin {
-  to { transform: rotate(360deg); }
-}
+/* About › Right now: equaliser bars on the playlist card. */
 @keyframes rn-eq {
   0%, 100% { transform: scaleY(0.3); }
   50% { transform: scaleY(1); }
-}
-.rn-vinyl {
-  background: repeating-radial-gradient(circle, #22292F 0 2px, #2E363D 2px 4px);
 }
 .rn-eq-bar {
   transform-origin: bottom;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .rn-vinyl { animation: rn-spin 8s linear infinite; }
   .rn-eq-bar { animation: rn-eq 0.9s ease-in-out infinite; }
 }
