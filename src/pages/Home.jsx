@@ -15,11 +15,11 @@ const ContactSection = lazy(() => import('../components/ContactSection'));
 // Placeholder heights ≈ each section's rendered height at 375 / 768 / 1440 px, so the page keeps
 // its length (and scroll position) while a section chunk is still loading.
 const sections = [
+  { id: 'impact', Component: ImpactSection, space: 'min-h-[1180px] md:min-h-[950px] lg:min-h-[570px]' },
   { id: 'how-i-work', Component: HowIWorkSection, space: 'min-h-[2430px] md:min-h-[2100px] lg:min-h-[1390px]' },
   { id: 'recommendations', Component: RecommendationsSection, space: 'min-h-[720px] md:min-h-[620px] lg:min-h-[530px]' },
   { id: 'toolkit', Component: MyToolkitSection, space: 'min-h-[1850px] md:min-h-[1330px] lg:min-h-[1150px]' },
-  { id: 'impact', Component: ImpactSection, space: 'min-h-[1180px] md:min-h-[950px] lg:min-h-[570px]' },
-  { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1900px] md:min-h-[1400px] lg:min-h-[900px]' },
+  { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1850px] md:min-h-[1350px] lg:min-h-[850px]' },
   { id: 'experience', Component: ExperienceSection, space: 'min-h-[940px] md:min-h-[780px] lg:min-h-[700px]', props: { compact: true } },
   { id: 'education', Component: EducationSection, space: 'min-h-[640px] md:min-h-[540px] lg:min-h-[490px]', props: { compact: true } },
   { id: 'contact', Component: ContactSection, space: 'min-h-[2170px] md:min-h-[1520px] lg:min-h-[1230px]' },

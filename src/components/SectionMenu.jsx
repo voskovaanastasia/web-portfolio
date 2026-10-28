@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 const homeSections = [
   { id: 'hero', label: 'Back to Top' },
   { id: 'work', label: 'Selected Work' },
+  { id: 'impact', label: 'Proven Results' },
   { id: 'how-i-work', label: 'How I Work' },
   { id: 'recommendations', label: 'What People Say' },
   { id: 'toolkit', label: 'My Toolkit' },
-  { id: 'impact', label: 'Proven Results' },
   { id: 'ai-designer', label: 'AI + Designer' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },

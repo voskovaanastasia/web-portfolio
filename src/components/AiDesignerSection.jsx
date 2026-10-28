@@ -77,7 +77,7 @@ export default function AiDesignerSection() {
             </p>
           </div>
 
-          <div className="px-6 sm:px-10 lg:px-16 py-12 sm:py-16">
+          <div className="px-5 sm:px-6 lg:px-8 py-8 sm:py-10">
             <div className="mb-12 flex flex-col gap-2.5">
               <p className="font-mono-bold text-caption uppercase tracking-wider text-white/60">AI + DESIGNER</p>
               <p className="font-caveat font-bold text-xl text-[#5BA8E8]">Where design stops being a picture</p>
