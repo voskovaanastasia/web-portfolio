@@ -60,7 +60,7 @@ export default function HeroSection() {
     };
   }, []);
 
-  // Figma-style multiplayer cursor: inside the hero the pointer is replaced by a labelled "Anastasiia" cursor.
+  // Figma-style multiplayer cursor: inside the hero the pointer is replaced by a labelled "You" cursor.
   // Plain DOM + rAF, so it costs nothing at load. Links and buttons keep the native pointer.
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
@@ -114,7 +114,7 @@ export default function HeroSection() {
   return (
     <section ref={rootRef} id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
-      {/* Visitor cursor: same look as the team cursor, in blue and labelled with my name */}
+      {/* Visitor cursor: same look as the team cursor, in blue and labelled "You" */}
       <div
         ref={cursorRef}
         aria-hidden="true"
@@ -124,7 +124,7 @@ export default function HeroSection() {
           <path d="M1 1l5.2 13.5 2-5.6 5.6-2L1 1z" fill="currentColor" />
         </svg>
         <span className="absolute left-3 top-3.5 px-3 py-1 rounded-pill bg-action-primary text-text-inverse font-grotesk font-medium text-sm whitespace-nowrap">
-          Anastasiia
+          You
         </span>
       </div>
       {/* Collaborator cursor, as in a shared Figma file */}
@@ -133,7 +133,7 @@ export default function HeroSection() {
           <path d="M1 1l5.2 13.5 2-5.6 5.6-2L1 1z" fill="currentColor" />
         </svg>
         <span className="ml-3 -mt-0.5 px-3 py-1 rounded-pill bg-accent-handwritten text-text-inverse font-grotesk font-medium text-sm">
-          Your team
+          Anastasiia
         </span>
       </div>
       <div className="relative z-10 flex flex-col items-center gap-5 max-w-5xl px-6 sm:px-8 py-20 text-center">
