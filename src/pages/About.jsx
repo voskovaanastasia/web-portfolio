@@ -8,9 +8,8 @@ import ContactSection from '../components/ContactSection';
 import RightNowSection from '../components/RightNowSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import avatar from '../assets/avatar.webp';
+import portrait from '../assets/about-portrait.webp';
 
-// Replace with a larger portrait (about 920px square) once there is one; the avatar is only 74px.
-const portrait = avatar;
 
 const scrollToContact = (e) => {
   const target = document.getElementById('contact');
