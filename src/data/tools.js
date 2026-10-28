@@ -5,6 +5,7 @@ import iconPhotoshop from '../assets/toolkit/photoshop.svg';
 import iconLightroom from '../assets/toolkit/lightroom.svg';
 import iconIndesign from '../assets/toolkit/indesign.svg';
 import iconMidjourney from '../assets/toolkit/midjourney.svg';
+import iconClaudeDesign from '../assets/toolkit/claude-design.svg';
 import iconZeplin from '../assets/toolkit/zeplin.svg';
 import iconAffinity from '../assets/toolkit/affinity.svg';
 import iconMaterialDesign from '../assets/toolkit/material-design.webp';
@@ -57,6 +58,7 @@ export const tools = [
   { id: 'lightroom', fill: true, name: 'Lightroom', icon: iconLightroom, category: 'design', featured: true, pillars: [] },
   { id: 'indesign', fill: true, name: 'InDesign', icon: iconIndesign, category: 'design', featured: true, pillars: [] },
   { id: 'midjourney', name: 'Midjourney', icon: iconMidjourney, category: 'design', featured: true, pillars: [] },
+  { id: 'claude-design', fill: true, name: 'Claude Design', icon: iconClaudeDesign, category: 'design', featured: true, pillars: [] },
   { id: 'zeplin', name: 'Zeplin', icon: iconZeplin, category: 'design', featured: true, pillars: ['systems'] },
   { id: 'affinity', name: 'Affinity Designer', icon: iconAffinity, category: 'design', featured: true, pillars: ['design'] },
   { id: 'material-design', name: 'Material Design', icon: iconMaterialDesign, category: 'design', featured: true, pillars: [] },
