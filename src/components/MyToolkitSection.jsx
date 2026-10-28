@@ -40,7 +40,14 @@ export default function MyToolkitSection() {
   const gridRef = useRef(null);
   const [active, setActive] = useState('all');
   const [langOpen, setLangOpen] = useState(true);
-  const current = folders.find((f) => f.id === active);
+  const [query, setQuery] = useState('');
+  const folder = folders.find((f) => f.id === active);
+  const q = query.trim();
+  const searching = q.length > 0;
+  // Search looks through every tool, whichever folder is open.
+  const current = searching
+    ? { ...folder, label: `Searching \u201c${q}\u201d`, tools: folders[0].tools.filter((t) => t.name.toLowerCase().includes(q.toLowerCase())) }
+    : folder;
   const firstRender = useRef(true);
 
   useEffect(() => {
@@ -142,16 +149,29 @@ export default function MyToolkitSection() {
               <span className="w-3 h-3 rounded-pill bg-[#F4BF4F]" />
               <span className="w-3 h-3 rounded-pill bg-[#61C554]" />
             </span>
-            <p className="absolute inset-x-0 text-center font-grotesk font-medium text-sm text-text-primary pointer-events-none">
+            <p className="hidden md:block absolute inset-x-0 text-center font-grotesk font-medium text-sm text-text-primary pointer-events-none truncate px-48">
               {current.label}
             </p>
-            <span className="relative inline-flex items-center gap-1.5 rounded-lg border border-border-subtle bg-surface-default px-3 py-1 font-mono text-xs text-text-secondary">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <label className="relative flex items-center gap-2 w-44 sm:w-72 rounded-lg border border-border-subtle bg-surface-default px-3 py-1.5 font-grotesk text-sm text-text-primary focus-within:border-action-primary focus-within:ring-2 focus-within:ring-action-primary/20">
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="shrink-0 text-text-secondary">
                 <circle cx="5" cy="5" r="3.6" stroke="currentColor" strokeWidth="1.2" />
                 <path d="M8 8l2.6 2.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
               </svg>
-              {current.tools.length} apps
-            </span>
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Escape' && setQuery('')}
+                placeholder={`Search ${folders[0].tools.length} apps`}
+                aria-label="Search my tools"
+                className="min-w-0 flex-1 bg-transparent outline-none placeholder:text-text-secondary [&::-webkit-search-cancel-button]:hidden"
+              />
+              {searching && (
+                <button type="button" aria-label="Clear search" onClick={() => setQuery('')} className="shrink-0 text-action-primary font-bold leading-none">
+                  &#10005;
+                </button>
+              )}
+            </label>
           </div>
 
           <div className="grid md:grid-cols-[230px_minmax(0,1fr)]">
@@ -162,9 +182,12 @@ export default function MyToolkitSection() {
                   <button
                     key={f.id}
                     type="button"
-                    aria-pressed={active === f.id}
-                    onClick={() => setActive(f.id)}
-                    className={sideItem(active === f.id)}
+                    aria-pressed={!searching && active === f.id}
+                    onClick={() => {
+                      setActive(f.id);
+                      setQuery('');
+                    }}
+                    className={sideItem(!searching && active === f.id)}
                   >
                     <FolderIcon />
                     <span className="flex-1">{f.label}</span>
@@ -212,6 +235,49 @@ export default function MyToolkitSection() {
               )}
             </aside>
 
+            {current.tools.length === 0 ? (
+              <div className="p-4 sm:p-8">
+                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 rounded-2xl border-[1.5px] border-dashed border-action-primary/30 bg-surface-brand-tint/40 p-6 sm:p-10">
+                  <div className="flex flex-col items-center gap-3 shrink-0">
+                    <div className="flex items-center justify-center w-[72px] h-[72px] rounded-2xl border-[1.5px] border-dashed border-action-primary text-action-primary">
+                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7 18a4.5 4.5 0 01-.6-8.96A6 6 0 0117.7 8.2 4.8 4.8 0 0117 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M12 11v8m0 0l-3-3m3 3l3-3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="font-grotesk font-bold text-sm text-text-primary max-w-[140px] truncate">{q}</span>
+                  </div>
+                  <div className="flex flex-col gap-3 items-center sm:items-start text-center sm:text-left min-w-0">
+                    <p className="font-mono text-xs uppercase tracking-wider text-text-brand">Not installed — yet</p>
+                    <h3 className="font-grotesk font-medium text-2xl text-text-primary tracking-tight break-words max-w-full">
+                      &ldquo;{q}&rdquo; isn&rsquo;t in my toolkit yet.
+                    </h3>
+                    <p className="font-grotesk text-body text-text-primary">
+                      Good news: I&rsquo;m a fast learner with a Computer Science background. If your project needs it, I&rsquo;ll pick it up.
+                    </p>
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-3 pt-1">
+                      {/* TODO: Install on request has no action yet — waiting for the owner to say what it should do. */}
+                      <button
+                        type="button"
+                        className="min-h-[44px] inline-flex items-center gap-2 rounded-pill bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base px-5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                          <path d="M7 1v8m0 0L4 6m3 3l3-3M2 12h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Install on request
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setQuery('')}
+                        className="min-h-[44px] inline-flex items-center rounded-pill border-[1.5px] border-border-subtle bg-surface-default hover:bg-surface-subtle text-text-primary font-grotesk font-medium text-base px-5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+                      >
+                        Show all tools
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
             <ul
               ref={gridRef}
               className="grid grid-cols-[repeat(auto-fill,minmax(72px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-x-2 gap-y-5 content-start p-4 sm:p-8 lg:min-h-[560px]"
@@ -238,6 +304,7 @@ export default function MyToolkitSection() {
                 </li>
               ))}
             </ul>
+            )}
           </div>
         </div>
       </div>
