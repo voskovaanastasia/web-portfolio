@@ -242,6 +242,12 @@
   #hero [data-stack-icon]:nth-child(9) { animation-delay: 0.39s; }
 }
 
+/* Hero visitor cursor (see HeroSection): the native pointer hides while the labelled cursor follows it. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  #hero[data-cursor='custom'] { cursor: none; }
+  #hero[data-cursor='custom'] .hero-visitor-cursor { opacity: 1; }
+}
+
 /* The 404 page sits on the same dot grid as Home, About and Portfolio. The layout wrapper paints white on
    every other route, so NotFound marks the body while it is mounted and the wrapper goes transparent. */
 body[data-page='not-found'] #root > div {
