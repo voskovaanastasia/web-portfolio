@@ -4,10 +4,11 @@ import { Analytics } from '@vercel/analytics/react';
 import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
-import About from './pages/About';
+import Home from './pages/Home';
 import { SHOW_BUILT_WITH_CLAUDE } from './config/publishedCases';
 import './styles/globals.css';
 
+const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const FarsafeCase = lazy(() => import('./pages/FarsafeCase'));
 const BartCase = lazy(() => import('./pages/BartCase'));
@@ -37,7 +38,7 @@ function Layout() {
         <Navigation />
         <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<About />} />
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/project/farsafe" element={<FarsafeCase />} />
