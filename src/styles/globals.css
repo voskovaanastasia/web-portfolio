@@ -35,6 +35,10 @@
   --color-focus-ring: var(--color-blue-600);
   --color-focus-ring-inverse: var(--color-white-primitive);
   --color-surface-placeholder: #D9D9D9;
+  --color-traffic-red: #FF5F57;
+  --color-traffic-yellow: #FEBC2E;
+  --color-traffic-green: #28C840;
+  --color-sticky-note: #FEF3C7;
 
   /* Effects: header / menu glass, dot grids, hairline ring, icon-tile shadow */
   --glass-light: rgba(240, 240, 240, 0.2);

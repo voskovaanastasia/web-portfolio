@@ -48,7 +48,16 @@ const metrics = [
   },
 ];
 
-export default function ImpactSection() {
+const defaultHeading = 'Design decisions grounded in research, measured by real outcomes.';
+
+// Home uses the defaults; the About page passes its own eyebrow, heading and figures.
+export default function ImpactSection({
+  id = 'impact',
+  eyebrow = 'Proven Results',
+  heading = defaultHeading,
+  items = metrics,
+  highlight = items.length - 1,
+}) {
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -79,21 +88,21 @@ export default function ImpactSection() {
   }, []);
 
   return (
-    <section ref={rootRef} id="impact" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
+    <section ref={rootRef} id={id} className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="mb-12 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Proven Results</p>
+          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">{eyebrow}</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug max-w-[590px]">
-            Design decisions grounded in research, measured by real outcomes.
+            {heading}
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-5 gap-y-10">
-          {metrics.map((metric, index) => (
+        <div className={`grid sm:grid-cols-2 ${items.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-5'} gap-x-5 gap-y-10`}>
+          {items.map((metric, index) => (
             <div
               key={metric.label}
               className={`flex flex-col gap-1 sm:gap-2.5 pt-5 border-t ${
-                index === metrics.length - 1 ? 'border-action-primary' : 'border-border-subtle'
+                index === highlight ? 'border-action-primary' : 'border-border-subtle'
               }`}
             >
               <p
@@ -104,7 +113,7 @@ export default function ImpactSection() {
               </p>
               <p className="font-grotesk font-bold text-body text-text-primary">{metric.label}</p>
               <p className="font-grotesk text-sm text-text-secondary">{metric.project}</p>
-              <p className="font-grotesk text-sm text-text-primary">{metric.description}</p>
+              {metric.description && <p className="font-grotesk text-sm text-text-primary">{metric.description}</p>}
             </div>
           ))}
         </div>
