@@ -220,9 +220,19 @@ export default function MyToolkitSection() {
                 <li key={tool.id} data-tool-card className="flex flex-col items-center gap-2 text-center">
                   <div
                     data-tool-tile
-                    className="flex items-center justify-center w-14 h-14 sm:w-[60px] sm:h-[60px] rounded-2xl bg-surface-default border border-border-subtle shadow-icon"
+                    className={`flex items-center justify-center w-14 h-14 sm:w-[60px] sm:h-[60px] rounded-2xl overflow-hidden ${
+                      tool.fill
+                        ? 'shadow-[0_1px_3px_rgba(0,0,0,0.08)]'
+                        : 'bg-surface-default border border-border-subtle shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
+                    }`}
                   >
-                    <img src={tool.icon} alt="" width={32} height={32} className="w-8 h-8 object-contain" />
+                    <img
+                      src={tool.icon}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className={tool.fill ? 'w-full h-full object-cover' : 'w-8 h-8 object-contain'}
+                    />
                   </div>
                   <span className="font-grotesk text-[13px] leading-tight text-text-primary">{tool.name}</span>
                 </li>

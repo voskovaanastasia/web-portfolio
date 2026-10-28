@@ -44,6 +44,7 @@ import iconGsap from '../assets/toolkit/gsap.svg';
 import iconNode from '../assets/how-i-work/tool-nodedotjs.svg';
 
 // Single source of truth for every tool referenced on the home page.
+// - `fill` marks icon art that already paints its own tile background (Adobe apps etc.), so the Toolkit draws it edge to edge.
 // - `category` groups tools for the My Toolkit section (design / software / programming).
 // - `featured` controls which tools My Toolkit shows before "+ more" is expanded.
 // - `pillars` lists the How I Work pillar ids a tool backs.
@@ -51,10 +52,10 @@ export const tools = [
   // Design
   { id: 'figma', name: 'Figma', icon: iconFigma, category: 'design', featured: true, pillars: ['design', 'systems'] },
   { id: 'sketch', name: 'Sketch', icon: iconSketch, category: 'design', featured: true, pillars: ['design'] },
-  { id: 'illustrator', name: 'Illustrator', icon: iconIllustrator, category: 'design', featured: true, pillars: [] },
-  { id: 'photoshop', name: 'Photoshop', icon: iconPhotoshop, category: 'design', featured: true, pillars: [] },
-  { id: 'lightroom', name: 'Lightroom', icon: iconLightroom, category: 'design', featured: true, pillars: [] },
-  { id: 'indesign', name: 'InDesign', icon: iconIndesign, category: 'design', featured: true, pillars: [] },
+  { id: 'illustrator', fill: true, name: 'Illustrator', icon: iconIllustrator, category: 'design', featured: true, pillars: [] },
+  { id: 'photoshop', fill: true, name: 'Photoshop', icon: iconPhotoshop, category: 'design', featured: true, pillars: [] },
+  { id: 'lightroom', fill: true, name: 'Lightroom', icon: iconLightroom, category: 'design', featured: true, pillars: [] },
+  { id: 'indesign', fill: true, name: 'InDesign', icon: iconIndesign, category: 'design', featured: true, pillars: [] },
   { id: 'midjourney', name: 'Midjourney', icon: iconMidjourney, category: 'design', featured: true, pillars: [] },
   { id: 'zeplin', name: 'Zeplin', icon: iconZeplin, category: 'design', featured: true, pillars: ['systems'] },
   { id: 'affinity', name: 'Affinity Designer', icon: iconAffinity, category: 'design', featured: true, pillars: ['design'] },
@@ -88,12 +89,12 @@ export const tools = [
   { id: 'claude-code', name: 'Claude Code', icon: iconClaude, category: 'programming', featured: true, pillars: ['engineering'] },
   { id: 'html', name: 'HTML5', icon: iconHtml, category: 'programming', featured: true, pillars: ['engineering'] },
   { id: 'css', name: 'CSS3', icon: iconCss, category: 'programming', featured: true, pillars: ['engineering'] },
-  { id: 'javascript', name: 'JavaScript', icon: iconJavascript, category: 'programming', featured: true, pillars: ['engineering'] },
+  { id: 'javascript', fill: true, name: 'JavaScript', icon: iconJavascript, category: 'programming', featured: true, pillars: ['engineering'] },
   { id: 'tailwind', name: 'Tailwind CSS', icon: iconTailwind, category: 'programming', featured: true, pillars: ['systems'] },
   { id: 'vercel', name: 'Vercel', icon: iconVercel, category: 'programming', featured: true, pillars: [] },
   { id: 'cursor', name: 'Cursor', icon: iconCursor, category: 'programming', featured: true, pillars: [] },
   { id: 'vite', name: 'Vite', icon: iconVite, category: 'programming', featured: false, pillars: [] },
-  { id: 'gsap', name: 'GSAP', icon: iconGsap, category: 'programming', featured: false, pillars: [] },
+  { id: 'gsap', fill: true, name: 'GSAP', icon: iconGsap, category: 'programming', featured: false, pillars: [] },
   { id: 'nodejs', name: 'Node.js', icon: iconNode, category: 'programming', featured: true, pillars: ['engineering'] },
 ];
 
