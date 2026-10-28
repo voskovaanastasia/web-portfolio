@@ -20,7 +20,7 @@ const sections = [
   { id: 'recommendations', Component: RecommendationsSection, space: 'min-h-[720px] md:min-h-[620px] lg:min-h-[530px]' },
   { id: 'toolkit', Component: MyToolkitSection, space: 'min-h-[1320px] md:min-h-[1020px] lg:min-h-[890px]' },
   { id: 'impact', Component: ImpactSection, space: 'min-h-[1180px] md:min-h-[950px] lg:min-h-[570px]' },
-  { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1540px] md:min-h-[1080px] lg:min-h-[690px]' },
+  { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1900px] md:min-h-[1400px] lg:min-h-[900px]' },
   { id: 'experience', Component: ExperienceSection, space: 'min-h-[3540px] md:min-h-[2750px] lg:min-h-[2250px]' },
   { id: 'education', Component: EducationSection, space: 'min-h-[1440px] md:min-h-[1240px] lg:min-h-[1010px]' },
   { id: 'contact', Component: ContactSection, space: 'min-h-[2170px] md:min-h-[1520px] lg:min-h-[1230px]' },

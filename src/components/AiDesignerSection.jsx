@@ -7,35 +7,43 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   {
     number: '1',
+    file: '01-frame.fig',
     title: 'Frame the problem',
-    description:
-      "Before anything visual, I get clear on what we're actually solving — the user, the friction, the outcome. Wireframes and UX direction come out of that clarity, in Figma.",
+    description: 'The user, the friction, the outcome — then wireframes and UX direction in Figma.',
   },
   {
     number: '2',
+    file: '02-spec.md',
     title: 'Turn design into instructions',
-    description:
-      "I convert flows, states, and edge cases into precise written specs (Markdown) — a briefing detailed enough that an AI can't misread my intent.",
+    description: "Flows, states and edge cases become precise Markdown specs an AI can't misread.",
   },
   {
     number: '3',
+    file: '03-build.tsx',
     title: 'Build with AI',
-    description:
-      'Those specs go to AI coding agents that generate real, semantic front-end — layout, styling, and interaction logic that behaves like the product, not a demo.',
+    description: 'AI coding agents generate real, semantic front-end that behaves like the product.',
   },
   {
     number: '4',
+    file: '04-live.url',
     title: 'Put it live',
-    description:
-      'The result ships as a real URL you can open and use — decisions get tested on a live product, not argued over a static frame.',
+    description: 'A real URL you can open and use — decisions tested on a live product.',
   },
   {
     number: '5',
+    file: '05-test.log',
     title: 'Test & refine',
-    description:
-      'I put the prototype in front of real users, watch where they stumble, and feed those insights back into the design — closing the gap between "looks done" and "works."',
+    description: 'Real users, real stumbles — insights fed back until it works, not just looks done.',
   },
 ];
+
+const TrafficLights = ({ className = '', size = 'w-3 h-3' }) => (
+  <span aria-hidden="true" className={`flex items-center gap-1.5 ${className}`}>
+    <span className={`${size} rounded-pill bg-[#EC6A5E]`} />
+    <span className={`${size} rounded-pill bg-[#F4BF4F]`} />
+    <span className={`${size} rounded-pill bg-[#61C554]`} />
+  </span>
+);
 
 export default function AiDesignerSection() {
   const rootRef = useRef(null);
@@ -59,38 +67,60 @@ export default function AiDesignerSection() {
 
   return (
     <section ref={rootRef} id="ai-designer" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="mb-12 flex flex-col gap-2.5">
-          <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">AI + DESIGNER</p>
-          <p className="font-caveat font-bold text-xl text-text-brand">Where design stops being a picture</p>
-          <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
-            From static concepts to live prototypes.
-          </h2>
-          <p className="font-grotesk text-body-lg text-text-primary leading-relaxed max-w-3xl mt-2">
-            I don&rsquo;t just hand off screens — I ship live, interactive prototypes.
-            By pairing product thinking with modern AI models, I close the gap between
-            UX design and engineering, so ideas get validated in the browser, not in a
-            slide. Here&rsquo;s how I turn a product concept into a working app using AI.
-          </p>
-        </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Editor window */}
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#212328] shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+          <div className="relative flex items-center h-11 px-4 bg-[#2A2D34] border-b border-white/10">
+            <TrafficLights size="w-3 h-3" />
+            <p className="absolute inset-x-0 text-center font-grotesk font-medium text-xs text-white/80 pointer-events-none">
+              <span aria-hidden="true">&#128449;&nbsp;</span>AI + Designer — concept-to-prototype
+            </p>
+          </div>
 
-        <ol data-ai-cards className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-5 gap-y-10">
-          {steps.map((step, index) => {
-            const isLast = index === steps.length - 1;
-            return (
-              <li
-                key={step.number}
-                className={`flex flex-col gap-3 pt-5 border-t ${isLast ? 'border-action-primary' : 'border-border-subtle'}`}
-              >
-                <p className="font-mono-bold text-caption uppercase tracking-wider text-text-brand">
-                  Step {step.number}
-                </p>
-                <h3 className="font-grotesk font-medium text-[18px] leading-snug text-text-primary">{step.title}</h3>
-                <p className="font-grotesk text-sm text-text-primary leading-relaxed">{step.description}</p>
-              </li>
-            );
-          })}
-        </ol>
+          <div className="px-6 sm:px-10 lg:px-16 py-12 sm:py-16">
+            <div className="mb-12 flex flex-col gap-2.5">
+              <p className="font-mono-bold text-caption uppercase tracking-wider text-white/60">AI + DESIGNER</p>
+              <p className="font-caveat font-bold text-xl text-[#5BA8E8]">Where design stops being a picture</p>
+              <h2 className="font-grotesk font-medium text-heading text-white tracking-tight max-w-2xl">
+                From static concepts to live prototypes.
+              </h2>
+              <p className="font-grotesk text-body-lg text-white/80 leading-relaxed max-w-3xl mt-2">
+                I don&rsquo;t just hand off screens — I ship live, interactive prototypes.
+                By pairing product thinking with modern AI models, I close the gap between
+                UX design and engineering, so ideas get validated in the browser, not in a
+                slide.
+              </p>
+            </div>
+
+            <ol data-ai-cards className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {steps.map((step, index) => {
+                const isLast = index === steps.length - 1;
+                return (
+                  <li
+                    key={step.number}
+                    className={`flex flex-col overflow-hidden rounded-xl border bg-[#2A2D34] shadow-[0_8px_20px_rgba(0,0,0,0.25)] ${
+                      isLast
+                        ? 'border-[#5BA8E8]/70 shadow-[0_8px_30px_rgba(91,168,232,0.25)]'
+                        : 'border-white/10'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 px-3.5 h-8 bg-[#343842]">
+                      <TrafficLights size="w-2 h-2" />
+                      <span className="font-mono text-[11px] text-white/60">{step.file}</span>
+                    </div>
+                    <div className="flex flex-col gap-3 p-5 min-h-[190px]">
+                      <p className="font-mono-bold text-caption uppercase tracking-wider text-[#5BA8E8]">
+                        Step {step.number}
+                      </p>
+                      <h3 className="font-grotesk font-medium text-[18px] leading-snug text-white">{step.title}</h3>
+                      <p className="font-grotesk text-sm text-white/65 leading-relaxed">{step.description}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
   );
