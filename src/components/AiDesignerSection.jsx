@@ -108,10 +108,7 @@ export default function AiDesignerSection() {
                       <TrafficLights size="w-2 h-2" />
                       <span className="font-mono text-[11px] text-white/60">{step.file}</span>
                     </div>
-                    <div className="flex flex-col gap-3 p-5 min-h-[190px]">
-                      <p className="font-mono-bold text-caption uppercase tracking-wider text-[#5BA8E8]">
-                        Step {step.number}
-                      </p>
+                    <div className="flex flex-col gap-3 p-5 min-h-[170px]">
                       <h3 className="font-grotesk font-medium text-[18px] leading-snug text-white">{step.title}</h3>
                       <p className="font-grotesk text-sm text-white/65 leading-relaxed">{step.description}</p>
                     </div>
