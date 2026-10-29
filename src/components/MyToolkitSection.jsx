@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { getToolsByCategory } from '../data/tools';
@@ -35,7 +36,7 @@ const FolderIcon = ({ open = false }) => (
   </svg>
 );
 
-export default function MyToolkitSection() {
+function FullToolkit() {
   const rootRef = useRef(null);
   const gridRef = useRef(null);
   const [active, setActive] = useState('all');
@@ -310,4 +311,85 @@ export default function MyToolkitSection() {
       </div>
     </section>
   );
+}
+
+// Home version: three category rows of tool pills, each drifting at its own speed (alternating direction),
+// with a link to the full Finder-style toolkit on the About page.
+const marqueeRows = [
+  { id: 'design', label: 'Design', seconds: 40, reverse: false },
+  { id: 'software', label: 'Software', seconds: 70, reverse: true },
+  { id: 'programming', label: 'Programming', seconds: 60, reverse: false },
+];
+
+const ToolPill = ({ tool }) => (
+  <li className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-pill border border-border-subtle bg-surface-default py-1.5 pl-1.5 pr-4 font-grotesk font-medium text-[15px] text-text-primary shadow-[0_1px_2px_rgba(17,24,39,0.04)]">
+    <span
+      aria-hidden="true"
+      className="flex h-[26px] w-[26px] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-surface-default shadow-[0_1px_2px_rgba(17,24,39,0.05),inset_0_0_0_0.5px_rgba(0,0,0,0.10)]"
+    >
+      <img
+        src={tool.icon}
+        alt=""
+        width={17}
+        height={17}
+        loading="lazy"
+        decoding="async"
+        className={tool.fill ? 'h-full w-full object-cover' : 'h-[17px] w-[17px] object-contain'}
+      />
+    </span>
+    {tool.name}
+  </li>
+);
+
+function CompactToolkit() {
+  return (
+    <section id="toolkit" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col gap-2.5">
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">My Toolkit</p>
+            <p className="font-caveat font-bold text-xl text-text-brand">Computer Science is my secret weapon.</p>
+            <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-text-primary tracking-tight leading-snug max-w-3xl">
+              I am Anastasiia Voskova, a designer who thinks like an engineer.
+            </h2>
+          </div>
+          <Link
+            to="/about#toolkit"
+            className="pb-1.5 font-grotesk font-medium text-body text-text-brand hover:text-action-primary-hover rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          >
+            Full toolkit <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+
+        <div className="flex flex-col gap-3.5">
+          {marqueeRows.map(({ id, label, seconds, reverse }) => {
+            const list = getToolsByCategory(id);
+            return (
+              <div key={id} className="flex flex-col gap-2 md:flex-row md:items-center md:gap-5">
+                <span className="md:w-[110px] md:shrink-0 font-mono text-xs uppercase text-text-secondary">{label}</span>
+                <div className="toolkit-marquee min-w-0 flex-1">
+                  <div
+                    className={`toolkit-marquee-track ${reverse ? 'toolkit-marquee-track--rev' : ''}`}
+                    style={{ animationDuration: `${seconds}s` }}
+                  >
+                    {[false, true].map((copy) => (
+                      <ul key={String(copy)} aria-hidden={copy || undefined} className="flex shrink-0 gap-2.5 pr-2.5">
+                        {list.map((tool) => (
+                          <ToolPill key={tool.id} tool={tool} />
+                        ))}
+                      </ul>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function MyToolkitSection({ compact = false }) {
+  return compact ? <CompactToolkit /> : <FullToolkit />;
 }
