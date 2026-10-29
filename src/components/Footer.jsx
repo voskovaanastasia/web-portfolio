@@ -2,6 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { openContactModal } from '../contactModalStore';
 import { CONTACT_EMAIL } from '../config/contact';
+import iconLinkedin from '../assets/contact/linkedin.svg';
+import iconTelegram from '../assets/contact/telegram.svg';
+import iconBehance from '../assets/contact/behance.svg';
+import iconInstagram from '../assets/contact/instagram.svg';
+import iconUpwork from '../assets/contact/upwork.svg';
+import iconGithub from '../assets/contact/github.svg';
 import avatar from '../assets/avatar.webp';
 
 // Site-wide footer (rendered by App under every page): contact call-to-action, link columns and the big wordmark.
@@ -26,10 +32,12 @@ const columns = [
   {
     title: 'Social',
     links: [
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/anastasiia-voskova', external: true },
-      { label: 'Telegram', href: 'https://t.me/Anastasiia_wax', external: true },
-      { label: 'Behance', href: 'https://www.behance.net/0dd9826d', external: true },
-      { label: 'Instagram', href: 'https://www.instagram.com/anastazja_v/', external: true },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/anastasiia-voskova', icon: iconLinkedin, external: true },
+      { label: 'Telegram', href: 'https://t.me/Anastasiia_wax', icon: iconTelegram, external: true },
+      { label: 'Behance', href: 'https://www.behance.net/0dd9826d', icon: iconBehance, external: true },
+      { label: 'Instagram', href: 'https://www.instagram.com/anastazja_v/', icon: iconInstagram, external: true },
+      { label: 'Upwork', href: 'https://www.upwork.com/freelancers/~0160de67b81721f9ab', icon: iconUpwork, external: true },
+      { label: 'GitHub', href: 'https://github.com/voskovaanastasia', icon: iconGithub, external: true },
     ],
   },
 ];
@@ -131,8 +139,13 @@ export default function Footer() {
                       <a
                         href={link.href}
                         {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        className={linkClass}
+                        className={`${linkClass} ${link.icon ? 'inline-flex items-center gap-2.5' : ''}`}
                       >
+                        {link.icon && (
+                          <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white">
+                            <img src={link.icon} alt="" width={16} height={16} loading="lazy" className="h-4 w-4 object-contain" />
+                          </span>
+                        )}
                         {link.label}
                       </a>
                     )}
