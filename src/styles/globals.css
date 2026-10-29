@@ -222,6 +222,11 @@
 @keyframes hero-pop {
   from { opacity: 0; transform: scale(0) translateY(20px); }
 }
+/* The pre-rendered shell already played the entrance; React's copy of the hero starts at its final state. */
+.has-shell #hero [data-hero-item],
+.has-shell #hero [data-stack-icon] {
+  animation: none !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   #hero [data-hero-item] {
     animation: hero-rise 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;

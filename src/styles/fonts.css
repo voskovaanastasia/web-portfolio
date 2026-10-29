@@ -1,0 +1,31 @@
+/* Fonts of the first screen. Same files as @fontsource, but `font-display: block` instead of `swap`: they are
+   preloaded in index.html, so the pre-rendered headline paints once, in its final font. With `swap` it painted in the
+   fallback font first and React's copy (final font, slightly larger) became a second, later LCP candidate. */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: block;
+  font-weight: 400;
+  src: url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: block;
+  font-weight: 500;
+  src: url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: block;
+  font-weight: 700;
+  src: url(../../node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-display: block;
+  font-weight: 700;
+  src: url(../../node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2) format('woff2');
+}

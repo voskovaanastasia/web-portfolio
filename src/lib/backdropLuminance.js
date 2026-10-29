@@ -31,7 +31,7 @@ const OVERRIDE_L = { dark: 0.01, light: 0.95 };
 // ---------- grids (cached) ----------
 
 const gridCache = new Map(); // key -> { L, A, w, h } | 'tainted'
-const scratch = document.createElement('canvas');
+const scratch = typeof document === 'undefined' ? null : document.createElement('canvas'); // null while rendering the static shell in node
 
 // Note: draws the WHOLE source. For srcset images naturalWidth is density-corrected, so cropping to it would
 // sample only part of the real pixels.

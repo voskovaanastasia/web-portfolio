@@ -7,7 +7,7 @@
     "dev": "vite",
     "prebuild": "node scripts/generate-og-images.cjs",
     "build": "vite build",
-    "postbuild": "node scripts/prerender-routes.cjs",
+    "postbuild": "node scripts/prerender-routes.cjs && node scripts/inject-shell.mjs",
     "generate:og": "node scripts/generate-og-images.cjs",
     "preview": "vite preview",
     "check:tokens": "node scripts/check-tokens.cjs",
