@@ -147,9 +147,9 @@ export default function Footer() {
 
         <p
           aria-hidden="true"
-          className="m-0 -mb-[0.18em] select-none whitespace-nowrap text-center font-bold leading-[0.9] tracking-[-0.065em] text-[#F3F4F6] text-[clamp(32px,11.6vw,176px)]"
+          className="m-0 -mb-[0.18em] select-none whitespace-nowrap text-center font-bold leading-[0.9] tracking-[-0.065em] text-[#F3F4F6] text-[clamp(22px,7.6vw,118px)]"
         >
-          voskova<span className="text-[#288FD6]">.</span>design
+          anastasiiavoskova<span className="text-[#288FD6]">.</span>com
         </p>
       </div>
     </footer>
