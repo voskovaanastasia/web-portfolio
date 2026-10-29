@@ -9,6 +9,7 @@ import HowIWorkSection from '../components/HowIWorkSection';
 import PhotographySection from '../components/PhotographySection';
 import RightNowSection from '../components/RightNowSection';
 import { openContactModal } from '../contactModalStore';
+import SectionMenu from '../components/SectionMenu';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import avatar from '../assets/avatar.webp';
 import portrait from '../assets/about-portrait.webp';
@@ -21,6 +22,20 @@ const numbers = [
   { number: '68% → 41%', label: 'Bounce Rate', project: 'bART Solutions', description: 'After restructured IA' },
 ];
 
+const aboutSections = [
+  { id: 'about-hero', label: 'Back to Top' },
+  { id: 'numbers', label: 'In Numbers' },
+  { id: 'how-i-work', label: 'How I Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'recommendations', label: 'What People Say' },
+  { id: 'toolkit', label: 'My Toolkit' },
+  { id: 'ai-designer', label: 'AI + Designer' },
+  { id: 'photography', label: 'Photography' },
+  { id: 'right-now', label: 'Right Now' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export default function About() {
   useDocumentMeta({
     title: 'About — Anastasiia Voskova',
@@ -31,6 +46,7 @@ export default function About() {
 
   return (
     <main id="main-content" data-route="/about" className="flex flex-col">
+      <SectionMenu sections={aboutSections} />
       <section id="about-hero" className="relative overflow-hidden">
         <DotsBackground />
         <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8 py-16 md:py-24 flex flex-wrap items-center gap-14">
