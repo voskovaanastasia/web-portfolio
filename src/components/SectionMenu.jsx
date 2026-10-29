@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { measureBehind } from '../lib/backdropLuminance';
 
 const homeSections = [
   { id: 'hero', label: 'Back to Top' },
@@ -12,6 +13,11 @@ const homeSections = [
   { id: 'contact', label: 'Contact' },
 ];
 
+// Backdrop luminance (WCAG relative, 0 = black) below which the desktop navigator switches to light text, and above
+// which it switches back; the gap keeps it from flickering on a boundary.
+const DARK_BELOW = 0.14;
+const LIGHT_ABOVE = 0.22;
+
 // Fixed bottom-left section navigator on wide screens, burger dropdown otherwise. Hidden while the first section is active.
 export default function SectionMenu({ sections = homeSections, refreshKey = 0 }) {
   const [intersectingIds, setIntersectingIds] = useState(() => new Set());
@@ -19,6 +25,8 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
   const itemRefs = useRef([]);
+  const navRef = useRef(null);
+  const [onDark, setOnDark] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +47,33 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
+  }, [sections, refreshKey]);
+
+  // Like the header: the desktop navigator's text follows what is behind it (the dark footer, dark heroes).
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return undefined;
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
+      const rect = nav.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return; // hidden below 1450px
+      const { L } = measureBehind(rect, nav);
+      setOnDark((prev) => (prev ? L < LIGHT_ABOVE : L < DARK_BELOW));
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(measure);
+    };
+    schedule();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    document.addEventListener('load', schedule, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      document.removeEventListener('load', schedule, true);
+    };
   }, [sections, refreshKey]);
 
   // Topmost section (in page order) that's currently intersecting wins, so the
@@ -99,6 +134,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
           the content. Every item reserves the same left padding for the line, so the active state never
           changes an item's width or moves its label. */}
       <nav
+        ref={navRef}
         aria-label="Page sections"
         style={{
           '--menu-left': 'clamp(16px, calc((100vw - 1450px) / 2 + 16px), 32px)',
@@ -118,13 +154,19 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
               <span
                 aria-hidden="true"
                 style={{ width: 'var(--menu-line)' }}
-                className={`absolute left-0 top-[0.6em] h-px bg-ink origin-left transition-transform duration-300 ${
-                  active ? 'scale-x-100' : 'scale-x-0'
-                }`}
+                className={`absolute left-0 top-[0.6em] h-px origin-left transition-[transform,background-color] duration-300 ${
+                  onDark ? 'bg-white' : 'bg-ink'
+                } ${active ? 'scale-x-100' : 'scale-x-0'}`}
               />
               <span
                 className={`block font-grotesk font-medium text-[clamp(11px,0.8vw,12px)] leading-snug tracking-wide break-words transition-colors duration-300 ${
-                  active ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
+                  onDark
+                    ? active
+                      ? 'text-white'
+                      : 'text-[#9CA3AF] group-hover:text-white'
+                    : active
+                      ? 'text-text-primary'
+                      : 'text-text-secondary group-hover:text-text-primary'
                 }`}
               >
                 {label}

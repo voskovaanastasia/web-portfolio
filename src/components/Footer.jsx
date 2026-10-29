@@ -72,7 +72,7 @@ export default function Footer() {
         backgroundSize: '22px 22px',
       }}
     >
-      <div className="mx-auto max-w-[1360px] px-6 sm:px-10 pt-12 sm:pt-[72px]">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 pt-12 sm:pt-[72px]">
         <div className="flex flex-wrap items-center justify-between gap-6 rounded-3xl bg-[#1F7AB8] px-6 py-6 sm:px-8 sm:py-7">
           <div className="flex items-center gap-3.5">
             <img src={avatar} alt="" width={52} height={52} loading="lazy" className="h-[52px] w-[52px] rounded-full border-2 border-white object-cover" />
@@ -171,7 +171,7 @@ export default function Footer() {
 
         <p
           aria-hidden="true"
-          className="m-0 -mb-[0.18em] select-none whitespace-nowrap text-center font-bold leading-[0.9] tracking-[-0.065em] text-[#F3F4F6] text-[clamp(22px,7.6vw,118px)]"
+          className="m-0 -mb-[0.18em] select-none whitespace-nowrap text-center font-bold leading-[0.9] tracking-[-0.065em] text-[#F3F4F6] text-[clamp(22px,7.6vw,106px)]"
         >
           anastasiiavoskova<span className="text-[#288FD6]">.</span>com
         </p>
