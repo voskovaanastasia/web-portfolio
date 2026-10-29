@@ -8,7 +8,6 @@ const stackToolIds = ['figma', 'react', 'framer', 'git', 'claude-code', 'webflow
 
 export default function HeroSection() {
   const rootRef = useRef(null);
-  const cursorRef = useRef(null);
 
   // The entrance runs in CSS (see globals.css) so the hero paints without waiting for GSAP.
   // GSAP is only needed for the icon hover physics, so it loads once the page is idle.
@@ -61,66 +60,9 @@ export default function HeroSection() {
     };
   }, []);
 
-  // Figma-style multiplayer cursor: inside the hero the pointer is replaced by a labelled "You" cursor.
-  // Plain DOM + rAF, so it costs nothing at load. Links and buttons keep the native pointer.
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return undefined;
-    const root = rootRef.current;
-    const cursor = cursorRef.current;
-    if (!root || !cursor) return undefined;
-
-    let raf = 0;
-    let tx = 0;
-    let ty = 0;
-    let x = 0;
-    let y = 0;
-    const tick = () => {
-      x += (tx - x) * 0.22;
-      y += (ty - y) * 0.22;
-      cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.1 ? requestAnimationFrame(tick) : 0;
-    };
-    const onMove = (e) => {
-      const r = root.getBoundingClientRect();
-      const first = !root.dataset.cursor;
-      tx = e.clientX - r.left;
-      ty = e.clientY - r.top;
-      if (first) {
-        x = tx;
-        y = ty;
-      }
-      root.dataset.cursor = e.target.closest('a, button') ? 'native' : 'custom';
-      if (!raf) raf = requestAnimationFrame(tick);
-    };
-    const onLeave = () => {
-      delete root.dataset.cursor;
-    };
-    root.addEventListener('pointermove', onMove);
-    root.addEventListener('pointerleave', onLeave);
-    return () => {
-      cancelAnimationFrame(raf);
-      root.removeEventListener('pointermove', onMove);
-      root.removeEventListener('pointerleave', onLeave);
-    };
-  }, []);
-
   return (
     <section ref={rootRef} id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
-      {/* Visitor cursor: same look as the team cursor, in blue and labelled "You" */}
-      <div
-        ref={cursorRef}
-        aria-hidden="true"
-        className="hero-visitor-cursor pointer-events-none absolute z-20 left-0 top-0 opacity-0 transition-opacity duration-150"
-      >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-action-primary">
-          <path d="M1 1l5.2 13.5 2-5.6 5.6-2L1 1z" fill="currentColor" />
-        </svg>
-        <span className="absolute left-3 top-3.5 px-3 py-1 rounded-pill bg-action-primary text-text-inverse font-grotesk font-medium text-sm whitespace-nowrap">
-          You
-        </span>
-      </div>
       {/* Collaborator cursor, as in a shared Figma file */}
       <div aria-hidden="true" className="hidden lg:flex absolute z-10 left-[6%] top-[18%] flex-col items-start">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-accent-handwritten">
