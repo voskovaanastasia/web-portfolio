@@ -71,12 +71,13 @@ function ToolItem({ icon, label }) {
   );
 }
 
-const COMPACT_TOOLS = 5;
+// One row of 5 slots: 4 icons plus the "+N" chip (all icons when there are 5 or fewer).
+const COMPACT_SLOTS = 5;
 // Skills shown on the short home-page cards, picked per card.
 const COMPACT_SKILLS = {
   research: ['User Research', 'Interviews & Surveys', 'Synthesis', 'Product Strategy'],
   design: ['0-to-1 Product Design', 'Interface Design', 'OOUX', 'Systems Thinking'],
-  systems: ['Design Systems', 'Design Tokens', 'Component Libraries', 'Developer Handoff', 'Documentation'],
+  systems: ['Design Systems', 'Design Tokens', 'Component Libraries', 'Developer Handoff'],
   engineering: ['Code-Aware Design', 'Component Thinking', 'OOP Fundamentals'],
 };
 
@@ -103,8 +104,9 @@ function CompactHowIWork() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card) => {
             const cardTools = getToolsForPillar(card.pillar);
-            const shown = cardTools.slice(0, COMPACT_TOOLS);
-            const rest = cardTools.slice(COMPACT_TOOLS);
+            const visible = cardTools.length > COMPACT_SLOTS ? COMPACT_SLOTS - 1 : cardTools.length;
+            const shown = cardTools.slice(0, visible);
+            const rest = cardTools.slice(visible);
             return (
               <article
                 key={card.title}
