@@ -8,17 +8,11 @@ import HowIWorkSection from '../components/HowIWorkSection';
 import PhotographySection from '../components/PhotographySection';
 import ContactSection from '../components/ContactSection';
 import RightNowSection from '../components/RightNowSection';
+import { openContactModal } from '../contactModalStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import avatar from '../assets/avatar.webp';
 import portrait from '../assets/about-portrait.webp';
 
-
-const scrollToContact = (e) => {
-  const target = document.getElementById('contact');
-  if (!target) return;
-  e.preventDefault();
-  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
 
 const numbers = [
   { number: '6+', label: 'Years of Experience', project: 'Web, Mobile & SaaS' },
@@ -71,9 +65,9 @@ export default function About() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-              <a
-                href="#contact"
-                onClick={scrollToContact}
+              <button
+                type="button"
+                onClick={openContactModal}
                 className="group w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-3 text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base pl-6 pr-1.5 py-1.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
               >
                 Contact me
@@ -83,7 +77,7 @@ export default function About() {
                 >
                   ↗
                 </span>
-              </a>
+              </button>
               <a
                 href="/Anastasiia-Voskova-Resume.pdf"
                 target="_blank"

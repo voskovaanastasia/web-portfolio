@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import DotsBackground from './DotsBackground';
 import avatar from '../assets/avatar.webp';
 import ToolIcon from './ToolIcon';
+import { openContactModal } from '../contactModalStore';
 
 const stackToolIds = ['figma', 'react', 'framer', 'git', 'claude-code', 'webflow', 'tailwind', 'jira', 'notion'];
 
@@ -104,13 +105,6 @@ export default function HeroSection() {
     };
   }, []);
 
-  const scrollToContact = (e) => {
-    const target = document.getElementById('contact');
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <section ref={rootRef} id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
@@ -186,9 +180,9 @@ export default function HeroSection() {
 
         {/* Buttons */}
         <div data-hero-item className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-[280px] sm:max-w-none">
-          <a
-            href="#contact"
-            onClick={scrollToContact}
+          <button
+            type="button"
+            onClick={openContactModal}
             className="group w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-3 text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base pl-6 pr-1.5 py-1.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             Contact me
@@ -198,7 +192,7 @@ export default function HeroSection() {
             >
               &#8599;
             </span>
-          </a>
+          </button>
           <a
             href="/Anastasiia-Voskova-Resume.pdf"
             target="_blank"

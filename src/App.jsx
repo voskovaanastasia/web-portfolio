@@ -4,10 +4,13 @@ import { Analytics } from '@vercel/analytics/react';
 import Navigation from './components/Navigation';
 import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
+import { useContactModalOpen } from './contactModalStore';
 import Home from './pages/Home';
 import { SHOW_BUILT_WITH_CLAUDE } from './config/publishedCases';
 import './styles/globals.css';
 
+// Loaded the first time "Contact me" is pressed.
+const ContactModal = lazy(() => import('./components/ContactModal'));
 const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const FarsafeCase = lazy(() => import('./pages/FarsafeCase'));
@@ -31,6 +34,7 @@ const dottedHeroRoutes = ['/', '/about', '/projects'];
 function Layout() {
   const { pathname } = useLocation();
   const onDots = dottedHeroRoutes.includes(pathname);
+  const contactOpen = useContactModalOpen();
 
   return (
     <div className={`flex flex-col min-h-screen ${onDots ? '' : 'bg-surface-default'}`}>
@@ -57,6 +61,11 @@ function Layout() {
           </Routes>
         </Suspense>
         <Lightbox />
+        {contactOpen && (
+          <Suspense fallback={null}>
+            <ContactModal />
+          </Suspense>
+        )}
         <Analytics />
     </div>
   );
