@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
 import ScrollManager from './components/ScrollManager';
 import { useContactModalOpen } from './contactModalStore';
@@ -60,6 +61,7 @@ function Layout() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <Footer />
         <Lightbox />
         {contactOpen && (
           <Suspense fallback={null}>

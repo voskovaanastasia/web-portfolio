@@ -91,7 +91,7 @@ export default function ContactSection() {
   };
 
   return (
-    <footer id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
+    <section id="contact" className="relative overflow-hidden py-12 sm:py-24 bg-surface-default">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-2.5 mb-10">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Get in Touch</p>
@@ -247,6 +247,6 @@ export default function ContactSection() {
           </p>
         </div>
       </div>
-    </footer>
+    </section>
   );
 }
