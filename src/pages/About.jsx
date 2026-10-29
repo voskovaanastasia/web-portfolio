@@ -6,7 +6,6 @@ import RecommendationsSection from '../components/RecommendationsSection';
 import MyToolkitSection from '../components/MyToolkitSection';
 import HowIWorkSection from '../components/HowIWorkSection';
 import PhotographySection from '../components/PhotographySection';
-import ContactSection from '../components/ContactSection';
 import RightNowSection from '../components/RightNowSection';
 import { openContactModal } from '../contactModalStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
@@ -151,7 +150,6 @@ export default function About() {
       <MyToolkitSection />
       <PhotographySection />
       <RightNowSection />
-      <ContactSection />
     </main>
   );
 }

@@ -18,7 +18,6 @@ import casePayments960 from '../assets/case-payments-960w.webp';
 import caseShoot480 from '../assets/case-shoot-480w.webp';
 import caseShoot960 from '../assets/case-shoot-960w.webp';
 import DotsBackground from '../components/DotsBackground';
-import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import { SHOW_BUILT_WITH_CLAUDE } from '../config/publishedCases';
 import builtWithClaudeProject from '../data/builtWithClaudeProject';
@@ -282,7 +281,6 @@ export default function Projects() {
         </div>
       </section>
 
-      <ContactSection />
     </main>
   );
 }

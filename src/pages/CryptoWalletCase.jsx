@@ -4,7 +4,6 @@ import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { EmpathyMap, ProcessColumns, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
-import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const caseSections = [
@@ -1279,7 +1278,6 @@ export default function CryptoWalletCase() {
         <CaseNav caseId="cryptowallet" />
       </div>
 
-      <ContactSection />
     </main>
   );
 }

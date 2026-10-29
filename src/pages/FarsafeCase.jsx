@@ -5,7 +5,6 @@ import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { KeyTakeaway, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
-import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseFarsafe from '../assets/case-farsafe.webp';
@@ -1370,7 +1369,6 @@ export default function FarsafeCase() {
         <CaseNav caseId="farsafe" />
       </div>
 
-      <ContactSection />
     </main>
   );
 }

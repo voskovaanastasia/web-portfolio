@@ -65,6 +65,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="contact"
       className="mt-auto overflow-hidden bg-[#111827] text-white font-grotesk"
       style={{
         backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.09) 1.4px, transparent 1.5px)',

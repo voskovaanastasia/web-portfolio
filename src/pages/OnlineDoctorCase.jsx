@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import SectionMenu from '../components/SectionMenu';
 import { KeyTakeaway, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, buildCaseMeta } from '../components/CaseLayout';
-import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 
 const caseSections = [
@@ -441,7 +440,6 @@ export default function OnlineDoctorCase() {
         <CaseNav caseId="online-doctor" />
       </div>
 
-      <ContactSection />
     </main>
   );
 }

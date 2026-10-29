@@ -1,6 +1,5 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ContactSection from '../components/ContactSection';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import { caseStudies } from '../data/caseStudies';
 
@@ -175,7 +174,6 @@ export default function NotFound() {
           </div>
         </section>
       </main>
-      <ContactSection />
     </>
   );
 }

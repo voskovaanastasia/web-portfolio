@@ -4,7 +4,6 @@ import SectionMenu from '../components/SectionMenu';
 import IATree from '../components/IATree';
 import { KeyTakeaway, PersonaBlock, CaseHeader, ProblemSolution, ImagePlaceholder, StyleGuide, CaseNav, MetricList, buildCaseMeta } from '../components/CaseLayout';
 import Goals from '../components/Goals';
-import ContactSection from '../components/ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import caseBart from '../assets/case-bart.webp';
@@ -1058,7 +1057,6 @@ export default function BartCase() {
         <CaseNav caseId="bart" />
       </div>
 
-      <ContactSection />
     </main>
   );
 }

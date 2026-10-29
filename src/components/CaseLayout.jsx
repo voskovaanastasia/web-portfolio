@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionMenu from './SectionMenu';
 import ToolIcon from './ToolIcon';
-import ContactSection from './ContactSection';
 import { openLightbox } from '../lightboxStore';
 import useDocumentMeta from '../hooks/useDocumentMeta';
 import useStaggerReveal from '../hooks/useStaggerReveal';
@@ -907,7 +906,6 @@ export default function CaseLayout({
         {caseId && <CaseNav caseId={caseId} />}
       </div>
 
-      <ContactSection />
     </main>
   );
 }

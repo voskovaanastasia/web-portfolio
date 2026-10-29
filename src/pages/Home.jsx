@@ -9,7 +9,6 @@ const MyToolkitSection = lazy(() => import('../components/MyToolkitSection'));
 const ImpactSection = lazy(() => import('../components/ImpactSection'));
 const AiDesignerSection = lazy(() => import('../components/AiDesignerSection'));
 const ExperienceSection = lazy(() => import('../components/ExperienceSection'));
-const ContactSection = lazy(() => import('../components/ContactSection'));
 
 // Placeholder heights ≈ each section's rendered height at 375 / 768 / 1440 px, so the page keeps
 // its length (and scroll position) while a section chunk is still loading.
@@ -20,7 +19,6 @@ const sections = [
   { id: 'recommendations', Component: RecommendationsSection, space: 'min-h-[720px] md:min-h-[620px] lg:min-h-[530px]' },
   { id: 'ai-designer', Component: AiDesignerSection, space: 'min-h-[1850px] md:min-h-[1350px] lg:min-h-[850px]' },
   { id: 'experience', Component: ExperienceSection, space: 'min-h-[940px] md:min-h-[780px] lg:min-h-[700px]', props: { compact: true } },
-  { id: 'contact', Component: ContactSection, space: 'min-h-[2170px] md:min-h-[1520px] lg:min-h-[1230px]' },
 ];
 
 // Tells the page a lazy section has mounted, so the section menu can start observing it.
