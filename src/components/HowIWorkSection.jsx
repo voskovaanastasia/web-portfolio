@@ -72,7 +72,13 @@ function ToolItem({ icon, label }) {
 }
 
 const COMPACT_TOOLS = 5;
-const COMPACT_SKILLS = 4;
+// Skills shown on the short home-page cards, picked per card.
+const COMPACT_SKILLS = {
+  research: ['User Research', 'Interviews & Surveys', 'Synthesis', 'Product Strategy'],
+  design: ['0-to-1 Product Design', 'Interface Design', 'OOUX', 'Systems Thinking'],
+  systems: ['Design Systems', 'Design Tokens', 'Component Libraries', 'Developer Handoff', 'Documentation'],
+  engineering: ['Code-Aware Design', 'Component Thinking', 'OOP Fundamentals'],
+};
 
 // Short version for the home page: four cards in a row with a few skills and a strip of tool icons.
 function CompactHowIWork() {
@@ -102,19 +108,19 @@ function CompactHowIWork() {
             return (
               <article
                 key={card.title}
-                className="flex flex-col gap-3 rounded-[22px] border border-border-subtle bg-surface-subtle p-6"
+                className="flex flex-col gap-3 rounded-[22px] border border-border-subtle bg-surface-subtle p-6 transition-[transform,box-shadow] duration-250 ease-out hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(17,24,39,0.08)] motion-reduce:transition-none motion-reduce:hover:transform-none"
               >
                 <h3 className="font-grotesk font-medium text-[21px] leading-tight text-text-primary">{card.title}</h3>
                 <p className="font-grotesk font-medium text-body text-text-brand">{card.subtitle}</p>
                 <p className="font-mono-bold text-caption text-text-secondary leading-relaxed">
-                  {card.skills.slice(0, COMPACT_SKILLS).join(' · ')}
+                  {COMPACT_SKILLS[card.pillar].join(' · ')}
                 </p>
                 <ul className="mt-auto pt-2 flex flex-wrap gap-1.5">
                   {shown.map((tool) => (
                     <li
                       key={tool.id}
                       title={tool.name}
-                      className="w-9 h-9 flex items-center justify-center rounded-[9px] bg-surface-default border border-border-subtle"
+                      className="w-9 h-9 flex items-center justify-center rounded-[9px] bg-surface-default border border-border-subtle transition-transform duration-200 hover:-translate-y-1.5 hover:scale-[1.12] motion-reduce:transition-none motion-reduce:hover:transform-none"
                     >
                       <img src={tool.icon} alt={tool.name} width={22} height={22} loading="lazy" decoding="async" className="w-[22px] h-[22px] object-contain" />
                     </li>
@@ -122,7 +128,7 @@ function CompactHowIWork() {
                   {rest.length > 0 && (
                     <li
                       title={rest.map((tool) => tool.name).join(', ')}
-                      className="h-9 min-w-9 px-2 flex items-center justify-center rounded-[9px] bg-surface-default border border-border-subtle font-mono-bold text-caption text-text-brand"
+                      className="h-9 min-w-9 px-2 flex items-center justify-center rounded-[9px] bg-surface-default border border-border-subtle font-mono-bold text-caption text-text-brand transition-transform duration-200 hover:-translate-y-1.5 hover:scale-[1.12] motion-reduce:transition-none motion-reduce:hover:transform-none"
                     >
                       +{rest.length}
                     </li>
