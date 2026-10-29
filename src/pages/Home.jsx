@@ -50,7 +50,7 @@ export default function Home() {
   });
 
   return (
-    <main id="main-content" className="flex flex-col">
+    <main id="main-content" data-route="/" className="flex flex-col">
       <SectionMenu refreshKey={loadedCount} />
       <HeroSection />
       <SelectedWork />

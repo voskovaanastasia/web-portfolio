@@ -38,6 +38,10 @@ export default function ScrollManager() {
       const scrollToHash = () => {
         const el = document.getElementById(id);
         if (!el) return false;
+        // The previous page can still be on screen while the new (lazy) one loads, and both have e.g.
+        // #how-i-work: only accept a target that sits inside the page for the new route.
+        const page = el.closest('[data-route]');
+        if (page && page.dataset.route !== pathname) return false;
         el.scrollIntoView({ behavior: 'instant', block: 'start' });
         ScrollTrigger?.refresh();
         return true;

@@ -36,7 +36,7 @@ export default function About() {
   });
 
   return (
-    <main id="main-content" className="flex flex-col">
+    <main id="main-content" data-route="/about" className="flex flex-col">
       <section id="about-hero" className="relative overflow-hidden">
         <DotsBackground />
         <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8 py-16 md:py-24 flex flex-wrap items-center gap-14">
