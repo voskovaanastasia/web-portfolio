@@ -63,15 +63,6 @@ export default function HeroSection() {
   return (
     <section ref={rootRef} id="hero" className="relative overflow-hidden min-h-[85vh] flex items-center justify-center">
       <DotsBackground />
-      {/* Collaborator cursor, as in a shared Figma file */}
-      <div aria-hidden="true" className="hidden lg:flex absolute z-10 left-[6%] top-[18%] flex-col items-start">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-accent-handwritten">
-          <path d="M1 1l5.2 13.5 2-5.6 5.6-2L1 1z" fill="currentColor" />
-        </svg>
-        <span className="ml-3 -mt-0.5 px-3 py-1 rounded-pill bg-accent-handwritten text-text-inverse font-grotesk font-medium text-sm">
-          Anastasiia
-        </span>
-      </div>
       <div className="relative z-10 flex flex-col items-center gap-5 max-w-5xl px-6 sm:px-8 py-20 text-center">
         {/* Hello line */}
         <div data-hero-item className="flex items-center gap-2.5">
