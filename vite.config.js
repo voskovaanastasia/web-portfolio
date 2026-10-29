@@ -20,6 +20,9 @@ const dropUnusedBuiltWithClaudeAssets = () => ({
 })
 
 export default defineConfig({
+  // Never inline small assets as base64: the tool icons (~20 KB base64, barely compressible) were making the entry
+  // bundle and the pre-rendered home HTML bigger, and those are on the critical path. As files they load on demand.
+  build: { assetsInlineLimit: 0 },
   plugins: [react(), dropUnusedBuiltWithClaudeAssets()],
   define: {
     // True only for the Vercel production deploy. Local builds, `vite dev` and previews are false.
