@@ -3,6 +3,8 @@ import ExperienceSection from '../components/ExperienceSection';
 import EducationSection from '../components/EducationSection';
 import ImpactSection from '../components/ImpactSection';
 import RecommendationsSection from '../components/RecommendationsSection';
+import MyToolkitSection from '../components/MyToolkitSection';
+import HowIWorkSection from '../components/HowIWorkSection';
 import PhotographySection from '../components/PhotographySection';
 import ContactSection from '../components/ContactSection';
 import RightNowSection from '../components/RightNowSection';
@@ -148,9 +150,11 @@ export default function About() {
         highlight={0}
       />
 
+      <HowIWorkSection />
       <ExperienceSection />
       <EducationSection />
       <RecommendationsSection />
+      <MyToolkitSection />
       <PhotographySection />
       <RightNowSection />
       <ContactSection />

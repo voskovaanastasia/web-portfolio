@@ -9,7 +9,6 @@ const homeSections = [
   { id: 'recommendations', label: 'What People Say' },
   { id: 'ai-designer', label: 'AI + Designer' },
   { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ];
 

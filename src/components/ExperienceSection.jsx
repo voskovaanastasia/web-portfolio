@@ -201,7 +201,7 @@ export default function ExperienceSection({ compact = false }) {
         id="experience"
         eyebrow="My Journey"
         title="Work Experience"
-        linkLabel="Full experience"
+        linkLabel="Full experience & education"
         linkTo="/about#experience"
         rows={experiences.map((exp, index) => {
           const [company, ...metaRest] = exp.meta;

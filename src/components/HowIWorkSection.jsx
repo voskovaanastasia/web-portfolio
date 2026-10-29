@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { getToolsForPillar } from '../data/tools';
 
 const cards = [
@@ -70,7 +71,75 @@ function ToolItem({ icon, label }) {
   );
 }
 
-export default function HowIWorkSection() {
+const COMPACT_TOOLS = 5;
+const COMPACT_SKILLS = 4;
+
+// Short version for the home page: four cards in a row with a few skills and a strip of tool icons.
+function CompactHowIWork() {
+  return (
+    <section id="how-i-work" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col gap-2.5">
+            <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">How I work</p>
+            <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
+              Designing with an engineer&rsquo;s mindset
+            </h2>
+          </div>
+          <Link
+            to="/about#how-i-work"
+            className="pb-1.5 font-grotesk font-medium text-body text-text-brand hover:text-action-primary-hover rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          >
+            More about how I work <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map((card) => {
+            const cardTools = getToolsForPillar(card.pillar);
+            const shown = cardTools.slice(0, COMPACT_TOOLS);
+            const rest = cardTools.slice(COMPACT_TOOLS);
+            return (
+              <article
+                key={card.title}
+                className="flex flex-col gap-3 rounded-[22px] border border-border-subtle bg-surface-subtle p-6"
+              >
+                <h3 className="font-grotesk font-medium text-[21px] leading-tight text-text-primary">{card.title}</h3>
+                <p className="font-grotesk font-medium text-body text-text-brand">{card.subtitle}</p>
+                <p className="font-mono-bold text-caption text-text-secondary leading-relaxed">
+                  {card.skills.slice(0, COMPACT_SKILLS).join(' · ')}
+                </p>
+                <ul className="mt-auto pt-2 flex flex-wrap gap-1.5">
+                  {shown.map((tool) => (
+                    <li
+                      key={tool.id}
+                      title={tool.name}
+                      className="w-9 h-9 flex items-center justify-center rounded-[9px] bg-surface-default border border-border-subtle"
+                    >
+                      <img src={tool.icon} alt={tool.name} width={22} height={22} loading="lazy" decoding="async" className="w-[22px] h-[22px] object-contain" />
+                    </li>
+                  ))}
+                  {rest.length > 0 && (
+                    <li
+                      title={rest.map((tool) => tool.name).join(', ')}
+                      className="h-9 min-w-9 px-2 flex items-center justify-center rounded-[9px] bg-surface-default border border-border-subtle font-mono-bold text-caption text-text-brand"
+                    >
+                      +{rest.length}
+                    </li>
+                  )}
+                </ul>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function HowIWorkSection({ compact = false }) {
+  if (compact) return <CompactHowIWork />;
+
   return (
     <section id="how-i-work" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
