@@ -90,7 +90,7 @@ export default function SelectedWork() {
         </div>
 
         {/* Featured project */}
-        <article className="flex flex-col gap-6">
+        <article className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
           <Link
             to={`/project/${featured.id}`}
             className="block group bg-surface-placeholder overflow-hidden rounded-card"
@@ -98,7 +98,7 @@ export default function SelectedWork() {
             <img
               src={caseFarsafe1440}
               srcSet={`${caseFarsafe640} 640w, ${caseFarsafe960} 960w, ${caseFarsafe1440} 1440w, ${featured.image} 2116w`}
-              sizes="(min-width: 1280px) 1216px, calc(100vw - 48px)"
+              sizes="(min-width: 1280px) 600px, (min-width: 1024px) 52vw, calc(100vw - 48px)"
               alt={featured.title}
               width={2116}
               height={1200}
@@ -108,46 +108,48 @@ export default function SelectedWork() {
             />
           </Link>
 
-          <div className="flex flex-col gap-3">
-            <p className="font-mono-bold text-caption text-text-secondary">{dotted(featured.tags)}</p>
-            <h3 className="font-grotesk font-medium text-[22px] sm:text-[26px] tracking-tight leading-tight">
+          <div className="flex flex-col gap-6 min-w-0">
+            <div className="flex flex-col gap-3">
+              <p className="font-mono-bold text-caption text-text-secondary">{dotted(featured.tags)}</p>
+              <h3 className="font-grotesk font-medium text-[22px] sm:text-[26px] tracking-tight leading-tight">
+                <Link
+                  to={`/project/${featured.id}`}
+                  className="text-text-primary hover:text-text-brand transition-colors"
+                >
+                  {featured.title}
+                </Link>
+              </h3>
+              <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed max-w-3xl">
+                {featured.description}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-6">
+              <InfoColumn label="Problem">
+                <p className="font-grotesk text-sm text-text-primary leading-relaxed">{featured.problem}</p>
+              </InfoColumn>
+              <InfoColumn label="My role">
+                <p className="font-grotesk text-sm text-text-primary leading-relaxed">{featured.role}</p>
+              </InfoColumn>
+              <InfoColumn label="Key decision">
+                <p className="font-grotesk text-sm text-text-primary leading-relaxed">{featured.keyDecision}</p>
+              </InfoColumn>
+              <InfoColumn label="Outcome" highlight>
+                <p className="font-grotesk font-bold text-[32px] leading-none text-text-brand whitespace-nowrap">
+                  {featured.outcomeMetric}
+                </p>
+                <p className="font-grotesk text-sm text-text-primary">{featured.outcomeLabel}</p>
+              </InfoColumn>
+            </div>
+
+            <div>
               <Link
                 to={`/project/${featured.id}`}
-                className="text-text-primary hover:text-text-brand transition-colors"
+                className="inline-flex bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
               >
-                {featured.title}
+                Read case study
               </Link>
-            </h3>
-            <p className="font-grotesk text-[15px] sm:text-base text-text-primary leading-relaxed max-w-3xl">
-              {featured.description}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6">
-            <InfoColumn label="Problem">
-              <p className="font-grotesk text-sm text-text-primary leading-relaxed">{featured.problem}</p>
-            </InfoColumn>
-            <InfoColumn label="My role">
-              <p className="font-grotesk text-sm text-text-primary leading-relaxed">{featured.role}</p>
-            </InfoColumn>
-            <InfoColumn label="Key decision">
-              <p className="font-grotesk text-sm text-text-primary leading-relaxed">{featured.keyDecision}</p>
-            </InfoColumn>
-            <InfoColumn label="Outcome" highlight>
-              <p className="font-grotesk font-bold text-[32px] leading-none text-text-brand whitespace-nowrap">
-                {featured.outcomeMetric}
-              </p>
-              <p className="font-grotesk text-sm text-text-primary">{featured.outcomeLabel}</p>
-            </InfoColumn>
-          </div>
-
-          <div>
-            <Link
-              to={`/project/${featured.id}`}
-              className="inline-flex bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-sm px-5 py-2.5 rounded-pill transition-colors"
-            >
-              Read case study
-            </Link>
+            </div>
           </div>
         </article>
 
