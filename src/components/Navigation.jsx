@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import useHeaderTheme from '../hooks/useHeaderTheme';
+import { openContactModal } from '../contactModalStore';
 import logoAv from '../assets/logo-av.svg';
 
 export default function Navigation() {
@@ -48,16 +49,14 @@ export default function Navigation() {
             Portfolio
           </Link>
 
-          {/* Resume Button */}
-          <a
-            href="/Anastasiia-Voskova-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Anastasiia-Voskova-Resume.pdf"
-            className="bg-action-primary hover:bg-action-primary-hover text-text-inverse font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors"
+          {/* Opens the contact dialog */}
+          <button
+            type="button"
+            onClick={openContactModal}
+            className="bg-action-primary hover:bg-action-primary-hover text-text-inverse font-medium px-5 py-2.5 rounded-[54px] text-base transition-colors cursor-pointer"
           >
-            Download CV
-          </a>
+            Contact me
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -105,16 +104,16 @@ export default function Navigation() {
           >
             Portfolio
           </Link>
-          <a
-            href="/Anastasiia-Voskova-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Anastasiia-Voskova-Resume.pdf"
-            className="block px-4 py-2 bg-action-primary hover:bg-action-primary-hover text-text-inverse rounded-lg transition-colors text-base font-medium text-center"
-            onClick={() => setIsOpen(false)}
+          <button
+            type="button"
+            className="block w-full px-4 py-2 bg-action-primary hover:bg-action-primary-hover text-text-inverse rounded-lg transition-colors text-base font-medium text-center cursor-pointer"
+            onClick={() => {
+              setIsOpen(false);
+              openContactModal();
+            }}
           >
-            Download CV
-          </a>
+            Contact me
+          </button>
         </div>
       )}
       </nav>
