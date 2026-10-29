@@ -12,7 +12,6 @@ const columns = [
       { label: 'Home', to: '/' },
       { label: 'About me', to: '/about' },
       { label: 'Portfolio', to: '/projects' },
-      { label: 'Download CV', href: '/Anastasiia-Voskova-Resume.pdf', download: true },
     ],
   },
   {
@@ -105,6 +104,18 @@ export default function Footer() {
             <p className="m-0 max-w-[300px] text-[15px] leading-relaxed text-[#C9CED6]">
               Product designer who makes complex, data-dense products feel simple.
             </p>
+            <a
+              href="/Anastasiia-Voskova-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Anastasiia-Voskova-Resume.pdf"
+              className={`mt-1.5 inline-flex min-h-[44px] w-fit items-center gap-2.5 rounded-pill bg-[#4BA6E6] px-5 font-grotesk font-bold text-[15px] text-[#111827] no-underline transition-colors hover:bg-[#7DC0F0] ${focusRing}`}
+            >
+              Download CV
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 1.5v8m0 0L3.8 6.3M7 9.5l3.2-3.2M2 12.5h10" />
+              </svg>
+            </a>
           </div>
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title} className="min-w-0 basis-[150px] flex-[1_1_150px]">
@@ -120,7 +131,6 @@ export default function Footer() {
                       <a
                         href={link.href}
                         {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        {...(link.download ? { download: 'Anastasiia-Voskova-Resume.pdf' } : {})}
                         className={linkClass}
                       >
                         {link.label}
