@@ -4,6 +4,7 @@ import EducationSection from '../components/EducationSection';
 import ImpactSection from '../components/ImpactSection';
 import RecommendationsSection from '../components/RecommendationsSection';
 import MyToolkitSection from '../components/MyToolkitSection';
+import AiDesignerSection from '../components/AiDesignerSection';
 import HowIWorkSection from '../components/HowIWorkSection';
 import PhotographySection from '../components/PhotographySection';
 import RightNowSection from '../components/RightNowSection';
@@ -142,6 +143,7 @@ export default function About() {
       <EducationSection />
       <RecommendationsSection />
       <MyToolkitSection />
+      <AiDesignerSection />
       <PhotographySection />
       <RightNowSection />
     </main>
