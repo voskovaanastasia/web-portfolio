@@ -162,15 +162,6 @@ export default function HeroSection() {
             ))}
           </span>{' '}
           products feel simple, and ground every decision in research<span className="text-action-primary">.</span>
-          {/* Sticky note */}
-          <span
-            aria-hidden="true"
-            className="hidden xl:block absolute -right-24 top-[46%] rotate-[4deg] bg-[#FCF1BF] px-4 py-3 font-caveat font-bold text-[22px] leading-tight tracking-normal text-left text-text-primary shadow-[2px_6px_14px_rgba(0,0,0,0.12)]"
-          >
-            research first,
-            <br />
-            pixels second &#10003;
-          </span>
         </h1>
 
         {/* Subheadline */}
@@ -183,15 +174,9 @@ export default function HeroSection() {
           <button
             type="button"
             onClick={openContactModal}
-            className="group w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-3 text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base pl-6 pr-1.5 py-1.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+            className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center text-center border-[1.5px] border-transparent bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base px-6 py-2.5 rounded-pill transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           >
             Contact me
-            <span
-              aria-hidden="true"
-              className="w-[34px] h-[34px] inline-flex items-center justify-center rounded-pill bg-surface-default text-action-primary transition-transform group-hover:rotate-45"
-            >
-              &#8599;
-            </span>
           </button>
           <a
             href="/Anastasiia-Voskova-Resume.pdf"
