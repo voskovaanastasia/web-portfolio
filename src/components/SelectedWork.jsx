@@ -9,7 +9,8 @@ import casePayments480 from '../assets/case-payments-480w.webp';
 import caseDoctor480 from '../assets/case-onlinedoctor-480w.webp';
 import caseFitness480 from '../assets/case-fitness-480w.webp';
 import caseShoot480 from '../assets/case-shoot-480w.webp';
-import { SHOW_BUILT_WITH_CLAUDE } from '../config/publishedCases';
+import { BUILT_WITH_CLAUDE_COMING_SOON } from '../config/publishedCases';
+import ComingSoonBadge, { LockIcon } from './ComingSoonBadge';
 import builtWithClaudeProject from '../data/builtWithClaudeProject';
 
 const featured = {
@@ -35,18 +36,15 @@ const moreWork = [
   { id: 'online-doctor', title: 'Online Doctor — Telemedicine Platform', tags: ['Healthcare', 'Web & Mobile'], metric: 'Mobile', preview: caseDoctor480 },
   { id: 'fitness-app', title: 'Fitness App — Health & Training', tags: ['Mobile', 'AI Personalization'], metric: 'iOS & Android', preview: caseFitness480 },
   { id: 'shoot', title: 'SHOOT — Creative-Services Marketplace', tags: ['Marketplace', 'Booking Flow'], metric: 'Web & Mobile', preview: caseShoot480 },
-  // Hidden together with the case itself (see config/publishedCases.js).
-  ...(SHOW_BUILT_WITH_CLAUDE
-    ? [
-        {
-          id: builtWithClaudeProject.id,
-          title: 'Built with Claude — This Portfolio',
-          tags: ['Claude Code', 'Design System'],
-          metric: 'Web',
-          preview: builtWithClaudeProject.image480,
-        },
-      ]
-    : []),
+  // Listed even while the case is unpublished (see config/publishedCases.js): then it is a locked, non-link row.
+  {
+    id: builtWithClaudeProject.id,
+    title: 'Built with Claude — This Portfolio',
+    tags: ['Claude Code', 'Design System'],
+    metric: 'Web',
+    preview: builtWithClaudeProject.image480,
+    locked: BUILT_WITH_CLAUDE_COMING_SOON,
+  },
 ];
 
 const dotted = (items) =>
@@ -156,44 +154,60 @@ export default function SelectedWork() {
         <ol className="mt-10 border-b border-border-subtle">
           {moreWork.map((item, index) => (
             <li key={item.id} className="border-t border-border-subtle">
-              <Link
-                to={`/project/${item.id}`}
-                className="group -mx-3 px-3 py-6 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[48px_minmax(0,1fr)_auto_28px] items-center gap-x-4 hover:bg-surface-subtle focus-visible:bg-surface-subtle transition-colors duration-300 ease-out rounded-sm"
-              >
-                <span className="font-mono-bold text-caption text-text-secondary group-hover:text-text-brand transition-colors duration-300">
-                  {String(index + 2).padStart(2, '0')}
-                </span>
-                <span className="flex flex-col gap-1.5 min-w-0">
-                  <span className="font-grotesk font-medium text-[17px] sm:text-[22px] leading-tight text-text-primary group-hover:text-text-brand transition-colors">
-                    {item.title}
-                  </span>
-                  <span className="font-mono-bold text-caption uppercase tracking-wide text-text-secondary">
-                    {dotted(item.tags)}
-                  </span>
-                </span>
-                {/* Fixed-size slot: the note and the preview crossfade here without changing the row height. */}
-                <span className="hidden sm:block relative w-40 h-10 self-center">
-                  <span
-                    className={`absolute inset-y-0 right-0 flex items-center font-mono-bold text-sm text-right text-text-secondary transition-opacity duration-300 ease-out group-hover:opacity-0 group-focus-visible:opacity-0 ${
-                      item.highlight ? 'font-bold text-text-primary' : ''
+              {(() => {
+                const Row = item.locked ? 'div' : Link;
+                const rowProps = item.locked ? { 'aria-disabled': true } : { to: `/project/${item.id}` };
+                return (
+                  <Row
+                    {...rowProps}
+                    className={`group -mx-3 px-3 py-6 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[48px_minmax(0,1fr)_auto_28px] items-center gap-x-4 transition-colors duration-300 ease-out rounded-sm ${
+                      item.locked ? 'cursor-default' : 'hover:bg-surface-subtle focus-visible:bg-surface-subtle'
                     }`}
                   >
-                    {item.metric}
-                  </span>
-                  <img
-                    src={item.preview}
-                    alt=""
-                    width={160}
-                    height={90}
-                    loading="lazy"
-                    decoding="async"
-                    className="pointer-events-none absolute right-0 top-1/2 w-40 h-[90px] -translate-y-1/2 scale-95 rounded-control object-cover opacity-0 transition duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
-                  />
-                </span>
-                <span aria-hidden="true" className="text-action-primary text-xl justify-self-end">
-                  →
-                </span>
-              </Link>
+                    <span className="font-mono-bold text-caption text-text-secondary group-hover:text-text-brand transition-colors duration-300">
+                      {String(index + 2).padStart(2, '0')}
+                    </span>
+                    <span className="flex flex-col gap-1.5 min-w-0">
+                      <span className={`font-grotesk font-medium text-[17px] sm:text-[22px] leading-tight transition-colors ${item.locked ? 'text-text-secondary' : 'text-text-primary group-hover:text-text-brand'}`}>
+                        {item.title}
+                      </span>
+                      <span className="font-mono-bold text-caption uppercase tracking-wide text-text-secondary">
+                        {dotted(item.tags)}
+                      </span>
+                    </span>
+                    {/* Fixed-size slot: the note and the preview crossfade here without changing the row height. */}
+                    <span className="hidden sm:block relative w-40 h-10 self-center">
+                      <span
+                        className={`absolute inset-y-0 right-0 flex items-center font-mono-bold text-sm text-right text-text-secondary transition-opacity duration-300 ease-out ${
+                          item.locked ? '' : 'group-hover:opacity-0 group-focus-visible:opacity-0'
+                        } ${item.highlight ? 'font-bold text-text-primary' : ''}`}
+                      >
+                        {item.locked ? <ComingSoonBadge /> : item.metric}
+                      </span>
+                      {!item.locked && (
+                      <img
+                        src={item.preview}
+                        alt=""
+                        width={160}
+                        height={90}
+                        loading="lazy"
+                        decoding="async"
+                        className={`pointer-events-none absolute right-0 top-1/2 w-40 h-[90px] -translate-y-1/2 scale-95 rounded-control object-cover opacity-0 transition duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100`}
+                      />
+                      )}
+                    </span>
+                    {item.locked ? (
+                      <span aria-hidden="true" className="justify-self-end text-text-secondary">
+                        <LockIcon className="w-5 h-5" />
+                      </span>
+                    ) : (
+                      <span aria-hidden="true" className="text-action-primary text-xl justify-self-end">
+                        →
+                      </span>
+                    )}
+                  </Row>
+                );
+              })()}
             </li>
           ))}
         </ol>

@@ -19,7 +19,8 @@ import caseShoot480 from '../assets/case-shoot-480w.webp';
 import caseShoot960 from '../assets/case-shoot-960w.webp';
 import DotsBackground from '../components/DotsBackground';
 import useDocumentMeta from '../hooks/useDocumentMeta';
-import { SHOW_BUILT_WITH_CLAUDE } from '../config/publishedCases';
+import { BUILT_WITH_CLAUDE_COMING_SOON } from '../config/publishedCases';
+import ComingSoonBadge, { LockIcon } from '../components/ComingSoonBadge';
 import builtWithClaudeProject from '../data/builtWithClaudeProject';
 import { caseStudy } from '../data/caseStudies';
 
@@ -36,20 +37,42 @@ function ProjectCard({ project, index }) {
 
   return (
     <article className="flex flex-col">
-      <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-5">
-        <img
-          src={project.image960}
-          srcSet={`${project.image480} 480w, ${project.image960} 960w`}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          alt={project.title}
-          width={960}
-          height={720}
-          loading={isEager ? undefined : 'lazy'}
-          decoding={isEager ? undefined : 'async'}
-          fetchPriority={isFirst ? 'high' : undefined}
-          className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
-        />
-      </Link>
+      {project.locked ? (
+        <div className="relative overflow-hidden rounded-card mb-5">
+          <img
+            src={project.image960}
+            srcSet={`${project.image480} 480w, ${project.image960} 960w`}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            alt=""
+            width={960}
+            height={720}
+            loading="lazy"
+            decoding="async"
+            className="w-full aspect-[4/3] object-cover scale-110 blur-xl"
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/25">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-surface-default text-text-primary shadow-lg">
+              <LockIcon className="w-6 h-6" />
+            </span>
+            <ComingSoonBadge />
+          </div>
+        </div>
+      ) : (
+        <Link to={`/project/${project.id}`} className="block group overflow-hidden rounded-card mb-5">
+          <img
+            src={project.image960}
+            srcSet={`${project.image480} 480w, ${project.image960} 960w`}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            alt={project.title}
+            width={960}
+            height={720}
+            loading={isEager ? undefined : 'lazy'}
+            decoding={isEager ? undefined : 'async'}
+            fetchPriority={isFirst ? 'high' : undefined}
+            className="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-300"
+          />
+        </Link>
+      )}
       <p className="font-mono-bold text-caption text-text-secondary mb-3">
         {project.tags.map((tag, i) => (
           <span key={tag}>
@@ -63,20 +86,31 @@ function ProjectCard({ project, index }) {
         ))}
       </p>
       <h2 className="font-grotesk font-medium text-[22px] sm:text-[26px] leading-tight tracking-tight text-text-primary mb-3">
-        <Link to={`/project/${project.id}`} className="hover:text-text-brand transition-colors">
-          {project.title}
-        </Link>
+        {project.locked ? (
+          project.title
+        ) : (
+          <Link to={`/project/${project.id}`} className="hover:text-text-brand transition-colors">
+            {project.title}
+          </Link>
+        )}
       </h2>
       <p className="font-grotesk text-body-md text-text-primary leading-relaxed mb-5">
         {project.description}
       </p>
       <div className="mt-auto">
-        <Link
-          to={`/project/${project.id}`}
-          className="font-grotesk font-medium text-body-md text-text-brand hover:text-action-primary-hover underline-offset-4 hover:underline transition-colors"
-        >
-          Read case study →
-        </Link>
+        {project.locked ? (
+          <span className="inline-flex items-center gap-2 font-grotesk font-medium text-body-md text-text-secondary">
+            <LockIcon className="w-4 h-4" />
+            Coming soon
+          </span>
+        ) : (
+          <Link
+            to={`/project/${project.id}`}
+            className="font-grotesk font-medium text-body-md text-text-brand hover:text-action-primary-hover underline-offset-4 hover:underline transition-colors"
+          >
+            Read case study →
+          </Link>
+        )}
       </div>
     </article>
   );
@@ -147,14 +181,10 @@ const projects = [
     description:
       'A marketplace connecting people with professional photographers, rentable cameras, and bookable studios. Designed end-to-end — from a browsable portfolio feed to a transparent booking flow and an equipment-and-studio rental system — unifying three fragmented markets into one journey.',
   },
-  ...(SHOW_BUILT_WITH_CLAUDE ? [builtWithClaudeProject] : []),
+  { ...builtWithClaudeProject, locked: BUILT_WITH_CLAUDE_COMING_SOON },
 ];
 
-// While the "Built with Claude" case is hidden its category is hidden from the tabs entirely
-// (its card data isn't even included). Categories that never had cases keep their "Coming soon" tab.
-const visibleCategories = SHOW_BUILT_WITH_CLAUDE
-  ? categories
-  : categories.filter((c) => c !== 'Built with Claude');
+const visibleCategories = categories;
 
 export default function Projects() {
   useDocumentMeta({

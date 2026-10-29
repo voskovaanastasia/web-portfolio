@@ -5,8 +5,10 @@
 // live on the production site; merging a branch into main must never publish the case by accident.
 // SHOW_BUILT_WITH_CLAUDE is what the app reads: it is also true on every non-production build
 // (local, Vercel previews), so the case can be reviewed on a test branch. __IS_PRODUCTION__ is
-// defined in vite.config.js from VERCEL_ENV. While SHOW_BUILT_WITH_CLAUDE is false there is no
-// card or tab, the route renders the 404 page, and the chunk and cover images stay out of the build.
+// defined in vite.config.js from VERCEL_ENV. While SHOW_BUILT_WITH_CLAUDE is false the case is
+// "coming soon": the card and the tab stay in the lists with a lock, a "Coming soon" tag and a blurred
+// cover but are not links, the route renders the 404 page, and the case chunk stays out of the build.
 // The case stays noindex and out of sitemap.xml and llms.txt in every environment.
-export const BUILT_WITH_CLAUDE_PUBLISHED = true;
+export const BUILT_WITH_CLAUDE_PUBLISHED = false;
 export const SHOW_BUILT_WITH_CLAUDE = BUILT_WITH_CLAUDE_PUBLISHED || !__IS_PRODUCTION__;
+export const BUILT_WITH_CLAUDE_COMING_SOON = !SHOW_BUILT_WITH_CLAUDE;

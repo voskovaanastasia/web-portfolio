@@ -1,5 +1,5 @@
-// Portfolio card for the "Built with Claude" case. Projects.jsx only includes it while
-// SHOW_BUILT_WITH_CLAUDE is true, so the cover images stay out of the production build.
+// Portfolio card for the "Built with Claude" case. While the case is unpublished (see
+// config/publishedCases.js) the card is still listed, locked, with a blurred cover.
 import caseBuiltWithClaude480 from '../assets/case-built-with-claude-480w.webp';
 import caseBuiltWithClaude960 from '../assets/case-built-with-claude-960w.webp';
 
