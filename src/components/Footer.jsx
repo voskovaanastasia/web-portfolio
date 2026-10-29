@@ -32,12 +32,12 @@ const columns = [
   {
     title: 'Social',
     links: [
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/anastasiia-voskova', icon: iconLinkedin, external: true },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/anastasiia-voskova', icon: iconLinkedin, whiteIcon: true, external: true },
       { label: 'Telegram', href: 'https://t.me/Anastasiia_wax', icon: iconTelegram, external: true },
-      { label: 'Behance', href: 'https://www.behance.net/0dd9826d', icon: iconBehance, external: true },
-      { label: 'Instagram', href: 'https://www.instagram.com/anastazja_v/', icon: iconInstagram, external: true },
+      { label: 'Behance', href: 'https://www.behance.net/0dd9826d', icon: iconBehance, whiteIcon: true, external: true },
+      { label: 'Instagram', href: 'https://www.instagram.com/anastazja_v/', icon: iconInstagram, whiteIcon: true, external: true },
       { label: 'Upwork', href: 'https://www.upwork.com/freelancers/~0160de67b81721f9ab', icon: iconUpwork, external: true },
-      { label: 'GitHub', href: 'https://github.com/voskovaanastasia', icon: iconGithub, external: true },
+      { label: 'GitHub', href: 'https://github.com/voskovaanastasia', icon: iconGithub, whiteIcon: true, external: true },
     ],
   },
 ];
@@ -142,8 +142,8 @@ export default function Footer() {
                         className={`${linkClass} ${link.icon ? 'inline-flex items-center gap-2.5' : ''}`}
                       >
                         {link.icon && (
-                          <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white">
-                            <img src={link.icon} alt="" width={16} height={16} loading="lazy" className="h-4 w-4 object-contain" />
+                          <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-[#374151] bg-[#1F2937]">
+                            <img src={link.icon} alt="" width={16} height={16} loading="lazy" className={`h-4 w-4 object-contain ${link.whiteIcon ? 'brightness-0 invert' : ''}`} />
                           </span>
                         )}
                         {link.label}
