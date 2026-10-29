@@ -29,3 +29,34 @@
   font-weight: 700;
   src: url(../../node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2) format('woff2');
 }
+
+/* Metric-matched stand-ins (Arial resized to Space Grotesk's / Caveat's width, ascent and descent, measured in
+   Chrome). While a web font is still loading, text lays out in these, so when the real font arrives the page
+   does not jump (layout shift). `local()` only: nothing to download. */
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  font-weight: 400 600;
+  src: local('Arial'), local('Arimo'), local('Liberation Sans'), local('Helvetica');
+  size-adjust: 109.6%;
+  ascent-override: 89.4%;
+  descent-override: 26.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  font-weight: 700;
+  src: local('Arial Bold'), local('Arimo Bold'), local('Liberation Sans Bold'), local('Helvetica Bold');
+  size-adjust: 101.4%;
+  ascent-override: 96.6%;
+  descent-override: 28.6%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Caveat Fallback';
+  font-weight: 700;
+  src: local('Arial Bold'), local('Arimo Bold'), local('Liberation Sans Bold'), local('Helvetica Bold');
+  size-adjust: 70.3%;
+  ascent-override: 136.5%;
+  descent-override: 42.7%;
+  line-gap-override: 0%;
+}
