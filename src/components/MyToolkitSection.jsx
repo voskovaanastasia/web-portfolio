@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { openContactModal } from '../contactModalStore';
 import { getToolsByCategory } from '../data/tools';
 import flagGb from '../assets/flags/gb.svg';
 import flagUa from '../assets/flags/ua.svg';
@@ -257,9 +258,9 @@ function FullToolkit() {
                       Good news: I&rsquo;m a fast learner with a Computer Science background. If your project needs it, I&rsquo;ll pick it up.
                     </p>
                     <div className="flex flex-wrap justify-center sm:justify-start gap-3 pt-1">
-                      {/* TODO: Install on request has no action yet — waiting for the owner to say what it should do. */}
                       <button
                         type="button"
+                        onClick={openContactModal}
                         className="min-h-[44px] inline-flex items-center gap-2 rounded-pill bg-action-primary hover:bg-action-primary-hover text-text-inverse font-grotesk font-medium text-base px-5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
                       >
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
