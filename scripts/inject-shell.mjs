@@ -27,6 +27,12 @@ if (!template.includes('<div id="root"></div>')) throw new Error('inject-shell: 
 let out = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 
 
+// Inline the stylesheet: the shell can then paint without a second round trip for the CSS (it was the only
+// render-blocking request). Home page only; other routes keep the <link> and the shared cached file.
+const css = out.match(/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/);
+if (!css) throw new Error('inject-shell: stylesheet link not found in dist/index.html');
+out = out.replace(css[0], `<style>${readFileSync(path.join(root, 'dist', css[1]), 'utf8')}</style>`);
+
 // The shell is already on screen. Start the bundle after the page has loaded (or after 3 s as a fallback) so the
 // browser records the shell's headline as the LCP element before React swaps it, and the bundle no longer
 // competes with the CSS and fonts for bandwidth.

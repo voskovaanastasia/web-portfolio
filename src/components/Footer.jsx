@@ -78,7 +78,7 @@ export default function Footer() {
             <img src={avatar} alt="" width={52} height={52} loading="lazy" className="h-[52px] w-[52px] rounded-full border-2 border-white object-cover" />
             <span className="flex flex-col gap-0.5">
               <span className="font-medium text-[22px] sm:text-[28px] lg:text-[32px] tracking-[-0.02em] leading-tight">Have a project in mind?</span>
-              <span className="text-[15px] text-[#DCEEFB]">I&rsquo;m open to new projects &mdash; let&rsquo;s make it simple.</span>
+              <span className="text-[15px] text-white">I&rsquo;m open to new projects &mdash; let&rsquo;s make it simple.</span>
             </span>
           </div>
           <div className="flex flex-wrap gap-2.5">

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import caseFarsafe from '../assets/case-farsafe.webp';
+import caseFarsafe640 from '../assets/case-farsafe-featured-640w.webp';
 import caseFarsafe960 from '../assets/case-farsafe-featured-960w.webp';
 import caseFarsafe1440 from '../assets/case-farsafe-featured-1440w.webp';
 import caseBart480 from '../assets/case-bart-480w.webp';
@@ -96,7 +97,7 @@ export default function SelectedWork() {
           >
             <img
               src={caseFarsafe1440}
-              srcSet={`${caseFarsafe960} 960w, ${caseFarsafe1440} 1440w, ${featured.image} 2116w`}
+              srcSet={`${caseFarsafe640} 640w, ${caseFarsafe960} 960w, ${caseFarsafe1440} 1440w, ${featured.image} 2116w`}
               sizes="(min-width: 1280px) 1216px, calc(100vw - 48px)"
               alt={featured.title}
               width={2116}
