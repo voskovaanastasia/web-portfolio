@@ -6,6 +6,7 @@ import avatar from '../assets/avatar.webp';
 import iconMail from '../assets/contact/mail.svg';
 import iconCopy from '../assets/contact/copy.svg';
 import iconLinkedin from '../assets/contact/linkedin.svg';
+import iconTelegram from '../assets/contact/telegram.svg';
 import iconBehance from '../assets/contact/behance.svg';
 import iconInstagram from '../assets/contact/instagram.svg';
 import iconCv from '../assets/contact/cv.svg';
@@ -16,6 +17,7 @@ const channels = [
   { id: 'mail', name: 'Write an email', sub: CONTACT_EMAIL, icon: iconMail, href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Let's Chat")}` },
   { id: 'copy', name: 'Copy email address', sub: 'Paste it wherever you like', icon: iconCopy },
   { id: 'linkedin', name: 'LinkedIn', sub: 'in/anastasiia-voskova', icon: iconLinkedin, href: 'https://linkedin.com/in/anastasiia-voskova', external: true },
+  { id: 'telegram', name: 'Telegram', sub: '@Anastasiia_wax', icon: iconTelegram, href: 'https://t.me/Anastasiia_wax', external: true },
   { id: 'behance', name: 'Behance', sub: 'full case studies', icon: iconBehance, href: 'https://www.behance.net/0dd9826d', external: true },
   { id: 'instagram', name: 'Instagram', sub: '@anastazja_v', icon: iconInstagram, href: 'https://www.instagram.com/anastazja_v/', external: true },
   { id: 'cv', name: 'Download CV', sub: 'PDF · Anastasiia-Voskova-Resume', icon: iconCv, href: '/Anastasiia-Voskova-Resume.pdf', external: true },
