@@ -42,7 +42,7 @@ const project = {
     },
     {
       label: 'APPROACH',
-      text: 'I researched other portfolios, designed components in Figma and had Claude Code build the pages. I reviewed every diff and fixed what a QA tester and a front-end developer found on the live site.',
+      text: 'I researched other portfolios, designed components in Figma and had Claude Code build the pages. I reviewed every diff and fixed what a QA tester and a front-end developer found on the live site. For the redesign, Claude Design explored structures and component ideas on top of my system.',
     },
   ],
   outcome: {
