@@ -1,6 +1,7 @@
 import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
 import Goals from '../components/Goals';
 import IATree from '../components/IATree';
+import BuildLog from '../components/BuildLog';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
 
@@ -1071,6 +1072,7 @@ const sections = [
   { id: 'tokens', label: 'Design System', content: <Tokens /> },
   { id: 'mistakes', label: 'Mistakes', content: <Mistakes /> },
   { id: 'results', label: 'Results', content: <Results /> },
+  { id: 'build-log', label: 'Build log', content: <BuildLog /> },
 ];
 
 export default function BuiltWithClaudeCase() {
