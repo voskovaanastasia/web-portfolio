@@ -56,6 +56,24 @@
   --color-data-3: #EE8585;
   --color-data-4: #4D8FD1;
 
+  /* Build log: dark terminal window and the five contribution-heatmap levels (0 = no contributions) */
+  --color-terminal-surface: #1C1F26;
+  --color-terminal-bar-top: #2A2E37;
+  --color-terminal-bar-bottom: #24272F;
+  --color-terminal-bar-border: #14161B;
+  --color-terminal-border: #3A3F4A;
+  --color-terminal-divider: #2B3040;
+  --color-terminal-title: #C9CED6;
+  --color-terminal-prompt: #4BA6E6;
+  --color-terminal-command: #E5E7EB;
+  --color-terminal-muted: #9CA3AF;
+  --color-heat-0: #2A2F3A;
+  --color-heat-1: #1E4A6B;
+  --color-heat-2: #2A6FA3;
+  --color-heat-3: #3E95D5;
+  --color-heat-4: #7CC0F2;
+  --shadow-terminal: 0 40px 90px rgba(17, 24, 39, 0.28);
+
   /* Radius */
   --radius-card: 24px;
   --radius-panel: 16px;

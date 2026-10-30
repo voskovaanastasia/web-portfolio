@@ -47,6 +47,30 @@ export default {
           3: 'var(--color-data-3)',
           4: 'var(--color-data-4)',
         },
+        terminal: {
+          surface: 'var(--color-terminal-surface)',
+          'bar-top': 'var(--color-terminal-bar-top)',
+          'bar-bottom': 'var(--color-terminal-bar-bottom)',
+          'bar-border': 'var(--color-terminal-bar-border)',
+          border: 'var(--color-terminal-border)',
+          divider: 'var(--color-terminal-divider)',
+          title: 'var(--color-terminal-title)',
+          prompt: 'var(--color-terminal-prompt)',
+          command: 'var(--color-terminal-command)',
+          muted: 'var(--color-terminal-muted)',
+        },
+        heat: {
+          0: 'var(--color-heat-0)',
+          1: 'var(--color-heat-1)',
+          2: 'var(--color-heat-2)',
+          3: 'var(--color-heat-3)',
+          4: 'var(--color-heat-4)',
+        },
+        traffic: {
+          red: 'var(--color-traffic-red)',
+          yellow: 'var(--color-traffic-yellow)',
+          green: 'var(--color-traffic-green)',
+        },
         border: {
           subtle: 'var(--color-border-subtle)',
         },
@@ -70,6 +94,7 @@ export default {
       },
       boxShadow: {
         icon: 'var(--shadow-icon)',
+        terminal: 'var(--shadow-terminal)',
       },
       fontSize: {
         'caption-xs': 'var(--font-size-caption-xs)',
