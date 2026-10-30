@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-og-images.cjs && node scripts/fetch-build-log.mjs",
+    "prebuild": "npm run check:tokens && node scripts/generate-og-images.cjs && node scripts/fetch-build-log.mjs",
     "build": "vite build",
     "postbuild": "node scripts/prerender-routes.cjs && node scripts/inject-shell.mjs",
     "generate:og": "node scripts/generate-og-images.cjs",
