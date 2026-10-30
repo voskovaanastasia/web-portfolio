@@ -43,7 +43,7 @@ function RowBody({ channel, copied }) {
     <>
       <span
         aria-hidden="true"
-        className="w-10 h-10 shrink-0 flex items-center justify-center rounded-[10px] bg-surface-default shadow-[0_1px_2px_rgba(17,24,39,0.05),inset_0_0_0_0.5px_rgba(0,0,0,0.12)]"
+        className="w-10 h-10 shrink-0 flex items-center justify-center rounded-[10px] bg-surface-default shadow-hairline-inset"
       >
         <img src={channel.icon} alt="" width={24} height={24} className="w-6 h-6 object-contain" />
       </span>
@@ -80,7 +80,7 @@ export default function ContactModal() {
       <div className="fixed inset-0 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
           <DialogPanel
-            className="relative flex w-full max-w-[560px] flex-col gap-[22px] rounded-3xl border border-border-subtle bg-surface-default p-5 sm:p-7 shadow-[0_40px_80px_rgba(17,24,39,0.16)]"
+            className="relative flex w-full max-w-[560px] flex-col gap-[22px] rounded-3xl border border-border-subtle bg-surface-default p-5 sm:p-7 shadow-modal"
             style={{
               backgroundImage: 'radial-gradient(circle, var(--color-dots) 1.4px, transparent 1.5px)',
               backgroundSize: '20px 20px',

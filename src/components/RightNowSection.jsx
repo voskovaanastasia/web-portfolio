@@ -91,7 +91,7 @@ export default function RightNowSection() {
                 height={224}
                 loading="lazy"
                 decoding="async"
-                className="w-[140px] h-[224px] object-cover -rotate-[4deg] rounded-[4px_10px_10px_4px] shadow-[4px_16px_24px_rgba(34,41,47,0.18)] transition-transform duration-300 hover:-translate-y-2 hover:rotate-0 motion-reduce:transition-none"
+                className="w-[140px] h-[224px] object-cover -rotate-[4deg] rounded-[4px_10px_10px_4px] shadow-photo transition-transform duration-300 hover:-translate-y-2 hover:rotate-0 motion-reduce:transition-none"
               />
             </div>
             <div className="flex flex-col gap-2.5">

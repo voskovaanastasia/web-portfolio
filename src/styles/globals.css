@@ -77,6 +77,7 @@
   /* Dark surfaces outside the Build log: footer, section menu over dark, AI + Designer, Toolkit.
      The on-dark and dark-surface names are neutral aliases of the terminal primitives above, so components do not read terminal-*. */
   --color-navy-900: #111827;
+  --color-black-900: #000000;
   --color-surface-footer: var(--color-navy-900);
   --color-text-on-accent: var(--color-navy-900);
   --color-surface-dark: var(--color-terminal-surface);
@@ -91,6 +92,19 @@
   --color-on-dark-accent-border: color-mix(in srgb, var(--color-on-dark-accent) 70%, transparent);
   --color-on-dark-border: var(--color-terminal-border);
   --color-dots-inverse: rgba(255, 255, 255, 0.09);
+
+  /* Elevation. Shadow colours are built from colour tokens with color-mix, so no raw rgba lives in components.
+     Rows merged on 30 Oct 2026: hairline (3 shadows), hairline-inset (2), panel (3). */
+  --shadow-hairline: 0 1px 3px color-mix(in srgb, var(--color-black-900) 5%, transparent);
+  --shadow-hairline-inset: 0 1px 2px color-mix(in srgb, var(--color-navy-900) 5%, transparent), inset 0 0 0 0.5px color-mix(in srgb, var(--color-black-900) 10%, transparent);
+  --shadow-panel: 0 30px 70px color-mix(in srgb, var(--color-navy-900) 14%, transparent);
+  --shadow-modal: 0 40px 80px color-mix(in srgb, var(--color-navy-900) 16%, transparent);
+  --shadow-hover-lift: 0 18px 36px color-mix(in srgb, var(--color-navy-900) 8%, transparent);
+  --shadow-window-dark: 0 30px 80px color-mix(in srgb, var(--color-black-900) 28%, transparent);
+  --shadow-step-card: 0 8px 20px color-mix(in srgb, var(--color-black-900) 25%, transparent);
+  --shadow-step-card-active: 0 8px 30px color-mix(in srgb, var(--color-on-dark-accent) 25%, transparent);
+  --shadow-photo: 4px 16px 24px color-mix(in srgb, var(--color-ink-900) 18%, transparent);
+  --shadow-sticky-note: 0 10px 20px color-mix(in srgb, var(--color-navy-900) 12%, transparent);
 
   /* Radius */
   --radius-card: 24px;

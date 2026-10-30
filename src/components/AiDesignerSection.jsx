@@ -69,7 +69,7 @@ export default function AiDesignerSection() {
     <section ref={rootRef} id="ai-designer" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editor window */}
-        <div className="rounded-2xl overflow-hidden border border-white/10 bg-surface-dark shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-surface-dark shadow-window-dark">
           <div className="relative flex items-center h-11 px-4 bg-surface-dark-bar border-b border-white/10">
             <TrafficLights size="w-3 h-3" />
             <p className="absolute inset-x-0 text-center font-grotesk font-medium text-xs text-white/80 pointer-events-none">
@@ -98,9 +98,9 @@ export default function AiDesignerSection() {
                 return (
                   <li
                     key={step.number}
-                    className={`flex flex-col overflow-hidden rounded-xl border bg-surface-dark-bar shadow-[0_8px_20px_rgba(0,0,0,0.25)] ${
+                    className={`flex flex-col overflow-hidden rounded-xl border bg-surface-dark-bar shadow-step-card ${
                       isLast
-                        ? 'border-border-on-dark-accent shadow-[0_8px_30px_rgba(91,168,232,0.25)]'
+                        ? 'border-border-on-dark-accent shadow-step-card-active'
                         : 'border-white/10'
                     }`}
                   >

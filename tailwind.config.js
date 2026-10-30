@@ -109,6 +109,16 @@ export default {
       boxShadow: {
         icon: 'var(--shadow-icon)',
         terminal: 'var(--shadow-terminal)',
+        hairline: 'var(--shadow-hairline)',
+        'hairline-inset': 'var(--shadow-hairline-inset)',
+        panel: 'var(--shadow-panel)',
+        modal: 'var(--shadow-modal)',
+        'hover-lift': 'var(--shadow-hover-lift)',
+        'window-dark': 'var(--shadow-window-dark)',
+        'step-card': 'var(--shadow-step-card)',
+        'step-card-active': 'var(--shadow-step-card-active)',
+        photo: 'var(--shadow-photo)',
+        'sticky-note': 'var(--shadow-sticky-note)',
       },
       fontSize: {
         'caption-xs': 'var(--font-size-caption-xs)',

@@ -103,7 +103,7 @@ export default function About() {
 
           {/* Portrait in a Preview-style window */}
           <div className="relative flex-[1_1_380px] min-w-0 w-full max-w-[460px] mx-auto px-6 pt-6 pb-10">
-            <div className="rotate-2 overflow-hidden rounded-[14px] border border-border-subtle bg-surface-default shadow-[0_30px_70px_rgba(17,24,39,0.14)]">
+            <div className="rotate-2 overflow-hidden rounded-[14px] border border-border-subtle bg-surface-default shadow-panel">
               <div className="relative flex items-center min-h-11 px-3.5 bg-surface-subtle border-b border-border-subtle">
                 <span aria-hidden="true" className="flex gap-[7px]">
                   <span className="w-3 h-3 rounded-pill bg-[var(--color-traffic-red)]" />
@@ -126,7 +126,7 @@ export default function About() {
             </div>
             <div
               aria-hidden="true"
-              className="absolute left-0 bottom-2 -rotate-6 bg-[var(--color-sticky-note)] px-4 py-3 shadow-[0_10px_20px_rgba(17,24,39,0.12)]"
+              className="absolute left-0 bottom-2 -rotate-6 bg-[var(--color-sticky-note)] px-4 py-3 shadow-sticky-note"
             >
               <span className="font-caveat font-bold text-[22px] text-text-primary">hi, that&rsquo;s me!</span>
             </div>

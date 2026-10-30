@@ -143,7 +143,7 @@ function FullToolkit() {
         {/* Finder-style window */}
         <div
           data-toolkit-window
-          className="rounded-2xl overflow-hidden border border-border-subtle bg-surface-default shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
+          className="rounded-2xl overflow-hidden border border-border-subtle bg-surface-default shadow-panel"
         >
           <div className="relative flex items-center justify-between h-12 px-4 bg-surface-subtle border-b border-border-subtle">
             <span aria-hidden="true" className="flex items-center gap-2">
@@ -290,8 +290,8 @@ function FullToolkit() {
                     data-tool-tile
                     className={`flex items-center justify-center w-14 h-14 sm:w-[60px] sm:h-[60px] rounded-2xl overflow-hidden ${
                       tool.fill
-                        ? 'shadow-[0_1px_3px_rgba(0,0,0,0.08)]'
-                        : 'bg-surface-default border border-border-subtle shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
+                        ? 'shadow-hairline'
+                        : 'bg-surface-default border border-border-subtle shadow-hairline'
                     }`}
                   >
                     <img
@@ -323,10 +323,10 @@ const marqueeRows = [
 ];
 
 const ToolPill = ({ tool }) => (
-  <li className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-pill border border-border-subtle bg-surface-default py-1.5 pl-1.5 pr-4 font-grotesk font-medium text-[15px] text-text-primary shadow-[0_1px_2px_rgba(17,24,39,0.04)]">
+  <li className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-pill border border-border-subtle bg-surface-default py-1.5 pl-1.5 pr-4 font-grotesk font-medium text-[15px] text-text-primary shadow-hairline">
     <span
       aria-hidden="true"
-      className="flex h-[26px] w-[26px] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-surface-default shadow-[0_1px_2px_rgba(17,24,39,0.05),inset_0_0_0_0.5px_rgba(0,0,0,0.10)]"
+      className="flex h-[26px] w-[26px] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-surface-default shadow-hairline-inset"
     >
       <img
         src={tool.icon}
