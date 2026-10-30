@@ -203,7 +203,7 @@ function Heatmap({ cells, labels, stats }) {
         ref={wrapRef}
         role="img"
         aria-label={ariaLabel(stats)}
-        className="relative mx-auto min-w-[676px] max-w-[900px]"
+        className="relative mx-auto min-w-[640px] max-w-[900px]"
         onPointerOver={(e) => e.pointerType === 'mouse' && show(e, false)}
         onPointerLeave={(e) => e.pointerType === 'mouse' && setTip(null)}
         onClick={(e) => show(e, true)}
@@ -240,8 +240,8 @@ function Heatmap({ cells, labels, stats }) {
 function Command({ command, children }) {
   return (
     <div className="mb-3.5 font-mono text-[13.5px] leading-[1.7]">
-      <p>
-        <span aria-hidden="true">
+      <p className="lg:whitespace-nowrap">
+        <span aria-hidden="true" className="max-lg:block">
           <span className="text-terminal-prompt">~/portfolio</span> <span className="text-terminal-muted">$</span>{' '}
         </span>
         <span className="whitespace-nowrap text-terminal-command">{command}</span>
@@ -307,7 +307,7 @@ export default function BuildLog() {
         </div>
 
         <div className="flex flex-wrap">
-          <div className="min-w-0 border-terminal-divider px-7 py-8 sm:basis-[340px] lg:border-r lg:basis-[300px] lg:shrink-0">
+          <div className="min-w-0 border-terminal-divider px-7 py-8 sm:basis-[340px] lg:border-r lg:basis-auto lg:shrink-0">
             <Command command="contributions --last-year">
               {empty ? '—' : (
                 <>
