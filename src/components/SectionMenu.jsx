@@ -26,7 +26,12 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
   const menuRef = useRef(null);
   const itemRefs = useRef([]);
   const navRef = useRef(null);
+  const compactRef = useRef(null);
+  const pillLabelRef = useRef(null);
   const [onDark, setOnDark] = useState(false);
+  // The compact burger button and its dropdown each follow the backdrop behind them.
+  const [pillOnDark, setPillOnDark] = useState(false);
+  const [panelOnDark, setPanelOnDark] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -75,6 +80,38 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
       document.removeEventListener('load', schedule, true);
     };
   }, [sections, refreshKey]);
+
+  // Same for the compact navigator (below 1450px): light text and a dark glass tint over dark sections.
+  useEffect(() => {
+    const wrap = compactRef.current;
+    if (!wrap) return undefined;
+    let raf = 0;
+    const follow = (el, setter) => {
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return; // hidden from 1450px up
+      const { L } = measureBehind(rect, wrap);
+      setter((prev) => (prev ? L < LIGHT_ABOVE : L < DARK_BELOW));
+    };
+    const measure = () => {
+      raf = 0;
+      follow(pillLabelRef.current, setPillOnDark); // the text decides, not the blue circle beside it
+      follow(menuRef.current, setPanelOnDark);
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(measure);
+    };
+    schedule();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    document.addEventListener('load', schedule, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      document.removeEventListener('load', schedule, true);
+    };
+  }, [sections, refreshKey, isOpen]);
 
   // Topmost section (in page order) that's currently intersecting wins, so the
   // dropdown reliably reads "hero" at scroll position 0 instead of whichever
@@ -178,6 +215,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
 
       {/* Compact section navigator (below 1450px): burger menu showing the current section, bottom-right */}
       <div
+        ref={compactRef}
         className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex min-[1450px]:hidden flex-col items-end gap-2 sm:gap-2.5 transition-all duration-300 ${
           hidden ? 'opacity-0 translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'
         }`}
@@ -189,7 +227,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
             role="menu"
             aria-label="Page sections"
             onKeyDown={handleMenuKeyDown}
-            className="bg-glass-panel backdrop-blur-md border border-glass-border rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px]"
+            className={`${panelOnDark ? 'bg-surface-inverse' : 'bg-glass-panel'} backdrop-blur-md border border-glass-border rounded-control sm:rounded-panel p-2.5 sm:p-4 flex flex-col gap-1 sm:gap-2 font-grotesk min-w-[160px] sm:min-w-[200px] transition-colors duration-300`}
           >
             {sections.map(({ id, label }, index) => {
               const active = id === activeId;
@@ -201,7 +239,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
                   href={`#${id}`}
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors text-sm sm:text-base font-medium ${
-                    active ? 'text-text-primary' : 'text-text-primary hover:text-text-primary'
+                    panelOnDark ? 'text-text-inverse' : 'text-text-primary'
                   }`}
                 >
                   {label}
@@ -224,9 +262,9 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
           aria-haspopup="menu"
           aria-expanded={isOpen}
           aria-controls="section-menu"
-          className="bg-glass-light backdrop-blur-md border border-glass-border rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3"
+          className={`${pillOnDark ? 'bg-glass-dark' : 'bg-glass-light'} backdrop-blur-md border border-glass-border rounded-pill pl-3 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-2 flex items-center gap-2 sm:gap-3 transition-colors duration-300`}
         >
-          <span className="font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap text-text-primary">
+          <span ref={pillLabelRef} className={`font-grotesk font-medium text-xs sm:text-sm whitespace-nowrap transition-colors duration-300 ${pillOnDark ? 'text-text-inverse' : 'text-text-primary'}`}>
             {activeLabel}
           </span>
           <span className="bg-blue-500 rounded-pill w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0">
