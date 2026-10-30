@@ -217,7 +217,7 @@ function Heatmap({ cells, labels, stats }) {
         </div>
         <div className="grid grid-flow-col grid-rows-7 gap-[3px]" style={GRID_COLUMNS}>
           {WEEKDAY_ROWS.map((text, row) => (
-            <span key={row} className="relative" aria-hidden="true">
+            <span key={row} className="sticky left-0 z-[1] bg-terminal-surface" aria-hidden="true">
               <span className="absolute inset-y-0 left-0 flex items-center font-mono text-caption-xs text-terminal-muted">{text}</span>
             </span>
           ))}
@@ -244,7 +244,7 @@ function Command({ command, children }) {
         <span aria-hidden="true">
           <span className="text-terminal-prompt">~/portfolio</span> <span className="text-terminal-muted">$</span>{' '}
         </span>
-        <span className="text-terminal-command">{command}</span>
+        <span className="whitespace-nowrap text-terminal-command">{command}</span>
       </p>
       <p className="text-terminal-muted">{children}</p>
     </div>
