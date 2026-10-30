@@ -17,7 +17,7 @@ export default {
       },
       colors: {
         ink: 'var(--color-ink-900)',
-        grey: { 300: 'var(--color-grey-300)' },
+        grey: { 100: 'var(--color-grey-100)', 300: 'var(--color-grey-300)' },
         blue: { 500: 'var(--color-blue-500)' },
         purple: { 700: 'var(--color-purple-700)' },
         text: {
@@ -25,6 +25,12 @@ export default {
           secondary: 'var(--color-text-secondary)',
           brand: 'var(--color-text-brand)',
           inverse: 'var(--color-text-inverse)',
+          'on-accent': 'var(--color-text-on-accent)',
+          'on-dark': 'var(--color-on-dark-text)',
+          'on-dark-soft': 'var(--color-on-dark-text-soft)',
+          'on-dark-muted': 'var(--color-on-dark-text-muted)',
+          'on-dark-accent': 'var(--color-on-dark-accent)',
+          'on-dark-accent-hover': 'var(--color-on-dark-accent-hover)',
         },
         surface: {
           default: 'var(--color-surface-default)',
@@ -32,6 +38,11 @@ export default {
           inverse: 'var(--color-surface-inverse)',
           'brand-tint': 'var(--color-surface-brand-tint)',
           placeholder: 'var(--color-surface-placeholder)',
+          footer: 'var(--color-surface-footer)',
+          dark: 'var(--color-surface-dark)',
+          'dark-bar': 'var(--color-surface-dark-bar)',
+          'raised-dark': 'var(--color-surface-raised-dark)',
+          'raised-dark-2': 'var(--color-surface-raised-dark-2)',
         },
         glass: {
           light: 'var(--glass-light)',
@@ -73,6 +84,8 @@ export default {
         },
         border: {
           subtle: 'var(--color-border-subtle)',
+          'on-dark': 'var(--color-on-dark-border)',
+          'on-dark-accent': 'var(--color-on-dark-accent-border)',
         },
         action: {
           primary: 'var(--color-action-primary)',
@@ -84,6 +97,7 @@ export default {
         focus: {
           ring: 'var(--color-focus-ring)',
           'ring-inverse': 'var(--color-focus-ring-inverse)',
+          'ring-on-dark': 'var(--color-on-dark-accent)',
         },
       },
       borderRadius: {

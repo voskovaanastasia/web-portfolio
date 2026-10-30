@@ -147,9 +147,9 @@ function FullToolkit() {
         >
           <div className="relative flex items-center justify-between h-12 px-4 bg-surface-subtle border-b border-border-subtle">
             <span aria-hidden="true" className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-pill bg-[#EC6A5E]" />
-              <span className="w-3 h-3 rounded-pill bg-[#F4BF4F]" />
-              <span className="w-3 h-3 rounded-pill bg-[#61C554]" />
+              <span className="w-3 h-3 rounded-pill bg-traffic-red" />
+              <span className="w-3 h-3 rounded-pill bg-traffic-yellow" />
+              <span className="w-3 h-3 rounded-pill bg-traffic-green" />
             </span>
             <p className="hidden md:block absolute inset-x-0 text-center font-grotesk font-medium text-sm text-text-primary pointer-events-none truncate px-48">
               {current.label}

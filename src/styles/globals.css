@@ -74,6 +74,24 @@
   --color-heat-4: #7CC0F2;
   --shadow-terminal: 0 40px 90px rgba(17, 24, 39, 0.28);
 
+  /* Dark surfaces outside the Build log: footer, section menu over dark, AI + Designer, Toolkit.
+     The on-dark and dark-surface names are neutral aliases of the terminal primitives above, so components do not read terminal-*. */
+  --color-navy-900: #111827;
+  --color-surface-footer: var(--color-navy-900);
+  --color-text-on-accent: var(--color-navy-900);
+  --color-surface-dark: var(--color-terminal-surface);
+  --color-surface-dark-bar: var(--color-terminal-bar-top);
+  --color-surface-raised-dark: #1F2937;
+  --color-surface-raised-dark-2: #343842;
+  --color-on-dark-text: var(--color-terminal-command);
+  --color-on-dark-text-soft: var(--color-terminal-title);
+  --color-on-dark-text-muted: var(--color-terminal-muted);
+  --color-on-dark-accent: var(--color-terminal-prompt);
+  --color-on-dark-accent-hover: var(--color-heat-4);
+  --color-on-dark-accent-border: color-mix(in srgb, var(--color-on-dark-accent) 70%, transparent);
+  --color-on-dark-border: var(--color-terminal-border);
+  --color-dots-inverse: rgba(255, 255, 255, 0.09);
+
   /* Radius */
   --radius-card: 24px;
   --radius-panel: 16px;

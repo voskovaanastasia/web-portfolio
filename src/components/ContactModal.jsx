@@ -82,7 +82,7 @@ export default function ContactModal() {
           <DialogPanel
             className="relative flex w-full max-w-[560px] flex-col gap-[22px] rounded-3xl border border-border-subtle bg-surface-default p-5 sm:p-7 shadow-[0_40px_80px_rgba(17,24,39,0.16)]"
             style={{
-              backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.13) 1.4px, transparent 1.5px)',
+              backgroundImage: 'radial-gradient(circle, var(--color-dots) 1.4px, transparent 1.5px)',
               backgroundSize: '20px 20px',
             }}
           >

@@ -39,9 +39,9 @@ const steps = [
 
 const TrafficLights = ({ className = '', size = 'w-3 h-3' }) => (
   <span aria-hidden="true" className={`flex items-center gap-1.5 ${className}`}>
-    <span className={`${size} rounded-pill bg-[#EC6A5E]`} />
-    <span className={`${size} rounded-pill bg-[#F4BF4F]`} />
-    <span className={`${size} rounded-pill bg-[#61C554]`} />
+    <span className={`${size} rounded-pill bg-traffic-red`} />
+    <span className={`${size} rounded-pill bg-traffic-yellow`} />
+    <span className={`${size} rounded-pill bg-traffic-green`} />
   </span>
 );
 
@@ -69,8 +69,8 @@ export default function AiDesignerSection() {
     <section ref={rootRef} id="ai-designer" className="relative overflow-hidden bg-surface-default py-12 sm:py-24">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editor window */}
-        <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#212328] shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
-          <div className="relative flex items-center h-11 px-4 bg-[#2A2D34] border-b border-white/10">
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-surface-dark shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+          <div className="relative flex items-center h-11 px-4 bg-surface-dark-bar border-b border-white/10">
             <TrafficLights size="w-3 h-3" />
             <p className="absolute inset-x-0 text-center font-grotesk font-medium text-xs text-white/80 pointer-events-none">
               <span aria-hidden="true">&#128449;&nbsp;</span>AI + Designer — concept-to-prototype
@@ -80,7 +80,7 @@ export default function AiDesignerSection() {
           <div className="px-5 sm:px-6 lg:px-8 py-8 sm:py-10">
             <div className="mb-12 flex flex-col gap-2.5">
               <p className="font-mono-bold text-caption uppercase tracking-wider text-white/60">AI + DESIGNER</p>
-              <p className="font-caveat font-bold text-xl text-[#5BA8E8]">Where design stops being a picture</p>
+              <p className="font-caveat font-bold text-xl text-text-on-dark-accent">Where design stops being a picture</p>
               <h2 className="font-grotesk font-medium text-heading text-white tracking-tight max-w-2xl">
                 From static concepts to live prototypes.
               </h2>
@@ -98,13 +98,13 @@ export default function AiDesignerSection() {
                 return (
                   <li
                     key={step.number}
-                    className={`flex flex-col overflow-hidden rounded-xl border bg-[#2A2D34] shadow-[0_8px_20px_rgba(0,0,0,0.25)] ${
+                    className={`flex flex-col overflow-hidden rounded-xl border bg-surface-dark-bar shadow-[0_8px_20px_rgba(0,0,0,0.25)] ${
                       isLast
-                        ? 'border-[#5BA8E8]/70 shadow-[0_8px_30px_rgba(91,168,232,0.25)]'
+                        ? 'border-border-on-dark-accent shadow-[0_8px_30px_rgba(91,168,232,0.25)]'
                         : 'border-white/10'
                     }`}
                   >
-                    <div className="flex items-center gap-3 px-3.5 h-8 bg-[#343842]">
+                    <div className="flex items-center gap-3 px-3.5 h-8 bg-surface-raised-dark-2">
                       <TrafficLights size="w-2 h-2" />
                       <span className="font-mono text-[11px] text-white/60">{step.file}</span>
                     </div>

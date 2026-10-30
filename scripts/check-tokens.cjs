@@ -7,7 +7,8 @@ const ROOT = path.join(__dirname, '..');
 
 const ALLOW = require('./token-allowlist.cjs');
 
-const COLOR = /#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?)\(/g;
+// (?<!&) skips HTML character references such as &#128449;
+const COLOR = /(?<!&)#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?)\(/g;
 const EXT = /\.(jsx?|css|html)$/;
 
 function walk(dir, out = []) {

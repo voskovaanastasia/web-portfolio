@@ -10,7 +10,8 @@ const path = require('path');
 const ROOT = path.resolve(process.argv[2] || path.join(__dirname, '..'));
 const ALLOW = require('./token-allowlist.cjs');
 const CASE_PAGE = /^src\/pages\/\w+Case\.jsx$/;
-const COLOR = /#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?)\(/g;
+// (?<!&) skips HTML character references such as &#128449;
+const COLOR = /(?<!&)#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?)\(/g;
 const SIZE = /(?<![\w\[-])(?:[a-z0-9]+:)?text-\[\d+(?:\.\d+)?px\]/g;
 const EXT = /\.(jsx?|css|html)$/;
 

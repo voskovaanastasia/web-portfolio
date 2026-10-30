@@ -163,7 +163,7 @@ export default function SectionMenu({ sections = homeSections, refreshKey = 0 })
                   onDark
                     ? active
                       ? 'text-white'
-                      : 'text-[#9CA3AF] group-hover:text-white'
+                      : 'text-text-on-dark-muted group-hover:text-white'
                     : active
                       ? 'text-text-primary'
                       : 'text-text-secondary group-hover:text-text-primary'
