@@ -23,10 +23,10 @@ const project = {
   tags: ['Claude Code', 'Figma MCP', 'Design System', 'Performance'],
   meta: [
     { label: 'Role', value: 'Product designer and product owner' },
-    { label: 'Build time', value: '10 weeks to launch · 21 July → 29 September 2026, refreshed in October' },
-    { label: 'Built with', value: 'Claude Code · 166 commits, 155 co-authored (13 October 2026)' },
+    { label: 'Build time', value: '10 weeks to launch · 21 July → 29 September 2026, redesigned in late October' },
+    { label: 'Built with', value: 'Claude Code · 264 commits, 246 co-authored (30 October 2026)' },
   ],
-  tools: ['figma', 'claude-code', 'react', 'vite', 'tailwind', 'gsap', 'vercel'],
+  tools: ['figma', 'claude-design', 'claude-code', 'react', 'vite', 'tailwind', 'gsap', 'vercel'],
   links: [
     { icon: iconWebsite, label: 'Website', href: 'https://www.anastasiiavoskova.com/' },
     { icon: iconGithub, label: 'GitHub', href: 'https://github.com/voskovaanastasia/web-portfolio' },
@@ -46,9 +46,9 @@ const project = {
     },
   ],
   outcome: {
-    value: '68 → 99',
+    value: '68 → 100',
     label:
-      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100. PageSpeed Insights, 19 October 2026.',
+      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100. PageSpeed Insights, 30 October 2026.',
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
