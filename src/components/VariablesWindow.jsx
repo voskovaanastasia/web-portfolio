@@ -47,7 +47,14 @@ function Row({ row }) {
         <Preview row={row} />
       </span>
       <span className="vw-fn">{row.f}</span>
-      <span className="vw-cn">{row.c ?? '—'}</span>
+      {row.c || !row.via ? (
+        <span className="vw-cn">{row.c ?? '—'}</span>
+      ) : (
+        <span className="vw-cn" title={`No primitive variable in code. Used through the semantic variable ${row.via}.`}>
+          <span aria-hidden="true">via {row.via}</span>
+          <span className="vw-sr">No primitive variable in code. Used through the semantic variable {row.via}.</span>
+        </span>
+      )}
       <span className="vw-vl">
         {row.a ? (
           <span className="vw-alias">

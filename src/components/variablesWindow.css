@@ -159,6 +159,7 @@
   overflow-wrap: anywhere;
 }
 .vw-cn {
+  position: relative;
   font-family: var(--font-mono);
   font-size: var(--font-size-caption);
   color: var(--color-text-secondary);
@@ -177,6 +178,15 @@
   font-family: var(--font-mono);
   font-size: var(--font-size-caption);
   color: var(--color-text-primary);
+}
+
+.vw-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* Previews */
