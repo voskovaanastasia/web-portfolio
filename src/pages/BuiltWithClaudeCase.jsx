@@ -7,7 +7,6 @@ import BuildLog from '../components/BuildLog';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
 import './builtWithClaudeVersions.css';
-import './builtWithClaudeLoop.css';
 
 // This case's images (including any added later as case-built-with-claude-<slot>.webp) load with the page.
 registerCaseAssets(
@@ -758,34 +757,6 @@ const loopSteps = [
 ];
 
 function Loop() {
-  const listRef = useRef(null);
-
-  // The tiles light up in turn once, when the block scrolls into view. While it is still below the fold the
-  // block is "armed" (all tiles unlit), so there is no visible jump when the run starts. If it is already in view,
-  // or motion is reduced, nothing is armed and the final state stays. One observer, one pass, then disconnected.
-  useEffect(() => {
-    const el = listRef.current;
-    if (!el || typeof IntersectionObserver === 'undefined') return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) return undefined;
-    el.dataset.arm = '';
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        el.dataset.run = '';
-        observer.disconnect();
-      },
-      { rootMargin: '0px 0px -20% 0px' },
-    );
-    observer.observe(el);
-    return () => {
-      observer.disconnect();
-      delete el.dataset.arm;
-      delete el.dataset.run;
-    };
-  }, []);
-
   return (
     <>
       <h2 className={h2Class}>My five-step process, applied to this site</h2>
@@ -795,15 +766,14 @@ function Loop() {
       </p>
 
       <ol
-        ref={listRef}
-        aria-label="Five steps, run in order; step 5 loops back to step 1"
+        aria-label="Five steps, in order"
         className="mt-4 grid list-none grid-cols-1 gap-3 p-0 lg:grid-cols-5"
       >
         {loopSteps.map((step, i) => (
           <li
             key={step.title}
-            className={`lp-tile flex flex-col gap-2.5 rounded-panel border-2 border-transparent bg-surface-subtle p-4${
-              step.lit ? ' lp-tile--lit' : ''
+            className={`flex flex-col gap-2.5 rounded-panel border-2 p-4 ${
+              step.lit ? 'border-action-primary bg-surface-brand-tint' : 'border-transparent bg-surface-subtle'
             }`}
           >
             <span className="font-mono text-caption text-text-secondary">{String(i + 1).padStart(2, '0')}</span>
@@ -817,11 +787,6 @@ function Loop() {
           </li>
         ))}
       </ol>
-      <div className="lp-prog hidden lg:block" aria-hidden="true">
-        <span className="lp-back">
-          <span className="lp-back-head" />
-        </span>
-      </div>
     </>
   );
 }
