@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
 import { StatBar } from '../components/StatBar';
 import Goals from '../components/Goals';
@@ -6,6 +6,8 @@ import IATree from '../components/IATree';
 import BuildLog from '../components/BuildLog';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
+import './builtWithClaudeVersions.css';
+import './builtWithClaudeLoop.css';
 
 // This case's images (including any added later as case-built-with-claude-<slot>.webp) load with the page.
 registerCaseAssets(
@@ -723,101 +725,102 @@ function InformationArchitecture() {
   );
 }
 
-// ---- 8 · The loop ----------------------------------------------------------
+// ---- 8 · How I worked with Claude Code ------------------------------------
 
-// The tag on the right of each step is the tool or artefact of that step.
+// Five tiles in one row from 1024px. Tile 3 (Build with AI, the Claude Code step) is the lit one in the final state.
 const loopSteps = [
   {
-    heading: 'Frame the problem',
-    body: 'What I am solving, for whom, with what outcome. Wireframes and direction in Figma.',
+    title: 'Frame the problem.',
+    text: 'What I am solving, for whom, with what outcome. Wireframes and direction in Figma.',
     tag: 'figma',
   },
   {
-    heading: 'Turn design into instructions',
-    body: 'Flows, states and edge cases as precise written specs in Markdown.',
+    title: 'Turn design into instructions.',
+    text: 'Flows, states and edge cases as precise written specs in Markdown.',
     tag: 'spec.md',
   },
   {
-    heading: 'Build with AI',
-    body: 'Claude Code writes the front end from the specs.',
+    title: 'Build with AI.',
+    text: 'Claude Code writes the front end from the specs.',
     tag: 'claude-code',
-    active: true,
+    lit: true,
   },
   {
-    heading: 'Put it live',
-    body: 'The result ships as a real URL, so decisions are tested on a working page, not argued over a frame.',
+    title: 'Put it live.',
+    text: 'The result ships as a real URL, so decisions are tested on a working page, not argued over a frame.',
     tag: 'deploy ✓',
   },
   {
-    heading: 'Test and refine',
-    body: 'People and audits find what I cannot see, and each finding becomes the next prompt.',
+    title: 'Test and refine.',
+    text: 'People and audits find what I cannot see, and each finding becomes the next prompt.',
     tag: 're-runs',
-    repeat: true,
   },
 ];
 
-function StepIcon({ active, repeat }) {
-  if (repeat) {
-    return (
-      <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-blue-500 text-blue-500">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-          <path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4" />
-        </svg>
-      </span>
-    );
-  }
-  return (
-    <span
-      aria-hidden="true"
-      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
-        active ? 'bg-text-brand text-text-inverse' : 'bg-surface-brand-tint text-action-primary'
-      }`}
-    >
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-        <path d="m3.5 8.5 3 3 6-7" />
-      </svg>
-    </span>
-  );
-}
-
 function Loop() {
+  const listRef = useRef(null);
+
+  // The tiles light up in turn once, when the block scrolls into view. While it is still below the fold the
+  // block is "armed" (all tiles unlit), so there is no visible jump when the run starts. If it is already in view,
+  // or motion is reduced, nothing is armed and the final state stays. One observer, one pass, then disconnected.
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) return undefined;
+    el.dataset.arm = '';
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        el.dataset.run = '';
+        observer.disconnect();
+      },
+      { rootMargin: '0px 0px -20% 0px' },
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      delete el.dataset.arm;
+      delete el.dataset.run;
+    };
+  }, []);
+
   return (
     <>
-      <h2 className={h2Class}>The same five steps I describe on the home page</h2>
+      <h2 className={h2Class}>My five-step process, applied to this site</h2>
       <p className={bodyText}>
         Design and code ran in parallel, and both were component-led. When a page needed something the component set did
         not cover, I designed that component separately and added it to the project.
       </p>
 
-      <div className="mt-4 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
-        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
-          <p className="font-grotesk text-body font-bold text-text-primary">portfolio · design-to-code</p>
-          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">run on every page</p>
-        </div>
+      <ol
+        ref={listRef}
+        aria-label="Five steps, run in order; step 5 loops back to step 1"
+        className="mt-4 grid list-none grid-cols-1 gap-3 p-0 lg:grid-cols-5"
+      >
         {loopSteps.map((step, i) => (
-          <div
-            key={step.heading}
-            className={`flex flex-col gap-3 border-b border-border-subtle px-5 py-5 last:border-b-0 md:flex-row md:items-center md:gap-8 md:px-8 ${
-              step.active ? 'bg-surface-brand-tint' : ''
+          <li
+            key={step.title}
+            className={`lp-tile flex flex-col gap-2.5 rounded-panel border-2 border-transparent bg-surface-subtle p-4${
+              step.lit ? ' lp-tile--lit' : ''
             }`}
           >
-            <div className="flex items-center gap-4 md:w-72 md:shrink-0">
-              <StepIcon active={step.active} repeat={step.repeat} />
-              <div className="flex flex-col gap-1">
-                <p className="font-mono text-caption uppercase tracking-wider text-text-brand">Step {i + 1}</p>
-                <p className="font-grotesk text-body-lg font-bold text-text-primary">{step.heading}</p>
-              </div>
-            </div>
-            <p className={`${cardText} flex-1`}>{step.body}</p>
-            <p
-              className={`font-mono text-caption md:w-28 md:text-right ${
-                step.active || step.repeat ? 'text-text-brand' : 'text-text-secondary'
-              }`}
-            >
-              {step.tag}
+            <span className="font-mono text-caption text-text-secondary">{String(i + 1).padStart(2, '0')}</span>
+            <p className={`font-grotesk text-body-lg font-medium leading-snug ${step.lit ? 'text-text-brand' : 'text-ink'}`}>
+              {step.title}
             </p>
-          </div>
+            <p className="font-grotesk text-body leading-relaxed text-text-primary">{step.text}</p>
+            <span className="mt-auto inline-flex w-fit items-center whitespace-nowrap rounded-md bg-surface-default px-2 py-0.5 font-mono text-caption text-text-primary">
+              {step.tag}
+            </span>
+          </li>
         ))}
+      </ol>
+      <div className="lp-prog hidden lg:block" aria-hidden="true">
+        <span className="lp-back">
+          <span className="lp-back-head" />
+        </span>
       </div>
     </>
   );
