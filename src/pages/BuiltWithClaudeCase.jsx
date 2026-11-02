@@ -789,7 +789,7 @@ const outputChecks = [
   {
     label: 'Diff',
     title: 'What changed.',
-    text: 'Every change was read line by line before commit. A diff shows what a change does, not what it leaves out.',
+    text: 'I did not read all the code line by line. Most prompts told Claude Code to audit first and wait for my decision before changing anything.',
   },
   {
     label: 'Browser',
@@ -799,12 +799,12 @@ const outputChecks = [
   {
     label: 'Lighthouse',
     title: 'How fast and accessible.',
-    text: 'PageSpeed Insights showed that the first build was slow (68 on mobile) and that the fixes worked (99).',
+    text: 'PageSpeed Insights showed that the first build was slow (68 on mobile) and that the fixes worked (100).',
   },
   {
     label: 'Linter',
     title: 'What must not come back.',
-    text: 'A lint check fails if a raw colour is added, so the design system rule holds even when I am not reading the diff.',
+    text: 'The token check now runs first in every build and stops it on a raw colour. It did not always: after the redesign, 35 got through.',
   },
 ];
 
