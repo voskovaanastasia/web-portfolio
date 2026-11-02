@@ -831,7 +831,7 @@ function OutputChecks() {
 
 const tokenResults = [
   { from: '39', to: '0', label: 'raw colour values outside the case-study palettes' },
-  { from: '148', to: '47', label: 'arbitrary font sizes' },
+  { from: '148', to: '67', label: 'arbitrary font sizes' },
 ];
 
 // Token examples shown in the two panels below (values are the real ones in src/styles/globals.css).
@@ -876,7 +876,7 @@ function CodeLine({ name, value, active, comment }) {
 function Tokens() {
   return (
     <>
-      <h2 className={h2Class}>Design tokens: one vocabulary for Figma and code</h2>
+      <h2 className={h2Class}>One vocabulary for Figma and code</h2>
       <p className={bodyText}>
         The first build looked consistent by accident. The same text colour was typed out by hand <strong>98 times</strong>,
         the same card radius <strong>82 times</strong> and the same body size <strong>257 times</strong>, and nothing
@@ -914,7 +914,7 @@ function Tokens() {
             <CodeLine name="--color-text-brand" value="var(--color-blue-700);" active />
             <CodeLine name="--color-surface-subtle" value="var(--color-grey-100);" />
             <p className="px-4 py-1 text-grey-300">{'}'}</p>
-            <CodeLine comment="// lint fails if a raw colour is added" />
+            <CodeLine comment="// the build fails if a raw colour is added" />
           </div>
         </div>
       </div>
@@ -1290,7 +1290,7 @@ const sections = [
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
   { id: 'checks', label: 'How I Checked the Output', content: <OutputChecks /> },
-  { id: 'tokens', label: 'Design System', content: <Tokens /> },
+  { id: 'tokens', label: 'Design tokens', content: <Tokens /> },
   { id: 'mistakes', label: 'Mistakes', content: <Mistakes /> },
   { id: 'results', label: 'Results', content: <Results /> },
   { id: 'build-log', label: 'Build log', content: <BuildLog /> },
