@@ -1,4 +1,5 @@
 import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
+import { StatBar } from '../components/StatBar';
 import Goals from '../components/Goals';
 import IATree from '../components/IATree';
 import BuildLog from '../components/BuildLog';
@@ -209,85 +210,56 @@ function Role() {
 
 // ---- 6 · Research ---------------------------------------------------------
 
-const researchStats = [
-  { value: '68%', count: '13 of 19', label: 'link a resume from the home page' },
-  { value: '47%', count: '9 of 19', label: 'list roles or skills on the home page' },
+// One accent for all three bars: the same blue as the percentages in the other blocks.
+const researchBars = [
+  {
+    pct: 68,
+    color: 'var(--color-text-brand)',
+    title: '68% — link a resume from the home page',
+    text: '13 of 19 portfolios. My site does it too: a Download CV button sits in the first screen.',
+  },
+  {
+    pct: 47,
+    color: 'var(--color-text-brand)',
+    title: '47% — list roles or skills on the home page',
+    text: '9 of 19 portfolios. My site does it too; the full version now lives on About.',
+  },
+  {
+    pct: 72,
+    color: 'var(--color-text-brand)',
+    title: '72% — show four or more case studies on the home page',
+    text: <>13 of 18 portfolios. Across all 18 the count ranged from 2 to 13. &ldquo;Coming soon&rdquo; cards counted.</>,
+  },
 ];
-
-function CheckMark() {
-  return (
-    <span
-      aria-hidden="true"
-      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-surface-brand-tint text-action-primary"
-    >
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
-        <path d="m3.5 8.5 3 3 6-7" />
-      </svg>
-    </span>
-  );
-}
 
 function Research() {
   return (
-    <>
-      <h2 className={h2Class}>What other portfolios do, and what a recruiter looks for</h2>
-      <p className={bodyText}>
-        I studied other designers&rsquo; portfolios and spoke to a technical recruiter who hires for many different
-        companies. After launch, on 4 October 2026, I ran 21 portfolios through one checklist to test my choices. Two
-        would not load, so the counts use the 19 I could read.
-      </p>
-
-      <div className="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-        <div className="lg:col-span-2 flex flex-col gap-4 rounded-card border border-border-subtle bg-surface-default p-6 sm:p-8 shadow-sm">
-          <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">
-            Checklist on portfolio home pages
-          </p>
-          <div className="flex flex-col">
-            {researchStats.map((stat) => (
-              <div key={stat.value} className="flex items-center gap-4 border-b border-border-subtle py-4">
-                <CheckMark />
-                <p className="flex-1 font-grotesk font-bold text-body text-text-primary">{stat.label}</p>
-                <div className="flex shrink-0 flex-col items-end gap-1">
-                  <p className="font-grotesk font-bold text-stat leading-none text-text-brand">{stat.value}</p>
-                  <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">{stat.count}</p>
-                </div>
-              </div>
-            ))}
-            <div className="flex items-center gap-4 py-4">
-              <CheckMark />
-              <p className={cardText}>
-                The typical home page showed four case studies and four menu items. 
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-6 lg:pt-6">
-          <div className="flex flex-col gap-2">
-            <p className="font-grotesk font-bold text-body text-text-brand">My site does both.</p>
-            <p className={cardText}>
-              Roles and skills on the home page, and a Download CV button in the first screen.
-            </p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="font-grotesk font-bold text-body text-text-brand">What the recruiter told me.</p>
-            <p className={cardText}>
-              Do not overload the page, make it easy to reach the case studies, and show a proper tool stack. That
-              confirmed my direction: the section menu and the mobile menu were my own idea.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4 grid grid-cols-1 gap-3 border-t border-border-subtle pt-8 lg:grid-cols-3 lg:gap-10">
-        <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">How it shaped the site.</p>
-        <p className={`${cardText} lg:col-span-2 max-w-3xl`}>
-          Home stays a CV, with a <em>Download CV</em> button in the first screen and a featured latest case study
-          leading to the rest. My audit flagged that Experience dominates; I kept it because recruiters expect a
-          CV-like home, and balanced it with the featured case and clear navigation.
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+      <div className="flex flex-col gap-5">
+        <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Research</p>
+        <h2 className={h2Class}>
+          The goal was to test my choices against what other portfolios do and what a recruiter looks for.
+        </h2>
+        <p className={bodyText}>
+          After launch, on 4 October 2026, I ran 21 portfolios through one checklist. Not all would load, so the counts
+          use the ones I could read: 19 for the first two rows and 18 for the third.
         </p>
       </div>
-    </>
+
+      <div className="lg:col-span-2 flex flex-col gap-5">
+        {researchBars.map((bar) => (
+          <StatBar key={bar.title} {...bar} />
+        ))}
+        <div className="flex flex-col gap-2 pt-3">
+          <p className="font-grotesk font-bold text-body text-text-brand">What the recruiter told me.</p>
+          <p className={cardText}>
+            I spoke to a technical recruiter who hires for many different companies. Their advice: do not overload the
+            page, make the case studies easy to reach and show a proper tool stack. That confirmed my direction: the
+            section menu and the mobile menu were my own idea.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -1069,7 +1041,7 @@ const keyTakeaway = {
 const sections = [
   { id: 'context', label: 'Project Goals', bare: true, content: <Context /> },
   { id: 'role', label: 'Role & Who Did What', content: <Role /> },
-  { id: 'research', label: 'Research', content: <Research /> },
+  { id: 'research', label: 'Research', bare: true, content: <Research /> },
   { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
