@@ -397,7 +397,7 @@ export default function OnlineDoctorCase() {
         <CaseHeader project={project} />
 
         {/* Project intro */}
-        <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section id="intro" className="pt-24 pb-12 sm:pb-24 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
             <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
@@ -414,19 +414,19 @@ export default function OnlineDoctorCase() {
         <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Colors & typography */}
-        <section id="style" className="pb-24 flex flex-col gap-6">
+        <section id="style" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* App screens */}
-        <section id="screens" className="pb-24 flex flex-col gap-6">
+        <section id="screens" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">App Screens</p>
           <ScreensSlider screens={appScreens} />
         </section>
 
         {/* Key takeaway */}
-        <KeyTakeaway id="key-takeaway" heading="A calm palette is not a calm product" className="pb-24">
+        <KeyTakeaway id="key-takeaway" heading="A calm palette is not a calm product" className="pt-12 pb-24 sm:py-24">
           <p>Healthcare interfaces reach for soft blues and generous white space, and none of it
             helps a patient who does not know whether their appointment is confirmed or what the
             visit will cost.{' '}
