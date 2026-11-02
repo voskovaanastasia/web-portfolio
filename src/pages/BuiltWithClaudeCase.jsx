@@ -4,6 +4,7 @@ import { StatBar } from '../components/StatBar';
 import Goals from '../components/Goals';
 import IATree from '../components/IATree';
 import BuildLog from '../components/BuildLog';
+import VariablesWindow from '../components/VariablesWindow';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
 import './builtWithClaudeVersions.css';
@@ -945,11 +946,7 @@ function Tokens() {
         </div>
       </div>
 
-      <ImagePlaceholder
-        filename="case-built-with-claude-tokens-structure.png"
-        alt="Token structure: raw value, primitive, semantic, in code"
-        className="min-h-[420px]"
-      />
+      <VariablesWindow className="mt-4" />
     </>
   );
 }
