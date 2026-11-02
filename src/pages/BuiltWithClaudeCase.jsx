@@ -290,13 +290,11 @@ const versionItems = [
       file: 'case-built-with-claude-versions-first-screen-v1.webp',
       name: 'Version 1 first screen',
       alt: 'Version 1 first screen',
-      placeholder: true,
     },
     current: {
       file: 'case-built-with-claude-versions-first-screen-current.webp',
       name: 'Current first screen',
       alt: 'Current first screen: “I make complex, data-dense products feel simple…”, Contact me and Download CV',
-      placeholder: true,
     },
   },
   {
@@ -307,13 +305,11 @@ const versionItems = [
       file: 'case-built-with-claude-versions-how-i-work-v1.webp',
       name: 'Version 1 How I work',
       alt: 'Version 1 How I work: four filled purple cards',
-      placeholder: true,
     },
     current: {
       file: 'case-built-with-claude-versions-how-i-work-current.webp',
       name: 'Current How I work',
       alt: 'Current How I work: four light cards with tool icons',
-      placeholder: true,
     },
   },
   {
@@ -324,13 +320,11 @@ const versionItems = [
       file: 'case-built-with-claude-versions-experience-v1.webp',
       name: 'Version 1 Experience',
       alt: 'Version 1 Experience: a long timeline with every bullet open',
-      placeholder: true,
     },
     current: {
       file: 'case-built-with-claude-versions-experience-current.webp',
       name: 'Current Experience',
       alt: 'Current Experience on the About page, with Show more',
-      placeholder: true,
     },
   },
   {
@@ -341,13 +335,11 @@ const versionItems = [
       file: 'case-built-with-claude-versions-contact-v1.webp',
       name: 'Version 1 separate contact block at the end of the page',
       alt: 'Version 1 separate contact block at the end of the page',
-      placeholder: true,
     },
     current: {
       file: 'case-built-with-claude-versions-contact-current.webp',
       name: 'Current footer',
       alt: 'Current footer, the one contact area',
-      placeholder: true,
     },
   },
   {
@@ -358,13 +350,11 @@ const versionItems = [
       file: 'case-built-with-claude-versions-ai-designer-v1.webp',
       name: 'Version 1 AI + Designer: five steps',
       alt: 'Version 1 AI + Designer: five steps',
-      placeholder: true,
     },
     current: {
       file: 'case-built-with-claude-versions-ai-designer-current.webp',
       name: 'Current AI + Designer',
       alt: 'Current AI + Designer: an editor-style window with file-tab cards',
-      placeholder: true,
     },
   },
   {
@@ -375,13 +365,11 @@ const versionItems = [
       file: 'case-built-with-claude-versions-toolkit-v1.webp',
       name: 'Version 1 Toolkit: a full list of tools',
       alt: 'Version 1 Toolkit: a full list of tools',
-      placeholder: true,
     },
     current: {
       file: 'case-built-with-claude-versions-toolkit-current.webp',
       name: 'Current Toolkit',
       alt: 'Current Toolkit: a Finder-style window with folders and search',
-      placeholder: true,
     },
   },
 ];
