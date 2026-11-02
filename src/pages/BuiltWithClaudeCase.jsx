@@ -46,7 +46,7 @@ const project = {
     },
     {
       label: 'APPROACH',
-      text: 'I designed components in Figma and had Claude Code build the pages. After launch I tested my choices against other portfolios and fixed what a QA tester and a front-end developer found. For the redesign, Claude Design explored structures and component ideas on top of my system.',
+      text: 'I designed components in Figma and had Claude Code build the pages. After launch I checked my choices against other portfolios and fixed what a QA tester and a developer found. Claude Design explored ideas for the redesign.',
     },
   ],
   outcome: {
