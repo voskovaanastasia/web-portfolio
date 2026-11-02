@@ -1037,7 +1037,7 @@ function Mistakes() {
 // ---- 11 · Performance and results -----------------------------------------
 
 const scoreGauges = [
-  { value: '99', pct: 99, label: 'Performance' },
+  { value: '100', pct: 100, label: 'Performance' },
   { value: '100', pct: 100, label: 'Accessibility' },
   { value: '100', pct: 100, label: 'Best Practices' },
   { value: '100', pct: 100, label: 'SEO' },
@@ -1079,9 +1079,9 @@ const pageSpeedMetrics = [
     max: 100,
     bars: [
       { label: '68', value: 68, before: true },
-      { label: '99', value: 99 },
+      { label: '100', value: 100 },
     ],
-    text: 'PageSpeed Insights, mobile, 19 October.',
+    text: 'PageSpeed Insights, mobile, 30 October.',
   },
   {
     title: 'Largest contentful paint',
@@ -1089,9 +1089,9 @@ const pageSpeedMetrics = [
     max: 6,
     bars: [
       { label: '5.2 s', value: 5.2, before: true },
-      { label: '1.8 s', value: 1.8 },
+      { label: '1.5 s', value: 1.5 },
     ],
-    text: 'PageSpeed Insights, 19 October.',
+    text: 'PageSpeed Insights, mobile, 30 October.',
   },
 ];
 
@@ -1173,7 +1173,7 @@ function BarPanel({ label, rows }) {
 function Results() {
   return (
     <>
-      <h2 className={h2Class}>From 68 to 99 on mobile, and who arrived</h2>
+      <h2 className={h2Class}>From 68 to 100 on mobile, and who arrived</h2>
 
       <h3 className={h3Class}>Performance</h3>
       <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2">
@@ -1185,14 +1185,26 @@ function Results() {
           A second pass split the below-the-fold sections and the animation library out of the entry bundle and loaded
           them when the browser is idle. In a controlled local comparison, five runs each, first paint came sooner (2.41
           s → 2.07 s), blocking time fell (374 → 290 ms) and the main script shrank from 495 to 324 KB. Largest
-          contentful paint did not improve, and I did not claim otherwise.
+          contentful paint did not improve in that comparison, and I did not claim otherwise.
+        </p>
+        <p className={cardText}>
+          A third pass went after the first screen. I pre-rendered the header and hero into the HTML at build time, so
+          the headline paints before the script bundle runs. I set the first-screen fonts to block and added
+          metric-matched fallbacks, so the font swap does not shift the layout, inlined the home page CSS, served a 640
+          px featured image and stopped inlining small assets as base64 (entry script 122 → 87 KB gzipped, home HTML 26
+          → 16 KB gzipped).
+        </p>
+        <p className={cardText}>
+          After the redesign, PageSpeed Insights gave the home page 100 in all four categories on mobile (30 October;
+          the runs over the previous 20 hours went 96, 98, then 100): first contentful paint 0.9 s, largest contentful
+          paint 1.5 s, total blocking time 0 ms, no layout shift, Speed Index 1.5 s.
         </p>
       </div>
 
       <div className="mt-2 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
         <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
           <p className="font-grotesk text-body font-bold text-text-primary">PageSpeed Insights · mobile</p>
-          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">19 October</p>
+          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">30 October</p>
         </div>
         <div className="grid grid-cols-2 gap-x-5 gap-y-8 px-5 py-8 sm:grid-cols-3 md:grid-cols-5 md:px-8">
           {scoreGauges.map((gauge) => (
@@ -1202,7 +1214,8 @@ function Results() {
           ))}
         </div>
         <p className={`${cardText} border-t border-border-subtle px-5 py-4 text-text-secondary md:px-8 [&>strong]:font-bold [&>strong]:text-text-primary`}>
-          Final result after several runs. Scores vary slightly from run to run.
+          Five runs over 20 hours: 96, then 98, then 100. Run of 30 October shown: emulated Moto G Power, slow 4G,
+          Lighthouse 13.6.0. Scores vary slightly from run to run.
         </p>
       </div>
 
@@ -1212,7 +1225,7 @@ function Results() {
 
       <ImagePlaceholder
         filename="case-built-with-claude-results-psi.png"
-        alt="PageSpeed Insights, mobile, 19 October 2026: 99 performance, 100 accessibility, 100 best practices, 100 SEO, Agentic browsing 3/3"
+        alt="PageSpeed Insights, mobile, 30 October 2026: 100 performance, 100 accessibility, 100 best practices, 100 SEO."
         className="min-h-[320px]"
       />
 
