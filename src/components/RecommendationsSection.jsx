@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import vitaliiAvatar from '../assets/rec-vitalii.webp';
 import ostapAvatar from '../assets/rec-ostap.webp';
+import dmytroAvatar from '../assets/rec-dmytro.webp';
 
 const recommendations = [
   {
@@ -16,6 +17,13 @@ const recommendations = [
     name: 'Ostap Kinakh',
     role: 'QA Engineer',
     avatar: ostapAvatar,
+  },
+  {
+    quote:
+      "I've worked with Anastasiia on various occasions, and I can tell that she is a dedicated professional who takes initiative and responsibility for the outcome. Looking forward to collaborate in future projects!",
+    name: 'Dmytro Babitskyi',
+    role: 'Full Stack Web Developer',
+    avatar: dmytroAvatar,
   },
 ];
 
