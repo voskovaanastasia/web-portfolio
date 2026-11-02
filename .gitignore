@@ -6,3 +6,6 @@ dist/
 .env.local
 .vscode/
 .idea/
+
+# Build log snapshot written by scripts/fetch-build-log.mjs when GITHUB_TOKEN is set
+src/data/buildLog.generated.json

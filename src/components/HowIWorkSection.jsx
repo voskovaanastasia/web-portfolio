@@ -110,7 +110,7 @@ function CompactHowIWork() {
             return (
               <article
                 key={card.title}
-                className="flex flex-col gap-3 rounded-[22px] border border-border-subtle bg-surface-subtle p-6 transition-[transform,box-shadow] duration-250 ease-out hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(17,24,39,0.08)] motion-reduce:transition-none motion-reduce:hover:transform-none"
+                className="flex flex-col gap-3 rounded-[22px] border border-border-subtle bg-surface-subtle p-6 transition-[transform,box-shadow] duration-250 ease-out hover:-translate-y-1 hover:shadow-hover-lift motion-reduce:transition-none motion-reduce:hover:transform-none"
               >
                 <h3 className="font-grotesk font-medium text-[21px] leading-tight text-text-primary">{card.title}</h3>
                 <p className="font-grotesk font-medium text-body text-text-brand">{card.subtitle}</p>

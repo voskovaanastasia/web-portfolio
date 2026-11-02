@@ -27,7 +27,7 @@ export default function PhotographySection() {
         </div>
 
         {/* Preview-style window */}
-        <div className="overflow-hidden rounded-[14px] border border-border-subtle bg-surface-default shadow-[0_30px_70px_rgba(17,24,39,0.10)]">
+        <div className="overflow-hidden rounded-[14px] border border-border-subtle bg-surface-default shadow-panel">
           <div className="relative flex items-center min-h-11 px-3.5 bg-surface-subtle border-b border-border-subtle">
             <span aria-hidden="true" className="flex gap-[7px]">
               <span className="w-3 h-3 rounded-pill bg-[var(--color-traffic-red)]" />

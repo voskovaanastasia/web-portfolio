@@ -1,8 +1,13 @@
+import { useEffect, useRef, useState } from 'react';
 import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
+import { StatBar } from '../components/StatBar';
 import Goals from '../components/Goals';
 import IATree from '../components/IATree';
+import BuildLog from '../components/BuildLog';
+import VariablesWindow from '../components/VariablesWindow';
 import iconGithub from '../assets/toolkit/github.svg';
 import iconWebsite from '/favicon.svg';
+import './builtWithClaudeVersions.css';
 
 // This case's images (including any added later as case-built-with-claude-<slot>.webp) load with the page.
 registerCaseAssets(
@@ -22,10 +27,10 @@ const project = {
   tags: ['Claude Code', 'Figma MCP', 'Design System', 'Performance'],
   meta: [
     { label: 'Role', value: 'Product designer and product owner' },
-    { label: 'Build time', value: '10 weeks to launch · 21 July → 29 September 2026, refreshed in October' },
-    { label: 'Built with', value: 'Claude Code · 166 commits, 155 co-authored (13 October 2026)' },
+    { label: 'Build time', value: '10 weeks to launch · 21 July → 29 September 2026, redesigned in late October' },
+    { label: 'Built with', value: 'Claude Code · 303 commits, 285 co-authored (2 November 2026)' },
   ],
-  tools: ['figma', 'claude-code', 'react', 'vite', 'tailwind', 'gsap', 'vercel'],
+  tools: ['figma', 'claude-design', 'claude-code', 'react', 'vite', 'tailwind', 'gsap', 'vercel'],
   links: [
     { icon: iconWebsite, label: 'Website', href: 'https://www.anastasiiavoskova.com/' },
     { icon: iconGithub, label: 'GitHub', href: 'https://github.com/voskovaanastasia/web-portfolio' },
@@ -41,28 +46,32 @@ const project = {
     },
     {
       label: 'APPROACH',
-      text: 'I researched other portfolios, designed components in Figma and had Claude Code build the pages. I reviewed every diff and fixed what a QA tester and a front-end developer found on the live site.',
+      text: 'I designed components in Figma and had Claude Code build the pages. After launch I checked my choices against other portfolios and fixed what a QA tester and a developer found. Claude Design explored ideas for the redesign.',
     },
   ],
   outcome: {
-    value: '68 → 99',
+    value: '68 → 100',
     label:
-      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100. PageSpeed Insights, 19 October 2026.',
+      'Mobile Lighthouse performance. Accessibility, Best Practices and SEO at 100. PageSpeed Insights, 30 October 2026.',
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
-    image: 'case-built-with-claude-intro.png',
+    image: 'case-built-with-claude-projectintro-home.webp',
+    imageAlt: 'The new portfolio home page on a phone',
     body: (
       <>
-        A case study on turning my portfolio into a real product: researched, designed in Figma, built with Claude
-        Code, and measured, with me making the decisions, reviewing the output and fixing what the AI got wrong.
+        A case study on turning my portfolio into a real product. The first version covered the basic needs of a
+        portfolio, and that was enough to start sending it with applications. Then I wanted more from it, so I
+        extended and improved it: I built a minimal design system in Figma, used Claude Design to explore structures
+        for the redesign, had Claude Code build the pages, and measured the result. Throughout, I made the decisions,
+        reviewed the output and fixed what the AI got wrong.
       </>
     ),
   },
   problem: {
     heading: 'My portfolio lived on Behance, and it was getting in my way',
-    image: 'case-built-with-claude-problem-behance.png',
-    imageAlt: 'The old Behance portfolio',
+    image: 'case-built-with-claude-problem-home.webp',
+    imageAlt: 'The new home page on a laptop',
     body: (
       <>
         Formatting each case study took a lot of time, and the platform made it hard to show what I care about most:
@@ -78,7 +87,7 @@ const project = {
   },
   solution: {
     heading: 'One site I own, designed in Figma and built with Claude Code',
-    image: 'case-built-with-claude-solution-home.png',
+    image: 'case-built-with-claude-solution-home.webp',
     imageAlt: 'The live home page',
     body: (
       <>
@@ -126,6 +135,7 @@ function Context() {
 const roleRows = [
   {
     who: 'Me',
+    span: 'lg:col-span-2',
     icon: (
       <>
         <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
@@ -135,6 +145,7 @@ const roleRows = [
   },
   {
     who: 'Claude Code',
+    span: 'lg:col-span-2',
     icon: (
       <>
         <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" strokeLinejoin="round" strokeLinecap="round" />
@@ -144,6 +155,7 @@ const roleRows = [
   },
   {
     who: 'Claude (chat)',
+    span: 'lg:col-span-2',
     icon: (
       <>
         <path d="M4 5h16v11H9l-5 4V5z" strokeLinejoin="round" />
@@ -153,15 +165,17 @@ const roleRows = [
   },
   {
     who: 'Claude Design',
+    span: 'lg:col-span-3',
     icon: (
       <>
         <path d="m4 20 1-4L16 5l3 3L8 19l-4 1zM14 7l3 3" strokeLinejoin="round" strokeLinecap="round" />
       </>
     ),
-    what: 'Reviewed the first version of the site: it found front-end bugs and proposed changes, which I treated as options.',
+    what: 'Reviewed the first version of the site: it found front-end bugs and proposed changes, which I treated as options. For the redesign it proposed structures and new takes on components, working from my design system and my first version. I filled the structures with my content and reworked the components before anything went to Claude Code.',
   },
   {
     who: 'A recruiter, a QA tester, a front-end developer',
+    span: 'md:col-span-2 lg:col-span-3',
     icon: (
       <>
         <circle cx="12" cy="12" r="9" /><path d="m8 12.5 2.8 2.8L16.5 9.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -181,9 +195,9 @@ function Role() {
         enough to ship.
       </p>
 
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5">
         {roleRows.map((row) => (
-          <div key={row.who} className="flex flex-col gap-4 border-t border-border-subtle pt-5">
+          <div key={row.who} className={`flex flex-col gap-4 border-t border-border-subtle pt-5 ${row.span}`}>
             <span
               aria-hidden="true"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-brand-tint text-action-primary"
@@ -203,186 +217,361 @@ function Role() {
 
 // ---- 6 · Research ---------------------------------------------------------
 
-const researchStats = [
-  { value: '68%', count: '13 of 19', label: 'link a resume from the home page' },
-  { value: '47%', count: '9 of 19', label: 'list roles or skills on the home page' },
+// Bars use the data palette (blue, green, orange); the percentages stay in the dark ink of the row labels.
+const researchBars = [
+  {
+    pct: 68,
+    color: 'var(--color-data-5)',
+    valueClass: 'text-ink',
+    title: '68% — link a resume from the home page',
+    text: '13 of 19 portfolios. My site does it too: a Download CV button sits in the first screen.',
+  },
+  {
+    pct: 47,
+    color: 'var(--color-data-2)',
+    valueClass: 'text-ink',
+    title: '47% — list roles or skills on the home page',
+    text: '9 of 19 portfolios. My site does it too; the full version now lives on About.',
+  },
+  {
+    pct: 72,
+    color: 'var(--color-data-6)',
+    valueClass: 'text-ink',
+    title: '72% — show four or more case studies on the home page',
+    text: <>13 of 18 portfolios. Across all 18 the count ranged from 2 to 13. &ldquo;Coming soon&rdquo; cards counted.</>,
+  },
 ];
-
-function CheckMark() {
-  return (
-    <span
-      aria-hidden="true"
-      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-surface-brand-tint text-action-primary"
-    >
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
-        <path d="m3.5 8.5 3 3 6-7" />
-      </svg>
-    </span>
-  );
-}
 
 function Research() {
   return (
-    <>
-      <h2 className={h2Class}>What other portfolios do, and what a recruiter looks for</h2>
-      <p className={bodyText}>
-        I studied other designers&rsquo; portfolios and spoke to a technical recruiter who hires for many different
-        companies. After launch, on 4 October 2026, I ran 21 portfolios through one checklist to test my choices. Two
-        would not load, so the counts use the 19 I could read.
-      </p>
-
-      <div className="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-        <div className="lg:col-span-2 flex flex-col gap-4 rounded-card border border-border-subtle bg-surface-default p-6 sm:p-8 shadow-sm">
-          <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">
-            Checklist on portfolio home pages
-          </p>
-          <div className="flex flex-col">
-            {researchStats.map((stat) => (
-              <div key={stat.value} className="flex items-center gap-4 border-b border-border-subtle py-4">
-                <CheckMark />
-                <p className="flex-1 font-grotesk font-bold text-body text-text-primary">{stat.label}</p>
-                <div className="flex shrink-0 flex-col items-end gap-1">
-                  <p className="font-grotesk font-bold text-stat leading-none text-text-brand">{stat.value}</p>
-                  <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">{stat.count}</p>
-                </div>
-              </div>
-            ))}
-            <div className="flex items-center gap-4 py-4">
-              <CheckMark />
-              <p className={cardText}>
-                The typical home page showed four case studies and four menu items. 
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-6 lg:pt-6">
-          <div className="flex flex-col gap-2">
-            <p className="font-grotesk font-bold text-body text-text-brand">My site does both.</p>
-            <p className={cardText}>
-              Roles and skills on the home page, and a Download CV button in the first screen.
-            </p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="font-grotesk font-bold text-body text-text-brand">What the recruiter told me.</p>
-            <p className={cardText}>
-              Do not overload the page, make it easy to reach the case studies, and show a proper tool stack. That
-              confirmed my direction: the section menu and the mobile menu were my own idea.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4 grid grid-cols-1 gap-3 border-t border-border-subtle pt-8 lg:grid-cols-3 lg:gap-10">
-        <p className="font-mono text-caption uppercase tracking-wider text-text-secondary">How it shaped the site.</p>
-        <p className={`${cardText} lg:col-span-2 max-w-3xl`}>
-          Home stays a CV, with a <em>Download CV</em> button in the first screen and a featured latest case study
-          leading to the rest. My audit flagged that Experience dominates; I kept it because recruiters expect a
-          CV-like home, and balanced it with the featured case and clear navigation.
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+      <div className="flex flex-col gap-5">
+        <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Research</p>
+        <h2 className={h2Class}>
+          The goal was to test my choices against what other portfolios do and what a recruiter looks for.
+        </h2>
+        <p className={bodyText}>
+          After launch, on 4 October 2026, I ran 21 portfolios through one checklist. Not all would load, so the counts
+          use the ones I could read: 19 for the first two rows and 18 for the third.
         </p>
       </div>
-    </>
+
+      <div className="lg:col-span-2 flex flex-col gap-5">
+        {researchBars.map((bar) => (
+          <StatBar key={bar.title} {...bar} />
+        ))}
+        <div className="flex flex-col gap-2 pt-3">
+          <p className="font-grotesk font-bold text-body text-text-brand">What the recruiter told me.</p>
+          <p className={cardText}>
+            I spoke to a technical recruiter who hires for many different companies. Their advice: do not overload the
+            page, make the case studies easy to reach and show a proper tool stack. That confirmed my direction: the
+            section menu and the mobile menu were my own idea.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
-// ---- 7 · From version 1 to version 2 --------------------------------------
+// ---- 7 · From the first version to the current one ------------------------
 
-// The two image columns: one big home-page shot and two block shots per version.
-const versionImages = [
+// Screenshots for this block are 1200 x 900 WebP, named case-built-with-claude-versions-<id>[-v1|-current].webp.
+// `placeholder: true` keeps an image as a dashed placeholder even if a file of that name exists; delete the flag
+// when the real screenshot is in src/assets.
+const versionAssets = import.meta.glob('../assets/case-built-with-claude-versions-*.webp', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+const versionAsset = (file) => versionAssets[`../assets/${file}`];
+
+const versionItems = [
   {
-    key: 'v1',
-    label: 'Version 1',
-    labelClass: 'text-text-secondary',
-    home: { file: 'case-built-with-claude-v1-home.png', alt: 'Version 1, full home page' },
-    blocks: [
-      { file: 'case-built-with-claude-v1-toolkit.png', alt: 'Version 1, toolkit block' },
-      { file: 'case-built-with-claude-v1-ai-designer.png', alt: 'Version 1, AI + Designer block' },
-    ],
+    id: 'first-screen',
+    label: 'First screen',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-first-screen-v1.webp',
+      name: 'Version 1 first screen',
+      alt: 'Version 1 first screen',
+    },
+    current: {
+      file: 'case-built-with-claude-versions-first-screen-current.webp',
+      name: 'Current first screen',
+      alt: 'Current first screen: “I make complex, data-dense products feel simple…”, Contact me and Download CV',
+    },
   },
   {
-    key: 'v2',
-    label: 'Version 2',
-    labelClass: 'text-text-brand',
-    home: { file: 'case-built-with-claude-v2-home.png', alt: 'Version 2, full home page' },
-    blocks: [
-      { file: 'case-built-with-claude-v2-toolkit.png', alt: 'Version 2, toolkit block' },
-      { file: 'case-built-with-claude-v2-ai-designer.png', alt: 'Version 2, AI + Designer block' },
-    ],
+    id: 'how-i-work',
+    label: 'How I work',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-how-i-work-v1.webp',
+      name: 'Version 1 How I work',
+      alt: 'Version 1 How I work: four filled purple cards',
+    },
+    current: {
+      file: 'case-built-with-claude-versions-how-i-work-current.webp',
+      name: 'Current How I work',
+      alt: 'Current How I work: four light cards with tool icons',
+    },
+  },
+  {
+    id: 'experience',
+    label: 'Experience',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-experience-v1.webp',
+      name: 'Version 1 Experience',
+      alt: 'Version 1 Experience: a long timeline with every bullet open',
+    },
+    current: {
+      file: 'case-built-with-claude-versions-experience-current.webp',
+      name: 'Current Experience',
+      alt: 'Current Experience on the About page, with Show more',
+    },
+  },
+  {
+    id: 'contact',
+    label: 'Contact',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-contact-v1.webp',
+      name: 'Version 1 separate contact block at the end of the page',
+      alt: 'Version 1 separate contact block at the end of the page',
+    },
+    current: {
+      file: 'case-built-with-claude-versions-contact-current.webp',
+      name: 'Current footer',
+      alt: 'Current footer, the one contact area',
+    },
+  },
+  {
+    id: 'ai-designer',
+    label: 'AI + Designer',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-ai-designer-v1.webp',
+      name: 'Version 1 AI + Designer: five steps',
+      alt: 'Version 1 AI + Designer: five steps',
+    },
+    current: {
+      file: 'case-built-with-claude-versions-ai-designer-current.webp',
+      name: 'Current AI + Designer',
+      alt: 'Current AI + Designer: an editor-style window with file-tab cards',
+    },
+  },
+  {
+    id: 'toolkit',
+    label: 'Toolkit',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-toolkit-v1.webp',
+      name: 'Version 1 Toolkit: a full list of tools',
+      alt: 'Version 1 Toolkit: a full list of tools',
+    },
+    current: {
+      file: 'case-built-with-claude-versions-toolkit-current.webp',
+      name: 'Current Toolkit',
+      alt: 'Current Toolkit: a Finder-style window with folders and search',
+    },
   },
 ];
 
-const changelogRow = 'flex flex-col gap-2 border-b border-border-subtle px-5 py-5 md:flex-row md:gap-8 md:px-8';
-const changelogKey = 'font-mono text-body md:w-32 md:shrink-0';
+const frameLabel =
+  'absolute top-3 inline-flex items-center gap-1.5 rounded-pill border border-border-subtle bg-surface-default px-2.5 py-1 font-mono-bold text-caption-xs uppercase tracking-wider text-text-secondary pointer-events-none';
 
-function VersionTwo() {
+// One screenshot, or a dashed placeholder while the file is missing or still flagged `placeholder`.
+function VersionPicture({ image, side }) {
+  const src = image.placeholder ? undefined : versionAsset(image.file);
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={image.alt}
+        width="1200"
+        height="900"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+        className="vc-fill"
+      />
+    );
+  }
   return (
-    <>
-      <h2 className={h2Class}>From version 1 to version 2</h2>
+    <div
+      role="img"
+      aria-label={`${image.name}, screenshot to add`}
+      className="absolute inset-0 flex items-center border border-dashed border-text-secondary bg-surface-subtle"
+    >
+      {/* A compare placeholder keeps its text in its own half, so the v1 and current notes never overlap. */}
+      <div
+        className={`flex flex-col items-center gap-1 px-4 text-center ${
+          side ? 'w-1/2' : 'w-full'
+        } ${side === 'current' ? 'ml-auto' : ''}`}
+      >
+        <span className="font-mono-bold text-caption-xs text-ink">{image.name}</span>
+        <span className="font-mono text-caption-xs text-text-secondary">screenshot to add · 1200 × 900</span>
+      </div>
+    </div>
+  );
+}
 
-      <div className="mt-4 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
-        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
-          <p className="font-grotesk text-body font-bold text-text-primary">CHANGELOG.md</p>
-          <p className="flex items-center gap-2 font-mono text-caption">
-            <span className="rounded-pill border border-border-subtle bg-surface-default px-3 py-1 text-text-secondary">v1</span>
-            <span className="rounded-pill bg-text-brand px-3 py-1 font-bold text-text-inverse">v2 · current</span>
-          </p>
-        </div>
+const chipBase =
+  'inline-flex items-center gap-1.5 min-h-11 sm:min-h-10 px-3.5 rounded-pill border font-grotesk font-medium text-body whitespace-nowrap cursor-pointer transition-colors motion-reduce:transition-none max-sm:shrink-0 max-sm:snap-start focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring';
+const chipIdle = 'border-border-subtle bg-surface-default text-text-primary hover:border-text-secondary';
+const chipActive = 'border-action-primary bg-action-primary text-text-inverse';
 
-        <div className={changelogRow}>
-          <p className={`${changelogKey} text-text-secondary`}>v1</p>
-          <p className={`${cardText} flex-1`}>
-            The first home page opened with one featured project, filled purple cards on how I work, a testimonial, my
-            full toolkit and a long Experience section. It worked, but it read more like a CV than a portfolio, and the
-            work was hard to find. People who looked at it said the same.
-          </p>
-        </div>
-        <div className={changelogRow}>
-          <p className={`${changelogKey} text-text-brand`}>v2</p>
-          <p className={`${cardText} flex-1`}>
-            For version 2 I showed more cases straight away, dropped the filled cards, reordered the home page blocks
-            and refreshed the UI. I asked Claude Design to review the first version. It found front-end bugs, including
-            typography problems I fixed, and proposed changes, which I treated as options. I also changed the font set so
-            the page loads faster.
-          </p>
-        </div>
-        <div className={changelogRow}>
-          <p className={`${changelogKey} text-text-secondary`}>review</p>
-          <p className={`${cardText} flex-1 border-l-2 border-blue-500 pl-4`}>
-            Every change had to pass one question: <em>does it help a reviewer reach the work faster?</em>
-          </p>
-        </div>
+function VersionCompare() {
+  const [index, setIndex] = useState(0);
+  const [pos, setPos] = useState(50);
+  const chipRefs = useRef([]);
+  const item = versionItems[index];
+  const count = versionItems.length;
 
-        <div className="flex flex-col gap-3 bg-surface-subtle px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
-          <p className="font-mono text-caption text-text-secondary">
-            claude-design: <span className="text-text-primary">31</span> proposed →{' '}
-            <span className="font-bold text-text-brand">8 implemented</span>
-          </p>
-          <div
-            role="img"
-            aria-label="8 of 31 proposed changes implemented"
-            className="flex gap-0.5"
+  const select = (i, focus) => {
+    setIndex(i);
+    setPos(50);
+    const chip = chipRefs.current[i];
+    if (!chip) return;
+    if (focus) chip.focus({ preventScroll: true });
+    chip.scrollIntoView({
+      block: 'nearest',
+      inline: 'nearest',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
+
+  const onChipKey = (e) => {
+    const next = {
+      ArrowRight: (index + 1) % count,
+      ArrowDown: (index + 1) % count,
+      ArrowLeft: (index + count - 1) % count,
+      ArrowUp: (index + count - 1) % count,
+      Home: 0,
+      End: count - 1,
+    }[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    select(next, true);
+  };
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <div className="flex min-w-0 flex-col gap-6">
+        <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Version 1 → current</p>
+        <h2 className={h2Class}>From the first version to the current one</h2>
+        <p className={bodyText}>
+          I launched the first version because{' '}
+          <strong>sending it with my job applications mattered more to me than perfecting it first.</strong> It opened
+          with one featured project, filled purple cards, a testimonial, my full toolkit and a long Experience section.
+          It worked, but it read more like a CV than a portfolio, and the work was hard to find. People who looked at it
+          said the same. Once I started sending it, I kept changing and polishing it.{' '}
+          <strong>The home page now does one job:</strong> it is the starting point, with more cases straight away, no
+          filled cards, the essentials and links on to the next pages. Everything about me moved to a new About page.
+          The separate contact block is gone: Contact me opens a dialog, and a new footer is the one contact area. The
+          interface was refreshed along the way.
+        </p>
+        <p className={bodyText}>
+          I built the core components, colours and tokens in Figma myself.{' '}
+          <strong>Claude Design worked from that system and from the first version</strong>, proposing structures and
+          new takes on components. I filled them with my content and reworked them, and the edited artboard went to
+          Claude Code, usually with a written spec. Not everything stayed: I removed its hero sticky note and
+          collaborator cursor, because they cost performance.
+        </p>
+        <p className="font-grotesk text-body text-text-secondary leading-relaxed">
+          Every change had to pass one question: <em>does it help a reviewer reach the work faster?</em>
+        </p>
+      </div>
+
+      <div className="min-w-0 lg:self-stretch">
+        <div className="flex flex-col gap-4 lg:sticky lg:top-24">
+          <figure
+            id="versions-panel"
+            role="tabpanel"
+            aria-labelledby={`versions-chip-${item.id}`}
+            className="m-0 overflow-hidden rounded-card bg-surface-brand-tint"
           >
-            {Array.from({ length: 31 }, (_, i) => (
-              <span key={i} className={`h-4 w-1.5 rounded-sm ${i < 8 ? 'bg-blue-500' : 'bg-track'}`} />
-            ))}
+            {item.kind === 'compare' ? (
+              <div className="vc-frame" style={{ '--p': `${pos}%` }}>
+                <VersionPicture image={item.current} side="current" />
+                <div className="vc-v1">
+                  <VersionPicture image={item.v1} side="v1" />
+                </div>
+                <span className={`${frameLabel} left-3`} aria-hidden="true">
+                  v1
+                </span>
+                <span className={`${frameLabel} right-3`} aria-hidden="true">
+                  current
+                </span>
+                <span className="vc-line" aria-hidden="true">
+                  <span className="vc-knob">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 5L3 9l4 4M11 5l4 4-4 4" />
+                    </svg>
+                  </span>
+                </span>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value={pos}
+                  onChange={(e) => setPos(Number(e.target.value))}
+                  className="vc-range"
+                  aria-label={`${item.label}: drag or use the arrow keys. Right shows more of version 1.`}
+                  aria-valuetext={`${pos} percent of version 1 visible`}
+                />
+              </div>
+            ) : (
+              <div className="vc-frame">
+                <VersionPicture image={item.image} />
+                <span className={`${frameLabel} left-3 text-action-primary`}>
+                  <span className="h-1.5 w-1.5 rounded-pill bg-action-primary" aria-hidden="true" />
+                  new
+                </span>
+              </div>
+            )}
+          </figure>
+
+          <div
+            role="tablist"
+            aria-label="Compare what changed"
+            className="vc-chips flex flex-wrap gap-2 max-sm:-mx-6 max-sm:flex-nowrap max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:scroll-px-6 max-sm:px-6 max-sm:pb-1"
+          >
+            {versionItems.map((chip, i) => {
+              const active = i === index;
+              return (
+                <button
+                  key={chip.id}
+                  ref={(el) => (chipRefs.current[i] = el)}
+                  type="button"
+                  role="tab"
+                  id={`versions-chip-${chip.id}`}
+                  aria-selected={active}
+                  aria-controls="versions-panel"
+                  tabIndex={active ? 0 : -1}
+                  onClick={() => select(i, false)}
+                  onKeyDown={onChipKey}
+                  className={`${chipBase} ${active ? chipActive : chipIdle}`}
+                >
+                  {chip.label}
+                  {chip.kind === 'new' && (
+                    <span
+                      className={`font-mono-bold text-caption-xs uppercase tracking-wider ${
+                        active ? 'text-text-inverse' : 'text-action-primary'
+                      }`}
+                    >
+                      new
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
-
-      <div className="mt-2 grid grid-cols-1 gap-x-5 gap-y-8 md:grid-cols-2">
-        {versionImages.map((version) => (
-          <div key={version.key} className="flex flex-col gap-4">
-            <p className={`font-mono text-caption uppercase tracking-wider ${version.labelClass}`}>{version.label}</p>
-            <ImagePlaceholder filename={version.home.file} alt={version.home.alt} className="min-h-[320px]" />
-            <div className="grid grid-cols-2 gap-5">
-              {version.blocks.map((block) => (
-                <ImagePlaceholder key={block.file} filename={block.file} alt={block.alt} className="min-h-[200px]" />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -391,23 +580,66 @@ function VersionTwo() {
 const siteTree = {
   label: 'anastasiiavoskova.com',
   children: [
+    // colorIdx pins a branch to its IATree palette entry (0 blue, 1 purple, 2 green, 3 orange, 4 red, 5 grey, 6 teal,
+    // 7 yellow), so the branches that were already here keep their colours and each new one gets an unused entry.
     {
-      label: 'About (home)',
+      label: 'Home',
+      colorIdx: 0,
       children: [
         { label: 'Hero' },
         { label: 'Selected Work' },
-        { label: 'How I Work' },
-        { label: 'What People Say' },
-        { label: 'My Toolkit' },
         { label: 'Proven Results' },
+        { label: 'How I Work' },
+        { label: 'My Toolkit' },
+        { label: 'What People Say' },
         { label: 'AI + Designer' },
         { label: 'Experience' },
+      ],
+    },
+    {
+      label: 'About',
+      colorIdx: 6,
+      children: [
+        { label: 'Hero' },
+        { label: 'In Numbers' },
+        { label: 'How I Work' },
+        { label: 'Experience' },
         { label: 'Education' },
-        { label: 'Contact' },
+        { label: 'What People Say' },
+        { label: 'My Toolkit' },
+        { label: 'AI + Designer' },
+        { label: 'Photography' },
+        { label: 'Right Now' },
+      ],
+    },
+    {
+      label: 'Contact dialog',
+      colorIdx: 7,
+      children: [
+        { label: 'Email' },
+        { label: 'Copy email address' },
+        { label: 'LinkedIn' },
+        { label: 'Telegram' },
+        { label: 'Behance' },
+        { label: 'Instagram' },
+        { label: 'Download CV' },
+      ],
+    },
+    {
+      label: 'Footer',
+      colorIdx: 5,
+      children: [
+        { label: 'Contact me' },
+        { label: 'Copy email' },
+        { label: 'Pages' },
+        { label: 'Work' },
+        { label: 'Social' },
+        { label: 'Download CV' },
       ],
     },
     {
       label: 'Portfolio',
+      colorIdx: 1,
       children: [
         {
           label: 'Product & UX/UI Design',
@@ -426,9 +658,10 @@ const siteTree = {
         { label: 'Logos & Branding', children: [{ label: 'Coming soon' }] },
       ],
     },
-    { label: 'Download CV (PDF)' },
+    { label: 'Download CV (PDF)', colorIdx: 2 },
     {
       label: 'Case study page (shared frame)',
+      colorIdx: 3,
       children: [
         { label: 'Hero and meta bar' },
         { label: 'Summary cards' },
@@ -440,7 +673,7 @@ const siteTree = {
         { label: 'Contact' },
       ],
     },
-    { label: '404 page' },
+    { label: '404 page', colorIdx: 4 },
   ],
 };
 
@@ -449,9 +682,10 @@ function InformationArchitecture() {
     <>
       <h2 className={h2Class}>The site map</h2>
       <p className={bodyText}>
-        The header has three destinations: <strong>About, Portfolio and Download CV.</strong> All nine case studies live
-        on one Portfolio page, one click from anywhere. Every case follows the same frame, so a reader who has seen one
-        knows where to look in the next.
+        The header has two pages and one action: <strong>About Me, Portfolio and Contact me</strong>, which opens a
+        dialog with every way to reach me. Both Home and About have a side section menu, and its last stop, Contact,
+        scrolls to the footer. All nine case studies live on one Portfolio page, one click from anywhere. Every case
+        follows the same frame, so a reader who has seen one knows where to look in the next.
       </p>
       <div tabIndex={0} className="rounded-card bg-surface-subtle p-3 sm:p-5 overflow-x-auto">
         <IATree data={siteTree} defaultOpenIndex={0} />
@@ -461,102 +695,61 @@ function InformationArchitecture() {
   );
 }
 
-// ---- 8 · The loop ----------------------------------------------------------
+// ---- 8 · How I worked with Claude Code ------------------------------------
 
-// The tag on the right of each step is the tool or artefact of that step.
+// Five tiles in one row from 1024px. Tile 3 (Build with AI, the Claude Code step) is the lit one in the final state.
 const loopSteps = [
   {
-    heading: 'Frame the problem',
-    body: 'What I am solving, for whom, with what outcome. Wireframes and direction in Figma.',
-    tag: 'figma',
+    title: 'Frame the problem.',
+    text: 'What I am solving, for whom, with what outcome. Wireframes and direction in Figma.',
   },
   {
-    heading: 'Turn design into instructions',
-    body: 'Flows, states and edge cases as precise written specs in Markdown.',
-    tag: 'spec.md',
+    title: 'Turn design into instructions.',
+    text: 'Flows, states and edge cases as precise written specs in Markdown.',
   },
   {
-    heading: 'Build with AI',
-    body: 'Claude Code writes the front end from the specs.',
-    tag: 'claude-code',
-    active: true,
+    title: 'Build with AI.',
+    text: 'Claude Code writes the front end from the specs.',
+    lit: true,
   },
   {
-    heading: 'Put it live',
-    body: 'The result ships as a real URL, so decisions are tested on a working page, not argued over a frame.',
-    tag: 'deploy ✓',
+    title: 'Put it live.',
+    text: 'The result ships as a real URL, so decisions are tested on a working page, not argued over a frame.',
   },
   {
-    heading: 'Test and refine',
-    body: 'People and audits find what I cannot see, and each finding becomes the next prompt.',
-    tag: 're-runs',
-    repeat: true,
+    title: 'Test and refine.',
+    text: 'People and audits find what I cannot see, and each finding becomes the next prompt.',
   },
 ];
-
-function StepIcon({ active, repeat }) {
-  if (repeat) {
-    return (
-      <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-blue-500 text-blue-500">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-          <path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4" />
-        </svg>
-      </span>
-    );
-  }
-  return (
-    <span
-      aria-hidden="true"
-      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
-        active ? 'bg-text-brand text-text-inverse' : 'bg-surface-brand-tint text-action-primary'
-      }`}
-    >
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-        <path d="m3.5 8.5 3 3 6-7" />
-      </svg>
-    </span>
-  );
-}
 
 function Loop() {
   return (
     <>
-      <h2 className={h2Class}>The same five steps I describe on the home page</h2>
+      <h2 className={h2Class}>My five-step process, applied to this site</h2>
       <p className={bodyText}>
         Design and code ran in parallel, and both were component-led. When a page needed something the component set did
         not cover, I designed that component separately and added it to the project.
       </p>
 
-      <div className="mt-4 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
-        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
-          <p className="font-grotesk text-body font-bold text-text-primary">portfolio · design-to-code</p>
-          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">run on every page</p>
-        </div>
+      <ol
+        aria-label="Five steps, in order"
+        className="mt-4 grid list-none grid-cols-1 gap-3 p-0 lg:grid-cols-5"
+      >
         {loopSteps.map((step, i) => (
-          <div
-            key={step.heading}
-            className={`flex flex-col gap-3 border-b border-border-subtle px-5 py-5 last:border-b-0 md:flex-row md:items-center md:gap-8 md:px-8 ${
-              step.active ? 'bg-surface-brand-tint' : ''
+          <li
+            key={step.title}
+            className={`flex flex-col gap-2.5 rounded-panel border-2 p-4 ${
+              step.lit ? 'border-action-primary bg-surface-brand-tint' : 'border-transparent bg-surface-subtle'
             }`}
           >
-            <div className="flex items-center gap-4 md:w-72 md:shrink-0">
-              <StepIcon active={step.active} repeat={step.repeat} />
-              <div className="flex flex-col gap-1">
-                <p className="font-mono text-caption uppercase tracking-wider text-text-brand">Step {i + 1}</p>
-                <p className="font-grotesk text-body-lg font-bold text-text-primary">{step.heading}</p>
-              </div>
-            </div>
-            <p className={`${cardText} flex-1`}>{step.body}</p>
-            <p
-              className={`font-mono text-caption md:w-28 md:text-right ${
-                step.active || step.repeat ? 'text-text-brand' : 'text-text-secondary'
-              }`}
-            >
-              {step.tag}
+            <span className="font-mono text-caption text-text-secondary">{String(i + 1).padStart(2, '0')}</span>
+            <p className={`font-grotesk text-body-lg font-medium leading-snug ${step.lit ? 'text-text-brand' : 'text-ink'}`}>
+              {step.title}
             </p>
-          </div>
+            <p className="font-grotesk text-body leading-relaxed text-text-primary">{step.text}</p>
+          </li>
         ))}
-      </div>
+      </ol>
     </>
   );
 }
@@ -567,7 +760,7 @@ const outputChecks = [
   {
     label: 'Diff',
     title: 'What changed.',
-    text: 'Every change was read line by line before commit. A diff shows what a change does, not what it leaves out.',
+    text: 'I did not read all the code line by line. Most prompts told Claude Code to audit first and wait for my decision before changing anything.',
   },
   {
     label: 'Browser',
@@ -577,12 +770,12 @@ const outputChecks = [
   {
     label: 'Lighthouse',
     title: 'How fast and accessible.',
-    text: 'PageSpeed Insights showed that the first build was slow (68 on mobile) and that the fixes worked (99).',
+    text: 'PageSpeed Insights showed that the first build was slow (68 on mobile) and that the fixes worked (100).',
   },
   {
     label: 'Linter',
     title: 'What must not come back.',
-    text: 'A lint check fails if a raw colour is added, so the design system rule holds even when I am not reading the diff.',
+    text: 'The token check now runs first in every build and stops it on a raw colour. It did not always: after the redesign, 35 got through.',
   },
 ];
 
@@ -609,7 +802,7 @@ function OutputChecks() {
 
 const tokenResults = [
   { from: '39', to: '0', label: 'raw colour values outside the case-study palettes' },
-  { from: '148', to: '47', label: 'arbitrary font sizes' },
+  { from: '148', to: '67', label: 'arbitrary font sizes' },
 ];
 
 // Token examples shown in the two panels below (values are the real ones in src/styles/globals.css).
@@ -654,7 +847,7 @@ function CodeLine({ name, value, active, comment }) {
 function Tokens() {
   return (
     <>
-      <h2 className={h2Class}>Design tokens: one vocabulary for Figma and code</h2>
+      <h2 className={h2Class}>One vocabulary for Figma and code</h2>
       <p className={bodyText}>
         The first build looked consistent by accident. The same text colour was typed out by hand <strong>98 times</strong>,
         the same card radius <strong>82 times</strong> and the same body size <strong>257 times</strong>, and nothing
@@ -692,7 +885,7 @@ function Tokens() {
             <CodeLine name="--color-text-brand" value="var(--color-blue-700);" active />
             <CodeLine name="--color-surface-subtle" value="var(--color-grey-100);" />
             <p className="px-4 py-1 text-grey-300">{'}'}</p>
-            <CodeLine comment="// lint fails if a raw colour is added" />
+            <CodeLine comment="// the build fails if a raw colour is added" />
           </div>
         </div>
       </div>
@@ -723,11 +916,7 @@ function Tokens() {
         </div>
       </div>
 
-      <ImagePlaceholder
-        filename="case-built-with-claude-tokens-structure.png"
-        alt="Token structure: raw value, primitive, semantic, in code"
-        className="min-h-[420px]"
-      />
+      <VariablesWindow className="mt-4" />
     </>
   );
 }
@@ -740,6 +929,11 @@ const mistakes = [
     tag: 'TOKENS',
     lead: 'The design system did not reach the code.',
     text: 'The components existed in Figma, but the variables did not carry through, so colours and sizes were hard-coded.',
+  },
+  {
+    tag: 'BUILD',
+    lead: 'The check existed, but the build never ran it.',
+    text: 'After the redesign, 35 raw colours and 17 raw shadows got through. My light system had no dark surfaces, so the dark blocks came in greys that match the default Tailwind palette exactly. Now the check runs first in every build.',
   },
   {
     tag: 'PERF',
@@ -813,7 +1007,7 @@ function Mistakes() {
 // ---- 11 · Performance and results -----------------------------------------
 
 const scoreGauges = [
-  { value: '99', pct: 99, label: 'Performance' },
+  { value: '100', pct: 100, label: 'Performance' },
   { value: '100', pct: 100, label: 'Accessibility' },
   { value: '100', pct: 100, label: 'Best Practices' },
   { value: '100', pct: 100, label: 'SEO' },
@@ -855,9 +1049,9 @@ const pageSpeedMetrics = [
     max: 100,
     bars: [
       { label: '68', value: 68, before: true },
-      { label: '99', value: 99 },
+      { label: '100', value: 100 },
     ],
-    text: 'PageSpeed Insights, mobile, 19 October.',
+    text: 'PageSpeed Insights, mobile, 30 October.',
   },
   {
     title: 'Largest contentful paint',
@@ -865,9 +1059,9 @@ const pageSpeedMetrics = [
     max: 6,
     bars: [
       { label: '5.2 s', value: 5.2, before: true },
-      { label: '1.8 s', value: 1.8 },
+      { label: '1.5 s', value: 1.5 },
     ],
-    text: 'PageSpeed Insights, 19 October.',
+    text: 'PageSpeed Insights, mobile, 30 October.',
   },
 ];
 
@@ -949,7 +1143,7 @@ function BarPanel({ label, rows }) {
 function Results() {
   return (
     <>
-      <h2 className={h2Class}>From 68 to 99 on mobile, and who arrived</h2>
+      <h2 className={h2Class}>From 68 to 100 on mobile, and who arrived</h2>
 
       <h3 className={h3Class}>Performance</h3>
       <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2">
@@ -961,14 +1155,26 @@ function Results() {
           A second pass split the below-the-fold sections and the animation library out of the entry bundle and loaded
           them when the browser is idle. In a controlled local comparison, five runs each, first paint came sooner (2.41
           s → 2.07 s), blocking time fell (374 → 290 ms) and the main script shrank from 495 to 324 KB. Largest
-          contentful paint did not improve, and I did not claim otherwise.
+          contentful paint did not improve in that comparison, and I did not claim otherwise.
+        </p>
+        <p className={cardText}>
+          A third pass went after the first screen. I pre-rendered the header and hero into the HTML at build time, so
+          the headline paints before the script bundle runs. I set the first-screen fonts to block and added
+          metric-matched fallbacks, so the font swap does not shift the layout, inlined the home page CSS, served a 640
+          px featured image and stopped inlining small assets as base64 (entry script 122 → 87 KB gzipped, home HTML 26
+          → 16 KB gzipped).
+        </p>
+        <p className={cardText}>
+          After the redesign, PageSpeed Insights gave the home page 100 in all four categories on mobile (30 October;
+          the runs over the previous 20 hours went 96, 98, then 100): first contentful paint 0.9 s, largest contentful
+          paint 1.5 s, total blocking time 0 ms, no layout shift, Speed Index 1.5 s.
         </p>
       </div>
 
       <div className="mt-2 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
         <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
           <p className="font-grotesk text-body font-bold text-text-primary">PageSpeed Insights · mobile</p>
-          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">19 October</p>
+          <p className="font-mono text-caption uppercase tracking-wider text-text-brand">30 October</p>
         </div>
         <div className="grid grid-cols-2 gap-x-5 gap-y-8 px-5 py-8 sm:grid-cols-3 md:grid-cols-5 md:px-8">
           {scoreGauges.map((gauge) => (
@@ -978,7 +1184,8 @@ function Results() {
           ))}
         </div>
         <p className={`${cardText} border-t border-border-subtle px-5 py-4 text-text-secondary md:px-8 [&>strong]:font-bold [&>strong]:text-text-primary`}>
-          Final result after several runs. Scores vary slightly from run to run.
+          Five runs over 20 hours: 96, then 98, then 100. Run of 30 October shown: emulated Moto G Power, slow 4G,
+          Lighthouse 13.6.0. Scores vary slightly from run to run.
         </p>
       </div>
 
@@ -988,7 +1195,7 @@ function Results() {
 
       <ImagePlaceholder
         filename="case-built-with-claude-results-psi.png"
-        alt="PageSpeed Insights, mobile, 19 October 2026: 99 performance, 100 accessibility, 100 best practices, 100 SEO, Agentic browsing 3/3"
+        alt="PageSpeed Insights, mobile, 30 October 2026: 100 performance, 100 accessibility, 100 best practices, 100 SEO."
         className="min-h-[320px]"
       />
 
@@ -1038,8 +1245,8 @@ function Results() {
       <p className={bodyText}>
         What I shipped that does not show on screen: page metadata per route and a sitemap built at release, structured
         data, a real 404 page for unknown routes, an <code className="font-mono-bold">llms.txt</code> file, responsive
-        image sizes, self-hosted fonts, lazy-loaded case routes, reduced-motion support and a lint check against raw
-        colours.
+        image sizes, self-hosted fonts, lazy-loaded case routes, reduced-motion support and a check against raw
+        colours that runs in every build.
       </p>
     </>
   );
@@ -1055,7 +1262,8 @@ const keyTakeaway = {
     <>
       <strong>What I would do differently.</strong> I would write acceptance criteria before the first prompt:
       Lighthouse targets, an accessibility check and a link crawl. And I would make the design system enforceable from
-      the first week with a lint rule against raw colours, not a note in a prompt.
+      the first week: a check against raw colours that runs in every build, not a note in a prompt. I would also define
+      the dark surfaces before the first dark block.
     </>,
   ],
 };
@@ -1063,14 +1271,15 @@ const keyTakeaway = {
 const sections = [
   { id: 'context', label: 'Project Goals', bare: true, content: <Context /> },
   { id: 'role', label: 'Role & Who Did What', content: <Role /> },
-  { id: 'research', label: 'Research', content: <Research /> },
-  { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
+  { id: 'research', label: 'Research', bare: true, content: <Research /> },
+  { id: 'versions', label: 'Version 1 → current', bare: true, content: <VersionCompare /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
   { id: 'checks', label: 'How I Checked the Output', content: <OutputChecks /> },
-  { id: 'tokens', label: 'Design System', content: <Tokens /> },
+  { id: 'tokens', label: 'Design tokens', content: <Tokens /> },
   { id: 'mistakes', label: 'Mistakes', content: <Mistakes /> },
   { id: 'results', label: 'Results', content: <Results /> },
+  { id: 'build-log', label: 'Build log', content: <BuildLog /> },
 ];
 
 export default function BuiltWithClaudeCase() {

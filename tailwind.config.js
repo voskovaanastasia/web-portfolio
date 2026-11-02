@@ -17,7 +17,7 @@ export default {
       },
       colors: {
         ink: 'var(--color-ink-900)',
-        grey: { 300: 'var(--color-grey-300)' },
+        grey: { 100: 'var(--color-grey-100)', 300: 'var(--color-grey-300)' },
         blue: { 500: 'var(--color-blue-500)' },
         purple: { 700: 'var(--color-purple-700)' },
         text: {
@@ -25,6 +25,12 @@ export default {
           secondary: 'var(--color-text-secondary)',
           brand: 'var(--color-text-brand)',
           inverse: 'var(--color-text-inverse)',
+          'on-accent': 'var(--color-text-on-accent)',
+          'on-dark': 'var(--color-on-dark-text)',
+          'on-dark-soft': 'var(--color-on-dark-text-soft)',
+          'on-dark-muted': 'var(--color-on-dark-text-muted)',
+          'on-dark-accent': 'var(--color-on-dark-accent)',
+          'on-dark-accent-hover': 'var(--color-on-dark-accent-hover)',
         },
         surface: {
           default: 'var(--color-surface-default)',
@@ -32,6 +38,11 @@ export default {
           inverse: 'var(--color-surface-inverse)',
           'brand-tint': 'var(--color-surface-brand-tint)',
           placeholder: 'var(--color-surface-placeholder)',
+          footer: 'var(--color-surface-footer)',
+          dark: 'var(--color-surface-dark)',
+          'dark-bar': 'var(--color-surface-dark-bar)',
+          'raised-dark': 'var(--color-surface-raised-dark)',
+          'raised-dark-2': 'var(--color-surface-raised-dark-2)',
         },
         glass: {
           light: 'var(--glass-light)',
@@ -46,9 +57,37 @@ export default {
           2: 'var(--color-data-2)',
           3: 'var(--color-data-3)',
           4: 'var(--color-data-4)',
+          5: 'var(--color-data-5)',
+          6: 'var(--color-data-6)',
+        },
+        terminal: {
+          surface: 'var(--color-terminal-surface)',
+          'bar-top': 'var(--color-terminal-bar-top)',
+          'bar-bottom': 'var(--color-terminal-bar-bottom)',
+          'bar-border': 'var(--color-terminal-bar-border)',
+          border: 'var(--color-terminal-border)',
+          divider: 'var(--color-terminal-divider)',
+          title: 'var(--color-terminal-title)',
+          prompt: 'var(--color-terminal-prompt)',
+          command: 'var(--color-terminal-command)',
+          muted: 'var(--color-terminal-muted)',
+        },
+        heat: {
+          0: 'var(--color-heat-0)',
+          1: 'var(--color-heat-1)',
+          2: 'var(--color-heat-2)',
+          3: 'var(--color-heat-3)',
+          4: 'var(--color-heat-4)',
+        },
+        traffic: {
+          red: 'var(--color-traffic-red)',
+          yellow: 'var(--color-traffic-yellow)',
+          green: 'var(--color-traffic-green)',
         },
         border: {
           subtle: 'var(--color-border-subtle)',
+          'on-dark': 'var(--color-on-dark-border)',
+          'on-dark-accent': 'var(--color-on-dark-accent-border)',
         },
         action: {
           primary: 'var(--color-action-primary)',
@@ -60,6 +99,7 @@ export default {
         focus: {
           ring: 'var(--color-focus-ring)',
           'ring-inverse': 'var(--color-focus-ring-inverse)',
+          'ring-on-dark': 'var(--color-on-dark-accent)',
         },
       },
       borderRadius: {
@@ -70,6 +110,17 @@ export default {
       },
       boxShadow: {
         icon: 'var(--shadow-icon)',
+        terminal: 'var(--shadow-terminal)',
+        hairline: 'var(--shadow-hairline)',
+        'hairline-inset': 'var(--shadow-hairline-inset)',
+        panel: 'var(--shadow-panel)',
+        modal: 'var(--shadow-modal)',
+        'hover-lift': 'var(--shadow-hover-lift)',
+        'window-dark': 'var(--shadow-window-dark)',
+        'step-card': 'var(--shadow-step-card)',
+        'step-card-active': 'var(--shadow-step-card-active)',
+        photo: 'var(--shadow-photo)',
+        'sticky-note': 'var(--shadow-sticky-note)',
       },
       fontSize: {
         'caption-xs': 'var(--font-size-caption-xs)',

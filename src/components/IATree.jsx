@@ -32,7 +32,8 @@ export default function IATree({
     }
     // Deep-copy so collapse state doesn't mutate the prop between renders
     const root_data = JSON.parse(JSON.stringify(data));
-    if (root_data.children) root_data.children.forEach((c, i) => assignColors(c, i));
+    // A top-level node may set `colorIdx` to pick its palette entry; otherwise its position decides.
+    if (root_data.children) root_data.children.forEach((c, i) => assignColors(c, c.colorIdx ?? i));
     root_data._branchIdx = -1;
 
     const root = d3.hierarchy(root_data);

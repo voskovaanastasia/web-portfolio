@@ -1,0 +1,341 @@
+/* "Variables" window of the Built with Claude case. Loaded with the case chunk (imported by VariablesWindow.jsx),
+   never with the Home page. Colours, shadows, radius and font sizes are tokens; the px values below are layout sizes
+   (heights, columns, swatches). The window chrome itself uses the Toolkit's utility classes. */
+
+.vw-body,
+.vw-body * {
+  box-sizing: border-box;
+}
+.vw-body {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  height: 560px;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+}
+.vw-title {
+  position: absolute;
+  inset-inline: 0;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  pointer-events: none;
+}
+
+/* Sidebar */
+.vw-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 12px;
+  background: var(--color-surface-subtle);
+  border-right: 1px solid var(--color-border-subtle);
+}
+.vw-side-h {
+  margin: 0;
+  padding: 8px 12px 4px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}
+.vw-cbs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vw-cb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  border-radius: var(--radius-control);
+  padding: 8px 12px;
+  background: transparent;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.vw-cb:hover {
+  background: var(--color-surface-default);
+}
+.vw-cb--on,
+.vw-cb--on:hover {
+  background: var(--color-surface-brand-tint);
+}
+.vw-cb:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+.vw-folder {
+  flex-shrink: 0;
+}
+.vw-cb-n {
+  flex: 1;
+}
+.vw-cb-c {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}
+
+/* List: fixed height window, the list scrolls inside it. overscroll-behavior stays auto, so the page keeps scrolling
+   at the start and end of the list (no scroll trap on touch). */
+.vw-lists {
+  position: relative;
+  min-width: 0;
+}
+.vw-list {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: auto;
+  padding: 8px 32px 32px;
+}
+.vw-list:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: calc(var(--focus-ring-offset) * -2);
+  border-radius: var(--radius-control);
+}
+.vw-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.vw-grp {
+  margin: 0;
+  padding: 20px 12px 8px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-caption-xs);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+.vw-list > ul > .vw-group:first-child > .vw-grp {
+  padding-top: 12px;
+}
+
+.vw-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 272px 136px;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 6px 12px;
+  line-height: var(--line-height-snug);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.vw-group > ul > .vw-row:last-child {
+  border-bottom: 0;
+}
+.vw-list--typography .vw-row {
+  grid-template-columns: 88px minmax(0, 1fr) 272px 136px;
+}
+.vw-list--spacing .vw-row {
+  grid-template-columns: 112px minmax(0, 1fr) 272px 136px;
+}
+
+.vw-pv {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.vw-fn {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+.vw-cn {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vw-vl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.vw-val {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-primary);
+}
+
+.vw-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Previews */
+.vw-sw {
+  display: block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 25%;
+  box-shadow: var(--shadow-hairline-inset);
+}
+.vw-sw--s {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-pill);
+}
+.vw-alias {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px 2px 5px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-default);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+.vw-aa {
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+.vw-spc {
+  display: block;
+  height: 8px;
+  max-width: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-action-primary);
+}
+.vw-rad {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-top: 1.5px solid var(--color-text-secondary);
+  border-left: 1.5px solid var(--color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vw-cb {
+    transition: none;
+  }
+}
+
+/* Mobile: 270px window, the sidebar becomes a horizontal chip row, the list shows preview, Figma name and value. */
+@media (max-width: 767px) {
+  .vw-body {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+  }
+  .vw-side {
+    flex-direction: row;
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    overflow-x: auto;
+    overscroll-behavior-x: auto;
+    scrollbar-width: none;
+  }
+  .vw-side::-webkit-scrollbar {
+    display: none;
+  }
+  .vw-side-h {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .vw-cbs {
+    flex-direction: row;
+    gap: 4px;
+  }
+  .vw-cb {
+    width: auto;
+    gap: 8px;
+    padding: 6px 10px;
+    white-space: nowrap;
+    font-size: var(--font-size-body);
+  }
+  .vw-lists {
+    flex: 1;
+  }
+  .vw-list {
+    padding: 4px 12px 16px;
+  }
+  .vw-grp {
+    padding: 14px 4px 6px;
+  }
+  .vw-row,
+  .vw-list--typography .vw-row,
+  .vw-list--spacing .vw-row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+    min-height: 40px;
+    padding: 6px 4px;
+  }
+  .vw-list--typography .vw-row {
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+  }
+  .vw-list--spacing .vw-row {
+    grid-template-columns: 100px minmax(0, 1fr) auto;
+  }
+  .vw-cn {
+    display: none;
+  }
+  .vw-pv {
+    min-width: 24px;
+  }
+  .vw-fn {
+    font-size: var(--font-size-caption);
+  }
+  .vw-sw {
+    width: 20px;
+    height: 20px;
+  }
+  .vw-sw--s {
+    width: 10px;
+    height: 10px;
+  }
+  .vw-alias {
+    padding: 1px 8px 1px 4px;
+    font-size: var(--font-size-caption-xs);
+  }
+  .vw-val {
+    font-size: var(--font-size-caption-xs);
+  }
+  .vw-spc {
+    max-width: 96px;
+  }
+  .vw-rad {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1049,7 +1049,7 @@ export default function CryptoWalletCase() {
         <CaseHeader project={project} />
 
         {/* Project intro */}
-        <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section id="intro" className="pt-24 pb-12 sm:pb-24 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           <div className="flex flex-col gap-6 lg:col-span-2">
             <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
@@ -1069,7 +1069,7 @@ export default function CryptoWalletCase() {
         <Goals id="goals" headline={projectGoals.headline} items={projectGoals.items} />
 
         {/* 4W+H process */}
-        <section id="process" className="pb-20 flex flex-col gap-6">
+        <section id="process" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">4W+H Process</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             4W+H Process
@@ -1078,7 +1078,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* User research */}
-        <section id="research" className="pb-20 flex flex-col gap-6">
+        <section id="research" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Research</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight max-w-3xl leading-snug">
             To validate the redesign direction, I ran user research through interviews and polls.
@@ -1100,7 +1100,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* The poll */}
-        <section id="poll" className="pb-20 flex flex-col gap-6">
+        <section id="poll" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">The Poll</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div className="rounded-card p-3 sm:p-5 flex flex-col gap-2 sm:gap-4">
@@ -1167,7 +1167,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* User persona */}
-        <section id="persona" className="pb-20 flex flex-col gap-6">
+        <section id="persona" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Persona</p>
           <PersonaBlock
             image="persona-alex.webp"
@@ -1213,7 +1213,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* Empathy map */}
-        <section id="empathy" className="pb-20 flex flex-col gap-6">
+        <section id="empathy" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Empathy Map</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Empathy Map
@@ -1222,7 +1222,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* User flow */}
-        <section id="flow" className="pb-24 flex flex-col gap-6">
+        <section id="flow" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">User Flow</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             Intuitive Navigation, Streamlined Flow
@@ -1241,7 +1241,7 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* Information architecture */}
-        <section id="ia" className="pb-24 flex flex-col gap-6">
+        <section id="ia" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Information Architecture</p>
           <h2 className="font-grotesk font-medium text-[26px] sm:text-4xl text-black tracking-tight">
             One Tab Bar, Four Clear Jobs
@@ -1264,13 +1264,13 @@ export default function CryptoWalletCase() {
         </section>
 
         {/* Colors & typography */}
-        <section id="style" className="pb-24 flex flex-col gap-6">
+        <section id="style" className="py-12 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Colours & Typography</p>
           <StyleGuide {...styleGuide} />
         </section>
 
         {/* App screens */}
-        <section id="screens" className="pb-24 flex flex-col gap-6">
+        <section id="screens" className="pt-12 pb-24 sm:py-24 flex flex-col gap-6">
           <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">App Screens</p>
           <ScreensSlider screens={appScreens} />
         </section>

@@ -54,10 +54,15 @@ for (const [slug, name, description, headline, hasOg] of cases) {
   });
 }
 
-// "Built with Claude" is shown only outside production (see src/config/publishedCases.js), so its page is
-// prerendered only then; otherwise a refresh of /project/built-with-claude on a Vercel preview would 404.
-// It is noindex in every environment and never goes into sitemap.xml (llms.txt is a static file without it).
-if (process.env.VERCEL_ENV !== 'production') {
+// "Built with Claude" is shown outside production, and in production once BUILT_WITH_CLAUDE_PUBLISHED is true
+// (see src/config/publishedCases.js), so its page is prerendered in the same cases; otherwise a refresh of
+// /project/built-with-claude would 404. The flag lives in an ES module that uses a Vite define, so it is read
+// from the source text here. It is noindex in every environment and never goes into sitemap.xml (llms.txt is a
+// static file without it).
+const builtWithClaudePublished = /export const BUILT_WITH_CLAUDE_PUBLISHED\s*=\s*true\b/.test(
+  readFileSync(path.join(__dirname, '..', 'src', 'config', 'publishedCases.js'), 'utf8')
+);
+if (builtWithClaudePublished || process.env.VERCEL_ENV !== 'production') {
   const description = 'I needed a portfolio that shows how I work from research to code, not another template.';
   pages.push({
     path: '/project/built-with-claude',

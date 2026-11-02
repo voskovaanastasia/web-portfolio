@@ -9,6 +9,6 @@
 // "coming soon": the card and the tab stay in the lists with a lock, a "Coming soon" tag and a blurred
 // cover but are not links, the route renders the 404 page, and the case chunk stays out of the build.
 // The case stays noindex and out of sitemap.xml and llms.txt in every environment.
-export const BUILT_WITH_CLAUDE_PUBLISHED = false;
+export const BUILT_WITH_CLAUDE_PUBLISHED = true;
 export const SHOW_BUILT_WITH_CLAUDE = BUILT_WITH_CLAUDE_PUBLISHED || !__IS_PRODUCTION__;
 export const BUILT_WITH_CLAUDE_COMING_SOON = !SHOW_BUILT_WITH_CLAUDE;
