@@ -127,6 +127,7 @@ function Context() {
 const roleRows = [
   {
     who: 'Me',
+    span: 'lg:col-span-2',
     icon: (
       <>
         <circle cx="12" cy="8" r="3.5" /><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" />
@@ -136,6 +137,7 @@ const roleRows = [
   },
   {
     who: 'Claude Code',
+    span: 'lg:col-span-2',
     icon: (
       <>
         <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" strokeLinejoin="round" strokeLinecap="round" />
@@ -145,6 +147,7 @@ const roleRows = [
   },
   {
     who: 'Claude (chat)',
+    span: 'lg:col-span-2',
     icon: (
       <>
         <path d="M4 5h16v11H9l-5 4V5z" strokeLinejoin="round" />
@@ -154,15 +157,17 @@ const roleRows = [
   },
   {
     who: 'Claude Design',
+    span: 'lg:col-span-3',
     icon: (
       <>
         <path d="m4 20 1-4L16 5l3 3L8 19l-4 1zM14 7l3 3" strokeLinejoin="round" strokeLinecap="round" />
       </>
     ),
-    what: 'Reviewed the first version of the site: it found front-end bugs and proposed changes, which I treated as options.',
+    what: 'Reviewed the first version of the site: it found front-end bugs and proposed changes, which I treated as options. For the redesign it proposed structures and new takes on components, working from my design system and my first version. I filled the structures with my content and reworked the components before anything went to Claude Code.',
   },
   {
     who: 'A recruiter, a QA tester, a front-end developer',
+    span: 'md:col-span-2 lg:col-span-3',
     icon: (
       <>
         <circle cx="12" cy="12" r="9" /><path d="m8 12.5 2.8 2.8L16.5 9.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -182,9 +187,9 @@ function Role() {
         enough to ship.
       </p>
 
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5">
         {roleRows.map((row) => (
-          <div key={row.who} className="flex flex-col gap-4 border-t border-border-subtle pt-5">
+          <div key={row.who} className={`flex flex-col gap-4 border-t border-border-subtle pt-5 ${row.span}`}>
             <span
               aria-hidden="true"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-brand-tint text-action-primary"
