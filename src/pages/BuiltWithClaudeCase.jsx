@@ -28,7 +28,7 @@ const project = {
   meta: [
     { label: 'Role', value: 'Product designer and product owner' },
     { label: 'Build time', value: '10 weeks to launch · 21 July → 29 September 2026, redesigned in late October' },
-    { label: 'Built with', value: 'Claude Code · 264 commits, 246 co-authored (30 October 2026)' },
+    { label: 'Built with', value: 'Claude Code · 303 commits, 285 co-authored (2 November 2026)' },
   ],
   tools: ['figma', 'claude-design', 'claude-code', 'react', 'vite', 'tailwind', 'gsap', 'vercel'],
   links: [
