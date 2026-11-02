@@ -1275,8 +1275,8 @@ function Results() {
       <p className={bodyText}>
         What I shipped that does not show on screen: page metadata per route and a sitemap built at release, structured
         data, a real 404 page for unknown routes, an <code className="font-mono-bold">llms.txt</code> file, responsive
-        image sizes, self-hosted fonts, lazy-loaded case routes, reduced-motion support and a lint check against raw
-        colours.
+        image sizes, self-hosted fonts, lazy-loaded case routes, reduced-motion support and a check against raw
+        colours that runs in every build.
       </p>
     </>
   );
@@ -1292,7 +1292,8 @@ const keyTakeaway = {
     <>
       <strong>What I would do differently.</strong> I would write acceptance criteria before the first prompt:
       Lighthouse targets, an accessibility check and a link crawl. And I would make the design system enforceable from
-      the first week with a lint rule against raw colours, not a note in a prompt.
+      the first week: a check against raw colours that runs in every build, not a note in a prompt. I would also define
+      the dark surfaces before the first dark block.
     </>,
   ],
 };
