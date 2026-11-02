@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import CaseLayout, { ImagePlaceholder, MetricList, registerCaseAssets } from '../components/CaseLayout';
 import { StatBar } from '../components/StatBar';
 import Goals from '../components/Goals';
@@ -266,104 +267,339 @@ function Research() {
   );
 }
 
-// ---- 7 · From version 1 to version 2 --------------------------------------
+// ---- 7 · From the first version to the current one ------------------------
 
-// The two image columns: one big home-page shot and two block shots per version.
-const versionImages = [
+// Screenshots for this block are 1200 x 900 WebP, named case-built-with-claude-versions-<id>[-v1|-current].webp.
+// `placeholder: true` keeps an image as a dashed placeholder even if a file of that name exists; delete the flag
+// when the real screenshot is in src/assets.
+const versionAssets = import.meta.glob('../assets/case-built-with-claude-versions-*.webp', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+const versionAsset = (file) => versionAssets[`../assets/${file}`];
+
+const versionItems = [
   {
-    key: 'v1',
-    label: 'Version 1',
-    labelClass: 'text-text-secondary',
-    home: { file: 'case-built-with-claude-v1-home.png', alt: 'Version 1, full home page' },
-    blocks: [
-      { file: 'case-built-with-claude-v1-toolkit.png', alt: 'Version 1, toolkit block' },
-      { file: 'case-built-with-claude-v1-ai-designer.png', alt: 'Version 1, AI + Designer block' },
-    ],
+    id: 'first-screen',
+    label: 'First screen',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-first-screen-v1.webp',
+      name: 'Version 1 first screen',
+      alt: 'Version 1 first screen',
+      placeholder: true,
+    },
+    current: {
+      file: 'case-built-with-claude-versions-first-screen-current.webp',
+      name: 'Current first screen',
+      alt: 'Current first screen: “I make complex, data-dense products feel simple…”, Contact me and Download CV',
+      placeholder: true,
+    },
   },
   {
-    key: 'v2',
-    label: 'Version 2',
-    labelClass: 'text-text-brand',
-    home: { file: 'case-built-with-claude-v2-home.png', alt: 'Version 2, full home page' },
-    blocks: [
-      { file: 'case-built-with-claude-v2-toolkit.png', alt: 'Version 2, toolkit block' },
-      { file: 'case-built-with-claude-v2-ai-designer.png', alt: 'Version 2, AI + Designer block' },
-    ],
+    id: 'how-i-work',
+    label: 'How I work',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-how-i-work-v1.webp',
+      name: 'Version 1 How I work',
+      alt: 'Version 1 How I work: four filled purple cards',
+      placeholder: true,
+    },
+    current: {
+      file: 'case-built-with-claude-versions-how-i-work-current.webp',
+      name: 'Current How I work',
+      alt: 'Current How I work: four light cards with tool icons',
+      placeholder: true,
+    },
+  },
+  {
+    id: 'experience',
+    label: 'Experience',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-experience-v1.webp',
+      name: 'Version 1 Experience',
+      alt: 'Version 1 Experience: a long timeline with every bullet open',
+      placeholder: true,
+    },
+    current: {
+      file: 'case-built-with-claude-versions-experience-current.webp',
+      name: 'Current Experience',
+      alt: 'Current Experience on the About page, with Show more',
+      placeholder: true,
+    },
+  },
+  {
+    id: 'contact',
+    label: 'Contact',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-contact-v1.webp',
+      name: 'Version 1 separate contact block at the end of the page',
+      alt: 'Version 1 separate contact block at the end of the page',
+      placeholder: true,
+    },
+    current: {
+      file: 'case-built-with-claude-versions-contact-current.webp',
+      name: 'Current footer',
+      alt: 'Current footer, the one contact area',
+      placeholder: true,
+    },
+  },
+  {
+    id: 'ai-designer',
+    label: 'AI + Designer',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-ai-designer-v1.webp',
+      name: 'Version 1 AI + Designer: five steps',
+      alt: 'Version 1 AI + Designer: five steps',
+      placeholder: true,
+    },
+    current: {
+      file: 'case-built-with-claude-versions-ai-designer-current.webp',
+      name: 'Current AI + Designer',
+      alt: 'Current AI + Designer: an editor-style window with file-tab cards',
+      placeholder: true,
+    },
+  },
+  {
+    id: 'toolkit',
+    label: 'Toolkit',
+    kind: 'compare',
+    v1: {
+      file: 'case-built-with-claude-versions-toolkit-v1.webp',
+      name: 'Version 1 Toolkit: a full list of tools',
+      alt: 'Version 1 Toolkit: a full list of tools',
+      placeholder: true,
+    },
+    current: {
+      file: 'case-built-with-claude-versions-toolkit-current.webp',
+      name: 'Current Toolkit',
+      alt: 'Current Toolkit: a Finder-style window with folders and search',
+      placeholder: true,
+    },
+  },
+  {
+    id: 'about',
+    label: 'About',
+    kind: 'new',
+    image: {
+      file: 'case-built-with-claude-versions-about.webp',
+      name: 'New About page',
+      alt: 'New About page: “Where UX meets engineering”, with a photo',
+      placeholder: true,
+    },
+  },
+  {
+    id: 'contact-dialog',
+    label: 'Contact dialog',
+    kind: 'new',
+    image: {
+      file: 'case-built-with-claude-versions-contact-dialog.webp',
+      name: 'New Contact me dialog',
+      alt: 'New Contact me dialog: “Let’s talk” with seven ways to reach me',
+      placeholder: true,
+    },
   },
 ];
 
-const changelogRow = 'flex flex-col gap-2 border-b border-border-subtle px-5 py-5 md:flex-row md:gap-8 md:px-8';
-const changelogKey = 'font-mono text-body md:w-32 md:shrink-0';
+const frameLabel =
+  'absolute top-3 inline-flex items-center gap-1.5 rounded-pill border border-border-subtle bg-surface-default px-2.5 py-1 font-mono-bold text-caption-xs uppercase tracking-wider text-text-secondary pointer-events-none';
 
-function VersionTwo() {
+// One screenshot, or a dashed placeholder while the file is missing or still flagged `placeholder`.
+function VersionPicture({ image, side }) {
+  const src = image.placeholder ? undefined : versionAsset(image.file);
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={image.alt}
+        width="1200"
+        height="900"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+        className="vc-fill"
+      />
+    );
+  }
   return (
-    <>
-      <h2 className={h2Class}>From version 1 to version 2</h2>
+    <div
+      role="img"
+      aria-label={`${image.name}, screenshot to add`}
+      className="absolute inset-0 flex items-center border border-dashed border-text-secondary bg-surface-subtle"
+    >
+      {/* A compare placeholder keeps its text in its own half, so the v1 and current notes never overlap. */}
+      <div
+        className={`flex flex-col items-center gap-1 px-4 text-center ${
+          side ? 'w-1/2' : 'w-full'
+        } ${side === 'current' ? 'ml-auto' : ''}`}
+      >
+        <span className="font-mono-bold text-caption-xs text-ink">{image.name}</span>
+        <span className="font-mono text-caption-xs text-text-secondary">screenshot to add · 1200 × 900</span>
+      </div>
+    </div>
+  );
+}
 
-      <div className="mt-4 overflow-hidden rounded-card border border-border-subtle bg-surface-default shadow-sm">
-        <div className="flex items-center justify-between gap-4 border-b border-border-subtle bg-surface-subtle px-5 py-4 md:px-8">
-          <p className="font-grotesk text-body font-bold text-text-primary">CHANGELOG.md</p>
-          <p className="flex items-center gap-2 font-mono text-caption">
-            <span className="rounded-pill border border-border-subtle bg-surface-default px-3 py-1 text-text-secondary">v1</span>
-            <span className="rounded-pill bg-text-brand px-3 py-1 font-bold text-text-inverse">v2 · current</span>
-          </p>
-        </div>
+const chipBase =
+  'inline-flex items-center gap-1.5 min-h-11 sm:min-h-10 px-3.5 rounded-pill border font-grotesk font-medium text-body whitespace-nowrap cursor-pointer transition-colors motion-reduce:transition-none max-sm:shrink-0 max-sm:snap-start focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring';
+const chipIdle = 'border-border-subtle bg-surface-default text-text-primary hover:border-text-secondary';
+const chipActive = 'border-action-primary bg-action-primary text-text-inverse';
 
-        <div className={changelogRow}>
-          <p className={`${changelogKey} text-text-secondary`}>v1</p>
-          <p className={`${cardText} flex-1`}>
-            The first home page opened with one featured project, filled purple cards on how I work, a testimonial, my
-            full toolkit and a long Experience section. It worked, but it read more like a CV than a portfolio, and the
-            work was hard to find. People who looked at it said the same.
-          </p>
-        </div>
-        <div className={changelogRow}>
-          <p className={`${changelogKey} text-text-brand`}>v2</p>
-          <p className={`${cardText} flex-1`}>
-            For version 2 I showed more cases straight away, dropped the filled cards, reordered the home page blocks
-            and refreshed the UI. I asked Claude Design to review the first version. It found front-end bugs, including
-            typography problems I fixed, and proposed changes, which I treated as options. I also changed the font set so
-            the page loads faster.
-          </p>
-        </div>
-        <div className={changelogRow}>
-          <p className={`${changelogKey} text-text-secondary`}>review</p>
-          <p className={`${cardText} flex-1 border-l-2 border-blue-500 pl-4`}>
-            Every change had to pass one question: <em>does it help a reviewer reach the work faster?</em>
-          </p>
-        </div>
+function VersionCompare() {
+  const [index, setIndex] = useState(0);
+  const [pos, setPos] = useState(50);
+  const chipRefs = useRef([]);
+  const item = versionItems[index];
+  const count = versionItems.length;
 
-        <div className="flex flex-col gap-3 bg-surface-subtle px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
-          <p className="font-mono text-caption text-text-secondary">
-            claude-design: <span className="text-text-primary">31</span> proposed →{' '}
-            <span className="font-bold text-text-brand">8 implemented</span>
-          </p>
-          <div
-            role="img"
-            aria-label="8 of 31 proposed changes implemented"
-            className="flex gap-0.5"
+  const select = (i, focus) => {
+    setIndex(i);
+    setPos(50);
+    const chip = chipRefs.current[i];
+    if (!chip) return;
+    if (focus) chip.focus({ preventScroll: true });
+    chip.scrollIntoView({
+      block: 'nearest',
+      inline: 'nearest',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
+
+  const onChipKey = (e) => {
+    const next = {
+      ArrowRight: (index + 1) % count,
+      ArrowDown: (index + 1) % count,
+      ArrowLeft: (index + count - 1) % count,
+      ArrowUp: (index + count - 1) % count,
+      Home: 0,
+      End: count - 1,
+    }[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    select(next, true);
+  };
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <div className="flex min-w-0 flex-col gap-6">
+        <p className="font-mono-bold text-caption uppercase tracking-wider text-text-secondary">Version 1 → current</p>
+        <h2 className={h2Class}>From the first version to the current one</h2>
+        <p className={bodyText}>
+          I launched the first version because{' '}
+          <strong>sending it with my job applications mattered more to me than perfecting it first.</strong> It opened
+          with one featured project, filled purple cards, a testimonial, my full toolkit and a long Experience section.
+          It worked, but it read more like a CV than a portfolio, and the work was hard to find. People who looked at it
+          said the same. Once I started sending it, I kept changing and polishing it.{' '}
+          <strong>The home page now does one job:</strong> it is the starting point, with more cases straight away, no
+          filled cards, the essentials and links on to the next pages. Everything about me moved to a new About page.
+          The separate contact block is gone: Contact me opens a dialog, and a new footer is the one contact area. The
+          interface was refreshed along the way.
+        </p>
+        <p className={bodyText}>
+          I built the core components, colours and tokens in Figma myself.{' '}
+          <strong>Claude Design worked from that system and from the first version</strong>, proposing structures and
+          new takes on components. I filled them with my content and reworked them, and the edited artboard went to
+          Claude Code, usually with a written spec. Not everything stayed: I removed its hero sticky note and
+          collaborator cursor, because they cost performance.
+        </p>
+        <p className="font-grotesk text-body text-text-secondary leading-relaxed">
+          Every change had to pass one question: <em>does it help a reviewer reach the work faster?</em>
+        </p>
+      </div>
+
+      <div className="min-w-0 lg:self-stretch">
+        <div className="flex flex-col gap-4 lg:sticky lg:top-24">
+          <figure
+            id="versions-panel"
+            role="tabpanel"
+            aria-labelledby={`versions-chip-${item.id}`}
+            className="m-0 overflow-hidden rounded-card bg-surface-brand-tint"
           >
-            {Array.from({ length: 31 }, (_, i) => (
-              <span key={i} className={`h-4 w-1.5 rounded-sm ${i < 8 ? 'bg-blue-500' : 'bg-track'}`} />
-            ))}
+            {item.kind === 'compare' ? (
+              <div className="vc-frame" style={{ '--p': `${pos}%` }}>
+                <VersionPicture image={item.current} side="current" />
+                <div className="vc-v1">
+                  <VersionPicture image={item.v1} side="v1" />
+                </div>
+                <span className={`${frameLabel} left-3`} aria-hidden="true">
+                  v1
+                </span>
+                <span className={`${frameLabel} right-3`} aria-hidden="true">
+                  current
+                </span>
+                <span className="vc-line" aria-hidden="true">
+                  <span className="vc-knob">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 5L3 9l4 4M11 5l4 4-4 4" />
+                    </svg>
+                  </span>
+                </span>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value={pos}
+                  onChange={(e) => setPos(Number(e.target.value))}
+                  className="vc-range"
+                  aria-label={`${item.label}: drag or use the arrow keys. Right shows more of version 1.`}
+                  aria-valuetext={`${pos} percent of version 1 visible`}
+                />
+              </div>
+            ) : (
+              <div className="vc-frame">
+                <VersionPicture image={item.image} />
+                <span className={`${frameLabel} left-3 text-action-primary`}>
+                  <span className="h-1.5 w-1.5 rounded-pill bg-action-primary" aria-hidden="true" />
+                  new
+                </span>
+              </div>
+            )}
+          </figure>
+
+          <div
+            role="tablist"
+            aria-label="Compare what changed"
+            className="vc-chips flex flex-wrap gap-2 max-sm:-mx-6 max-sm:flex-nowrap max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:scroll-px-6 max-sm:px-6 max-sm:pb-1"
+          >
+            {versionItems.map((chip, i) => {
+              const active = i === index;
+              return (
+                <button
+                  key={chip.id}
+                  ref={(el) => (chipRefs.current[i] = el)}
+                  type="button"
+                  role="tab"
+                  id={`versions-chip-${chip.id}`}
+                  aria-selected={active}
+                  aria-controls="versions-panel"
+                  tabIndex={active ? 0 : -1}
+                  onClick={() => select(i, false)}
+                  onKeyDown={onChipKey}
+                  className={`${chipBase} ${active ? chipActive : chipIdle}`}
+                >
+                  {chip.label}
+                  {chip.kind === 'new' && (
+                    <span
+                      className={`font-mono-bold text-caption-xs uppercase tracking-wider ${
+                        active ? 'text-text-inverse' : 'text-action-primary'
+                      }`}
+                    >
+                      new
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
-
-      <div className="mt-2 grid grid-cols-1 gap-x-5 gap-y-8 md:grid-cols-2">
-        {versionImages.map((version) => (
-          <div key={version.key} className="flex flex-col gap-4">
-            <p className={`font-mono text-caption uppercase tracking-wider ${version.labelClass}`}>{version.label}</p>
-            <ImagePlaceholder filename={version.home.file} alt={version.home.alt} className="min-h-[320px]" />
-            <div className="grid grid-cols-2 gap-5">
-              {version.blocks.map((block) => (
-                <ImagePlaceholder key={block.file} filename={block.file} alt={block.alt} className="min-h-[200px]" />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -1090,7 +1326,7 @@ const sections = [
   { id: 'context', label: 'Project Goals', bare: true, content: <Context /> },
   { id: 'role', label: 'Role & Who Did What', content: <Role /> },
   { id: 'research', label: 'Research', bare: true, content: <Research /> },
-  { id: 'versions', label: 'Version 1 → 2', content: <VersionTwo /> },
+  { id: 'versions', label: 'Version 1 → current', bare: true, content: <VersionCompare /> },
   { id: 'ia', label: 'Information Architecture', content: <InformationArchitecture /> },
   { id: 'loop', label: 'How I Worked with Claude Code', content: <Loop /> },
   { id: 'checks', label: 'How I Checked the Output', content: <OutputChecks /> },

@@ -344,3 +344,104 @@ body[data-page='not-found'] #root > div {
 @media (prefers-reduced-motion: reduce) {
   .toolkit-marquee-track { animation: none; }
 }
+
+/* Version compare card (Built with Claude case): a 4:3 frame with a v1 layer clipped by --p, and a native range
+   input whose track ignores pointers so only its 44px thumb drags (the page and the chip row keep scrolling). */
+.vc-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-surface-default);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.vc-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.vc-v1 {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--p)) 0 0);
+}
+.vc-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--p);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--color-action-primary);
+  pointer-events: none;
+}
+.vc-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-surface-default);
+  background: var(--color-action-primary);
+  color: var(--color-text-inverse);
+  transition: transform 0.15s ease;
+}
+.vc-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: none;
+}
+.vc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: ew-resize;
+  touch-action: none;
+}
+.vc-range::-moz-range-thumb {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: ew-resize;
+  touch-action: none;
+}
+.vc-frame:has(.vc-range:focus-visible) .vc-knob {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+.vc-frame:has(.vc-range:active) .vc-knob {
+  transform: scale(1.1);
+}
+.vc-chips {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.vc-chips::-webkit-scrollbar {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vc-knob {
+    transition: none;
+  }
+}
