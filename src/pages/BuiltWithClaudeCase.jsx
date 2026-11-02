@@ -372,23 +372,66 @@ function VersionTwo() {
 const siteTree = {
   label: 'anastasiiavoskova.com',
   children: [
+    // colorIdx pins a branch to its IATree palette entry (0 blue, 1 purple, 2 green, 3 orange, 4 red, 5 grey, 6 teal,
+    // 7 yellow), so the branches that were already here keep their colours and each new one gets an unused entry.
     {
-      label: 'About (home)',
+      label: 'Home',
+      colorIdx: 0,
       children: [
         { label: 'Hero' },
         { label: 'Selected Work' },
-        { label: 'How I Work' },
-        { label: 'What People Say' },
-        { label: 'My Toolkit' },
         { label: 'Proven Results' },
+        { label: 'How I Work' },
+        { label: 'My Toolkit' },
+        { label: 'What People Say' },
         { label: 'AI + Designer' },
         { label: 'Experience' },
+      ],
+    },
+    {
+      label: 'About',
+      colorIdx: 6,
+      children: [
+        { label: 'Hero' },
+        { label: 'In Numbers' },
+        { label: 'How I Work' },
+        { label: 'Experience' },
         { label: 'Education' },
-        { label: 'Contact' },
+        { label: 'What People Say' },
+        { label: 'My Toolkit' },
+        { label: 'AI + Designer' },
+        { label: 'Photography' },
+        { label: 'Right Now' },
+      ],
+    },
+    {
+      label: 'Contact dialog',
+      colorIdx: 7,
+      children: [
+        { label: 'Email' },
+        { label: 'Copy email address' },
+        { label: 'LinkedIn' },
+        { label: 'Telegram' },
+        { label: 'Behance' },
+        { label: 'Instagram' },
+        { label: 'Download CV' },
+      ],
+    },
+    {
+      label: 'Footer',
+      colorIdx: 5,
+      children: [
+        { label: 'Contact me' },
+        { label: 'Copy email' },
+        { label: 'Pages' },
+        { label: 'Work' },
+        { label: 'Social' },
+        { label: 'Download CV' },
       ],
     },
     {
       label: 'Portfolio',
+      colorIdx: 1,
       children: [
         {
           label: 'Product & UX/UI Design',
@@ -407,9 +450,10 @@ const siteTree = {
         { label: 'Logos & Branding', children: [{ label: 'Coming soon' }] },
       ],
     },
-    { label: 'Download CV (PDF)' },
+    { label: 'Download CV (PDF)', colorIdx: 2 },
     {
       label: 'Case study page (shared frame)',
+      colorIdx: 3,
       children: [
         { label: 'Hero and meta bar' },
         { label: 'Summary cards' },
@@ -421,7 +465,7 @@ const siteTree = {
         { label: 'Contact' },
       ],
     },
-    { label: '404 page' },
+    { label: '404 page', colorIdx: 4 },
   ],
 };
 
@@ -430,9 +474,10 @@ function InformationArchitecture() {
     <>
       <h2 className={h2Class}>The site map</h2>
       <p className={bodyText}>
-        The header has three destinations: <strong>About, Portfolio and Download CV.</strong> All nine case studies live
-        on one Portfolio page, one click from anywhere. Every case follows the same frame, so a reader who has seen one
-        knows where to look in the next.
+        The header has two pages and one action: <strong>About Me, Portfolio and Contact me</strong>, which opens a
+        dialog with every way to reach me. Both Home and About have a side section menu, and its last stop, Contact,
+        scrolls to the footer. All nine case studies live on one Portfolio page, one click from anywhere. Every case
+        follows the same frame, so a reader who has seen one knows where to look in the next.
       </p>
       <div tabIndex={0} className="rounded-card bg-surface-subtle p-3 sm:p-5 overflow-x-auto">
         <IATree data={siteTree} defaultOpenIndex={0} />
