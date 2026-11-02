@@ -731,28 +731,23 @@ const loopSteps = [
   {
     title: 'Frame the problem.',
     text: 'What I am solving, for whom, with what outcome. Wireframes and direction in Figma.',
-    tag: 'figma',
   },
   {
     title: 'Turn design into instructions.',
     text: 'Flows, states and edge cases as precise written specs in Markdown.',
-    tag: 'spec.md',
   },
   {
     title: 'Build with AI.',
     text: 'Claude Code writes the front end from the specs.',
-    tag: 'claude-code',
     lit: true,
   },
   {
     title: 'Put it live.',
     text: 'The result ships as a real URL, so decisions are tested on a working page, not argued over a frame.',
-    tag: 'deploy ✓',
   },
   {
     title: 'Test and refine.',
     text: 'People and audits find what I cannot see, and each finding becomes the next prompt.',
-    tag: 're-runs',
   },
 ];
 
@@ -781,9 +776,6 @@ function Loop() {
               {step.title}
             </p>
             <p className="font-grotesk text-body leading-relaxed text-text-primary">{step.text}</p>
-            <span className="mt-auto inline-flex w-fit items-center whitespace-nowrap rounded-md bg-surface-default px-2 py-0.5 font-mono text-caption text-text-primary">
-              {step.tag}
-            </span>
           </li>
         ))}
       </ol>
