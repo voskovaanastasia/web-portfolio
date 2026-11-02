@@ -879,7 +879,11 @@ export default function CaseLayout({
               {project.intro.body}
             </p>
           </div>
-          <ImagePlaceholder filename={project.intro.image} className="min-h-[420px] order-first lg:order-none" />
+          <ImagePlaceholder
+            filename={project.intro.image}
+            alt={project.intro.imageAlt}
+            className="min-h-[420px] order-first lg:order-none"
+          />
         </section>
 
         {/* Problem & solution */}

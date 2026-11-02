@@ -56,7 +56,8 @@ const project = {
   },
   intro: {
     heading: 'Turning my portfolio into a real product',
-    image: 'case-built-with-claude-intro.png',
+    image: 'case-built-with-claude-projectintro-home.webp',
+    imageAlt: 'The new portfolio home page on a phone',
     body: (
       <>
         A case study on turning my portfolio into a real product: researched, designed in Figma, built with Claude
@@ -66,8 +67,8 @@ const project = {
   },
   problem: {
     heading: 'My portfolio lived on Behance, and it was getting in my way',
-    image: 'case-built-with-claude-problem-behance.png',
-    imageAlt: 'The old Behance portfolio',
+    image: 'case-built-with-claude-problem-home.webp',
+    imageAlt: 'The new home page on a laptop',
     body: (
       <>
         Formatting each case study took a lot of time, and the platform made it hard to show what I care about most:
