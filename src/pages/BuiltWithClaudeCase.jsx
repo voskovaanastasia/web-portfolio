@@ -384,28 +384,6 @@ const versionItems = [
       placeholder: true,
     },
   },
-  {
-    id: 'about',
-    label: 'About',
-    kind: 'new',
-    image: {
-      file: 'case-built-with-claude-versions-about.webp',
-      name: 'New About page',
-      alt: 'New About page: “Where UX meets engineering”, with a photo',
-      placeholder: true,
-    },
-  },
-  {
-    id: 'contact-dialog',
-    label: 'Contact dialog',
-    kind: 'new',
-    image: {
-      file: 'case-built-with-claude-versions-contact-dialog.webp',
-      name: 'New Contact me dialog',
-      alt: 'New Contact me dialog: “Let’s talk” with seven ways to reach me',
-      placeholder: true,
-    },
-  },
 ];
 
 const frameLabel =
