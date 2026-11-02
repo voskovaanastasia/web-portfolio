@@ -55,6 +55,8 @@
   --color-data-2: #6ABF69;
   --color-data-3: #EE8585;
   --color-data-4: #4D8FD1;
+  --color-data-5: #7DA7F4;
+  --color-data-6: #E8964A;
 
   /* Build log: dark terminal window and the five contribution-heatmap levels (0 = no contributions) */
   --color-terminal-surface: #1C1F26;

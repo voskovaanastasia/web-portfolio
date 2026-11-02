@@ -57,6 +57,8 @@ export default {
           2: 'var(--color-data-2)',
           3: 'var(--color-data-3)',
           4: 'var(--color-data-4)',
+          5: 'var(--color-data-5)',
+          6: 'var(--color-data-6)',
         },
         terminal: {
           surface: 'var(--color-terminal-surface)',

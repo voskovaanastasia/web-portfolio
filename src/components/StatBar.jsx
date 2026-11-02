@@ -39,14 +39,20 @@ export function ProgressBar({ pct, color }) {
 
 // Stat row: label on the left, value on the right in the bar's colour, bar underneath, caption below.
 // `title` is "<value> — <label>"; the part before the dash becomes the value.
-export function StatBar({ pct, color, title, text }) {
+// The value takes the bar's colour unless `valueClass` is given (a text-colour class for the value only).
+export function StatBar({ pct, color, valueClass, title, text }) {
   const [value, ...rest] = title.split(' — ');
   const label = rest.join(' — ');
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex items-baseline justify-between gap-4">
         <p className="font-grotesk font-medium text-body-lg text-ink">{label}</p>
-        <p className="font-grotesk font-bold text-body shrink-0" style={{ color }}>{value}</p>
+        <p
+          className={valueClass ? `font-grotesk font-bold text-body shrink-0 ${valueClass}` : 'font-grotesk font-bold text-body shrink-0'}
+          style={valueClass ? undefined : { color }}
+        >
+          {value}
+        </p>
       </div>
       <ProgressBar pct={pct} color={color} />
       {text && <p className="font-grotesk text-body text-text-primary leading-relaxed">{text}</p>}

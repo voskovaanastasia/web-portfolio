@@ -210,23 +210,26 @@ function Role() {
 
 // ---- 6 · Research ---------------------------------------------------------
 
-// One accent for all three bars: the same blue as the percentages in the other blocks.
+// Bars use the data palette (blue, green, orange); the percentages stay in the dark ink of the row labels.
 const researchBars = [
   {
     pct: 68,
-    color: 'var(--color-text-brand)',
+    color: 'var(--color-data-5)',
+    valueClass: 'text-ink',
     title: '68% — link a resume from the home page',
     text: '13 of 19 portfolios. My site does it too: a Download CV button sits in the first screen.',
   },
   {
     pct: 47,
-    color: 'var(--color-text-brand)',
+    color: 'var(--color-data-2)',
+    valueClass: 'text-ink',
     title: '47% — list roles or skills on the home page',
     text: '9 of 19 portfolios. My site does it too; the full version now lives on About.',
   },
   {
     pct: 72,
-    color: 'var(--color-text-brand)',
+    color: 'var(--color-data-6)',
+    valueClass: 'text-ink',
     title: '72% — show four or more case studies on the home page',
     text: <>13 of 18 portfolios. Across all 18 the count ranged from 2 to 13. &ldquo;Coming soon&rdquo; cards counted.</>,
   },
