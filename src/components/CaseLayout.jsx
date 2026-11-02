@@ -289,6 +289,12 @@ export function MetricList({ metrics, accent = 'var(--color-action-primary)', ma
 const sectionLabel = 'font-mono-bold text-caption uppercase tracking-wider text-text-secondary';
 const sectionHeading = 'font-grotesk font-medium text-heading text-text-primary tracking-tight';
 
+// Vertical rhythm between content sections, the same as the Home page (96px below 640px, 192px from 640px up).
+// First section (the intro): 96px under the header. Last section: 96px above the next-case navigation.
+const gapSection = 'py-12 sm:py-24';
+const gapFirst = 'pt-24 pb-12 sm:pb-24';
+const gapLast = 'pt-12 pb-24 sm:py-24';
+
 // Highlighted aside under the body: blue rule on the left, small blue mono label, short text.
 function CalloutQuote({ label, children }) {
   return (
@@ -303,7 +309,7 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
   return (
     <>
       {problem && (
-        <section id={id} className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
+        <section id={id} className={`${gapSection} grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center`}>
           <ImagePlaceholder
             filename={problem.image}
             alt={problem.imageAlt}
@@ -319,7 +325,7 @@ export function ProblemSolution({ problem, solution, id = 'problem' }) {
       )}
 
       {solution && (
-        <section className="pb-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center">
+        <section className={`${gapSection} grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 items-center`}>
           <div className="flex flex-col gap-5 lg:col-span-2">
             <p className={sectionLabel}>Solution</p>
             <h2 className={sectionHeading}>{solution.heading}</h2>
@@ -843,6 +849,9 @@ export default function CaseLayout({
     { id: 'contact', label: 'Get in Touch' },
   ];
 
+  // The last block on the page keeps its space above the next-case navigation.
+  const lastSlot = keyTakeaway ? 'key' : screens?.length > 0 ? 'screens' : 'sections';
+
   return (
     <main id="main-content" className="flex flex-col bg-surface-default">
       <SectionMenu sections={menuSections} />
@@ -860,7 +869,7 @@ export default function CaseLayout({
         <CaseHeader project={project} />
 
         {/* Project intro */}
-        <section id="intro" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <section id="intro" className={`${gapFirst} grid grid-cols-1 lg:grid-cols-3 gap-10 items-center`}>
           <div className="flex flex-col gap-6 lg:col-span-2">
             <p className={sectionLabel}>PROJECT INTRO</p>
             <h2 className="font-grotesk font-medium text-heading text-text-primary tracking-tight">
@@ -877,8 +886,12 @@ export default function CaseLayout({
         <ProblemSolution problem={project.problem} solution={project.solution} />
 
         {/* Case-specific sections */}
-        {sections.map((section) => (
-          <section key={section.id} id={section.id} className="pb-20 flex flex-col gap-6">
+        {sections.map((section, i) => (
+          <section
+            key={section.id}
+            id={section.id}
+            className={`${lastSlot === 'sections' && i === sections.length - 1 ? gapLast : gapSection} flex flex-col gap-6`}
+          >
             {!section.bare && <p className={sectionLabel}>{section.label}</p>}
             {section.content}
           </section>
@@ -886,7 +899,7 @@ export default function CaseLayout({
 
         {/* Screens */}
         {screens?.length > 0 && (
-          <section id="screens" className="pb-24 flex flex-col gap-6">
+          <section id="screens" className={`${lastSlot === 'screens' ? gapLast : gapSection} flex flex-col gap-6`}>
             <p className={sectionLabel}>{screensLabel}</p>
             <ScreensSlider screens={screens} />
           </section>
@@ -894,7 +907,7 @@ export default function CaseLayout({
 
         {/* Key takeaway */}
         {keyTakeaway && (
-          <KeyTakeaway id="key-takeaway" heading={keyTakeaway.heading} className="pb-24">
+          <KeyTakeaway id="key-takeaway" heading={keyTakeaway.heading} className={gapLast}>
             {/* body is one paragraph, or an array with one entry per paragraph */}
             {(Array.isArray(keyTakeaway.body) ? keyTakeaway.body : [keyTakeaway.body]).map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
