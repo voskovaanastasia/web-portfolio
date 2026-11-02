@@ -60,8 +60,11 @@ const project = {
     imageAlt: 'The new portfolio home page on a phone',
     body: (
       <>
-        A case study on turning my portfolio into a real product: researched, designed in Figma, built with Claude
-        Code, and measured, with me making the decisions, reviewing the output and fixing what the AI got wrong.
+        A case study on turning my portfolio into a real product. The first version covered the basic needs of a
+        portfolio, and that was enough to start sending it with applications. Then I wanted more from it, so I
+        extended and improved it: I built a minimal design system in Figma, used Claude Design to explore structures
+        for the redesign, had Claude Code build the pages, and measured the result. Throughout, I made the decisions,
+        reviewed the output and fixed what the AI got wrong.
       </>
     ),
   },
