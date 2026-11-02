@@ -83,7 +83,7 @@ const project = {
   },
   solution: {
     heading: 'One site I own, designed in Figma and built with Claude Code',
-    image: 'case-built-with-claude-solution-home.png',
+    image: 'case-built-with-claude-solution-home.webp',
     imageAlt: 'The live home page',
     body: (
       <>
