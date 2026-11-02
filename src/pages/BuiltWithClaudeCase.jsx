@@ -961,6 +961,11 @@ const mistakes = [
     text: 'The components existed in Figma, but the variables did not carry through, so colours and sizes were hard-coded.',
   },
   {
+    tag: 'BUILD',
+    lead: 'The check existed, but the build never ran it.',
+    text: 'After the redesign, 35 raw colours and 17 raw shadows got through. My light system had no dark surfaces, so the dark blocks came in greys that match the default Tailwind palette exactly. Now the check runs first in every build.',
+  },
+  {
     tag: 'PERF',
     lead: 'A bundling “fix” I accepted without measuring.',
     text: 'A build setting forced an 847 KB charting library to load on every page, including the home page, where it is not used. I removed it on 4 October.',
