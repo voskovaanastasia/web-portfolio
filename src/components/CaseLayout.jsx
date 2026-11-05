@@ -861,6 +861,7 @@ export default function CaseLayout({
         <div id="case-hero" className="pt-4">
           <ImagePlaceholder
             filename={project.heroImage}
+            alt={project.heroImageAlt}
             className="w-full max-w-[1058px] mx-auto aspect-[1058/600]"
             priority
           />
